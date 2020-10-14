@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">FaithAndroid</string>
+    <string name="wolkenkrabber">Wolkenkrabber</string>
+    <string name="cinema">Cinema</string>
+    <string name="schatkist">Schatkist</string>
+    <string name="musicRoom">Music Room</string>
+    <string name="rugzak">Rugzak</string>
+    <string name="billboard">Billboard</string>
+    <string name="prikbord">Prikbord</string>
+    <string name="winkelCentrum">Winkelcentrum</string>
 </resources>
