@@ -8,4 +8,6 @@
     <string name="billboard">Billboard</string>
     <string name="prikbord">Prikbord</string>
     <string name="winkelCentrum">Winkelcentrum</string>
+    <string name="button_open">Open</string>
+    <string name="button_unpin">unpin</string>
 </resources>
