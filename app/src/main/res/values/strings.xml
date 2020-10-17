@@ -10,9 +10,11 @@
     <string name="winkelCentrum">Winkelcentrum</string>
     <string name="button_open">Open</string>
     <string name="button_unpin">unpin</string>
-    <string name="request_consultation_button">Aanvraag gesprek</string>
+    <string name="request_consultation">Gesprek aanvragen</string>
     <string name="audio">Audio</string>
     <string name="Image">Foto</string>
     <string name="video">Video</string>
     <string name="text">Tekst</string>
+    <string name="annuleren">Annuleren</string>
+    <string name="aanvraag_gesprek">Gesprek</string>
 </resources>
