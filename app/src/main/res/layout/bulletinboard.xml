@@ -6,15 +6,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/AddPostButton"
-        style="@style/buttonStyle"
+        style="@style/pinkButtonStyle"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
@@ -22,8 +23,6 @@
         android:elevation="10dp"
         app:maxImageSize="45dp"
         app:srcCompat="@android:drawable/ic_input_add" />
-
-        />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -37,7 +36,7 @@
 
         <Button
             android:id="@+id/requestConsultationButton"
-            style="@style/buttonStyle"
+            style="@style/pinkButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -134,7 +133,6 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <LinearLayout
-                android:id="@+id/bulletinboardCard"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fadingEdgeLength="10dp">
@@ -193,7 +191,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/bulletinboardOpenButton"
+
                             style="?android:attr/borderlessButtonStyle"
                             android:layout_width="72dp"
                             android:layout_height="wrap_content"
@@ -204,7 +202,7 @@
                             app:backgroundTint="@color/cardview_light_background" />
 
                         <Button
-                            android:id="@+id/bulletinboardUnpinButton"
+
                             style="?android:attr/borderlessButtonStyle"
                             android:layout_width="78dp"
                             android:layout_height="wrap_content"
@@ -230,7 +228,7 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <LinearLayout
-                android:id="@+id/bulletinboardCard"
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fadingEdgeLength="10dp">
@@ -244,7 +242,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/bulletinboardTittle"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0"
@@ -254,7 +252,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/bulletinboardInhoud"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
@@ -272,8 +270,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/bulletinboardOpenButton"
-                            style="?android:attr/borderlessButtonStyle"
+                             style="?android:attr/borderlessButtonStyle"
                             android:layout_width="72dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
@@ -283,7 +280,6 @@
                             app:backgroundTint="@color/cardview_light_background" />
 
                         <Button
-                            android:id="@+id/bulletinboardUnpinButton"
                             style="?android:attr/borderlessButtonStyle"
                             android:layout_width="78dp"
                             android:layout_height="wrap_content"
@@ -386,8 +382,7 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <LinearLayout
-                android:id="@+id/bulletinboardCard"
-                android:layout_width="match_parent"
+                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fadingEdgeLength="10dp">
 
@@ -400,7 +395,6 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/bulletinboardTittle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0"
@@ -410,8 +404,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/bulletinboardInhoud"
-                        android:layout_width="match_parent"
+                       android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_weight="1"
@@ -428,7 +421,6 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/bulletinboardOpenButton"
                             style="?android:attr/borderlessButtonStyle"
                             android:layout_width="72dp"
                             android:layout_height="wrap_content"
@@ -439,7 +431,6 @@
                             app:backgroundTint="@color/cardview_light_background" />
 
                         <Button
-                            android:id="@+id/bulletinboardUnpinButton"
                             style="?android:attr/borderlessButtonStyle"
                             android:layout_width="78dp"
                             android:layout_height="wrap_content"
