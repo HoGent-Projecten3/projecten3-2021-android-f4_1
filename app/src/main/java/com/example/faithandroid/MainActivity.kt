@@ -43,5 +43,7 @@ class MainActivity : AppCompatActivity() {
         drawerLayout.openDrawer(GravityCompat.START)
     }
 
+    fun ClickBack(view: View) {}
+
 
 }
