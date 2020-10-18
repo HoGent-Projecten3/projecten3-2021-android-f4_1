@@ -17,4 +17,11 @@
     <string name="text">Tekst</string>
     <string name="annuleren">Annuleren</string>
     <string name="aanvraag_gesprek">Gesprek</string>
+    <string name="instellingen">Instellingen</string>
+    <string name="profiel">Profiel</string>
+    <string name="uitloggen">Uitloggen</string>
+    <string name="meest_bezocht">Meest Bezocht</string>
+    <string name="wolkenkrabber">Wolkenkrabber</string>
+    <string name="welkom">Goed je terug te zien!</string>
+    <string name="naam">Jane Doe</string>
 </resources>
