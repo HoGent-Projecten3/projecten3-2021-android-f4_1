@@ -15,8 +15,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       // setContentView(R.layout.menu_homescherm)
-        setContentView(R.layout.aanvraag_gesprek) // to see of the screen is good
+        setContentView(R.layout.menu_homescherm)
+       // setContentView(R.layout.aanvraag_gesprek) // to see of the screen is good
 
 
         drawerLayout = findViewById(R.id.drawerLayout)
