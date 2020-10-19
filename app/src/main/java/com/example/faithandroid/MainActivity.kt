@@ -7,6 +7,7 @@ import android.widget.Toolbar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+//import androidx.databinding.DataBindingUtil
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,8 +16,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       // setContentView(R.layout.menu_homescherm)
-        setContentView(R.layout.aanvraag_gesprek) // to see of the screen is good
+        //val binding = DataBindingUtil.setContentView<ActvityMainBinding>(this, R.layout.menu_homescherm)
+        //setContentView(R.layout.menu_homescherm)
+        setContentView(R.layout.fragment_bulletinboard) // to see of the screen is good
 
 
         drawerLayout = findViewById(R.id.drawerLayout)
