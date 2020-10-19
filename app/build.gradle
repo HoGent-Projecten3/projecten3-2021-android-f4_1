@@ -1,11 +1,15 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'androidx.navigation.safeargs'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
-
+    buildFeatures {
+        dataBinding true
+    }
     defaultConfig {
         applicationId "com.example.faithandroid"
         minSdkVersion 19
