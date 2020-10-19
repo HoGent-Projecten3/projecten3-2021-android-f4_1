@@ -18,10 +18,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //val binding = DataBindingUtil.setContentView<ActvityMainBinding>(this, R.layout.menu_homescherm)
         //setContentView(R.layout.menu_homescherm)
-        setContentView(R.layout.fragment_bulletinboard) // to see of the screen is good
+        setContentView(R.layout.activity_test) // to see of the screen is good
 
 
-        drawerLayout = findViewById(R.id.drawerLayout)
+        //drawerLayout = findViewById(R.id.drawerLayout)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
