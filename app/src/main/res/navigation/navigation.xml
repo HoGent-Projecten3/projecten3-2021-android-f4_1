@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/optionsAddPostFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/bulletinBoardFragment"
@@ -35,4 +35,19 @@
             android:id="@+id/action_aanvraagGesprekFragment_to_bulletinBoardFragment"
             app:destination="@id/bulletinBoardFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.faithandroid.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_blankFragment"
+            app:destination="@id/blankFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_bulletinBoardFragment2"
+            app:destination="@id/bulletinBoardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/blankFragment"
+        android:name="com.example.faithandroid.BlankFragment"
+        android:label="BlankFragment" />
 </navigation>
