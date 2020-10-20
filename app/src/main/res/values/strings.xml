@@ -8,4 +8,6 @@
     <string name="billboard">Billboard</string>
     <string name="prikbord">Prikbord</string>
     <string name="winkelCentrum">Winkelcentrum</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
