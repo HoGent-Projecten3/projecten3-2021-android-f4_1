@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="pinkButtonStyle">
+        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="tint">#FFFFFF</item>
+    </style>
+    <style name="buttonStyle">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="backgroundTint" >@color/cardview_light_background</item>
+
+    </style>
+</resources>
