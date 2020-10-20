@@ -8,6 +8,10 @@
     <string name="billboard">Billboard</string>
     <string name="bulletinboard">Prikbord</string>
     <string name="winkelCentrum">Winkelcentrum</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="button_open">Open</string>
     <string name="button_unpin">unpin</string>
     <string name="request_consultation">Gesprek aanvragen</string>
