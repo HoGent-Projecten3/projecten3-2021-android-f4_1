@@ -1,5 +1,6 @@
 package com.example.faithandroid
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,14 +9,15 @@ import androidx.fragment.app.Fragment
 
 import androidx.databinding.DataBindingUtil
 import com.example.faithandroid.databinding.FragmentBulletinboardBinding
-
-
+import kotlinx.android.synthetic.main.fragment_bulletinboard.*
 
 
 class BulletinboardFragment: Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
 
     }
 
