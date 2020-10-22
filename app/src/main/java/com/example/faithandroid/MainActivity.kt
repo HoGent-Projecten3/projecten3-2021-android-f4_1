@@ -21,10 +21,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = DataBindingUtil.setContentView<ActivityTestBinding>(this, R.layout.menu_homescherm)
-        //setContentView(R.layout.menu_homescherm)
-        setContentView(R.layout.fragment_login) // to see of the screen is good
 
+         setContentView(R.layout.activity_test)
+
+
+
+       /* setContentView(R.layout.fragment_bulletinboard) // to see of the screen is good
+/// hoort bij elkaar
         requestConsultationButton.setOnClickListener {
             val intent = Intent(this, PopupWindow::class.java)
             intent.putExtra("popuptitle", "Aanvraag Gesprek")
@@ -32,12 +35,18 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("popupbtn", "OK")
             intent.putExtra("darkstatusbar", false)
             startActivity(intent)
-        }
+        }*/
 
         drawerLayout = findViewById(R.id.drawerLayout);
 
+
+        //setSupportActionBar(R.id.)
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         supportActionBar?.setHomeButtonEnabled(true)
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.setHomeButtonEnabled(true)
     }
 
     override fun onBackPressed() {
@@ -58,7 +67,13 @@ class MainActivity : AppCompatActivity() {
         drawerLayout.openDrawer(GravityCompat.START)
     }
 
-    fun ClickBack(view: View) {}
+    fun ClickBack(view: View) {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
 
 
 }
