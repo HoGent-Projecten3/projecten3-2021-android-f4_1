@@ -29,6 +29,7 @@
     <string name="welkom">Goed je terug te zien!</string>
     <string name="naam">Jane Doe</string>
     <!-- TODO: Remove or change this placeholder text -->
+
     <string name="login">login</string>
     <string name="title_activity_test">TestActivity</string>
     <!-- Strings used for fragments for navigation -->

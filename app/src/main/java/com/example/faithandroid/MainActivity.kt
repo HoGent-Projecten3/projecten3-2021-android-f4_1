@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = DataBindingUtil.setContentView<ActivityTestBinding>(this, R.layout.menu_homescherm)
+        val binding = DataBindingUtil.setContentView<com.example.faithandroid.databinding.ActivityTestBinding>(this, R.layout.menu_homescherm)
         //setContentView(R.layout.menu_homescherm)
         setContentView(R.layout.fragment_bulletinboard) // to see of the screen is good
 
@@ -36,8 +36,14 @@ class MainActivity : AppCompatActivity() {
 
         drawerLayout = findViewById(R.id.drawerLayout);
 
+
+        //setSupportActionBar(R.id.)
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         supportActionBar?.setHomeButtonEnabled(true)
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.setHomeButtonEnabled(true)
     }
 
     override fun onBackPressed() {
