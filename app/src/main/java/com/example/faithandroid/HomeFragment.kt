@@ -6,7 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import com.example.faithandroid.databinding.FragmentHomeBinding
+import androidx.navigation.findNavController
+import com.example.faithandroid.databinding.MenuHomeschermBinding
 
 class HomeFragment : Fragment() {
 
@@ -22,7 +23,14 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater, R.layout.fragment_home, container, false);
+        val binding = DataBindingUtil.inflate<MenuHomeschermBinding>(inflater, R.layout.menu_homescherm, container, false);
+
+        binding.imgPrikbord.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_homeFragment_to_bulletinBoardFragment)
+
+
+        }
+
         return binding.root
     }
 }
