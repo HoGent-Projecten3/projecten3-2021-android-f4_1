@@ -19,15 +19,21 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = DataBindingUtil.setContentView<ActivityTestBinding>(this, R.layout.menu_homescherm)
+        val binding = DataBindingUtil.setContentView<com.example.faithandroid.databinding.ActivityTestBinding>(this, R.layout.menu_homescherm)
         //setContentView(R.layout.menu_homescherm)
         setContentView(R.layout.activity_test) // to see of the screen is good
 
 
         drawerLayout = findViewById(R.id.drawerLayout);
 
+
+        //setSupportActionBar(R.id.)
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         supportActionBar?.setHomeButtonEnabled(true)
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.setHomeButtonEnabled(true)
     }
 
     override fun onBackPressed() {
