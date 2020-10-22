@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<ActivityTestBinding>(this, R.layout.menu_homescherm)
         //setContentView(R.layout.menu_homescherm)
-        setContentView(R.layout.fragment_bulletinboard) // to see of the screen is good
+        setContentView(R.layout.fragment_login) // to see of the screen is good
 
         requestConsultationButton.setOnClickListener {
             val intent = Intent(this, PopupWindow::class.java)

@@ -7,12 +7,9 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.faithandroid.MainActivity">
+    tools:context=".HomeFragment">
 
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -21,9 +18,11 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-      <!--  <fragment
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+        <!--  <fragment
             android:id="@+id/myNavHostFragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
@@ -41,22 +40,25 @@
                 android:layout_height="200dp"
                 android:contentDescription="@string/skyscraper"
                 android:scaleType="centerCrop"
+                android:src="@drawable/skyscraper"
                 app:layout_constraintBottom_toTopOf="@id/lbl_wolkenkrabber"
                 app:layout_constraintEnd_toStartOf="@id/img_cinema"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/lbl_wolkenkrabber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 android:text="@string/skyscraper"
-                app:layout_constraintBottom_toTopOf="@id/img_schatkist"
-                app:layout_constraintEnd_toStartOf="@id/lbl_cinema"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img_wolkenkrabber" />
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:padding="5dp"
+                app:layout_constraintBottom_toTopOf="@id/lbl_wolkenkrabber"
+                app:layout_constraintEnd_toEndOf="@+id/img_wolkenkrabber"
+                app:layout_constraintStart_toStartOf="@+id/img_wolkenkrabber"
+                app:layout_constraintTop_toBottomOf="@+id/img_wolkenkrabber" />
 
             <ImageView
                 android:id="@+id/img_cinema"
@@ -64,22 +66,25 @@
                 android:layout_height="200dp"
                 android:contentDescription="@string/cinema"
                 android:scaleType="centerCrop"
+                android:src="@drawable/preview"
                 app:layout_constraintBottom_toTopOf="@id/lbl_cinema"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/img_wolkenkrabber"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/lbl_cinema"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 android:text="@string/cinema"
-                app:layout_constraintBottom_toTopOf="@id/img_musicRoom"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/lbl_wolkenkrabber"
-                app:layout_constraintTop_toBottomOf="@id/img_cinema" />
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:padding="5dp"
+                app:layout_constraintBottom_toTopOf="@+id/img_musicRoom"
+                app:layout_constraintEnd_toEndOf="@+id/img_cinema"
+                app:layout_constraintStart_toStartOf="@+id/img_cinema"
+                app:layout_constraintTop_toBottomOf="@+id/img_cinema" />
 
             <ImageView
                 android:id="@+id/img_schatkist"
@@ -87,22 +92,25 @@
                 android:layout_height="200dp"
                 android:contentDescription="@string/treasure_chest"
                 android:scaleType="centerCrop"
+                android:src="@drawable/treasurechest"
                 app:layout_constraintBottom_toTopOf="@id/lbl_schatkist"
                 app:layout_constraintEnd_toStartOf="@id/img_musicRoom"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/lbl_wolkenkrabber"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                app:layout_constraintTop_toBottomOf="@id/lbl_wolkenkrabber" />
 
             <TextView
                 android:id="@+id/lbl_schatkist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="1dp"
                 android:text="@string/treasure_chest"
-                app:layout_constraintBottom_toTopOf="@id/img_rugzak"
-                app:layout_constraintEnd_toStartOf="@id/lbl_musicRoom"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img_schatkist" />
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:padding="5dp"
+                app:layout_constraintBottom_toTopOf="@+id/img_rugzak"
+                app:layout_constraintEnd_toEndOf="@+id/img_schatkist"
+                app:layout_constraintStart_toStartOf="@+id/img_schatkist"
+                app:layout_constraintTop_toBottomOf="@+id/img_schatkist" />
 
             <ImageView
                 android:id="@+id/img_musicRoom"
@@ -110,22 +118,24 @@
                 android:layout_height="200dp"
                 android:contentDescription="@string/musicRoom"
                 android:scaleType="centerCrop"
+                android:src="@drawable/headphones"
                 app:layout_constraintBottom_toTopOf="@id/lbl_musicRoom"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/img_schatkist"
-                app:layout_constraintTop_toBottomOf="@id/lbl_cinema"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                app:layout_constraintTop_toBottomOf="@id/lbl_cinema" />
 
             <TextView
                 android:id="@+id/lbl_musicRoom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 android:text="@string/musicRoom"
-                app:layout_constraintBottom_toTopOf="@id/img_billboard"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/lbl_schatkist"
-                app:layout_constraintTop_toBottomOf="@id/img_musicRoom" />
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:padding="5dp"
+                app:layout_constraintBottom_toTopOf="@+id/img_billboard"
+                app:layout_constraintEnd_toEndOf="@+id/img_musicRoom"
+                app:layout_constraintStart_toStartOf="@+id/img_musicRoom"
+                app:layout_constraintTop_toBottomOf="@+id/img_musicRoom" />
 
             <ImageView
                 android:id="@+id/img_rugzak"
@@ -133,22 +143,24 @@
                 android:layout_height="200dp"
                 android:contentDescription="@string/backpack"
                 android:scaleType="centerCrop"
+                android:src="@drawable/backpack"
                 app:layout_constraintBottom_toTopOf="@id/lbl_rugzak"
                 app:layout_constraintEnd_toStartOf="@id/img_billboard"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/lbl_schatkist"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                app:layout_constraintTop_toBottomOf="@id/lbl_schatkist" />
 
             <TextView
                 android:id="@+id/lbl_rugzak"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 android:text="@string/backpack"
-                app:layout_constraintBottom_toTopOf="@id/img_prikbord"
-                app:layout_constraintEnd_toStartOf="@id/lbl_billboard"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img_rugzak" />
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:padding="5dp"
+                app:layout_constraintBottom_toTopOf="@+id/img_prikbord"
+                app:layout_constraintEnd_toEndOf="@+id/img_rugzak"
+                app:layout_constraintStart_toStartOf="@+id/img_rugzak"
+                app:layout_constraintTop_toBottomOf="@+id/img_rugzak" />
 
             <ImageView
                 android:id="@+id/img_billboard"
@@ -156,22 +168,24 @@
                 android:layout_height="200dp"
                 android:contentDescription="@string/billboard"
                 android:scaleType="centerCrop"
+                android:src="@drawable/billboard"
                 app:layout_constraintBottom_toTopOf="@id/lbl_billboard"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/img_rugzak"
-                app:layout_constraintTop_toBottomOf="@id/lbl_musicRoom"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                app:layout_constraintTop_toBottomOf="@id/lbl_musicRoom" />
 
             <TextView
                 android:id="@+id/lbl_billboard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 android:text="@string/billboard"
-                app:layout_constraintBottom_toTopOf="@id/img_winkelcentrum"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/lbl_rugzak"
-                app:layout_constraintTop_toBottomOf="@id/img_billboard" />
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:padding="5dp"
+                app:layout_constraintBottom_toTopOf="@+id/img_winkelcentrum"
+                app:layout_constraintEnd_toEndOf="@+id/img_billboard"
+                app:layout_constraintStart_toStartOf="@+id/img_billboard"
+                app:layout_constraintTop_toBottomOf="@+id/img_billboard" />
 
             <ImageView
                 android:id="@+id/img_prikbord"
@@ -179,22 +193,24 @@
                 android:layout_height="200dp"
                 android:contentDescription="@string/bulletinboard"
                 android:scaleType="centerCrop"
+                android:src="@drawable/prikbord"
                 app:layout_constraintBottom_toTopOf="@id/lbl_prikbord"
                 app:layout_constraintEnd_toStartOf="@id/img_winkelcentrum"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/lbl_rugzak"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                app:layout_constraintTop_toBottomOf="@id/lbl_rugzak" />
 
             <TextView
                 android:id="@+id/lbl_prikbord"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 android:text="@string/bulletinboard"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:padding="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/lbl_winkelcentrum"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img_prikbord" />
+                app:layout_constraintEnd_toEndOf="@+id/img_prikbord"
+                app:layout_constraintStart_toStartOf="@+id/img_prikbord"
+                app:layout_constraintTop_toBottomOf="@+id/img_prikbord" />
 
             <ImageView
                 android:id="@+id/img_winkelcentrum"
@@ -202,22 +218,24 @@
                 android:layout_height="200dp"
                 android:contentDescription="@string/winkelCentrum"
                 android:scaleType="centerCrop"
+                android:src="@drawable/personicon"
                 app:layout_constraintBottom_toTopOf="@id/lbl_winkelcentrum"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/img_prikbord"
-                app:layout_constraintTop_toBottomOf="@id/lbl_billboard"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                app:layout_constraintTop_toBottomOf="@id/lbl_billboard" />
 
             <TextView
                 android:id="@+id/lbl_winkelcentrum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 android:text="@string/winkelCentrum"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:padding="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/img_prikbord"
-                app:layout_constraintTop_toBottomOf="@id/img_winkelcentrum" />
+                app:layout_constraintStart_toStartOf="@+id/img_winkelcentrum"
+                app:layout_constraintTop_toBottomOf="@+id/img_winkelcentrum" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

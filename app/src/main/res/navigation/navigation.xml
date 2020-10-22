@@ -10,9 +10,7 @@
         android:name="com.example.faithandroid.BulletinboardFragment"
         android:label="bulletinboard"
         tools:layout="@layout/fragment_bulletinboard" >
-        <action
-            android:id="@+id/action_bulletinBoardFragment_to_aanvraagGesprekFragment"
-            app:destination="@id/aanvraagGesprekFragment" />
+
         <action
             android:id="@+id/action_bulletinBoardFragment_to_optionsAddPostFragment"
             app:destination="@id/optionsAddPostFragment" />
@@ -27,27 +25,21 @@
             app:destination="@id/bulletinBoardFragment" />
     </fragment>
     <fragment
-        android:id="@+id/aanvraagGesprekFragment"
-        android:name="com.example.faithandroid.AanvraagGesprekFragment"
-        android:label="aanvraag_gesprek"
-        tools:layout="@layout/aanvraag_gesprek" >
-        <action
-            android:id="@+id/action_aanvraagGesprekFragment_to_bulletinBoardFragment"
-            app:destination="@id/bulletinBoardFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.faithandroid.LoginFragment"
         android:label="LoginFragment" >
+
         <action
-            android:id="@+id/action_loginFragment_to_blankFragment"
-            app:destination="@id/blankFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_bulletinBoardFragment2"
-            app:destination="@id/bulletinBoardFragment" />
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/blankFragment"
-        android:name="com.example.faithandroid.BlankFragment"
-        android:label="BlankFragment" />
+        android:id="@+id/homeFragment"
+        android:name="com.example.faithandroid.HomeFragment"
+        android:label="menu_homescherm"
+        tools:layout="@layout/menu_homescherm" >
+        <action
+            android:id="@+id/action_homeFragment_to_bulletinBoardFragment"
+            app:destination="@id/bulletinBoardFragment" />
+    </fragment>
 </navigation>
