@@ -2,21 +2,19 @@ package com.example.faithandroid
 
 import android.content.Context
 import android.content.Intent
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.fragment.app.Fragment
-
+import android.widget.Button
+import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.faithandroid.databinding.FragmentBulletinboardBinding
 import com.example.faithandroid.viewmodels.BulletinBoardViewModel
-import kotlinx.android.synthetic.main.fragment_bulletinboard.*
 import kotlinx.android.synthetic.main.textpost.view.*
 
 
@@ -31,10 +29,25 @@ class BulletinboardFragment: Fragment() {
 
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-      val binding = DataBindingUtil.inflate<FragmentBulletinboardBinding>(inflater, R.layout.fragment_bulletinboard, container, false);
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+      val binding = DataBindingUtil.inflate<FragmentBulletinboardBinding>(
+          inflater,
+          R.layout.fragment_bulletinboard,
+          container,
+          false
+      );
 
+        binding.requestConsultationButton.setOnClickListener {
+            val intent = Intent(this.context, PopupWindow::class.java)
+            intent.putExtra("popuptitle", "Aanvraag Gesprek")
+            intent.putExtra("popuptext", "Uw gesprek werd aangevraagd! \n Uw begeleider zal een melding ontvangen.")
+            intent.putExtra("popupbtn", "OK")
+            intent.putExtra("darkstatusbar", false)
+            startActivity(intent)
+        }
 
         binding.AddPostButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_bulletinBoardFragment_to_optionsAddPostFragment)
@@ -45,7 +58,7 @@ class BulletinboardFragment: Fragment() {
         viewModel = ViewModelProvider(this).get(BulletinBoardViewModel::class.java)
 
 
-        viewModel.test.forEach{lala ->
+        viewModel.test.forEach{ lala ->
 //            val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val rowView: View = inflater.inflate(R.layout.textpost, null)
             rowView.bulletinboardTittle.text = lala.title
@@ -53,6 +66,15 @@ class BulletinboardFragment: Fragment() {
             binding.bulletinLayout.addView(rowView, binding.bulletinLayout.childCount - 1)
 
         }
+
+       /* binding.requestConsultationButton.setOnClickListener() {
+            val intent = Intent(MainActivity.this, PopupWindow::class.java)
+            intent.putExtra("popuptitle", "Aanvraag Gesprek")
+            intent.putExtra("popuptext", "Uw gesprek werd aangevraagd! \n Uw begeleider zal een melding ontvangen.")
+            intent.putExtra("popupbtn", "OK")
+            intent.putExtra("darkstatusbar", false)
+            startActivity(intent)
+        }*/
 
 
         return binding.root

@@ -25,18 +25,6 @@ class MainActivity : AppCompatActivity() {
          setContentView(R.layout.activity_test)
 
 
-
-       /* setContentView(R.layout.fragment_bulletinboard) // to see of the screen is good
-/// hoort bij elkaar
-        requestConsultationButton.setOnClickListener {
-            val intent = Intent(this, PopupWindow::class.java)
-            intent.putExtra("popuptitle", "Aanvraag Gesprek")
-            intent.putExtra("popuptext", "Uw gesprek werd aangevraagd! \n Uw begeleider zal een melding ontvangen.")
-            intent.putExtra("popupbtn", "OK")
-            intent.putExtra("darkstatusbar", false)
-            startActivity(intent)
-        }*/
-
         drawerLayout = findViewById(R.id.drawerLayout);
 
 

@@ -15,6 +15,7 @@ import android.view.WindowManager
 import android.view.animation.DecelerateInterpolator
 import androidx.core.graphics.ColorUtils
 import kotlinx.android.synthetic.main.activity_popup_window.*
+import kotlinx.android.synthetic.main.fragment_bulletinboard.*
 
 class PopupWindow : AppCompatActivity() {
     private var popupTitle = ""
@@ -27,6 +28,9 @@ class PopupWindow : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         overridePendingTransition(0,0)
         setContentView(R.layout.activity_popup_window)
+
+
+/// hoort bij elkaar
 
 
 
