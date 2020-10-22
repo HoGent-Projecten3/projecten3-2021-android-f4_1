@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_optionsAddPostFragment_to_bulletinBoardFragment"
             app:destination="@id/bulletinBoardFragment" />
+        <action
+            android:id="@+id/action_optionsAddPostFragment_to_text_post_toevoegen"
+            app:destination="@id/text_post_toevoegen" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -41,6 +44,14 @@
         tools:layout="@layout/menu_homescherm" >
         <action
             android:id="@+id/action_homeFragment_to_bulletinBoardFragment"
+            app:destination="@id/bulletinBoardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/text_post_toevoegen"
+        android:name="com.example.faithandroid.text_post_toevoegen"
+        android:label="text_post_toevoegen" >
+        <action
+            android:id="@+id/action_text_post_toevoegen_to_bulletinBoardFragment"
             app:destination="@id/bulletinBoardFragment" />
     </fragment>
 
