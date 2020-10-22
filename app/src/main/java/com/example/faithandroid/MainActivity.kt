@@ -1,5 +1,6 @@
 package com.example.faithandroid
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.faithandroid.databinding.ActivityTestBinding
+import kotlinx.android.synthetic.main.fragment_bulletinboard.*
 
 //import androidx.databinding.DataBindingUtil
 
@@ -21,8 +23,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<ActivityTestBinding>(this, R.layout.menu_homescherm)
         //setContentView(R.layout.menu_homescherm)
-        setContentView(R.layout.activity_test) // to see of the screen is good
+        setContentView(R.layout.fragment_bulletinboard) // to see of the screen is good
 
+        requestConsultationButton.setOnClickListener {
+            val intent = Intent(this, PopupWindow::class.java)
+            intent.putExtra("popuptitle", "Aanvraag Gesprek")
+            intent.putExtra("popuptext", "Uw gesprek werd aangevraagd! \n Uw begeleider zal een melding ontvangen.")
+            intent.putExtra("popupbtn", "OK")
+            intent.putExtra("darkstatusbar", false)
+            startActivity(intent)
+        }
 
         drawerLayout = findViewById(R.id.drawerLayout);
 
