@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/bulletinBoardFragment"
+        android:name="com.example.faithandroid.BulletinboardFragment"
+        android:label="bulletinboard"
+        tools:layout="@layout/fragment_bulletinboard" >
+        <action
+            android:id="@+id/action_bulletinBoardFragment_to_aanvraagGesprekFragment"
+            app:destination="@id/aanvraagGesprekFragment" />
+        <action
+            android:id="@+id/action_bulletinBoardFragment_to_optionsAddPostFragment"
+            app:destination="@id/optionsAddPostFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/optionsAddPostFragment"
+        android:name="com.example.faithandroid.OptionsAddPostFragment"
+        android:label="options_add_post"
+        tools:layout="@layout/options_add_post" >
+        <action
+            android:id="@+id/action_optionsAddPostFragment_to_bulletinBoardFragment"
+            app:destination="@id/bulletinBoardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aanvraagGesprekFragment"
+        android:name="com.example.faithandroid.AanvraagGesprekFragment"
+        android:label="aanvraag_gesprek"
+        tools:layout="@layout/aanvraag_gesprek" >
+        <action
+            android:id="@+id/action_aanvraagGesprekFragment_to_bulletinBoardFragment"
+            app:destination="@id/bulletinBoardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.faithandroid.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_blankFragment"
+            app:destination="@id/blankFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_bulletinBoardFragment2"
+            app:destination="@id/bulletinBoardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/blankFragment"
+        android:name="com.example.faithandroid.BlankFragment"
+        android:label="BlankFragment" />
+</navigation>

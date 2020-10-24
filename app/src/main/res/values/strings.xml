@@ -1,11 +1,42 @@
 <resources>
     <string name="app_name">FaithAndroid</string>
-    <string name="wolkenkrabber">Wolkenkrabber</string>
+    <string name="skyscraper">Wolkenkrabber</string>
     <string name="cinema">Cinema</string>
-    <string name="schatkist">Schatkist</string>
+    <string name="treasure_chest">Schatkist</string>
     <string name="musicRoom">Music Room</string>
-    <string name="rugzak">Rugzak</string>
+    <string name="backpack">Rugzak</string>
     <string name="billboard">Billboard</string>
-    <string name="prikbord">Prikbord</string>
+    <string name="bulletinboard">Prikbord</string>
     <string name="winkelCentrum">Winkelcentrum</string>
+    <string name="button_open">Open</string>
+    <string name="button_unpin">unpin</string>
+    <string name="request_consultation">Gesprek aanvragen</string>
+    <string name="audio">Audio</string>
+    <string name="Image">Foto</string>
+    <string name="video">Video</string>
+    <string name="text">Tekst</string>
+    <string name="annuleren">Annuleren</string>
+    <string name="aanvraag_gesprek">Gesprek</string>
+    <string name="instellingen">Instellingen</string>
+    <string name="profiel">Profiel</string>
+    <string name="uitloggen">Uitloggen</string>
+    <string name="meest_bezocht">Meest Bezocht</string>
+    <string name="wolkenkrabber">Wolkenkrabber</string>
+    <string name="welkom">Goed je terug te zien!</string>
+    <string name="naam">Jane Doe</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">login</string>
+    <string name="title_activity_test">TestActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="label">button</string>
+    <string name="forgot_password">wachtwoord vergeten</string>
+    <string name="password">wachtwoord</string>
 </resources>
