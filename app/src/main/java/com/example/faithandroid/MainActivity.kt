@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<ActivityTestBinding>(this, R.layout.menu_homescherm)
         //setContentView(R.layout.menu_homescherm)
-        setContentView(R.layout.gewoon_een_test_voor_de_backend) // to see of the screen is good
+        setContentView(R.layout.activity_test) // to see of the screen is good
 
 
         drawerLayout = findViewById(R.id.drawerLayout);

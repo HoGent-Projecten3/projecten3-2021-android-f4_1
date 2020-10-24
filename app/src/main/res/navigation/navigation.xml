@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/backendFragment">
 
     <fragment
         android:id="@+id/bulletinBoardFragment"
@@ -26,6 +26,7 @@
             android:id="@+id/action_optionsAddPostFragment_to_bulletinBoardFragment"
             app:destination="@id/bulletinBoardFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/aanvraagGesprekFragment"
         android:name="com.example.faithandroid.AanvraagGesprekFragment"
@@ -50,4 +51,8 @@
         android:id="@+id/blankFragment"
         android:name="com.example.faithandroid.BlankFragment"
         android:label="BlankFragment" />
+    <fragment
+        android:id="@+id/backendFragment"
+        android:name="com.example.faithandroid.BackendFragment"
+        android:label="BackendFragment" />
 </navigation>
