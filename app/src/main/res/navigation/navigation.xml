@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/backendFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/bulletinBoardFragment"
@@ -26,16 +26,6 @@
 
     </fragment>
 
-    <fragment
-        android:id="@+id/aanvraagGesprekFragment"
-        android:name="com.example.faithandroid.AanvraagGesprekFragment"
-        android:label="aanvraag_gesprek"
-        tools:layout="@layout/aanvraag_gesprek" >
-
-        <action
-            android:id="@+id/action_optionsAddPostFragment_to_text_post_toevoegen"
-            app:destination="@id/text_post_toevoegen" />
-    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.faithandroid.LoginFragment"
@@ -60,10 +50,10 @@
         android:id="@+id/backendFragment"
         android:name="com.example.faithandroid.BackendFragment"
         android:label="BackendFragment" />
-    <fragment>
+    <fragment
         android:id="@+id/text_post_toevoegen"
         android:name="com.example.faithandroid.text_post_toevoegen"
-        android:label="text_post_toevoegen" >
+        android:label="text_post_toevoegen">
         <action
             android:id="@+id/action_text_post_toevoegen_to_bulletinBoardFragment"
             app:destination="@id/bulletinBoardFragment" />

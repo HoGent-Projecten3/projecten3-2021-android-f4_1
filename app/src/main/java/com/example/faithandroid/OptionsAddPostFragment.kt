@@ -34,11 +34,8 @@ class OptionsAddPostFragment: Fragment() {
                 .navigate(R.id.action_optionsAddPostFragment_to_bulletinBoardFragment)
         }
 
-        binding.button5.setOnClickListener{view: View ->
-            view.findNavController()
-                .navigate(R.id.action_optionsAddPostFragment_to_text_post_toevoegen)
 
-        }
+
 
         return binding.root
 
