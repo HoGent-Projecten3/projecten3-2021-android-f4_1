@@ -8,6 +8,10 @@
     <string name="billboard">Billboard</string>
     <string name="bulletinboard">Prikbord</string>
     <string name="winkelCentrum">Winkelcentrum</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="button_open">Open</string>
     <string name="button_unpin">unpin</string>
     <string name="request_consultation">Gesprek aanvragen</string>
@@ -25,7 +29,7 @@
     <string name="welkom">Goed je terug te zien!</string>
     <string name="naam">Jane Doe</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="login">login</string>
     <string name="title_activity_test">TestActivity</string>
     <!-- Strings used for fragments for navigation -->
@@ -39,5 +43,9 @@
     <string name="label">button</string>
     <string name="forgot_password">wachtwoord vergeten</string>
     <string name="password">wachtwoord</string>
-    <string name="welkom_bij_faith">Welkom By Faith</string>
+    <string name="OK">OK</string>
+    <string name="welkom_bij_faith">welkom bij faith</string>
+    <string name="titel">titel</string>
+    <string name="tekst">tekst</string>
+
 </resources>

@@ -1,5 +1,6 @@
 package com.example.faithandroid
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.faithandroid.databinding.ActivityTestBinding
+import kotlinx.android.synthetic.main.fragment_bulletinboard.*
 
 //import androidx.databinding.DataBindingUtil
 
@@ -21,16 +23,21 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = DataBindingUtil.setContentView<ActivityTestBinding>(this, R.layout.menu_homescherm)
-        //setContentView(R.layout.menu_homescherm)
-        setContentView(R.layout.activity_test) // to see of the screen is good
+
+         setContentView(R.layout.activity_test)
 
 
         drawerLayout = findViewById(R.id.drawerLayout);
         viewModel = ViewModelProvider(this).get(OverviewViewModel::class.java)
 
+
+        //setSupportActionBar(R.id.)
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         supportActionBar?.setHomeButtonEnabled(true)
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.setHomeButtonEnabled(true)
     }
 
     override fun onBackPressed() {
@@ -51,7 +58,13 @@ class MainActivity : AppCompatActivity() {
         drawerLayout.openDrawer(GravityCompat.START)
     }
 
-    fun ClickBack(view: View) {}
+    fun ClickBack(view: View) {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
 
 
 }
