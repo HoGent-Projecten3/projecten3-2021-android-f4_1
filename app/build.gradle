@@ -58,11 +58,17 @@ dependencies {
     // Rounded Image View
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+
     //Navigation Component
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
 
+    implementation "com.squareup.retrofit2:retrofit: 2.9.0"
+    implementation "com.squareup.retrofit2:converter-scalars:2.9.0"
+
     //rounded corners popup
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
 }
