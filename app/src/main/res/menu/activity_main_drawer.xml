@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item android:id="@+id/nav_options"
+            android:icon="@drawable/ic_tool"
+            android:title="@string/instellingen" />
+        <item android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_person"
+            android:title="@string/profiel" />
+        <item android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_leave"
+            android:title="@string/uitloggen" />
+    </group>
+
+    <item android:title="@string/meest_bezocht">
+        <menu>
+            <item android:id="@+id/nav_item_six"
+                android:icon="@drawable/ic_favorite"
+                android:title="@string/wolkenkrabber" />
+        </menu>
+    </item>
+</menu>
