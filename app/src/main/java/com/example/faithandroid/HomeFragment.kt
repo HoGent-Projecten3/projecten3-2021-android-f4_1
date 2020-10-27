@@ -27,9 +27,29 @@ class HomeFragment : Fragment() {
 
         binding.imgPrikbord.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_homeFragment_to_bulletinBoardFragment)
-
-
         }
+        binding.imgBillboard.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_homeFragment_to_billboardFragment)
+        }
+        binding.imgCinema.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_homeFragment_to_cinemaFragment)
+        }
+        binding.imgMusicRoom.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_homeFragment_to_musicRoomFragment)
+        }
+        binding.imgRugzak.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_homeFragment_to_backpackFragment)
+        }
+        binding.imgSchatkist.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_homeFragment_to_treasureChestFragment)
+        }
+        binding.imgWinkelcentrum.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_homeFragment_to_shoppingCenterFragment)
+        }
+        binding.imgWolkenkrabber.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_homeFragment_to_skyscraperFragment)
+        }
+
 
         return binding.root
     }
