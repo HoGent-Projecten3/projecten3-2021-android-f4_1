@@ -42,8 +42,29 @@
         android:label="menu_homescherm"
         tools:layout="@layout/menu_homescherm" >
         <action
+            android:id="@+id/action_homeFragment_to_backpackFragment"
+            app:destination="@id/backpackFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_billboardFragment"
+            app:destination="@id/billboardFragment" />
+        <action
             android:id="@+id/action_homeFragment_to_bulletinBoardFragment"
             app:destination="@id/bulletinBoardFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_cinemaFragment"
+            app:destination="@id/cinemaFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_musicRoomFragment"
+            app:destination="@id/musicRoomFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_shoppingCenterFragment"
+            app:destination="@id/shoppingCenterFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_skyscraperFragment"
+            app:destination="@id/skyscraperFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_treasureChestFragment"
+            app:destination="@id/treasureChestFragment" />
     </fragment>
     
     <fragment
@@ -58,5 +79,40 @@
             android:id="@+id/action_text_post_toevoegen_to_bulletinBoardFragment"
             app:destination="@id/bulletinBoardFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/backpackFragment"
+        android:name="com.example.faithandroid.BackpackFragment"
+        android:label="BackpackFragment"
+        tools:layout="@layout/fragment_backpack"/>
+    <fragment
+        android:id="@+id/billboardFragment"
+        android:name="com.example.faithandroid.BillboardFragment"
+        android:label="BillboardFragment"
+        tools:layout="@layout/fragment_billboard"/>
+    <fragment
+        android:id="@+id/cinemaFragment"
+        android:name="com.example.faithandroid.CinemaFragment"
+        android:label="CinemaFragment"
+        tools:layout="@layout/fragment_cinema"/>
+    <fragment
+        android:id="@+id/musicRoomFragment"
+        android:name="com.example.faithandroid.MusicRoomFragment"
+        android:label="MusicRoomFragment"
+        tools:layout="@layout/fragment_musicroom"/>
+    <fragment
+        android:id="@+id/shoppingCenterFragment"
+        android:name="com.example.faithandroid.ShoppingCenterFragment"
+        android:label="ShoppingCenterFragment"
+        tools:layout="@layout/fragment_shoppingcenter"/>
+    <fragment
+        android:id="@+id/skyscraperFragment"
+        android:name="com.example.faithandroid.SkyscraperFragment"
+        android:label="SkyscraperFragment"
+        tools:layout="@layout/fragment_skyscraper"/>
+    <fragment
+        android:id="@+id/treasureChestFragment"
+        android:name="com.example.faithandroid.TreasureChestFragment"
+        android:label="TreasureChestFragment"
+        tools:layout="@layout/fragment_treasurechest"/>
 
 </navigation>

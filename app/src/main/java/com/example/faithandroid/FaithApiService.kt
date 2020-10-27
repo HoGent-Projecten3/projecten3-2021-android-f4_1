@@ -6,7 +6,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 
 //TODO: give url
-private const val BASE_URL = "https://mars.udacity.com/"
+private const val BASE_URL = "https://10.0.2.2:5001/api/"
 
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(ScalarsConverterFactory.create())
@@ -14,7 +14,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface FaithApiService {
-    @GET("realestate")
+    @GET("Account/GetAdolescentsByCounselorEmail/bob.debouwer1998@gmail.com")
     fun getProperties():
             Call<String>
 }
