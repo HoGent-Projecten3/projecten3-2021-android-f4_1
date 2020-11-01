@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="property"
+            type="com.example.faithandroid.network.FaithProperty" />
+    </data>
+
+
+    <TextView
+        android:id="@+id/faith_firstname"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:padding="2dp"
+        android:text="@{property.firstName + property.name + property.email}"/>
+
+</layout>
