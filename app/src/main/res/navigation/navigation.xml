@@ -13,7 +13,8 @@
 
         <action
             android:id="@+id/action_bulletinBoardFragment_to_optionsAddPostFragment"
-            app:destination="@id/optionsAddPostFragment" />
+            app:destination="@id/optionsAddPostFragment"
+             />
     </fragment>
     <fragment
         android:id="@+id/optionsAddPostFragment"
@@ -22,8 +23,9 @@
         tools:layout="@layout/options_add_post" >
         <action
             android:id="@+id/action_optionsAddPostFragment_to_bulletinBoardFragment"
-            app:destination="@id/bulletinBoardFragment" />
-
+            app:destination="@id/bulletinBoardFragment"
+            app:popUpTo="@id/bulletinBoardFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -32,7 +34,6 @@
         android:label="LoginFragment" >
 
         <action
-
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
