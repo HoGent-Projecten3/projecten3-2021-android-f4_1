@@ -27,7 +27,7 @@ jobs:
           java-version: 11.0.4
           java-package: jdk
       - name: build release 
-        run: ./gradlew --debug assembleRelease
+        run: ./gradlew --stacktrace assembleRelease
       - name: Firebase App Distribution
       # You may pin to the exact commit or the version.
       # uses: wzieba/Firebase-Distribution-Github-Action@71535f70a959206e3e57161c8ea53337ca49c335
