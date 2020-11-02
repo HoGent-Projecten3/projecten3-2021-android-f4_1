@@ -40,4 +40,6 @@ class BillboardFragment: Fragment() {
       );
         return binding.root
     }
+
+
 }
