@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "137787531670",
+    "firebase_url": "https://projecten-3-grow.firebaseio.com",
+    "project_id": "projecten-3-grow",
+    "storage_bucket": "projecten-3-grow.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137787531670:android:de6e3eee64a563772dfdb7",
+        "android_client_info": {
+          "package_name": "com.example.faithandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "137787531670-mctcr71iao0c2ckps0t998h02a9jfinq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeh7H5gRVEq9Y0YmWiZZ7r25tMRT8kJ8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "137787531670-mctcr71iao0c2ckps0t998h02a9jfinq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
