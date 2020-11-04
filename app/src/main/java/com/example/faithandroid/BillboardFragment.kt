@@ -1,3 +1,4 @@
+
 package com.example.faithandroid
 
 import android.content.Context
@@ -40,6 +41,4 @@ class BillboardFragment: Fragment() {
       );
         return binding.root
     }
-
-
 }
