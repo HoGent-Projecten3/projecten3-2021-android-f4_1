@@ -59,6 +59,7 @@ class addGoalFragment : Fragment() {
 
 
 
+
             viewModel.addGoalPost(newGoal);
             Log.d("helpGF", viewModel.testLive.value.toString())
 
