@@ -23,7 +23,7 @@
                     android:layout_height="49dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:text="@string/textview"
+                    android:text="@string/text"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/profilepic" />

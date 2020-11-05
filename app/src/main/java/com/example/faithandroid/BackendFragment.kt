@@ -32,14 +32,13 @@ class BackendFragment : Fragment() {
         //binding.viewModel = viewModel
         binding.nameGrid.adapter = FirstNameGridAdapter()
         binding.viewModellalala = viewModel
-       /* viewModel.properties.observe(viewLifecycleOwner, Observer{
-            var sb = StringBuilder();
-            viewModel.properties.value?.forEach{ property ->
-                sb.append(property.firstName)
-            }
-            binding.nameGrid.Recycler().scrapList
-
-        })*/
+        /* viewModel.properties.observe(viewLifecycleOwner, Observer{
+             var sb = StringBuilder();
+             viewModel.properties.value?.forEach{ property ->
+                 sb.append(property.firstName)
+             }
+             binding.nameGrid.Recycler().scrapList
+         })*/
 
         return binding.root
     }

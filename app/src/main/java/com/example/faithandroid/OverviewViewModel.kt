@@ -30,6 +30,7 @@ class OverviewViewModel : ViewModel() {
 
     init {
         getAdolescentsFromBob()
+        postTextPost()
     }
 
     private fun getAdolescentsFromBob() {
@@ -44,6 +45,10 @@ class OverviewViewModel : ViewModel() {
                 _status.value = "Failure: ${e.message}"
             }
         }
+    }
+
+    private fun postTextPost(){
+
     }
 
     override fun onCleared() {
