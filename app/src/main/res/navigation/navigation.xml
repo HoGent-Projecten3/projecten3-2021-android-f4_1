@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.faithandroid.LoginFragment"
+        android:name="com.example.faithandroid.login.LoginFragment"
         android:label="LoginFragment" >
 
         <action
