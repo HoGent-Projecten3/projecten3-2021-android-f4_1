@@ -29,29 +29,32 @@
             app:maxImageSize="45dp"
             app:srcCompat="@android:drawable/ic_input_add" />
 
-        <LinearLayout
-            android:id="@+id/lijst"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#C2EBFF"
-            android:gravity="bottom"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/bovenkantSkyscraper"
+            <LinearLayout
+                android:id="@+id/lijst"
                 android:layout_width="match_parent"
-                android:layout_height="179dp"
-                app:srcCompat="@drawable/bovenkant_skyscraper" />
+                android:layout_height="wrap_content"
+                android:background="#C2EBFF"
+                android:gravity="bottom"
+                android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/onderkantSkyscraper"
-                android:layout_width="match_parent"
-                android:layout_height="119dp"
-                app:srcCompat="@drawable/onderkant_skyscraper" />
+                <ImageView
+                    android:id="@+id/bovenkantSkyscraper"
+                    android:layout_width="match_parent"
+                    android:layout_height="179dp"
+                    app:srcCompat="@drawable/bovenkant_skyscraper" />
 
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/onderkantSkyscraper"
+                    android:layout_width="match_parent"
+                    android:layout_height="119dp"
+                    app:srcCompat="@drawable/onderkant_skyscraper" />
+
+            </LinearLayout>
+        </ScrollView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

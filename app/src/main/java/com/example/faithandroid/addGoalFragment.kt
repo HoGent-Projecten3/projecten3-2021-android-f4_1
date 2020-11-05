@@ -21,6 +21,7 @@ import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.viewmodels.MusicRoomViewModel
 import com.example.faithandroid.viewmodels.SkyscraperViewModel
 import kotlinx.android.synthetic.main.fragment_add_goal.*
+import org.threeten.bp.LocalDateTime
 
 class addGoalFragment : Fragment() {
 
@@ -49,24 +50,24 @@ class addGoalFragment : Fragment() {
         }
 
         binding.voegToeButton.setOnClickListener { view: View ->
-            var titel : String = binding.titelText.text.toString()
-            var beschrijving : String = binding.beschrijvingText.text.toString()
-            var steps : List<String> = emptyList();
-            binding.stepList.children.forEach { step: View ->
-                steps.plus(step.toString());
-            }
-            var newGoal = GoalPost(titel, beschrijving, false, steps)
-
-
-
-
-            viewModel.addGoalPost(newGoal);
-            Log.d("helpGF", viewModel.testLive.value.toString())
-
-
-
-
-            view.findNavController().navigate(R.id.action_addGoalFragment_to_skyscraperFragment)
+//            var titel : String = binding.titelText.text.toString()
+//            var beschrijving : String = binding.beschrijvingText.text.toString()
+//            var steps : List<String> = emptyList();
+//            binding.stepList.children.forEach { step: View ->
+//                steps.plus(step.toString());
+//            }
+//            var newGoal = GoalPost(titel, beschrijving, false, steps, "ZOLLAT")
+//
+//
+//
+//
+//            viewModel.addGoalPost(newGoal);
+//            Log.d("helpGF", viewModel.testLive.value.toString())
+//
+//
+//
+//
+//            view.findNavController().navigate(R.id.action_addGoalFragment_to_skyscraperFragment)
         }
 
         binding.addStepButton.setOnClickListener{run{
