@@ -33,12 +33,18 @@ class BillboardFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
       val binding = DataBindingUtil.inflate<FragmentBillboardBinding>(
           inflater,
           R.layout.fragment_billboard,
           container,
           false
       );
+
+        binding.billboardGridView.adapter = BillboardGridAdapter()
+
+        viewModel = ViewModelProvider(this).get(BillboardViewModel::class.java)
+        binding.viewmodelBillboard = viewModel
         return binding.root
     }
 }

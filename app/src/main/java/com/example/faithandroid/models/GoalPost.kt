@@ -1,10 +1,9 @@
 package com.example.faithandroid.models
 
-import org.threeten.bp.LocalDateTime
 
 
 data class GoalPost(
-
+    var id: Int,
     var title: String = "",
     var description: String = "",
     var completed: Boolean = false,
