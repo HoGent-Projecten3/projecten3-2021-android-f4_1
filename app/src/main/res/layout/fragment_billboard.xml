@@ -14,32 +14,32 @@
             android:layout_height="match_parent" />
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="top"
-        android:orientation="vertical"
-        android:id="@+id/billboardLayout"
-        >
-
-
-
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="?attr/actionBarSize">
+            android:gravity="top"
+            android:orientation="vertical"
+            android:id="@+id/billboardLayout"
+            >
 
 
 
-            <ListView
-                android:id="@+id/list_view"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_marginTop="?attr/actionBarSize">
 
 
 
-        </ScrollView>
-    </LinearLayout>
+                <ListView
+                    android:id="@+id/list_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+
+
+            </ScrollView>
+        </LinearLayout>
 
     </FrameLayout>
 </layout>
