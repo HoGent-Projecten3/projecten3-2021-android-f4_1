@@ -108,11 +108,23 @@
         android:id="@+id/skyscraperFragment"
         android:name="com.example.faithandroid.SkyscraperFragment"
         android:label="SkyscraperFragment"
-        tools:layout="@layout/fragment_skyscraper"/>
+        tools:layout="@layout/fragment_skyscraper">
+        <action
+            android:id="@+id/action_skyscraperFragment_to_addGoalFragment"
+            app:destination="@id/addGoalFragment" />
+    </fragment>
     <fragment
         android:id="@+id/treasureChestFragment"
         android:name="com.example.faithandroid.TreasureChestFragment"
         android:label="TreasureChestFragment"
         tools:layout="@layout/fragment_treasurechest"/>
+    <fragment
+        android:id="@+id/addGoalFragment"
+        android:name="com.example.faithandroid.addGoalFragment"
+        android:label="addGoalFragment" >
+        <action
+            android:id="@+id/action_addGoalFragment_to_skyscraperFragment"
+            app:destination="@id/skyscraperFragment" />
+    </fragment>
 
 </navigation>

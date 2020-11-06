@@ -1,3 +1,4 @@
+
 <resources>
     <string name="app_name">FaithAndroid</string>
     <string name="skyscraper">Wolkenkrabber</string>
@@ -47,5 +48,4 @@
     <string name="welkom_bij_faith">welkom bij faith</string>
     <string name="titel">titel</string>
     <string name="tekst">tekst</string>
-
 </resources>
