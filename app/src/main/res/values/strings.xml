@@ -31,7 +31,7 @@
     <string name="naam">Jane Doe</string>
     <!-- TODO: Remove or change this placeholder text -->
 
-    <string name="login">login</string>
+    <string name="login">log in</string>
     <string name="title_activity_test">TestActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -45,7 +45,13 @@
     <string name="forgot_password">wachtwoord vergeten</string>
     <string name="password">wachtwoord</string>
     <string name="OK">OK</string>
-    <string name="welkom_bij_faith">welkom bij faith</string>
+    <string name="grow.">GROW.</string>
     <string name="titel">titel</string>
     <string name="tekst">tekst</string>
+
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="email">Vul hier je e-mail in</string>
 </resources>
