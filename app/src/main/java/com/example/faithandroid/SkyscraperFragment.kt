@@ -18,6 +18,7 @@ import androidx.navigation.findNavController
 import com.example.faithandroid.databinding.FragmentSkyscraperBinding
 import com.example.faithandroid.viewmodels.BulletinBoardViewModel
 import com.example.faithandroid.viewmodels.SkyscraperViewModel
+import kotlinx.android.synthetic.main.goalpostimage.view.*
 import kotlinx.android.synthetic.main.textpost.view.*
 
 
@@ -50,9 +51,14 @@ class SkyscraperFragment: Fragment() {
         viewModel.testLive.observe(this.viewLifecycleOwner, Observer{
             viewModel.testLive.value?.forEach{goal ->
                 val rowView: View = inflater.inflate(R.layout.goalpostimage, null)
-                binding.lijst.addView(rowView, binding.lijst.childCount - 1)
+                rowView.titleText.text = goal.title
+                rowView.layout.setOnClickListener{view: View ->
+                    view.findNavController().navigate(R.id.action_skyscraperFragment_to_goalDetailsFragment)
+                }
+                binding.lijst.addView(rowView, 1)
             }
         })
+
 //        viewModel.test.forEach{goal ->
 //            val rowView: View = inflater.inflate(R.layout.goalpostimage, null)
 //            binding.lijst.addView(rowView, binding.lijst.childCount - 1)
