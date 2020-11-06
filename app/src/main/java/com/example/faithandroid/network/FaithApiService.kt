@@ -10,6 +10,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.Deferred
+import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -37,12 +38,11 @@ interface FaithApiService {
     @Headers("Content-Type: application/json")
     @POST("City/AddPostByEmail")
     fun postPost(@Body post: TextPost, @Query("email") email: String):
-            Call<Boolean>
+            Call<Void>
 
     @Headers("Content-Type: application/json")
     @POST("City/AddGoalByEmail")
-    suspend fun postGoalPost(@Body goal: GoalPost, @Query("email") email:String):
-            Call<GoalPost>
+    suspend fun postGoalPost(@Body goal: GoalPost, @Query("email") email:String)
 
     @GET("City/GetPostsOfSkyScraperByAdolescentEmail")
     fun getPostsOfSkyScraperByAdolescentEmail(@Query("email") email: String): Deferred<List<GoalPost>>

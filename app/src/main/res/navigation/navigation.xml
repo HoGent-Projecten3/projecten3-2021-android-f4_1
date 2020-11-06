@@ -112,6 +112,9 @@
         <action
             android:id="@+id/action_skyscraperFragment_to_addGoalFragment"
             app:destination="@id/addGoalFragment" />
+        <action
+            android:id="@+id/action_skyscraperFragment_to_goalDetailsFragment"
+            app:destination="@id/goalDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/treasureChestFragment"
@@ -126,5 +129,9 @@
             android:id="@+id/action_addGoalFragment_to_skyscraperFragment"
             app:destination="@id/skyscraperFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/goalDetailsFragment"
+        android:name="com.example.faithandroid.goalDetailsFragment"
+        android:label="goalDetailsFragment" />
 
 </navigation>
