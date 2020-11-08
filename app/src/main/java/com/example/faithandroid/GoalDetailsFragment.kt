@@ -12,11 +12,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.example.faithandroid.databinding.FragmentGoaldetailsBinding
 import com.example.faithandroid.databinding.FragmentMusicroomBinding
+import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.viewmodels.GoalDetailsViewModel
 import com.example.faithandroid.viewmodels.MusicRoomViewModel
 import com.example.faithandroid.viewmodels.SkyscraperViewModel
 
 class GoalDetailsFragment: DialogFragment() {
+    val args: GoalDetailsFragmentArgs by navArgs()
     private lateinit var viewModel: GoalDetailsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +43,11 @@ class GoalDetailsFragment: DialogFragment() {
 
         //val faithProperty = goalDetailsFragmentArgs.fromBundle(requireArguments()).title
         Log.d("yeeyee", "hewoo")
+
+
+        binding.titleText.text = args.goal.title
+        binding.beschrijvingText.text = args.goal.description
+        binding.alBehaaldText.text = if(args.goal.completed) "joupie" else "neeee"
 
         return binding.root
 

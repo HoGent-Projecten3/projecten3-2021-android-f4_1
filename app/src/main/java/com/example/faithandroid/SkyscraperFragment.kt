@@ -49,6 +49,8 @@ class SkyscraperFragment: Fragment() {
                 rowView.layout.setOnClickListener{view: View ->
 
                     Log.d("CLICK", "hewwo? Mw obwama?")
+                    val action = SkyscraperFragmentDirections.actionSkyscraperFragmentToGoalDetailsFragment(goal)
+                    view.findNavController().navigate(action)
                 }
                 binding.lijst.addView(rowView, 1)
             }

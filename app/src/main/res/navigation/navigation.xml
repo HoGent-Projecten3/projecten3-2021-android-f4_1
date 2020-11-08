@@ -132,6 +132,10 @@
     <fragment
         android:id="@+id/goalDetailsFragment"
         android:name="com.example.faithandroid.GoalDetailsFragment"
-        android:label="goalDetailsFragment" />
+        android:label="goalDetailsFragment" >
+        <argument
+            android:name="goal"
+            app:argType="com.example.faithandroid.models.GoalPost" />
+    </fragment>
 
 </navigation>
