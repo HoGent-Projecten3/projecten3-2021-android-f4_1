@@ -18,7 +18,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
 
 //TODO: give url
-/*private const val BASE_URL = "https://growapi.azurewebsites.net/api/"
+private const val BASE_URL = "https://growapi.azurewebsites.net/api/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -28,10 +28,10 @@ private val retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi))
     .addCallAdapterFactory(CoroutineCallAdapterFactory())
     .baseUrl(BASE_URL)
-    .build()*/
+    .build()
 
 interface FaithApiService {
-    /*
+
     @GET("Account/GetAdolescentsByCounselorEmail/bob.debouwer1998@gmail.com")
     fun getProperties():
             Deferred<List<FaithProperty>>
@@ -45,14 +45,17 @@ interface FaithApiService {
     @POST("City/AddGoalByEmail")
     suspend fun postGoalPost(@Body goal: GoalPost, @Query("email") email:String)
 
+    @Headers("Content-Type: application/json")
+    @PUT("City/setGoalAchieved")
+    suspend fun checkGoal(@Query("checked: Boolean") checked:Boolean, @Query(" id: Int") id: Int)
+
     @GET("City/GetPostsOfSkyScraperByAdolescentEmail")
     fun getPostsOfSkyScraperByAdolescentEmail(@Query("email") email: String): Deferred<List<GoalPost>>
-}*/
+}
 
 object FaithApi {
-/*
+
     val retrofitService : FaithApiService by lazy {
         retrofit.create(FaithApiService::class.java)
-    }*/
     }
 }

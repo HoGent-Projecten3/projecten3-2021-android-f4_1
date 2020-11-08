@@ -19,7 +19,7 @@ import com.example.faithandroid.viewmodels.SkyscraperViewModel
 
 class GoalDetailsFragment: DialogFragment() {
     val args: GoalDetailsFragmentArgs by navArgs()
-    private lateinit var viewModel: GoalDetailsViewModel
+    private lateinit var viewModel: SkyscraperViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +31,7 @@ class GoalDetailsFragment: DialogFragment() {
     ): View? {
         //val application = requireNotNull(activity).application
 
-        viewModel = ViewModelProvider(this).get(GoalDetailsViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
 
         val binding = DataBindingUtil.inflate<FragmentGoaldetailsBinding>(
             inflater,
@@ -45,9 +45,15 @@ class GoalDetailsFragment: DialogFragment() {
         Log.d("yeeyee", "hewoo")
 
 
-        binding.titleText.text = args.goal.title
+        binding.titelText.text = args.goal.title
         binding.beschrijvingText.text = args.goal.description
-        binding.alBehaaldText.text = if(args.goal.completed) "joupie" else "neeee"
+        binding.behaaldCheckbox.isChecked = args.goal.completed
+
+        binding.behaaldCheckbox.setOnCheckedChangeListener { buttonView, isChecked ->
+            viewModel.checkGoalBehaald(args.goal.completed, args.goal.id)
+            binding.behaaldCheckbox.isClickable = false;
+        }
+
 
         return binding.root
 
