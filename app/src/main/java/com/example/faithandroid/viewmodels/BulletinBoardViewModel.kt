@@ -19,7 +19,7 @@ class BulletinBoardViewModel : ViewModel() {
         get() = _status
 
     //LIJST VAN POSTS
-    var mockData = listOf<Post>(Post(0, "help haha", "dit is data", "datummm"))
+    var mockData = mutableListOf<Post>(Post(0, "help haha", "dit is data", "datummm"), Post(0, "help haha", "dit is data", "datummm"), Post(0, "help haha", "dit is data", "datummm"), Post(0, "help haha", "dit is data", "datummm"), Post(0, "help haha", "dit is data", "datummm"), Post(0, "help haha", "dit is data", "datummm") ,Post(0, "help haha", "dit is data", "datummm"), Post(0, "help haha", "dit is data", "datummm"), Post(0, "help haha", "dit is data", "datummm"))
     private val _postList = MutableLiveData<List<Post>>()
     val postList: LiveData<List<Post>>
         get() = _postList

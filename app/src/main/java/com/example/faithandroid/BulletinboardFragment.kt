@@ -60,6 +60,7 @@ class BulletinboardFragment: Fragment() {
         }
 
         viewModel = ViewModelProvider(this).get(BulletinBoardViewModel::class.java)
+        binding.viewModel = viewModel
 
         viewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
