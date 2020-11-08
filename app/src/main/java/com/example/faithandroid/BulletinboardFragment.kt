@@ -11,10 +11,12 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.faithandroid.databinding.FragmentBulletinboardBinding
 import com.example.faithandroid.viewmodels.BulletinBoardViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.textpost.view.*
 
 
@@ -51,38 +53,19 @@ class BulletinboardFragment: Fragment() {
 
         binding.AddPostButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_bulletinBoardFragment_to_optionsAddPostFragment)
-
-
         }
 
         viewModel = ViewModelProvider(this).get(BulletinBoardViewModel::class.java)
 
-
-        viewModel.test.forEach{ lala ->
-//            val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val rowView: View = inflater.inflate(R.layout.textpost, null)
-            var kortestring = lala.text.substring(0, 30) + "..."
-            rowView.bulletinboardTittle.text = lala.title
-            rowView.bulletinboardInhoud.text = kortestring
-            rowView.bulletinboardOpenButton.setOnClickListener{view: View ->
-                rowView.bulletinboardInhoud.text = lala.text
+        viewModel.status.observe(this.viewLifecycleOwner, Observer {
+            val contextView = this.view
+            if (contextView != null) {
+                Snackbar.make(contextView, viewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(R.string.tryAgain)
+                {
+                    viewModel.getPostsOfBulletinBoard()
+                }.show()
             }
-            rowView.bulletinboardUnpinButton.setOnClickListener{view:View ->
-                binding.bulletinLayout.removeView(rowView);
-            }
-            binding.bulletinLayout.addView(rowView, binding.bulletinLayout.childCount - 1)
-
-        }
-
-       /* binding.requestConsultationButton.setOnClickListener() {
-            val intent = Intent(MainActivity.this, PopupWindow::class.java)
-            intent.putExtra("popuptitle", "Aanvraag Gesprek")
-            intent.putExtra("popuptext", "Uw gesprek werd aangevraagd! \n Uw begeleider zal een melding ontvangen.")
-            intent.putExtra("popupbtn", "OK")
-            intent.putExtra("darkstatusbar", false)
-            startActivity(intent)
-        }*/
-
+        })
 
         return binding.root
     }

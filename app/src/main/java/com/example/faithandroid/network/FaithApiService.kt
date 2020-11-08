@@ -4,6 +4,7 @@ import android.net.Proxy
 import android.net.http.HttpResponseCache
 import android.util.Log
 import com.example.faithandroid.models.GoalPost
+import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.TextPost
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Json
@@ -31,6 +32,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface FaithApiService {
+
     @GET("Account/GetAdolescentsByCounselorEmail/bob.debouwer1998@gmail.com")
     fun getProperties():
             Deferred<List<FaithProperty>>
@@ -46,6 +48,11 @@ interface FaithApiService {
 
     @GET("City/GetPostsOfSkyScraperByAdolescentEmail")
     fun getPostsOfSkyScraperByAdolescentEmail(@Query("email") email: String): Deferred<List<GoalPost>>
+
+    @GET("City/GetPostsOfBulletinBoardByAdolescentEmail")
+    fun getPostsOfBulletinBoardByAdolescentEmail(@Query("email") email: String):
+        Deferred<List<Post>>
+
 }
 
 object FaithApi {
