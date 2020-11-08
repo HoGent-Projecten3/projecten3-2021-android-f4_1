@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.faithandroid.models.GoalPost
+import com.example.faithandroid.models.Step
 import com.example.faithandroid.models.TextPost
 import com.example.faithandroid.network.FaithApi
 import com.example.faithandroid.network.FaithProperty
@@ -15,6 +16,8 @@ import kotlinx.coroutines.launch
 class BillboardViewModel : ViewModel() {
 
     private val _status = MutableLiveData<String>()
+
+    val mockData = mutableListOf<GoalPost>(GoalPost(0, "goal", "lalala", false, listOf<Step>(Step("step")), "januari"))
 
     val status: LiveData<String>
         get() = _status

@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.faithandroid.databinding.FragmentBillboardBinding
 import com.example.faithandroid.databinding.FragmentBulletinboardBinding
 import com.example.faithandroid.viewmodels.BillboardViewModel
@@ -41,10 +43,11 @@ class BillboardFragment: Fragment() {
           false
       );
 
-        binding.billboardGridView.adapter = BillboardGridAdapter()
 
         viewModel = ViewModelProvider(this).get(BillboardViewModel::class.java)
         binding.viewmodelBillboard = viewModel
+
+        binding.billboardGridView.adapter = BillboardGridAdapter()
         return binding.root
     }
 }
