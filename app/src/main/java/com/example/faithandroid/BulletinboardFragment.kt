@@ -4,11 +4,13 @@ import android.content.Context
 import android.content.Intent
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -42,6 +44,8 @@ class BulletinboardFragment: Fragment() {
           false
       );
 
+        binding.BulletinBoardRecycler.adapter = BulletinBoardPostAdapter()
+
         binding.requestConsultationButton.setOnClickListener {
             val intent = Intent(this.context, PopupWindow::class.java)
             intent.putExtra("popuptitle", "Aanvraag Gesprek")
@@ -66,7 +70,6 @@ class BulletinboardFragment: Fragment() {
                 }.show()
             }
         })
-
         return binding.root
     }
 }

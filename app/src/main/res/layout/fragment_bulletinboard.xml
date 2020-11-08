@@ -3,16 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.faithandroid.viewmodels.BulletinBoardViewModel" />
+    </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <!--<include
-            layout="@layout/app_bar_main"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" /> -->
 
         <include
             layout="@layout/app_bar_back"
@@ -35,30 +36,34 @@
             app:maxImageSize="45dp"
             app:srcCompat="@android:drawable/ic_input_add" />
 
-        <ScrollView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="?attr/actionBarSize">
 
-            <LinearLayout
+            <Button
+                android:id="@+id/requestConsultationButton"
+                style="@style/pinkButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="top"
-                android:orientation="vertical"
-                android:id="@+id/bulletinLayout">
+                android:text="@string/request_consultation"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="10dp" />
 
-                <Button
-                    android:id="@+id/requestConsultationButton"
-                    style="@style/pinkButtonStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:text="@string/request_consultation" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/BulletinBoardRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="206dp"
+                android:clipToPadding="false"
+                android:padding="6dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/requestConsultationButton"
+                app:listData="@{viewModel.mockData}">
 
-            </LinearLayout>
+            </androidx.recyclerview.widget.RecyclerView>
 
-        </ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </layout>
