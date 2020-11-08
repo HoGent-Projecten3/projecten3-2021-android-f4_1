@@ -7,8 +7,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.faithandroid.models.GoalPost
+import com.example.faithandroid.models.Step
 import com.example.faithandroid.models.TextPost
-import com.example.faithandroid.network.FaithApi
+//import com.example.faithandroid.network.FaithApi
 import com.example.faithandroid.network.FaithApiService
 import com.example.faithandroid.network.FaithProperty
 import kotlinx.coroutines.CoroutineScope
@@ -22,24 +23,24 @@ import retrofit2.await
 
 class SkyscraperViewModel : ViewModel() {
 
-    var test = mutableListOf<GoalPost>()
+    var goalDetailPlace : Int = 0
     private var testLiveData = MutableLiveData<List<GoalPost>>()
+    private var test = mutableListOf<GoalPost>(GoalPost(0,"urgay","Fuck", false, listOf(Step(0,"hihi")), "REEE"));
+
 
     val testLive: LiveData<List<GoalPost>>
         get() = testLiveData
 
-    fun addGoalPost(goal: GoalPost){
-        testLiveData.value = (testLiveData.value)?.plus(goal)
-    }
-
-    private var viewModelJob = Job()
-    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+    //private var viewModelJob = Job()
+    //private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     init {
-        GetPostsOfSkyscraper("dora.theexplorer1999@gmail.com")
+
+        //GetPostsOfSkyscraper("dora.theexplorer1999@gmail.com")
+        testLiveData.value = test;
     }
 
-    private fun GetPostsOfSkyscraper(email: String) {
+    /*private fun GetPostsOfSkyscraper(email: String) {
         coroutineScope.launch {
             var getPropertiesDeferred = FaithApi.retrofitService.getPostsOfSkyScraperByAdolescentEmail(email);
             try {
@@ -52,9 +53,9 @@ class SkyscraperViewModel : ViewModel() {
 
             }
         }
-    }
+    }*/
 
-    fun postNewGoalPost(email: String, goalPost: GoalPost) {
+    /*fun postNewGoalPost(email: String, goalPost: GoalPost) {
         Log.d("post", "Begint nu met posten")
         viewModelScope.launch {
             val response = FaithApi.retrofitService.postGoalPost(goalPost, email)
@@ -68,6 +69,6 @@ class SkyscraperViewModel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
-    }
+    }*/
 
 }
