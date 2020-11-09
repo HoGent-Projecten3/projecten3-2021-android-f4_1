@@ -13,7 +13,6 @@
             android:layout_height="match_parent" />
 
         <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="?attr/actionBarSize">
@@ -66,6 +65,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="5dp"
+                                android:clickable="false"
                                 android:text="@string/audio" />
 
                             <Button
@@ -73,6 +73,7 @@
                                 style="@style/buttonStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:clickable="false"
                                 android:text="@string/Image" />
 
 
@@ -89,6 +90,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="5dp"
+                                android:clickable="false"
                                 android:text="@string/video" />
 
                             <Button
