@@ -17,7 +17,7 @@ class BillboardViewModel : ViewModel() {
 
     private val _status = MutableLiveData<String>()
 
-    val mockData = mutableListOf<GoalPost>(GoalPost(0, "goal", "lalala", false, listOf<Step>(Step("step")), "januari"))
+    val mockData = mutableListOf<GoalPost>(GoalPost(0, "goal", "lalala", false, listOf<Step>(Step(0, "step")), "januari"))
 
     val status: LiveData<String>
         get() = _status
