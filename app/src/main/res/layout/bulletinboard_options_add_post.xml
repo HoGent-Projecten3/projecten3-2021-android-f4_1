@@ -37,7 +37,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Wat wil je toevoegen?"
-                        android:textSize="20sp"
+                        android:textSize="27sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -45,18 +45,18 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:text="Nieuw:"
-                        android:textSize="16sp"
-
-                        />
+                        android:textSize="20sp" />
 
                     <TableLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="190dp"
                         android:stretchColumns="2">
 
                         <TableRow
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginBottom="7dp"
                             android:gravity="center">
 
                             <Button
@@ -64,7 +64,7 @@
                                 style="@style/buttonStyle"
                                 android:layout_width="137dp"
                                 android:layout_height="72dp"
-                                android:layout_marginEnd="5dp"
+
                                 android:clickable="false"
                                 android:text="@string/audio" />
 
@@ -73,6 +73,7 @@
                                 style="@style/buttonStyle"
                                 android:layout_width="137dp"
                                 android:layout_height="72dp"
+
                                 android:clickable="false"
                                 android:text="@string/Image" />
 
@@ -82,6 +83,8 @@
                         <TableRow
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginBottom="7dp"
                             android:gravity="center">
 
                             <Button
@@ -89,7 +92,6 @@
                                 style="@style/buttonStyle"
                                 android:layout_width="137dp"
                                 android:layout_height="72dp"
-                                android:layout_marginEnd="5dp"
                                 android:clickable="false"
                                 android:text="@string/video" />
 
@@ -98,10 +100,8 @@
                                 style="@style/buttonStyle"
                                 android:layout_width="137dp"
                                 android:layout_height="72dp"
-                                android:text="@string/text"
-                                android:clickable="true" />
-
-
+                                android:clickable="true"
+                                android:text="@string/text" />
                         </TableRow>
 
 
@@ -112,43 +112,41 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:text="Van opgeslagen plaatsen:"
-                        android:textSize="16sp"
-
-                        />
+                        android:textSize="20sp" />
 
                     <TableLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="177dp"
                         android:stretchColumns="2">
 
                         <TableRow
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginBottom="7dp"
                             android:gravity="center">
 
                             <Button
                                 android:id="@+id/wolkenkrabberButton"
                                 style="@style/buttonStyle"
-                                android:layout_width="137dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="72dp"
-                                android:layout_marginEnd="7dp"
                                 android:clickable="false"
                                 android:text="@string/skyscraper" />
 
                             <Button
                                 android:id="@+id/cinemaButton"
                                 style="@style/buttonStyle"
-                                android:layout_width="137dp"
+                                android:layout_width="140dp"
                                 android:layout_height="72dp"
                                 android:clickable="false"
                                 android:text="@string/cinema" />
-
-
                         </TableRow>
 
                         <TableRow
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_marginTop="7dp"
                             android:gravity="center">
 
                             <Button
@@ -167,10 +165,7 @@
                                 android:layout_height="72dp"
                                 android:clickable="false"
                                 android:text="@string/backpack" />
-
-
                         </TableRow>
-
 
                     </TableLayout>
                     <Button
@@ -178,7 +173,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/annuleren"
                         android:id="@+id/annuleren_post"
-                        />
+                        android:textSize="16sp"   />
 
                 </LinearLayout>
             </LinearLayout>
