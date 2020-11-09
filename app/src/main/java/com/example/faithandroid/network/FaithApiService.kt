@@ -48,8 +48,8 @@ interface FaithApiService {
 
   
     @Headers("Content-Type: application/json")
-    @PUT("City/setGoalAchieved")
-    suspend fun checkGoal(@Query("checked: Boolean") checked:Boolean, @Query(" id: Int") id: Int)
+    @PUT("City/MarkGoalAsCompleted")
+    suspend fun checkGoal(@Query("email") email: String, @Query("id") id: Int)
 
   
     @GET("City/GetPostsOfSkyScraperByAdolescentEmail")
@@ -63,7 +63,11 @@ interface FaithApiService {
     @GET("City/GetBillboardGoalsByAdolescentEmail")
     fun GetBillboardGoalsByAdolescentEmail(@Query("email") email: String): Deferred<List<GoalPost>>
 
+    @PUT("City/ShareGoalWithBillboard")
+    fun shareGoal(@Query("email") email: String, @Query("id") id: Int)
 
+    @POST("City/DeleteGoalByEmail")
+    fun removeGoal(@Query("id") id: Int, @Query("email") email: String)
 
 }
 

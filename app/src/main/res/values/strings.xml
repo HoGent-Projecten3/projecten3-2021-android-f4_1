@@ -55,4 +55,9 @@
     <string name="login_failed">"Login failed"</string>
     <string name="email">Vul hier je e-mail in</string>
     <string name="tryAgain">probeer opnieuw</string>
+    <string name="behaald">Behaald</string>
+    <string name="delen">Delen</string>
+    <string name="verwijder">Verwijder</string>
+    <string name="doel_gedeeld">Doel Gedeeld</string>
+    <string name="doel_verwijderd">Doel Verwijderd</string>
 </resources>
