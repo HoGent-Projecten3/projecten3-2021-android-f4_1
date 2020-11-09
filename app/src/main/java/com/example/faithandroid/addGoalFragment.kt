@@ -18,6 +18,9 @@ import androidx.navigation.findNavController
 import com.example.faithandroid.databinding.FragmentAddGoalBinding
 import com.example.faithandroid.databinding.FragmentMusicroomBinding
 import com.example.faithandroid.models.GoalPost
+import com.example.faithandroid.models.Step
+import com.example.faithandroid.models.TextPost
+import com.example.faithandroid.viewmodels.BulletinBoardViewModel
 import com.example.faithandroid.viewmodels.MusicRoomViewModel
 import com.example.faithandroid.viewmodels.SkyscraperViewModel
 import kotlinx.android.synthetic.main.fragment_add_goal.*
@@ -42,7 +45,7 @@ class addGoalFragment : Fragment() {
             false
         );
 
-
+        viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
 
 
         binding.annuleerButton.setOnClickListener { view: View ->
@@ -50,24 +53,24 @@ class addGoalFragment : Fragment() {
         }
 
         binding.voegToeButton.setOnClickListener { view: View ->
-//            var titel : String = binding.titelText.text.toString()
-//            var beschrijving : String = binding.beschrijvingText.text.toString()
-//            var steps : List<String> = emptyList();
-//            binding.stepList.children.forEach { step: View ->
-//                steps.plus(step.toString());
-//            }
-//            var newGoal = GoalPost(titel, beschrijving, false, steps, "ZOLLAT")
-//
-//
-//
-//
-//            viewModel.addGoalPost(newGoal);
-//            Log.d("helpGF", viewModel.testLive.value.toString())
-//
-//
-//
-//
-//            view.findNavController().navigate(R.id.action_addGoalFragment_to_skyscraperFragment)
+            var titel : String = binding.titelText.text.toString()
+            var beschrijving : String = binding.beschrijvingText.text.toString()
+            var steps : List<Step> = emptyList();
+            binding.stepList.children.forEach { step: View ->
+                steps.plus(Step(0, step.toString()));
+            }
+            var newGoal = GoalPost(0, titel, beschrijving, false, steps, "2020-11-05T22:34:57.61")
+
+            //var newPost : TextPost = TextPost(titel, beschrijving)
+
+
+            viewModel.postNewGoalPost("dora.theexplorer1999@gmail.com",newGoal);
+            //Log.d("helpGF", viewModel.testLive.value.toString())
+
+
+
+
+            view.findNavController().navigate(R.id.action_addGoalFragment_to_skyscraperFragment)
         }
 
         binding.addStepButton.setOnClickListener{run{
