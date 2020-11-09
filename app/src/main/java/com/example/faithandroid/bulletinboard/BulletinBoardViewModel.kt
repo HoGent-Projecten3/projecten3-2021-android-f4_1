@@ -19,15 +19,15 @@ class BulletinBoardViewModel : ViewModel() {
         get() = _status
 
     //LIJST VAN POSTS
-    var mockData = mutableListOf<Post>(Post(0, "Ik voelde me vandaag niet goed in mijn veld", "fjdiovgjdsibjfdifjdiobsdf", "datummm"),
-        Post(0, "help haha", "liobsdf", "datummm"),
-        Post(0, "help haha", "lalalalalalalalf", "datummm"),
-        Post(0, "help haha", "lalalalalalalalalaallalalalala dit si ejafkdsfksdgkdsrkfsdgkskfdskfgaskfdsglasfldvdslfbmdsfofnsdojfobjdiofjdiovgjdsibjfdifjdiobsdf", "datummm"),
-        Post(0, "help haha", "lalalalalalalalalaallalalalala dit si ejafkdsfksdgkdsrkfsdgkskfdskfgaskfdsglasfldvdslfbmdsfofnsdojfobjdiofjdiovgjdsibjfdifjdiobsdf", "datummm"),
-        Post(0, "help haha", "lalalalalalalalalaallalalalala dit si ejafkdsfksdgkdsrkfsdgkskfdskfgaskfdsglasfldvdslfbmdsfofnsdojfobjdiofjdiovgjdsibjfdifjdiobsdf", "datummm") ,
-        Post(0, "help haha", "lalalalalalalalalaallalalalala dit si ejafkdsfksdgkdsrkfsdgkskfdskfgaskfdsglasfldvdslfbmdsfofnsdojfobjdiofjdiovgjdsibjfdifjdiobsdf", "datummm"),
-        Post(0, "help haha", "lalalalalalalalalaallalalalala dit si ejafkdsfksdgkdsrkfsdgkskfdskfgaskfdsglasfldvdslfbmdsfofnsdojfobjdiofjdiovgjdsibjfdifjdiobsdf", "datummm"),
-        Post(0, "help haha", "lalalalalalalalalaallalalalala dit si ejafkdsfksdgkdsrkfsdgkskfdskfgaskfdsglasfldvdslfbmdsfofnsdojfobjdiofjdiovgjdsibjfdifjdiobsdf", "datummm"))
+    var mockData = mutableListOf<Post>(Post(0, "Ik voelde me vandaag niet goed in mijn veld", "fjdiovgjdsibjfdifjdiobsdf", "2012-03-19T07:22"),
+        Post(0, "help haha", "liobsdfgdfgdgdfgfdhdfhfdhafgf", "2012-03-19T07:22"),
+        Post(0, "help haha", "lalalalalalalalffdhfhdfgfdgfdhfdgsdfsgre", "2012-03-19T07:22"),
+        Post(0, "help haha", "lalalalalalalalalaallalalalala dit si ejafkdsfksdgkdsrkfsdgkskfdskfgaskfdsglasfldvdslfbmdsfofnsdojfobjdiofjdiovgjdsibjfdifjdiobsdf", "2012-03-19T07:22"),
+        Post(0, "help haha", "lalalalalalalalalaallalalalala dit si ejafkdsfksdgkdsrkfsdgkskfdskfgaskfdsglasfldvdslfbmdsfofnsdojfobjdiofjdiovgjdsibjfdifjdiobsdf", "2012-03-19T07:22"),
+        Post(0, "help haha", "lalalalalalalalalaallalalalala dit si ejafkdsfksdgkdsrkfsdgkskfdskfgaskfdsglasfldvdslfbmdsfofnsdojfobjdiofjdiovgjdsibjfdifjdiobsdf", "2012-03-19T07:22") ,
+        Post(0, "help haha", "lalalalalalalalalaallalalalala dit si ejafkdsfksdgkdsrkfsdgkskfdskfgaskfdsglasfldvdslfbmdsfofnsdojfobjdiofjdiovgjdsibjfdifjdiobsdf", "2012-03-19T07:22"),
+        Post(0, "help haha", "lalalalalalalalalaallalalalala dit si ejafkdsfksdgkdsrkfsdgkskfdskfgaskfdsglasfldvdslfbmdsfofnsdojfobjdiofjdiovgjdsibjfdifjdiobsdf", "2012-03-19T07:22"),
+        Post(0, "help haha", "lalalalalalalalalaallalalalala dit si ejafkdsfksdgkdsrkfsdgkskfdskfgaskfdsglasfldvdslfbmdsfofnsdojfobjdiofjdiovgjdsibjfdifjdiobsdf", "2012-03-19T07:22"))
     private val _postList = MutableLiveData<List<Post>>()
     val postList: LiveData<List<Post>>
         get() = _postList
