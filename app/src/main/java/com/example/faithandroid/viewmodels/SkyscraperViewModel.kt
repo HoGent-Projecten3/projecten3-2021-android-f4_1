@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.faithandroid.R
 import com.example.faithandroid.models.GoalPost
+import com.example.faithandroid.models.Step
 import com.example.faithandroid.models.TextPost
 import com.example.faithandroid.network.FaithApi
 import com.example.faithandroid.network.FaithApiService
@@ -30,20 +31,21 @@ class SkyscraperViewModel : ViewModel() {
         get() = _status
 
     var test = mutableListOf<GoalPost>()
+  
     private var testLiveData = MutableLiveData<List<GoalPost>>()
+    private var test = mutableListOf<GoalPost>(GoalPost(0,"Test","Test", false, listOf(Step(0,"test")), "test"));
+
 
     val testLive: LiveData<List<GoalPost>>
         get() = testLiveData
-
-    fun addGoalPost(goal: GoalPost){
-        testLiveData.value = (testLiveData.value)?.plus(goal)
-    }
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     init {
-        GetPostsOfSkyscraper("dora.theexplorer1999@gmail.com")
+
+        //GetPostsOfSkyscraper("dora.theexplorer1999@gmail.com")
+        testLiveData.value = test;
     }
 
     fun GetPostsOfSkyscraper(email: String) {
@@ -59,6 +61,13 @@ class SkyscraperViewModel : ViewModel() {
                 Log.d("lalala",e.localizedMessage)
                 _status.value = e.localizedMessage
             }
+        }
+    }
+
+    fun checkGoalBehaald(behaald: Boolean, id:Int){
+        viewModelScope.launch {
+            val response = FaithApi.retrofitService.checkGoal(behaald, id)
+            Log.d("editGoal", "Goal checked")
         }
     }
 

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a14a9f94-7845-426a-9cf5-450129e8e9b6" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1jy26ncIEcJYh9U92ZKRf98c3TD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a14a9f94-7845-426a-9cf5-450129e8e9b6" name="Default Changelist" comment="" />
+      <created>1604761840097</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604761840097</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2425" y="131" key="#Project_Structure" timestamp="1604840253362">
+      <screen x="1920" y="0" width="2048" height="1112" />
+    </state>
+    <state x="2425" y="131" key="#Project_Structure/0.0.1920.1040/1920.0.2048.1112@1920.0.2048.1112" timestamp="1604840253362" />
+    <state x="2362" y="187" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604840303899">
+      <screen x="1920" y="0" width="2048" height="1112" />
+    </state>
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.2048.1112@0.0.1920.1040" timestamp="1604763148427" />
+    <state x="2362" y="187" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.2048.1112@1920.0.2048.1112" timestamp="1604840303899" />
+    <state x="2933" y="342" key="FileChooserDialogImpl" timestamp="1604840516735">
+      <screen x="1920" y="0" width="2048" height="1112" />
+    </state>
+    <state x="950" y="320" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.2048.1112@0.0.1920.1040" timestamp="1604762398467" />
+    <state x="2933" y="342" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.2048.1112@1920.0.2048.1112" timestamp="1604840516735" />
+    <state x="2412" y="176" key="SettingsEditor" timestamp="1604840366785">
+      <screen x="1920" y="0" width="2048" height="1112" />
+    </state>
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.2048.1112@0.0.1920.1040" timestamp="1604763140048" />
+    <state x="2412" y="176" key="SettingsEditor/0.0.1920.1040/1920.0.2048.1112@1920.0.2048.1112" timestamp="1604840366785" />
+  </component>
+</project>

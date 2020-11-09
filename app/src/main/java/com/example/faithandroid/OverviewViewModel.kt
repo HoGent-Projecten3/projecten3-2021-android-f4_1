@@ -3,7 +3,7 @@ package com.example.faithandroid
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.faithandroid.network.FaithApi
+//import com.example.faithandroid.network.FaithApi
 import com.example.faithandroid.network.FaithProperty
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -33,7 +33,7 @@ class OverviewViewModel : ViewModel() {
         postTextPost()
     }
 
-    private fun getAdolescentsFromBob() {
+    private fun getAdolescentsFromBob() {/*
         coroutineScope.launch {
             var getPropertiesDeferred = FaithApi.retrofitService.getProperties()
             try {
@@ -44,7 +44,7 @@ class OverviewViewModel : ViewModel() {
             } catch (e: Exception){
                 _status.value = "Failure: ${e.message}"
             }
-        }
+        }*/
     }
 
     private fun postTextPost(){
