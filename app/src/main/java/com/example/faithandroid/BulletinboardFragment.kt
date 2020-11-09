@@ -71,6 +71,7 @@ class BulletinboardFragment: Fragment() {
                 }.show()
             }
         })
+
         return binding.root
     }
 }
