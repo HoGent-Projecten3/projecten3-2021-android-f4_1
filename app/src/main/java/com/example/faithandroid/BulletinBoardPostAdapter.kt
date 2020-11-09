@@ -1,6 +1,8 @@
 package com.example.faithandroid
 
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -9,6 +11,8 @@ import com.example.faithandroid.databinding.TextpostBinding
 import com.example.faithandroid.models.Post
 
 import com.example.faithandroid.network.FaithProperty
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.android.synthetic.main.textpost.view.*
 
 class BulletinBoardPostAdapter : ListAdapter<Post, BulletinBoardPostAdapter.BulletinBoardPostViewHolder>(DiffCallback) {
     class BulletinBoardPostViewHolder(private var binding: TextpostBinding):
@@ -16,6 +20,16 @@ class BulletinBoardPostAdapter : ListAdapter<Post, BulletinBoardPostAdapter.Bull
         fun bind(post: Post){
             binding.post = post
             binding.executePendingBindings()
+            Log.d("lala", binding.bulletinboardOpenButton.text as String)
+            binding.bulletinboardOpenButton.setOnClickListener { view: View ->
+                MaterialAlertDialogBuilder(binding.root.context)
+                    .setTitle(post.title)
+                    .setMessage(post.data)
+                    .show()
+            }
+
+
+
         }
 
     }
@@ -34,6 +48,8 @@ class BulletinBoardPostAdapter : ListAdapter<Post, BulletinBoardPostAdapter.Bull
         parent: ViewGroup,
         viewType: Int
     ): BulletinBoardPostAdapter.BulletinBoardPostViewHolder {
+
+
         return BulletinBoardPostViewHolder(TextpostBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
