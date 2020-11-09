@@ -19,14 +19,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:background="#FFFFFF"
                 android:elevation="10dp"   >
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="16dp"
@@ -56,24 +56,24 @@
 
                         <TableRow
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:gravity="center">
 
                             <Button
                                 android:id="@+id/AudioButton"
                                 style="@style/buttonStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="137dp"
+                                android:layout_height="72dp"
                                 android:layout_marginEnd="5dp"
-                                android:enabled="true"
+                                android:clickable="false"
                                 android:text="@string/audio" />
 
                             <Button
                                 android:id="@+id/FotoButton"
                                 style="@style/buttonStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:enabled="false"
+                                android:layout_width="137dp"
+                                android:layout_height="72dp"
+                                android:clickable="false"
                                 android:text="@string/Image" />
 
 
@@ -87,17 +87,17 @@
                             <Button
                                 android:id="@+id/VideoButton"
                                 style="@style/buttonStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="137dp"
+                                android:layout_height="72dp"
                                 android:layout_marginEnd="5dp"
-                                android:enabled="false"
+                                android:clickable="false"
                                 android:text="@string/video" />
 
                             <Button
                                 android:id="@+id/TekstButton"
                                 style="@style/buttonStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="137dp"
+                                android:layout_height="72dp"
                                 android:text="@string/text"
                                 android:clickable="true" />
 
@@ -129,18 +129,18 @@
                             <Button
                                 android:id="@+id/wolkenkrabberButton"
                                 style="@style/buttonStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="5dp"
-                                android:enabled="false"
+                                android:layout_width="137dp"
+                                android:layout_height="72dp"
+                                android:layout_marginEnd="7dp"
+                                android:clickable="false"
                                 android:text="@string/skyscraper" />
 
                             <Button
                                 android:id="@+id/cinemaButton"
                                 style="@style/buttonStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:enabled="false"
+                                android:layout_width="137dp"
+                                android:layout_height="72dp"
+                                android:clickable="false"
                                 android:text="@string/cinema" />
 
 
@@ -154,18 +154,18 @@
                             <Button
                                 android:id="@+id/schatkistButton"
                                 style="@style/buttonStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="5dp"
-                                android:enabled="false"
+                                android:layout_width="137dp"
+                                android:layout_height="72dp"
+                                android:layout_marginEnd="7dp"
+                                android:clickable="false"
                                 android:text="@string/treasure_chest" />
 
                             <Button
                                 android:id="@+id/rugzakButton"
                                 style="@style/buttonStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:enabled="false"
+                                android:layout_width="137dp"
+                                android:layout_height="72dp"
+                                android:clickable="false"
                                 android:text="@string/backpack" />
 
 
