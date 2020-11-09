@@ -58,21 +58,21 @@ class BulletinboardFragment: Fragment() {
         viewModel = ViewModelProvider(this).get(BulletinBoardViewModel::class.java)
 
 
-        viewModel.test.forEach{ lala ->
-//            val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val rowView: View = inflater.inflate(R.layout.textpost, null)
-            var kortestring = lala.text.substring(0, 30) + "..."
-            rowView.bulletinboardTittle.text = lala.title
-            rowView.bulletinboardInhoud.text = kortestring
-            rowView.bulletinboardOpenButton.setOnClickListener{view: View ->
-                rowView.bulletinboardInhoud.text = lala.text
-            }
-            rowView.bulletinboardUnpinButton.setOnClickListener{view:View ->
-                binding.bulletinLayout.removeView(rowView);
-            }
-            binding.bulletinLayout.addView(rowView, binding.bulletinLayout.childCount - 1)
-
-        }
+//        viewModel.test.forEach{ lala ->
+////            val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+//            val rowView: View = inflater.inflate(R.layout.textpost, null)
+//            var kortestring = lala.text.substring(0, 30) + "..."
+//            rowView.bulletinboardTittle.text = lala.title
+//            rowView.bulletinboardInhoud.text = kortestring
+//            rowView.bulletinboardOpenButton.setOnClickListener{view: View ->
+//                rowView.bulletinboardInhoud.text = lala.text
+//            }
+//            rowView.bulletinboardUnpinButton.setOnClickListener{view:View ->
+//                binding.bulletinLayout.removeView(rowView);
+//            }
+//            binding.bulletinLayout.addView(rowView, binding.bulletinLayout.childCount - 1)
+//
+//        }
 
        /* binding.requestConsultationButton.setOnClickListener() {
             val intent = Intent(MainActivity.this, PopupWindow::class.java)
