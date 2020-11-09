@@ -64,7 +64,7 @@ class addGoalFragment : Fragment() {
             //var newPost : TextPost = TextPost(titel, beschrijving)
 
 
-            viewModel.postNewGoalPost("dora.theexplorer1999@gmail.com",newGoal);
+            //viewModel.postNewGoalPost("dora.theexplorer1999@gmail.com",newGoal);
             //Log.d("helpGF", viewModel.testLive.value.toString())
 
 

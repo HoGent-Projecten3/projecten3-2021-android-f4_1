@@ -36,7 +36,7 @@ class text_post_toevoegen : Fragment() {
 
         binding.textPostToevoegen.setOnClickListener{ view: View ->
 
-            viewModel.test.add(TextPost(binding.textposttitel.text.toString(), binding.textposttext.text.toString()))
+            //viewModel.test.add(TextPost(binding.textposttitel.text.toString(), binding.textposttext.text.toString()))
 
             view.findNavController()
                 .navigate(R.id.action_text_post_toevoegen_to_bulletinBoardFragment)
