@@ -60,4 +60,9 @@
     <string name="no_connection">Er kon geen verbinding gemaakt worden met de server</string>
     <string name="nieuwe_tekst_post_toevoegen">Nieuwe tekst post toevoegen</string>
     <string name="toevoegen">Toevoegen</string>
+    <string name="behaald">Behaald</string>
+    <string name="delen">Delen</string>
+    <string name="verwijder">Verwijder</string>
+    <string name="doel_gedeeld">Doel Gedeeld</string>
+    <string name="doel_verwijderd">Doel Verwijderd</string>
 </resources>

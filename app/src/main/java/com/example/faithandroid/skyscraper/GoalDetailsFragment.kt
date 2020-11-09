@@ -5,13 +5,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.faithandroid.skyscraper.GoalDetailsFragmentArgs
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.SkyscraperGoaldetailsBinding
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.skyscraper_goalpostimage.view.*
 
 class GoalDetailsFragment: DialogFragment() {
     val args: GoalDetailsFragmentArgs by navArgs()
@@ -43,13 +48,60 @@ class GoalDetailsFragment: DialogFragment() {
 
         binding.titelText.text = args.goal.title
         binding.beschrijvingText.text = args.goal.description
-        binding.behaaldCheckbox.isChecked = args.goal.completed
 
-        binding.behaaldCheckbox.setOnCheckedChangeListener { buttonView, isChecked ->
-            viewModel.checkGoalBehaald(args.goal.completed, args.goal.id)
-            binding.behaaldCheckbox.isClickable = false;
+        binding.btnBehaald.setOnClickListener { view: View ->
+            viewModel.goalBehaald(args.goal.id)
         }
 
+        binding.btnDelen.setOnClickListener { view: View ->
+            viewModel.shareGoal(args.goal.id)
+        }
+
+        binding.btnVerwijder.setOnClickListener { view: View ->
+            viewModel.deleteGoal(args.goal.id)
+        }
+
+        viewModel.shareStatus.observe(this.viewLifecycleOwner, Observer {
+            val contextView = this.view
+            if (contextView != null) {
+                Snackbar.make(contextView, viewModel.shareStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                    R.string.tryAgain
+                )
+                {
+                    viewModel.shareGoal(args.goal.id)
+                }.show()
+            }
+        })
+
+        viewModel.completedStatus.observe(this.viewLifecycleOwner, Observer {
+            val contextView = this.view
+            if (contextView != null) {
+                Snackbar.make(contextView, viewModel.completedStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                    R.string.tryAgain
+                )
+                {
+                    viewModel.goalBehaald(args.goal.id)
+                }.show()
+            }
+        })
+
+        viewModel.removeStatus.observe(this.viewLifecycleOwner, Observer {
+            val contextView = this.view
+            if (contextView != null) {
+                Snackbar.make(contextView, viewModel.removeStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                    R.string.tryAgain
+                )
+                {
+                    viewModel.deleteGoal(args.goal.id)
+                }.show()
+            }
+        })
+
+        args.goal.steps.forEach{step ->
+            val textView = TextView(context)
+            textView.text = step.stepText
+            binding.stepList.addView(textView)
+        }
 
         return binding.root
 

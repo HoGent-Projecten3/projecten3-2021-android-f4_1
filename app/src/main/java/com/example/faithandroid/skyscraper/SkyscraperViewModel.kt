@@ -24,15 +24,25 @@ import retrofit2.await
 
 
 class SkyscraperViewModel : ViewModel() {
+    private val _shareStatus = MutableLiveData<String>()
+    private val _completedStatus = MutableLiveData<String>()
+    private val _removeStatus = MutableLiveData<String>()
+    private val _getStatus = MutableLiveData<String>()
 
-    private val _status = MutableLiveData<String>()
+    val shareStatus: LiveData<String>
+        get() = _shareStatus
 
-    val status: LiveData<String>
-        get() = _status
+    val completedStatus: LiveData<String>
+        get() = _completedStatus
 
+    val removeStatus: LiveData<String>
+        get() = _removeStatus
+
+    val getStatus: LiveData<String>
+        get() = _getStatus
   
     private var testLiveData = MutableLiveData<List<GoalPost>>()
-    private var test = mutableListOf<GoalPost>(GoalPost(0,"Test","Test", false, listOf(Step(0,"test")), "test"));
+    private var test = mutableListOf<GoalPost>(GoalPost(0,"Test","Test", false, listOf(Step(0,"test"), Step(1, "Nog een test"), Step(2, "Oh boy nog een test")), "test"));
 
 
     val testLive: LiveData<List<GoalPost>>
@@ -58,15 +68,20 @@ class SkyscraperViewModel : ViewModel() {
                 }
             } catch (e: Exception){
                 Log.d("lalala",e.localizedMessage)
-                _status.value = e.localizedMessage
+                _getStatus.value = e.localizedMessage
             }
         }
     }
 
-    fun checkGoalBehaald(behaald: Boolean, id:Int){
+    fun goalBehaald(id:Int){
         viewModelScope.launch {
-            val response = FaithApi.retrofitService.checkGoal(behaald, id)
-            Log.d("editGoal", "Goal checked")
+            try {
+                FaithApi.retrofitService.checkGoal("dora.theexplorer1999@gmail.com", id)
+                Log.d("editGoal", "Goal checked")
+                _completedStatus.value = R.string.doel_gedeeld.toString();
+            } catch (e: Exception) {
+                _completedStatus.value = e.localizedMessage
+            }
         }
     }
 
@@ -78,6 +93,28 @@ class SkyscraperViewModel : ViewModel() {
             Log.d("post", "Gepost")
         }
 
+    }
+
+    fun shareGoal(id:Int){
+        coroutineScope.launch{
+            try {
+                FaithApi.retrofitService.shareGoal("dora.theexplorer1999@gmail.com", id);
+                _shareStatus.value = R.string.doel_gedeeld.toString();
+            } catch (e: Exception){
+                _shareStatus.value = e.localizedMessage
+            }
+        }
+    }
+
+    fun deleteGoal(id:Int){
+        coroutineScope.launch{
+            try {
+                FaithApi.retrofitService.removeGoal(id, "dora.theexplorer1999@gmail.com");
+                _removeStatus.value = R.string.doel_verwijderd.toString()
+            } catch (e: Exception){
+                _removeStatus.value = e.localizedMessage
+            }
+        }
     }
 
 
