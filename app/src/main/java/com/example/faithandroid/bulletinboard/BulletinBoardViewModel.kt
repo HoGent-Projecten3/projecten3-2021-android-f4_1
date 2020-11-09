@@ -1,8 +1,11 @@
 package com.example.faithandroid.bulletinboard
 
+import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.bumptech.glide.load.engine.Resource
+import com.example.faithandroid.R
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.TextPost
 import com.example.faithandroid.network.FaithApi
@@ -19,7 +22,7 @@ class BulletinBoardViewModel : ViewModel() {
     val status: LiveData<String>
         get() = _status
 
-    private val _requestConsultationStatus = MutableLiveData<String>()
+    private val _requestConsultationStatus = MutableLiveData<String>("test")
     val requestConsultationStatus: LiveData<String>
         get() = _requestConsultationStatus
 
@@ -65,7 +68,7 @@ class BulletinBoardViewModel : ViewModel() {
            }
            catch (e: Exception)
            {
-               _status.value = e.localizedMessage
+               _status.value = "Kan geen verbinding maken met de server"
            }
         }
     }
