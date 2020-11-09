@@ -7,11 +7,15 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
+import com.example.faithandroid.bulletinboard.BulletinboardFragmentDirections
 import com.example.faithandroid.databinding.LoginBinding
 import com.example.faithandroid.databinding.BulletinboardOptionsAddPostBinding
+import com.example.faithandroid.skyscraper.GoalDetailsFragmentArgs
 
 class OptionsAddPostFragment: Fragment() {
 
+    val args: OptionsAddPostFragmentArgs by navArgs()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,7 +39,11 @@ class OptionsAddPostFragment: Fragment() {
         }
 
         binding.TekstButton.setOnClickListener{
-                view: View -> view.findNavController().navigate(R.id.action_optionsAddPostFragment_to_text_post_toevoegen)
+                view: View ->  val action =
+            OptionsAddPostFragmentDirections.actionOptionsAddPostFragmentToTextPostToevoegen(
+                args.placeType
+            )
+            view.findNavController().navigate(action)
         }
 
 

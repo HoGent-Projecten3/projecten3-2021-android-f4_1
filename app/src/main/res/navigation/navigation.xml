@@ -32,6 +32,9 @@
             app:destination="@id/text_post_toevoegen"
 
            />
+        <argument
+            android:name="placeType"
+            app:argType="com.example.faithandroid.PlaceType" />
 
     </fragment>
 
@@ -84,6 +87,12 @@
         <action
             android:id="@+id/action_text_post_toevoegen_to_optionsAddPostFragment"
             app:destination="@id/optionsAddPostFragment" />
+        <argument
+            android:name="placeType"
+            app:argType="com.example.faithandroid.PlaceType" />
+        <action
+            android:id="@+id/action_text_post_toevoegen_to_bulletinBoardFragment"
+            app:destination="@id/bulletinBoardFragment" />
     </fragment>
     <fragment
         android:id="@+id/backpackFragment"

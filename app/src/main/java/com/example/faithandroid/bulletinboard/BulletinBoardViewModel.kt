@@ -22,7 +22,7 @@ class BulletinBoardViewModel : ViewModel() {
     val status: LiveData<String>
         get() = _status
 
-    private val _requestConsultationStatus = MutableLiveData<String>("test")
+    private val _requestConsultationStatus = MutableLiveData<String>("Er liep iets mis")
     val requestConsultationStatus: LiveData<String>
         get() = _requestConsultationStatus
 

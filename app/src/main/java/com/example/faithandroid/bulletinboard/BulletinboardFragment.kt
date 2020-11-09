@@ -11,9 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.example.faithandroid.PlaceType
 import com.example.faithandroid.PopupWindow
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.BulletinboardBinding
+import com.example.faithandroid.skyscraper.SkyscraperFragmentDirections
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
@@ -41,12 +43,7 @@ class BulletinboardFragment: Fragment() {
         binding.BulletinBoardRecycler.adapter = BulletinBoardPostAdapter()
 
         binding.requestConsultationButton.setOnClickListener {
-//            val intent = Intent(this.context, PopupWindow::class.java)
-//            intent.putExtra("popuptitle", "Aanvraag Gesprek")
-//            intent.putExtra("popuptext", "Uw gesprek werd aangevraagd! \n Uw begeleider zal een melding ontvangen.")
-//            intent.putExtra("popupbtn", "OK")
-//            intent.putExtra("darkstatusbar", false)
-//            startActivity(intent)
+
 
 
 
@@ -76,7 +73,11 @@ class BulletinboardFragment: Fragment() {
         }
 
         binding.AddPostButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_bulletinBoardFragment_to_optionsAddPostFragment)
+            val action =
+                BulletinboardFragmentDirections.actionBulletinBoardFragmentToOptionsAddPostFragment(
+                    PlaceType.Prikbord
+                )
+            view.findNavController().navigate(action)
         }
 
         viewModel = ViewModelProvider(this).get(BulletinBoardViewModel::class.java)
