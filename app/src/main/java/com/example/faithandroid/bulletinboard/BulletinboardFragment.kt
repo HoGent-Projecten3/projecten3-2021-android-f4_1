@@ -1,25 +1,20 @@
-package com.example.faithandroid
+package com.example.faithandroid.bulletinboard
 
-import android.content.Context
 import android.content.Intent
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.LinearLayout
-import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.example.faithandroid.PopupWindow
+import com.example.faithandroid.R
 import com.example.faithandroid.databinding.FragmentBulletinboardBinding
-import com.example.faithandroid.viewmodels.BulletinBoardViewModel
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.textpost.view.*
 
 
 class BulletinboardFragment: Fragment() {
@@ -65,7 +60,9 @@ class BulletinboardFragment: Fragment() {
         viewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
-                Snackbar.make(contextView, viewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(R.string.tryAgain)
+                Snackbar.make(contextView, viewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                    R.string.tryAgain
+                )
                 {
                     viewModel.getPostsOfBulletinBoard()
                 }.show()

@@ -1,26 +1,15 @@
 
-package com.example.faithandroid
-
-import android.content.Context
-import android.content.Intent
+package com.example.faithandroid.billboard
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.faithandroid.R
 import com.example.faithandroid.databinding.FragmentBillboardBinding
-import com.example.faithandroid.databinding.FragmentBulletinboardBinding
-import com.example.faithandroid.viewmodels.BillboardViewModel
-import com.example.faithandroid.viewmodels.BulletinBoardViewModel
-import kotlinx.android.synthetic.main.textpost.view.*
 
 
 class BillboardFragment: Fragment() {

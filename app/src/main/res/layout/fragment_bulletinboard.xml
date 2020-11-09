@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.faithandroid.viewmodels.BulletinBoardViewModel" />
+            type="com.example.faithandroid.bulletinboard.BulletinBoardViewModel" />
     </data>
 
     <FrameLayout

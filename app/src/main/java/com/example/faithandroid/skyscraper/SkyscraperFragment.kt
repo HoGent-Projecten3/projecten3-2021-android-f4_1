@@ -1,8 +1,5 @@
-package com.example.faithandroid
+package com.example.faithandroid.skyscraper
 
-import android.app.ProgressDialog.show
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,9 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.example.faithandroid.R
+import com.example.faithandroid.SkyscraperFragmentDirections
 import com.example.faithandroid.databinding.FragmentSkyscraperBinding
-import com.example.faithandroid.viewmodels.SkyscraperViewModel
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.goalpostimage.view.*
 
@@ -44,7 +41,9 @@ class SkyscraperFragment: Fragment() {
         viewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
-                Snackbar.make(contextView, viewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(R.string.tryAgain)
+                Snackbar.make(contextView, viewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                    R.string.tryAgain
+                )
                 {
                     viewModel.GetPostsOfSkyscraper("dora.theexplorer1999@gmail.com")
                 }.show()
@@ -64,7 +63,10 @@ class SkyscraperFragment: Fragment() {
                 rowView.titleText.text = goal.title
                 rowView.layout.setOnClickListener{view: View ->
                     Log.d("CLICK", "hewwo? Mw obwama?")
-                    val action = SkyscraperFragmentDirections.actionSkyscraperFragmentToGoalDetailsFragment(goal)
+                    val action =
+                        SkyscraperFragmentDirections.actionSkyscraperFragmentToGoalDetailsFragment(
+                            goal
+                        )
                     view.findNavController().navigate(action)
                     }
                     binding.lijst.addView(rowView, 1)

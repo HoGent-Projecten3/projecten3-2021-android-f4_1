@@ -1,4 +1,4 @@
-package com.example.faithandroid
+package com.example.faithandroid.billboard
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,11 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.faithandroid.databinding.FragmentBilboardGoalBinding
-import com.example.faithandroid.databinding.GridViewItemBinding
 import com.example.faithandroid.models.GoalPost
-import com.example.faithandroid.network.FaithProperty
 
-class BillboardGridAdapter : ListAdapter<GoalPost, BillboardGridAdapter.BillboardPropertyViewHolder>(DiffCallback) {
+class BillboardGridAdapter : ListAdapter<GoalPost, BillboardGridAdapter.BillboardPropertyViewHolder>(
+    DiffCallback
+) {
     class BillboardPropertyViewHolder(private var binding: FragmentBilboardGoalBinding):
         RecyclerView.ViewHolder(binding.root){
         fun bind(goalPost: GoalPost){
@@ -33,12 +33,12 @@ class BillboardGridAdapter : ListAdapter<GoalPost, BillboardGridAdapter.Billboar
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): BillboardGridAdapter.BillboardPropertyViewHolder {
+    ): BillboardPropertyViewHolder {
         return BillboardPropertyViewHolder(FragmentBilboardGoalBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     override fun onBindViewHolder(
-        holder: BillboardGridAdapter.BillboardPropertyViewHolder,
+        holder: BillboardPropertyViewHolder,
         position: Int
     ) {
         val billboard = getItem(position)

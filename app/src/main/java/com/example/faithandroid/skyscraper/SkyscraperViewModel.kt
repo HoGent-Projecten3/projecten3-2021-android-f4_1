@@ -1,5 +1,5 @@
 
-package com.example.faithandroid.viewmodels
+package com.example.faithandroid.skyscraper
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -30,7 +30,6 @@ class SkyscraperViewModel : ViewModel() {
     val status: LiveData<String>
         get() = _status
 
-    var test = mutableListOf<GoalPost>()
   
     private var testLiveData = MutableLiveData<List<GoalPost>>()
     private var test = mutableListOf<GoalPost>(GoalPost(0,"Test","Test", false, listOf(Step(0,"test")), "test"));

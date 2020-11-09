@@ -1,30 +1,20 @@
-package com.example.faithandroid
+package com.example.faithandroid.skyscraper
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.TextView
-import androidx.appcompat.view.menu.ListMenuItemView
 import androidx.core.view.children
-import androidx.core.view.forEach
-import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.example.faithandroid.R
 import com.example.faithandroid.databinding.FragmentAddGoalBinding
-import com.example.faithandroid.databinding.FragmentMusicroomBinding
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Step
-import com.example.faithandroid.models.TextPost
-import com.example.faithandroid.viewmodels.BulletinBoardViewModel
-import com.example.faithandroid.viewmodels.MusicRoomViewModel
-import com.example.faithandroid.viewmodels.SkyscraperViewModel
 import kotlinx.android.synthetic.main.fragment_add_goal.*
-import org.threeten.bp.LocalDateTime
 
 class addGoalFragment : Fragment() {
 

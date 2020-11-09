@@ -1,4 +1,4 @@
-package com.example.faithandroid
+package com.example.faithandroid.skyscraper
 
 import android.os.Bundle
 import android.util.Log
@@ -7,15 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.example.faithandroid.GoalDetailsFragmentArgs
+import com.example.faithandroid.R
 import com.example.faithandroid.databinding.FragmentGoaldetailsBinding
-import com.example.faithandroid.databinding.FragmentMusicroomBinding
-import com.example.faithandroid.models.GoalPost
-import com.example.faithandroid.viewmodels.GoalDetailsViewModel
-import com.example.faithandroid.viewmodels.MusicRoomViewModel
-import com.example.faithandroid.viewmodels.SkyscraperViewModel
 
 class GoalDetailsFragment: DialogFragment() {
     val args: GoalDetailsFragmentArgs by navArgs()

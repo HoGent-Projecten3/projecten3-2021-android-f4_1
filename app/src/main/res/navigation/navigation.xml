@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/bulletinBoardFragment"
-        android:name="com.example.faithandroid.BulletinboardFragment"
+        android:name="com.example.faithandroid.bulletinboard.BulletinboardFragment"
         android:label="bulletinboard"
         tools:layout="@layout/fragment_bulletinboard" >
 
@@ -68,14 +68,10 @@
             android:id="@+id/action_homeFragment_to_treasureChestFragment"
             app:destination="@id/treasureChestFragment" />
     </fragment>
-    
-    <fragment
-        android:id="@+id/backendFragment"
-        android:name="com.example.faithandroid.BackendFragment"
-        android:label="BackendFragment" />
+
     <fragment
         android:id="@+id/text_post_toevoegen"
-        android:name="com.example.faithandroid.text_post_toevoegen"
+        android:name="com.example.faithandroid.TextPostToevoegenFragment"
         android:label="text_post_toevoegen">
         <action
             android:id="@+id/action_text_post_toevoegen_to_bulletinBoardFragment"
@@ -83,32 +79,32 @@
     </fragment>
     <fragment
         android:id="@+id/backpackFragment"
-        android:name="com.example.faithandroid.BackpackFragment"
+        android:name="com.example.faithandroid.backpack.BackpackFragment"
         android:label="BackpackFragment"
         tools:layout="@layout/fragment_backpack"/>
     <fragment
         android:id="@+id/billboardFragment"
-        android:name="com.example.faithandroid.BillboardFragment"
+        android:name="com.example.faithandroid.billboard.BillboardFragment"
         android:label="BillboardFragment"
         tools:layout="@layout/fragment_billboard"/>
     <fragment
         android:id="@+id/cinemaFragment"
-        android:name="com.example.faithandroid.CinemaFragment"
+        android:name="com.example.faithandroid.cinema.CinemaFragment"
         android:label="CinemaFragment"
         tools:layout="@layout/fragment_cinema"/>
     <fragment
         android:id="@+id/musicRoomFragment"
-        android:name="com.example.faithandroid.MusicRoomFragment"
+        android:name="com.example.faithandroid.musicRoom.MusicRoomFragment"
         android:label="MusicRoomFragment"
         tools:layout="@layout/fragment_musicroom"/>
     <fragment
         android:id="@+id/shoppingCenterFragment"
-        android:name="com.example.faithandroid.ShoppingCenterFragment"
+        android:name="com.example.faithandroid.shoppingCenter.ShoppingCenterFragment"
         android:label="ShoppingCenterFragment"
         tools:layout="@layout/fragment_shoppingcenter"/>
     <fragment
         android:id="@+id/skyscraperFragment"
-        android:name="com.example.faithandroid.SkyscraperFragment"
+        android:name="com.example.faithandroid.skyscraper.SkyscraperFragment"
         android:label="SkyscraperFragment"
         tools:layout="@layout/fragment_skyscraper">
         <action
@@ -120,12 +116,12 @@
     </fragment>
     <fragment
         android:id="@+id/treasureChestFragment"
-        android:name="com.example.faithandroid.TreasureChestFragment"
+        android:name="com.example.faithandroid.treasureChest.TreasureChestFragment"
         android:label="TreasureChestFragment"
         tools:layout="@layout/fragment_treasurechest"/>
     <fragment
         android:id="@+id/addGoalFragment"
-        android:name="com.example.faithandroid.addGoalFragment"
+        android:name="com.example.faithandroid.skyscraper.addGoalFragment"
         android:label="addGoalFragment" >
         <action
             android:id="@+id/action_addGoalFragment_to_skyscraperFragment"
@@ -133,7 +129,7 @@
     </fragment>
     <fragment
         android:id="@+id/goalDetailsFragment"
-        android:name="com.example.faithandroid.goalDetailsFragment"
+        android:name="com.example.faithandroid.skyscraper.GoalDetailsFragment"
         android:label="goalDetailsFragment" >
         <argument
             android:name="goal"

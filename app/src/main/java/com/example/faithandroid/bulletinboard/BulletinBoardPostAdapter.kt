@@ -1,4 +1,4 @@
-package com.example.faithandroid
+package com.example.faithandroid.bulletinboard
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,11 +10,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.faithandroid.databinding.TextpostBinding
 import com.example.faithandroid.models.Post
 
-import com.example.faithandroid.network.FaithProperty
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.android.synthetic.main.textpost.view.*
 
-class BulletinBoardPostAdapter : ListAdapter<Post, BulletinBoardPostAdapter.BulletinBoardPostViewHolder>(DiffCallback) {
+class BulletinBoardPostAdapter : ListAdapter<Post, BulletinBoardPostAdapter.BulletinBoardPostViewHolder>(
+    DiffCallback
+) {
     class BulletinBoardPostViewHolder(private var binding: TextpostBinding):
         RecyclerView.ViewHolder(binding.root){
         fun bind(post: Post){
@@ -47,7 +47,7 @@ class BulletinBoardPostAdapter : ListAdapter<Post, BulletinBoardPostAdapter.Bull
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): BulletinBoardPostAdapter.BulletinBoardPostViewHolder {
+    ): BulletinBoardPostViewHolder {
 
 
         return BulletinBoardPostViewHolder(TextpostBinding.inflate(LayoutInflater.from(parent.context)))
