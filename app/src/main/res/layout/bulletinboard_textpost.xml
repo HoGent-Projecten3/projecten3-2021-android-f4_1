@@ -53,7 +53,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_weight="1"
-                        android:text='@{post.data.substring(0, 30) + "..."}'
+                        android:text='@{post.data.length() >= 49? post.data.substring(0, 50) + "...": post.data}'
 
 
                         android:textColor="@android:color/black" />
