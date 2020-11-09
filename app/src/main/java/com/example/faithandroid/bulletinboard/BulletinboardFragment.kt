@@ -54,6 +54,7 @@ class BulletinboardFragment: Fragment() {
                 MaterialAlertDialogBuilder(context)
                     .setTitle(R.string.aanvraag_gesprek_dialogbox)
                     .setMessage(R.string.aanvraag_gesprek_dialogbox_message)
+
                     .setPositiveButton("Ja") { dialog, which ->
                         // Respond to positive button press
                         viewModel.requestConsultation()
@@ -65,7 +66,7 @@ class BulletinboardFragment: Fragment() {
                         }
 
                     }
-                    .setNegativeButton("Neen")
+                    .setNegativeButton("Nee")
                     {
                         dialog, which ->
                     }
