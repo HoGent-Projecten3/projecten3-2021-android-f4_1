@@ -28,6 +28,7 @@
             android:clipToPadding="false"
             android:orientation="vertical"
             android:paddingStart="30dp"
+            android:paddingEnd="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,6 +48,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Titel:"
+                    android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             </LinearLayout>
@@ -110,12 +112,12 @@
                         android:orientation="vertical"
                         android:padding="5dp">
 
-                        <CheckBox
-                            android:id="@+id/checkBox2"
+                        <!--<TextView
+                            android:id="@+id/stap"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Stap 1" />
+                            android:text="" />-->
 
                     </LinearLayout>
                 </ScrollView>
@@ -129,12 +131,36 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:orientation="horizontal">
 
-                <CheckBox
+                <!--<CheckBox
                     android:id="@+id/behaaldCheckbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Doel behaald" />
+                    android:text="Doel behaald" />-->
+
+                <Button
+                    android:id="@+id/btnBehaald"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="@string/behaald" />
+
+                <Button
+                    android:id="@+id/btnDelen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="@string/delen" />
+
+                <Button
+                    android:id="@+id/btnVerwijder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="@string/verwijder" />
 
             </LinearLayout>
 
