@@ -13,21 +13,20 @@
             android:layout_height="match_parent" />
 
         <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="?attr/actionBarSize">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:background="#FFFFFF"
                 android:elevation="10dp"   >
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="16dp"
@@ -38,7 +37,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Wat wil je toevoegen?"
-                        android:textSize="20sp"
+                        android:textSize="27sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -46,34 +45,39 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:text="Nieuw:"
-                        android:textSize="16sp"
-
-                        />
+                        android:textSize="20sp" />
 
                     <TableLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="190dp"
                         android:stretchColumns="2">
 
                         <TableRow
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginBottom="7dp"
                             android:gravity="center">
 
                             <Button
-                                android:id="@+id/button2"
+                                android:id="@+id/AudioButton"
                                 style="@style/buttonStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="5dp"
-                                android:text="@string/audio" />
+                                android:layout_width="137dp"
+                                android:layout_height="72dp"
+
+                                android:clickable="false"
+                                android:text="@string/audio"
+                                android:textColor="#9E9797" />
 
                             <Button
-                                android:id="@+id/button3"
+                                android:id="@+id/FotoButton"
                                 style="@style/buttonStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/Image" />
+                                android:layout_width="137dp"
+                                android:layout_height="72dp"
+
+                                android:clickable="false"
+                                android:text="@string/Image"
+                                android:textColor="#9E9797" />
 
 
                         </TableRow>
@@ -81,24 +85,26 @@
                         <TableRow
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginBottom="7dp"
                             android:gravity="center">
 
                             <Button
-                                android:id="@+id/button4"
+                                android:id="@+id/VideoButton"
                                 style="@style/buttonStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="5dp"
-                                android:text="@string/video" />
+                                android:layout_width="137dp"
+                                android:layout_height="72dp"
+                                android:clickable="false"
+                                android:text="@string/video"
+                                android:textColor="#9E9797" />
 
                             <Button
-                                android:id="@+id/button5"
+                                android:id="@+id/TekstButton"
                                 style="@style/buttonStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="137dp"
+                                android:layout_height="72dp"
+                                android:clickable="true"
                                 android:text="@string/text" />
-
-
                         </TableRow>
 
 
@@ -109,61 +115,64 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:text="Van opgeslagen plaatsen:"
-                        android:textSize="16sp"
-
-                        />
+                        android:textSize="20sp" />
 
                     <TableLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="177dp"
                         android:stretchColumns="2">
 
                         <TableRow
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginBottom="7dp"
                             android:gravity="center">
 
                             <Button
-                                android:id="@+id/button7"
+                                android:id="@+id/wolkenkrabberButton"
                                 style="@style/buttonStyle"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="5dp"
-                                android:text="@string/skyscraper" />
+                                android:layout_height="72dp"
+                                android:clickable="false"
+                                android:text="@string/skyscraper"
+                                android:textColor="#9E9797" />
 
                             <Button
-                                android:id="@+id/button6"
+                                android:id="@+id/cinemaButton"
                                 style="@style/buttonStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/cinema" />
-
-
+                                android:layout_width="140dp"
+                                android:layout_height="72dp"
+                                android:clickable="false"
+                                android:text="@string/cinema"
+                                android:textColor="#9E9797" />
                         </TableRow>
 
                         <TableRow
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_marginTop="7dp"
                             android:gravity="center">
 
                             <Button
-                                android:id="@+id/button8"
+                                android:id="@+id/schatkistButton"
                                 style="@style/buttonStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="5dp"
-                                android:text="@string/treasure_chest" />
+                                android:layout_width="137dp"
+                                android:layout_height="72dp"
+                                android:layout_marginEnd="7dp"
+                                android:clickable="false"
+                                android:text="@string/treasure_chest"
+                                android:textColor="#9E9797" />
 
                             <Button
-                                android:id="@+id/button9"
+                                android:id="@+id/rugzakButton"
                                 style="@style/buttonStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/backpack" />
-
-
+                                android:layout_width="137dp"
+                                android:layout_height="72dp"
+                                android:clickable="false"
+                                android:text="@string/backpack"
+                                android:textColor="#9E9797" />
                         </TableRow>
-
 
                     </TableLayout>
                     <Button
@@ -171,7 +180,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/annuleren"
                         android:id="@+id/annuleren_post"
-                        />
+                        android:textSize="16sp"   />
 
                 </LinearLayout>
             </LinearLayout>

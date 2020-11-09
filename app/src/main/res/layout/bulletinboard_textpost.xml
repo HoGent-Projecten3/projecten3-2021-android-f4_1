@@ -5,7 +5,11 @@
         <variable
             name="post"
             type="com.example.faithandroid.models.Post" />
+        <variable
+            name="date"
+            type="String" />
     </data>
+
     
     <LinearLayout
         android:layout_width="wrap_content"
@@ -48,12 +52,21 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text='@{date}'
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="?android:attr/textColorSecondary"
+                        />
+
+                    <TextView
                         android:id="@+id/bulletinboardInhoud"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_weight="1"
-                        android:text='@{post.data.substring(0, 30) + "..."}'
+                        android:text='@{post.data.length() >= 49? post.data.substring(0, 50) + "...": post.data}'
 
 
                         android:textColor="@android:color/black" />

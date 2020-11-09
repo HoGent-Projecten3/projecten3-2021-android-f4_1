@@ -61,10 +61,16 @@ interface FaithApiService {
         Deferred<List<Post>>
 
     @GET("City/GetBillboardGoalsByAdolescentEmail")
-    fun GetBillboardGoalsByAdolescentEmail(@Query("email") email: String): Deferred<List<GoalPost>>
+    fun getBillboardGoalsByAdolescentEmail(@Query("email") email: String): Deferred<List<GoalPost>>
+
+
+    @Headers("Content-Type: application/json")
+    @PUT("Account/PostConsultationRequest")
+    fun requestConsultation(@Query("email") email: String): Call<Void>
 
     @PUT("City/ShareGoalWithBillboard")
     fun shareGoal(@Query("email") email: String, @Query("id") id: Int)
+
 
     @POST("City/DeleteGoalByEmail")
     fun removeGoal(@Query("id") id: Int, @Query("email") email: String)

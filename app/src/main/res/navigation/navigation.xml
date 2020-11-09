@@ -23,7 +23,15 @@
         tools:layout="@layout/bulletinboard_options_add_post" >
         <action
             android:id="@+id/action_optionsAddPostFragment_to_bulletinBoardFragment"
-            app:destination="@id/bulletinBoardFragment" />
+            app:destination="@id/bulletinBoardFragment"
+
+            app:popUpTo="@id/bulletinBoardFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_optionsAddPostFragment_to_text_post_toevoegen"
+            app:destination="@id/text_post_toevoegen"
+
+           />
 
     </fragment>
 
@@ -74,8 +82,8 @@
         android:name="com.example.faithandroid.TextPostToevoegenFragment"
         android:label="text_post_toevoegen">
         <action
-            android:id="@+id/action_text_post_toevoegen_to_bulletinBoardFragment"
-            app:destination="@id/bulletinBoardFragment" />
+            android:id="@+id/action_text_post_toevoegen_to_optionsAddPostFragment"
+            app:destination="@id/optionsAddPostFragment" />
     </fragment>
     <fragment
         android:id="@+id/backpackFragment"

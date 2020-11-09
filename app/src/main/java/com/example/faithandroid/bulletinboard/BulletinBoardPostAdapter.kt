@@ -11,6 +11,10 @@ import com.example.faithandroid.databinding.BulletinboardTextpostBinding
 import com.example.faithandroid.models.Post
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import org.threeten.bp.LocalDate
+import org.threeten.bp.format.DateTimeFormatter
+import org.threeten.bp.format.FormatStyle
+import java.text.DateFormat
 
 class BulletinBoardPostAdapter : ListAdapter<Post, BulletinBoardPostAdapter.BulletinBoardPostViewHolder>(
     DiffCallback
@@ -19,6 +23,9 @@ class BulletinBoardPostAdapter : ListAdapter<Post, BulletinBoardPostAdapter.Bull
         RecyclerView.ViewHolder(binding.root){
         fun bind(post: Post){
             binding.post = post
+            binding.date = LocalDate.parse(post.date, DateTimeFormatter.ISO_LOCAL_DATE_TIME).format(
+                DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))
+
             binding.executePendingBindings()
             Log.d("lala", binding.bulletinboardOpenButton.text as String)
             binding.bulletinboardOpenButton.setOnClickListener { view: View ->
