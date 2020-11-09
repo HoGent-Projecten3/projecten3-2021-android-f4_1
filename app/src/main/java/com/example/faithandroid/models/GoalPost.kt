@@ -15,8 +15,3 @@ data class GoalPost(var id: Int = 0,
                     var date: String = "2020-11-05T22:34:57.61") : Serializable
 
 
-
-
-
-
-

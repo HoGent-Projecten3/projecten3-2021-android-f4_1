@@ -4,6 +4,7 @@ import android.net.Proxy
 import android.net.http.HttpResponseCache
 import android.util.Log
 import com.example.faithandroid.models.GoalPost
+import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.TextPost
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Json
@@ -45,17 +46,30 @@ interface FaithApiService {
     @POST("City/AddGoalByEmail")
     suspend fun postGoalPost(@Body goal: GoalPost, @Query("email") email:String)
 
+  
     @Headers("Content-Type: application/json")
     @PUT("City/setGoalAchieved")
     suspend fun checkGoal(@Query("checked: Boolean") checked:Boolean, @Query(" id: Int") id: Int)
 
+  
     @GET("City/GetPostsOfSkyScraperByAdolescentEmail")
     fun getPostsOfSkyScraperByAdolescentEmail(@Query("email") email: String): Deferred<List<GoalPost>>
+
+
+    @GET("City/GetPostsOfBulletinBoardByAdolescentEmail")
+    fun getPostsOfBulletinBoardByAdolescentEmail(@Query("email") email: String):
+        Deferred<List<Post>>
+
+    @GET("City/GetBillboardGoalsByAdolescentEmail")
+    fun GetBillboardGoalsByAdolescentEmail(@Query("email") email: String): Deferred<List<GoalPost>>
+
+
+
 }
 
 object FaithApi {
-
     val retrofitService : FaithApiService by lazy {
         retrofit.create(FaithApiService::class.java)
     }
 }
+

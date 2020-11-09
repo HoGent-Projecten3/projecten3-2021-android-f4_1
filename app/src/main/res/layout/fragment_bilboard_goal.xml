@@ -3,6 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="property"
+            type="com.example.faithandroid.models.GoalPost" />
+    </data>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
@@ -23,7 +28,7 @@
                     android:layout_height="49dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:text="@string/text"
+                    android:text="@{property.description}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/profilepic" />
@@ -53,7 +58,7 @@
                     android:layout_width="218dp"
                     android:layout_height="37dp"
                     android:layout_margin="10dp"
-                    android:text="TextView"
+                    android:text="@{property.title}"
                     app:layout_constraintBottom_toTopOf="@+id/description"
                     app:layout_constraintEnd_toStartOf="@+id/button"
                     app:layout_constraintStart_toEndOf="@+id/profilepic"

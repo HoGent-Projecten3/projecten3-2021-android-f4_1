@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/loginFragment">
+
 
     <fragment
         android:id="@+id/bulletinBoardFragment"
@@ -28,9 +29,10 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.faithandroid.LoginFragment"
-        android:label="LoginFragment" >
-
+        android:name="com.example.faithandroid.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login"
+        >
         <action
 
             android:id="@+id/action_loginFragment_to_homeFragment"
@@ -131,11 +133,10 @@
     </fragment>
     <fragment
         android:id="@+id/goalDetailsFragment"
-        android:name="com.example.faithandroid.GoalDetailsFragment"
+        android:name="com.example.faithandroid.goalDetailsFragment"
         android:label="goalDetailsFragment" >
         <argument
             android:name="goal"
             app:argType="com.example.faithandroid.models.GoalPost" />
     </fragment>
-
 </navigation>
