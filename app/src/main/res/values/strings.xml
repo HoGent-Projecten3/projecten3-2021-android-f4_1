@@ -55,4 +55,6 @@
     <string name="login_failed">"Login failed"</string>
     <string name="email">Vul hier je e-mail in</string>
     <string name="tryAgain">probeer opnieuw</string>
+    <string name="aanvraag_gesprek_dialogbox">gesprek met je begeleider</string>
+    <string name="aanvraag_gesprek_dialogbox_message">Wil je graag een gesprek aanvragen met je begeleider?</string>
 </resources>

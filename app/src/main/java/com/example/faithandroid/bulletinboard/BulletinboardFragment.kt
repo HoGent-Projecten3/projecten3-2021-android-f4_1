@@ -14,6 +14,7 @@ import androidx.navigation.findNavController
 import com.example.faithandroid.PopupWindow
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.BulletinboardBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -40,12 +41,37 @@ class BulletinboardFragment: Fragment() {
         binding.BulletinBoardRecycler.adapter = BulletinBoardPostAdapter()
 
         binding.requestConsultationButton.setOnClickListener {
-            val intent = Intent(this.context, PopupWindow::class.java)
-            intent.putExtra("popuptitle", "Aanvraag Gesprek")
-            intent.putExtra("popuptext", "Uw gesprek werd aangevraagd! \n Uw begeleider zal een melding ontvangen.")
-            intent.putExtra("popupbtn", "OK")
-            intent.putExtra("darkstatusbar", false)
-            startActivity(intent)
+//            val intent = Intent(this.context, PopupWindow::class.java)
+//            intent.putExtra("popuptitle", "Aanvraag Gesprek")
+//            intent.putExtra("popuptext", "Uw gesprek werd aangevraagd! \n Uw begeleider zal een melding ontvangen.")
+//            intent.putExtra("popupbtn", "OK")
+//            intent.putExtra("darkstatusbar", false)
+//            startActivity(intent)
+
+
+
+            this.context?.let { context ->
+                MaterialAlertDialogBuilder(context)
+                    .setTitle(R.string.aanvraag_gesprek_dialogbox)
+                    .setMessage(R.string.aanvraag_gesprek_dialogbox_message)
+                    .setPositiveButton("Ja") { dialog, which ->
+                        // Respond to positive button press
+                        viewModel.requestConsultation()
+                        this.view?.let { view ->
+                            viewModel.requestConsultationStatus.value?.let { string ->
+                                Snackbar.make(view, string, Snackbar.LENGTH_SHORT)
+                                    .show()
+                            }
+                        }
+
+                    }
+                    .setNegativeButton("Neen")
+                    {
+                        dialog, which ->
+                    }
+                    .show()
+            }
+
         }
 
         binding.AddPostButton.setOnClickListener { view: View ->

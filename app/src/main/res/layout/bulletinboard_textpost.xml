@@ -7,7 +7,7 @@
             type="com.example.faithandroid.models.Post" />
         <variable
             name="date"
-            type="org.threeten.bp.LocalDate" />
+            type="String" />
     </data>
 
     
@@ -46,10 +46,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0"
-                        android:text="@{post.title + date.toString()}"
+                        android:text="@{post.title}"
                         android:textColor="@android:color/black"
                         android:textSize="24sp"
                         android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text='@{date}'
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="?android:attr/textColorSecondary"
+                        />
 
                     <TextView
                         android:id="@+id/bulletinboardInhoud"

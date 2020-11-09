@@ -36,7 +36,7 @@ class BillboardViewModel : ViewModel() {
 
     private fun getPosts() {
         coroutineScope.launch {
-            var getPropertiesDeferred = FaithApi.retrofitService.GetBillboardGoalsByAdolescentEmail("dora.theexplorer1999@gmail.com")
+            var getPropertiesDeferred = FaithApi.retrofitService.getBillboardGoalsByAdolescentEmail("dora.theexplorer1999@gmail.com")
             try {
                 var listResult = getPropertiesDeferred.await()
                 if(listResult.size > 0){
