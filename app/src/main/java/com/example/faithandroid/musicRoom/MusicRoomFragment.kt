@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.faithandroid.R
-import com.example.faithandroid.databinding.FragmentMusicroomBinding
+import com.example.faithandroid.databinding.MusicroomBinding
 
 
 class MusicRoomFragment: Fragment() {
@@ -22,9 +22,9 @@ class MusicRoomFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-      val binding = DataBindingUtil.inflate<FragmentMusicroomBinding>(
+      val binding = DataBindingUtil.inflate<MusicroomBinding>(
           inflater,
-          R.layout.fragment_musicroom,
+          R.layout.musicroom,
           container,
           false
       );

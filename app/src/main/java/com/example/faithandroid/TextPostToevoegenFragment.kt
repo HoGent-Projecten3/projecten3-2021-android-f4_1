@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.example.faithandroid.databinding.FragmentTextPostToevoegenBinding
+import com.example.faithandroid.databinding.BulletinboardTextPostToevoegenBinding
 import com.example.faithandroid.bulletinboard.BulletinBoardViewModel
 
 class TextPostToevoegenFragment : Fragment() {
@@ -29,7 +29,7 @@ class TextPostToevoegenFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        var binding = DataBindingUtil.inflate<FragmentTextPostToevoegenBinding>(inflater, R.layout.fragment_text_post_toevoegen, container, false);
+        var binding = DataBindingUtil.inflate<BulletinboardTextPostToevoegenBinding>(inflater, R.layout.bulletinboard_text_post_toevoegen, container, false);
         viewModel = ViewModelProvider(this).get(BulletinBoardViewModel::class.java)
 
 

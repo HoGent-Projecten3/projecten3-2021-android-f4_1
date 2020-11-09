@@ -10,7 +10,7 @@
         android:id="@+id/bulletinBoardFragment"
         android:name="com.example.faithandroid.bulletinboard.BulletinboardFragment"
         android:label="bulletinboard"
-        tools:layout="@layout/fragment_bulletinboard" >
+        tools:layout="@layout/bulletinboard" >
 
         <action
             android:id="@+id/action_bulletinBoardFragment_to_optionsAddPostFragment"
@@ -20,7 +20,7 @@
         android:id="@+id/optionsAddPostFragment"
         android:name="com.example.faithandroid.OptionsAddPostFragment"
         android:label="options_add_post"
-        tools:layout="@layout/options_add_post" >
+        tools:layout="@layout/bulletinboard_options_add_post" >
         <action
             android:id="@+id/action_optionsAddPostFragment_to_bulletinBoardFragment"
             app:destination="@id/bulletinBoardFragment" />
@@ -31,7 +31,7 @@
         android:id="@+id/loginFragment"
         android:name="com.example.faithandroid.login.LoginFragment"
         android:label="LoginFragment"
-        tools:layout="@layout/fragment_login"
+        tools:layout="@layout/login"
         >
         <action
 
@@ -42,7 +42,7 @@
         android:id="@+id/homeFragment"
         android:name="com.example.faithandroid.HomeFragment"
         android:label="menu_homescherm"
-        tools:layout="@layout/menu_homescherm" >
+        tools:layout="@layout/app_homescherm" >
         <action
             android:id="@+id/action_homeFragment_to_backpackFragment"
             app:destination="@id/backpackFragment" />
@@ -81,32 +81,32 @@
         android:id="@+id/backpackFragment"
         android:name="com.example.faithandroid.backpack.BackpackFragment"
         android:label="BackpackFragment"
-        tools:layout="@layout/fragment_backpack"/>
+        tools:layout="@layout/backpack"/>
     <fragment
         android:id="@+id/billboardFragment"
         android:name="com.example.faithandroid.billboard.BillboardFragment"
         android:label="BillboardFragment"
-        tools:layout="@layout/fragment_billboard"/>
+        tools:layout="@layout/billboard"/>
     <fragment
         android:id="@+id/cinemaFragment"
         android:name="com.example.faithandroid.cinema.CinemaFragment"
         android:label="CinemaFragment"
-        tools:layout="@layout/fragment_cinema"/>
+        tools:layout="@layout/cinema"/>
     <fragment
         android:id="@+id/musicRoomFragment"
         android:name="com.example.faithandroid.musicRoom.MusicRoomFragment"
         android:label="MusicRoomFragment"
-        tools:layout="@layout/fragment_musicroom"/>
+        tools:layout="@layout/musicroom"/>
     <fragment
         android:id="@+id/shoppingCenterFragment"
         android:name="com.example.faithandroid.shoppingCenter.ShoppingCenterFragment"
         android:label="ShoppingCenterFragment"
-        tools:layout="@layout/fragment_shoppingcenter"/>
+        tools:layout="@layout/shoppingcenter"/>
     <fragment
         android:id="@+id/skyscraperFragment"
         android:name="com.example.faithandroid.skyscraper.SkyscraperFragment"
         android:label="SkyscraperFragment"
-        tools:layout="@layout/fragment_skyscraper">
+        tools:layout="@layout/skyscraper">
         <action
             android:id="@+id/action_skyscraperFragment_to_addGoalFragment"
             app:destination="@id/addGoalFragment" />
@@ -118,7 +118,7 @@
         android:id="@+id/treasureChestFragment"
         android:name="com.example.faithandroid.treasureChest.TreasureChestFragment"
         android:label="TreasureChestFragment"
-        tools:layout="@layout/fragment_treasurechest"/>
+        tools:layout="@layout/treasurechest"/>
     <fragment
         android:id="@+id/addGoalFragment"
         android:name="com.example.faithandroid.skyscraper.addGoalFragment"

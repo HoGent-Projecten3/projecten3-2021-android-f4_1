@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.example.faithandroid.databinding.FragmentLoginBinding
-import com.example.faithandroid.databinding.OptionsAddPostBinding
+import com.example.faithandroid.databinding.LoginBinding
+import com.example.faithandroid.databinding.BulletinboardOptionsAddPostBinding
 
 class OptionsAddPostFragment: Fragment() {
 
@@ -23,9 +23,9 @@ class OptionsAddPostFragment: Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        val binding = DataBindingUtil.inflate<OptionsAddPostBinding>(
+        val binding = DataBindingUtil.inflate<BulletinboardOptionsAddPostBinding>(
             inflater,
-            R.layout.options_add_post,
+            R.layout.bulletinboard_options_add_post,
             container,
             false
         );

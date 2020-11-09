@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.faithandroid.R
-import com.example.faithandroid.databinding.FragmentBackpackBinding
+import com.example.faithandroid.databinding.BackpackBinding
 
 
 class BackpackFragment: Fragment() {
@@ -22,9 +22,9 @@ class BackpackFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-      val binding = DataBindingUtil.inflate<FragmentBackpackBinding>(
+      val binding = DataBindingUtil.inflate<BackpackBinding>(
           inflater,
-          R.layout.fragment_backpack,
+          R.layout.backpack,
           container,
           false
       );

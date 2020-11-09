@@ -5,13 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.faithandroid.databinding.FragmentBilboardGoalBinding
+import com.example.faithandroid.databinding.BillboardBinding
+import com.example.faithandroid.databinding.BillboardGoalBinding
 import com.example.faithandroid.models.GoalPost
 
 class BillboardGridAdapter : ListAdapter<GoalPost, BillboardGridAdapter.BillboardPropertyViewHolder>(
     DiffCallback
 ) {
-    class BillboardPropertyViewHolder(private var binding: FragmentBilboardGoalBinding):
+    class BillboardPropertyViewHolder(private var binding: BillboardGoalBinding):
         RecyclerView.ViewHolder(binding.root){
         fun bind(goalPost: GoalPost){
             binding.property = goalPost
@@ -34,7 +35,7 @@ class BillboardGridAdapter : ListAdapter<GoalPost, BillboardGridAdapter.Billboar
         parent: ViewGroup,
         viewType: Int
     ): BillboardPropertyViewHolder {
-        return BillboardPropertyViewHolder(FragmentBilboardGoalBinding.inflate(LayoutInflater.from(parent.context)))
+        return BillboardPropertyViewHolder(BillboardGoalBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     override fun onBindViewHolder(

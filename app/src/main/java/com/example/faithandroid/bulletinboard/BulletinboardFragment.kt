@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.faithandroid.PopupWindow
 import com.example.faithandroid.R
-import com.example.faithandroid.databinding.FragmentBulletinboardBinding
+import com.example.faithandroid.databinding.BulletinboardBinding
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -32,9 +32,9 @@ class BulletinboardFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-      val binding = DataBindingUtil.inflate<FragmentBulletinboardBinding>(
+      val binding = DataBindingUtil.inflate<BulletinboardBinding>(
           inflater,
-          R.layout.fragment_bulletinboard,
+          R.layout.bulletinboard,
           container,
           false
       );

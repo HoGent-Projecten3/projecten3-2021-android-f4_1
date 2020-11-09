@@ -11,10 +11,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.faithandroid.R
-import com.example.faithandroid.databinding.FragmentAddGoalBinding
+import com.example.faithandroid.databinding.SkyscraperAddGoalBinding
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Step
-import kotlinx.android.synthetic.main.fragment_add_goal.*
+import kotlinx.android.synthetic.main.skyscraper_add_goal.*
 
 class addGoalFragment : Fragment() {
 
@@ -28,9 +28,9 @@ class addGoalFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentAddGoalBinding>(
+        val binding = DataBindingUtil.inflate<SkyscraperAddGoalBinding>(
             inflater,
-            R.layout.fragment_add_goal,
+            R.layout.skyscraper_add_goal,
             container,
             false
         );

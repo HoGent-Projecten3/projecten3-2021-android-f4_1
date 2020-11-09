@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.faithandroid.R
-import com.example.faithandroid.databinding.FragmentShoppingcenterBinding
+import com.example.faithandroid.databinding.ShoppingcenterBinding
 
 
 class ShoppingCenterFragment: Fragment() {
@@ -22,9 +22,9 @@ class ShoppingCenterFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-      val binding = DataBindingUtil.inflate<FragmentShoppingcenterBinding>(
+      val binding = DataBindingUtil.inflate<ShoppingcenterBinding>(
           inflater,
-          R.layout.fragment_shoppingcenter,
+          R.layout.shoppingcenter,
           container,
           false
       );

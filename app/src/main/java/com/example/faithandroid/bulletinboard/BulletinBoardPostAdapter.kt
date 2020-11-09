@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.faithandroid.databinding.TextpostBinding
+import com.example.faithandroid.databinding.BulletinboardTextpostBinding
 import com.example.faithandroid.models.Post
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -15,7 +15,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 class BulletinBoardPostAdapter : ListAdapter<Post, BulletinBoardPostAdapter.BulletinBoardPostViewHolder>(
     DiffCallback
 ) {
-    class BulletinBoardPostViewHolder(private var binding: TextpostBinding):
+    class BulletinBoardPostViewHolder(private var binding: BulletinboardTextpostBinding):
         RecyclerView.ViewHolder(binding.root){
         fun bind(post: Post){
             binding.post = post
@@ -50,7 +50,7 @@ class BulletinBoardPostAdapter : ListAdapter<Post, BulletinBoardPostAdapter.Bull
     ): BulletinBoardPostViewHolder {
 
 
-        return BulletinBoardPostViewHolder(TextpostBinding.inflate(LayoutInflater.from(parent.context)))
+        return BulletinBoardPostViewHolder(BulletinboardTextpostBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     override fun onBindViewHolder(

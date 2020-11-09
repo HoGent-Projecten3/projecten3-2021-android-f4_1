@@ -7,7 +7,7 @@
 
         <variable
             name="goalDetailViewModel"
-            type="com.example.faithandroid.viewmodels.GoalDetailsViewModel" />
+            type="com.example.faithandroid.skyscraper.SkyscraperViewModel" />
     </data>
 
 

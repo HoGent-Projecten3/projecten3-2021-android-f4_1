@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.faithandroid.R
-import com.example.faithandroid.databinding.FragmentTreasurechestBinding
+import com.example.faithandroid.databinding.TreasurechestBinding
 
 
 class TreasureChestFragment: Fragment() {
@@ -22,9 +22,9 @@ class TreasureChestFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-      val binding = DataBindingUtil.inflate<FragmentTreasurechestBinding>(
+      val binding = DataBindingUtil.inflate<TreasurechestBinding>(
           inflater,
-          R.layout.fragment_treasurechest,
+          R.layout.treasurechest,
           container,
           false
       );

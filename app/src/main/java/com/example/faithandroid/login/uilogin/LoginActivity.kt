@@ -24,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.fragment_login)
+        setContentView(R.layout.login)
 
         val username = findViewById<EditText>(R.id.login_field)
         val password = findViewById<EditText>(R.id.password_field)

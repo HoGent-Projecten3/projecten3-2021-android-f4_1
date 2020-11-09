@@ -9,9 +9,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
-import com.example.faithandroid.GoalDetailsFragmentArgs
+import com.example.faithandroid.skyscraper.GoalDetailsFragmentArgs
 import com.example.faithandroid.R
-import com.example.faithandroid.databinding.FragmentGoaldetailsBinding
+import com.example.faithandroid.databinding.SkyscraperGoaldetailsBinding
 
 class GoalDetailsFragment: DialogFragment() {
     val args: GoalDetailsFragmentArgs by navArgs()
@@ -29,9 +29,9 @@ class GoalDetailsFragment: DialogFragment() {
 
         viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
 
-        val binding = DataBindingUtil.inflate<FragmentGoaldetailsBinding>(
+        val binding = DataBindingUtil.inflate<SkyscraperGoaldetailsBinding>(
             inflater,
-            R.layout.fragment_goaldetails,
+            R.layout.skyscraper_goaldetails,
             container,
             false
         );

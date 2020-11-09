@@ -11,10 +11,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.faithandroid.R
-import com.example.faithandroid.SkyscraperFragmentDirections
-import com.example.faithandroid.databinding.FragmentSkyscraperBinding
+//import com.example.faithandroid.SkyscraperDirections
+import com.example.faithandroid.databinding.SkyscraperBinding
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.goalpostimage.view.*
+import kotlinx.android.synthetic.main.skyscraper_goalpostimage.view.*
 
 
 class SkyscraperFragment: Fragment() {
@@ -29,9 +29,9 @@ class SkyscraperFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-      val binding = DataBindingUtil.inflate<FragmentSkyscraperBinding>(
+      val binding = DataBindingUtil.inflate<SkyscraperBinding>(
           inflater,
-          R.layout.fragment_skyscraper,
+          R.layout.skyscraper,
           container,
           false
       );
@@ -59,7 +59,7 @@ class SkyscraperFragment: Fragment() {
 
         viewModel.testLive.observe(this.viewLifecycleOwner, Observer{
             viewModel.testLive.value?.forEach{goal ->
-                val rowView: View = inflater.inflate(R.layout.goalpostimage, null)
+                val rowView: View = inflater.inflate(R.layout.skyscraper_goalpostimage, null)
                 rowView.titleText.text = goal.title
                 rowView.layout.setOnClickListener{view: View ->
                     Log.d("CLICK", "hewwo? Mw obwama?")

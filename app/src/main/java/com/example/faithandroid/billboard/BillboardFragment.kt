@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.faithandroid.R
-import com.example.faithandroid.databinding.FragmentBillboardBinding
+import com.example.faithandroid.databinding.BillboardBinding
 
 
 class BillboardFragment: Fragment() {
@@ -25,9 +25,9 @@ class BillboardFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-      val binding = DataBindingUtil.inflate<FragmentBillboardBinding>(
+      val binding = DataBindingUtil.inflate<BillboardBinding>(
           inflater,
-          R.layout.fragment_billboard,
+          R.layout.billboard,
           container,
           false
       );
