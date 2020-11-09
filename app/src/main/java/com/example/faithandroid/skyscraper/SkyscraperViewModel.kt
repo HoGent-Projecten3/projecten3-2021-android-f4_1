@@ -29,6 +29,7 @@ class SkyscraperViewModel : ViewModel() {
     private val _removeStatus = MutableLiveData<String>()
     private val _getStatus = MutableLiveData<String>()
 
+
     val shareStatus: LiveData<String>
         get() = _shareStatus
 

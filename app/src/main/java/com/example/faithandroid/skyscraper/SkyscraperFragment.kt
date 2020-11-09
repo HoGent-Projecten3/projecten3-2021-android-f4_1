@@ -38,10 +38,10 @@ class SkyscraperFragment: Fragment() {
 
         viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
 
-        viewModel.status.observe(this.viewLifecycleOwner, Observer {
+        viewModel.getStatus.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
-                Snackbar.make(contextView, viewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                Snackbar.make(contextView, viewModel.getStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
                     R.string.tryAgain
                 )
                 {
