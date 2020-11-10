@@ -14,7 +14,8 @@
 
         <action
             android:id="@+id/action_bulletinBoardFragment_to_optionsAddPostFragment"
-            app:destination="@id/optionsAddPostFragment" />
+            app:destination="@id/optionsAddPostFragment"
+             />
     </fragment>
     <fragment
         android:id="@+id/optionsAddPostFragment"
@@ -24,6 +25,7 @@
         <action
             android:id="@+id/action_optionsAddPostFragment_to_bulletinBoardFragment"
             app:destination="@id/bulletinBoardFragment"
+
 
             app:popUpTo="@id/bulletinBoardFragment"
             app:popUpToInclusive="true"/>
@@ -35,7 +37,6 @@
         <argument
             android:name="placeType"
             app:argType="com.example.faithandroid.PlaceType" />
-
     </fragment>
 
     <fragment
@@ -45,7 +46,6 @@
         tools:layout="@layout/login"
         >
         <action
-
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
