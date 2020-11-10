@@ -1,15 +1,11 @@
 package com.example.faithandroid.models
 
-class TextPost {
+import com.squareup.moshi.JsonClass
 
-    public var title: String = ""
-    public var text: String = ""
-
-    constructor(title: String, text: String)
-    {
-        this.text = text
-        this.title = title
-    }
-
-
-}
+@JsonClass(generateAdapter = true)
+data class Post(
+    var id: Int = 0,
+    var title: String = "",
+    var data: String = "",
+    var date: String = "2020-11-05T22:34:57.61"
+)

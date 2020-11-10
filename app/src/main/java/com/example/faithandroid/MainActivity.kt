@@ -11,7 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.faithandroid.databinding.ActivityTestBinding
-import kotlinx.android.synthetic.main.fragment_bulletinboard.*
+import kotlinx.android.synthetic.main.bulletinboard.*
 
 //import androidx.databinding.DataBindingUtil
 
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
 
         drawerLayout = findViewById(R.id.drawerLayout);
-        viewModel = ViewModelProvider(this).get(OverviewViewModel::class.java)
+       // viewModel = ViewModelProvider(this).get(OverviewViewModel::class.java)
 
 
         //setSupportActionBar(R.id.)

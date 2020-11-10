@@ -1,3 +1,4 @@
+
 <resources>
     <string name="app_name">GROW.</string>
     <string name="skyscraper">Wolkenkrabber</string>
@@ -30,7 +31,7 @@
     <string name="naam">Jane Doe</string>
     <!-- TODO: Remove or change this placeholder text -->
 
-    <string name="login">login</string>
+    <string name="login">log in</string>
     <string name="title_activity_test">TestActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -42,11 +43,28 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="label">button</string>
     <string name="forgot_password">wachtwoord vergeten</string>
-    <string name="password">wachtwoord</string>
+    <string name="password">Wachtwoord</string>
     <string name="OK">OK</string>
-    <string name="welkom_bij_faith">welkom bij faith</string>
-    <string name="titel">titel</string>
-    <string name="tekst">tekst</string>
+
+    <string name="grow.">GROW.</string>
+    <string name="titel">Titel</string>
+    <string name="tekst">Tekst</string>
     <string name="under_construction">Aan dit deel wordt nog gewerkt</string>
 
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="email">Vul hier je e-mail in</string>
+    <string name="tryAgain">probeer opnieuw</string>
+    <string name="aanvraag_gesprek_dialogbox">Gesprek met je begeleider</string>
+    <string name="aanvraag_gesprek_dialogbox_message">Wil je graag een gesprek aanvragen met je begeleider?</string>
+    <string name="no_connection">Er kon geen verbinding gemaakt worden met de server</string>
+    <string name="nieuwe_tekst_post_toevoegen">Nieuwe tekst post toevoegen</string>
+    <string name="toevoegen">Toevoegen</string>
+    <string name="behaald">Behaald</string>
+    <string name="delen">Delen</string>
+    <string name="verwijder">Verwijder</string>
+    <string name="doel_gedeeld">Doel Gedeeld</string>
+    <string name="doel_verwijderd">Doel Verwijderd</string>
 </resources>

@@ -1,21 +1,13 @@
 package com.example.faithandroid
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
-import android.app.Activity
-import android.content.Intent
 import android.graphics.Color
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.view.WindowManager
 import android.view.animation.DecelerateInterpolator
 import androidx.core.graphics.ColorUtils
-import kotlinx.android.synthetic.main.activity_popup_window.*
-import kotlinx.android.synthetic.main.fragment_bulletinboard.*
+import kotlinx.android.synthetic.main.bulletinboard_activity_popup_window.*
 
 class PopupWindow : AppCompatActivity() {
     private var popupTitle = ""
@@ -27,7 +19,7 @@ class PopupWindow : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         overridePendingTransition(0,0)
-        setContentView(R.layout.activity_popup_window)
+        setContentView(R.layout.bulletinboard_activity_popup_window)
 
 
 /// hoort bij elkaar
