@@ -67,4 +67,8 @@
     <string name="verwijder">Verwijder</string>
     <string name="doel_gedeeld">Doel Gedeeld</string>
     <string name="doel_verwijderd">Doel Verwijderd</string>
+    <string name="wachtwoord_wijzigen">Wachtwoord wijzigen</string>
+    <string name="jane_doe">Jane Doe</string>
+    <string name="jane_doe_gmail_com">jane.doe@gmail.com</string>
+    <string name="donkere_modus">Donkere modus</string>
 </resources>
