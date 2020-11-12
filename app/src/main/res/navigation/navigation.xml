@@ -152,4 +152,17 @@
             android:name="goal"
             app:argType="com.example.faithandroid.models.GoalPost" />
     </fragment>
+    <fragment
+        android:id="@+id/profielFragment"
+        android:name="com.example.faithandroid.profiel.profielFragment"
+        android:label="profielFragment" >
+        <action
+            android:id="@+id/action_profielFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.faithandroid.MainActivity"
+        android:label="app_sidebar"
+        tools:layout="@layout/app_sidebar" />
 </navigation>
