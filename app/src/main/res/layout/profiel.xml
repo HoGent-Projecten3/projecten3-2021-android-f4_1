@@ -38,7 +38,8 @@
                     android:id="@+id/profielImage"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    android:contentDescription="@string/profiel"
+                    android:src="@drawable/profielfoto" />
 
             </androidx.cardview.widget.CardView>
 
@@ -49,7 +50,7 @@
                 android:layout_marginTop="15dp"
                 android:text="@string/jane_doe"
                 android:textAlignment="center"
-                android:textSize="30dp" />
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/profielEmail"
@@ -58,7 +59,7 @@
                 android:layout_marginTop="50dp"
                 android:text="@string/jane_doe_gmail_com"
                 android:textAlignment="center"
-                android:textSize="18dp" />
+                android:textSize="18sp" />
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/donkereModus"
@@ -74,8 +75,11 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:clickable="true"
                 android:enabled="true"
+                android:focusable="true"
                 android:gravity="center"
+                android:onClick="@string/wachtwoord_wijzigen"
                 android:text="@string/wachtwoord_wijzigen"
                 app:icon="@drawable/ic_person" />
 

@@ -78,9 +78,6 @@
         <action
             android:id="@+id/action_homeFragment_to_treasureChestFragment"
             app:destination="@id/treasureChestFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_profielFragment"
-            app:destination="@id/profielFragment" />
     </fragment>
 
     <fragment
