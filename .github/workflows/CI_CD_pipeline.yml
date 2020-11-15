@@ -36,6 +36,8 @@ jobs:
         run: ./gradlew clean
       - name: build release 
         run: ./gradlew assembleRelease
+      - name: test files
+        run: ls -l app/build/outputs/apk/debug
       - name: Upload APK
         uses: actions/upload-artifact@v1
         with:
