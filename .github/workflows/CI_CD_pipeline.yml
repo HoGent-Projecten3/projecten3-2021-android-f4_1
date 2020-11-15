@@ -26,11 +26,8 @@ jobs:
         with:
           java-version: 11.0.4
           java-package: jdk
-      # Step to install the NDK
-      - name: Install NDK
-        run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;20.0.5594570"
       - name: build release 
-        run: ./gradlew --stacktrace assembleRelease
+        run: ./gradlew --stacktrace assembleDebug
       - name: Firebase App Distribution
       # You may pin to the exact commit or the version.
       # uses: wzieba/Firebase-Distribution-Github-Action@71535f70a959206e3e57161c8ea53337ca49c335
