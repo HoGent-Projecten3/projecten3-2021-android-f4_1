@@ -35,7 +35,7 @@ jobs:
       - name: build release 
         run: ./gradlew assembleRelease
       - name: test files
-        run: ls -l app/build/outputs/apk/debug
+        run: ls -l app/build/outputs/apk/release
       - name: Firebase App Distribution
       # You may pin to the exact commit or the version.
       # uses: wzieba/Firebase-Distribution-Github-Action@71535f70a959206e3e57161c8ea53337ca49c335
