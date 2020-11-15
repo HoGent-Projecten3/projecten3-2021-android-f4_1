@@ -1,0 +1,499 @@
+Index: app/src/main/java/com/example/faithandroid/BindingAdapters.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.faithandroid\r\n\r\nimport androidx.databinding.BindingAdapter\r\nimport androidx.recyclerview.widget.RecyclerView\r\nimport com.example.faithandroid.network.FaithProperty\r\n\r\n@BindingAdapter(\"listData\")\r\nfun bindRecyclerView(recyclerView: RecyclerView, data: List<FaithProperty>?){\r\n    val adapter = recyclerView.adapter as FirstNameGridAdapter\r\n    adapter.submitList(data)\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/faithandroid/BindingAdapters.kt	(revision d2d924196518077f243b69e10d522ae5631d26ae)
++++ app/src/main/java/com/example/faithandroid/BindingAdapters.kt	(date 1604828492795)
+@@ -2,10 +2,18 @@
+ 
+ import androidx.databinding.BindingAdapter
+ import androidx.recyclerview.widget.RecyclerView
++import com.example.faithandroid.models.Post
+ import com.example.faithandroid.network.FaithProperty
+ 
+ @BindingAdapter("listData")
+ fun bindRecyclerView(recyclerView: RecyclerView, data: List<FaithProperty>?){
+     val adapter = recyclerView.adapter as FirstNameGridAdapter
+     adapter.submitList(data)
+-}
+\ No newline at end of file
++}
++
++@BindingAdapter("bulletinBoardList")
++fun bindBulletinBoardRecyclerView(recyclerView: RecyclerView, data: List<Post>?){
++    val adapter = recyclerView.adapter as BulletinBoardListAdapter
++    adapter.submitList(data)
++}
++
+Index: app/src/main/res/layout/bulletinboard_post.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/bulletinboard_post.xml	(date 1604828492815)
++++ app/src/main/res/layout/bulletinboard_post.xml	(date 1604828492815)
+@@ -0,0 +1,101 @@
++<?xml version="1.0" encoding="utf-8"?>
++<layout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto" >
++    <data>
++        <variable
++            name="property"
++            type="com.example.faithandroid.models.Post" />
++    </data>
++
++    <TextView
++        android:id="@+id/textView6"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="@{property.title}" />
++
++
++    <!--    <LinearLayout-->
++<!--        android:layout_width="wrap_content"-->
++<!--        android:layout_height="wrap_content"-->
++<!--        >-->
++
++<!--        <androidx.cardview.widget.CardView-->
++<!--            android:layout_width="match_parent"-->
++<!--            android:layout_height="wrap_content"-->
++<!--            android:layout_marginLeft="10dp"-->
++<!--            android:layout_marginTop="10dp"-->
++<!--            android:layout_marginRight="10dp"-->
++<!--            android:layout_marginBottom="10dp"-->
++<!--            app:cardElevation="10dp"-->
++<!--            app:layout_constraintBottom_toBottomOf="parent">-->
++
++<!--            <LinearLayout-->
++<!--                android:id="@+id/bulletinboardCard"-->
++<!--                android:layout_width="wrap_content"-->
++<!--                android:layout_height="wrap_content"-->
++<!--                android:fadingEdgeLength="10dp">-->
++
++<!--                <LinearLayout-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:layout_marginLeft="16dp"-->
++<!--                    android:layout_marginTop="16dp"-->
++<!--                    android:layout_marginRight="16dp"-->
++<!--                    android:orientation="vertical">-->
++
++<!--                    <TextView-->
++<!--                        android:id="@+id/bulletinboardTitle"-->
++<!--                        android:layout_width="wrap_content"-->
++<!--                        android:layout_height="wrap_content"-->
++<!--                        android:layout_weight="0"-->
++<!--                        android:text="@{property.title}"-->
++<!--                        android:textColor="@android:color/black"-->
++<!--                        android:textSize="24sp"-->
++<!--                        android:textStyle="bold" />-->
++
++<!--                    <TextView-->
++<!--                        android:id="@+id/bulletinboardInhoud"-->
++<!--                        android:layout_width="wrap_content"-->
++<!--                        android:layout_height="wrap_content"-->
++<!--                        android:layout_marginTop="5dp"-->
++<!--                        android:layout_weight="1"-->
++
++<!--                        android:textColor="@android:color/black" />-->
++
++
++<!--                    <LinearLayout-->
++<!--                        android:layout_width="wrap_content"-->
++<!--                        android:layout_height="wrap_content"-->
++<!--                        android:layout_gravity="bottom"-->
++<!--                        android:layout_marginTop="8dp"-->
++<!--                        android:layout_weight="1"-->
++<!--                        android:orientation="horizontal">-->
++
++<!--                        <Button-->
++<!--                            android:id="@+id/bulletinboardOpenButton"-->
++<!--                            style="?android:attr/borderlessButtonStyle"-->
++<!--                            android:layout_width="wrap_content"-->
++<!--                            android:layout_height="wrap_content"-->
++<!--                            android:layout_gravity="bottom"-->
++<!--                            android:layout_marginEnd="8dp"-->
++<!--                            android:text="@string/button_open"-->
++<!--                            android:textColor="@color/colorPrimary"-->
++<!--                            app:backgroundTint="@color/cardview_light_background" />-->
++
++<!--                        <Button-->
++<!--                            android:id="@+id/bulletinboardUnpinButton"-->
++<!--                            style="?android:attr/borderlessButtonStyle"-->
++<!--                            android:layout_width="wrap_content"-->
++<!--                            android:layout_height="wrap_content"-->
++<!--                            android:layout_gravity="bottom"-->
++<!--                            android:text="@string/button_unpin"-->
++<!--                            android:textColor="@color/colorPrimary"-->
++<!--                            app:backgroundTint="@color/cardview_light_background" />-->
++<!--                    </LinearLayout>-->
++<!--                </LinearLayout>-->
++<!--            </LinearLayout>-->
++<!--        </androidx.cardview.widget.CardView>-->
++<!--    </LinearLayout>-->
++
++
++</layout>
+Index: app/src/main/res/layout/fragment_bulletinboard.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<layout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\">\r\n\r\n\r\n    <FrameLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:orientation=\"vertical\">\r\n\r\n        <!--<include\r\n            layout=\"@layout/app_bar_main\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"match_parent\" /> -->\r\n\r\n        <include\r\n            layout=\"@layout/app_bar_back\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"match_parent\" />\r\n\r\n        <com.google.android.material.floatingactionbutton.FloatingActionButton\r\n            android:id=\"@+id/AddPostButton\"\r\n            style=\"@style/pinkButtonStyle\"\r\n            android:layout_width=\"70dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_alignParentEnd=\"true\"\r\n            android:layout_alignParentBottom=\"true\"\r\n            android:layout_gravity=\"bottom|end\"\r\n            android:layout_marginTop=\"15dp\"\r\n            android:layout_marginEnd=\"15dp\"\r\n            android:layout_marginBottom=\"15dp\"\r\n            android:clickable=\"true\"\r\n            android:elevation=\"10dp\"\r\n            app:maxImageSize=\"45dp\"\r\n            app:srcCompat=\"@android:drawable/ic_input_add\" />\r\n\r\n        <ScrollView\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_marginTop=\"?attr/actionBarSize\">\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:gravity=\"top\"\r\n                android:orientation=\"vertical\"\r\n                android:id=\"@+id/bulletinLayout\">\r\n\r\n                <Button\r\n                    android:id=\"@+id/requestConsultationButton\"\r\n                    style=\"@style/pinkButtonStyle\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginLeft=\"10dp\"\r\n                    android:layout_marginTop=\"10dp\"\r\n                    android:layout_marginRight=\"10dp\"\r\n                    android:text=\"@string/request_consultation\" />\r\n\r\n            </LinearLayout>\r\n\r\n        </ScrollView>\r\n    </FrameLayout>\r\n</layout>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/fragment_bulletinboard.xml	(revision d2d924196518077f243b69e10d522ae5631d26ae)
++++ app/src/main/res/layout/fragment_bulletinboard.xml	(date 1604828492816)
+@@ -3,6 +3,12 @@
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools">
+ 
++    <data>
++        <variable
++            name="bulletinBoardViewModel"
++            type="com.example.faithandroid.viewmodels.BulletinBoardViewModel" />
++    </data>
++
+ 
+     <FrameLayout
+         android:layout_width="match_parent"
+@@ -35,30 +41,46 @@
+             app:maxImageSize="45dp"
+             app:srcCompat="@android:drawable/ic_input_add" />
+ 
+-        <ScrollView
+-            android:layout_width="match_parent"
+-            android:layout_height="match_parent"
+-            android:layout_marginTop="?attr/actionBarSize">
++        <androidx.recyclerview.widget.RecyclerView
++            android:id="@+id/bulletinBoardList"
++            android:layout_width="0dp"
++            android:layout_height="0dp"
++            android:padding="20dp"
++            android:clipToPadding="false"
++            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
++
++            app:layout_constraintBottom_toBottomOf="parent"
++            app:layout_constraintLeft_toLeftOf="parent"
++            app:layout_constraintRight_toRightOf="parent"
++            app:layout_constraintTop_toTopOf="parent"
++            app:bulletinBoardList="@{bulletinBoardViewModel.postListLive}"/>
++
++<!--        <ScrollView-->
++<!--            android:layout_width="match_parent"-->
++<!--            android:layout_height="match_parent"-->
++<!--            android:layout_marginTop="?attr/actionBarSize">-->
++
+ 
+-            <LinearLayout
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:gravity="top"
+-                android:orientation="vertical"
+-                android:id="@+id/bulletinLayout">
+ 
+-                <Button
+-                    android:id="@+id/requestConsultationButton"
+-                    style="@style/pinkButtonStyle"
+-                    android:layout_width="match_parent"
+-                    android:layout_height="wrap_content"
+-                    android:layout_marginLeft="10dp"
+-                    android:layout_marginTop="10dp"
+-                    android:layout_marginRight="10dp"
+-                    android:text="@string/request_consultation" />
++<!--            <LinearLayout-->
++<!--                android:layout_width="match_parent"-->
++<!--                android:layout_height="wrap_content"-->
++<!--                android:gravity="top"-->
++<!--                android:orientation="vertical"-->
++<!--                android:id="@+id/bulletinLayout">-->
+ 
+-            </LinearLayout>
++<!--                <Button-->
++<!--                    android:id="@+id/requestConsultationButton"-->
++<!--                    style="@style/pinkButtonStyle"-->
++<!--                    android:layout_width="match_parent"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:layout_marginLeft="10dp"-->
++<!--                    android:layout_marginTop="10dp"-->
++<!--                    android:layout_marginRight="10dp"-->
++<!--                    android:text="@string/request_consultation" />-->
+ 
+-        </ScrollView>
++<!--            </LinearLayout>-->
++
++<!--        </ScrollView>-->
+     </FrameLayout>
+ </layout>
+Index: app/src/main/java/com/example/faithandroid/text_post_toevoegen.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.faithandroid\r\n\r\nimport android.os.Bundle\r\nimport androidx.fragment.app.Fragment\r\nimport android.view.LayoutInflater\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport androidx.databinding.DataBindingUtil\r\nimport androidx.lifecycle.ViewModelProvider\r\nimport androidx.navigation.findNavController\r\nimport com.example.faithandroid.databinding.FragmentTextPostToevoegenBinding\r\nimport com.example.faithandroid.models.TextPost\r\nimport com.example.faithandroid.viewmodels.BulletinBoardViewModel\r\n\r\nclass text_post_toevoegen : Fragment() {\r\n    // TODO: Rename and change types of parameters\r\n\r\n    private lateinit var viewModel: BulletinBoardViewModel\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        arguments?.let {\r\n\r\n        }\r\n    }\r\n\r\n    override fun onCreateView(\r\n        inflater: LayoutInflater, container: ViewGroup?,\r\n        savedInstanceState: Bundle?\r\n    ): View? {\r\n        // Inflate the layout for this fragment\r\n\r\n        var binding = DataBindingUtil.inflate<FragmentTextPostToevoegenBinding>(inflater, R.layout.fragment_text_post_toevoegen, container, false);\r\n        viewModel = ViewModelProvider(this).get(BulletinBoardViewModel::class.java)\r\n\r\n\r\n        binding.textPostToevoegen.setOnClickListener{ view: View ->\r\n\r\n            viewModel.test.add(TextPost(binding.textposttitel.text.toString(), binding.textposttext.text.toString()))\r\n\r\n            view.findNavController()\r\n                .navigate(R.id.action_text_post_toevoegen_to_bulletinBoardFragment)\r\n        }\r\n\r\n        return binding.root\r\n    }\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/faithandroid/text_post_toevoegen.kt	(revision d2d924196518077f243b69e10d522ae5631d26ae)
++++ app/src/main/java/com/example/faithandroid/text_post_toevoegen.kt	(date 1604828492809)
+@@ -36,7 +36,7 @@
+ 
+         binding.textPostToevoegen.setOnClickListener{ view: View ->
+ 
+-            viewModel.test.add(TextPost(binding.textposttitel.text.toString(), binding.textposttext.text.toString()))
++
+ 
+             view.findNavController()
+                 .navigate(R.id.action_text_post_toevoegen_to_bulletinBoardFragment)
+Index: app/src/main/res/values/ids.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/ids.xml	(date 1604828492818)
++++ app/src/main/res/values/ids.xml	(date 1604828492818)
+@@ -0,0 +1,3 @@
++<?xml version="1.0" encoding="utf-8"?>
++<resources>
++</resources>
+\ No newline at end of file
+Index: app/src/main/java/com/example/faithandroid/network/FaithApiService.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.faithandroid.network\r\n\r\nimport com.example.faithandroid.models.GoalPost\r\nimport com.example.faithandroid.models.TextPost\r\nimport com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory\r\nimport com.squareup.moshi.Moshi\r\nimport com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory\r\nimport kotlinx.coroutines.Deferred\r\nimport retrofit2.Call\r\nimport retrofit2.Retrofit\r\nimport retrofit2.converter.moshi.MoshiConverterFactory\r\nimport retrofit2.http.*\r\n\r\n//TODO: give url\r\nprivate const val BASE_URL = \"https://growapi.azurewebsites.net/api/\"\r\n\r\nprivate val moshi = Moshi.Builder()\r\n    .add(KotlinJsonAdapterFactory())\r\n    .build()\r\n\r\nprivate val retrofit = Retrofit.Builder()\r\n    .addConverterFactory(MoshiConverterFactory.create(moshi))\r\n    .addCallAdapterFactory(CoroutineCallAdapterFactory())\r\n    .baseUrl(BASE_URL)\r\n    .build()\r\n\r\ninterface FaithApiService {\r\n    @GET(\"Account/GetAdolescentsByCounselorEmail/bob.debouwer1998@gmail.com\")\r\n    fun getProperties():\r\n            Deferred<List<FaithProperty>>\r\n\r\n    @Headers(\"Content-Type: application/json\")\r\n    @POST(\"City/AddPostByEmail\")\r\n    fun postPost(@Body post: TextPost, @Query(\"email\") email: String, @Query(\"placeType\")placeType: Int):\r\n            Call<Boolean>\r\n\r\n    @GET(\"City/GetPostsOfSkyScraperByAdolescentEmail\")\r\n    fun getPostsOfSkyScraperByAdolescentEmail(@Query(\"email\") email: String): Deferred<List<GoalPost>>\r\n}\r\n\r\nobject FaithApi {\r\n    val retrofitService : FaithApiService by lazy {\r\n        retrofit.create(FaithApiService::class.java)\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/faithandroid/network/FaithApiService.kt	(revision d2d924196518077f243b69e10d522ae5631d26ae)
++++ app/src/main/java/com/example/faithandroid/network/FaithApiService.kt	(date 1604828492806)
+@@ -1,6 +1,7 @@
+ package com.example.faithandroid.network
+ 
+ import com.example.faithandroid.models.GoalPost
++import com.example.faithandroid.models.Post
+ import com.example.faithandroid.models.TextPost
+ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+ import com.squareup.moshi.Moshi
+@@ -36,6 +37,9 @@
+ 
+     @GET("City/GetPostsOfSkyScraperByAdolescentEmail")
+     fun getPostsOfSkyScraperByAdolescentEmail(@Query("email") email: String): Deferred<List<GoalPost>>
++
++    @GET("City/GetPostsOfBulletinBoardByAdolescentEmail")
++    fun getPostsOfBulletinBoardByAdolescentEmail(@Query("email") email: String): Deferred<List<Post>>
+ }
+ 
+ object FaithApi {
+Index: app/src/main/java/com/example/faithandroid/BulletinBoardListAdapter.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/faithandroid/BulletinBoardListAdapter.kt	(date 1604828492797)
++++ app/src/main/java/com/example/faithandroid/BulletinBoardListAdapter.kt	(date 1604828492797)
+@@ -0,0 +1,48 @@
++package com.example.faithandroid
++
++import android.view.LayoutInflater
++import android.view.ViewGroup
++import androidx.recyclerview.widget.DiffUtil
++import androidx.recyclerview.widget.ListAdapter
++import androidx.recyclerview.widget.RecyclerView
++import com.example.faithandroid.databinding.BulletinboardPostBinding
++import com.example.faithandroid.databinding.GridViewItemBinding
++import com.example.faithandroid.models.Post
++import com.example.faithandroid.network.FaithProperty
++
++class BulletinBoardListAdapter : ListAdapter<Post, BulletinBoardListAdapter.BulletinBoardPostViewHolder>(DiffCallback) {
++    class BulletinBoardPostViewHolder(private var binding: BulletinboardPostBinding):
++        RecyclerView.ViewHolder(binding.root){
++        fun bind(post: Post){
++            binding.property = post
++            binding.executePendingBindings()
++        }
++
++    }
++
++    companion object DiffCallback: DiffUtil.ItemCallback<Post>(){
++        override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
++            return oldItem === newItem
++        }
++
++        override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
++            return oldItem.id == newItem.id
++        }
++
++    }
++    override fun onCreateViewHolder(
++        parent: ViewGroup,
++        viewType: Int
++    ): BulletinBoardListAdapter.BulletinBoardPostViewHolder {
++        return BulletinBoardPostViewHolder(BulletinboardPostBinding.inflate(LayoutInflater.from(parent.context)))
++    }
++
++    override fun onBindViewHolder(
++        holder: BulletinBoardListAdapter.BulletinBoardPostViewHolder,
++        position: Int
++    ) {
++        val post = getItem(position)
++        holder.bind(post)
++    }
++
++}
+\ No newline at end of file
+Index: app/src/main/java/com/example/faithandroid/viewmodels/BulletinBoardViewModel.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.faithandroid.viewmodels\r\n\r\nimport androidx.lifecycle.LiveData\r\nimport androidx.lifecycle.MutableLiveData\r\nimport androidx.lifecycle.ViewModel\r\nimport com.example.faithandroid.models.TextPost\r\n\r\nclass BulletinBoardViewModel : ViewModel() {\r\n\r\n    var test = mutableListOf<TextPost>(TextPost(\"help ik voel me niet goed\", \"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.\"),TextPost(\"nu voel ik me beter\", \"Ik voel me nu al veel beter joupieeee\"))\r\n\r\n    private var testLive = MutableLiveData<String>(\"reeeeeeee\")\r\n\r\n    val testLivePublic: LiveData<String>\r\n    get() = testLive\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/faithandroid/viewmodels/BulletinBoardViewModel.kt	(revision d2d924196518077f243b69e10d522ae5631d26ae)
++++ app/src/main/java/com/example/faithandroid/viewmodels/BulletinBoardViewModel.kt	(date 1604828492811)
+@@ -1,16 +1,54 @@
+ package com.example.faithandroid.viewmodels
+ 
++import android.util.Log
+ import androidx.lifecycle.LiveData
+ import androidx.lifecycle.MutableLiveData
+ import androidx.lifecycle.ViewModel
++import com.example.faithandroid.models.GoalPost
++import com.example.faithandroid.models.Post
+ import com.example.faithandroid.models.TextPost
++import com.example.faithandroid.network.FaithApi
++import kotlinx.coroutines.CoroutineScope
++import kotlinx.coroutines.Dispatchers
++import kotlinx.coroutines.Job
++import kotlinx.coroutines.launch
+ 
+ class BulletinBoardViewModel : ViewModel() {
+ 
+-    var test = mutableListOf<TextPost>(TextPost("help ik voel me niet goed", "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."),TextPost("nu voel ik me beter", "Ik voel me nu al veel beter joupieeee"))
++    private var postList = MutableLiveData<List<Post>>()
++
++    val postListLive: LiveData<List<Post>>
++        get() = postList
++
++//    fun addGoalPost(goal: GoalPost){
++//        postList.value = (testLiveData.value)?.plus(goal)
++//    }
++
++    private var viewModelJob = Job()
++    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
++
++    init {
++        GetPostsOfBulletinBoard("dora.theexplorer1999@gmail.com")
++    }
+ 
+-    private var testLive = MutableLiveData<String>("reeeeeeee")
++    private fun GetPostsOfBulletinBoard(email: String) {
++        coroutineScope.launch {
++            var getPropertiesDeferred = FaithApi.retrofitService.getPostsOfBulletinBoardByAdolescentEmail(email);
++            try {
++                var listResult = getPropertiesDeferred.await()
++                if(listResult.size > 0){
++                    listResult.forEach{d -> Log.d("biden", d.title)}
++                    postList.value = listResult
++                }
++            } catch (e: Exception){
+ 
+-    val testLivePublic: LiveData<String>
+-    get() = testLive
++            }
++        }
++    }
++
++    override fun onCleared() {
++        super.onCleared()
++        viewModelJob.cancel()
++    }
++
+ }
+\ No newline at end of file
+Index: app/src/main/java/com/example/faithandroid/models/Post.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/faithandroid/models/Post.kt	(date 1604828492803)
++++ app/src/main/java/com/example/faithandroid/models/Post.kt	(date 1604828492803)
+@@ -0,0 +1,9 @@
++package com.example.faithandroid.models
++
++data class Post (
++   var id: Int,
++   var title: String,
++   var data: String,
++   var date: String,
++   var postType: Int
++)
+\ No newline at end of file
+Index: app/src/main/java/com/example/faithandroid/BulletinboardFragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.faithandroid\r\n\r\nimport android.content.Context\r\nimport android.content.Intent\r\n\r\nimport android.os.Bundle\r\nimport android.view.LayoutInflater\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport android.widget.Button\r\nimport android.widget.LinearLayout\r\nimport androidx.databinding.DataBindingUtil\r\nimport androidx.fragment.app.Fragment\r\nimport androidx.lifecycle.ViewModelProvider\r\nimport androidx.navigation.findNavController\r\nimport com.example.faithandroid.databinding.FragmentBulletinboardBinding\r\nimport com.example.faithandroid.viewmodels.BulletinBoardViewModel\r\nimport kotlinx.android.synthetic.main.textpost.view.*\r\n\r\n\r\nclass BulletinboardFragment: Fragment() {\r\n\r\n    private lateinit var viewModel: BulletinBoardViewModel\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n\r\n\r\n\r\n    }\r\n\r\n    override fun onCreateView(\r\n        inflater: LayoutInflater, container: ViewGroup?,\r\n        savedInstanceState: Bundle?\r\n    ): View? {\r\n      val binding = DataBindingUtil.inflate<FragmentBulletinboardBinding>(\r\n          inflater,\r\n          R.layout.fragment_bulletinboard,\r\n          container,\r\n          false\r\n      );\r\n\r\n        binding.requestConsultationButton.setOnClickListener {\r\n            val intent = Intent(this.context, PopupWindow::class.java)\r\n            intent.putExtra(\"popuptitle\", \"Aanvraag Gesprek\")\r\n            intent.putExtra(\"popuptext\", \"Uw gesprek werd aangevraagd! \\n Uw begeleider zal een melding ontvangen.\")\r\n            intent.putExtra(\"popupbtn\", \"OK\")\r\n            intent.putExtra(\"darkstatusbar\", false)\r\n            startActivity(intent)\r\n        }\r\n\r\n        binding.AddPostButton.setOnClickListener { view: View ->\r\n            view.findNavController().navigate(R.id.action_bulletinBoardFragment_to_optionsAddPostFragment)\r\n\r\n\r\n        }\r\n\r\n        viewModel = ViewModelProvider(this).get(BulletinBoardViewModel::class.java)\r\n\r\n\r\n        viewModel.test.forEach{ lala ->\r\n//            val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater\r\n            val rowView: View = inflater.inflate(R.layout.textpost, null)\r\n            var kortestring = lala.text.substring(0, 30) + \"...\"\r\n            rowView.bulletinboardTittle.text = lala.title\r\n            rowView.bulletinboardInhoud.text = kortestring\r\n            rowView.bulletinboardOpenButton.setOnClickListener{view: View ->\r\n                rowView.bulletinboardInhoud.text = lala.text\r\n            }\r\n            rowView.bulletinboardUnpinButton.setOnClickListener{view:View ->\r\n                binding.bulletinLayout.removeView(rowView);\r\n            }\r\n            binding.bulletinLayout.addView(rowView, binding.bulletinLayout.childCount - 1)\r\n\r\n        }\r\n\r\n       /* binding.requestConsultationButton.setOnClickListener() {\r\n            val intent = Intent(MainActivity.this, PopupWindow::class.java)\r\n            intent.putExtra(\"popuptitle\", \"Aanvraag Gesprek\")\r\n            intent.putExtra(\"popuptext\", \"Uw gesprek werd aangevraagd! \\n Uw begeleider zal een melding ontvangen.\")\r\n            intent.putExtra(\"popupbtn\", \"OK\")\r\n            intent.putExtra(\"darkstatusbar\", false)\r\n            startActivity(intent)\r\n        }*/\r\n\r\n\r\n        return binding.root\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/faithandroid/BulletinboardFragment.kt	(revision d2d924196518077f243b69e10d522ae5631d26ae)
++++ app/src/main/java/com/example/faithandroid/BulletinboardFragment.kt	(date 1604828492800)
+@@ -33,21 +33,19 @@
+         inflater: LayoutInflater, container: ViewGroup?,
+         savedInstanceState: Bundle?
+     ): View? {
+-      val binding = DataBindingUtil.inflate<FragmentBulletinboardBinding>(
+-          inflater,
+-          R.layout.fragment_bulletinboard,
+-          container,
+-          false
+-      );
++        viewModel = ViewModelProvider(this).get(BulletinBoardViewModel::class.java)
++      val binding = FragmentBulletinboardBinding.inflate(inflater)
+ 
+-        binding.requestConsultationButton.setOnClickListener {
+-            val intent = Intent(this.context, PopupWindow::class.java)
+-            intent.putExtra("popuptitle", "Aanvraag Gesprek")
+-            intent.putExtra("popuptext", "Uw gesprek werd aangevraagd! \n Uw begeleider zal een melding ontvangen.")
+-            intent.putExtra("popupbtn", "OK")
+-            intent.putExtra("darkstatusbar", false)
+-            startActivity(intent)
+-        }
++        binding.bulletinBoardList.adapter = BulletinBoardListAdapter()
++
++//        binding.requestConsultationButton.setOnClickListener {
++//            val intent = Intent(this.context, PopupWindow::class.java)
++//            intent.putExtra("popuptitle", "Aanvraag Gesprek")
++//            intent.putExtra("popuptext", "Uw gesprek werd aangevraagd! \n Uw begeleider zal een melding ontvangen.")
++//            intent.putExtra("popupbtn", "OK")
++//            intent.putExtra("darkstatusbar", false)
++//            startActivity(intent)
++//        }
+ 
+         binding.AddPostButton.setOnClickListener { view: View ->
+             view.findNavController().navigate(R.id.action_bulletinBoardFragment_to_optionsAddPostFragment)
+@@ -55,24 +53,8 @@
+ 
+         }
+ 
+-        viewModel = ViewModelProvider(this).get(BulletinBoardViewModel::class.java)
+-
+ 
+-        viewModel.test.forEach{ lala ->
+-//            val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+-            val rowView: View = inflater.inflate(R.layout.textpost, null)
+-            var kortestring = lala.text.substring(0, 30) + "..."
+-            rowView.bulletinboardTittle.text = lala.title
+-            rowView.bulletinboardInhoud.text = kortestring
+-            rowView.bulletinboardOpenButton.setOnClickListener{view: View ->
+-                rowView.bulletinboardInhoud.text = lala.text
+-            }
+-            rowView.bulletinboardUnpinButton.setOnClickListener{view:View ->
+-                binding.bulletinLayout.removeView(rowView);
+-            }
+-            binding.bulletinLayout.addView(rowView, binding.bulletinLayout.childCount - 1)
+-
+-        }
++        binding.bulletinBoardViewModel = viewModel;
+ 
+        /* binding.requestConsultationButton.setOnClickListener() {
+             val intent = Intent(MainActivity.this, PopupWindow::class.java)
