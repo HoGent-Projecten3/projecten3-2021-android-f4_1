@@ -1,0 +1,70 @@
+[
+    {
+        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\treasurechest.xml",
+        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\treasurechest.xml"
+    },
+    {
+        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\skyscraper_add_goal.xml",
+        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\skyscraper_add_goal.xml"
+    },
+    {
+        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\backpack.xml",
+        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\backpack.xml"
+    },
+    {
+        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\billboard_goal.xml",
+        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\billboard_goal.xml"
+    },
+    {
+        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\bulletinboard.xml",
+        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\bulletinboard.xml"
+    },
+    {
+        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\cinema.xml",
+        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\cinema.xml"
+    },
+    {
+        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\bulletinboard_text_post_toevoegen.xml",
+        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\bulletinboard_text_post_toevoegen.xml"
+    },
+    {
+        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\musicroom.xml",
+        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\musicroom.xml"
+    },
+    {
+        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\skyscraper.xml",
+        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\skyscraper.xml"
+    },
+    {
+        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\app_homescherm.xml",
+        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\app_homescherm.xml"
+    },
+    {
+        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\login.xml",
+        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\login.xml"
+    },
+    {
+        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\shoppingcenter.xml",
+        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\shoppingcenter.xml"
+    },
+    {
+        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\billboard.xml",
+        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\billboard.xml"
+    },
+    {
+        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\skyscraper_goaldetails.xml",
+        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\skyscraper_goaldetails.xml"
+    },
+    {
+        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\activity_test.xml",
+        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\activity_test.xml"
+    },
+    {
+        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\bulletinboard_options_add_post.xml",
+        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\bulletinboard_options_add_post.xml"
+    },
+    {
+        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\bulletinboard_textpost.xml",
+        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\bulletinboard_textpost.xml"
+    }
+]
