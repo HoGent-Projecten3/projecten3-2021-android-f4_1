@@ -28,6 +28,12 @@ jobs:
           java-package: jdk
       - name: Make gradlew executable
         run: chmod +x ./gradlew
+      - name: install dos2unix
+        run: sudo apt-get install dos2unix
+      - name: convert gradlew
+        run: dos2unix ./gradlew
+      - name: test gradlew
+        run: ./gradlew clean -d
       - name: build release 
         run: ./gradlew --stacktrace assembleRelease
       - name: Firebase App Distribution
