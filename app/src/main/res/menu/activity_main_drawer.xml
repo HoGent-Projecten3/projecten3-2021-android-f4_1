@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_options"
-            android:icon="@drawable/ic_tool"
-            android:title="@string/instellingen" />
+    <group>
+        <item android:id="@+id/homeFragment"
+            android:icon="@drawable/ic_city"
+            android:title="@string/city" />
         <item
             android:id="@+id/profielFragment"
-            android:checkable="false"
-            android:enabled="true"
             android:icon="@drawable/ic_person"
             android:title="@string/profiel"
             android:visible="true" />

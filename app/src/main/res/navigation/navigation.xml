@@ -154,11 +154,13 @@
     </fragment>
     <fragment
         android:id="@+id/profielFragment"
-        android:name="com.example.faithandroid.profiel.profielFragment"
+        android:name="com.example.faithandroid.profiel.ProfielFragment"
         android:label="profielFragment" >
         <action
             android:id="@+id/action_profielFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <activity
         android:id="@+id/mainActivity"

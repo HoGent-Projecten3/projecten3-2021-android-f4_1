@@ -3,10 +3,8 @@ package com.example.faithandroid
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModel
@@ -15,7 +13,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
-import com.example.faithandroid.profiel.profielFragment
+import com.example.faithandroid.profiel.ProfielFragment
 import com.google.android.material.navigation.NavigationView
 
 
@@ -96,7 +94,7 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
         when (menuItem.itemId) {
             R.id.profielFragment -> {
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.layoutToolBar, profielFragment())
+                    .replace(R.id.layoutToolBar, ProfielFragment())
                     .commit()
                 drawerLayout.close()
             }

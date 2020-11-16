@@ -3,6 +3,7 @@ package com.example.faithandroid.network
 import android.net.Proxy
 import android.net.http.HttpResponseCache
 import android.util.Log
+import com.example.faithandroid.models.ChangePassword
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.TextPost
@@ -74,6 +75,10 @@ interface FaithApiService {
 
     @POST("City/DeleteGoalByEmail")
     fun removeGoal(@Query("id") id: Int, @Query("email") email: String)
+
+    @Headers("Content-Type: application/json")
+    @POST("/api/Account/changepassword")
+    fun changepassword(@Body  body : ChangePassword) : Call<Void>
 
 }
 
