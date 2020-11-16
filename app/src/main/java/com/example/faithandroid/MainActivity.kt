@@ -1,5 +1,6 @@
 package com.example.faithandroid
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -15,6 +16,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
+import com.example.faithandroid.login.uilogin.LoginActivity
 import com.example.faithandroid.profiel.profielFragment
 import com.google.android.material.navigation.NavigationView
 
@@ -27,15 +29,12 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var viewModel: ViewModel
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
          setContentView(R.layout.activity_test)
 
-
         drawerLayout = findViewById(R.id.drawerLayout);
-       // viewModel = ViewModelProvider(this).get(OverviewViewModel::class.java)
-
-
 
         //setSupportActionBar(R.id.)
         val navHostFragment =
@@ -50,7 +49,11 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
         supportActionBar?.setHomeButtonEnabled(true)
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setHomeButtonEnabled(true)
+
+        val taskIntent =  Intent(this,LoginActivity::class.java)
+        startActivity(taskIntent)
     }
+
 
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {

@@ -8,7 +8,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".login">
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -55,9 +54,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
-                        android:password="false"
+                        android:password="true"
                         android:singleLine="true"
-                        android:text="ZwieberNee!NietStelen"/>
+                        android:text="ZwieberNee!NietStelen1"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
@@ -65,6 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="100dp"
+
                     android:text="@string/login"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -113,6 +113,8 @@
                     app:layout_constraintVertical_bias="0.3" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
 
 </layout>
+

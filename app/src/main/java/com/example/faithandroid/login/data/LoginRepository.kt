@@ -1,6 +1,9 @@
 package com.example.faithandroid.login.data
 
+import android.util.Log
 import com.example.faithandroid.login.data.LoggedInUser
+import com.example.faithandroid.login.uilogin.LoginResult
+import com.example.faithandroid.models.Adolescent
 
 /**
  * Class that requests authentication and user information from the remote data source and
@@ -27,7 +30,7 @@ class LoginRepository(val dataSource: LoginDataSource) {
         dataSource.logout()
     }
 
-    fun login(username: String, password: String): Result<LoggedInUser> {
+      fun login(username: String, password: String): Result<LoggedInUser> {
         // handle login
         val result = dataSource.login(username, password)
 
@@ -40,6 +43,7 @@ class LoginRepository(val dataSource: LoginDataSource) {
 
     private fun setLoggedInUser(loggedInUser: LoggedInUser) {
         this.user = loggedInUser
+
         // If user credentials will be cached in local storage, it is recommended it be encrypted
         // @see https://developer.android.com/training/articles/keystore
     }

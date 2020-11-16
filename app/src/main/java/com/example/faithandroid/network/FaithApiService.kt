@@ -1,25 +1,23 @@
 package com.example.faithandroid.network
 
-import android.net.Proxy
-import android.net.http.HttpResponseCache
-import android.util.Log
+import com.example.faithandroid.login.data.User
+import com.example.faithandroid.models.Adolescent
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.TextPost
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.squareup.moshi.Json
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.Deferred
-import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
+import javax.security.auth.callback.Callback
 
 //TODO: give url
-private const val BASE_URL = "https://growapi.azurewebsites.net/api/"
+private const val BASE_URL = "https://apigrow.azurewebsites.net/api/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -32,6 +30,16 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface FaithApiService {
+
+    @Headers("Content-Type: application/json", "accept: text/plain")
+    @POST("Account/CreateToken")
+    fun loginAdolescent(@Body adolescent: User):
+           Deferred<String>
+
+
+    @GET("Account/GetAdolescent")
+    fun getAdolescent(@Query("email") email: String):
+           Deferred<Adolescent>
 
     @GET("Account/GetAdolescentsByCounselorEmail/bob.debouwer1998@gmail.com")
     fun getProperties():
@@ -74,6 +82,7 @@ interface FaithApiService {
 
     @POST("City/DeleteGoalByEmail")
     fun removeGoal(@Query("id") id: Int, @Query("email") email: String)
+
 
 }
 
