@@ -1,6 +1,5 @@
 package com.example.faithandroid.network
 
-
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import com.example.faithandroid.login.data.User
@@ -8,6 +7,12 @@ import com.example.faithandroid.models.Adolescent
 
 import com.example.faithandroid.PlaceType
 import com.example.faithandroid.PostType
+
+
+import android.net.Proxy
+import android.net.http.HttpResponseCache
+import android.util.Log
+import com.example.faithandroid.models.ChangePassword
 
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
@@ -105,6 +110,10 @@ interface FaithApiService {
     @Headers("Content-Type: application/json", "accept: application/json")
     @PUT("city/{placeType}/add-existing/{postId}")
     fun addExistingPostToPlace(@Path("placeType") placeType: Int, @Path("postId") postId: Int): Call<Void>
+
+    @Headers("Content-Type: application/json")
+    @POST("/api/Account/changepassword")
+    fun changepassword(@Body  body : ChangePassword) : Call<Void>
 
 }
 

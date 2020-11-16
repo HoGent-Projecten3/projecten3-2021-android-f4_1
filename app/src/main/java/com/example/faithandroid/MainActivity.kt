@@ -1,4 +1,6 @@
+
 package com.example.faithandroid
+
 
 import android.content.Context
 import android.content.Intent
@@ -34,7 +36,7 @@ import com.example.faithandroid.login.uilogin.LoginActivity
 import com.example.faithandroid.login.uilogin.LoginViewModel
 import com.example.faithandroid.login.uilogin.LoginViewModelFactory
 import com.example.faithandroid.profiel.ProfielViewModel
-import com.example.faithandroid.profiel.profielFragment
+import com.example.faithandroid.profiel.ProfielFragment
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
@@ -42,7 +44,7 @@ import kotlinx.android.synthetic.main.activity_main.view.*
 
 //import androidx.databinding.DataBindingUtil
 
-class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavigationItemSelectedListener {
     
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
@@ -147,7 +149,7 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
         when (menuItem.itemId) {
             R.id.profielFragment -> {
                  supportFragmentManager.beginTransaction()
-                    .replace(R.id.layoutToolBar, profielFragment())
+                    .replace(R.id.layoutToolBar, ProfielFragment())
                     .commit()
             }
             R.id.loginFragment -> {

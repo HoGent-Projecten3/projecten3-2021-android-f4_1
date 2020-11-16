@@ -73,6 +73,7 @@
     <string name="nieuw_wachtwoord_confirmeren">Nieuw wachtwoord confirmeren</string>
     <string name="nieuw_wachtwoord">Nieuw wachtwoord</string>
     <string name="oud_wachtwoord">Oud wachtwoord</string>
+
     <string name="hint_text">Opgeslagen plaatsen</string>
     <string name="camera">Camera</string>
     <string name="camerafolder">Camerafolder</string>
@@ -86,5 +87,6 @@
     <string name="lbl_list_goalsteps">De stappen:</string>
     <string name="lbl_description_goal">Beschrijving</string>
     <string name="soort_post_filter">Soort post filter</string>
+    <string name="city">Stad</string>
 
 </resources>
