@@ -40,7 +40,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
             _loginResult.value =
                 LoginResult(
                     success = LoggedInUserView(
-                        displayName = result.data.displayName //result.data.firstname +" "  + result.data.name
+                        displayName = result.data.firstName //result.data.firstname +" "  + result.data.name
                     )
                 )
             //adolescent.value?.firstname =result.data.firstname

@@ -13,6 +13,7 @@ import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.*
 import javax.security.auth.callback.Callback
 
@@ -21,9 +22,11 @@ private const val BASE_URL = "https://apigrow.azurewebsites.net/api/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
+
     .build()
 
 private val retrofit = Retrofit.Builder()
+    .addConverterFactory(ScalarsConverterFactory.create())
     .addConverterFactory(MoshiConverterFactory.create(moshi))
     .addCallAdapterFactory(CoroutineCallAdapterFactory())
     .baseUrl(BASE_URL)
@@ -31,10 +34,10 @@ private val retrofit = Retrofit.Builder()
 
 interface FaithApiService {
 
-    @Headers("Content-Type: application/json", "accept: text/plain")
+    @Headers("Content-Type: application/json")
     @POST("Account/CreateToken")
     fun loginAdolescent(@Body adolescent: User):
-           Deferred<String>
+           Call<String>
 
 
     @GET("Account/GetAdolescent")
@@ -82,6 +85,9 @@ interface FaithApiService {
 
     @POST("City/DeleteGoalByEmail")
     fun removeGoal(@Query("id") id: Int, @Query("email") email: String)
+
+    @GET("Account/GetAdolescent")
+    fun GetAdolescent(@Query("email")email: String): Deferred<Adolescent>
 
 
 }

@@ -114,7 +114,7 @@ class LoginActivity : AppCompatActivity() {
 
             }
             catch (e: Exception ){
-              Log.d("ERROR", e.message.toString())
+              Log.d("ERROR", e.toString())
             }
           }
 

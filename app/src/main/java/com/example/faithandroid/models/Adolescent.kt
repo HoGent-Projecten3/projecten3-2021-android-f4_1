@@ -10,5 +10,5 @@ data class Adolescent (
     var name: String,
     var email : String,
     var wantsConsultation: Boolean,
-    var dateOfBirth : LocalDateTime
+    var dateOfBirth : String
 )
