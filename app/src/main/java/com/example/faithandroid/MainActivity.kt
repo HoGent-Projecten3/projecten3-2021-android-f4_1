@@ -5,7 +5,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +28,9 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var viewModel: ViewModel
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,31 +56,8 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setHomeButtonEnabled(true)
 
-        //spinner (dropdownlist plaatsen)
-        // access the items of the list
-        val plaatsen = resources.getStringArray(R.array.Plaatsen)
 
-        // access the spinner
-        val spinner = findViewById<Spinner>(R.id.spinner)
-        if (spinner != null) {
-            val adapter = ArrayAdapter(this,
-                android.R.layout.simple_spinner_item, plaatsen)
-            spinner.adapter = adapter
 
-            spinner.onItemSelectedListener = object :
-                AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>,
-                                            view: View, position: Int, id: Long) {
-                    Toast.makeText(this@MainActivity,
-                        getString(R.string.selected_item) + " " +
-                                "" + plaatsen[position], Toast.LENGTH_SHORT).show()
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // write code to perform some action
-                }
-            }
-        }
     }
 
     override fun onBackPressed() {

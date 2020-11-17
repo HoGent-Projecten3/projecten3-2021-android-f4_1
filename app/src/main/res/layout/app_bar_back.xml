@@ -26,12 +26,12 @@
 
             <ImageView
                 android:id="@+id/imageMenuBack"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="35dp"
+                android:layout_height="34dp"
                 android:contentDescription="@string/app_name"
+                android:onClick="ClickBack"
                 app:srcCompat="@drawable/ic_back"
-                app:tint="@color/colorWhite"
-                android:onClick="ClickBack"/>
+                app:tint="@color/colorWhite" />
 
             <TextView
                 android:id="@+id/textTitle"
