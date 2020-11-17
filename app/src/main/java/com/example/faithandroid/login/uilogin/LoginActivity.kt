@@ -18,12 +18,16 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import com.example.faithandroid.HomeFragment
+import com.example.faithandroid.MainActivity
 import com.example.faithandroid.R
 import com.example.faithandroid.login.LoginFragment
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_test.*
 import kotlinx.android.synthetic.main.login.*
 import kotlinx.android.synthetic.main.login.view.*
+import javax.xml.parsers.DocumentBuilderFactory.newInstance
+import javax.xml.transform.TransformerFactory.newInstance
 
 
 class LoginActivity : AppCompatActivity() {
@@ -40,6 +44,8 @@ class LoginActivity : AppCompatActivity() {
         val password = findViewById<EditText>(R.id.txtwachtwoord)
         val login = findViewById<Button>(R.id.login_button)
         val loading = findViewById<ProgressBar>(R.id.loading)
+
+
 
         loginViewModel = ViewModelProvider(this,
             LoginViewModelFactory()
@@ -110,10 +116,11 @@ class LoginActivity : AppCompatActivity() {
                 loading.visibility = View.VISIBLE
                 Log.i("aaaaaa",username.text.toString() + " "  + password.text.toString())
                 loginViewModel.login(username.text.toString(), password.text.toString())
-
-                 supportFragmentManager.findFragmentById(R.id.action_loginFragment_to_homeFragment) as LoginFragment
+               //  supportFragmentManager.findFragmentById(R.id.action_loginFragment_to_homeFragment) as LoginFragment
              //  this.findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
 
+                val taskIntent =  Intent(context,MainActivity::class.java)
+                startActivity(taskIntent)
 
             }
             catch (e: Exception ){
@@ -123,6 +130,9 @@ class LoginActivity : AppCompatActivity() {
 
 
         }
+
+      /*  val taskIntent =  Intent(this, HomeFragment::class.java)
+        startActivity(taskIntent)*/
     }
 
 

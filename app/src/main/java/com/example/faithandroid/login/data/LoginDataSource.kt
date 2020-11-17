@@ -27,10 +27,13 @@ class LoginDataSource {
     val loggedInUser: LiveData<Adolescent>
         get() = _loggedInUser
 
+    private var ado: Adolescent? = null
+
+
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-      fun login(username: String, password: String): Result<LoggedInUser>{
+      fun login(username: String, password: String): Result<Adolescent>{
 
            coroutineScope.launch {
 
@@ -43,9 +46,10 @@ class LoginDataSource {
                     override fun onResponse(call: Call<String>, response: Response<String>) {
                         if (response.isSuccessful()) {
                             val responseString: String? = response.body()
-                          
+
                             if (responseString != null) {
                                 Log.d("TOKEN", responseString)
+                                  getAdolescent(username)
                               /*  coroutineScope.launch {//dora.theexplorer1999@gmail.com
                                     val user =
                                         FaithApi.retrofitService.GetAdolescent(username).await()
@@ -73,7 +77,21 @@ class LoginDataSource {
           _loggedInUser.value?.firstName?.let { Log.d("user", it) }
           Log.d("USER", loggedInUser.value.toString())*/
          // return  Result.Success(loggedInUser.value!!)
-        return Result.Success(user)
+        return Result.Success(ado!!)
+    }
+    private fun getAdolescent(username: String) {
+        coroutineScope.launch {
+            try {
+                val adolescent = FaithApi.retrofitService.getAdolescent(username)
+                val a= adolescent.await()
+                ado = a
+                Log.d("adolescent", "NICE " + a.firstName + " " +a.name)
+             //   Log.d("HHH", ado.value.toString())
+            } catch (e: Exception) {
+                Log.i("FOUT", "FOUT opgelopen")
+            }
+        }
+
     }
 
     fun logout() {

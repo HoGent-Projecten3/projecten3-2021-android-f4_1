@@ -39,10 +39,10 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
             _loginResult.value =
                 LoginResult(
                     success = LoggedInUserView(
-                        displayName = result.data.displayName //result.data.firstname +" "  + result.data.name
+                        displayName = result.data.email //result.data.firstname +" "  + result.data.name
                     )
                 )
-            getAdolescent(username)
+            //getAdolescent(username)
         } else {
             _loginResult.value =
                 LoginResult(error = R.string.login_failed)
@@ -83,7 +83,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         return password.length > 5
     }
 
-    private fun getAdolescent(username: String) {
+   /* private fun getAdolescent(username: String) {
         coroutineScope.launch {
             try {
                 val adolescent = FaithApi.retrofitService.getAdolescent(username)
@@ -95,5 +95,5 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
                 Log.i("FOUT", "FOUT opgelopen")
             }
         }
-    }
+    }*/
 }

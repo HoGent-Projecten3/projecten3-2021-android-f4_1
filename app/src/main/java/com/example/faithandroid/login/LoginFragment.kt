@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.faithandroid.DrawerInterface
+import com.example.faithandroid.HomeFragment
 import com.example.faithandroid.MainActivity
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.LoginBinding
@@ -59,11 +60,9 @@ class LoginFragment : Fragment() {
         );
 
 
-     //   viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-
-
        binding.loginButton.setOnClickListener { view: View ->
             Log.i("zzzz", "DIT word gedaan")
+
             view.findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
 
         }
