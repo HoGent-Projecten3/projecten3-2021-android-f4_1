@@ -19,6 +19,7 @@ import com.example.faithandroid.R
 import com.example.faithandroid.databinding.LoginBinding
 import com.example.faithandroid.login.uilogin.LoginActivity
 import com.example.faithandroid.login.uilogin.LoginViewModel
+import kotlinx.android.synthetic.main.login.*
 
 
 class LoginFragment : Fragment() {
@@ -31,7 +32,7 @@ class LoginFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
 
-       // Intent intent = new Intent(LoginActivity.this)
+       //val intent =  Intent(LoginActivity.this)
     }
 
     override fun onAttach(activity: Activity) {
@@ -61,10 +62,8 @@ class LoginFragment : Fragment() {
      //   viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
 
-
        binding.loginButton.setOnClickListener { view: View ->
             Log.i("zzzz", "DIT word gedaan")
-
             view.findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
 
         }

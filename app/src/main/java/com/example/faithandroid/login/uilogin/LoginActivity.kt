@@ -17,7 +17,9 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import com.example.faithandroid.R
+import com.example.faithandroid.login.LoginFragment
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_test.*
 import kotlinx.android.synthetic.main.login.*
@@ -108,13 +110,14 @@ class LoginActivity : AppCompatActivity() {
                 loading.visibility = View.VISIBLE
                 Log.i("aaaaaa",username.text.toString() + " "  + password.text.toString())
                 loginViewModel.login(username.text.toString(), password.text.toString())
-               // loginViewModel.getAdolescent(username.text.toString())
 
-              supportFragmentManager.findFragmentById(R.id.action_loginFragment_to_homeFragment)
+                 supportFragmentManager.findFragmentById(R.id.action_loginFragment_to_homeFragment) as LoginFragment
+             //  this.findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+
 
             }
             catch (e: Exception ){
-              Log.d("ERROR", e.toString())
+              Log.d("ERROR", e.stackTraceToString())
             }
           }
 

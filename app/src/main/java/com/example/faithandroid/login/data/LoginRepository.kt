@@ -13,7 +13,7 @@ import com.example.faithandroid.models.Adolescent
 class LoginRepository(val dataSource: LoginDataSource) {
 
     // in-memory cache of the loggedInUser object
-    var user: Adolescent? = null
+    var user: LoggedInUser? = null // Adolescent
         private set
 
     val isLoggedIn: Boolean
@@ -30,18 +30,19 @@ class LoginRepository(val dataSource: LoginDataSource) {
         dataSource.logout()
     }
 
-      fun login(username: String, password: String): Result<Adolescent> {
+      fun login(username: String, password: String): Result<LoggedInUser> {
         // handle login
         val result = dataSource.login(username, password)
 
         if (result is Result.Success) {
+           // setLoggedInUser(result.data)
             setLoggedInUser(result.data)
         }
 
         return result
     }
 
-    private fun setLoggedInUser(loggedInUser: Adolescent) {
+    private fun setLoggedInUser(loggedInUser: LoggedInUser) { // loggedInUser: Adolescent
         this.user = loggedInUser
 
         // If user credentials will be cached in local storage, it is recommended it be encrypted
