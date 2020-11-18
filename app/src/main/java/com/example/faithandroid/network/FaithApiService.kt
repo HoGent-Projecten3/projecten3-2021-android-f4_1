@@ -3,6 +3,8 @@ package com.example.faithandroid.network
 import android.net.Proxy
 import android.net.http.HttpResponseCache
 import android.util.Log
+import com.example.faithandroid.PlaceType
+import com.example.faithandroid.PostType
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.TextPost
@@ -74,6 +76,10 @@ interface FaithApiService {
 
     @POST("City/DeleteGoalByEmail")
     fun removeGoal(@Query("id") id: Int, @Query("email") email: String)
+
+
+    @GET("")
+    fun GetFilteredFromPlace(@Query("PlaceType") placeType: PlaceType, @Query("PostType") postType: PostType, @Query("email") email: String)
 
 }
 

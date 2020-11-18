@@ -46,6 +46,11 @@ class OptionsAddPostFragment: Fragment() {
             view.findNavController().navigate(action)
         }
 
+        binding.VideoButton.setOnClickListener {
+            view: View -> val action = OptionsAddPostFragmentDirections.actionOptionsAddPostFragmentToVideoToevoegenFragment()
+            view.findNavController().navigate(action)
+        }
+
 
 
         return binding.root

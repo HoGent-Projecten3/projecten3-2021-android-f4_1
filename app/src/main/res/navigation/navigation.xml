@@ -37,6 +37,9 @@
         <argument
             android:name="placeType"
             app:argType="com.example.faithandroid.PlaceType" />
+        <action
+            android:id="@+id/action_optionsAddPostFragment_to_videoToevoegenFragment"
+            app:destination="@id/videoToevoegenFragment" />
     </fragment>
 
     <fragment
@@ -165,4 +168,8 @@
         android:name="com.example.faithandroid.MainActivity"
         android:label="app_sidebar"
         tools:layout="@layout/app_sidebar" />
+    <fragment
+        android:id="@+id/videoToevoegenFragment"
+        android:name="com.example.faithandroid.VideoToevoegenFragment"
+        android:label="VideoToevoegenFragment" />
 </navigation>
