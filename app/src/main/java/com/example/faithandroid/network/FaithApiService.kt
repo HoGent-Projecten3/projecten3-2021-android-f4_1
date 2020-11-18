@@ -60,6 +60,14 @@ interface FaithApiService {
     fun getPostsOfBulletinBoardByAdolescentEmail(@Query("email") email: String):
         Deferred<List<Post>>
 
+    @GET("City/GetPostsOfBackpackByAdolescentEmail")
+    fun getPostsOfBackpackByAdolescentEmail(@Query("email") email: String):
+            Deferred<List<Post>>
+
+    @GET("City/GetPostsOfTreasureChestByAdolescentEmail")
+    fun getPostsOfTreasureChestByAdolescentEmail(@Query("email") email: String):
+            Deferred<List<Post>>
+
     @GET("City/GetBillboardGoalsByAdolescentEmail")
     fun getBillboardGoalsByAdolescentEmail(@Query("email") email: String): Deferred<List<GoalPost>>
 
