@@ -3,6 +3,7 @@ package com.example.faithandroid
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.network.FaithApi
 import kotlinx.coroutines.*
@@ -11,7 +12,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.http.Body
 
-class PostViewModel {
+class PostViewModel: ViewModel() {
 
     private val _posts = MutableLiveData<List<Post>>()
     val postList: LiveData<List<Post>>

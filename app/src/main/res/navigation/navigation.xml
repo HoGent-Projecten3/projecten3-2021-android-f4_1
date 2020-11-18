@@ -170,6 +170,14 @@
         tools:layout="@layout/app_sidebar" />
     <fragment
         android:id="@+id/videoToevoegenFragment"
-        android:name="com.example.faithandroid.VideoToevoegenFragment"
-        android:label="VideoToevoegenFragment" />
+        android:name="com.example.faithandroid.post.video.VideoToevoegenFragment"
+        android:label="VideoToevoegenFragment" >
+        <action
+            android:id="@+id/action_videoToevoegenFragment_to_nieuweVideoPost"
+            app:destination="@id/nieuweVideoPost" />
+    </fragment>
+    <fragment
+        android:id="@+id/nieuweVideoPost"
+        android:name="com.example.faithandroid.post.video.NieuweVideoPost"
+        android:label="NieuweVideoPost" />
 </navigation>

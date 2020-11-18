@@ -1,4 +1,4 @@
-package com.example.faithandroid
+package com.example.faithandroid.post.video
 
 import android.app.Activity.RESULT_OK
 import android.content.ActivityNotFoundException
@@ -10,16 +10,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import com.example.faithandroid.PlaceType
+import com.example.faithandroid.PostViewModel
+import com.example.faithandroid.R
+import com.example.faithandroid.bulletinboard.BulletinboardFragmentDirections
 import com.example.faithandroid.databinding.VideoToevoegenBinding
+import com.google.android.material.textfield.TextInputLayout
 
 
 class VideoToevoegenFragment: Fragment() {
 
+
+    private val _videoGekozen = MutableLiveData<Boolean>(false)
+    val videoGekozen: LiveData<Boolean>
+        get() = _videoGekozen
+
     val PICK_IMAGE = 1
     val REQUEST_VIDEO_CAPTURE = 1
+
+    private lateinit var viewModel: PostViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,6 +79,7 @@ class VideoToevoegenFragment: Fragment() {
 //                throw e
 //            }
 //        }
+        viewModel = ViewModelProvider(this).get(PostViewModel::class.java)
 
         binding.album.setOnClickListener{ view: View ->
             val getIntent = Intent(Intent.ACTION_GET_CONTENT)
@@ -119,6 +135,10 @@ class VideoToevoegenFragment: Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == PICK_IMAGE && resultCode == RESULT_OK) {
             Log.d("GELUKT", resultCode.toString())
+            _videoGekozen.value = true;
+            this.view?.findViewById<TextInputLayout>(R.id.titelVeld)?.visibility = View.VISIBLE
+
+
         }
         if (data != null) {
             data.toString()?.let { Log.d("NIET GELUKT", it) }
