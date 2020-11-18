@@ -180,4 +180,8 @@
         android:id="@+id/nieuweVideoPost"
         android:name="com.example.faithandroid.post.video.NieuweVideoPost"
         android:label="NieuweVideoPost" />
+    <fragment
+        android:id="@+id/addPhotoFragment"
+        android:name="com.example.faithandroid.addPhotoFragment"
+        android:label="addPhotoFragment" />
 </navigation>

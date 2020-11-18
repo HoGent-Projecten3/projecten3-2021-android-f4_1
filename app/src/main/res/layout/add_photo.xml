@@ -50,11 +50,11 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/plaatsen"
                         android:layout_marginLeft="10dp">
 
                         <AutoCompleteTextView
                             android:id="@+id/dropdownPlaatsen"
+                            android:inputType="none"
                             android:layout_width="220dp"
                             android:layout_height="wrap_content"
                             android:textColorHint="#FFFFFF" />
@@ -62,11 +62,11 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
-
-                    <GridView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager">
+                </androidx.recyclerview.widget.RecyclerView>
                 </LinearLayout>
             </FrameLayout>
 
