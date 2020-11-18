@@ -4,6 +4,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.faithandroid.backpack.BackpackPostAdapter
 import com.example.faithandroid.billboard.BillboardGridAdapter
 import com.example.faithandroid.bulletinboard.BulletinBoardPostAdapter
 import com.example.faithandroid.models.Post
@@ -26,5 +27,11 @@ fun bindRecyclerViewBillboard(recyclerView: RecyclerView, data: List<GoalPost>?)
 @BindingAdapter("TreasurechestlistData")
 fun bindRecyclerViewTreasurechest(recyclerView: RecyclerView, data: List<Post>?){
     val adapter = recyclerView.adapter as TreasureChestPostAdapter
+    adapter.submitList(data)
+}
+
+@BindingAdapter("BackpacklistData")
+fun bindRecyclerViewBackpack(recyclerView: RecyclerView, data: List<Post>?){
+    val adapter = recyclerView.adapter as BackpackPostAdapter
     adapter.submitList(data)
 }
