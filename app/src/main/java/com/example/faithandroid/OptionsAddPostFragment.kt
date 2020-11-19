@@ -58,7 +58,11 @@ class OptionsAddPostFragment: Fragment() {
          * navigate to options for images posts
          */
         binding.FotoButton.setOnClickListener {
-
+            view: View -> val action =
+            OptionsAddPostFragmentDirections.actionOptionsAddPostFragmentToAddPhotoFragment(
+                args.placeType
+            )
+            view.findNavController().navigate(action)
 
         }
 
