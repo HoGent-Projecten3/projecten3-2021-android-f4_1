@@ -1,6 +1,5 @@
 package com.example.faithandroid
 
-
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
@@ -37,7 +36,8 @@ class addPhotoFragment: Fragment() {
             R.layout.add_photo,
             container,
             false
-        );
+
+        )
 
         binding.IconFolder.setOnClickListener { view: View ->
 
