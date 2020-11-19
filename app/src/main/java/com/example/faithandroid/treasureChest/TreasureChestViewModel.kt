@@ -21,7 +21,7 @@ class TreasureChestViewModel : ViewModel() {
 
     //Lijst van posts
     var mockData = mutableListOf<Post>(
-        Post(0, "Op maandag zag ik een hond", "Ik was gaan wandelen met mijn mama en zag de schattigste hond. Het was een lieve hond en ik mocht hem aaien, wat ik echt fantastisch vond. Ik heb gevraagd of ik er misschien eens mee mocht gaan wandelen. De meneer zei dat dat zeker mocht", "2012-03-19T03:22"),
+        /*Post(0, "Op maandag zag ik een hond", "Ik was gaan wandelen met mijn mama en zag de schattigste hond. Het was een lieve hond en ik mocht hem aaien, wat ik echt fantastisch vond. Ik heb gevraagd of ik er misschien eens mee mocht gaan wandelen. De meneer zei dat dat zeker mocht", "2012-03-19T03:22"),
         Post(1, "Stomme school", "IK HAAT SCHOOL, IK SNAP NIET DAT IEMAND OOIT NAAR SCHOOL GAAT LAAT MIJ GEWOON SLAPEN", "2012-03-19T04:22"),
         Post(3, "Ik wil zo graag op reis gaan", "Maakt niet eens uit naar waar. Ik ben het beu om constant thuis te zitten zonder sociaal contact. Ik wil op roadtrip met mijn vrienden. Ik wil bergwandelingen maken en zwemmen in de zee. Ik wil een pintje drinken rond een kampvuur", "2012-03-19T05:22"),
         Post(4, "Ik voel mij echt slecht", "", "2012-03-19T07:22"),
@@ -29,7 +29,7 @@ class TreasureChestViewModel : ViewModel() {
         Post(6, "noooo you cant just convert this meme to text", "description go brrrrrr", "2012-03-19T09:22"),
         Post(7, "Image", "this is an image", "2012-03-19T07:22", PostType.Image, "https://d16kd6gzalkogb.cloudfront.net/magazine_images/Salvador-Dali-The-Persistence-of-Memory-1931-c.jpg"),
         Post(8, "Video", "This is a video", "2012-03-19T07:22", PostType.Video, "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"),
-        Post(9, "Audio", "This is audio", "2012-03-19T07:22", PostType.Audio)
+        Post(9, "Audio", "This is audio", "2012-03-19T07:22", PostType.Audio)*/
     )
 
     private val _postList = MutableLiveData<List<Post>>()

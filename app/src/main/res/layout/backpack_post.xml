@@ -43,7 +43,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginBottom="16dp"
-                    android:visibility='@{post.PostType == posttype.Text?View.VISIBLE:View.GONE}'
+                    android:visibility='@{post.PostType == posttype.Text.ordinal()?View.VISIBLE:View.GONE}'
                     android:orientation="vertical">
 
                     <TextView
@@ -72,7 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:visibility='@{post.PostType == posttype.Image?View.VISIBLE:View.GONE}'
+                    android:visibility='@{post.PostType == posttype.Image.ordinal()?View.VISIBLE:View.GONE}'
                     android:scaleType="centerCrop"
                     />
 
@@ -82,7 +82,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:visibility='@{post.PostType == posttype.Video?View.VISIBLE:View.GONE}'
+                    android:visibility='@{post.PostType == posttype.Video.ordinal()?View.VISIBLE:View.GONE}'
                     android:src="@drawable/cinema"/>
 
                 <!--Audiopost-->
@@ -91,7 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:visibility='@{post.PostType == posttype.Audio?View.VISIBLE:View.GONE}'
+                    android:visibility='@{post.PostType == posttype.Audio.ordinal()?View.VISIBLE:View.GONE}'
                     android:src="@drawable/sound" />
 
             </LinearLayout>

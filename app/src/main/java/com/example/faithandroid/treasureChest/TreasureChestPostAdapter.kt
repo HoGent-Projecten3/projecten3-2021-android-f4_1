@@ -25,10 +25,10 @@ class TreasureChestPostAdapter : ListAdapter<Post, TreasureChestPostAdapter.Trea
         fun bind(post: Post){
             binding.post = post
             //inding.TreasurechestVideo.setVideoURI(Uri.parse(post.uri))
-            if (post.postType == PostType.Image){
+            if (post.postType == PostType.Image.ordinal){
                 Picasso.get().load(post.uri).into(binding.TreasurechestImage)
             }
-            if (post.postType == PostType.Video){
+            if (post.postType == PostType.Video.ordinal){
 
             }
             binding.date = LocalDate.parse(post.date, DateTimeFormatter.ISO_LOCAL_DATE_TIME).format(
@@ -38,7 +38,7 @@ class TreasureChestPostAdapter : ListAdapter<Post, TreasureChestPostAdapter.Trea
 
             binding.treasurechestCard.setOnClickListener { view: View ->
                 when (post.postType) {
-                    PostType.Image -> {
+                    PostType.Image.ordinal -> {
                         /*var imageView: ImageView? = null
                         imageView?.setImageURI(Uri.parse(post.uri))
                         MaterialAlertDialogBuilder(binding.root.context)
@@ -46,18 +46,18 @@ class TreasureChestPostAdapter : ListAdapter<Post, TreasureChestPostAdapter.Trea
                             .show()*/
                     }
 
-                    PostType.Video -> {
+                    PostType.Video.ordinal -> {
 
                     }
 
-                    PostType.Text -> {
+                    PostType.Text.ordinal -> {
                         MaterialAlertDialogBuilder(binding.root.context)
                             .setTitle(post.title)
                             .setMessage(post.data)
                             .show()
                     }
 
-                    PostType.Audio -> {
+                    PostType.Audio.ordinal -> {
 
                     }
                 }
