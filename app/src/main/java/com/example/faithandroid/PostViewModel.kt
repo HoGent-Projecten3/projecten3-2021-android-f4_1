@@ -106,6 +106,7 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
             stringCall.enqueue(object : Callback<Void> {
 
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    Log.d("LUKAS", response.code().toString())
                     if (response.isSuccessful()) {
                         val responseString: String? = response.code().toString()
 

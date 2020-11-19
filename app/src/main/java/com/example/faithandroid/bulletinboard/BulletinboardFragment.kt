@@ -15,6 +15,7 @@ import androidx.navigation.findNavController
 import com.example.faithandroid.*
 import com.example.faithandroid.databinding.BulletinboardBinding
 import com.example.faithandroid.skyscraper.SkyscraperFragmentDirections
+import com.example.faithandroid.treasureChest.TreasureChestPostAdapter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.skyscraper_goalpostimage.view.*
@@ -82,7 +83,7 @@ class BulletinboardFragment: Fragment() {
         viewModel = ViewModelProvider(this).get(BulletinBoardViewModel::class.java)
 
         binding.viewModel = postViewModel
-        binding.BulletinBoardRecycler.adapter = BulletinBoardPostAdapter()
+        binding.BulletinBoardRecycler.adapter = TreasureChestPostAdapter()
 
 
         postViewModel.status.observe(this.viewLifecycleOwner, Observer {
