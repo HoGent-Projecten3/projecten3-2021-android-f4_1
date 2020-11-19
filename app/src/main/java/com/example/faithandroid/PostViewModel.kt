@@ -48,7 +48,9 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
 
                  override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
                     if (response.isSuccessful()) {
+
                         _filterdPosts.value = response.body()
+
 
                     }
                      else

@@ -21,7 +21,9 @@ import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+
 import androidx.navigation.findNavController
+
 import androidx.navigation.fragment.navArgs
 import com.example.faithandroid.databinding.AddPhotoBinding
 import com.example.faithandroid.models.Post
@@ -29,6 +31,7 @@ import com.example.faithandroid.treasureChest.TreasureChestPostAdapter
 import com.google.android.material.textfield.TextInputLayout
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
+
 import java.util.*
 
 
@@ -39,6 +42,7 @@ class addPhotoFragment: Fragment() {
     var post: Post? = null
 
     var nieuwePost: Boolean = false;
+
 
     val PICK_IMAGE = 1
     val REQUEST_PICTURE_CAPTURE = 1
@@ -144,6 +148,7 @@ class addPhotoFragment: Fragment() {
         }
 
 
+
         return binding.root
     }
 
@@ -152,6 +157,7 @@ class addPhotoFragment: Fragment() {
         if (requestCode == REQUEST_PICTURE_CAPTURE && resultCode == RESULT_OK) {
 
             val imageString = data?.data?.let { uriToBase64(it) }
+
 
             val post = Post(
                 0,
@@ -195,5 +201,6 @@ class addPhotoFragment: Fragment() {
         val image: String = Base64.getEncoder().encodeToString(arr)
 
         return image
+
     }
 }
