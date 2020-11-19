@@ -46,6 +46,7 @@ class OptionsAddPostFragment: Fragment() {
             view.findNavController().navigate(action)
         }
 
+
         /**
          * navigate to options for audio posts
          */
@@ -58,12 +59,15 @@ class OptionsAddPostFragment: Fragment() {
          */
         binding.FotoButton.setOnClickListener {
 
+
         }
 
         /**
          * navigate to options for video posts
          */
         binding.VideoButton.setOnClickListener {
+          view: View -> val action = OptionsAddPostFragmentDirections.actionOptionsAddPostFragmentToVideoToevoegenFragment()
+            view.findNavController().navigate(action)
 
         }
 

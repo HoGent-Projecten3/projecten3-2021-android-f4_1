@@ -3,6 +3,8 @@ package com.example.faithandroid
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +29,9 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var viewModel: ViewModel
 
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
          setContentView(R.layout.activity_test)
@@ -50,6 +55,9 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
         supportActionBar?.setHomeButtonEnabled(true)
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setHomeButtonEnabled(true)
+
+
+
     }
 
     override fun onBackPressed() {
