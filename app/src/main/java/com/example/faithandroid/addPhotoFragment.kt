@@ -23,6 +23,7 @@ class addPhotoFragment: Fragment() {
 
     private  lateinit var  dropdown : Spinner
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -36,7 +37,7 @@ class addPhotoFragment: Fragment() {
             R.layout.add_photo,
             container,
             false
-        );
+        )
 
         binding.IconFolder.setOnClickListener { view: View ->
 
