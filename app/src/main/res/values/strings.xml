@@ -79,6 +79,8 @@
     <string name="camerafolder">Camerafolder</string>
     <string name="plaatsen">Plaatsen</string>
     <string name="vul_hier_je_titel_in">vul hier je titel in:</string>
+    <string name="nieuwe_video_post_toevoegen">nieuwe video post toevoegen</string>
+    <string name="nieuwe_post_toevoegen">nieuwe post toevoegen</string>
 
 
 </resources>

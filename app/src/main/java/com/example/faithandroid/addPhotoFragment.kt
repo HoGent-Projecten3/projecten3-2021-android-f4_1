@@ -5,6 +5,7 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Bitmap.CompressFormat
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
@@ -20,17 +21,24 @@ import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.faithandroid.databinding.AddPhotoBinding
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.treasureChest.TreasureChestPostAdapter
+import com.google.android.material.textfield.TextInputLayout
 import java.io.ByteArrayOutputStream
+import java.io.InputStream
 import java.util.*
 
 
 class addPhotoFragment: Fragment() {
 
     val args: addPhotoFragmentArgs by navArgs()
+
+    var post: Post? = null
+
+    var nieuwePost: Boolean = false;
 
     val PICK_IMAGE = 1
     val REQUEST_PICTURE_CAPTURE = 1
@@ -114,35 +122,78 @@ class addPhotoFragment: Fragment() {
         binding.viewModel = viewModel
         binding.addImageRecyclerView.adapter = TreasureChestPostAdapter()
 
+        binding.fotoToevoegenButton.setOnClickListener{
+
+            if(nieuwePost)
+            {
+                post?.title = binding.titelImage.text.toString()
+                post?.data = binding.titelImage.text?.replace("\\s".toRegex(), "").toString()
+            }
+            post?.let { it1 -> viewModel.addPostByEmail(
+                it1,
+                args.placeType,
+                "dora.theexplorer1999@gmail.com"
+            ) }
+            when(args.placeType)
+            {
+                PlaceType.Prikbord -> {
+                    it.findNavController()
+                        .navigate(R.id.action_addPhotoFragment_to_bulletinBoardFragment)
+                }
+            }
+        }
+
 
         return binding.root
-    }
-
-    fun getBytesFromBitmap(bitmap: Bitmap): ByteArray? {
-        val stream = ByteArrayOutputStream()
-        bitmap.compress(CompressFormat.JPEG, 70, stream)
-        return stream.toByteArray()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_PICTURE_CAPTURE && resultCode == RESULT_OK) {
-            Log.d("dad",data.toString())
-            val bitImage = data?.extras?.get("data") as Bitmap
-            val byteImage = getBytesFromBitmap(bitImage)
 
-            val stringImage = Base64.getEncoder().encodeToString(byteImage)
+            val imageString = data?.data?.let { uriToBase64(it) }
+
             val post = Post(
                 0,
                 "foto van hond",
                 "fotoVanHond.jpg",
                 "2020-11-19T21:19:39.362Z",
                 PostType.Image.ordinal,
-                stringImage,
+                imageString,
                 ""
             )
-            viewModel.addPostByEmail(post, args.placeType, "dora.theexplorer1999@gmail.com")
-            post.dataBytes?.let { Log.d("fo", it) }
+            nieuwePost = true;
+
         }
+
+            if (data != null) {
+                this.view?.findViewById<TextInputLayout>(R.id.titleFieldImage)?.visibility = View.VISIBLE
+            }
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun uriToBase64(uri: Uri): String
+    {
+        val inputStream: InputStream? =
+            getActivity()?.getContentResolver()?.openInputStream(uri)
+
+        val byteBuffer = ByteArrayOutputStream()
+        val bufferSize = 1024
+        val buffer = ByteArray(bufferSize)
+
+        var len = 0
+        while (inputStream?.read(buffer).also {
+                if (it != null) {
+                    len = it
+                }
+            } != -1) {
+            byteBuffer.write(buffer, 0, len)
+        }
+        val arr = byteBuffer.toByteArray()
+
+        val image: String = Base64.getEncoder().encodeToString(arr)
+
+        return image
     }
 }
