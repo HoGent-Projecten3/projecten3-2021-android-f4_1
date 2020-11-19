@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_growlauncher"
@@ -11,6 +13,11 @@
         android:roundIcon="@mipmap/ic_growlauncher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <uses-library android:name="android.test.runner"/>
+        <uses-library android:name="android.test.base"/>
+        <uses-library android:name="android.test.mock"/>
+
         <activity android:name=".PopupWindow"></activity>
       
         <activity android:name=".MainActivity">

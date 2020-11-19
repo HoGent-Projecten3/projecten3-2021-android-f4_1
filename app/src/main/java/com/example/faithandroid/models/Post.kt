@@ -1,7 +1,11 @@
 package com.example.faithandroid.models
 
+import android.media.Image
 import com.squareup.moshi.JsonClass
+import com.example.faithandroid.models.PostType.Text
+import java.net.URI
 import java.io.Serializable
+
 
 @JsonClass(generateAdapter = true)
 data class Post(
@@ -15,11 +19,3 @@ data class Post(
 
 ): Serializable
 
-//{
-//    "title": "string",
-//    "data": "string",
-//    "date": "2020-11-19T13:08:20.126Z",
-//    "postType": 0,
-//    "dataBytes": "string",
-//    "uri": "string"
-//}
