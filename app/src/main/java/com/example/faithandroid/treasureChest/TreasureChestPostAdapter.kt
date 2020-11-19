@@ -39,9 +39,6 @@ class TreasureChestPostAdapter : ListAdapter<Post, TreasureChestPostAdapter.Trea
             if (post.postType == PostType.Image.ordinal){
                 Picasso.get().load(post.uri).into(binding.TreasurechestImage)
             }
-            if (post.postType == PostType.Video.ordinal){
-
-            }
             binding.date = LocalDate.parse(post.date, DateTimeFormatter.ISO_LOCAL_DATE_TIME).format(
                 DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))
 
@@ -94,6 +91,7 @@ class TreasureChestPostAdapter : ListAdapter<Post, TreasureChestPostAdapter.Trea
                 }
 
                 PostType.Text.ordinal -> {
+
                     MaterialAlertDialogBuilder(view.getContext())
                         .setTitle(post.title)
                         .setMessage(post.data)
