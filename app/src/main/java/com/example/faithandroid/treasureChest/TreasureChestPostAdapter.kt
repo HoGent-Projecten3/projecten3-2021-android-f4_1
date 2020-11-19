@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.faithandroid.ExoPlayer
+import com.example.faithandroid.FullScreenImage
 import com.example.faithandroid.databinding.TreasurechestPostBinding
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.PostType
@@ -76,11 +77,10 @@ class TreasureChestPostAdapter : ListAdapter<Post, TreasureChestPostAdapter.Trea
         holder.itemView.setOnClickListener { view: View ->
             when (post.postType) {
                 PostType.Image.ordinal -> {
-                    val imageView = ImageView(view.getContext())
-                    imageView.setImageURI(Uri.parse(post.uri))
-                    MaterialAlertDialogBuilder(view.getContext())
-                        .setView(imageView)
-                        .show()
+                    var intent: Intent = Intent(view.getContext(), FullScreenImage::class.java).apply{
+                        putExtra("imageUri", post.uri)
+                    }
+                    view.getContext().startActivity(intent)
                 }
 
                 PostType.Video.ordinal -> {

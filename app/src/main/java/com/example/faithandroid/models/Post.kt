@@ -14,8 +14,7 @@ data class Post(
     var data: String = "",
     var date: String = "2020-11-05T22:34:57.61",
     var postType: Int,
-    var dataBytes: String? = "",
-    var uri: String? = ""
-
+    var uri: String? = "",
+    var dataBytes: String? = ""
 ): Serializable
 

@@ -19,6 +19,7 @@
 
         <activity android:name=".PopupWindow"></activity>
         <activity android:name=".ExoPlayer"></activity>
+        <activity android:name=".FullScreenImage"></activity>
         <activity android:name=".MainActivity">
 
 
