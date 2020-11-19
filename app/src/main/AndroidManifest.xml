@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_growlauncher"
@@ -19,8 +18,10 @@
         <uses-library android:name="android.test.mock"/>
 
         <activity android:name=".PopupWindow"></activity>
-      
+        <activity android:name=".ExoPlayer"></activity>
         <activity android:name=".MainActivity">
+
+
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
