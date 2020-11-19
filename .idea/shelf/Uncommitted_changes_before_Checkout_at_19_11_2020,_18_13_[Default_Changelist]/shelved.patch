@@ -1,0 +1,53 @@
+Index: app/src/main/res/layout/exoplayer.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<layout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\">\n\n    <androidx.constraintlayout.widget.ConstraintLayout\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"match_parent\"\n        tools:context=\".ExoPlayer\">\n\n        <com.google.android.exoplayer2.ui.PlayerView\n            android:id=\"@+id/playerView\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"match_parent\"\n            app:layout_constraintTop_toTopOf=\"parent\"\n            app:layout_constraintBottom_toBottomOf=\"parent\"\n            app:layout_constraintLeft_toLeftOf=\"parent\"\n            app:layout_constraintRight_toRightOf=\"parent\"\n            android:background=\"@color/colorPrimary\"/>\n\n    </androidx.constraintlayout.widget.ConstraintLayout>\n</layout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/exoplayer.xml	(revision d8693959c074503ca12536051fe3eb1803958c67)
++++ app/src/main/res/layout/exoplayer.xml	(date 1605805585000)
+@@ -16,7 +16,7 @@
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintLeft_toLeftOf="parent"
+             app:layout_constraintRight_toRightOf="parent"
+-            android:background="@color/colorPrimary"/>
++            android:background="@color/darkGray"/>
+ 
+     </androidx.constraintlayout.widget.ConstraintLayout>
+ </layout>
+\ No newline at end of file
+Index: app/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<resources>\r\n    <color name=\"colorPrimary\">#62CECE</color>\r\n    <color name=\"colorPrimaryDark\">#2F80ED</color>\r\n    <color name=\"colorAccent\">#F8A59E</color>\r\n    <color name=\"colorWhite\">#FFFFFF</color>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/colors.xml	(revision d8693959c074503ca12536051fe3eb1803958c67)
++++ app/src/main/res/values/colors.xml	(date 1605805572000)
+@@ -4,4 +4,5 @@
+     <color name="colorPrimaryDark">#2F80ED</color>
+     <color name="colorAccent">#F8A59E</color>
+     <color name="colorWhite">#FFFFFF</color>
++    <color name="darkGray">#444444</color>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/java/com/example/faithandroid/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.faithandroid\r\n\r\nimport android.os.Bundle\r\nimport android.view.MenuItem\r\nimport android.view.View\r\nimport android.widget.AdapterView\r\nimport android.widget.ArrayAdapter\r\nimport android.widget.Toast\r\nimport androidx.appcompat.app.ActionBarDrawerToggle\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport androidx.appcompat.widget.Toolbar\r\nimport androidx.core.view.GravityCompat\r\nimport androidx.drawerlayout.widget.DrawerLayout\r\nimport androidx.lifecycle.ViewModel\r\n\r\nimport androidx.navigation.findNavController\r\nimport androidx.navigation.fragment.NavHostFragment\r\nimport androidx.navigation.ui.AppBarConfiguration\r\nimport androidx.navigation.ui.onNavDestinationSelected\r\nimport androidx.navigation.ui.setupWithNavController\r\nimport com.example.faithandroid.profiel.profielFragment\r\nimport com.google.android.material.navigation.NavigationView\r\n\r\n\r\n//import androidx.databinding.DataBindingUtil\r\n\r\nclass MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNavigationItemSelectedListener {\r\n    \r\n    private lateinit var drawerLayout : DrawerLayout\r\n    private lateinit var toggle: ActionBarDrawerToggle\r\n    private lateinit var viewModel: ViewModel\r\n\r\n\r\n\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n         setContentView(R.layout.activity_test)\r\n\r\n\r\n        drawerLayout = findViewById(R.id.drawerLayout);\r\n       // viewModel = ViewModelProvider(this).get(OverviewViewModel::class.java)\r\n\r\n\r\n\r\n        //setSupportActionBar(R.id.)\r\n        val navHostFragment =\r\n            supportFragmentManager.findFragmentById(R.id.NavHostFragment) as NavHostFragment\r\n        val navController = navHostFragment.navController\r\n        findViewById<NavigationView>(R.id.navView)\r\n            .setupWithNavController(navController)\r\n        val appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)\r\n\r\n        supportActionBar?.setDisplayHomeAsUpEnabled(true)\r\n\r\n        supportActionBar?.setHomeButtonEnabled(true)\r\n        actionBar?.setDisplayHomeAsUpEnabled(true)\r\n        actionBar?.setHomeButtonEnabled(true)\r\n\r\n\r\n\r\n    }\r\n\r\n    override fun onBackPressed() {\r\n        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {\r\n            drawerLayout.closeDrawer(GravityCompat.START)\r\n        } else {\r\n            super.onBackPressed()\r\n        }\r\n    }\r\n\r\n    fun ClickMenu(view: View){\r\n        //open drawer\r\n        openDrawer(drawerLayout)\r\n    }\r\n\r\n    private  fun  openDrawer(drawerLayout: DrawerLayout) {\r\n    //open drawer layout\r\n        drawerLayout.openDrawer(GravityCompat.START)\r\n    }\r\n\r\n     fun ClickBack(view: View) {\r\n        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {\r\n            drawerLayout.closeDrawer(GravityCompat.START)\r\n        } else {\r\n            super.onBackPressed()\r\n        }\r\n    }\r\n\r\n    override fun lockDrawer() {\r\n       drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)\r\n    }\r\n\r\n    override fun unlockDrawer() {\r\n        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)\r\n    }\r\n\r\n    override fun onOptionsItemSelected(item: MenuItem): Boolean {\r\n        val navController = findNavController(R.id.NavHostFragment)\r\n        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)\r\n    }\r\n\r\n    override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {\r\n\r\n        when (menuItem.itemId) {\r\n            R.id.profielFragment -> {\r\n                supportFragmentManager.beginTransaction()\r\n                    .replace(R.id.layoutToolBar, profielFragment())\r\n                    .commit()\r\n                drawerLayout.close()\r\n            }\r\n        }\r\n        return true\r\n    }\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/faithandroid/MainActivity.kt	(revision d8693959c074503ca12536051fe3eb1803958c67)
++++ app/src/main/java/com/example/faithandroid/MainActivity.kt	(date 1605805550000)
+@@ -25,7 +25,7 @@
+ //import androidx.databinding.DataBindingUtil
+ 
+ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNavigationItemSelectedListener {
+-    
++
+     private lateinit var drawerLayout : DrawerLayout
+     private lateinit var toggle: ActionBarDrawerToggle
+     private lateinit var viewModel: ViewModel

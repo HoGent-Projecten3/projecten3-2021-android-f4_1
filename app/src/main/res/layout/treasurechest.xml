@@ -28,6 +28,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />-->
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="?attr/actionBarSize"
             android:id="@+id/TreasureChestRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
