@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.faithandroid.backpack.BackpackViewModel" />
+            type="com.example.faithandroid.PostViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,6 +28,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />-->
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="?attr/actionBarSize"
             android:id="@+id/BackpackRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,7 +39,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:BackpacklistData="@{viewModel.mockData}">
+            app:TreasurechestlistData="@{viewModel.postList}">
 
         </androidx.recyclerview.widget.RecyclerView>
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.faithandroid.treasureChest.TreasureChestViewModel" />
+            type="com.example.faithandroid.PostViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,12 +34,12 @@
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:paddingTop="45dp"
-            app:spanCount="2"
+            app:spanCount="1"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:TreasurechestlistData="@{viewModel.mockData}">
+            app:TreasurechestlistData="@{viewModel.postList}">
 
         </androidx.recyclerview.widget.RecyclerView>
 

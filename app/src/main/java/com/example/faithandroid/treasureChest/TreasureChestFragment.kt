@@ -8,14 +8,19 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.faithandroid.PlaceType
+import com.example.faithandroid.PostViewModel
 import com.example.faithandroid.R
+import com.example.faithandroid.ViewModelFactory
 import com.example.faithandroid.databinding.TreasurechestBinding
 import com.google.android.material.snackbar.Snackbar
 
 
 class TreasureChestFragment: Fragment() {
 
-    private lateinit var viewModel: TreasureChestViewModel
+    private val postViewModel: PostViewModel by lazy{
+        ViewModelProvider(this, ViewModelFactory(PlaceType.Rugzak)).get(PostViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,20 +38,22 @@ class TreasureChestFragment: Fragment() {
           container,
           false
       );
+        binding.lifecycleOwner = this
 
+        binding.viewModel = postViewModel
         binding.TreasureChestRecycler.adapter = TreasureChestPostAdapter()
 
-        viewModel = ViewModelProvider(this).get(TreasureChestViewModel::class.java)
-        binding.viewModel = viewModel
 
-        viewModel.status.observe(this.viewLifecycleOwner, Observer {
+
+
+        postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
-                Snackbar.make(contextView, viewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                Snackbar.make(contextView, postViewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
                     R.string.tryAgain
                 )
                 {
-                    viewModel.getPostsOfTreasureChest()
+                    postViewModel.getPostsOfPlace(PlaceType.Schatkist, "dora.theexplorer1999@gmail.com")
                 }.show()
             }
         })
