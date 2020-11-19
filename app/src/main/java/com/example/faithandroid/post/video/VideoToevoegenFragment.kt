@@ -22,6 +22,7 @@ import com.example.faithandroid.*
 import com.example.faithandroid.bulletinboard.BulletinboardFragmentDirections
 import com.example.faithandroid.databinding.VideoToevoegenBinding
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.treasureChest.TreasureChestPostAdapter
 import com.google.android.material.textfield.TextInputLayout
 
 
@@ -59,6 +60,8 @@ class VideoToevoegenFragment: Fragment() {
             container,
             false
         );
+
+        binding.lifecycleOwner = this
 //        binding.textPostToevoegen.setOnClickListener{ view: View ->
 //
 //            try
@@ -83,7 +86,7 @@ class VideoToevoegenFragment: Fragment() {
 //                throw e
 //            }
 //        }
-        viewModel = ViewModelProvider(this, ViewModelFactory(PlaceType.Prikbord)).get(PostViewModel::class.java)
+        viewModel = ViewModelProvider(this, ViewModelFactory(args.placeType)).get(PostViewModel::class.java)
 
         binding.album.setOnClickListener{ view: View ->
             val getIntent = Intent(Intent.ACTION_GET_CONTENT)
@@ -124,14 +127,21 @@ class VideoToevoegenFragment: Fragment() {
         binding.filledExposedDropdown.setText(PlaceType.Rugzak.name, false)
 
         binding.filledExposedDropdown.setOnItemClickListener { parent, view, position, id ->
-
+            viewModel.getFilteredPostFromPlace(placeTypes[position], PostType.Video, "dora.theexplorer1999@gmail.com")
         }
 
-        viewModel.getFilteredPostFromPlace(PlaceType.Prikbord, PostType.Video, "dora.theexplorer1999@gmail.com")
+
+        viewModel.getFilteredPostFromPlace(PlaceType.Rugzak, PostType.Video, "dora.theexplorer1999@gmail.com")
+        binding.viewModel = viewModel
+        binding.recyclerView.adapter = TreasureChestPostAdapter()
 
 
         binding.videoToevoegenButton.setOnClickListener{
             post?.let { it1 -> viewModel.addPostByEmail(it1, args.placeType, "dora.theexplorer1999@gmail.com") }
+            when(args.placeType)
+            {
+                PlaceType.Prikbord -> {it.findNavController().navigate(R.id.action_videoToevoegenFragment_to_bulletinBoardFragment)}
+            }
         }
 
         return binding.root

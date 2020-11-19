@@ -91,6 +91,9 @@ interface FaithApiService {
     @POST("City/AddPostByEmail")
     fun addPostByEmail(@Body post: Post, @Query("email") email: String, @Query("placeType") placeType: Int): Call<Void>
 
+    @Headers("Content-Type: application/json", "accept: application/json")
+    @PUT("City/DeletePostByEmail")
+    fun deletePostByEmail(@Query("id") id: Int, @Query("email") email: String, @Query("placeType") placeType: Int): Call<Void>
 
 }
 

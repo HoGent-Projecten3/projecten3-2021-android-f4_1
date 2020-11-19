@@ -19,9 +19,9 @@ import java.text.DateFormat
 class BulletinBoardPostAdapter : ListAdapter<Post, BulletinBoardPostAdapter.BulletinBoardPostViewHolder>(
     DiffCallback
 ) {
-    class BulletinBoardPostViewHolder(private var binding: BulletinboardTextpostBinding):
+    class BulletinBoardPostViewHolder(private var binding: BulletinboardTextpostBinding, clickListener: View.OnClickListener):
         RecyclerView.ViewHolder(binding.root){
-        fun bind(post: Post){
+        fun bind(post: Post, clickListener: View.OnClickListener){
             binding.post = post
             binding.date = LocalDate.parse(post.date, DateTimeFormatter.ISO_LOCAL_DATE_TIME).format(
                 DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))
@@ -33,6 +33,10 @@ class BulletinBoardPostAdapter : ListAdapter<Post, BulletinBoardPostAdapter.Bull
                     .setMessage(post.data)
                     .show()
             }
+
+//            binding.bulletinboardUnpinButton.setOnClickListener(
+//
+//            )
 
 
 
@@ -56,7 +60,7 @@ class BulletinBoardPostAdapter : ListAdapter<Post, BulletinBoardPostAdapter.Bull
     ): BulletinBoardPostViewHolder {
 
 
-        return BulletinBoardPostViewHolder(BulletinboardTextpostBinding.inflate(LayoutInflater.from(parent.context)))
+        return BulletinBoardPostViewHolder(BulletinboardTextpostBinding.inflate(LayoutInflater.from(parent.context)), View.OnClickListener {  })
     }
 
     override fun onBindViewHolder(
@@ -64,6 +68,6 @@ class BulletinBoardPostAdapter : ListAdapter<Post, BulletinBoardPostAdapter.Bull
         position: Int
     ) {
         val post = getItem(position)
-        holder.bind(post)
+        holder.bind(post, View.OnClickListener {  })
     }
 }

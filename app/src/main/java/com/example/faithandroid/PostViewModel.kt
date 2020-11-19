@@ -30,6 +30,7 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
     init
     {
         getPostsOfPlace(placeType, "dora.theexplorer1999@gmail.com")
+
     }
 
     fun getFilteredPostFromPlace(placeType: PlaceType, postType: PostType, email: String) {

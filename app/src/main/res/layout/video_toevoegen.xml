@@ -9,6 +9,9 @@
         <variable
             name="videoGekozen"
             type="Boolean" />
+        <variable
+            name="viewModel"
+            type="com.example.faithandroid.PostViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -104,13 +107,15 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="335dp"
+                    android:layout_width="405dp"
+                    android:layout_height="406dp"
                     android:layout_marginTop="16dp"
+                    app:TreasurechestlistData="@{viewModel.postList}"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/titelVeld">
+                    app:layout_constraintTop_toBottomOf="@+id/titelVeld"
+                    app:spanCount="3">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
@@ -118,8 +123,8 @@
                     android:id="@+id/videoToevoegenButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:text="@string/nieuwe_tekst_post_toevoegen"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
