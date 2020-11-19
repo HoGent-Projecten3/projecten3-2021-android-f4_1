@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.TreasurechestBinding
 import com.google.android.material.snackbar.Snackbar
-import com.squareup.picasso.Picasso
 
 
 class TreasureChestFragment: Fragment() {
@@ -21,6 +20,8 @@ class TreasureChestFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,4 +53,8 @@ class TreasureChestFragment: Fragment() {
 
         return binding.root
     }
+
+
+
+
 }

@@ -28,7 +28,7 @@ class TreasureChestViewModel : ViewModel() {
         Post(5, "Opa heeft de taart laten aanbranden", "Ik weet niet zo goed wat ik moet voelen. Ik had echt wel zin in taart, maar ik weet ook dat hij er niets aan kan doen. Ik hoop gewoon dat ik snel weer wat taart ga kunnen eten. Opa is echt een warhoofd de laatste tijd. Gelukkig zijn zijn pannenkoeken nog topnotch", "2012-03-19T08:22"),
         Post(6, "noooo you cant just convert this meme to text", "description go brrrrrr", "2012-03-19T09:22"),
         Post(7, "Image", "this is an image", "2012-03-19T07:22", PostType.Image, "https://d16kd6gzalkogb.cloudfront.net/magazine_images/Salvador-Dali-The-Persistence-of-Memory-1931-c.jpg"),
-        Post(8, "Video", "This is a video", "2012-03-19T07:22", PostType.Video, "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"),
+        Post(8, "Video", "This is a video", "2012-03-19T07:22", PostType.Video, "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"),
         Post(9, "Audio", "This is audio", "2012-03-19T07:22", PostType.Audio)
     )
 

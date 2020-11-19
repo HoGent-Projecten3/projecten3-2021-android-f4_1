@@ -11,12 +11,12 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.faithandroid.databinding.ActivityTestBinding
+import com.google.android.exoplayer2.SimpleExoPlayer
 import kotlinx.android.synthetic.main.bulletinboard.*
 
 //import androidx.databinding.DataBindingUtil
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var viewModel: ViewModel
