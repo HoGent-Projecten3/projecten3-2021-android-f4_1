@@ -33,11 +33,11 @@ class OptionsAddPostFragment: Fragment() {
             container,
             false
         );
-        binding.annulerenPost.setOnClickListener { view: View ->
-            view.findNavController()
-                .navigate(R.id.action_optionsAddPostFragment_to_bulletinBoardFragment)
-        }
 
+
+        /**
+         * navigate to options for texts posts
+         */
         binding.TekstButton.setOnClickListener{
                 view: View ->  val action =
             OptionsAddPostFragmentDirections.actionOptionsAddPostFragmentToTextPostToevoegen(
@@ -47,6 +47,29 @@ class OptionsAddPostFragment: Fragment() {
         }
 
 
+        /**
+         * navigate to options for audio posts
+         */
+        binding.AudioButton.setOnClickListener {
+
+        }
+
+        /**
+         * navigate to options for images posts
+         */
+        binding.FotoButton.setOnClickListener {
+
+
+        }
+
+        /**
+         * navigate to options for video posts
+         */
+        binding.VideoButton.setOnClickListener {
+          view: View -> val action = OptionsAddPostFragmentDirections.actionOptionsAddPostFragmentToVideoToevoegenFragment()
+            view.findNavController().navigate(action)
+
+        }
 
         return binding.root
 

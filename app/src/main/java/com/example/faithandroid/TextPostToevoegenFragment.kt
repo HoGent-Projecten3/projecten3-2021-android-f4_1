@@ -19,6 +19,9 @@ import org.threeten.bp.LocalDateTime
 class TextPostToevoegenFragment : Fragment() {
     // TODO: Rename and change types of parameters
     val args: TextPostToevoegenFragmentArgs by navArgs()
+    private val postViewModel: PostViewModel by lazy{
+        ViewModelProvider(this, ViewModelFactory(args.placeType)).get(PostViewModel::class.java)
+    }
 
     private lateinit var bulletinBoardViewModel: BulletinBoardViewModel
 
@@ -43,20 +46,19 @@ class TextPostToevoegenFragment : Fragment() {
 
             try
             {
-                val post: Post = Post(0, binding.textposttitel.text.toString(), binding.textposttext.text.toString(), "testTime")
 
-                //viewModel.test.add(TextPost(binding.textposttitel.text.toString(), binding.textposttext.text.toString()))
-                when (args.placeType) {
-                    PlaceType.Prikbord -> {
-                        bulletinBoardViewModel.addNewPostToBulletinBoard(post)
-                        view.findNavController()
-                            .navigate(R.id.action_text_post_toevoegen_to_bulletinBoardFragment)
-                    }
+                val post: Post = Post(0, binding.textposttitel.text.toString(), binding.textposttext.text.toString(), "2020-11-05T22:34:57.61", PostType.Text.ordinal)
+                if(postViewModel.addPostByEmail(post, args.placeType, "dora.theexplorer1999@gmail.com"))
+                {
 
-                    else -> { // Note the block
-                        Log.d("postError", "when mislukt")
+                    when (args.placeType) {
+                        PlaceType.Prikbord ->   view.findNavController().navigate(R.id.action_text_post_toevoegen_to_bulletinBoardFragment)
+                        else -> { // Note the block
+
+                        }
                     }
                 }
+
             }
             catch (e: Exception)
             {
