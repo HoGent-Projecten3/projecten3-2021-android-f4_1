@@ -21,6 +21,8 @@ import com.squareup.picasso.Picasso
 
 class FullScreenImage : AppCompatActivity() {
 
+
+   // private lateinit var drawerLayout : DrawerLayout
     private lateinit var imageView: ImageView
     private var imageUri: String = ""
 
@@ -33,10 +35,19 @@ class FullScreenImage : AppCompatActivity() {
         imageView = findViewById<ImageView>(R.id.fullscreen_image)
         Picasso.get().load(imageUri).into(imageView)
 
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         supportActionBar?.setHomeButtonEnabled(true)
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setHomeButtonEnabled(true)
+
     }
+
+    // button links onderaan (driehoek) 
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+    }
+
 }
