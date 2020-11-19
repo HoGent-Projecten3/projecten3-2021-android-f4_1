@@ -8,10 +8,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.example.faithandroid.PlaceType
 import com.example.faithandroid.PostViewModel
 import com.example.faithandroid.R
 import com.example.faithandroid.ViewModelFactory
+import com.example.faithandroid.bulletinboard.BulletinboardFragmentDirections
 import com.example.faithandroid.databinding.BackpackBinding
 import com.example.faithandroid.treasureChest.TreasureChestPostAdapter
 import com.example.faithandroid.treasureChest.TreasureChestViewModel
@@ -42,7 +44,13 @@ class BackpackFragment: Fragment() {
 
         binding.lifecycleOwner = this
 
-
+        binding.AddPostButton.setOnClickListener { view: View ->
+            val action =
+                BackpackFragmentDirections.actionBackpackFragmentToOptionsAddPostFragment(
+                    PlaceType.Rugzak
+                )
+            view.findNavController().navigate(action)
+        }
 
         viewModel = ViewModelProvider(this).get(BackpackViewModel::class.java)
         binding.viewModel = postViewModel

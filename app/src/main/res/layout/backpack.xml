@@ -9,15 +9,38 @@
             type="com.example.faithandroid.PostViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        android:orientation="vertical">
+
         <include
             layout="@layout/app_bar_back"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/AddPostButton"
+            style="@style/pinkButtonStyle"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom|end"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:clickable="true"
+            android:elevation="10dp"
+            app:maxImageSize="45dp"
+            app:srcCompat="@android:drawable/ic_input_add"
+            tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
         <!--<TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
@@ -43,4 +66,5 @@
 
         </androidx.recyclerview.widget.RecyclerView>
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
 </layout>

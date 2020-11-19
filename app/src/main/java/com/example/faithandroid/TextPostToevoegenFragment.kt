@@ -53,6 +53,8 @@ class TextPostToevoegenFragment : Fragment() {
 
                     when (args.placeType) {
                         PlaceType.Prikbord ->   view.findNavController().navigate(R.id.action_text_post_toevoegen_to_bulletinBoardFragment)
+                        PlaceType.Schatkist -> view.findNavController().navigate(R.id.action_text_post_toevoegen_to_treasureChestFragment)
+                        PlaceType.Rugzak -> view.findNavController().navigate(R.id.action_text_post_toevoegen_to_backpackFragment)
                         else -> { // Note the block
 
                         }

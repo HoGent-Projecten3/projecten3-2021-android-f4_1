@@ -30,6 +30,16 @@
             app:popUpTo="@id/bulletinBoardFragment"
             app:popUpToInclusive="true"/>
         <action
+            android:id="@+id/action_optionsAddPostFragment_to_backpackFragment"
+            app:destination="@id/backpackFragment"
+            app:popUpTo="@id/backpackFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_optionsAddPostFragment_to_treasureChestFragment"
+            app:destination="@id/treasureChestFragment"
+            app:popUpTo="@id/treasureChestFragment"
+            app:popUpToInclusive="true"/>
+        <action
             android:id="@+id/action_optionsAddPostFragment_to_text_post_toevoegen"
             app:destination="@id/text_post_toevoegen"
 
@@ -43,6 +53,7 @@
         <action
             android:id="@+id/action_optionsAddPostFragment_to_addPhotoFragment"
             app:destination="@id/addPhotoFragment" />
+
     </fragment>
 
     <fragment
@@ -99,12 +110,22 @@
         <action
             android:id="@+id/action_text_post_toevoegen_to_bulletinBoardFragment"
             app:destination="@id/bulletinBoardFragment" />
+        <action
+            android:id="@+id/action_text_post_toevoegen_to_backpackFragment"
+            app:destination="@id/backpackFragment" />
+        <action
+            android:id="@+id/action_text_post_toevoegen_to_treasureChestFragment"
+            app:destination="@id/treasureChestFragment" />
     </fragment>
     <fragment
         android:id="@+id/backpackFragment"
         android:name="com.example.faithandroid.backpack.BackpackFragment"
         android:label="BackpackFragment"
-        tools:layout="@layout/backpack"/>
+        tools:layout="@layout/backpack">
+        <action
+            android:id="@+id/action_backpackFragment_to_optionsAddPostFragment"
+            app:destination="@id/optionsAddPostFragment" />
+    </fragment>
     <fragment
         android:id="@+id/billboardFragment"
         android:name="com.example.faithandroid.billboard.BillboardFragment"
@@ -141,7 +162,11 @@
         android:id="@+id/treasureChestFragment"
         android:name="com.example.faithandroid.treasureChest.TreasureChestFragment"
         android:label="TreasureChestFragment"
-        tools:layout="@layout/treasurechest"/>
+        tools:layout="@layout/treasurechest">
+        <action
+            android:id="@+id/action_treasureChestFragment_to_optionsAddPostFragment"
+            app:destination="@id/optionsAddPostFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addGoalFragment"
         android:name="com.example.faithandroid.skyscraper.addGoalFragment"
