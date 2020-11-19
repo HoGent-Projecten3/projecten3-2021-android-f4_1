@@ -62,14 +62,14 @@ class SkyscraperViewModel : ViewModel() {
         coroutineScope.launch {
             var getPropertiesDeferred = FaithApi.retrofitService.getPostsOfSkyScraperByAdolescentEmail(email);
             try {
-                Log.d("skyscraper", getPropertiesDeferred.await().size.toString())
+
                 var listResult = getPropertiesDeferred.await()
                 if(listResult.size > 0){
 
                     testLiveData.value = listResult
                 }
             } catch (e: Exception){
-                Log.d("lalala",e.localizedMessage)
+
                 _getStatus.value = e.localizedMessage
             }
         }
@@ -79,7 +79,7 @@ class SkyscraperViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 FaithApi.retrofitService.checkGoal("dora.theexplorer1999@gmail.com", id)
-                Log.d("editGoal", "Goal checked")
+
                 _completedStatus.value = R.string.doel_gedeeld.toString();
             } catch (e: Exception) {
                 _completedStatus.value = e.localizedMessage
@@ -88,11 +88,11 @@ class SkyscraperViewModel : ViewModel() {
     }
 
     fun postNewGoalPost(email: String, goalPost: GoalPost) {
-        Log.d("post", "Begint nu met posten")
+
         viewModelScope.launch {
             val response = FaithApi.retrofitService.postGoalPost(goalPost, email)
-            //Log.d("post", response.message())
-            Log.d("post", "Gepost")
+
+
         }
 
     }

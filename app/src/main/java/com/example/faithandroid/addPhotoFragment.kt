@@ -80,7 +80,7 @@ class addPhotoFragment: Fragment() {
 
         binding.dropdownPlaatsen.setOnItemClickListener { parent, view, position, id ->
 
-            Log.d("itemmmm", id.toString() + placeTypes[position])
+
 
 
         }

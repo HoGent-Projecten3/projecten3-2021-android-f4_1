@@ -43,7 +43,7 @@ class GoalDetailsFragment: DialogFragment() {
         //binding.lifecycleOwner = this
 
         //val faithProperty = goalDetailsFragmentArgs.fromBundle(requireArguments()).title
-        Log.d("yeeyee", "hewoo")
+
 
 
         binding.titelText.text = args.goal.title

@@ -35,6 +35,7 @@ class TreasureChestPostAdapter : ListAdapter<Post, TreasureChestPostAdapter.Trea
     class TreasureChestPostViewHolder(private var binding: TreasurechestPostBinding):
         RecyclerView.ViewHolder(binding.root){
         fun bind(post: Post){
+
             binding.post = post
             //inding.TreasurechestVideo.setVideoURI(Uri.parse(post.uri))
             if (post.postType == PostType.Image.ordinal){

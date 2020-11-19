@@ -70,7 +70,7 @@ class OptionsAddPostFragment: Fragment() {
          * navigate to options for video posts
          */
         binding.VideoButton.setOnClickListener {
-          view: View -> val action = OptionsAddPostFragmentDirections.actionOptionsAddPostFragmentToVideoToevoegenFragment()
+          view: View -> val action = OptionsAddPostFragmentDirections.actionOptionsAddPostFragmentToVideoToevoegenFragment(args.placeType)
             view.findNavController().navigate(action)
 
         }

@@ -175,9 +175,12 @@
         android:id="@+id/videoToevoegenFragment"
         android:name="com.example.faithandroid.post.video.VideoToevoegenFragment"
         android:label="VideoToevoegenFragment" >
+        <argument
+            android:name="placeType"
+            app:argType="com.example.faithandroid.PlaceType" />
         <action
-            android:id="@+id/action_videoToevoegenFragment_to_nieuweVideoPost"
-            app:destination="@id/nieuweVideoPost" />
+            android:id="@+id/action_videoToevoegenFragment_to_bulletinBoardFragment"
+            app:destination="@id/bulletinBoardFragment" />
     </fragment>
     <fragment
         android:id="@+id/nieuweVideoPost"
@@ -191,4 +194,5 @@
             android:name="placeType"
             app:argType="com.example.faithandroid.PlaceType" />
     </fragment>
+
 </navigation>

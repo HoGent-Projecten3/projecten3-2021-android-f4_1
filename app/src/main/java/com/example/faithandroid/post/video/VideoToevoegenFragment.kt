@@ -3,6 +3,8 @@ package com.example.faithandroid.post.video
 import android.app.Activity.RESULT_OK
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -10,22 +12,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavArgs
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.faithandroid.*
-import com.example.faithandroid.bulletinboard.BulletinboardFragmentDirections
 import com.example.faithandroid.databinding.VideoToevoegenBinding
+import com.example.faithandroid.models.Post
+import com.example.faithandroid.treasureChest.TreasureChestPostAdapter
 import com.google.android.material.textfield.TextInputLayout
+import java.io.ByteArrayOutputStream
+import java.io.InputStream
+import java.util.*
 
 
 class VideoToevoegenFragment: Fragment() {
 
+    val args: VideoToevoegenFragmentArgs by navArgs()
 
+    var post: Post? = null
+
+    var nieuwePost: Boolean = false;
 
     private val _videoGekozen = MutableLiveData<Boolean>(false)
     val videoGekozen: LiveData<Boolean>
@@ -41,6 +52,7 @@ class VideoToevoegenFragment: Fragment() {
         arguments?.let {
 
         }
+
     }
 
     override fun onCreateView(
@@ -55,31 +67,11 @@ class VideoToevoegenFragment: Fragment() {
             container,
             false
         );
-//        binding.textPostToevoegen.setOnClickListener{ view: View ->
-//
-//            try
-//            {
-//                val post: Post = Post(0, binding.textposttitel.text.toString(), binding.textposttext.text.toString(), "testTime")
-//
-//                //viewModel.test.add(TextPost(binding.textposttitel.text.toString(), binding.textposttext.text.toString()))
-//                when (args.placeType) {
-//                    PlaceType.Prikbord -> {
-//                        bulletinBoardViewModel.addNewPostToBulletinBoard(post)
-//                        view.findNavController()
-//                            .navigate(R.id.action_text_post_toevoegen_to_bulletinBoardFragment)
-//                    }
-//
-//                    else -> { // Note the block
-//                        Log.d("postError", "when mislukt")
-//                    }
-//                }
-//            }
-//            catch (e: Exception)
-//            {
-//                throw e
-//            }
-//        }
-        viewModel = ViewModelProvider(this, ViewModelFactory(PlaceType.Prikbord)).get(PostViewModel::class.java)
+
+
+        binding.lifecycleOwner = this
+
+        viewModel = ViewModelProvider(this, ViewModelFactory(args.placeType)).get(PostViewModel::class.java)
 
         binding.album.setOnClickListener{ view: View ->
             val getIntent = Intent(Intent.ACTION_GET_CONTENT)
@@ -105,6 +97,8 @@ class VideoToevoegenFragment: Fragment() {
             }
 
 
+
+
         val placeTypes =  PlaceType.values()
 
         val adapter = this.context?.let {
@@ -120,13 +114,46 @@ class VideoToevoegenFragment: Fragment() {
         binding.filledExposedDropdown.setText(PlaceType.Rugzak.name, false)
 
         binding.filledExposedDropdown.setOnItemClickListener { parent, view, position, id ->
-
-            Log.d("itemmmm", id.toString() + placeTypes[position])
-
-
+            viewModel.getFilteredPostFromPlace(
+                placeTypes[position],
+                PostType.Video,
+                "dora.theexplorer1999@gmail.com"
+            )
         }
 
-        viewModel.getFilteredPostFromPlace(PlaceType.Prikbord, PostType.Video, "dora.theexplorer1999@gmail.com")
+
+        viewModel.getFilteredPostFromPlace(
+            PlaceType.Rugzak,
+            PostType.Video,
+            "dora.theexplorer1999@gmail.com"
+        )
+        binding.viewModel = viewModel
+        binding.recyclerView.adapter = TreasureChestPostAdapter()
+
+
+
+
+
+        binding.videoToevoegenButton.setOnClickListener{
+
+            if(nieuwePost)
+            {
+                post?.title = binding.titel.text.toString()
+                post?.data = binding.titel.text?.replace("\\s".toRegex(), "").toString()
+            }
+            post?.let { it1 -> viewModel.addPostByEmail(
+                it1,
+                args.placeType,
+                "dora.theexplorer1999@gmail.com"
+            ) }
+            when(args.placeType)
+            {
+                PlaceType.Prikbord -> {
+                    it.findNavController()
+                        .navigate(R.id.action_videoToevoegenFragment_to_bulletinBoardFragment)
+                }
+            }
+        }
 
         return binding.root
 
@@ -134,17 +161,53 @@ class VideoToevoegenFragment: Fragment() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == PICK_IMAGE && resultCode == RESULT_OK) {
-            Log.d("GELUKT", resultCode.toString())
+
             _videoGekozen.value = true;
-            this.view?.findViewById<TextInputLayout>(R.id.titelVeld)?.visibility = View.VISIBLE
+           val videoString = data?.data?.let { uriToBase64(it) }
 
+            this.post = Post(
+                0,
+                "video",
+                "video.mp4",
+                "2020-11-19T21:19:39.362Z",
+                PostType.Video.ordinal,
+                videoString,
+                "")
 
+            nieuwePost = true;
         }
         if (data != null) {
-            data.toString()?.let { Log.d("NIET GELUKT", it) }
+            this.view?.findViewById<TextInputLayout>(R.id.titelVeld)?.visibility = View.VISIBLE
         }
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun uriToBase64(uri: Uri): String
+    {
+        val inputStream: InputStream? =
+            getActivity()?.getContentResolver()?.openInputStream(uri)
+
+        val byteBuffer = ByteArrayOutputStream()
+        val bufferSize = 1024
+        val buffer = ByteArray(bufferSize)
+
+        var len = 0
+        while (inputStream?.read(buffer).also {
+                if (it != null) {
+                    len = it
+                }
+            } != -1) {
+            byteBuffer.write(buffer, 0, len)
+        }
+        val arr = byteBuffer.toByteArray()
+
+        val image: String = Base64.getEncoder().encodeToString(arr)
+
+        return image
     }
 
 

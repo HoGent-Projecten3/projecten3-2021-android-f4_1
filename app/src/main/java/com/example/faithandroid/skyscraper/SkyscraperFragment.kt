@@ -62,7 +62,7 @@ class SkyscraperFragment: Fragment() {
                 val rowView: View = inflater.inflate(R.layout.skyscraper_goalpostimage, null)
                 rowView.titleText.text = goal.title
                 rowView.layout.setOnClickListener{view: View ->
-                    Log.d("CLICK", "hewwo? Mw obwama?")
+
                     val action =
                         SkyscraperFragmentDirections.actionSkyscraperFragmentToGoalDetailsFragment(
                             goal
