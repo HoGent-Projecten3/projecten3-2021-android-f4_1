@@ -17,15 +17,19 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavArgs
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.faithandroid.*
 import com.example.faithandroid.bulletinboard.BulletinboardFragmentDirections
 import com.example.faithandroid.databinding.VideoToevoegenBinding
+import com.example.faithandroid.models.Post
 import com.google.android.material.textfield.TextInputLayout
 
 
 class VideoToevoegenFragment: Fragment() {
 
+    val args: VideoToevoegenFragmentArgs by navArgs()
 
+    var post: Post? = null
 
     private val _videoGekozen = MutableLiveData<Boolean>(false)
     val videoGekozen: LiveData<Boolean>
@@ -121,12 +125,14 @@ class VideoToevoegenFragment: Fragment() {
 
         binding.filledExposedDropdown.setOnItemClickListener { parent, view, position, id ->
 
-            Log.d("itemmmm", id.toString() + placeTypes[position])
-
-
         }
 
         viewModel.getFilteredPostFromPlace(PlaceType.Prikbord, PostType.Video, "dora.theexplorer1999@gmail.com")
+
+
+        binding.videoToevoegenButton.setOnClickListener{
+            post?.let { it1 -> viewModel.addPostByEmail(it1, args.placeType, "dora.theexplorer1999@gmail.com") }
+        }
 
         return binding.root
 
