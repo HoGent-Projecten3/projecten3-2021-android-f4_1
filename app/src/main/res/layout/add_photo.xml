@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.faithandroid.PostViewModel" />
+    </data>
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -67,9 +73,11 @@
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/addImageRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager">
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:TreasurechestlistData="@{viewModel.postList}">
                 </androidx.recyclerview.widget.RecyclerView>
                 </LinearLayout>
             </FrameLayout>

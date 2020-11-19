@@ -45,13 +45,11 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
                     if (response.isSuccessful()) {
                         _posts.value = response.body()
 
-
                     }
                      else
                     {
                         _status.value = "Er kon geen verbinding gemaakt worden"
                     }
-
                     }
 
                 override fun onFailure(call: Call<List<Post>>?, t: Throwable?) {

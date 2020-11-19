@@ -12,16 +12,24 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import com.example.faithandroid.databinding.AddPhotoBinding
+import com.example.faithandroid.treasureChest.TreasureChestPostAdapter
+import com.example.faithandroid.treasureChest.TreasureChestViewModel
+import com.google.android.material.snackbar.Snackbar
 
 
 class addPhotoFragment: Fragment() {
 
+    val args: addPhotoFragmentArgs by navArgs()
+
     val PICK_IMAGE = 1
     val REQUEST_PICTURE_CAPTURE = 1
 
-
-    private  lateinit var  dropdown : Spinner
+    private lateinit var  viewModel: PostViewModel
+    private lateinit var  dropdown : Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +46,9 @@ class addPhotoFragment: Fragment() {
             false
 
         )
+        binding.lifecycleOwner = this
+
+        viewModel = ViewModelProvider(this, ViewModelFactory(args.placeType)).get(PostViewModel::class.java)
 
         binding.IconFolder.setOnClickListener { view: View ->
 
@@ -74,16 +85,20 @@ class addPhotoFragment: Fragment() {
             )
         }
 
+
         //val editTextFilledExposedDropdown: AutoCompleteTextView? = this.view?.findViewById(R.id.filled_exposed_dropdown)
         binding.dropdownPlaatsen.setAdapter(adapter)
         binding.dropdownPlaatsen.setText(PlaceType.Rugzak.name, false)
 
         binding.dropdownPlaatsen.setOnItemClickListener { parent, view, position, id ->
-
-            Log.d("itemmmm", id.toString() + placeTypes[position])
-
-
+            viewModel.getFilteredPostFromPlace(placeTypes[position], PostType.Image, "dora.theexplorer1999@gmail.com")
         }
+
+
+        viewModel.getFilteredPostFromPlace(PlaceType.Rugzak, PostType.Image, "dora.theexplorer1999@gmail.com")
+        binding.viewModel = viewModel
+        binding.addImageRecyclerView.adapter = TreasureChestPostAdapter()
+
 
         return binding.root
     }
