@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.faithandroid.addPhotoFragmentArgs
 import com.example.faithandroid.databinding.TreasurechestPostBinding
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.PostType
@@ -22,6 +24,8 @@ class TreasureChestPostAdapter : ListAdapter<Post, TreasureChestPostAdapter.Trea
 ) {
     class TreasureChestPostViewHolder(private var binding: TreasurechestPostBinding):
         RecyclerView.ViewHolder(binding.root){
+
+
         fun bind(post: Post){
             binding.post = post
             //inding.TreasurechestVideo.setVideoURI(Uri.parse(post.uri))
@@ -92,5 +96,11 @@ class TreasureChestPostAdapter : ListAdapter<Post, TreasureChestPostAdapter.Trea
     ) {
         val post = getItem(position)
         holder.bind(post)
+
+        holder.itemView.setOnClickListener{
+            view : View ->
+
+
+        }
     }
 }

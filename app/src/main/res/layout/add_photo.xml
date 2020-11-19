@@ -28,11 +28,13 @@
 
 
                 <LinearLayout
+                    android:id="@+id/linLay1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <LinearLayout
+                        android:id="@+id/linLay2"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:orientation="horizontal">
@@ -71,14 +73,37 @@
 
 
                     </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/titleFieldImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="8dp"
+                            android:hint="@string/vul_hier_je_titel_in"
+                            android:visibility="gone"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/linLay2">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/titelImage"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:singleLine="true" />
+
+
+                        </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/addImageRecyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    app:TreasurechestlistData="@{viewModel.postList}">
-                </androidx.recyclerview.widget.RecyclerView>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/addImageRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:TreasurechestlistData="@{viewModel.postList}"
+                        app:spanCount="2"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"></androidx.recyclerview.widget.RecyclerView>
                 </LinearLayout>
             </FrameLayout>
         </FrameLayout>
