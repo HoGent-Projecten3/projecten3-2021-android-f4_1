@@ -106,7 +106,7 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
             stringCall.enqueue(object : Callback<Void> {
 
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    Log.d("LUKAS", response.code().toString())
+
                     if (response.isSuccessful()) {
                         val responseString: String? = response.code().toString()
 
@@ -119,7 +119,7 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
                 }
 
                 override fun onFailure(call: Call<Void>?, t: Throwable?) {
-                    t?.localizedMessage?.let { Log.d("errorr", it) }
+
                     bool = false
                 }
             })

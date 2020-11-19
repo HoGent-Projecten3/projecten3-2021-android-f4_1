@@ -26,7 +26,7 @@ class BulletinBoardPostAdapter : ListAdapter<Post, BulletinBoardPostAdapter.Bull
             binding.date = LocalDate.parse(post.date, DateTimeFormatter.ISO_LOCAL_DATE_TIME).format(
                 DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))
             binding.executePendingBindings()
-            Log.d("lala", binding.bulletinboardOpenButton.text as String)
+
             binding.bulletinboardOpenButton.setOnClickListener { view: View ->
                 MaterialAlertDialogBuilder(binding.root.context)
                     .setTitle(post.title)

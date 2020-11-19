@@ -164,7 +164,7 @@ class VideoToevoegenFragment: Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == PICK_IMAGE && resultCode == RESULT_OK) {
-            Log.d("GELUKT", data?.data.toString())
+
             _videoGekozen.value = true;
            val videoString = data?.data?.let { uriToBase64(it) }
 
