@@ -15,16 +15,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavArgs
 import androidx.navigation.findNavController
-import com.example.faithandroid.PlaceType
-import com.example.faithandroid.PostViewModel
-import com.example.faithandroid.R
+import com.example.faithandroid.*
 import com.example.faithandroid.bulletinboard.BulletinboardFragmentDirections
 import com.example.faithandroid.databinding.VideoToevoegenBinding
 import com.google.android.material.textfield.TextInputLayout
 
 
 class VideoToevoegenFragment: Fragment() {
+
 
 
     private val _videoGekozen = MutableLiveData<Boolean>(false)
@@ -79,7 +79,7 @@ class VideoToevoegenFragment: Fragment() {
 //                throw e
 //            }
 //        }
-        viewModel = ViewModelProvider(this).get(PostViewModel::class.java)
+        viewModel = ViewModelProvider(this, ViewModelFactory(PlaceType.Prikbord)).get(PostViewModel::class.java)
 
         binding.album.setOnClickListener{ view: View ->
             val getIntent = Intent(Intent.ACTION_GET_CONTENT)
@@ -125,6 +125,8 @@ class VideoToevoegenFragment: Fragment() {
 
 
         }
+
+        viewModel.getFilteredPostFromPlace(PlaceType.Prikbord, PostType.Video, "dora.theexplorer1999@gmail.com")
 
         return binding.root
 

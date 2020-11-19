@@ -54,7 +54,7 @@ class SkyscraperViewModel : ViewModel() {
 
     init {
 
-        //GetPostsOfSkyscraper("dora.theexplorer1999@gmail.com")
+        GetPostsOfSkyscraper("dora.theexplorer1999@gmail.com")
         testLiveData.value = test;
     }
 
@@ -62,6 +62,7 @@ class SkyscraperViewModel : ViewModel() {
         coroutineScope.launch {
             var getPropertiesDeferred = FaithApi.retrofitService.getPostsOfSkyScraperByAdolescentEmail(email);
             try {
+                Log.d("skyscraper", getPropertiesDeferred.await().size.toString())
                 var listResult = getPropertiesDeferred.await()
                 if(listResult.size > 0){
 

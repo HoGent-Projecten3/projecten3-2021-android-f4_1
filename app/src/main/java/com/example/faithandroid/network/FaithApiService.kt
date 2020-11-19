@@ -15,7 +15,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
 
 //TODO: give url
-private const val BASE_URL = "https://growapi.azurewebsites.net/api/"
+private const val BASE_URL = "https://apigrow.azurewebsites.net/api/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -72,11 +72,16 @@ interface FaithApiService {
     fun removeGoal(@Query("id") id: Int, @Query("email") email: String)
 
 
-    @GET("City/GetFilteredByPlace")
-    fun getFilteredFromPlace(@Query("PlaceType") placeType: PlaceType, @Query("PostType") postType: PostType, @Query("email") email: String): Call<List<Post>>
+    @GET("City/GetFilteredPostsFromPlace")
+    fun getFilteredFromPlace(@Query("placeType") placeType: Int, @Query("postType") postType: Int, @Query("email") email: String): Call<List<Post>>
 
-    @POST("City/addPostByEmail")
-    fun addPostByEmail(@Body() post: Post, @Query("PlaceType") placeType: PlaceType, @Query("email") email: String): Call<Void>
+
+    @GET("City/GetPostsOfPlaceByAdolescentEmail")
+    fun getPostsOfPlaceByAdolescentEmail(@Query("placeType") placeType: Int, @Query("email")email: String): Call<List<Post>>
+
+    @Headers("Content-Type: application/json", "accept: application/json")
+    @POST("City/AddPostByEmail")
+    fun addPostByEmail(@Body post: Post, @Query("email") email: String, @Query("placeType") placeType: Int): Call<Void>
 
 
 }
