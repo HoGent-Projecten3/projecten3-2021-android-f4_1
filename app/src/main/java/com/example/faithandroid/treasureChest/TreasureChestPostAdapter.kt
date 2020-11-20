@@ -16,6 +16,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.faithandroid.ExoPlayer
 import com.example.faithandroid.FullScreenImage
+import androidx.navigation.fragment.navArgs
+import com.example.faithandroid.addPhotoFragmentArgs
+
 import com.example.faithandroid.databinding.TreasurechestPostBinding
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.PostType
@@ -34,6 +37,8 @@ class TreasureChestPostAdapter : ListAdapter<Post, TreasureChestPostAdapter.Trea
 
     class TreasureChestPostViewHolder(private var binding: TreasurechestPostBinding):
         RecyclerView.ViewHolder(binding.root){
+
+
         fun bind(post: Post){
 
             binding.post = post

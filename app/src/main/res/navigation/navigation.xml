@@ -208,16 +208,15 @@
             app:destination="@id/bulletinBoardFragment" />
     </fragment>
     <fragment
-        android:id="@+id/nieuweVideoPost"
-        android:name="com.example.faithandroid.post.video.NieuweVideoPost"
-        android:label="NieuweVideoPost" />
-    <fragment
         android:id="@+id/addPhotoFragment"
         android:name="com.example.faithandroid.addPhotoFragment"
         android:label="addPhotoFragment" >
         <argument
             android:name="placeType"
             app:argType="com.example.faithandroid.PlaceType" />
+        <action
+            android:id="@+id/action_addPhotoFragment_to_bulletinBoardFragment"
+            app:destination="@id/bulletinBoardFragment" />
     </fragment>
 
 </navigation>

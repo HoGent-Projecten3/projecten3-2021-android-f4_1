@@ -20,6 +20,10 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
     val postList: LiveData<List<Post>>
         get() = _posts
 
+    private val _filterdPosts = MutableLiveData<List<Post>>()
+    val postListFiltered: LiveData<List<Post>>
+        get() = _filterdPosts
+
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>
         get() = _status
@@ -44,7 +48,8 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
 
                  override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
                     if (response.isSuccessful()) {
-                        _posts.value = response.body()
+
+                        _filterdPosts.value = response.body()
 
 
                     }
@@ -52,7 +57,6 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
                     {
                         _status.value = "Er kon geen verbinding gemaakt worden"
                     }
-
                     }
 
                 override fun onFailure(call: Call<List<Post>>?, t: Throwable?) {
@@ -106,7 +110,7 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
             stringCall.enqueue(object : Callback<Void> {
 
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
-
+                    Log.d("res",response.code().toString() + response.message())
                     if (response.isSuccessful()) {
                         val responseString: String? = response.code().toString()
 

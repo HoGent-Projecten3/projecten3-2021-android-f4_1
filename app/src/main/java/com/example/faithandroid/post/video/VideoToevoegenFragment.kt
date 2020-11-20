@@ -177,7 +177,7 @@ class VideoToevoegenFragment: Fragment() {
                 videoString,
                 "")
 
-            nieuwePost = true;
+            nieuwePost = true
         }
         if (data != null) {
             this.view?.findViewById<TextInputLayout>(R.id.titelVeld)?.visibility = View.VISIBLE
