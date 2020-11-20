@@ -35,6 +35,8 @@ class BillboardFragment: Fragment() {
       );
 
 
+        binding.lifecycleOwner = this
+
         viewModel = ViewModelProvider(this).get(BillboardViewModel::class.java)
         binding.viewmodelBillboard = viewModel
 

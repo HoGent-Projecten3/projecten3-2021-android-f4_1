@@ -43,7 +43,7 @@ class SkyscraperViewModel : ViewModel() {
         get() = _getStatus
   
     private var testLiveData = MutableLiveData<List<GoalPost>>()
-    private var test = mutableListOf<GoalPost>(GoalPost(0,"Test","Test", false, listOf(Step(0,"test"), Step(1, "Nog een test"), Step(2, "Oh boy nog een test")), "test"));
+    private var test = mutableListOf<GoalPost>();
 
 
     val testLive: LiveData<List<GoalPost>>

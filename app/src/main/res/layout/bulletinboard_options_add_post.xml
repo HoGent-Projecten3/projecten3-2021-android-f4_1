@@ -57,7 +57,8 @@
                                 android:layout_width="137dp"
                                 android:layout_height="72dp"
                                 android:clickable="false"
-                                android:text="@string/audio" />
+                                android:text="@string/audio"
+                                android:textColor="#9E9797"/>
 
                             <Button
                                 android:id="@+id/FotoButton"
@@ -86,7 +87,7 @@
 
                                 android:clickable="true"
                                 android:text="@string/video"
-                                android:textColor="#9E9797" />
+                                 />
 
 
                             <Button
