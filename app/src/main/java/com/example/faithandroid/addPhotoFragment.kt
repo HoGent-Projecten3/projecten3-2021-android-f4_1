@@ -20,6 +20,8 @@ import android.widget.Spinner
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 
 import androidx.navigation.findNavController
@@ -42,6 +44,10 @@ class addPhotoFragment: Fragment() {
     var post: Post? = null
 
     var nieuwePost: Boolean = false;
+
+    private val _fotoGekozen = MutableLiveData<Boolean>(false)
+    val fotoGekozen: LiveData<Boolean>
+        get() = _fotoGekozen
 
 
     val PICK_IMAGE = 1
@@ -78,7 +84,7 @@ class addPhotoFragment: Fragment() {
                 Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             pickIntent.type = "image/*"
 
-            val chooserIntent = Intent.createChooser(getIntent, "Select Video")
+            val chooserIntent = Intent.createChooser(getIntent, "Select Image")
             chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, arrayOf(pickIntent))
 
             startActivityForResult(chooserIntent, PICK_IMAGE)
@@ -133,6 +139,7 @@ class addPhotoFragment: Fragment() {
                 post?.title = binding.titelImage.text.toString()
                 post?.data = binding.titelImage.text?.replace("\\s".toRegex(), "").toString()
             }
+            Log.d("po",post?.data.toString())
             post?.let { it1 -> viewModel.addPostByEmail(
                 it1,
                 args.placeType,
@@ -156,10 +163,11 @@ class addPhotoFragment: Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_PICTURE_CAPTURE && resultCode == RESULT_OK) {
 
+            _fotoGekozen.value = true;
             val imageString = data?.data?.let { uriToBase64(it) }
 
 
-            val post = Post(
+             this.post = Post(
                 0,
                 "foto van hond",
                 "fotoVanHond.jpg",
@@ -171,7 +179,6 @@ class addPhotoFragment: Fragment() {
             nieuwePost = true;
 
         }
-
             if (data != null) {
                 this.view?.findViewById<TextInputLayout>(R.id.titleFieldImage)?.visibility = View.VISIBLE
             }
