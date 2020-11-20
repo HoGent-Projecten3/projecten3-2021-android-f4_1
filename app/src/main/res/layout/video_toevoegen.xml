@@ -110,12 +110,12 @@
                     android:layout_width="405dp"
                     android:layout_height="406dp"
                     android:layout_marginTop="16dp"
-                    app:TreasurechestlistData="@{viewModel.postList}"
+                    app:TreasurechestlistData="@{viewModel.postListFiltered}"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/titelVeld"
-                    app:spanCount="3">
+                    app:spanCount="2">
 
                 </androidx.recyclerview.widget.RecyclerView>
 

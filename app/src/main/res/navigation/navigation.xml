@@ -15,7 +15,7 @@
         <action
             android:id="@+id/action_bulletinBoardFragment_to_optionsAddPostFragment"
             app:destination="@id/optionsAddPostFragment"
-             />
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/optionsAddPostFragment"
@@ -52,7 +52,9 @@
             app:destination="@id/videoToevoegenFragment" />
         <action
             android:id="@+id/action_optionsAddPostFragment_to_addPhotoFragment"
-            app:destination="@id/addPhotoFragment" />
+            app:destination="@id/addPhotoFragment"
+            app:popUpTo="@id/optionsAddPostFragment"
+            app:popUpToInclusive="true" />
 
     </fragment>
 
