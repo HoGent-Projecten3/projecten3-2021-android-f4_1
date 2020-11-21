@@ -7,7 +7,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,7 +22,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.faithandroid.*
 import com.example.faithandroid.databinding.VideoToevoegenBinding
 import com.example.faithandroid.models.Post
-import com.example.faithandroid.treasureChest.TreasureChestPostAdapter
+import com.example.faithandroid.PostAdapter
 import com.google.android.material.textfield.TextInputLayout
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
@@ -125,7 +124,7 @@ class VideoToevoegenFragment: Fragment() {
             "dora.theexplorer1999@gmail.com"
         )
         binding.viewModel = viewModel
-        binding.recyclerView.adapter = TreasureChestPostAdapter()
+        binding.recyclerView.adapter = PostAdapter()
 
 
 

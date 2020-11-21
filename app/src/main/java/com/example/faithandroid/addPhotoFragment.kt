@@ -3,14 +3,10 @@ package com.example.faithandroid
 import android.app.Activity.RESULT_OK
 import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.Bitmap.CompressFormat
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Base64.DEFAULT
-import android.util.Base64.encodeToString
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -29,7 +25,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.faithandroid.databinding.AddPhotoBinding
 import com.example.faithandroid.models.Post
-import com.example.faithandroid.treasureChest.TreasureChestPostAdapter
 import com.google.android.material.textfield.TextInputLayout
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
@@ -130,7 +125,8 @@ class addPhotoFragment: Fragment() {
             "dora.theexplorer1999@gmail.com"
         )
         binding.viewModel = viewModel
-        binding.addImageRecyclerView.adapter = TreasureChestPostAdapter()
+        binding.addImageRecyclerView.adapter =
+            PostAdapter()
 
         binding.fotoToevoegenButton.setOnClickListener{
 

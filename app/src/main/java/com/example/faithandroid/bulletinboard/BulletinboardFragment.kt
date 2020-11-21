@@ -1,9 +1,6 @@
 package com.example.faithandroid.bulletinboard
 
-import android.content.Intent
-
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,11 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.faithandroid.*
 import com.example.faithandroid.databinding.BulletinboardBinding
-import com.example.faithandroid.skyscraper.SkyscraperFragmentDirections
-import com.example.faithandroid.treasureChest.TreasureChestPostAdapter
+import com.example.faithandroid.PostAdapter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.skyscraper_goalpostimage.view.*
 
 
 class BulletinboardFragment: Fragment() {
@@ -83,7 +78,8 @@ class BulletinboardFragment: Fragment() {
         viewModel = ViewModelProvider(this).get(BulletinBoardViewModel::class.java)
 
         binding.viewModel = postViewModel
-        binding.BulletinBoardRecycler.adapter = TreasureChestPostAdapter()
+        binding.BulletinBoardRecycler.adapter =
+            PostAdapter()
 
 
         postViewModel.status.observe(this.viewLifecycleOwner, Observer {

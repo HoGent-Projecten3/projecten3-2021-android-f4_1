@@ -17,11 +17,11 @@ import com.google.android.exoplayer2.util.Util
 
 //import androidx.databinding.DataBindingUtil
 
-class ExoPlayer : AppCompatActivity() {
+class ExoPlayerActivity : AppCompatActivity() {
 
     private lateinit var playerView: PlayerView
     private var player: SimpleExoPlayer? = null
-    private var videoUri: String = ""
+    private var postUri: String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +29,7 @@ class ExoPlayer : AppCompatActivity() {
         setContentView(R.layout.exoplayer)
 
         initializeViews()
-        videoUri = getIntent().getExtras()!!.getString("videoUri").toString()
+        postUri = getIntent().getExtras()!!.getString("postUri").toString()
     }
 
     fun initializeViews(){
@@ -41,7 +41,7 @@ class ExoPlayer : AppCompatActivity() {
         playerView.setPlayer(player)
 
         //var videoUri: Uri = ContentUris.withAppendedId(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, videoId)
-        var mediaSource: MediaSource = buildMediaSource(Uri.parse(videoUri))
+        var mediaSource: MediaSource = buildMediaSource(Uri.parse(postUri))
         player?.prepare(mediaSource)
         player?.setPlayWhenReady(true)
     }

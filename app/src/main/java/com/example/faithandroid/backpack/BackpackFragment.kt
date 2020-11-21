@@ -13,10 +13,8 @@ import com.example.faithandroid.PlaceType
 import com.example.faithandroid.PostViewModel
 import com.example.faithandroid.R
 import com.example.faithandroid.ViewModelFactory
-import com.example.faithandroid.bulletinboard.BulletinboardFragmentDirections
 import com.example.faithandroid.databinding.BackpackBinding
-import com.example.faithandroid.treasureChest.TreasureChestPostAdapter
-import com.example.faithandroid.treasureChest.TreasureChestViewModel
+import com.example.faithandroid.PostAdapter
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -54,7 +52,7 @@ class BackpackFragment: Fragment() {
 
         viewModel = ViewModelProvider(this).get(BackpackViewModel::class.java)
         binding.viewModel = postViewModel
-        binding.BackpackRecycler.adapter = TreasureChestPostAdapter()
+        binding.BackpackRecycler.adapter = PostAdapter()
 
         viewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view

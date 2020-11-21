@@ -19,7 +19,7 @@ import com.squareup.picasso.Picasso
 
 //import androidx.databinding.DataBindingUtil
 
-class FullScreenImage : AppCompatActivity() {
+class FullScreenImageActivity : AppCompatActivity() {
 
 
    // private lateinit var drawerLayout : DrawerLayout
