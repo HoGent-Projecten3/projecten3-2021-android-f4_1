@@ -105,7 +105,10 @@ class TreasureChestPostAdapter : ListAdapter<Post, TreasureChestPostAdapter.Trea
                 }
 
                 PostType.Audio.ordinal -> {
-
+                    var intent: Intent = Intent(view.getContext(), ExoPlayer::class.java).apply{
+                        putExtra("videoUri", post.uri)
+                    }
+                    view.getContext().startActivity(intent)
                 }
             }
         }
