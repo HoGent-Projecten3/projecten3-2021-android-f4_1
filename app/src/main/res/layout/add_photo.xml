@@ -109,7 +109,7 @@
                         android:id="@+id/addImageRecyclerView"
                         android:layout_width="405dp"
                         android:layout_height="406dp"
-                        app:TreasurechestlistData="@{viewModel.postListFiltered}"
+                        app:listData="@{viewModel.postListFiltered}"
                         app:spanCount="2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

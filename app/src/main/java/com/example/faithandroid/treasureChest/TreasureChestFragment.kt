@@ -9,11 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.example.faithandroid.PlaceType
-import com.example.faithandroid.PostViewModel
-import com.example.faithandroid.R
-import com.example.faithandroid.ViewModelFactory
-import com.example.faithandroid.backpack.BackpackFragmentDirections
+import com.example.faithandroid.*
 import com.example.faithandroid.databinding.TreasurechestBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -43,7 +39,8 @@ class TreasureChestFragment: Fragment() {
         binding.lifecycleOwner = this
 
         binding.viewModel = postViewModel
-        binding.TreasureChestRecycler.adapter = TreasureChestPostAdapter()
+        binding.TreasureChestRecycler.adapter =
+            PostAdapter()
 
 
         binding.AddPostButton.setOnClickListener { view: View ->

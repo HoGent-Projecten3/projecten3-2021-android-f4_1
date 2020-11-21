@@ -110,7 +110,7 @@
                     android:layout_width="405dp"
                     android:layout_height="406dp"
                     android:layout_marginTop="16dp"
-                    app:TreasurechestlistData="@{viewModel.postListFiltered}"
+                    app:listData="@{viewModel.postListFiltered}"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

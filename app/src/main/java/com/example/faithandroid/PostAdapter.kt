@@ -1,28 +1,16 @@
-package com.example.faithandroid.treasureChest
+package com.example.faithandroid
 
-import android.content.Context
 import android.content.Intent
-import android.media.MediaPlayer
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.VideoView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.example.faithandroid.ExoPlayer
-import com.example.faithandroid.FullScreenImage
-import androidx.navigation.fragment.navArgs
-import com.example.faithandroid.addPhotoFragmentArgs
 
-import com.example.faithandroid.databinding.TreasurechestPostBinding
+import com.example.faithandroid.databinding.ListdataPostBinding
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.PostType
-import com.google.android.exoplayer2.ui.SimpleExoPlayerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import org.threeten.bp.LocalDate
@@ -30,12 +18,12 @@ import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.FormatStyle
 
 
-class TreasureChestPostAdapter : ListAdapter<Post, TreasureChestPostAdapter.TreasureChestPostViewHolder>(
+class PostAdapter : ListAdapter<Post, PostAdapter.TreasureChestPostViewHolder>(
     DiffCallback
 ) {
 
 
-    class TreasureChestPostViewHolder(private var binding: TreasurechestPostBinding):
+    class TreasureChestPostViewHolder(private var binding: ListdataPostBinding):
         RecyclerView.ViewHolder(binding.root){
 
 
@@ -70,7 +58,9 @@ class TreasureChestPostAdapter : ListAdapter<Post, TreasureChestPostAdapter.Trea
     ): TreasureChestPostViewHolder {
 
 
-        return TreasureChestPostViewHolder(TreasurechestPostBinding.inflate(LayoutInflater.from(parent.context)))
+        return TreasureChestPostViewHolder(
+            ListdataPostBinding.inflate(LayoutInflater.from(parent.context))
+        )
     }
 
     override fun onBindViewHolder(
@@ -83,15 +73,15 @@ class TreasureChestPostAdapter : ListAdapter<Post, TreasureChestPostAdapter.Trea
         holder.itemView.setOnClickListener { view: View ->
             when (post.postType) {
                 PostType.Image.ordinal -> {
-                    var intent: Intent = Intent(view.getContext(), FullScreenImage::class.java).apply{
+                    var intent: Intent = Intent(view.getContext(), FullScreenImageActivity::class.java).apply{
                         putExtra("imageUri", post.uri)
                     }
                     view.getContext().startActivity(intent)
                 }
 
-                PostType.Video.ordinal -> {
-                    var intent: Intent = Intent(view.getContext(), ExoPlayer::class.java).apply{
-                        putExtra("videoUri", post.uri)
+                PostType.Video.ordinal, PostType.Audio.ordinal -> {
+                    var intent: Intent = Intent(view.getContext(), ExoPlayerActivity::class.java).apply{
+                        putExtra("postUri", post.uri)
                     }
                     view.getContext().startActivity(intent)
                 }
@@ -103,15 +93,7 @@ class TreasureChestPostAdapter : ListAdapter<Post, TreasureChestPostAdapter.Trea
                         .setMessage(post.data)
                         .show()
                 }
-
-                PostType.Audio.ordinal -> {
-
-                }
             }
-        }
-
-        fun setCardClickListeners(){
-
         }
     }
 }

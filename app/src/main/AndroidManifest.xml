@@ -18,8 +18,8 @@
         <uses-library android:name="android.test.mock"/>
 
         <activity android:name=".PopupWindow"></activity>
-        <activity android:name=".ExoPlayer"></activity>
-        <activity android:name=".FullScreenImage"></activity>
+        <activity android:name=".ExoPlayerActivity"></activity>
+        <activity android:name=".FullScreenImageActivity"></activity>
         <activity android:name=".MainActivity">
 
 
