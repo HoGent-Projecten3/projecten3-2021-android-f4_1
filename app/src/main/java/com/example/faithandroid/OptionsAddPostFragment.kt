@@ -40,7 +40,7 @@ class OptionsAddPostFragment: Fragment() {
          */
         binding.TekstButton.setOnClickListener{
                 view: View ->  val action =
-            OptionsAddPostFragmentDirections.actionOptionsAddPostFragmentToTextPostToevoegen(
+            OptionsAddPostFragmentDirections.actionOptionsAddPostFragmentToAddTextFragment(
                 args.placeType
             )
             view.findNavController().navigate(action)

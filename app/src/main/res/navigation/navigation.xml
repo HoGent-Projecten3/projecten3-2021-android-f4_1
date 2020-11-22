@@ -39,11 +39,6 @@
             app:destination="@id/treasureChestFragment"
             app:popUpTo="@id/treasureChestFragment"
             app:popUpToInclusive="true"/>
-        <action
-            android:id="@+id/action_optionsAddPostFragment_to_text_post_toevoegen"
-            app:destination="@id/text_post_toevoegen"
-
-           />
         <argument
             android:name="placeType"
             app:argType="com.example.faithandroid.PlaceType" />
@@ -55,6 +50,9 @@
             app:destination="@id/addPhotoFragment"
             app:popUpTo="@id/optionsAddPostFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_optionsAddPostFragment_to_addTextFragment"
+            app:destination="@id/addTextFragment" />
 
     </fragment>
 
@@ -218,6 +216,20 @@
             app:argType="com.example.faithandroid.PlaceType" />
         <action
             android:id="@+id/action_addPhotoFragment_to_bulletinBoardFragment"
+            app:destination="@id/bulletinBoardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTextFragment"
+        android:name="com.example.faithandroid.addTextFragment"
+        android:label="addTextFragment" >
+        <action
+            android:id="@+id/action_addTextFragment_to_text_post_toevoegen"
+            app:destination="@id/text_post_toevoegen" />
+        <argument
+            android:name="placeType"
+            app:argType="com.example.faithandroid.PlaceType" />
+        <action
+            android:id="@+id/action_addTextFragment_to_bulletinBoardFragment"
             app:destination="@id/bulletinBoardFragment" />
     </fragment>
 
