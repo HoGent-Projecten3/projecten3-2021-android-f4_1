@@ -160,6 +160,14 @@ class VideoToevoegenFragment: Fragment() {
                     it.findNavController()
                         .navigate(R.id.action_videoToevoegenFragment_to_bulletinBoardFragment)
                 }
+                PlaceType.Schatkist -> {
+                    it.findNavController()
+                        .navigate(R.id.action_videoToevoegenFragment_to_treasureChestFragment)
+                }
+                PlaceType.Rugzak -> {
+                    it.findNavController()
+                        .navigate(R.id.action_videoToevoegenFragment_to_backpackFragment)
+                }
             }
 
         }
