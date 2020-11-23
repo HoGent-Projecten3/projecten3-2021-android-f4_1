@@ -110,7 +110,7 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
             stringCall.enqueue(object : Callback<Void> {
 
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    Log.d("res",response.code().toString() + response.message())
+
                     if (response.isSuccessful()) {
                         val responseString: String? = response.code().toString()
 
@@ -135,11 +135,11 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
     {
         viewModelScope.launch {
             val stringCall: Call<Void> =
-                FaithApi.retrofitService.addExistingPostToPlace(3, placeType.ordinal)
+                FaithApi.retrofitService.addExistingPostToPlace(id, placeType.ordinal)
             stringCall.enqueue(object : Callback<Void> {
 
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    Log.d("res",response.code().toString() + response.message())
+
                     if (response.isSuccessful()) {
                         val responseString: String? = response.code().toString()
 

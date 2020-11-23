@@ -127,6 +127,7 @@ class VideoToevoegenFragment: Fragment() {
             "dora.theexplorer1999@gmail.com"
         )
         binding.viewModel = viewModel
+
         binding.recyclerView.adapter = PostAdapter(object : CustomLongClick {
             override fun onClick(post: Post) {
                 this@VideoToevoegenFragment.post = post
@@ -154,6 +155,7 @@ class VideoToevoegenFragment: Fragment() {
             {
                 if(post != null)
                 {
+
                     viewModel.addExistingPostToPlace(post!!.id, args.placeType)
                 }
             }

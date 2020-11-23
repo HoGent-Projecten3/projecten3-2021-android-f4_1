@@ -139,7 +139,7 @@ class addPhotoFragment: Fragment() {
                 post?.title = binding.titelImage.text.toString()
                 post?.data = binding.titelImage.text?.replace("\\s".toRegex(), "").toString()
             }
-            Log.d("po",post?.data.toString())
+
             post?.let { it1 -> viewModel.addPostByEmail(
                 it1,
                 args.placeType,
