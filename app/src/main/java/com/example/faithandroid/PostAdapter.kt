@@ -2,6 +2,7 @@ package com.example.faithandroid
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.faithandroid.databinding.FilteredPostBinding
+import com.example.faithandroid.databinding.PostBinding
 
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.PostType
@@ -27,7 +29,7 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
 ) {
 
 
-    class TreasureChestPostViewHolder(private var binding: FilteredPostBinding, private var listener: CustomClick, private var parent: ViewGroup):
+    class TreasureChestPostViewHolder(private var binding: PostBinding, private var listener: CustomClick, private var parent: ViewGroup):
         RecyclerView.ViewHolder(binding.root){
 
         fun bind(post: Post){
@@ -47,13 +49,14 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
 
             binding.DeletePostButton.setOnClickListener{
                 view: View ->
+
                 MaterialAlertDialogBuilder(view.getContext())
                     .setMessage("Ben je zeker dat je deze post wil verwijderen?")
                     .setPositiveButton("Ja"){_, which ->
+                        Log.d("lalala", "lalala")
                         listener.onClick(post)
                     }
                     .setNegativeButton("Nee"){_, which ->
-
                     }.show()
             }
 
@@ -112,7 +115,7 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
 
 
         return TreasureChestPostViewHolder(
-            FilteredPostBinding.inflate(LayoutInflater.from(parent.context)),
+            PostBinding.inflate(LayoutInflater.from(parent.context)),
             listener, parent
         )
     }

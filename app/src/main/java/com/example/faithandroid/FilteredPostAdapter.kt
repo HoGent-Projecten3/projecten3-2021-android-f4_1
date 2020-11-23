@@ -45,16 +45,6 @@ class FilteredPostAdapter(private var listener: CustomClick) : ListAdapter<Post,
                 }
             }
 
-            binding.DeletePostButton.setOnClickListener{
-                view: View ->
-                MaterialAlertDialogBuilder(view.getContext())
-                    .setMessage("Ben je zeker dat je deze post wil verwijderen?")
-                    .setPositiveButton("Ja", dialogClickListener)
-                    .setNegativeButton("Nee", dialogClickListener)
-                    .show()
-            }
-
-
             binding.date = LocalDate.parse(post.date, DateTimeFormatter.ISO_LOCAL_DATE_TIME).format(
                 DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))
 
