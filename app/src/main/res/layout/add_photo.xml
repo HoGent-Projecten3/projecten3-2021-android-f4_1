@@ -108,27 +108,26 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/addImageRecyclerView"
                         android:layout_width="405dp"
-                        android:layout_height="406dp"
+                        android:layout_height="455dp"
                         app:listData="@{viewModel.postListFiltered}"
                         app:spanCount="2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/titleFieldImage"
                         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager">
+                </androidx.recyclerview.widget.RecyclerView>
 
-                    </androidx.recyclerview.widget.RecyclerView>
+                <Button
+                    android:id="@+id/fotoToevoegenButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/nieuwe_post_toevoegen"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/addImageRecyclerView" />
 
-                    <Button
-                        android:layout_gravity="center"
-                        android:id="@+id/fotoToevoegenButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="15dp"
-                        android:text="@string/nieuwe_post_toevoegen"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/addImageRecyclerView" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </FrameLayout>

@@ -40,9 +40,7 @@ class VideoToevoegenFragment: Fragment() {
 
     var nieuwePost: Boolean = false;
 
-    private val _videoGekozen = MutableLiveData<Boolean>(false)
-    val videoGekozen: LiveData<Boolean>
-        get() = _videoGekozen
+
 
     val PICK_IMAGE = 1
     val REQUEST_VIDEO_CAPTURE = 1
@@ -181,7 +179,6 @@ class VideoToevoegenFragment: Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == PICK_IMAGE && resultCode == RESULT_OK) {
 
-            _videoGekozen.value = true;
            val videoString = data?.data?.let { uriToBase64(it) }
 
             this.post = Post(
