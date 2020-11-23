@@ -1,6 +1,7 @@
 package com.example.faithandroid.login.uilogin
 
 import android.app.Activity
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,30 +9,47 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import com.example.faithandroid.HomeFragment
+import com.example.faithandroid.MainActivity
 import com.example.faithandroid.R
+import com.example.faithandroid.login.LoginFragment
+import com.google.android.material.textfield.TextInputEditText
+import kotlinx.android.synthetic.main.activity_test.*
+import kotlinx.android.synthetic.main.login.*
+import kotlinx.android.synthetic.main.login.view.*
+import javax.xml.parsers.DocumentBuilderFactory.newInstance
+import javax.xml.transform.TransformerFactory.newInstance
 
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.login)
 
-        val username = findViewById<EditText>(R.id.login_field)
-        val password = findViewById<EditText>(R.id.password_field)
+        val username = findViewById<EditText>(R.id.txtemail)
+        val password = findViewById<EditText>(R.id.txtwachtwoord)
         val login = findViewById<Button>(R.id.login_button)
         val loading = findViewById<ProgressBar>(R.id.loading)
 
-        loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
+
+
+        loginViewModel = ViewModelProvider(this,
+            LoginViewModelFactory()
+        )
                 .get(LoginViewModel::class.java)
 
         loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
@@ -58,11 +76,18 @@ class LoginActivity : AppCompatActivity() {
             if (loginResult.success != null) {
                 updateUiWithUser(loginResult.success)
             }
-            setResult(Activity.RESULT_OK)
+
+            var intent: Intent = Intent()
+            intent.putExtra("loggedInUser", loginResult.success?.displayName)
+
+
+            setResult(Activity.RESULT_OK, intent)
 
             //Complete and destroy login activity once successful
             finish()
         })
+
+
 
         username.afterTextChanged {
             loginViewModel.loginDataChanged(
@@ -90,12 +115,27 @@ class LoginActivity : AppCompatActivity() {
                 false
             }
 
-            login.setOnClickListener {
+
+          login.setOnClickListener {
+            try{
                 loading.visibility = View.VISIBLE
+                Log.i("aaaaaa",username.text.toString() + " "  + password.text.toString())
                 loginViewModel.login(username.text.toString(), password.text.toString())
+               //  supportFragmentManager.findFragmentById(R.id.action_loginFragment_to_homeFragment) as LoginFragment
+             //  this.findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
             }
+            catch (e: Exception ){
+              Log.d("ERROR", e.stackTraceToString())
+            }
+          }
+
+
         }
+
+      /*  val taskIntent =  Intent(this, HomeFragment::class.java)
+        startActivity(taskIntent)*/
     }
+
 
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome)
@@ -111,7 +151,9 @@ class LoginActivity : AppCompatActivity() {
     private fun showLoginFailed(@StringRes errorString: Int) {
         Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
     }
+
 }
+
 
 /**
  * Extension function to simplify setting an afterTextChanged action to EditText components.

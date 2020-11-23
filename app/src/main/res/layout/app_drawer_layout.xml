@@ -17,7 +17,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:menu="@menu/activity_main_drawer"
-        app:headerLayout="@layout/app_nav_header_main"
+
         />
 
 </androidx.drawerlayout.widget.DrawerLayout>

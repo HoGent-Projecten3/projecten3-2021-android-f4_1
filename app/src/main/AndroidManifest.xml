@@ -18,16 +18,28 @@
         <uses-library android:name="android.test.mock"/>
 
         <activity android:name=".PopupWindow"></activity>
+
         <activity android:name=".ExoPlayerActivity"></activity>
         <activity android:name=".FullScreenImageActivity"></activity>
         <activity android:name=".MainActivity">
 
-            <intent-filter>
+
+        <activity android:name=".login.uilogin.LoginActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity android:name=".MainActivity">
+         <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
     </application>
 
 </manifest>

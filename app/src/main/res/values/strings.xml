@@ -31,7 +31,7 @@
     <string name="naam">Jane Doe</string>
     <!-- TODO: Remove or change this placeholder text -->
 
-    <string name="login">log in</string>
+    <string name="login">Log in</string>
     <string name="title_activity_test">TestActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

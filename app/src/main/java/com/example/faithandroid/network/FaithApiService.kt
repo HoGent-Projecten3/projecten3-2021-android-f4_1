@@ -1,7 +1,12 @@
 package com.example.faithandroid.network
 
+
+import com.example.faithandroid.login.data.User
+import com.example.faithandroid.models.Adolescent
+
 import com.example.faithandroid.PlaceType
 import com.example.faithandroid.PostType
+
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.TextPost
@@ -12,22 +17,36 @@ import kotlinx.coroutines.Deferred
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.*
+import javax.security.auth.callback.Callback
 
 //TODO: give url
 private const val BASE_URL = "https://apigrow.azurewebsites.net/api/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
+
     .build()
 
 private val retrofit = Retrofit.Builder()
+    .addConverterFactory(ScalarsConverterFactory.create())
     .addConverterFactory(MoshiConverterFactory.create(moshi))
     .addCallAdapterFactory(CoroutineCallAdapterFactory())
     .baseUrl(BASE_URL)
     .build()
 
 interface FaithApiService {
+
+    @Headers("Content-Type: application/json")
+    @POST("Account/CreateToken")
+    fun loginAdolescent(@Body adolescent: User):
+           Call<String>
+
+
+    @GET("Account/GetAdolescent")
+    fun getAdolescent(@Query("email") email: String):
+           Deferred<Adolescent>
 
     @GET("Account/GetAdolescentsByCounselorEmail/bob.debouwer1998@gmail.com")
     fun getProperties():
@@ -79,7 +98,6 @@ interface FaithApiService {
     @POST("City/DeleteGoalByEmail")
     fun removeGoal(@Query("id") id: Int, @Query("email") email: String)
 
-
     @GET("City/GetFilteredPostsFromPlace")
     fun getFilteredFromPlace(@Query("placeType") placeType: Int, @Query("postType") postType: Int, @Query("email") email: String): Call<List<Post>>
 
@@ -98,6 +116,7 @@ interface FaithApiService {
     @Headers("Content-Type: application/json", "accept: application/json")
     @PUT("City/AddExistingPostToPlace")
     fun addExistingPostToPlace(@Query("postId") id: Int, @Query("placeType")placeType: Int): Call<Void>
+
 }
 
 object FaithApi {
