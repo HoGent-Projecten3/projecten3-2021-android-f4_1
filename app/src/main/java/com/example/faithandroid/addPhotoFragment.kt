@@ -125,12 +125,14 @@ class addPhotoFragment: Fragment() {
             "dora.theexplorer1999@gmail.com"
         )
         binding.viewModel = viewModel
-        binding.addImageRecyclerView.adapter =
-            PostAdapter(object : CustomLongClick {
-                override fun onClick(post: Post) {
-                    true
-                }
-            })
+
+        binding.addImageRecyclerView.adapter = PostAdapter(object : CustomLongClick {
+            override fun onClick(post: Post) {
+                this@addPhotoFragment.post = post
+                true
+            }
+        })
+
 
         binding.fotoToevoegenButton.setOnClickListener{
 
@@ -138,12 +140,24 @@ class addPhotoFragment: Fragment() {
             {
                 post?.title = binding.titelImage.text.toString()
                 post?.data = binding.titelImage.text?.replace("\\s".toRegex(), "").toString()
+
+                post?.let { it1 ->
+                    viewModel.addPostByEmail(
+                        it1,
+                        args.placeType,
+                        "dora.theexplorer1999@gmail.com"
+                    )
+                }
             }
-            post?.let { it1 -> viewModel.addPostByEmail(
-                it1,
-                args.placeType,
-                "dora.theexplorer1999@gmail.com"
-            ) }
+            else
+            {
+                if(post != null)
+                {
+
+                    viewModel.addExistingPostToPlace(post!!.id, args.placeType)
+                }
+            }
+
             when(args.placeType)
             {
                 PlaceType.Prikbord -> {
