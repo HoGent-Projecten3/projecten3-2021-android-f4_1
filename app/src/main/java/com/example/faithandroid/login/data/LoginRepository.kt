@@ -62,7 +62,7 @@ class LoginRepository(val dataSource: LoginDataSource) {
           }
           else
           {
-              throw NullPointerException("oei")
+              throw NullPointerException()
           }
 
       }
