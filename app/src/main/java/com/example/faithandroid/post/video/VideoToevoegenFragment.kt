@@ -7,7 +7,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,18 +14,14 @@ import android.widget.ArrayAdapter
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.faithandroid.*
 import com.example.faithandroid.databinding.VideoToevoegenBinding
 import com.example.faithandroid.models.Post
-import com.example.faithandroid.PostAdapter
-import com.example.faithandroid.databinding.ListdataPostBinding
+import com.example.faithandroid.FilteredPostAdapter
 import com.google.android.material.textfield.TextInputLayout
-import kotlinx.android.synthetic.main.skyscraper_goalpostimage.view.*
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
 import java.util.*
@@ -126,7 +121,7 @@ class VideoToevoegenFragment: Fragment() {
         )
         binding.viewModel = viewModel
 
-        binding.recyclerView.adapter = PostAdapter(object : CustomLongClick {
+        binding.recyclerView.adapter = FilteredPostAdapter(object : CustomClick {
             override fun onClick(post: Post) {
                 this@VideoToevoegenFragment.post = post
                 true

@@ -2,34 +2,33 @@ package com.example.faithandroid
 
 import android.content.DialogInterface
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.view.children
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.faithandroid.databinding.FilteredPostBinding
-import com.example.faithandroid.databinding.PostBinding
 
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.PostType
 import com.example.faithandroid.network.FaithApi
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.filtered_post.view.*
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.FormatStyle
 
 
-class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAdapter.TreasureChestPostViewHolder>(
+class FilteredPostAdapter(private var listener: CustomClick) : ListAdapter<Post, FilteredPostAdapter.TreasureChestPostViewHolder>(
     DiffCallback
 ) {
 
 
-    class TreasureChestPostViewHolder(private var binding: PostBinding, private var listener: CustomClick, private var parent: ViewGroup):
+    class TreasureChestPostViewHolder(private var binding: FilteredPostBinding, private var listener: CustomClick, private var parent: ViewGroup):
         RecyclerView.ViewHolder(binding.root){
 
         fun bind(post: Post){
@@ -47,27 +46,22 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
                 }
             }
 
-            binding.DeletePostButton.setOnClickListener{
-                view: View ->
-
-                MaterialAlertDialogBuilder(view.getContext())
-                    .setMessage("Ben je zeker dat je deze post wil verwijderen?")
-                    .setPositiveButton("Ja"){_, which ->
-                        Log.d("lalala", "lalala")
-                        listener.onClick(post)
-                    }
-                    .setNegativeButton("Nee"){_, which ->
-                    }.show()
-            }
-
+            Glide.with(itemView.context).load(post.uri).into(binding.TreasurechestVideo)
 
             binding.date = LocalDate.parse(post.date, DateTimeFormatter.ISO_LOCAL_DATE_TIME).format(
                 DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))
 
             var card = binding.card
 
+            card.setOnLongClickListener {
+                listener.onClick(post)
+                parent.children.forEach { view: View ->
+                    card.setChecked(false)
+                }
+                card.setChecked(!card.isChecked)
+                true
+            }
 
-            Glide.with(itemView.context).load(post.uri).into(binding.TreasurechestVideo)
             card.setOnClickListener { view: View ->
                 when (post.postType) {
                     PostType.Image.ordinal -> {
@@ -91,7 +85,6 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
                             .setMessage(post.data)
                             .show()
                     }
-                    else -> {}
                 }
             }
 
@@ -117,7 +110,7 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
 
 
         return TreasureChestPostViewHolder(
-            PostBinding.inflate(LayoutInflater.from(parent.context)),
+            FilteredPostBinding.inflate(LayoutInflater.from(parent.context)),
             listener, parent
         )
     }

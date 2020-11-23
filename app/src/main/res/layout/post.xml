@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
     
     <data>
         <import type="android.view.View" />
@@ -29,6 +29,22 @@
             android:clickable="true"
             android:focusable="true"
             android:checkable="true">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/DeletePostButton"
+                style="@style/pinkButtonStyle"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="top|end"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                android:clickable="true"
+                app:maxImageSize="35dp"
+                app:srcCompat="@android:drawable/ic_delete"
+                tools:ignore="MissingConstraints" />
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -1,6 +1,7 @@
 package com.example.faithandroid.treasureChest
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,7 +42,7 @@ class TreasureChestFragment: Fragment() {
 
         binding.viewModel = postViewModel
         binding.TreasureChestRecycler.adapter =
-            PostAdapter(object : CustomLongClick {
+            FilteredPostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
                     true
                 }
@@ -55,6 +56,15 @@ class TreasureChestFragment: Fragment() {
                 )
             view.findNavController().navigate(action)
         }
+
+        binding.TreasureChestRecycler.adapter =
+            FilteredPostAdapter(object : CustomClick {
+                override fun onClick(post: Post) {
+                    Log.d("----------------------", post.title)
+                    postViewModel.deletePostByEmail(post.id, "dora.theexplorer1999@gmail.com", PlaceType.Schatkist)
+                    true
+                }
+            })
 
         postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view

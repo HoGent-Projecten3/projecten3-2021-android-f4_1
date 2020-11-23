@@ -5,13 +5,10 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 
 import android.graphics.Bitmap
-import android.graphics.Bitmap.CompressFormat
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -126,7 +123,7 @@ class addPhotoFragment: Fragment() {
         )
         binding.viewModel = viewModel
 
-        binding.addImageRecyclerView.adapter = PostAdapter(object : CustomLongClick {
+        binding.addImageRecyclerView.adapter = FilteredPostAdapter(object : CustomClick {
             override fun onClick(post: Post) {
                 this@addPhotoFragment.post = post
                 true
