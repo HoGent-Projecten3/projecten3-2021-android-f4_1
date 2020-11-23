@@ -157,7 +157,6 @@ class addPhotoFragment: Fragment() {
                     viewModel.addExistingPostToPlace(post!!.id, args.placeType)
                 }
             }
-
             when(args.placeType)
             {
                 PlaceType.Prikbord -> {

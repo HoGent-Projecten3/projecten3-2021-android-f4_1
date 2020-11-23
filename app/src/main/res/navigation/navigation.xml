@@ -243,6 +243,7 @@
         <action
             android:id="@+id/action_addTextFragment_to_bulletinBoardFragment"
             app:destination="@id/bulletinBoardFragment" />
+
     </fragment>
 
 </navigation>
