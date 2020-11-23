@@ -1,6 +1,7 @@
 package com.example.faithandroid.backpack
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,11 +50,20 @@ class BackpackFragment: Fragment() {
 
         viewModel = ViewModelProvider(this).get(BackpackViewModel::class.java)
         binding.viewModel = postViewModel
-        binding.BackpackRecycler.adapter =  PostAdapter(object : CustomLongClick {
+        binding.BackpackRecycler.adapter =  FilteredPostAdapter(object : CustomClick {
             override fun onClick(post: Post) {
                 true
             }
         })
+
+        binding.BackpackRecycler.adapter =
+            FilteredPostAdapter(object : CustomClick {
+                override fun onClick(post: Post) {
+                    Log.d("----------------------", post.title)
+                    postViewModel.deletePostByEmail(post.id, "dora.theexplorer1999@gmail.com", PlaceType.Rugzak)
+                    true
+                }
+            })
 
         viewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view

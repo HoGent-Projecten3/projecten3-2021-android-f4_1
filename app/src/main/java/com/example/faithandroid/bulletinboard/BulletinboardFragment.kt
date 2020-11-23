@@ -1,6 +1,7 @@
 package com.example.faithandroid.bulletinboard
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.faithandroid.*
 import com.example.faithandroid.databinding.BulletinboardBinding
-import com.example.faithandroid.PostAdapter
+import com.example.faithandroid.FilteredPostAdapter
 import com.example.faithandroid.models.Post
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
@@ -80,8 +81,10 @@ class BulletinboardFragment: Fragment() {
 
         binding.viewModel = postViewModel
         binding.BulletinBoardRecycler.adapter =
-            PostAdapter(object : CustomLongClick {
+            FilteredPostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
+                    Log.d("----------------------", post.title)
+                    postViewModel.deletePostByEmail(post.id, "dora.theexplorer1999@gmail.com", PlaceType.Prikbord)
                     true
                 }
             })

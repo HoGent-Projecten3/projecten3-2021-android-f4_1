@@ -1,6 +1,5 @@
 package com.example.faithandroid
 
-import android.view.View
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.faithandroid.billboard.BillboardGridAdapter
@@ -9,7 +8,7 @@ import com.example.faithandroid.models.Post
 
 @BindingAdapter("listData")
 fun bindRecyclerViewTreasurechest(recyclerView: RecyclerView, data: List<Post>?){
-    val adapter = recyclerView.adapter as PostAdapter
+    val adapter = recyclerView.adapter as FilteredPostAdapter
     adapter.submitList(data)
 }
 

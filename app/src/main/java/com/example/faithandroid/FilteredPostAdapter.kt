@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.view.children
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -16,13 +17,12 @@ import com.example.faithandroid.models.PostType
 import com.example.faithandroid.network.FaithApi
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.filtered_post.view.*
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.FormatStyle
 
 
-class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAdapter.TreasureChestPostViewHolder>(
+class FilteredPostAdapter(private var listener: CustomClick) : ListAdapter<Post, FilteredPostAdapter.TreasureChestPostViewHolder>(
     DiffCallback
 ) {
 
@@ -49,12 +49,9 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
                 view: View ->
                 MaterialAlertDialogBuilder(view.getContext())
                     .setMessage("Ben je zeker dat je deze post wil verwijderen?")
-                    .setPositiveButton("Ja"){_, which ->
-                        listener.onClick(post)
-                    }
-                    .setNegativeButton("Nee"){_, which ->
-
-                    }.show()
+                    .setPositiveButton("Ja", dialogClickListener)
+                    .setNegativeButton("Nee", dialogClickListener)
+                    .show()
             }
 
 
@@ -62,6 +59,15 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
                 DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))
 
             var card = binding.card
+
+            card.setOnLongClickListener {
+                listener.onClick(post)
+                parent.children.forEach { view: View ->
+                    card.setChecked(false)
+                }
+                card.setChecked(!card.isChecked)
+                true
+            }
 
             card.setOnClickListener { view: View ->
                 when (post.postType) {
@@ -86,7 +92,6 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
                             .setMessage(post.data)
                             .show()
                     }
-                    else -> {}
                 }
             }
 

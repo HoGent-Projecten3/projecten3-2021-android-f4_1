@@ -1,8 +1,5 @@
 package com.example.faithandroid
 
-import android.app.Activity
-import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,16 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.faithandroid.databinding.AddPhotoBinding
 import com.example.faithandroid.databinding.AddTextBinding
 import com.example.faithandroid.models.Post
-import com.google.android.material.textfield.TextInputLayout
 
 class addTextFragment: Fragment() {
 
@@ -93,7 +87,7 @@ class addTextFragment: Fragment() {
         )
         binding.viewModel = viewModel
         binding.recyclerView.adapter =
-            PostAdapter(object : CustomLongClick {
+            FilteredPostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
                     this@addTextFragment.post = post
                     true
