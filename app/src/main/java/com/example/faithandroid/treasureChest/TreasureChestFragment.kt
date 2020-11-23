@@ -22,6 +22,8 @@ class TreasureChestFragment: Fragment() {
         ViewModelProvider(this, ViewModelFactory(PlaceType.Schatkist)).get(PostViewModel::class.java)
     }
 
+    private lateinit var  adapter: PostAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -41,12 +43,16 @@ class TreasureChestFragment: Fragment() {
         binding.lifecycleOwner = this
 
         binding.viewModel = postViewModel
-        binding.TreasureChestRecycler.adapter =
-            FilteredPostAdapter(object : CustomClick {
-                override fun onClick(post: Post) {
-                    true
-                }
-            })
+
+        this.adapter = PostAdapter(object : CustomClick {
+            override fun onClick(post: Post) {
+                true
+            }
+        })
+
+        binding.TreasureChestRecycler.adapter = this.adapter
+
+
 
 
         binding.AddPostButton.setOnClickListener { view: View ->
@@ -58,10 +64,11 @@ class TreasureChestFragment: Fragment() {
         }
 
         binding.TreasureChestRecycler.adapter =
-            FilteredPostAdapter(object : CustomClick {
+            PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
-                    Log.d("----------------------", post.title)
+
                     postViewModel.deletePostByEmail(post.id, "dora.theexplorer1999@gmail.com", PlaceType.Schatkist)
+                    postViewModel.getPostsOfPlace(PlaceType.Schatkist, "dora.theexplorer1999@gmail")
                     true
                 }
             })
@@ -76,6 +83,11 @@ class TreasureChestFragment: Fragment() {
                     postViewModel.getPostsOfPlace(PlaceType.Schatkist, "dora.theexplorer1999@gmail.com")
                 }.show()
             }
+        })
+
+        postViewModel.postList.observe(this.viewLifecycleOwner, Observer{
+
+            this.adapter.notifyDataSetChanged()
         })
 
         return binding.root

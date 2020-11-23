@@ -54,7 +54,7 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
                 MaterialAlertDialogBuilder(view.getContext())
                     .setMessage("Ben je zeker dat je deze post wil verwijderen?")
                     .setPositiveButton("Ja"){_, which ->
-                        Log.d("lalala", "lalala")
+
                         listener.onClick(post)
                     }
                     .setNegativeButton("Nee"){_, which ->

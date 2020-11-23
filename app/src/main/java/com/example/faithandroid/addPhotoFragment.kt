@@ -161,6 +161,14 @@ class addPhotoFragment: Fragment() {
                         .navigate(R.id.action_addPhotoFragment_to_bulletinBoardFragment)
 
                 }
+                PlaceType.Schatkist -> {
+                    it.findNavController()
+                        .navigate(R.id.action_addPhotoFragment_to_treasureChestFragment)
+                }
+                PlaceType.Rugzak -> {
+                    it.findNavController()
+                        .navigate(R.id.action_addPhotoFragment_to_backpackFragment)
+                }
             }
         }
 

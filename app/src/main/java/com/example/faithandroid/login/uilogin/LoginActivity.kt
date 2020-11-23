@@ -125,7 +125,7 @@ class LoginActivity : AppCompatActivity() {
              //  this.findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
             }
             catch (e: Exception ){
-              Log.d("ERROR", e.stackTraceToString())
+
             }
           }
 

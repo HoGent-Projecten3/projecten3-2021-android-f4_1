@@ -98,7 +98,7 @@ class addTextFragment: Fragment() {
 
         binding.textToevoegenButton.setOnClickListener{
 
-            Log.d("po",post?.data.toString())
+
             post?.let { it1 -> viewModel.addPostByEmail(
                 it1,
                 args.placeType,
@@ -109,6 +109,14 @@ class addTextFragment: Fragment() {
                 PlaceType.Prikbord -> {
                     it.findNavController()
                         .navigate(R.id.action_addTextFragment_to_bulletinBoardFragment)
+                }
+                PlaceType.Rugzak -> {
+                    it.findNavController()
+                        .navigate(R.id.action_addTextFragment_to_backpackFragment)
+                }
+                PlaceType.Schatkist -> {
+                    it.findNavController()
+                        .navigate(R.id.action_addTextFragment_to_treasureChestFragment)
                 }
             }
         }
