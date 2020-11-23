@@ -2,6 +2,7 @@ package com.example.faithandroid
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,12 +24,12 @@ import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.FormatStyle
 
 
-class FilteredPostAdapter(private var listener: CustomClick) : ListAdapter<Post, FilteredPostAdapter.TreasureChestPostViewHolder>(
+class FilteredPostAdapter(private var listener: CustomClick) : ListAdapter<Post, FilteredPostAdapter.FilteredPostViewHolder>(
     DiffCallback
 ) {
 
 
-    class TreasureChestPostViewHolder(private var binding: FilteredPostBinding, private var listener: CustomClick, private var parent: ViewGroup):
+    class FilteredPostViewHolder(private var binding: FilteredPostBinding, private var listener: CustomClick, private var parent: ViewGroup):
         RecyclerView.ViewHolder(binding.root){
 
         fun bind(post: Post){
@@ -51,14 +52,16 @@ class FilteredPostAdapter(private var listener: CustomClick) : ListAdapter<Post,
             binding.date = LocalDate.parse(post.date, DateTimeFormatter.ISO_LOCAL_DATE_TIME).format(
                 DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))
 
-            var card = binding.card
+            var card = binding.filteredPostCard
 
             card.setOnLongClickListener {
-                listener.onClick(post)
+                Log.d("loggg", parent.childCount.toString())
                 parent.children.forEach { view: View ->
                     card.setChecked(false)
                 }
                 card.setChecked(!card.isChecked)
+                listener.onClick(post)
+
                 true
             }
 
@@ -106,17 +109,17 @@ class FilteredPostAdapter(private var listener: CustomClick) : ListAdapter<Post,
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): TreasureChestPostViewHolder {
+    ): FilteredPostViewHolder {
 
 
-        return TreasureChestPostViewHolder(
+        return FilteredPostViewHolder(
             FilteredPostBinding.inflate(LayoutInflater.from(parent.context)),
             listener, parent
         )
     }
 
     override fun onBindViewHolder(
-        holder: TreasureChestPostViewHolder,
+        holder: FilteredPostViewHolder,
         position: Int
     ) {
         val post = getItem(position)
