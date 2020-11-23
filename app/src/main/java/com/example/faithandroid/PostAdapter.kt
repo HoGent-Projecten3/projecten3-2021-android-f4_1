@@ -1,5 +1,6 @@
 package com.example.faithandroid
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.faithandroid.databinding.ListdataPostBinding
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.PostType
+import com.example.faithandroid.network.FaithApi
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.listdata_post.view.*
@@ -38,6 +40,23 @@ class PostAdapter(private var listener: CustomLongClick) : ListAdapter<Post, Pos
                 Picasso.get().load(post.uri).into(binding.TreasurechestImage)
                 binding.TreasurechestImage.scaleType = ImageView.ScaleType.CENTER_CROP
             }
+
+            val dialogClickListener = DialogInterface.OnClickListener{ _, which ->
+                when(which){
+                    DialogInterface.BUTTON_POSITIVE -> FaithApi.retrofitService.deletePostByEmail(post.id, "dora.theexplorer1999@gmail.com", PlaceType.Schatkist.ordinal)
+                }
+            }
+
+            binding.DeletePostButton.setOnClickListener{
+                view: View ->
+                MaterialAlertDialogBuilder(view.getContext())
+                    .setMessage("Ben je zeker dat je deze post wil verwijderen?")
+                    .setPositiveButton("Ja", dialogClickListener)
+                    .setNegativeButton("Nee", dialogClickListener)
+                    .show()
+            }
+
+
             binding.date = LocalDate.parse(post.date, DateTimeFormatter.ISO_LOCAL_DATE_TIME).format(
                 DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))
 
