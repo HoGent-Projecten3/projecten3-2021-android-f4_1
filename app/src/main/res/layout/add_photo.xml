@@ -105,18 +105,20 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/addImageRecyclerView"
-                        android:layout_width="405dp"
-                        android:layout_height="406dp"
-                        app:TreasurechestlistData="@{viewModel.postListFiltered}"
-                        app:spanCount="2"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/titleFieldImage"
-                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/addImageRecyclerView"
+                    android:layout_width="405dp"
+                    android:layout_height="406dp"
+                    android:clickable="true"
+                    app:TreasurechestlistData="@{viewModel.postListFiltered}"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titleFieldImage"
+                    app:spanCount="2"
+                    >
 
-                    </androidx.recyclerview.widget.RecyclerView>
+                </androidx.recyclerview.widget.RecyclerView>
 
                     <Button
                         android:layout_gravity="center"
