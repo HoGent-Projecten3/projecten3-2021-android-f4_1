@@ -51,7 +51,7 @@ class PostAdapter(private var listener: CustomLongClick) : ListAdapter<Post, Pos
                 card.setChecked(!card.isChecked)
                 true
             }
-
+            Glide.with(itemView.context).load(post.uri).into(binding.TreasurechestVideo)
             card.setOnClickListener { view: View ->
                 when (post.postType) {
                     PostType.Image.ordinal -> {
