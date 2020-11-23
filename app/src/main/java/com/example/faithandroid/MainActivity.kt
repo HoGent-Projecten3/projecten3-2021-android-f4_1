@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var viewModel: LoginViewModel
+    private  var username: String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +48,7 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
             setContentView(R.layout.activity_test)
 
         val taskIntent =  Intent(this,LoginActivity::class.java)
-        startActivity(taskIntent)
+        startActivityForResult(taskIntent, 1)
 
         viewModel = ViewModelProvider(this,
             LoginViewModelFactory()
@@ -58,7 +59,7 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
         var navHeader = findViewById<NavigationView>(R.id.navView)
         var bind = DataBindingUtil.inflate<AppNavHeaderMainBinding>(layoutInflater, R.layout.app_nav_header_main, navHeader.navView , false)
         navHeader.navView.addHeaderView(bind.root)
-        bind.adolescent = viewModel
+        bind.adolescent = username
       // var navHeader2 = findViewById<AppNavHeaderMainBinding>(R.id.) as AppNavHeaderMainBinding
 //        navHeader2.adolescent = viewModel
 
@@ -131,6 +132,12 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
             }
         }
         return true
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        this.username = data?.getStringExtra("loggedInUser").toString()
     }
 
 

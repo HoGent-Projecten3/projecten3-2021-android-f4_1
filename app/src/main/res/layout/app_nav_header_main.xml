@@ -7,7 +7,7 @@
     <data>
         <variable
             name="adolescent"
-            type="com.example.faithandroid.login.uilogin.LoginViewModel" />
+            type="String" />
     </data>
 
 <LinearLayout
@@ -53,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
-        android:text="@{adolescent.adolescent.name}"
+        android:text="@{adolescent}"
         android:textStyle="bold"
         android:textSize="20dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />

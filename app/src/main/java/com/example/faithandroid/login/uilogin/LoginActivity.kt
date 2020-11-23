@@ -76,7 +76,12 @@ class LoginActivity : AppCompatActivity() {
             if (loginResult.success != null) {
                 updateUiWithUser(loginResult.success)
             }
-            setResult(Activity.RESULT_OK)
+
+            var intent: Intent = Intent()
+            intent.putExtra("loggedInUser", loginResult.success?.displayName)
+
+
+            setResult(Activity.RESULT_OK, intent)
 
             //Complete and destroy login activity once successful
             finish()
