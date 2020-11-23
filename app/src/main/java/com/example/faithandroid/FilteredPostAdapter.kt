@@ -10,6 +10,7 @@ import androidx.core.view.children
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.faithandroid.databinding.FilteredPostBinding
 
 import com.example.faithandroid.models.Post
@@ -44,6 +45,8 @@ class FilteredPostAdapter(private var listener: CustomClick) : ListAdapter<Post,
                     DialogInterface.BUTTON_POSITIVE -> FaithApi.retrofitService.deletePostByEmail(post.id, "dora.theexplorer1999@gmail.com", PlaceType.Schatkist.ordinal)
                 }
             }
+
+            Glide.with(itemView.context).load(post.uri).into(binding.TreasurechestVideo)
 
             binding.date = LocalDate.parse(post.date, DateTimeFormatter.ISO_LOCAL_DATE_TIME).format(
                 DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))
