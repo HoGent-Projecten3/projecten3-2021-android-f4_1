@@ -217,6 +217,18 @@
         <action
             android:id="@+id/action_addPhotoFragment_to_bulletinBoardFragment"
             app:destination="@id/bulletinBoardFragment" />
+        <action
+            android:id="@+id/action_addPhotoFragment_to_backpackFragment"
+            app:destination="@id/backpackFragment" />
+        <action
+            android:id="@+id/action_addPhotoFragment_to_skyscraperFragment"
+            app:destination="@id/skyscraperFragment" />
+        <action
+            android:id="@+id/action_addPhotoFragment_to_backpackFragment2"
+            app:destination="@id/backpackFragment" />
+        <action
+            android:id="@+id/action_addPhotoFragment_to_treasureChestFragment"
+            app:destination="@id/treasureChestFragment" />
     </fragment>
     <fragment
         android:id="@+id/addTextFragment"
