@@ -93,7 +93,12 @@ class addTextFragment: Fragment() {
         )
         binding.viewModel = viewModel
         binding.recyclerView.adapter =
-            PostAdapter()
+            PostAdapter(object : CustomLongClick {
+                override fun onClick(post: Post) {
+                    this@addTextFragment.post = post
+                    true
+                }
+            })
 
 
 
