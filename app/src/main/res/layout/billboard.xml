@@ -32,7 +32,7 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:padding="6dp"
-            app:BillboardListData="@{viewmodelBillboard.mockData}"
+            app:BillboardListData="@{viewmodelBillboard.properties}"
 
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -31,7 +31,7 @@
     <string name="naam">Jane Doe</string>
     <!-- TODO: Remove or change this placeholder text -->
 
-    <string name="login">log in</string>
+    <string name="login">Log in</string>
     <string name="title_activity_test">TestActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -67,4 +67,21 @@
     <string name="verwijder">Verwijder</string>
     <string name="doel_gedeeld">Doel Gedeeld</string>
     <string name="doel_verwijderd">Doel Verwijderd</string>
+    <string name="wachtwoord_wijzigen">Wachtwoord wijzigen</string>
+    <string name="jane_doe">Jane Doe</string>
+    <string name="jane_doe_gmail_com">jane.doe@gmail.com</string>
+    <string name="donkere_modus">Donkere modus</string>
+    <string name="nieuw_wachtwoord_confirmeren">Nieuw wachtwoord confirmeren</string>
+    <string name="nieuw_wachtwoord">Nieuw wachtwoord</string>
+    <string name="oud_wachtwoord">Oud wachtwoord</string>
+    <string name="hint_text">Opgeslagen plaatsen</string>
+    <string name="camera">Camera</string>
+    <string name="camerafolder">Camerafolder</string>
+    <string name="plaatsen">Plaatsen</string>
+    <string name="vul_hier_je_titel_in">vul hier je titel in:</string>
+    <string name="nieuwe_video_post_toevoegen">nieuwe video post toevoegen</string>
+    <string name="nieuwe_post_toevoegen">nieuwe post toevoegen</string>
+
+
+
 </resources>

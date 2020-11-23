@@ -1,0 +1,2024 @@
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"com.example.faithandroid\">\r\n\r\n    <uses-permission android:name=\"android.permission.INTERNET\" />\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/AppTheme\">\r\n        <activity android:name=\".PopupWindow\"></activity>\r\n      \r\n        <activity android:name=\".MainActivity\">\r\n\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
++++ app/src/main/AndroidManifest.xml	(date 1604968548056)
+@@ -1,4 +1,3 @@
+-
+ <?xml version="1.0" encoding="utf-8"?>
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+     package="com.example.faithandroid">
+@@ -12,7 +11,7 @@
+         android:roundIcon="@mipmap/ic_launcher_round"
+         android:supportsRtl="true"
+         android:theme="@style/AppTheme">
+-        <activity android:name=".PopupWindow"></activity>
++
+       
+         <activity android:name=".MainActivity">
+ 
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_11_6_2020_12_40_AM__Default_Changelist_.xml
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Checkout_at_11_6_2020_12_40_AM__Default_Changelist_.xml	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
++++ .idea/shelf/Uncommitted_changes_before_Checkout_at_11_6_2020_12_40_AM__Default_Changelist_.xml	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Checkout_at_11_6_2020_12_40_AM_[Default_Changelist]" date="1604619637225" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_6_2020_12_40_AM_[Default_Changelist]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 11/6/2020 12:40 AM [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
++++ .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
+@@ -1,19 +0,0 @@
+-<changelist name="Uncommitted_changes_before_rebase_[Default_Changelist]" date="1604527267175" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before rebase [Default Changelist]" />
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable/belly_skyscraper.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]/belly_skyscraper.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable/onderkant_skyscraper.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]/onderkant_skyscraper.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable/bovenkant_skyscraper.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]/bovenkant_skyscraper.jpg" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_1.xml
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_1.xml	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
++++ .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_1.xml	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_rebase_[Default_Changelist]1" date="1604585989408" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before rebase [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]3/shelved.patch
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]3/shelved.patch	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
++++ .idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]3/shelved.patch	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
+@@ -1,435 +0,0 @@
+-Index: app/src/main/java/com/example/faithandroid/SkyscraperFragment.kt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.example.faithandroid\r\n\r\nimport android.content.Context\r\nimport android.content.Intent\r\n\r\nimport android.os.Bundle\r\nimport android.view.LayoutInflater\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport android.widget.Button\r\nimport android.widget.LinearLayout\r\nimport androidx.databinding.DataBindingUtil\r\nimport androidx.fragment.app.Fragment\r\nimport androidx.lifecycle.Observer\r\nimport androidx.lifecycle.ViewModelProvider\r\nimport androidx.navigation.findNavController\r\nimport com.example.faithandroid.databinding.FragmentBulletinboardBinding\r\nimport com.example.faithandroid.databinding.FragmentSkyscraperBinding\r\nimport com.example.faithandroid.viewmodels.BulletinBoardViewModel\r\nimport com.example.faithandroid.viewmodels.SkyscraperViewModel\r\nimport kotlinx.android.synthetic.main.textpost.view.*\r\n\r\n\r\nclass SkyscraperFragment: Fragment() {\r\n\r\n    private lateinit var viewModel: SkyscraperViewModel\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n    }\r\n\r\n    override fun onCreateView(\r\n        inflater: LayoutInflater, container: ViewGroup?,\r\n        savedInstanceState: Bundle?\r\n    ): View? {\r\n      val binding = DataBindingUtil.inflate<FragmentSkyscraperBinding>(\r\n          inflater,\r\n          R.layout.fragment_skyscraper,\r\n          container,\r\n          false\r\n      );\r\n\r\n        viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)\r\n\r\n        binding.AddPostButton.setOnClickListener {view: View ->\r\n            view.findNavController().navigate(R.id.action_skyscraperFragment_to_addGoalFragment)\r\n\r\n        }\r\n\r\n        viewModel.testLive.observe(this.viewLifecycleOwner, Observer{goals ->\r\n            goals.forEach{goal ->\r\n                val rowView: View = inflater.inflate(R.layout.goalpostimage, null)\r\n                binding.lijst.addView(rowView, binding.lijst.childCount - 1)\r\n            }\r\n        })\r\n        viewModel.test.forEach{goal ->\r\n            val rowView: View = inflater.inflate(R.layout.goalpostimage, null)\r\n            binding.lijst.addView(rowView, binding.lijst.childCount - 1)\r\n        }\r\n        return binding.root\r\n    }\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/java/com/example/faithandroid/SkyscraperFragment.kt	(revision 70573682fe10450cb8a33df7953158b207ce1b8e)
+-+++ app/src/main/java/com/example/faithandroid/SkyscraperFragment.kt	(date 1604607947343)
+-@@ -4,6 +4,7 @@
+- import android.content.Intent
+- 
+- import android.os.Bundle
+-+import android.util.Log
+- import android.view.LayoutInflater
+- import android.view.View
+- import android.view.ViewGroup
+-@@ -14,16 +15,19 @@
+- import androidx.lifecycle.Observer
+- import androidx.lifecycle.ViewModelProvider
+- import androidx.navigation.findNavController
+-+import androidx.navigation.fragment.navArgs
+- import com.example.faithandroid.databinding.FragmentBulletinboardBinding
+- import com.example.faithandroid.databinding.FragmentSkyscraperBinding
+-+import com.example.faithandroid.models.GoalPost
+- import com.example.faithandroid.viewmodels.BulletinBoardViewModel
+- import com.example.faithandroid.viewmodels.SkyscraperViewModel
+--import kotlinx.android.synthetic.main.textpost.view.*
+-+import com.example.faithandroid.viewmodels.factories.SkyscraperViewModelFactory
+- 
+- 
+- class SkyscraperFragment: Fragment() {
+- 
+-     private lateinit var viewModel: SkyscraperViewModel
+-+    private lateinit var viewModelFactory: SkyscraperViewModelFactory
+- 
+-     override fun onCreate(savedInstanceState: Bundle?) {
+-         super.onCreate(savedInstanceState)
+-@@ -33,30 +37,35 @@
+-         inflater: LayoutInflater, container: ViewGroup?,
+-         savedInstanceState: Bundle?
+-     ): View? {
+--      val binding = DataBindingUtil.inflate<FragmentSkyscraperBinding>(
+--          inflater,
+--          R.layout.fragment_skyscraper,
+--          container,
+--          false
+--      );
+-+          val binding = DataBindingUtil.inflate<FragmentSkyscraperBinding>(
+-+              inflater,
+-+              R.layout.fragment_skyscraper,
+-+              container,
+-+              false
+-+          );
+-+        val skyscraperFragmentArgs = navArgs<SkyscraperFragmentArgs>()
+-+
+-+        var amount = skyscraperFragmentArgs.value.goalAmount
+-+        var lijst: List<String> = listOf()
+-+        for (x in 0 until amount){
+-+            lijst.plus("test")
+-+        }
+-+
+-+        viewModelFactory = SkyscraperViewModelFactory(lijst)
+-+        viewModel = ViewModelProvider(this, viewModelFactory).get(SkyscraperViewModel::class.java)
+-+        /*viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
+-+        binding.setLifecycleOwner(this)*/
+-+
+-+        binding.skyscraperViewModel = viewModel
+- 
+--        viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
+-+        binding.setLifecycleOwner(this)
+-+
+- 
+-         binding.AddPostButton.setOnClickListener {view: View ->
+-             view.findNavController().navigate(R.id.action_skyscraperFragment_to_addGoalFragment)
+- 
+-         }
+- 
+--        viewModel.testLive.observe(this.viewLifecycleOwner, Observer{goals ->
+--            goals.forEach{goal ->
+--                val rowView: View = inflater.inflate(R.layout.goalpostimage, null)
+--                binding.lijst.addView(rowView, binding.lijst.childCount - 1)
+--            }
+--        })
+--        viewModel.test.forEach{goal ->
+--            val rowView: View = inflater.inflate(R.layout.goalpostimage, null)
+--            binding.lijst.addView(rowView, binding.lijst.childCount - 1)
+--        }
+-         return binding.root
+-     }
+--}
+-\ No newline at end of file
+-+}
+-Index: app/src/main/java/com/example/faithandroid/addGoalFragment.kt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.example.faithandroid\r\n\r\nimport android.os.Bundle\r\nimport android.util.Log\r\nimport android.view.LayoutInflater\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport android.widget.CheckBox\r\nimport android.widget.TextView\r\nimport androidx.appcompat.view.menu.ListMenuItemView\r\nimport androidx.core.view.children\r\nimport androidx.core.view.forEach\r\nimport androidx.core.view.get\r\nimport androidx.databinding.DataBindingUtil\r\nimport androidx.fragment.app.Fragment\r\nimport androidx.lifecycle.ViewModelProvider\r\nimport androidx.navigation.findNavController\r\nimport com.example.faithandroid.databinding.FragmentAddGoalBinding\r\nimport com.example.faithandroid.databinding.FragmentMusicroomBinding\r\nimport com.example.faithandroid.models.GoalPost\r\nimport com.example.faithandroid.viewmodels.MusicRoomViewModel\r\nimport com.example.faithandroid.viewmodels.SkyscraperViewModel\r\nimport kotlinx.android.synthetic.main.fragment_add_goal.*\r\n\r\nclass addGoalFragment : Fragment() {\r\n\r\n    private lateinit var viewModel: SkyscraperViewModel\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n    }\r\n\r\n    override fun onCreateView(\r\n        inflater: LayoutInflater, container: ViewGroup?,\r\n        savedInstanceState: Bundle?\r\n    ): View? {\r\n        val binding = DataBindingUtil.inflate<FragmentAddGoalBinding>(\r\n            inflater,\r\n            R.layout.fragment_add_goal,\r\n            container,\r\n            false\r\n        );\r\n\r\n\r\n\r\n\r\n        binding.annuleerButton.setOnClickListener { view: View ->\r\n            view.findNavController().navigate(R.id.action_addGoalFragment_to_skyscraperFragment)\r\n        }\r\n\r\n        binding.voegToeButton.setOnClickListener { view: View ->\r\n            var titel : String = binding.titelText.text.toString()\r\n            var beschrijving : String = binding.beschrijvingText.text.toString()\r\n            var steps : List<String> = emptyList();\r\n            binding.stepList.children.forEach { step: View ->\r\n                steps.plus(step.toString());\r\n            }\r\n            var newGoal = GoalPost(titel, beschrijving, false, steps)\r\n            \r\n            viewModel.addGoalPost(newGoal);\r\n            Log.d(\"helpGF\", viewModel.testLive.value.toString())\r\n\r\n\r\n\r\n\r\n            view.findNavController().navigate(R.id.action_addGoalFragment_to_skyscraperFragment)\r\n        }\r\n\r\n        binding.addStepButton.setOnClickListener{run{\r\n                //innerStepList.add\r\n                var newView: TextView = TextView(this.context);\r\n                newView.text =  \" - \" + binding.stepTekst.text;\r\n                binding.stepTekst.text.clear()\r\n                newView.setOnClickListener{\r\n                    run{\r\n                        stepList.removeView(newView)\r\n                    }\r\n                }\r\n                //stepList.add(newView)\r\n                binding.stepList.addView(newView, binding.stepList.childCount - 1)\r\n            }\r\n        }\r\n\r\n\r\n        return binding.root\r\n    }\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/java/com/example/faithandroid/addGoalFragment.kt	(revision 70573682fe10450cb8a33df7953158b207ce1b8e)
+-+++ app/src/main/java/com/example/faithandroid/addGoalFragment.kt	(date 1604605148415)
+-@@ -18,13 +18,16 @@
+- import com.example.faithandroid.databinding.FragmentAddGoalBinding
+- import com.example.faithandroid.databinding.FragmentMusicroomBinding
+- import com.example.faithandroid.models.GoalPost
+-+import com.example.faithandroid.viewmodels.BulletinBoardViewModel
+-+import com.example.faithandroid.viewmodels.GoalPostViewModel
+- import com.example.faithandroid.viewmodels.MusicRoomViewModel
+- import com.example.faithandroid.viewmodels.SkyscraperViewModel
+- import kotlinx.android.synthetic.main.fragment_add_goal.*
+- 
+- class addGoalFragment : Fragment() {
+- 
+--    private lateinit var viewModel: SkyscraperViewModel
+-+    private lateinit var viewModel: GoalPostViewModel
+-+    private lateinit var binding: FragmentAddGoalBinding
+- 
+-     override fun onCreate(savedInstanceState: Bundle?) {
+-         super.onCreate(savedInstanceState)
+-@@ -34,15 +37,15 @@
+-         inflater: LayoutInflater, container: ViewGroup?,
+-         savedInstanceState: Bundle?
+-     ): View? {
+--        val binding = DataBindingUtil.inflate<FragmentAddGoalBinding>(
+-+        binding = DataBindingUtil.inflate(
+-             inflater,
+-             R.layout.fragment_add_goal,
+-             container,
+-             false
+-         );
+- 
+--
+--
+-+        viewModel = ViewModelProvider(this).get(GoalPostViewModel::class.java)
+-+        binding.setLifecycleOwner(this)
+- 
+-         binding.annuleerButton.setOnClickListener { view: View ->
+-             view.findNavController().navigate(R.id.action_addGoalFragment_to_skyscraperFragment)
+-@@ -56,9 +59,9 @@
+-                 steps.plus(step.toString());
+-             }
+-             var newGoal = GoalPost(titel, beschrijving, false, steps)
+--            
+--            viewModel.addGoalPost(newGoal);
+--            Log.d("helpGF", viewModel.testLive.value.toString())
+-+
+-+            viewModel.onAdd();
+-+            Log.d("helpGF", viewModel.score.value.toString())
+- 
+- 
+- 
+-Index: app/src/main/java/com/example/faithandroid/viewmodels/SkyscraperViewModel.kt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.example.faithandroid.viewmodels\r\n\r\nimport androidx.lifecycle.LiveData\r\nimport androidx.lifecycle.MutableLiveData\r\nimport androidx.lifecycle.ViewModel\r\nimport com.example.faithandroid.models.GoalPost\r\nimport com.example.faithandroid.models.TextPost\r\n\r\nclass SkyscraperViewModel : ViewModel() {\r\n\r\n    var steps: List<String> = listOf(\"lijst\", \"lijst\")\r\n    var test = mutableListOf<GoalPost>(\r\n        GoalPost(\r\n        \"Hello\", \"hello\", completed = false, steps),\r\n        GoalPost(\r\n            \"Hello\", \"hello\", completed = false, steps),\r\n    )\r\n    private var testLiveData = MutableLiveData<List<GoalPost>>(test)\r\n\r\n    val testLive: LiveData<List<GoalPost>>\r\n        get() = testLiveData\r\n\r\n    fun addGoalPost(goal: GoalPost){\r\n        testLiveData.value = (testLiveData.value)?.plus(goal)\r\n    }\r\n\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/java/com/example/faithandroid/viewmodels/SkyscraperViewModel.kt	(revision 70573682fe10450cb8a33df7953158b207ce1b8e)
+-+++ app/src/main/java/com/example/faithandroid/viewmodels/SkyscraperViewModel.kt	(date 1604605824273)
+-@@ -6,22 +6,37 @@
+- import com.example.faithandroid.models.GoalPost
+- import com.example.faithandroid.models.TextPost
+- 
+--class SkyscraperViewModel : ViewModel() {
+--
+--    var steps: List<String> = listOf("lijst", "lijst")
+--    var test = mutableListOf<GoalPost>(
+-+//class SkyscraperViewModel(finalGoals: List<GoalPost>) : ViewModel() {
+-+class SkyscraperViewModel(finalScore:List<String>):ViewModel(){
+-+    /*private var steps: List<String> = listOf("lijst", "lijst")
+-+    private var goalList = mutableListOf<GoalPost>(
+-         GoalPost(
+-         "Hello", "hello", completed = false, steps),
+-         GoalPost(
+-             "Hello", "hello", completed = false, steps),
+-     )
+--    private var testLiveData = MutableLiveData<List<GoalPost>>(test)
+-+    private var _goalListLiveData = MutableLiveData<List<GoalPost>>(goalList)
+-+    val goalListLive: LiveData<List<GoalPost>>
+-+        get() = _goalListLiveData
+-+
+- 
+--    val testLive: LiveData<List<GoalPost>>
+--        get() = testLiveData
+-+
+- 
+-     fun addGoalPost(goal: GoalPost){
+--        testLiveData.value = (testLiveData.value)?.plus(goal)
+-+        _goalListLiveData.value = (_goalListLiveData.value)?.plus(goal)
+-+    }*/
+-+
+-+    private val _goalAmount = MutableLiveData<List<String>>()
+-+    val goalAmount: LiveData<List<String>>
+-+        get() = _goalAmount
+-+
+-+    init {
+-+        _goalAmount.value = finalScore
+-     }
+- 
+-+
+-+
+-+
+-+
+-+
+- }
+-\ No newline at end of file
+-Index: app/src/main/res/navigation/navigation.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<navigation xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/navigation\"\r\n    app:startDestination=\"@id/backendFragment\">\r\n\r\n    <fragment\r\n        android:id=\"@+id/bulletinBoardFragment\"\r\n        android:name=\"com.example.faithandroid.BulletinboardFragment\"\r\n        android:label=\"bulletinboard\"\r\n        tools:layout=\"@layout/fragment_bulletinboard\" >\r\n\r\n        <action\r\n            android:id=\"@+id/action_bulletinBoardFragment_to_optionsAddPostFragment\"\r\n            app:destination=\"@id/optionsAddPostFragment\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/optionsAddPostFragment\"\r\n        android:name=\"com.example.faithandroid.OptionsAddPostFragment\"\r\n        android:label=\"options_add_post\"\r\n        tools:layout=\"@layout/options_add_post\" >\r\n        <action\r\n            android:id=\"@+id/action_optionsAddPostFragment_to_bulletinBoardFragment\"\r\n            app:destination=\"@id/bulletinBoardFragment\" />\r\n\r\n    </fragment>\r\n\r\n    <fragment\r\n        android:id=\"@+id/loginFragment\"\r\n        android:name=\"com.example.faithandroid.LoginFragment\"\r\n        android:label=\"LoginFragment\" >\r\n\r\n        <action\r\n\r\n            android:id=\"@+id/action_loginFragment_to_homeFragment\"\r\n            app:destination=\"@id/homeFragment\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/homeFragment\"\r\n        android:name=\"com.example.faithandroid.HomeFragment\"\r\n        android:label=\"menu_homescherm\"\r\n        tools:layout=\"@layout/menu_homescherm\" >\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_backpackFragment\"\r\n            app:destination=\"@id/backpackFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_billboardFragment\"\r\n            app:destination=\"@id/billboardFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_bulletinBoardFragment\"\r\n            app:destination=\"@id/bulletinBoardFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_cinemaFragment\"\r\n            app:destination=\"@id/cinemaFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_musicRoomFragment\"\r\n            app:destination=\"@id/musicRoomFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_shoppingCenterFragment\"\r\n            app:destination=\"@id/shoppingCenterFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_skyscraperFragment\"\r\n            app:destination=\"@id/skyscraperFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_treasureChestFragment\"\r\n            app:destination=\"@id/treasureChestFragment\" />\r\n    </fragment>\r\n    \r\n    <fragment\r\n        android:id=\"@+id/backendFragment\"\r\n        android:name=\"com.example.faithandroid.BackendFragment\"\r\n        android:label=\"BackendFragment\" />\r\n    <fragment\r\n        android:id=\"@+id/text_post_toevoegen\"\r\n        android:name=\"com.example.faithandroid.text_post_toevoegen\"\r\n        android:label=\"text_post_toevoegen\">\r\n        <action\r\n            android:id=\"@+id/action_text_post_toevoegen_to_bulletinBoardFragment\"\r\n            app:destination=\"@id/bulletinBoardFragment\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/backpackFragment\"\r\n        android:name=\"com.example.faithandroid.BackpackFragment\"\r\n        android:label=\"BackpackFragment\"\r\n        tools:layout=\"@layout/fragment_backpack\"/>\r\n    <fragment\r\n        android:id=\"@+id/billboardFragment\"\r\n        android:name=\"com.example.faithandroid.BillboardFragment\"\r\n        android:label=\"BillboardFragment\"\r\n        tools:layout=\"@layout/fragment_billboard\"/>\r\n    <fragment\r\n        android:id=\"@+id/cinemaFragment\"\r\n        android:name=\"com.example.faithandroid.CinemaFragment\"\r\n        android:label=\"CinemaFragment\"\r\n        tools:layout=\"@layout/fragment_cinema\"/>\r\n    <fragment\r\n        android:id=\"@+id/musicRoomFragment\"\r\n        android:name=\"com.example.faithandroid.MusicRoomFragment\"\r\n        android:label=\"MusicRoomFragment\"\r\n        tools:layout=\"@layout/fragment_musicroom\"/>\r\n    <fragment\r\n        android:id=\"@+id/shoppingCenterFragment\"\r\n        android:name=\"com.example.faithandroid.ShoppingCenterFragment\"\r\n        android:label=\"ShoppingCenterFragment\"\r\n        tools:layout=\"@layout/fragment_shoppingcenter\"/>\r\n    <fragment\r\n        android:id=\"@+id/skyscraperFragment\"\r\n        android:name=\"com.example.faithandroid.SkyscraperFragment\"\r\n        android:label=\"SkyscraperFragment\"\r\n        tools:layout=\"@layout/fragment_skyscraper\">\r\n        <action\r\n            android:id=\"@+id/action_skyscraperFragment_to_addGoalFragment\"\r\n            app:destination=\"@id/addGoalFragment\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/treasureChestFragment\"\r\n        android:name=\"com.example.faithandroid.TreasureChestFragment\"\r\n        android:label=\"TreasureChestFragment\"\r\n        tools:layout=\"@layout/fragment_treasurechest\"/>\r\n    <fragment\r\n        android:id=\"@+id/addGoalFragment\"\r\n        android:name=\"com.example.faithandroid.addGoalFragment\"\r\n        android:label=\"addGoalFragment\" >\r\n        <action\r\n            android:id=\"@+id/action_addGoalFragment_to_skyscraperFragment\"\r\n            app:destination=\"@id/skyscraperFragment\" />\r\n    </fragment>\r\n\r\n</navigation>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/res/navigation/navigation.xml	(revision 70573682fe10450cb8a33df7953158b207ce1b8e)
+-+++ app/src/main/res/navigation/navigation.xml	(date 1604607767781)
+-@@ -3,7 +3,7 @@
+-     xmlns:app="http://schemas.android.com/apk/res-auto"
+-     xmlns:tools="http://schemas.android.com/tools"
+-     android:id="@+id/navigation"
+--    app:startDestination="@id/backendFragment">
+-+    app:startDestination="@id/homeFragment">
+- 
+-     <fragment
+-         android:id="@+id/bulletinBoardFragment"
+-@@ -112,6 +112,10 @@
+-         <action
+-             android:id="@+id/action_skyscraperFragment_to_addGoalFragment"
+-             app:destination="@id/addGoalFragment" />
+-+        <argument
+-+            android:name="goalAmount"
+-+            android:defaultValue="0"
+-+            app:argType="Int" />
+-     </fragment>
+-     <fragment
+-         android:id="@+id/treasureChestFragment"
+-Index: app/src/main/res/layout/fragment_skyscraper.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<layout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\">\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        >\r\n\r\n        <include\r\n            layout=\"@layout/app_bar_back\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"match_parent\" />\r\n\r\n        <com.google.android.material.floatingactionbutton.FloatingActionButton\r\n            android:id=\"@+id/AddPostButton\"\r\n            style=\"@style/pinkButtonStyle\"\r\n            android:layout_width=\"70dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_alignParentEnd=\"true\"\r\n            android:layout_alignParentBottom=\"true\"\r\n            android:layout_gravity=\"bottom|end\"\r\n            android:layout_marginEnd=\"25dp\"\r\n            android:layout_marginBottom=\"25dp\"\r\n            android:clickable=\"true\"\r\n            android:elevation=\"10dp\"\r\n            app:layout_constraintBottom_toBottomOf=\"parent\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:maxImageSize=\"45dp\"\r\n            app:srcCompat=\"@android:drawable/ic_input_add\" />\r\n\r\n        <LinearLayout\r\n            android:id=\"@+id/lijst\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"match_parent\"\r\n            android:background=\"#C2EBFF\"\r\n            android:gravity=\"bottom\"\r\n            android:orientation=\"vertical\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"parent\">\r\n\r\n            <ImageView\r\n                android:id=\"@+id/bovenkantSkyscraper\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"179dp\"\r\n                app:srcCompat=\"@drawable/bovenkant_skyscraper\" />\r\n\r\n            <ImageView\r\n                android:id=\"@+id/onderkantSkyscraper\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"119dp\"\r\n                app:srcCompat=\"@drawable/onderkant_skyscraper\" />\r\n\r\n        </LinearLayout>\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n</layout>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/res/layout/fragment_skyscraper.xml	(revision 70573682fe10450cb8a33df7953158b207ce1b8e)
+-+++ app/src/main/res/layout/fragment_skyscraper.xml	(date 1604605824280)
+-@@ -2,11 +2,21 @@
+- <layout xmlns:android="http://schemas.android.com/apk/res/android"
+-     xmlns:app="http://schemas.android.com/apk/res-auto"
+-     xmlns:tools="http://schemas.android.com/tools">
+-+
+-+
+-+    <data>
+-+        <variable
+-+            name="skyscraperViewModel"
+-+            type="com.example.faithandroid.viewmodels.SkyscraperViewModel" />
+-+    </data>
+-+
+-+
+-     <androidx.constraintlayout.widget.ConstraintLayout
+-         android:layout_width="match_parent"
+-         android:layout_height="match_parent"
+-         >
+- 
+-+
+-         <include
+-             layout="@layout/app_bar_back"
+-             android:layout_width="match_parent"
+-@@ -46,6 +56,20 @@
+-                 android:layout_height="179dp"
+-                 app:srcCompat="@drawable/bovenkant_skyscraper" />
+- 
+-+            <androidx.recyclerview.widget.RecyclerView
+-+                android:id="@+id/name_grid"
+-+                android:layout_width="0dp"
+-+                android:layout_height="0dp"
+-+                android:padding="6dp"
+-+                android:clipToPadding="false"
+-+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+-+
+-+                app:layout_constraintBottom_toBottomOf="parent"
+-+                app:layout_constraintLeft_toLeftOf="parent"
+-+                app:layout_constraintRight_toRightOf="parent"
+-+                app:layout_constraintTop_toTopOf="parent"
+-+                app:listData="@{skyscraperViewModel.goalAmount}"/>
+-+
+-             <ImageView
+-                 android:id="@+id/onderkantSkyscraper"
+-                 android:layout_width="match_parent"
+-Index: app/build.gradle
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>apply plugin: 'com.android.application'\r\napply plugin: 'kotlin-android'\r\napply plugin: 'kotlin-android-extensions'\r\napply plugin: 'androidx.navigation.safeargs'\r\napply plugin: 'kotlin-kapt'\r\n\r\nandroid {\r\n    compileSdkVersion 30\r\n    buildToolsVersion \"30.0.2\"\r\n    buildFeatures {\r\n        dataBinding true\r\n    }\r\n    defaultConfig {\r\n        applicationId \"com.example.faithandroid\"\r\n        minSdkVersion 19\r\n        targetSdkVersion 30\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n        multiDexEnabled true\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility JavaVersion.VERSION_1_8\r\n        targetCompatibility JavaVersion.VERSION_1_8\r\n    }\r\n    kotlinOptions {\r\n        jvmTarget = '1.8'\r\n    }\r\n\r\n}\r\n\r\ndependencies {\r\n    implementation 'com.google.android.material:material:1.3.0-alpha03'\r\n    implementation fileTree(dir: \"libs\", include: [\"*.jar\"])\r\n    implementation \"org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version\"\r\n    implementation 'androidx.core:core-ktx:1.3.1'\r\n    implementation 'androidx.appcompat:appcompat:1.2.0'\r\n    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'\r\n    implementation 'androidx.legacy:legacy-support-v4:1.0.0'\r\n\r\n    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'\r\n    implementation 'androidx.legacy:legacy-support-v4:1.0.0'\r\n\r\n\r\n    testImplementation 'junit:junit:4.12'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.2'\r\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'\r\n    android.defaultConfig.vectorDrawables.useSupportLibrary = true\r\n\r\n\r\n    // Rounded Image View\r\n    implementation 'com.makeramen:roundedimageview:2.3.0'\r\n\r\n    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'\r\n\r\n    //Navigation Component\r\n    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'\r\n    implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'\r\n\r\n    implementation \"com.squareup.moshi:moshi:1.11.0\"\r\n    implementation \"com.squareup.moshi:moshi-kotlin:1.11.0\"\r\n\r\n    implementation \"com.squareup.retrofit2:retrofit: 2.9.0\"\r\n    implementation \"com.squareup.retrofit2:converter-moshi:2.9.0\"\r\n\r\n    //rounded corners popup\r\n    implementation 'androidx.cardview:cardview:1.0.0'\r\n    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'\r\n\r\n    implementation 'com.android.support:multidex:1.0.3'\r\n\r\n    implementation \"org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.0\"\r\n    implementation \"org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.0\"\r\n\r\n    implementation \"com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2\"\r\n\r\n    implementation \"com.github.bumptech.glide:glide:4.11.0\"\r\n\r\n    implementation \"androidx.recyclerview:recyclerview:1.1.0\"\r\n\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/build.gradle	(revision 70573682fe10450cb8a33df7953158b207ce1b8e)
+-+++ app/build.gradle	(date 1604600074185)
+-@@ -58,7 +58,10 @@
+-     // Rounded Image View
+-     implementation 'com.makeramen:roundedimageview:2.3.0'
+- 
+--    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+-+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+-+    implementation "android.arch.lifecycle:viewmodel:1.1.0"
+-+    annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
+-+    implementation 'androidx.fragment:fragment-ktx:1.1.0'
+- 
+-     //Navigation Component
+-     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
+-Index: app/src/main/res/layout/content_test.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    app:layout_behavior=\"@string/appbar_scrolling_view_behavior\"></androidx.constraintlayout.widget.ConstraintLayout>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/res/layout/content_test.xml	(revision 70573682fe10450cb8a33df7953158b207ce1b8e)
+-+++ app/src/main/res/layout/content_test.xml	(date 1604602816656)
+-@@ -3,4 +3,6 @@
+-     xmlns:app="http://schemas.android.com/apk/res-auto"
+-     android:layout_width="match_parent"
+-     android:layout_height="match_parent"
+--    app:layout_behavior="@string/appbar_scrolling_view_behavior"></androidx.constraintlayout.widget.ConstraintLayout>
+-\ No newline at end of file
+-+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+-+
+-+</androidx.constraintlayout.widget.ConstraintLayout>
+-\ No newline at end of file
+-Index: build.gradle
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\r\nbuildscript {\r\n    ext{\r\n        kotlin_version = \"1.4.10\"\r\n        version_navigation = \"2.3.0\"\r\n    }\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n    }\r\n    dependencies {\r\n        classpath \"com.android.tools.build:gradle:4.0.1\"\r\n        classpath \"org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version\"\r\n        classpath \"androidx.navigation:navigation-safe-args-gradle-plugin:$version_navigation\"\r\n\r\n        // NOTE: Do not place your application dependencies here; they belong\r\n        // in the individual module build.gradle files\r\n        classpath 'com.google.gms:google-services:4.3.4'\r\n        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.3.0'\r\n    }\r\n}\r\n\r\nallprojects {\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n    }\r\n}\r\n\r\ntask clean(type: Delete) {\r\n    delete rootProject.buildDir\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- build.gradle	(revision 70573682fe10450cb8a33df7953158b207ce1b8e)
+-+++ build.gradle	(date 1604592681954)
+-@@ -9,7 +9,7 @@
+-         jcenter()
+-     }
+-     dependencies {
+--        classpath "com.android.tools.build:gradle:4.0.1"
+-+        classpath 'com.android.tools.build:gradle:4.1.0'
+-         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+-         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$version_navigation"
+- 
+-Index: gradle/wrapper/gradle-wrapper.properties
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>#Fri Oct 02 16:39:04 CEST 2020\r\ndistributionBase=GRADLE_USER_HOME\r\ndistributionPath=wrapper/dists\r\nzipStoreBase=GRADLE_USER_HOME\r\nzipStorePath=wrapper/dists\r\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-6.1.1-all.zip\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>windows-1252
+-===================================================================
+---- gradle/wrapper/gradle-wrapper.properties	(revision 70573682fe10450cb8a33df7953158b207ce1b8e)
+-+++ gradle/wrapper/gradle-wrapper.properties	(date 1604592681966)
+-@@ -1,6 +1,6 @@
+--#Fri Oct 02 16:39:04 CEST 2020
+-+#Thu Nov 05 17:11:21 CET 2020
+- distributionBase=GRADLE_USER_HOME
+- distributionPath=wrapper/dists
+- zipStoreBase=GRADLE_USER_HOME
+- zipStorePath=wrapper/dists
+--distributionUrl=https\://services.gradle.org/distributions/gradle-6.1.1-all.zip
+-+distributionUrl=https\://services.gradle.org/distributions/gradle-6.5-bin.zip
+-Index: .idea/gradle.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"testRunner\" value=\"PLATFORM\" />\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"gradleJvm\" value=\"1.8\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\r\n        <option name=\"useQualifiedModuleNames\" value=\"true\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/gradle.xml	(revision 70573682fe10450cb8a33df7953158b207ce1b8e)
+-+++ .idea/gradle.xml	(date 1604599863411)
+-@@ -5,6 +5,7 @@
+-     <option name="linkedExternalProjectsSettings">
+-       <GradleProjectSettings>
+-         <option name="testRunner" value="PLATFORM" />
+-+        <option name="disableWrapperSourceDistributionNotification" value="true" />
+-         <option name="distributionType" value="DEFAULT_WRAPPED" />
+-         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+-         <option name="gradleJvm" value="1.8" />
+-Index: app/src/main/java/com/example/faithandroid/viewmodels/GoalPostViewModel.kt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/java/com/example/faithandroid/viewmodels/GoalPostViewModel.kt	(date 1604605824286)
+-+++ app/src/main/java/com/example/faithandroid/viewmodels/GoalPostViewModel.kt	(date 1604605824286)
+-@@ -0,0 +1,19 @@
+-+package com.example.faithandroid.viewmodels
+-+
+-+import androidx.lifecycle.LiveData
+-+import androidx.lifecycle.MutableLiveData
+-+import androidx.lifecycle.ViewModel
+-+
+-+class GoalPostViewModel: ViewModel(){
+-+
+-+    private val _goalAmount = MutableLiveData<List<String>>()
+-+    val score: LiveData<List<String>>
+-+        get() = _goalAmount
+-+    init {
+-+        _goalAmount.value = listOf("hewwo", "hewwo")
+-+    }
+-+
+-+    fun onAdd(){
+-+        _goalAmount.value = (_goalAmount.value)?.plus("yeeyee");
+-+    }
+-+}
+-\ No newline at end of file
+-Index: app/src/main/java/com/example/faithandroid/viewmodels/factories/SkyscraperViewModelFactory.kt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/java/com/example/faithandroid/viewmodels/factories/SkyscraperViewModelFactory.kt	(date 1604605824267)
+-+++ app/src/main/java/com/example/faithandroid/viewmodels/factories/SkyscraperViewModelFactory.kt	(date 1604605824267)
+-@@ -0,0 +1,16 @@
+-+package com.example.faithandroid.viewmodels.factories
+-+
+-+import androidx.lifecycle.ViewModel
+-+import androidx.lifecycle.ViewModelProvider
+-+import com.example.faithandroid.models.GoalPost
+-+import com.example.faithandroid.viewmodels.SkyscraperViewModel
+-+
+-+class SkyscraperViewModelFactory(private val finalGoals: List<String>): ViewModelProvider.Factory {
+-+
+-+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+-+            if (modelClass.isAssignableFrom(SkyscraperViewModel::class.java)) {
+-+                return SkyscraperViewModel(finalGoals) as T
+-+            }
+-+            throw IllegalArgumentException("Unknown ViewModel class")
+-+        }
+-+}
+-\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]2/shelved.patch
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]2/shelved.patch	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
++++ .idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]2/shelved.patch	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
+@@ -1,322 +0,0 @@
+-Index: app/src/main/java/com/example/faithandroid/SkyscraperFragment.kt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.example.faithandroid\r\n\r\nimport android.content.Context\r\nimport android.content.Intent\r\n\r\nimport android.os.Bundle\r\nimport android.view.LayoutInflater\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport android.widget.Button\r\nimport android.widget.LinearLayout\r\nimport androidx.databinding.DataBindingUtil\r\nimport androidx.fragment.app.Fragment\r\nimport androidx.lifecycle.ViewModelProvider\r\nimport androidx.navigation.findNavController\r\nimport com.example.faithandroid.databinding.FragmentBulletinboardBinding\r\nimport com.example.faithandroid.databinding.FragmentSkyscraperBinding\r\nimport com.example.faithandroid.viewmodels.BulletinBoardViewModel\r\nimport com.example.faithandroid.viewmodels.SkyscraperViewModel\r\nimport kotlinx.android.synthetic.main.textpost.view.*\r\n\r\n\r\nclass SkyscraperFragment: Fragment() {\r\n\r\n    private lateinit var viewModel: SkyscraperViewModel\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n    }\r\n\r\n    override fun onCreateView(\r\n        inflater: LayoutInflater, container: ViewGroup?,\r\n        savedInstanceState: Bundle?\r\n    ): View? {\r\n      val binding = DataBindingUtil.inflate<FragmentSkyscraperBinding>(\r\n          inflater,\r\n          R.layout.fragment_skyscraper,\r\n          container,\r\n          false\r\n      );\r\n        return binding.root\r\n    }\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/java/com/example/faithandroid/SkyscraperFragment.kt	(revision 90e927a18bf02d99531350d2a50323eadb4085cb)
+-+++ app/src/main/java/com/example/faithandroid/SkyscraperFragment.kt	(date 1604585989090)
+-@@ -1,31 +1,29 @@
+- package com.example.faithandroid
+- 
+--import android.content.Context
+--import android.content.Intent
+--
+- import android.os.Bundle
+-+import android.util.Log
+- import android.view.LayoutInflater
+- import android.view.View
+- import android.view.ViewGroup
+--import android.widget.Button
+--import android.widget.LinearLayout
+- import androidx.databinding.DataBindingUtil
+- import androidx.fragment.app.Fragment
+-+import androidx.lifecycle.Observer
+- import androidx.lifecycle.ViewModelProvider
+- import androidx.navigation.findNavController
+--import com.example.faithandroid.databinding.FragmentBulletinboardBinding
+- import com.example.faithandroid.databinding.FragmentSkyscraperBinding
+-+import com.example.faithandroid.models.GoalPost
+- import com.example.faithandroid.viewmodels.BulletinBoardViewModel
+- import com.example.faithandroid.viewmodels.SkyscraperViewModel
+--import kotlinx.android.synthetic.main.textpost.view.*
+- 
+- 
+- class SkyscraperFragment: Fragment() {
+- 
+-+
+-     private lateinit var viewModel: SkyscraperViewModel
+- 
+-     override fun onCreate(savedInstanceState: Bundle?) {
+-         super.onCreate(savedInstanceState)
+-+
+-     }
+- 
+-     override fun onCreateView(
+-@@ -38,6 +36,26 @@
+-           container,
+-           false
+-       );
+-+
+-+        //viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
+-+        //binding.viewModelSkyscraper = viewModel
+-+
+-+        //PLUSBUTTON
+-+        binding.AddPostButton.setOnClickListener { view: View ->
+-+            view.findNavController().navigate(R.id.action_skyscraperFragment_to_addGoalFragment)
+-+        }
+-+
+-+        viewModel = ViewModelProvider(this).get(com.example.faithandroid.viewmodels.SkyscraperViewModel::class.java)
+-+
+-+        /*viewModel.testLive.observe(this.viewLifecycleOwner, Observer { testDataLive ->
+-+            Log.d("helpSF", viewModel.testLive.value.toString())
+-+            testDataLive.forEach{ lala ->
+-+                var newView: View = inflater.inflate(com.example.faithandroid.R.layout.goalpostimage, null)
+-+                binding.skyscraperLinearLayout.addView(newView, binding.skyscraperLinearLayout.childCount - 1)
+-+
+-+            }
+-+        })*/
+-+
+-         return binding.root
+-     }
+- }
+-\ No newline at end of file
+-Index: build.gradle
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\r\nbuildscript {\r\n    ext{\r\n        kotlin_version = \"1.4.10\"\r\n        version_navigation = \"2.3.0\"\r\n    }\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n    }\r\n    dependencies {\r\n        classpath \"com.android.tools.build:gradle:4.0.1\"\r\n        classpath \"org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version\"\r\n        classpath \"androidx.navigation:navigation-safe-args-gradle-plugin:$version_navigation\"\r\n\r\n        // NOTE: Do not place your application dependencies here; they belong\r\n        // in the individual module build.gradle files\r\n        classpath 'com.google.gms:google-services:4.3.4'\r\n        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.3.0'\r\n    }\r\n}\r\n\r\nallprojects {\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n    }\r\n}\r\n\r\ntask clean(type: Delete) {\r\n    delete rootProject.buildDir\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- build.gradle	(revision 90e927a18bf02d99531350d2a50323eadb4085cb)
+-+++ build.gradle	(date 1604585989108)
+-@@ -9,7 +9,7 @@
+-         jcenter()
+-     }
+-     dependencies {
+--        classpath "com.android.tools.build:gradle:4.0.1"
+-+        classpath 'com.android.tools.build:gradle:4.1.0'
+-         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+-         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$version_navigation"
+- 
+-Index: app/src/main/res/layout/fragment_skyscraper.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<layout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\">\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        >\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n</layout>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/res/layout/fragment_skyscraper.xml	(revision 90e927a18bf02d99531350d2a50323eadb4085cb)
+-+++ app/src/main/res/layout/fragment_skyscraper.xml	(date 1604585989133)
+-@@ -2,9 +2,82 @@
+- <layout xmlns:android="http://schemas.android.com/apk/res/android"
+-     xmlns:app="http://schemas.android.com/apk/res-auto"
+-     xmlns:tools="http://schemas.android.com/tools">
+-+
+-+    <data>
+-+        <variable
+-+            name="viewModelSkyscraper"
+-+            type="com.example.faithandroid.viewmodels.SkyscraperViewModel" />
+-+    </data>
+-+
+-     <androidx.constraintlayout.widget.ConstraintLayout
+-+        android:id="@+id/skyscraperConstraintLayout"
+-         android:layout_width="match_parent"
+--        android:layout_height="match_parent"
+--        >
+-+        android:layout_height="wrap_content"
+-+        android:background="#C2EBFF">
+-+
+-+
+-+        <include
+-+            android:id="@+id/include"
+-+            layout="@layout/app_bar_back"
+-+            android:layout_width="410dp"
+-+            android:layout_height="712dp"
+-+            app:layout_constraintTop_toTopOf="parent" />
+-+
+-+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+-+            android:id="@+id/AddPostButton"
+-+            style="@style/pinkButtonStyle"
+-+            android:layout_width="70dp"
+-+            android:layout_height="wrap_content"
+-+            android:layout_alignParentEnd="true"
+-+            android:layout_alignParentBottom="true"
+-+            android:layout_gravity="bottom|end"
+-+            android:layout_marginEnd="35dp"
+-+            android:layout_marginBottom="35dp"
+-+            android:clickable="true"
+-+            android:elevation="10dp"
+-+            app:layout_constraintBottom_toBottomOf="parent"
+-+            app:layout_constraintEnd_toEndOf="parent"
+-+            app:maxImageSize="45dp"
+-+            app:srcCompat="@android:drawable/ic_input_add" />
+-+
+-+        <ScrollView
+-+            android:layout_width="0dp"
+-+            android:layout_height="0dp"
+-+            app:layout_constraintBottom_toBottomOf="parent"
+-+            app:layout_constraintEnd_toEndOf="parent"
+-+            app:layout_constraintHorizontal_bias="1.0"
+-+            app:layout_constraintStart_toStartOf="parent"
+-+            app:layout_constraintTop_toTopOf="parent"
+-+            app:layout_constraintVertical_bias="0.0">
+-+
+-+            <LinearLayout
+-+                android:id="@+id/skyscraperLinearLayout"
+-+                android:layout_width="match_parent"
+-+                android:layout_height="wrap_content"
+-+                android:layout_gravity="bottom"
+-+                android:layout_marginTop="56dp"
+-+                android:gravity="bottom"
+-+                android:orientation="vertical">
+-+
+-+
+-+                <ImageView
+-+                    android:id="@+id/bovenkantSkyscraper"
+-+                    android:layout_width="413dp"
+-+                    android:layout_height="188dp"
+-+                    android:layout_marginBottom="1dp"
+-+                    app:srcCompat="@drawable/bovenkant_skyscraper" />
+-+
+-+                <ImageView
+-+                    android:id="@+id/onderkantSkyscraper"
+-+                    android:layout_width="wrap_content"
+-+                    android:layout_height="120dp"
+-+                    app:srcCompat="@drawable/onderkant_skyscraper" />
+-+
+-+            </LinearLayout>
+-+        </ScrollView>
+-+
+-+
+-     </androidx.constraintlayout.widget.ConstraintLayout>
+-+
+-+
+- </layout>
+-\ No newline at end of file
+-Index: app/src/main/res/values/strings.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><resources>\r\n    <string name=\"app_name\">FaithAndroid</string>\r\n    <string name=\"skyscraper\">Wolkenkrabber</string>\r\n    <string name=\"cinema\">Cinema</string>\r\n    <string name=\"treasure_chest\">Schatkist</string>\r\n    <string name=\"musicRoom\">Music Room</string>\r\n    <string name=\"backpack\">Rugzak</string>\r\n    <string name=\"billboard\">Billboard</string>\r\n    <string name=\"bulletinboard\">Prikbord</string>\r\n    <string name=\"winkelCentrum\">Winkelcentrum</string>\r\n\r\n    <!-- TODO: Remove or change this placeholder text -->\r\n    <string name=\"hello_blank_fragment\">Hello blank fragment</string>\r\n\r\n    <string name=\"button_open\">Open</string>\r\n    <string name=\"button_unpin\">unpin</string>\r\n    <string name=\"request_consultation\">Gesprek aanvragen</string>\r\n    <string name=\"audio\">Audio</string>\r\n    <string name=\"Image\">Foto</string>\r\n    <string name=\"video\">Video</string>\r\n    <string name=\"text\">Tekst</string>\r\n    <string name=\"annuleren\">Annuleren</string>\r\n    <string name=\"aanvraag_gesprek\">Gesprek</string>\r\n    <string name=\"instellingen\">Instellingen</string>\r\n    <string name=\"profiel\">Profiel</string>\r\n    <string name=\"uitloggen\">Uitloggen</string>\r\n    <string name=\"meest_bezocht\">Meest Bezocht</string>\r\n    <string name=\"wolkenkrabber\">Wolkenkrabber</string>\r\n    <string name=\"welkom\">Goed je terug te zien!</string>\r\n    <string name=\"naam\">Jane Doe</string>\r\n    <!-- TODO: Remove or change this placeholder text -->\r\n\r\n    <string name=\"login\">login</string>\r\n    <string name=\"title_activity_test\">TestActivity</string>\r\n    <!-- Strings used for fragments for navigation -->\r\n    <string name=\"first_fragment_label\">First Fragment</string>\r\n    <string name=\"second_fragment_label\">Second Fragment</string>\r\n    <string name=\"next\">Next</string>\r\n    <string name=\"previous\">Previous</string>\r\n\r\n    <string name=\"hello_first_fragment\">Hello first fragment</string>\r\n    <string name=\"hello_second_fragment\">Hello second fragment. Arg: %1$s</string>\r\n    <string name=\"label\">button</string>\r\n    <string name=\"forgot_password\">wachtwoord vergeten</string>\r\n    <string name=\"password\">wachtwoord</string>\r\n    <string name=\"OK\">OK</string>\r\n    <string name=\"welkom_bij_faith\">welkom bij faith</string>\r\n    <string name=\"titel\">titel</string>\r\n    <string name=\"tekst\">tekst</string>\r\n\r\n</resources>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/res/values/strings.xml	(revision 90e927a18bf02d99531350d2a50323eadb4085cb)
+-+++ app/src/main/res/values/strings.xml	(date 1604585989150)
+-@@ -1,5 +1,5 @@
+- <resources>
+--    <string name="app_name">FaithAndroid</string>
+-+    <string name="app_name">Grow</string>
+-     <string name="skyscraper">Wolkenkrabber</string>
+-     <string name="cinema">Cinema</string>
+-     <string name="treasure_chest">Schatkist</string>
+-Index: app/src/main/java/com/example/faithandroid/viewmodels/SkyscraperViewModel.kt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.example.faithandroid.viewmodels\r\n\r\nimport androidx.lifecycle.LiveData\r\nimport androidx.lifecycle.MutableLiveData\r\nimport androidx.lifecycle.ViewModel\r\nimport com.example.faithandroid.models.TextPost\r\n\r\nclass SkyscraperViewModel : ViewModel() {\r\n\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/java/com/example/faithandroid/viewmodels/SkyscraperViewModel.kt	(revision 90e927a18bf02d99531350d2a50323eadb4085cb)
+-+++ app/src/main/java/com/example/faithandroid/viewmodels/SkyscraperViewModel.kt	(date 1604585989170)
+-@@ -3,8 +3,38 @@
+- import androidx.lifecycle.LiveData
+- import androidx.lifecycle.MutableLiveData
+- import androidx.lifecycle.ViewModel
+-+import com.example.faithandroid.models.GoalPost
+- import com.example.faithandroid.models.TextPost
+- 
+- class SkyscraperViewModel : ViewModel() {
+- 
+-+
+-+    var lijst: List<String> = listOf("homos", "hello")
+-+
+-+    public var testData = mutableListOf<GoalPost>(
+-+        GoalPost(
+-+            "Sorry zeggen tegen Bob",
+-+            "Ik heb hem gekwetst en moet sorry zeggen",
+-+            false,
+-+            lijst
+-+        ),
+-+        GoalPost(
+-+            "Huiswerk maken",
+-+            "Huiswerk maken voor Frans",
+-+            false,
+-+            lijst
+-+        )
+-+    )
+-+
+-+    private val _testLive = MutableLiveData<List<GoalPost>>()
+-+
+-+    val testLive: LiveData<List<GoalPost>>
+-+            get() = _testLive
+-+
+-+
+-+    fun addGoalPost(goalPost: GoalPost){
+-+        testData.add(goalPost)
+-+        _testLive.value = (testData);
+-+    }
+-+
+- }
+-\ No newline at end of file
+-Index: app/src/main/res/navigation/navigation.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<navigation xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/navigation\"\r\n    app:startDestination=\"@id/homeFragment\">\r\n\r\n    <fragment\r\n        android:id=\"@+id/bulletinBoardFragment\"\r\n        android:name=\"com.example.faithandroid.BulletinboardFragment\"\r\n        android:label=\"bulletinboard\"\r\n        tools:layout=\"@layout/fragment_bulletinboard\" >\r\n\r\n        <action\r\n            android:id=\"@+id/action_bulletinBoardFragment_to_optionsAddPostFragment\"\r\n            app:destination=\"@id/optionsAddPostFragment\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/optionsAddPostFragment\"\r\n        android:name=\"com.example.faithandroid.OptionsAddPostFragment\"\r\n        android:label=\"options_add_post\"\r\n        tools:layout=\"@layout/options_add_post\" >\r\n        <action\r\n            android:id=\"@+id/action_optionsAddPostFragment_to_bulletinBoardFragment\"\r\n            app:destination=\"@id/bulletinBoardFragment\" />\r\n\r\n    </fragment>\r\n\r\n    <fragment\r\n        android:id=\"@+id/loginFragment\"\r\n        android:name=\"com.example.faithandroid.LoginFragment\"\r\n        android:label=\"LoginFragment\" >\r\n\r\n        <action\r\n\r\n            android:id=\"@+id/action_loginFragment_to_homeFragment\"\r\n            app:destination=\"@id/homeFragment\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/homeFragment\"\r\n        android:name=\"com.example.faithandroid.HomeFragment\"\r\n        android:label=\"menu_homescherm\"\r\n        tools:layout=\"@layout/menu_homescherm\" >\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_backpackFragment\"\r\n            app:destination=\"@id/backpackFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_billboardFragment\"\r\n            app:destination=\"@id/billboardFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_bulletinBoardFragment\"\r\n            app:destination=\"@id/bulletinBoardFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_cinemaFragment\"\r\n            app:destination=\"@id/cinemaFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_musicRoomFragment\"\r\n            app:destination=\"@id/musicRoomFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_shoppingCenterFragment\"\r\n            app:destination=\"@id/shoppingCenterFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_skyscraperFragment\"\r\n            app:destination=\"@id/skyscraperFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_treasureChestFragment\"\r\n            app:destination=\"@id/treasureChestFragment\" />\r\n    </fragment>\r\n    \r\n    <fragment\r\n        android:id=\"@+id/backendFragment\"\r\n        android:name=\"com.example.faithandroid.BackendFragment\"\r\n        android:label=\"BackendFragment\" />\r\n    <fragment\r\n        android:id=\"@+id/text_post_toevoegen\"\r\n        android:name=\"com.example.faithandroid.text_post_toevoegen\"\r\n        android:label=\"text_post_toevoegen\">\r\n        <action\r\n            android:id=\"@+id/action_text_post_toevoegen_to_bulletinBoardFragment\"\r\n            app:destination=\"@id/bulletinBoardFragment\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/backpackFragment\"\r\n        android:name=\"com.example.faithandroid.BackpackFragment\"\r\n        android:label=\"BackpackFragment\"\r\n        tools:layout=\"@layout/fragment_backpack\"/>\r\n    <fragment\r\n        android:id=\"@+id/billboardFragment\"\r\n        android:name=\"com.example.faithandroid.BillboardFragment\"\r\n        android:label=\"BillboardFragment\"\r\n        tools:layout=\"@layout/fragment_billboard\"/>\r\n    <fragment\r\n        android:id=\"@+id/cinemaFragment\"\r\n        android:name=\"com.example.faithandroid.CinemaFragment\"\r\n        android:label=\"CinemaFragment\"\r\n        tools:layout=\"@layout/fragment_cinema\"/>\r\n    <fragment\r\n        android:id=\"@+id/musicRoomFragment\"\r\n        android:name=\"com.example.faithandroid.MusicRoomFragment\"\r\n        android:label=\"MusicRoomFragment\"\r\n        tools:layout=\"@layout/fragment_musicroom\"/>\r\n    <fragment\r\n        android:id=\"@+id/shoppingCenterFragment\"\r\n        android:name=\"com.example.faithandroid.ShoppingCenterFragment\"\r\n        android:label=\"ShoppingCenterFragment\"\r\n        tools:layout=\"@layout/fragment_shoppingcenter\"/>\r\n    <fragment\r\n        android:id=\"@+id/skyscraperFragment\"\r\n        android:name=\"com.example.faithandroid.SkyscraperFragment\"\r\n        android:label=\"SkyscraperFragment\"\r\n        tools:layout=\"@layout/fragment_skyscraper\"/>\r\n    <fragment\r\n        android:id=\"@+id/treasureChestFragment\"\r\n        android:name=\"com.example.faithandroid.TreasureChestFragment\"\r\n        android:label=\"TreasureChestFragment\"\r\n        tools:layout=\"@layout/fragment_treasurechest\"/>\r\n\r\n</navigation>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/res/navigation/navigation.xml	(revision 90e927a18bf02d99531350d2a50323eadb4085cb)
+-+++ app/src/main/res/navigation/navigation.xml	(date 1604585989191)
+-@@ -108,11 +108,23 @@
+-         android:id="@+id/skyscraperFragment"
+-         android:name="com.example.faithandroid.SkyscraperFragment"
+-         android:label="SkyscraperFragment"
+--        tools:layout="@layout/fragment_skyscraper"/>
+-+        tools:layout="@layout/fragment_skyscraper">
+-+        <action
+-+            android:id="@+id/action_skyscraperFragment_to_addGoalFragment"
+-+            app:destination="@id/addGoalFragment" />
+-+    </fragment>
+-     <fragment
+-         android:id="@+id/treasureChestFragment"
+-         android:name="com.example.faithandroid.TreasureChestFragment"
+-         android:label="TreasureChestFragment"
+-         tools:layout="@layout/fragment_treasurechest"/>
+-+    <fragment
+-+        android:id="@+id/addGoalFragment"
+-+        android:name="com.example.faithandroid.addGoalFragment"
+-+        android:label="addGoalFragment" >
+-+        <action
+-+            android:id="@+id/action_addGoalFragment_to_skyscraperFragment"
+-+            app:destination="@id/skyscraperFragment" />
+-+    </fragment>
+- 
+- </navigation>
+-\ No newline at end of file
+-Index: gradle/wrapper/gradle-wrapper.properties
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>#Fri Oct 02 16:39:04 CEST 2020\r\ndistributionBase=GRADLE_USER_HOME\r\ndistributionPath=wrapper/dists\r\nzipStoreBase=GRADLE_USER_HOME\r\nzipStorePath=wrapper/dists\r\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-6.1.1-all.zip\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>windows-1252
+-===================================================================
+---- gradle/wrapper/gradle-wrapper.properties	(revision 90e927a18bf02d99531350d2a50323eadb4085cb)
+-+++ gradle/wrapper/gradle-wrapper.properties	(date 1604585989235)
+-@@ -1,6 +1,6 @@
+--#Fri Oct 02 16:39:04 CEST 2020
+-+#Sat Oct 31 17:29:41 CET 2020
+- distributionBase=GRADLE_USER_HOME
+- distributionPath=wrapper/dists
+- zipStoreBase=GRADLE_USER_HOME
+- zipStorePath=wrapper/dists
+--distributionUrl=https\://services.gradle.org/distributions/gradle-6.1.1-all.zip
+-+distributionUrl=https\://services.gradle.org/distributions/gradle-6.5-bin.zip
+-Index: .idea/gradle.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"testRunner\" value=\"PLATFORM\" />\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"gradleJvm\" value=\"1.8\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/gradle.xml	(revision 90e927a18bf02d99531350d2a50323eadb4085cb)
+-+++ .idea/gradle.xml	(date 1604585989274)
+-@@ -15,6 +15,7 @@
+-           </set>
+-         </option>
+-         <option name="resolveModulePerSourceSet" value="false" />
+-+        <option name="useQualifiedModuleNames" value="true" />
+-       </GradleProjectSettings>
+-     </option>
+-   </component>
+Index: .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_4.xml
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_4.xml	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
++++ .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_4.xml	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_rebase_[Default_Changelist]4" date="1604619478169" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]4/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before rebase [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_3.xml
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_3.xml	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
++++ .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_3.xml	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_rebase_[Default_Changelist]3" date="1604618526897" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]3/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before rebase [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_2.xml
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_2.xml	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
++++ .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_2.xml	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_rebase_[Default_Changelist]2" date="1604586055829" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]2/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before rebase [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/shelved.patch
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/shelved.patch	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
++++ .idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/shelved.patch	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
+@@ -1,322 +0,0 @@
+-Index: app/src/main/java/com/example/faithandroid/SkyscraperFragment.kt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.example.faithandroid\r\n\r\nimport android.content.Context\r\nimport android.content.Intent\r\n\r\nimport android.os.Bundle\r\nimport android.view.LayoutInflater\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport android.widget.Button\r\nimport android.widget.LinearLayout\r\nimport androidx.databinding.DataBindingUtil\r\nimport androidx.fragment.app.Fragment\r\nimport androidx.lifecycle.ViewModelProvider\r\nimport androidx.navigation.findNavController\r\nimport com.example.faithandroid.databinding.FragmentBulletinboardBinding\r\nimport com.example.faithandroid.databinding.FragmentSkyscraperBinding\r\nimport com.example.faithandroid.viewmodels.BulletinBoardViewModel\r\nimport com.example.faithandroid.viewmodels.SkyscraperViewModel\r\nimport kotlinx.android.synthetic.main.textpost.view.*\r\n\r\n\r\nclass SkyscraperFragment: Fragment() {\r\n\r\n    private lateinit var viewModel: SkyscraperViewModel\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n    }\r\n\r\n    override fun onCreateView(\r\n        inflater: LayoutInflater, container: ViewGroup?,\r\n        savedInstanceState: Bundle?\r\n    ): View? {\r\n      val binding = DataBindingUtil.inflate<FragmentSkyscraperBinding>(\r\n          inflater,\r\n          R.layout.fragment_skyscraper,\r\n          container,\r\n          false\r\n      );\r\n        return binding.root\r\n    }\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/java/com/example/faithandroid/SkyscraperFragment.kt	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-+++ app/src/main/java/com/example/faithandroid/SkyscraperFragment.kt	(date 1604527266422)
+-@@ -1,31 +1,29 @@
+- package com.example.faithandroid
+- 
+--import android.content.Context
+--import android.content.Intent
+--
+- import android.os.Bundle
+-+import android.util.Log
+- import android.view.LayoutInflater
+- import android.view.View
+- import android.view.ViewGroup
+--import android.widget.Button
+--import android.widget.LinearLayout
+- import androidx.databinding.DataBindingUtil
+- import androidx.fragment.app.Fragment
+-+import androidx.lifecycle.Observer
+- import androidx.lifecycle.ViewModelProvider
+- import androidx.navigation.findNavController
+--import com.example.faithandroid.databinding.FragmentBulletinboardBinding
+- import com.example.faithandroid.databinding.FragmentSkyscraperBinding
+-+import com.example.faithandroid.models.GoalPost
+- import com.example.faithandroid.viewmodels.BulletinBoardViewModel
+- import com.example.faithandroid.viewmodels.SkyscraperViewModel
+--import kotlinx.android.synthetic.main.textpost.view.*
+- 
+- 
+- class SkyscraperFragment: Fragment() {
+- 
+-+
+-     private lateinit var viewModel: SkyscraperViewModel
+- 
+-     override fun onCreate(savedInstanceState: Bundle?) {
+-         super.onCreate(savedInstanceState)
+-+
+-     }
+- 
+-     override fun onCreateView(
+-@@ -38,6 +36,26 @@
+-           container,
+-           false
+-       );
+-+
+-+        //viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
+-+        //binding.viewModelSkyscraper = viewModel
+-+
+-+        //PLUSBUTTON
+-+        binding.AddPostButton.setOnClickListener { view: View ->
+-+            view.findNavController().navigate(R.id.action_skyscraperFragment_to_addGoalFragment)
+-+        }
+-+
+-+        viewModel = ViewModelProvider(this).get(com.example.faithandroid.viewmodels.SkyscraperViewModel::class.java)
+-+
+-+        /*viewModel.testLive.observe(this.viewLifecycleOwner, Observer { testDataLive ->
+-+            Log.d("helpSF", viewModel.testLive.value.toString())
+-+            testDataLive.forEach{ lala ->
+-+                var newView: View = inflater.inflate(com.example.faithandroid.R.layout.goalpostimage, null)
+-+                binding.skyscraperLinearLayout.addView(newView, binding.skyscraperLinearLayout.childCount - 1)
+-+
+-+            }
+-+        })*/
+-+
+-         return binding.root
+-     }
+- }
+-\ No newline at end of file
+-Index: build.gradle
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\r\nbuildscript {\r\n    ext{\r\n        kotlin_version = \"1.4.10\"\r\n        version_navigation = \"2.3.0\"\r\n    }\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n    }\r\n    dependencies {\r\n        classpath \"com.android.tools.build:gradle:4.0.1\"\r\n        classpath \"org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version\"\r\n        classpath \"androidx.navigation:navigation-safe-args-gradle-plugin:$version_navigation\"\r\n\r\n        // NOTE: Do not place your application dependencies here; they belong\r\n        // in the individual module build.gradle files\r\n        classpath 'com.google.gms:google-services:4.3.4'\r\n        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.3.0'\r\n    }\r\n}\r\n\r\nallprojects {\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n    }\r\n}\r\n\r\ntask clean(type: Delete) {\r\n    delete rootProject.buildDir\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- build.gradle	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-+++ build.gradle	(date 1604527266487)
+-@@ -9,7 +9,7 @@
+-         jcenter()
+-     }
+-     dependencies {
+--        classpath "com.android.tools.build:gradle:4.0.1"
+-+        classpath 'com.android.tools.build:gradle:4.1.0'
+-         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+-         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$version_navigation"
+- 
+-Index: app/src/main/res/layout/fragment_skyscraper.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<layout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\">\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        >\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n</layout>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/res/layout/fragment_skyscraper.xml	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-+++ app/src/main/res/layout/fragment_skyscraper.xml	(date 1604527266445)
+-@@ -2,9 +2,82 @@
+- <layout xmlns:android="http://schemas.android.com/apk/res/android"
+-     xmlns:app="http://schemas.android.com/apk/res-auto"
+-     xmlns:tools="http://schemas.android.com/tools">
+-+
+-+    <data>
+-+        <variable
+-+            name="viewModelSkyscraper"
+-+            type="com.example.faithandroid.viewmodels.SkyscraperViewModel" />
+-+    </data>
+-+
+-     <androidx.constraintlayout.widget.ConstraintLayout
+-+        android:id="@+id/skyscraperConstraintLayout"
+-         android:layout_width="match_parent"
+--        android:layout_height="match_parent"
+--        >
+-+        android:layout_height="wrap_content"
+-+        android:background="#C2EBFF">
+-+
+-+
+-+        <include
+-+            android:id="@+id/include"
+-+            layout="@layout/app_bar_back"
+-+            android:layout_width="410dp"
+-+            android:layout_height="712dp"
+-+            app:layout_constraintTop_toTopOf="parent" />
+-+
+-+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+-+            android:id="@+id/AddPostButton"
+-+            style="@style/pinkButtonStyle"
+-+            android:layout_width="70dp"
+-+            android:layout_height="wrap_content"
+-+            android:layout_alignParentEnd="true"
+-+            android:layout_alignParentBottom="true"
+-+            android:layout_gravity="bottom|end"
+-+            android:layout_marginEnd="35dp"
+-+            android:layout_marginBottom="35dp"
+-+            android:clickable="true"
+-+            android:elevation="10dp"
+-+            app:layout_constraintBottom_toBottomOf="parent"
+-+            app:layout_constraintEnd_toEndOf="parent"
+-+            app:maxImageSize="45dp"
+-+            app:srcCompat="@android:drawable/ic_input_add" />
+-+
+-+        <ScrollView
+-+            android:layout_width="0dp"
+-+            android:layout_height="0dp"
+-+            app:layout_constraintBottom_toBottomOf="parent"
+-+            app:layout_constraintEnd_toEndOf="parent"
+-+            app:layout_constraintHorizontal_bias="1.0"
+-+            app:layout_constraintStart_toStartOf="parent"
+-+            app:layout_constraintTop_toTopOf="parent"
+-+            app:layout_constraintVertical_bias="0.0">
+-+
+-+            <LinearLayout
+-+                android:id="@+id/skyscraperLinearLayout"
+-+                android:layout_width="match_parent"
+-+                android:layout_height="wrap_content"
+-+                android:layout_gravity="bottom"
+-+                android:layout_marginTop="56dp"
+-+                android:gravity="bottom"
+-+                android:orientation="vertical">
+-+
+-+
+-+                <ImageView
+-+                    android:id="@+id/bovenkantSkyscraper"
+-+                    android:layout_width="413dp"
+-+                    android:layout_height="188dp"
+-+                    android:layout_marginBottom="1dp"
+-+                    app:srcCompat="@drawable/bovenkant_skyscraper" />
+-+
+-+                <ImageView
+-+                    android:id="@+id/onderkantSkyscraper"
+-+                    android:layout_width="wrap_content"
+-+                    android:layout_height="120dp"
+-+                    app:srcCompat="@drawable/onderkant_skyscraper" />
+-+
+-+            </LinearLayout>
+-+        </ScrollView>
+-+
+-+
+-     </androidx.constraintlayout.widget.ConstraintLayout>
+-+
+-+
+- </layout>
+-\ No newline at end of file
+-Index: app/src/main/res/values/strings.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><resources>\r\n    <string name=\"app_name\">FaithAndroid</string>\r\n    <string name=\"skyscraper\">Wolkenkrabber</string>\r\n    <string name=\"cinema\">Cinema</string>\r\n    <string name=\"treasure_chest\">Schatkist</string>\r\n    <string name=\"musicRoom\">Music Room</string>\r\n    <string name=\"backpack\">Rugzak</string>\r\n    <string name=\"billboard\">Billboard</string>\r\n    <string name=\"bulletinboard\">Prikbord</string>\r\n    <string name=\"winkelCentrum\">Winkelcentrum</string>\r\n\r\n    <!-- TODO: Remove or change this placeholder text -->\r\n    <string name=\"hello_blank_fragment\">Hello blank fragment</string>\r\n\r\n    <string name=\"button_open\">Open</string>\r\n    <string name=\"button_unpin\">unpin</string>\r\n    <string name=\"request_consultation\">Gesprek aanvragen</string>\r\n    <string name=\"audio\">Audio</string>\r\n    <string name=\"Image\">Foto</string>\r\n    <string name=\"video\">Video</string>\r\n    <string name=\"text\">Tekst</string>\r\n    <string name=\"annuleren\">Annuleren</string>\r\n    <string name=\"aanvraag_gesprek\">Gesprek</string>\r\n    <string name=\"instellingen\">Instellingen</string>\r\n    <string name=\"profiel\">Profiel</string>\r\n    <string name=\"uitloggen\">Uitloggen</string>\r\n    <string name=\"meest_bezocht\">Meest Bezocht</string>\r\n    <string name=\"wolkenkrabber\">Wolkenkrabber</string>\r\n    <string name=\"welkom\">Goed je terug te zien!</string>\r\n    <string name=\"naam\">Jane Doe</string>\r\n    <!-- TODO: Remove or change this placeholder text -->\r\n\r\n    <string name=\"login\">login</string>\r\n    <string name=\"title_activity_test\">TestActivity</string>\r\n    <!-- Strings used for fragments for navigation -->\r\n    <string name=\"first_fragment_label\">First Fragment</string>\r\n    <string name=\"second_fragment_label\">Second Fragment</string>\r\n    <string name=\"next\">Next</string>\r\n    <string name=\"previous\">Previous</string>\r\n\r\n    <string name=\"hello_first_fragment\">Hello first fragment</string>\r\n    <string name=\"hello_second_fragment\">Hello second fragment. Arg: %1$s</string>\r\n    <string name=\"label\">button</string>\r\n    <string name=\"forgot_password\">wachtwoord vergeten</string>\r\n    <string name=\"password\">wachtwoord</string>\r\n    <string name=\"OK\">OK</string>\r\n    <string name=\"welkom_bij_faith\">welkom bij faith</string>\r\n    <string name=\"titel\">titel</string>\r\n    <string name=\"tekst\">tekst</string>\r\n\r\n</resources>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/res/values/strings.xml	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-+++ app/src/main/res/values/strings.xml	(date 1604527266546)
+-@@ -1,5 +1,5 @@
+- <resources>
+--    <string name="app_name">FaithAndroid</string>
+-+    <string name="app_name">Grow</string>
+-     <string name="skyscraper">Wolkenkrabber</string>
+-     <string name="cinema">Cinema</string>
+-     <string name="treasure_chest">Schatkist</string>
+-Index: app/src/main/java/com/example/faithandroid/viewmodels/SkyscraperViewModel.kt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.example.faithandroid.viewmodels\r\n\r\nimport androidx.lifecycle.LiveData\r\nimport androidx.lifecycle.MutableLiveData\r\nimport androidx.lifecycle.ViewModel\r\nimport com.example.faithandroid.models.TextPost\r\n\r\nclass SkyscraperViewModel : ViewModel() {\r\n\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/java/com/example/faithandroid/viewmodels/SkyscraperViewModel.kt	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-+++ app/src/main/java/com/example/faithandroid/viewmodels/SkyscraperViewModel.kt	(date 1604527266435)
+-@@ -3,8 +3,38 @@
+- import androidx.lifecycle.LiveData
+- import androidx.lifecycle.MutableLiveData
+- import androidx.lifecycle.ViewModel
+-+import com.example.faithandroid.models.GoalPost
+- import com.example.faithandroid.models.TextPost
+- 
+- class SkyscraperViewModel : ViewModel() {
+- 
+-+
+-+    var lijst: List<String> = listOf("homos", "hello")
+-+
+-+    public var testData = mutableListOf<GoalPost>(
+-+        GoalPost(
+-+            "Sorry zeggen tegen Bob",
+-+            "Ik heb hem gekwetst en moet sorry zeggen",
+-+            false,
+-+            lijst
+-+        ),
+-+        GoalPost(
+-+            "Huiswerk maken",
+-+            "Huiswerk maken voor Frans",
+-+            false,
+-+            lijst
+-+        )
+-+    )
+-+
+-+    private val _testLive = MutableLiveData<List<GoalPost>>()
+-+
+-+    val testLive: LiveData<List<GoalPost>>
+-+            get() = _testLive
+-+
+-+
+-+    fun addGoalPost(goalPost: GoalPost){
+-+        testData.add(goalPost)
+-+        _testLive.value = (testData);
+-+    }
+-+
+- }
+-\ No newline at end of file
+-Index: app/src/main/res/navigation/navigation.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<navigation xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/navigation\"\r\n    app:startDestination=\"@id/homeFragment\">\r\n\r\n    <fragment\r\n        android:id=\"@+id/bulletinBoardFragment\"\r\n        android:name=\"com.example.faithandroid.BulletinboardFragment\"\r\n        android:label=\"bulletinboard\"\r\n        tools:layout=\"@layout/fragment_bulletinboard\" >\r\n\r\n        <action\r\n            android:id=\"@+id/action_bulletinBoardFragment_to_optionsAddPostFragment\"\r\n            app:destination=\"@id/optionsAddPostFragment\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/optionsAddPostFragment\"\r\n        android:name=\"com.example.faithandroid.OptionsAddPostFragment\"\r\n        android:label=\"options_add_post\"\r\n        tools:layout=\"@layout/options_add_post\" >\r\n        <action\r\n            android:id=\"@+id/action_optionsAddPostFragment_to_bulletinBoardFragment\"\r\n            app:destination=\"@id/bulletinBoardFragment\" />\r\n\r\n    </fragment>\r\n\r\n    <fragment\r\n        android:id=\"@+id/loginFragment\"\r\n        android:name=\"com.example.faithandroid.LoginFragment\"\r\n        android:label=\"LoginFragment\" >\r\n\r\n        <action\r\n\r\n            android:id=\"@+id/action_loginFragment_to_homeFragment\"\r\n            app:destination=\"@id/homeFragment\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/homeFragment\"\r\n        android:name=\"com.example.faithandroid.HomeFragment\"\r\n        android:label=\"menu_homescherm\"\r\n        tools:layout=\"@layout/menu_homescherm\" >\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_backpackFragment\"\r\n            app:destination=\"@id/backpackFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_billboardFragment\"\r\n            app:destination=\"@id/billboardFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_bulletinBoardFragment\"\r\n            app:destination=\"@id/bulletinBoardFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_cinemaFragment\"\r\n            app:destination=\"@id/cinemaFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_musicRoomFragment\"\r\n            app:destination=\"@id/musicRoomFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_shoppingCenterFragment\"\r\n            app:destination=\"@id/shoppingCenterFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_skyscraperFragment\"\r\n            app:destination=\"@id/skyscraperFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_treasureChestFragment\"\r\n            app:destination=\"@id/treasureChestFragment\" />\r\n    </fragment>\r\n    \r\n    <fragment\r\n        android:id=\"@+id/backendFragment\"\r\n        android:name=\"com.example.faithandroid.BackendFragment\"\r\n        android:label=\"BackendFragment\" />\r\n    <fragment\r\n        android:id=\"@+id/text_post_toevoegen\"\r\n        android:name=\"com.example.faithandroid.text_post_toevoegen\"\r\n        android:label=\"text_post_toevoegen\">\r\n        <action\r\n            android:id=\"@+id/action_text_post_toevoegen_to_bulletinBoardFragment\"\r\n            app:destination=\"@id/bulletinBoardFragment\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/backpackFragment\"\r\n        android:name=\"com.example.faithandroid.BackpackFragment\"\r\n        android:label=\"BackpackFragment\"\r\n        tools:layout=\"@layout/fragment_backpack\"/>\r\n    <fragment\r\n        android:id=\"@+id/billboardFragment\"\r\n        android:name=\"com.example.faithandroid.BillboardFragment\"\r\n        android:label=\"BillboardFragment\"\r\n        tools:layout=\"@layout/fragment_billboard\"/>\r\n    <fragment\r\n        android:id=\"@+id/cinemaFragment\"\r\n        android:name=\"com.example.faithandroid.CinemaFragment\"\r\n        android:label=\"CinemaFragment\"\r\n        tools:layout=\"@layout/fragment_cinema\"/>\r\n    <fragment\r\n        android:id=\"@+id/musicRoomFragment\"\r\n        android:name=\"com.example.faithandroid.MusicRoomFragment\"\r\n        android:label=\"MusicRoomFragment\"\r\n        tools:layout=\"@layout/fragment_musicroom\"/>\r\n    <fragment\r\n        android:id=\"@+id/shoppingCenterFragment\"\r\n        android:name=\"com.example.faithandroid.ShoppingCenterFragment\"\r\n        android:label=\"ShoppingCenterFragment\"\r\n        tools:layout=\"@layout/fragment_shoppingcenter\"/>\r\n    <fragment\r\n        android:id=\"@+id/skyscraperFragment\"\r\n        android:name=\"com.example.faithandroid.SkyscraperFragment\"\r\n        android:label=\"SkyscraperFragment\"\r\n        tools:layout=\"@layout/fragment_skyscraper\"/>\r\n    <fragment\r\n        android:id=\"@+id/treasureChestFragment\"\r\n        android:name=\"com.example.faithandroid.TreasureChestFragment\"\r\n        android:label=\"TreasureChestFragment\"\r\n        tools:layout=\"@layout/fragment_treasurechest\"/>\r\n\r\n</navigation>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/res/navigation/navigation.xml	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-+++ app/src/main/res/navigation/navigation.xml	(date 1604527266494)
+-@@ -108,11 +108,23 @@
+-         android:id="@+id/skyscraperFragment"
+-         android:name="com.example.faithandroid.SkyscraperFragment"
+-         android:label="SkyscraperFragment"
+--        tools:layout="@layout/fragment_skyscraper"/>
+-+        tools:layout="@layout/fragment_skyscraper">
+-+        <action
+-+            android:id="@+id/action_skyscraperFragment_to_addGoalFragment"
+-+            app:destination="@id/addGoalFragment" />
+-+    </fragment>
+-     <fragment
+-         android:id="@+id/treasureChestFragment"
+-         android:name="com.example.faithandroid.TreasureChestFragment"
+-         android:label="TreasureChestFragment"
+-         tools:layout="@layout/fragment_treasurechest"/>
+-+    <fragment
+-+        android:id="@+id/addGoalFragment"
+-+        android:name="com.example.faithandroid.addGoalFragment"
+-+        android:label="addGoalFragment" >
+-+        <action
+-+            android:id="@+id/action_addGoalFragment_to_skyscraperFragment"
+-+            app:destination="@id/skyscraperFragment" />
+-+    </fragment>
+- 
+- </navigation>
+-\ No newline at end of file
+-Index: gradle/wrapper/gradle-wrapper.properties
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>#Fri Oct 02 16:39:04 CEST 2020\r\ndistributionBase=GRADLE_USER_HOME\r\ndistributionPath=wrapper/dists\r\nzipStoreBase=GRADLE_USER_HOME\r\nzipStorePath=wrapper/dists\r\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-6.1.1-all.zip\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>windows-1252
+-===================================================================
+---- gradle/wrapper/gradle-wrapper.properties	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-+++ gradle/wrapper/gradle-wrapper.properties	(date 1604527266554)
+-@@ -1,6 +1,6 @@
+--#Fri Oct 02 16:39:04 CEST 2020
+-+#Sat Oct 31 17:29:41 CET 2020
+- distributionBase=GRADLE_USER_HOME
+- distributionPath=wrapper/dists
+- zipStoreBase=GRADLE_USER_HOME
+- zipStorePath=wrapper/dists
+--distributionUrl=https\://services.gradle.org/distributions/gradle-6.1.1-all.zip
+-+distributionUrl=https\://services.gradle.org/distributions/gradle-6.5-bin.zip
+-Index: .idea/gradle.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"testRunner\" value=\"PLATFORM\" />\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"gradleJvm\" value=\"1.8\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/gradle.xml	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-+++ .idea/gradle.xml	(date 1604527266505)
+-@@ -15,6 +15,7 @@
+-           </set>
+-         </option>
+-         <option name="resolveModulePerSourceSet" value="false" />
+-+        <option name="useQualifiedModuleNames" value="true" />
+-       </GradleProjectSettings>
+-     </option>
+-   </component>
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_11_6_2020_12_40_AM_[Default_Changelist]/shelved.patch
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Checkout_at_11_6_2020_12_40_AM_[Default_Changelist]/shelved.patch	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
++++ .idea/shelf/Uncommitted_changes_before_Checkout_at_11_6_2020_12_40_AM_[Default_Changelist]/shelved.patch	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
+@@ -1,19 +0,0 @@
+-Index: app/build.gradle
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>apply plugin: 'com.android.application'\r\napply plugin: 'kotlin-android'\r\napply plugin: 'kotlin-android-extensions'\r\napply plugin: 'androidx.navigation.safeargs'\r\napply plugin: 'kotlin-kapt'\r\n\r\nandroid {\r\n    compileSdkVersion 30\r\n    buildToolsVersion \"30.0.2\"\r\n    buildFeatures {\r\n        dataBinding true\r\n    }\r\n    defaultConfig {\r\n        applicationId \"com.example.faithandroid\"\r\n        minSdkVersion 19\r\n        targetSdkVersion 30\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n        multiDexEnabled true\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility JavaVersion.VERSION_1_8\r\n        targetCompatibility JavaVersion.VERSION_1_8\r\n    }\r\n    kotlinOptions {\r\n        jvmTarget = '1.8'\r\n    }\r\n\r\n}\r\n\r\ndependencies {\r\n    implementation 'com.google.android.material:material:1.3.0-alpha03'\r\n    implementation fileTree(dir: \"libs\", include: [\"*.jar\"])\r\n    implementation \"org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version\"\r\n    implementation 'androidx.core:core-ktx:1.3.1'\r\n    implementation 'androidx.appcompat:appcompat:1.2.0'\r\n    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'\r\n    implementation 'androidx.legacy:legacy-support-v4:1.0.0'\r\n\r\n    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'\r\n    implementation 'androidx.legacy:legacy-support-v4:1.0.0'\r\n\r\n\r\n    testImplementation 'junit:junit:4.12'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.2'\r\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'\r\n    android.defaultConfig.vectorDrawables.useSupportLibrary = true\r\n\r\n\r\n    // Rounded Image View\r\n    implementation 'com.makeramen:roundedimageview:2.3.0'\r\n\r\n    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'\r\n\r\n    //Navigation Component\r\n    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'\r\n    implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'\r\n\r\n    implementation \"com.squareup.moshi:moshi:1.11.0\"\r\n    implementation \"com.squareup.moshi:moshi-kotlin:1.11.0\"\r\n\r\n    implementation \"com.squareup.retrofit2:retrofit: 2.9.0\"\r\n    implementation \"com.squareup.retrofit2:converter-moshi:2.9.0\"\r\n\r\n    //rounded corners popup\r\n    implementation 'androidx.cardview:cardview:1.0.0'\r\n    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'\r\n\r\n    implementation 'com.android.support:multidex:1.0.3'\r\n\r\n    implementation \"org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.0\"\r\n    implementation \"org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.0\"\r\n\r\n    implementation \"com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2\"\r\n\r\n    implementation \"com.github.bumptech.glide:glide:4.11.0\"\r\n\r\n    implementation \"androidx.recyclerview:recyclerview:1.1.0\"\r\n\r\n    implementation 'com.jakewharton.threetenabp:threetenabp:1.3.0'\r\n\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/build.gradle	(revision aacf3816f450d548ccb10e908ae511c47daa3efd)
+-+++ app/build.gradle	(date 1604619584296)
+-@@ -53,8 +53,7 @@
+-     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+-     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+-     android.defaultConfig.vectorDrawables.useSupportLibrary = true
+--
+--
+-+    
+-     // Rounded Image View
+-     implementation 'com.makeramen:roundedimageview:2.3.0'
+- 
+Index: .idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]/shelved.patch
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]/shelved.patch	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
++++ .idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]/shelved.patch	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
+@@ -1,795 +0,0 @@
+-Index: app/src/main/java/com/example/faithandroid/SkyscraperFragment.kt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.example.faithandroid\r\n\r\nimport android.content.Context\r\nimport android.content.Intent\r\n\r\nimport android.os.Bundle\r\nimport android.view.LayoutInflater\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport android.widget.Button\r\nimport android.widget.LinearLayout\r\nimport androidx.databinding.DataBindingUtil\r\nimport androidx.fragment.app.Fragment\r\nimport androidx.lifecycle.ViewModelProvider\r\nimport androidx.navigation.findNavController\r\nimport com.example.faithandroid.databinding.FragmentBulletinboardBinding\r\nimport com.example.faithandroid.databinding.FragmentSkyscraperBinding\r\nimport com.example.faithandroid.viewmodels.BulletinBoardViewModel\r\nimport com.example.faithandroid.viewmodels.SkyscraperViewModel\r\nimport kotlinx.android.synthetic.main.textpost.view.*\r\n\r\n\r\nclass SkyscraperFragment: Fragment() {\r\n\r\n    private lateinit var viewModel: SkyscraperViewModel\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n    }\r\n\r\n    override fun onCreateView(\r\n        inflater: LayoutInflater, container: ViewGroup?,\r\n        savedInstanceState: Bundle?\r\n    ): View? {\r\n      val binding = DataBindingUtil.inflate<FragmentSkyscraperBinding>(\r\n          inflater,\r\n          R.layout.fragment_skyscraper,\r\n          container,\r\n          false\r\n      );\r\n        return binding.root\r\n    }\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/java/com/example/faithandroid/SkyscraperFragment.kt	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-+++ app/src/main/java/com/example/faithandroid/SkyscraperFragment.kt	(date 1604504455820)
+-@@ -1,31 +1,29 @@
+- package com.example.faithandroid
+- 
+--import android.content.Context
+--import android.content.Intent
+--
+- import android.os.Bundle
+-+import android.util.Log
+- import android.view.LayoutInflater
+- import android.view.View
+- import android.view.ViewGroup
+--import android.widget.Button
+--import android.widget.LinearLayout
+- import androidx.databinding.DataBindingUtil
+- import androidx.fragment.app.Fragment
+-+import androidx.lifecycle.Observer
+- import androidx.lifecycle.ViewModelProvider
+- import androidx.navigation.findNavController
+--import com.example.faithandroid.databinding.FragmentBulletinboardBinding
+- import com.example.faithandroid.databinding.FragmentSkyscraperBinding
+-+import com.example.faithandroid.models.GoalPost
+- import com.example.faithandroid.viewmodels.BulletinBoardViewModel
+- import com.example.faithandroid.viewmodels.SkyscraperViewModel
+--import kotlinx.android.synthetic.main.textpost.view.*
+- 
+- 
+- class SkyscraperFragment: Fragment() {
+- 
+-+
+-     private lateinit var viewModel: SkyscraperViewModel
+- 
+-     override fun onCreate(savedInstanceState: Bundle?) {
+-         super.onCreate(savedInstanceState)
+-+
+-     }
+- 
+-     override fun onCreateView(
+-@@ -38,6 +36,26 @@
+-           container,
+-           false
+-       );
+-+
+-+        //viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
+-+        //binding.viewModelSkyscraper = viewModel
+-+
+-+        //PLUSBUTTON
+-+        binding.AddPostButton.setOnClickListener { view: View ->
+-+            view.findNavController().navigate(R.id.action_skyscraperFragment_to_addGoalFragment)
+-+        }
+-+
+-+        viewModel = ViewModelProvider(this).get(com.example.faithandroid.viewmodels.SkyscraperViewModel::class.java)
+-+
+-+        /*viewModel.testLive.observe(this.viewLifecycleOwner, Observer { testDataLive ->
+-+            Log.d("helpSF", viewModel.testLive.value.toString())
+-+            testDataLive.forEach{ lala ->
+-+                var newView: View = inflater.inflate(com.example.faithandroid.R.layout.goalpostimage, null)
+-+                binding.skyscraperLinearLayout.addView(newView, binding.skyscraperLinearLayout.childCount - 1)
+-+
+-+            }
+-+        })*/
+-+
+-         return binding.root
+-     }
+- }
+-\ No newline at end of file
+-Index: app/src/main/java/com/example/faithandroid/viewmodels/SkyscraperViewModel.kt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.example.faithandroid.viewmodels\r\n\r\nimport androidx.lifecycle.LiveData\r\nimport androidx.lifecycle.MutableLiveData\r\nimport androidx.lifecycle.ViewModel\r\nimport com.example.faithandroid.models.TextPost\r\n\r\nclass SkyscraperViewModel : ViewModel() {\r\n\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/java/com/example/faithandroid/viewmodels/SkyscraperViewModel.kt	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-+++ app/src/main/java/com/example/faithandroid/viewmodels/SkyscraperViewModel.kt	(date 1604503265548)
+-@@ -3,8 +3,38 @@
+- import androidx.lifecycle.LiveData
+- import androidx.lifecycle.MutableLiveData
+- import androidx.lifecycle.ViewModel
+-+import com.example.faithandroid.models.GoalPost
+- import com.example.faithandroid.models.TextPost
+- 
+- class SkyscraperViewModel : ViewModel() {
+- 
+-+
+-+    var lijst: List<String> = listOf("homos", "hello")
+-+
+-+    public var testData = mutableListOf<GoalPost>(
+-+        GoalPost(
+-+            "Sorry zeggen tegen Bob",
+-+            "Ik heb hem gekwetst en moet sorry zeggen",
+-+            false,
+-+            lijst
+-+        ),
+-+        GoalPost(
+-+            "Huiswerk maken",
+-+            "Huiswerk maken voor Frans",
+-+            false,
+-+            lijst
+-+        )
+-+    )
+-+
+-+    private val _testLive = MutableLiveData<List<GoalPost>>()
+-+
+-+    val testLive: LiveData<List<GoalPost>>
+-+            get() = _testLive
+-+
+-+
+-+    fun addGoalPost(goalPost: GoalPost){
+-+        testData.add(goalPost)
+-+        _testLive.value = (testData);
+-+    }
+-+
+- }
+-\ No newline at end of file
+-Index: app/src/main/res/layout/fragment_skyscraper.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<layout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\">\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        >\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n</layout>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/res/layout/fragment_skyscraper.xml	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-+++ app/src/main/res/layout/fragment_skyscraper.xml	(date 1604504132274)
+-@@ -2,9 +2,82 @@
+- <layout xmlns:android="http://schemas.android.com/apk/res/android"
+-     xmlns:app="http://schemas.android.com/apk/res-auto"
+-     xmlns:tools="http://schemas.android.com/tools">
+-+
+-+    <data>
+-+        <variable
+-+            name="viewModelSkyscraper"
+-+            type="com.example.faithandroid.viewmodels.SkyscraperViewModel" />
+-+    </data>
+-+
+-     <androidx.constraintlayout.widget.ConstraintLayout
+-+        android:id="@+id/skyscraperConstraintLayout"
+-         android:layout_width="match_parent"
+--        android:layout_height="match_parent"
+--        >
+-+        android:layout_height="wrap_content"
+-+        android:background="#C2EBFF">
+-+
+-+
+-+        <include
+-+            android:id="@+id/include"
+-+            layout="@layout/app_bar_back"
+-+            android:layout_width="410dp"
+-+            android:layout_height="712dp"
+-+            app:layout_constraintTop_toTopOf="parent" />
+-+
+-+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+-+            android:id="@+id/AddPostButton"
+-+            style="@style/pinkButtonStyle"
+-+            android:layout_width="70dp"
+-+            android:layout_height="wrap_content"
+-+            android:layout_alignParentEnd="true"
+-+            android:layout_alignParentBottom="true"
+-+            android:layout_gravity="bottom|end"
+-+            android:layout_marginEnd="35dp"
+-+            android:layout_marginBottom="35dp"
+-+            android:clickable="true"
+-+            android:elevation="10dp"
+-+            app:layout_constraintBottom_toBottomOf="parent"
+-+            app:layout_constraintEnd_toEndOf="parent"
+-+            app:maxImageSize="45dp"
+-+            app:srcCompat="@android:drawable/ic_input_add" />
+-+
+-+        <ScrollView
+-+            android:layout_width="0dp"
+-+            android:layout_height="0dp"
+-+            app:layout_constraintBottom_toBottomOf="parent"
+-+            app:layout_constraintEnd_toEndOf="parent"
+-+            app:layout_constraintHorizontal_bias="1.0"
+-+            app:layout_constraintStart_toStartOf="parent"
+-+            app:layout_constraintTop_toTopOf="parent"
+-+            app:layout_constraintVertical_bias="0.0">
+-+
+-+            <LinearLayout
+-+                android:id="@+id/skyscraperLinearLayout"
+-+                android:layout_width="match_parent"
+-+                android:layout_height="wrap_content"
+-+                android:layout_gravity="bottom"
+-+                android:layout_marginTop="56dp"
+-+                android:gravity="bottom"
+-+                android:orientation="vertical">
+-+
+-+
+-+                <ImageView
+-+                    android:id="@+id/bovenkantSkyscraper"
+-+                    android:layout_width="413dp"
+-+                    android:layout_height="188dp"
+-+                    android:layout_marginBottom="1dp"
+-+                    app:srcCompat="@drawable/bovenkant_skyscraper" />
+-+
+-+                <ImageView
+-+                    android:id="@+id/onderkantSkyscraper"
+-+                    android:layout_width="wrap_content"
+-+                    android:layout_height="120dp"
+-+                    app:srcCompat="@drawable/onderkant_skyscraper" />
+-+
+-+            </LinearLayout>
+-+        </ScrollView>
+-+
+-+
+-     </androidx.constraintlayout.widget.ConstraintLayout>
+-+
+-+
+- </layout>
+-\ No newline at end of file
+-Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_24_10_2020_18_06_[Default_Changelist]/shelved.patch
+-===================================================================
+---- .idea/shelf/Uncommitted_changes_before_Checkout_at_24_10_2020_18_06_[Default_Changelist]/shelved.patch	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-+++ .idea/shelf/Uncommitted_changes_before_Checkout_at_24_10_2020_18_06_[Default_Changelist]/shelved.patch	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-@@ -1,73 +0,0 @@
+--Index: app/src/main/res/layout/fragment_login.xml
+--IDEA additional info:
+--Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+--<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<layout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\">\n\n\n        <LinearLayout\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"match_parent\"\n            tools:context=\".login\">\n\n            <androidx.constraintlayout.widget.ConstraintLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"match_parent\"\n                android:layout_gravity=\"center_horizontal|center_vertical\">\n\n                <com.google.android.material.textfield.TextInputLayout\n                    android:id=\"@+id/login_field\"\n                    android:layout_width=\"0dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_marginStart=\"32dp\"\n                    android:layout_marginTop=\"100dp\"\n                    android:layout_marginEnd=\"32dp\"\n                    android:hint=\"@string/login\"\n                    app:layout_constraintBottom_toTopOf=\"@+id/password_field\"\n                    app:layout_constraintEnd_toEndOf=\"parent\"\n                    app:layout_constraintStart_toStartOf=\"parent\"\n                    app:layout_constraintTop_toTopOf=\"parent\">\n\n                    <com.google.android.material.textfield.TextInputEditText\n                        android:layout_width=\"match_parent\"\n                        android:layout_height=\"wrap_content\" />\n\n                </com.google.android.material.textfield.TextInputLayout>\n\n                <com.google.android.material.textfield.TextInputLayout\n                    android:id=\"@+id/password_field\"\n                    android:layout_width=\"0dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_marginStart=\"32dp\"\n                    android:layout_marginEnd=\"32dp\"\n                    android:hint=\"@string/password\"\n                    app:layout_constraintBottom_toTopOf=\"@+id/login_button\"\n                    app:layout_constraintEnd_toEndOf=\"parent\"\n                    app:layout_constraintStart_toStartOf=\"parent\"\n                    app:layout_constraintTop_toBottomOf=\"@+id/login_field\"\n                    >\n\n                    <com.google.android.material.textfield.TextInputEditText\n                        android:layout_width=\"match_parent\"\n                        android:layout_height=\"wrap_content\" />\n                </com.google.android.material.textfield.TextInputLayout>\n\n                <Button\n                    android:id=\"@+id/login_button\"\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_marginBottom=\"100dp\"\n                    android:text=\"@string/login\"\n                    app:layout_constraintBottom_toBottomOf=\"parent\"\n                    app:layout_constraintEnd_toEndOf=\"parent\"\n                    app:layout_constraintHorizontal_bias=\"0.498\"\n                    app:layout_constraintStart_toStartOf=\"parent\"\n                    app:layout_constraintTop_toBottomOf=\"@+id/password_field\" />\n\n            </androidx.constraintlayout.widget.ConstraintLayout>\n        </LinearLayout>\n\n</layout>\n
+--Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+--<+>UTF-8
+--===================================================================
+----- app/src/main/res/layout/fragment_login.xml	(revision 559ca712b33aa43a5a5259091cb649c72b11ce16)
+--+++ app/src/main/res/layout/fragment_login.xml	(date 1603555547114)
+--@@ -19,7 +19,6 @@
+--                     android:layout_width="0dp"
+--                     android:layout_height="wrap_content"
+--                     android:layout_marginStart="32dp"
+---                    android:layout_marginTop="100dp"
+--                     android:layout_marginEnd="32dp"
+--                     android:hint="@string/login"
+--                     app:layout_constraintBottom_toTopOf="@+id/password_field"
+--@@ -29,7 +28,8 @@
+-- 
+--                     <com.google.android.material.textfield.TextInputEditText
+--                         android:layout_width="match_parent"
+---                        android:layout_height="wrap_content" />
+--+                        android:layout_height="wrap_content"
+--+                        android:singleLine="true" />
+-- 
+--                 </com.google.android.material.textfield.TextInputLayout>
+-- 
+--@@ -48,7 +48,10 @@
+-- 
+--                     <com.google.android.material.textfield.TextInputEditText
+--                         android:layout_width="match_parent"
+---                        android:layout_height="wrap_content" />
+--+                        android:layout_height="wrap_content"
+--+                        android:inputType="textPassword"
+--+                        android:password="false"
+--+                        android:singleLine="true" />
+--                 </com.google.android.material.textfield.TextInputLayout>
+-- 
+--                 <Button
+--@@ -63,6 +66,15 @@
+--                     app:layout_constraintStart_toStartOf="parent"
+--                     app:layout_constraintTop_toBottomOf="@+id/password_field" />
+-- 
+--+                <TextView
+--+                    android:id="@+id/textView"
+--+                    android:layout_width="wrap_content"
+--+                    android:layout_height="wrap_content"
+--+                    android:layout_marginBottom="24dp"
+--+                    android:text="@string/welkom_bij_faith"
+--+                    app:layout_constraintBottom_toTopOf="@+id/login_field"
+--+                    app:layout_constraintStart_toStartOf="@+id/login_field" />
+--+
+--             </androidx.constraintlayout.widget.ConstraintLayout>
+--         </LinearLayout>
+-- 
+--Index: app/src/main/res/layout/activity_test.xml
+--IDEA additional info:
+--Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+--<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<layout xmlns:android=\"http://schemas.android.com/apk/res/android\"\nxmlns:app=\"http://schemas.android.com/apk/res-auto\">\n\n    <androidx.drawerlayout.widget.DrawerLayout\n        android:id=\"@+id/drawerLayout\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"match_parent\">\n\n\n\n\n        <com.google.android.material.navigation.NavigationView\n            android:id=\"@+id/navView\"\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"match_parent\"\n            android:layout_gravity=\"start\"\n            app:headerLayout=\"@layout/nav_header_main\"\n            app:menu=\"@menu/activity_main_drawer\" />\n\n        <fragment\n            android:id=\"@+id/NavHostFragment\"\n            android:name=\"androidx.navigation.fragment.NavHostFragment\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"match_parent\"\n\n            app:defaultNavHost=\"true\"\n            app:navGraph=\"@navigation/navigation\"></fragment>\n\n\n    </androidx.drawerlayout.widget.DrawerLayout>\n\n</layout>\n
+--Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+--<+>UTF-8
+--===================================================================
+----- app/src/main/res/layout/activity_test.xml	(revision 559ca712b33aa43a5a5259091cb649c72b11ce16)
+--+++ app/src/main/res/layout/activity_test.xml	(date 1603555547209)
+--@@ -8,8 +8,6 @@
+--         android:layout_height="match_parent">
+-- 
+-- 
+---
+---
+--         <com.google.android.material.navigation.NavigationView
+--             android:id="@+id/navView"
+--             android:layout_width="wrap_content"
+-Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_24_10_2020_18_06__Default_Changelist_.xml
+-===================================================================
+---- .idea/shelf/Uncommitted_changes_before_Checkout_at_24_10_2020_18_06__Default_Changelist_.xml	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-+++ .idea/shelf/Uncommitted_changes_before_Checkout_at_24_10_2020_18_06__Default_Changelist_.xml	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-@@ -1,4 +0,0 @@
+--<changelist name="Uncommitted_changes_before_Checkout_at_24_10_2020_18_06_[Default_Changelist]" date="1603555586768" recycled="true" deleted="true">
+--  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_10_2020_18_06_[Default_Changelist]/shelved.patch" />
+--  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 24/10/2020 18:06 [Default Changelist]" />
+--</changelist>
+-\ No newline at end of file
+-Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_24_10_2020_18_05_[Default_Changelist]/shelved.patch
+-===================================================================
+---- .idea/shelf/Uncommitted_changes_before_Checkout_at_24_10_2020_18_05_[Default_Changelist]/shelved.patch	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-+++ .idea/shelf/Uncommitted_changes_before_Checkout_at_24_10_2020_18_05_[Default_Changelist]/shelved.patch	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-@@ -1,53 +0,0 @@
+--Index: app/src/main/res/layout/fragment_login.xml
+--IDEA additional info:
+--Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+--<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<layout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\">\n\n\n        <LinearLayout\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"match_parent\"\n            tools:context=\".login\">\n\n            <androidx.constraintlayout.widget.ConstraintLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"match_parent\"\n                android:layout_gravity=\"center_horizontal|center_vertical\">\n\n                <com.google.android.material.textfield.TextInputLayout\n                    android:id=\"@+id/login_field\"\n                    android:layout_width=\"0dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_marginStart=\"32dp\"\n                    android:layout_marginEnd=\"32dp\"\n                    android:hint=\"@string/login\"\n                    app:layout_constraintBottom_toTopOf=\"@+id/password_field\"\n                    app:layout_constraintEnd_toEndOf=\"parent\"\n                    app:layout_constraintStart_toStartOf=\"parent\"\n                    app:layout_constraintTop_toTopOf=\"parent\">\n\n                    <com.google.android.material.textfield.TextInputEditText\n                        android:layout_width=\"match_parent\"\n                        android:layout_height=\"wrap_content\"\n                        android:singleLine=\"true\" />\n\n                </com.google.android.material.textfield.TextInputLayout>\n\n                <com.google.android.material.textfield.TextInputLayout\n                    android:id=\"@+id/password_field\"\n                    android:layout_width=\"0dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_marginStart=\"32dp\"\n                    android:layout_marginEnd=\"32dp\"\n                    android:hint=\"@string/password\"\n                    app:layout_constraintBottom_toTopOf=\"@+id/login_button\"\n                    app:layout_constraintEnd_toEndOf=\"parent\"\n                    app:layout_constraintStart_toStartOf=\"parent\"\n                    app:layout_constraintTop_toBottomOf=\"@+id/login_field\"\n                    >\n\n                    <com.google.android.material.textfield.TextInputEditText\n                        android:layout_width=\"match_parent\"\n                        android:layout_height=\"wrap_content\"\n                        android:singleLine=\"true\" />\n                </com.google.android.material.textfield.TextInputLayout>\n\n                <Button\n                    android:id=\"@+id/login_button\"\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_marginBottom=\"100dp\"\n                    android:text=\"@string/login\"\n                    app:layout_constraintBottom_toBottomOf=\"parent\"\n                    app:layout_constraintEnd_toEndOf=\"parent\"\n                    app:layout_constraintHorizontal_bias=\"0.498\"\n                    app:layout_constraintStart_toStartOf=\"parent\"\n                    app:layout_constraintTop_toBottomOf=\"@+id/password_field\" />\n\n                <TextView\n                    android:id=\"@+id/textView\"\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_marginBottom=\"24dp\"\n                    android:text=\"@string/welkom_bij_faith\"\n                    app:layout_constraintBottom_toTopOf=\"@+id/login_field\"\n                    app:layout_constraintStart_toStartOf=\"@+id/login_field\" />\n\n            </androidx.constraintlayout.widget.ConstraintLayout>\n        </LinearLayout>\n\n</layout>\n
+--Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+--<+>UTF-8
+--===================================================================
+----- app/src/main/res/layout/fragment_login.xml	(revision 714b45d9f3db186163f48ff8d61d6fedf1991c43)
+--+++ app/src/main/res/layout/fragment_login.xml	(date 1603444175542)
+--@@ -49,6 +49,8 @@
+--                     <com.google.android.material.textfield.TextInputEditText
+--                         android:layout_width="match_parent"
+--                         android:layout_height="wrap_content"
+--+                        android:inputType="textPassword"
+--+                        android:password="false"
+--                         android:singleLine="true" />
+--                 </com.google.android.material.textfield.TextInputLayout>
+-- 
+--Index: app/src/main/res/layout/activity_test.xml
+--IDEA additional info:
+--Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+--<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<layout xmlns:android=\"http://schemas.android.com/apk/res/android\"\nxmlns:app=\"http://schemas.android.com/apk/res-auto\">\n\n    <androidx.drawerlayout.widget.DrawerLayout\n        android:id=\"@+id/drawerLayout\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"match_parent\">\n\n\n\n\n        <com.google.android.material.navigation.NavigationView\n            android:id=\"@+id/navView\"\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"match_parent\"\n            android:layout_gravity=\"start\"\n            app:headerLayout=\"@layout/nav_header_main\"\n            app:menu=\"@menu/activity_main_drawer\" />\n\n        <fragment\n            android:id=\"@+id/NavHostFragment\"\n            android:name=\"androidx.navigation.fragment.NavHostFragment\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"match_parent\"\n\n            app:defaultNavHost=\"true\"\n            app:navGraph=\"@navigation/navigation\"></fragment>\n\n\n    </androidx.drawerlayout.widget.DrawerLayout>\n\n</layout>\n
+--Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+--<+>UTF-8
+--===================================================================
+----- app/src/main/res/layout/activity_test.xml	(revision 714b45d9f3db186163f48ff8d61d6fedf1991c43)
+--+++ app/src/main/res/layout/activity_test.xml	(date 1603442262710)
+--@@ -8,8 +8,6 @@
+--         android:layout_height="match_parent">
+-- 
+-- 
+---
+---
+--         <com.google.android.material.navigation.NavigationView
+--             android:id="@+id/navView"
+--             android:layout_width="wrap_content"
+--Index: .idea/gradle.xml
+--IDEA additional info:
+--Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+--<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\n  <component name=\"GradleSettings\">\n    <option name=\"linkedExternalProjectsSettings\">\n      <GradleProjectSettings>\n        <option name=\"testRunner\" value=\"PLATFORM\" />\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\n        <option name=\"gradleJvm\" value=\"1.8\" />\n        <option name=\"modules\">\n          <set>\n            <option value=\"$PROJECT_DIR$\" />\n            <option value=\"$PROJECT_DIR$/app\" />\n          </set>\n        </option>\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\n      </GradleProjectSettings>\n    </option>\n  </component>\n</project>
+--Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+--<+>UTF-8
+--===================================================================
+----- .idea/gradle.xml	(revision 714b45d9f3db186163f48ff8d61d6fedf1991c43)
+--+++ .idea/gradle.xml	(date 1603407179901)
+--@@ -15,6 +15,7 @@
+--           </set>
+--         </option>
+--         <option name="resolveModulePerSourceSet" value="false" />
+--+        <option name="useQualifiedModuleNames" value="true" />
+--       </GradleProjectSettings>
+--     </option>
+--   </component>
+-Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_24_10_2020_18_05__Default_Changelist_.xml
+-===================================================================
+---- .idea/shelf/Uncommitted_changes_before_Checkout_at_24_10_2020_18_05__Default_Changelist_.xml	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-+++ .idea/shelf/Uncommitted_changes_before_Checkout_at_24_10_2020_18_05__Default_Changelist_.xml	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-@@ -1,4 +0,0 @@
+--<changelist name="Uncommitted_changes_before_Checkout_at_24_10_2020_18_05_[Default_Changelist]" date="1603555547482" recycled="true" deleted="true">
+--  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_10_2020_18_05_[Default_Changelist]/shelved.patch" />
+--  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 24/10/2020 18:05 [Default Changelist]" />
+--</changelist>
+-\ No newline at end of file
+-Index: app/src/main/res/layout/goalpostimage.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/res/layout/goalpostimage.xml	(date 1604264790377)
+-+++ app/src/main/res/layout/goalpostimage.xml	(date 1604264790377)
+-@@ -0,0 +1,18 @@
+-+<?xml version="1.0" encoding="utf-8"?>
+-+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-+    xmlns:app="http://schemas.android.com/apk/res-auto"
+-+    xmlns:tools="http://schemas.android.com/tools"
+-+    android:layout_width="match_parent"
+-+    android:layout_height="match_parent"
+-+    android:clickable="true">
+-+
+-+    <ImageView
+-+        android:id="@+id/bellySkyscraper"
+-+        android:layout_width="435dp"
+-+        android:layout_height="151dp"
+-+        android:clickable="true"
+-+        app:layout_constraintBottom_toBottomOf="parent"
+-+        app:layout_constraintEnd_toEndOf="parent"
+-+        app:layout_constraintStart_toStartOf="parent"
+-+        app:srcCompat="@drawable/belly_skyscraper" />
+-+</androidx.constraintlayout.widget.ConstraintLayout>
+-\ No newline at end of file
+-Index: app/src/main/java/com/example/faithandroid/addGoalFragment.kt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/java/com/example/faithandroid/addGoalFragment.kt	(date 1604504396876)
+-+++ app/src/main/java/com/example/faithandroid/addGoalFragment.kt	(date 1604504396876)
+-@@ -0,0 +1,89 @@
+-+package com.example.faithandroid
+-+
+-+import android.os.Bundle
+-+import android.util.Log
+-+import android.view.LayoutInflater
+-+import android.view.View
+-+import android.view.ViewGroup
+-+import android.widget.CheckBox
+-+import android.widget.TextView
+-+import androidx.appcompat.view.menu.ListMenuItemView
+-+import androidx.core.view.children
+-+import androidx.core.view.forEach
+-+import androidx.core.view.get
+-+import androidx.databinding.DataBindingUtil
+-+import androidx.fragment.app.Fragment
+-+import androidx.lifecycle.ViewModelProvider
+-+import androidx.navigation.findNavController
+-+import com.example.faithandroid.databinding.FragmentAddGoalBinding
+-+import com.example.faithandroid.databinding.FragmentMusicroomBinding
+-+import com.example.faithandroid.models.GoalPost
+-+import com.example.faithandroid.viewmodels.MusicRoomViewModel
+-+import com.example.faithandroid.viewmodels.SkyscraperViewModel
+-+import kotlinx.android.synthetic.main.fragment_add_goal.*
+-+
+-+class addGoalFragment : Fragment() {
+-+
+-+    private lateinit var viewModel: SkyscraperViewModel
+-+
+-+    override fun onCreate(savedInstanceState: Bundle?) {
+-+        super.onCreate(savedInstanceState)
+-+    }
+-+
+-+    override fun onCreateView(
+-+        inflater: LayoutInflater, container: ViewGroup?,
+-+        savedInstanceState: Bundle?
+-+    ): View? {
+-+        val binding = DataBindingUtil.inflate<FragmentAddGoalBinding>(
+-+            inflater,
+-+            R.layout.fragment_add_goal,
+-+            container,
+-+            false
+-+        );
+-+
+-+
+-+
+-+
+-+        binding.annuleerButton.setOnClickListener { view: View ->
+-+            view.findNavController().navigate(R.id.action_addGoalFragment_to_skyscraperFragment)
+-+        }
+-+
+-+        binding.voegToeButton.setOnClickListener { view: View ->
+-+            var titel : String = binding.titelText.text.toString()
+-+            var beschrijving : String = binding.beschrijvingText.text.toString()
+-+            var steps : List<String> = emptyList();
+-+            binding.stepList.children.forEach { step: View ->
+-+                steps.plus(step.toString());
+-+            }
+-+            var newGoal = GoalPost(titel, beschrijving, false, steps)
+-+
+-+
+-+
+-+            viewModel.addGoalPost(newGoal);
+-+            Log.d("helpGF", viewModel.testLive.value.toString())
+-+
+-+
+-+
+-+
+-+            view.findNavController().navigate(R.id.action_addGoalFragment_to_skyscraperFragment)
+-+        }
+-+
+-+        binding.addStepButton.setOnClickListener{run{
+-+                //innerStepList.add
+-+                var newView: TextView = TextView(this.context);
+-+                newView.text =  " - " + binding.stepTekst.text;
+-+                binding.stepTekst.text.clear()
+-+                newView.setOnClickListener{
+-+                    run{
+-+                        stepList.removeView(newView)
+-+                    }
+-+                }
+-+                //stepList.add(newView)
+-+                binding.stepList.addView(newView, binding.stepList.childCount - 1)
+-+            }
+-+        }
+-+
+-+
+-+        return binding.root
+-+    }
+-+}
+-\ No newline at end of file
+-Index: build.gradle
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\r\nbuildscript {\r\n    ext{\r\n        kotlin_version = \"1.4.10\"\r\n        version_navigation = \"2.3.0\"\r\n    }\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n    }\r\n    dependencies {\r\n        classpath \"com.android.tools.build:gradle:4.0.1\"\r\n        classpath \"org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version\"\r\n        classpath \"androidx.navigation:navigation-safe-args-gradle-plugin:$version_navigation\"\r\n\r\n        // NOTE: Do not place your application dependencies here; they belong\r\n        // in the individual module build.gradle files\r\n        classpath 'com.google.gms:google-services:4.3.4'\r\n        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.3.0'\r\n    }\r\n}\r\n\r\nallprojects {\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n    }\r\n}\r\n\r\ntask clean(type: Delete) {\r\n    delete rootProject.buildDir\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- build.gradle	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-+++ build.gradle	(date 1604161781258)
+-@@ -9,7 +9,7 @@
+-         jcenter()
+-     }
+-     dependencies {
+--        classpath "com.android.tools.build:gradle:4.0.1"
+-+        classpath 'com.android.tools.build:gradle:4.1.0'
+-         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+-         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$version_navigation"
+- 
+-Index: app/src/main/res/navigation/navigation.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<navigation xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/navigation\"\r\n    app:startDestination=\"@id/homeFragment\">\r\n\r\n    <fragment\r\n        android:id=\"@+id/bulletinBoardFragment\"\r\n        android:name=\"com.example.faithandroid.BulletinboardFragment\"\r\n        android:label=\"bulletinboard\"\r\n        tools:layout=\"@layout/fragment_bulletinboard\" >\r\n\r\n        <action\r\n            android:id=\"@+id/action_bulletinBoardFragment_to_optionsAddPostFragment\"\r\n            app:destination=\"@id/optionsAddPostFragment\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/optionsAddPostFragment\"\r\n        android:name=\"com.example.faithandroid.OptionsAddPostFragment\"\r\n        android:label=\"options_add_post\"\r\n        tools:layout=\"@layout/options_add_post\" >\r\n        <action\r\n            android:id=\"@+id/action_optionsAddPostFragment_to_bulletinBoardFragment\"\r\n            app:destination=\"@id/bulletinBoardFragment\" />\r\n\r\n    </fragment>\r\n\r\n    <fragment\r\n        android:id=\"@+id/loginFragment\"\r\n        android:name=\"com.example.faithandroid.LoginFragment\"\r\n        android:label=\"LoginFragment\" >\r\n\r\n        <action\r\n\r\n            android:id=\"@+id/action_loginFragment_to_homeFragment\"\r\n            app:destination=\"@id/homeFragment\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/homeFragment\"\r\n        android:name=\"com.example.faithandroid.HomeFragment\"\r\n        android:label=\"menu_homescherm\"\r\n        tools:layout=\"@layout/menu_homescherm\" >\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_backpackFragment\"\r\n            app:destination=\"@id/backpackFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_billboardFragment\"\r\n            app:destination=\"@id/billboardFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_bulletinBoardFragment\"\r\n            app:destination=\"@id/bulletinBoardFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_cinemaFragment\"\r\n            app:destination=\"@id/cinemaFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_musicRoomFragment\"\r\n            app:destination=\"@id/musicRoomFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_shoppingCenterFragment\"\r\n            app:destination=\"@id/shoppingCenterFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_skyscraperFragment\"\r\n            app:destination=\"@id/skyscraperFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_homeFragment_to_treasureChestFragment\"\r\n            app:destination=\"@id/treasureChestFragment\" />\r\n    </fragment>\r\n    \r\n    <fragment\r\n        android:id=\"@+id/backendFragment\"\r\n        android:name=\"com.example.faithandroid.BackendFragment\"\r\n        android:label=\"BackendFragment\" />\r\n    <fragment\r\n        android:id=\"@+id/text_post_toevoegen\"\r\n        android:name=\"com.example.faithandroid.text_post_toevoegen\"\r\n        android:label=\"text_post_toevoegen\">\r\n        <action\r\n            android:id=\"@+id/action_text_post_toevoegen_to_bulletinBoardFragment\"\r\n            app:destination=\"@id/bulletinBoardFragment\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/backpackFragment\"\r\n        android:name=\"com.example.faithandroid.BackpackFragment\"\r\n        android:label=\"BackpackFragment\"\r\n        tools:layout=\"@layout/fragment_backpack\"/>\r\n    <fragment\r\n        android:id=\"@+id/billboardFragment\"\r\n        android:name=\"com.example.faithandroid.BillboardFragment\"\r\n        android:label=\"BillboardFragment\"\r\n        tools:layout=\"@layout/fragment_billboard\"/>\r\n    <fragment\r\n        android:id=\"@+id/cinemaFragment\"\r\n        android:name=\"com.example.faithandroid.CinemaFragment\"\r\n        android:label=\"CinemaFragment\"\r\n        tools:layout=\"@layout/fragment_cinema\"/>\r\n    <fragment\r\n        android:id=\"@+id/musicRoomFragment\"\r\n        android:name=\"com.example.faithandroid.MusicRoomFragment\"\r\n        android:label=\"MusicRoomFragment\"\r\n        tools:layout=\"@layout/fragment_musicroom\"/>\r\n    <fragment\r\n        android:id=\"@+id/shoppingCenterFragment\"\r\n        android:name=\"com.example.faithandroid.ShoppingCenterFragment\"\r\n        android:label=\"ShoppingCenterFragment\"\r\n        tools:layout=\"@layout/fragment_shoppingcenter\"/>\r\n    <fragment\r\n        android:id=\"@+id/skyscraperFragment\"\r\n        android:name=\"com.example.faithandroid.SkyscraperFragment\"\r\n        android:label=\"SkyscraperFragment\"\r\n        tools:layout=\"@layout/fragment_skyscraper\"/>\r\n    <fragment\r\n        android:id=\"@+id/treasureChestFragment\"\r\n        android:name=\"com.example.faithandroid.TreasureChestFragment\"\r\n        android:label=\"TreasureChestFragment\"\r\n        tools:layout=\"@layout/fragment_treasurechest\"/>\r\n\r\n</navigation>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/res/navigation/navigation.xml	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-+++ app/src/main/res/navigation/navigation.xml	(date 1604327181270)
+-@@ -108,11 +108,23 @@
+-         android:id="@+id/skyscraperFragment"
+-         android:name="com.example.faithandroid.SkyscraperFragment"
+-         android:label="SkyscraperFragment"
+--        tools:layout="@layout/fragment_skyscraper"/>
+-+        tools:layout="@layout/fragment_skyscraper">
+-+        <action
+-+            android:id="@+id/action_skyscraperFragment_to_addGoalFragment"
+-+            app:destination="@id/addGoalFragment" />
+-+    </fragment>
+-     <fragment
+-         android:id="@+id/treasureChestFragment"
+-         android:name="com.example.faithandroid.TreasureChestFragment"
+-         android:label="TreasureChestFragment"
+-         tools:layout="@layout/fragment_treasurechest"/>
+-+    <fragment
+-+        android:id="@+id/addGoalFragment"
+-+        android:name="com.example.faithandroid.addGoalFragment"
+-+        android:label="addGoalFragment" >
+-+        <action
+-+            android:id="@+id/action_addGoalFragment_to_skyscraperFragment"
+-+            app:destination="@id/skyscraperFragment" />
+-+    </fragment>
+- 
+- </navigation>
+-\ No newline at end of file
+-Index: .idea/gradle.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"testRunner\" value=\"PLATFORM\" />\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"gradleJvm\" value=\"1.8\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/gradle.xml	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-+++ .idea/gradle.xml	(date 1604161622017)
+-@@ -15,6 +15,7 @@
+-           </set>
+-         </option>
+-         <option name="resolveModulePerSourceSet" value="false" />
+-+        <option name="useQualifiedModuleNames" value="true" />
+-       </GradleProjectSettings>
+-     </option>
+-   </component>
+-Index: app/src/main/res/layout/fragment_add_goal.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/res/layout/fragment_add_goal.xml	(date 1604420336244)
+-+++ app/src/main/res/layout/fragment_add_goal.xml	(date 1604420336244)
+-@@ -0,0 +1,154 @@
+-+<?xml version="1.0" encoding="utf-8"?>
+-+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+-+    xmlns:app="http://schemas.android.com/apk/res-auto"
+-+    xmlns:tools="http://schemas.android.com/tools">
+-+
+-+<androidx.constraintlayout.widget.ConstraintLayout
+-+    android:layout_width="match_parent"
+-+    android:layout_height="match_parent">
+-+
+-+    <include
+-+        android:id="@+id/include"
+-+        layout="@layout/app_bar_back"
+-+        android:layout_width="410dp"
+-+        android:layout_height="712dp"
+-+        app:layout_constraintTop_toTopOf="parent" />
+-+
+-+    <androidx.constraintlayout.widget.ConstraintLayout
+-+        android:layout_width="match_parent"
+-+        android:layout_height="match_parent"
+-+        tools:layout_editor_absoluteX="28dp"
+-+        tools:layout_editor_absoluteY="0dp">
+-+
+-+        <TextView
+-+            android:id="@+id/textView3"
+-+            android:layout_width="wrap_content"
+-+            android:layout_height="wrap_content"
+-+            android:text=" Beschrijving"
+-+            app:layout_constraintBottom_toTopOf="@+id/beschrijvingText"
+-+            app:layout_constraintEnd_toEndOf="parent"
+-+            app:layout_constraintHorizontal_bias="0.048"
+-+            app:layout_constraintStart_toStartOf="parent"
+-+            app:layout_constraintTop_toBottomOf="@+id/titelText"
+-+            app:layout_constraintVertical_bias="0.487" />
+-+
+-+        <EditText
+-+            android:id="@+id/titelText"
+-+            android:layout_width="378dp"
+-+            android:layout_height="48dp"
+-+            android:layout_marginTop="100dp"
+-+            android:ems="10"
+-+            android:inputType="textPersonName"
+-+            app:layout_constraintEnd_toEndOf="parent"
+-+            app:layout_constraintHorizontal_bias="0.484"
+-+            app:layout_constraintStart_toStartOf="parent"
+-+            app:layout_constraintTop_toTopOf="parent" />
+-+
+-+        <TextView
+-+            android:id="@+id/textView2"
+-+            android:layout_width="124dp"
+-+            android:layout_height="16dp"
+-+            android:layout_marginBottom="8dp"
+-+            android:text=" Titel van het doel"
+-+            app:layout_constraintBottom_toTopOf="@+id/titelText"
+-+            app:layout_constraintEnd_toEndOf="parent"
+-+            app:layout_constraintHorizontal_bias="0.055"
+-+            app:layout_constraintStart_toStartOf="parent" />
+-+
+-+        <EditText
+-+            android:id="@+id/beschrijvingText"
+-+            android:layout_width="376dp"
+-+            android:layout_height="40dp"
+-+            android:ems="10"
+-+            android:gravity="start|top"
+-+            android:inputType="textMultiLine|textImeMultiLine"
+-+            app:layout_constraintBottom_toBottomOf="parent"
+-+            app:layout_constraintEnd_toEndOf="parent"
+-+            app:layout_constraintHorizontal_bias="0.457"
+-+            app:layout_constraintStart_toStartOf="parent"
+-+            app:layout_constraintTop_toBottomOf="@+id/titelText"
+-+            app:layout_constraintVertical_bias="0.071" />
+-+
+-+        <TextView
+-+            android:id="@+id/textView4"
+-+            android:layout_width="wrap_content"
+-+            android:layout_height="wrap_content"
+-+            android:layout_marginTop="12dp"
+-+            android:text="Voeg een stap toe:"
+-+            app:layout_constraintEnd_toEndOf="parent"
+-+            app:layout_constraintHorizontal_bias="0.063"
+-+            app:layout_constraintStart_toStartOf="parent"
+-+            app:layout_constraintTop_toBottomOf="@+id/beschrijvingText" />
+-+
+-+        <LinearLayout
+-+            android:id="@+id/stepList"
+-+            android:layout_width="359dp"
+-+            android:layout_height="207dp"
+-+            android:layout_marginStart="15dp"
+-+            android:layout_marginTop="52dp"
+-+            android:layout_marginEnd="15dp"
+-+            android:orientation="vertical"
+-+            app:layout_constraintEnd_toEndOf="parent"
+-+            app:layout_constraintStart_toStartOf="parent"
+-+            app:layout_constraintTop_toBottomOf="@+id/stepTekst" />
+-+
+-+        <Button
+-+            android:id="@+id/voegToeButton"
+-+            android:layout_width="wrap_content"
+-+            android:layout_height="wrap_content"
+-+            android:layout_marginEnd="68dp"
+-+            android:layout_marginBottom="32dp"
+-+            android:text="Voeg toe"
+-+            app:layout_constraintBottom_toBottomOf="parent"
+-+            app:layout_constraintEnd_toEndOf="parent" />
+-+
+-+        <Button
+-+            android:id="@+id/annuleerButton"
+-+            android:layout_width="wrap_content"
+-+            android:layout_height="wrap_content"
+-+            android:layout_marginBottom="32dp"
+-+            android:text="Annuleer"
+-+            app:layout_constraintBottom_toBottomOf="parent"
+-+            app:layout_constraintEnd_toStartOf="@+id/voegToeButton"
+-+            app:layout_constraintHorizontal_bias="0.475"
+-+            app:layout_constraintStart_toStartOf="parent" />
+-+
+-+        <EditText
+-+            android:id="@+id/stepTekst"
+-+            android:layout_width="325dp"
+-+            android:layout_height="41dp"
+-+            android:layout_marginTop="40dp"
+-+            android:ems="10"
+-+            android:inputType="textPersonName"
+-+            app:layout_constraintEnd_toEndOf="parent"
+-+            app:layout_constraintHorizontal_bias="0.186"
+-+            app:layout_constraintStart_toStartOf="parent"
+-+            app:layout_constraintTop_toBottomOf="@+id/beschrijvingText" />
+-+
+-+        <Button
+-+            android:id="@+id/addStepButton"
+-+            android:layout_width="47dp"
+-+            android:layout_height="41dp"
+-+            android:layout_marginStart="12dp"
+-+            android:layout_marginTop="40dp"
+-+            android:text="+"
+-+            app:layout_constraintEnd_toEndOf="parent"
+-+            app:layout_constraintHorizontal_bias="0.0"
+-+            app:layout_constraintStart_toEndOf="@+id/stepTekst"
+-+            app:layout_constraintTop_toBottomOf="@+id/beschrijvingText" />
+-+
+-+        <TextView
+-+            android:id="@+id/textView5"
+-+            android:layout_width="wrap_content"
+-+            android:layout_height="wrap_content"
+-+            android:layout_marginTop="16dp"
+-+            android:text=" De stappen:"
+-+            app:layout_constraintEnd_toEndOf="parent"
+-+            app:layout_constraintHorizontal_bias="0.048"
+-+            app:layout_constraintStart_toStartOf="parent"
+-+            app:layout_constraintTop_toBottomOf="@+id/stepTekst" />
+-+
+-+    </androidx.constraintlayout.widget.ConstraintLayout>
+-+
+-+</androidx.constraintlayout.widget.ConstraintLayout>
+-+</layout>
+-\ No newline at end of file
+-Index: app/src/main/java/com/example/faithandroid/models/GoalPost.kt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/java/com/example/faithandroid/models/GoalPost.kt	(date 1604075781788)
+-+++ app/src/main/java/com/example/faithandroid/models/GoalPost.kt	(date 1604075781788)
+-@@ -0,0 +1,17 @@
+-+package com.example.faithandroid.models
+-+
+-+class GoalPost{
+-+
+-+    var title: String = ""
+-+    var description: String = ""
+-+    var completed: Boolean = false
+-+    var steps: List<String> = listOf()
+-+
+-+    constructor(title: String, text: String, completed:Boolean, steps:List<String>)
+-+    {
+-+        this.description = text
+-+        this.title = title
+-+        this.completed = completed
+-+        this.steps = steps
+-+    }
+-+}
+-\ No newline at end of file
+-Index: app/src/main/res/values/strings.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><resources>\r\n    <string name=\"app_name\">FaithAndroid</string>\r\n    <string name=\"skyscraper\">Wolkenkrabber</string>\r\n    <string name=\"cinema\">Cinema</string>\r\n    <string name=\"treasure_chest\">Schatkist</string>\r\n    <string name=\"musicRoom\">Music Room</string>\r\n    <string name=\"backpack\">Rugzak</string>\r\n    <string name=\"billboard\">Billboard</string>\r\n    <string name=\"bulletinboard\">Prikbord</string>\r\n    <string name=\"winkelCentrum\">Winkelcentrum</string>\r\n\r\n    <!-- TODO: Remove or change this placeholder text -->\r\n    <string name=\"hello_blank_fragment\">Hello blank fragment</string>\r\n\r\n    <string name=\"button_open\">Open</string>\r\n    <string name=\"button_unpin\">unpin</string>\r\n    <string name=\"request_consultation\">Gesprek aanvragen</string>\r\n    <string name=\"audio\">Audio</string>\r\n    <string name=\"Image\">Foto</string>\r\n    <string name=\"video\">Video</string>\r\n    <string name=\"text\">Tekst</string>\r\n    <string name=\"annuleren\">Annuleren</string>\r\n    <string name=\"aanvraag_gesprek\">Gesprek</string>\r\n    <string name=\"instellingen\">Instellingen</string>\r\n    <string name=\"profiel\">Profiel</string>\r\n    <string name=\"uitloggen\">Uitloggen</string>\r\n    <string name=\"meest_bezocht\">Meest Bezocht</string>\r\n    <string name=\"wolkenkrabber\">Wolkenkrabber</string>\r\n    <string name=\"welkom\">Goed je terug te zien!</string>\r\n    <string name=\"naam\">Jane Doe</string>\r\n    <!-- TODO: Remove or change this placeholder text -->\r\n\r\n    <string name=\"login\">login</string>\r\n    <string name=\"title_activity_test\">TestActivity</string>\r\n    <!-- Strings used for fragments for navigation -->\r\n    <string name=\"first_fragment_label\">First Fragment</string>\r\n    <string name=\"second_fragment_label\">Second Fragment</string>\r\n    <string name=\"next\">Next</string>\r\n    <string name=\"previous\">Previous</string>\r\n\r\n    <string name=\"hello_first_fragment\">Hello first fragment</string>\r\n    <string name=\"hello_second_fragment\">Hello second fragment. Arg: %1$s</string>\r\n    <string name=\"label\">button</string>\r\n    <string name=\"forgot_password\">wachtwoord vergeten</string>\r\n    <string name=\"password\">wachtwoord</string>\r\n    <string name=\"OK\">OK</string>\r\n    <string name=\"welkom_bij_faith\">welkom bij faith</string>\r\n    <string name=\"titel\">titel</string>\r\n    <string name=\"tekst\">tekst</string>\r\n\r\n</resources>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/res/values/strings.xml	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-+++ app/src/main/res/values/strings.xml	(date 1604317814897)
+-@@ -1,5 +1,5 @@
+- <resources>
+--    <string name="app_name">FaithAndroid</string>
+-+    <string name="app_name">Grow</string>
+-     <string name="skyscraper">Wolkenkrabber</string>
+-     <string name="cinema">Cinema</string>
+-     <string name="treasure_chest">Schatkist</string>
+-Index: gradle/wrapper/gradle-wrapper.properties
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>#Fri Oct 02 16:39:04 CEST 2020\r\ndistributionBase=GRADLE_USER_HOME\r\ndistributionPath=wrapper/dists\r\nzipStoreBase=GRADLE_USER_HOME\r\nzipStorePath=wrapper/dists\r\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-6.1.1-all.zip\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>windows-1252
+-===================================================================
+---- gradle/wrapper/gradle-wrapper.properties	(revision cd35e6a8f507a640eb90ea483bc79f91459d7121)
+-+++ gradle/wrapper/gradle-wrapper.properties	(date 1604161781269)
+-@@ -1,6 +1,6 @@
+--#Fri Oct 02 16:39:04 CEST 2020
+-+#Sat Oct 31 17:29:41 CET 2020
+- distributionBase=GRADLE_USER_HOME
+- distributionPath=wrapper/dists
+- zipStoreBase=GRADLE_USER_HOME
+- zipStorePath=wrapper/dists
+--distributionUrl=https\://services.gradle.org/distributions/gradle-6.1.1-all.zip
+-+distributionUrl=https\://services.gradle.org/distributions/gradle-6.5-bin.zip
+-diff --git app/src/main/java/com/example/faithandroid/models/Post.kt app/src/main/java/com/example/faithandroid/models/TextPost.kt
+-rename from app/src/main/java/com/example/faithandroid/models/Post.kt
+-rename to app/src/main/java/com/example/faithandroid/models/TextPost.kt
+Index: .idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]4/shelved.patch
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]4/shelved.patch	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
++++ .idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]4/shelved.patch	(revision 508542434a419e3c81442b2df800ac11b32a8ca2)
+@@ -1,3 +0,0 @@
+-diff --git .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_1.xml .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_1.xml
+-diff --git .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_2.xml .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_2.xml
+-diff --git .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml

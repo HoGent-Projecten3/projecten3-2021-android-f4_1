@@ -55,7 +55,7 @@ class addGoalFragment : Fragment() {
 
 
             //viewModel.postNewGoalPost("dora.theexplorer1999@gmail.com",newGoal);
-            //Log.d("helpGF", viewModel.testLive.value.toString())
+
 
 
 

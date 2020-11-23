@@ -1,27 +1,38 @@
-
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.faithandroid">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_growlauncher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_growlauncher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PopupWindow"></activity>
-      
-        <activity android:name=".MainActivity">
 
-            <intent-filter>
+        <uses-library android:name="android.test.runner"/>
+        <uses-library android:name="android.test.base"/>
+        <uses-library android:name="android.test.mock"/>
+
+        <activity android:name=".PopupWindow"></activity>
+
+        <activity android:name=".ExoPlayerActivity"></activity>
+        <activity android:name=".FullScreenImageActivity"></activity>
+        <activity android:name=".login.uilogin.LoginActivity">
+
+        </activity>
+        <activity android:name=".MainActivity">
+         <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
     </application>
 
 </manifest>
