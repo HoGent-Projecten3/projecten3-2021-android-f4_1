@@ -46,7 +46,7 @@ class LoginDataSource {
           }
           catch(e: HttpException)
           {
-              Log.d("lala", e.message())
+
               return Result.Error(e.message())
           }
 

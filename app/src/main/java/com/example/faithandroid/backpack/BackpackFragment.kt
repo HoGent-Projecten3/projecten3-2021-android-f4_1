@@ -57,15 +57,14 @@ class BackpackFragment: Fragment() {
         })
 
         binding.BackpackRecycler.adapter =
-            FilteredPostAdapter(object : CustomClick {
+            PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
-                    Log.d("----------------------", post.title)
                     postViewModel.deletePostByEmail(post.id, "dora.theexplorer1999@gmail.com", PlaceType.Rugzak)
                     true
                 }
             })
 
-        viewModel.status.observe(this.viewLifecycleOwner, Observer {
+        postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
                 Snackbar.make(contextView, viewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(

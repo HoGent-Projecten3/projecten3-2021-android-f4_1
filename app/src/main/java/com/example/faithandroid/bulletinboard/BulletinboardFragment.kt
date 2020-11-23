@@ -83,7 +83,7 @@ class BulletinboardFragment: Fragment() {
         binding.BulletinBoardRecycler.adapter =
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
-                    Log.d("lalala", post.title)
+
                     postViewModel.deletePostByEmail(post.id, "dora.theexplorer1999@gmail.com", PlaceType.Prikbord)
                     true
                 }
