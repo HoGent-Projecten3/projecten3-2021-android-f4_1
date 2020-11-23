@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,7 +24,9 @@ import com.example.faithandroid.*
 import com.example.faithandroid.databinding.VideoToevoegenBinding
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.PostAdapter
+import com.example.faithandroid.databinding.ListdataPostBinding
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.android.synthetic.main.skyscraper_goalpostimage.view.*
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
 import java.util.*
@@ -124,8 +127,12 @@ class VideoToevoegenFragment: Fragment() {
             "dora.theexplorer1999@gmail.com"
         )
         binding.viewModel = viewModel
-        binding.recyclerView.adapter = PostAdapter()
-
+        binding.recyclerView.adapter = PostAdapter(object : CustomLongClick {
+            override fun onClick(post: Post) {
+                this@VideoToevoegenFragment.post = post
+                true
+            }
+        })
 
 
 
@@ -136,12 +143,22 @@ class VideoToevoegenFragment: Fragment() {
             {
                 post?.title = binding.titel.text.toString()
                 post?.data = binding.titel.text?.replace("\\s".toRegex(), "").toString()
+
+                post?.let { it1 -> viewModel.addPostByEmail(
+                    it1,
+                    args.placeType,
+                    "dora.theexplorer1999@gmail.com"
+                ) }
             }
-            post?.let { it1 -> viewModel.addPostByEmail(
-                it1,
-                args.placeType,
-                "dora.theexplorer1999@gmail.com"
-            ) }
+            else
+            {
+                if(post != null)
+                {
+                    viewModel.addExistingPostToPlace(post!!.id, args.placeType)
+                }
+            }
+
+
             when(args.placeType)
             {
                 PlaceType.Prikbord -> {
@@ -149,6 +166,7 @@ class VideoToevoegenFragment: Fragment() {
                         .navigate(R.id.action_videoToevoegenFragment_to_bulletinBoardFragment)
                 }
             }
+
         }
 
         return binding.root

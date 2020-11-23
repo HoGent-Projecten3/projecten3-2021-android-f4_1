@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.faithandroid.*
 import com.example.faithandroid.databinding.TreasurechestBinding
+import com.example.faithandroid.models.Post
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -40,7 +41,11 @@ class TreasureChestFragment: Fragment() {
 
         binding.viewModel = postViewModel
         binding.TreasureChestRecycler.adapter =
-            PostAdapter()
+            PostAdapter(object : CustomLongClick {
+                override fun onClick(post: Post) {
+                    true
+                }
+            })
 
 
         binding.AddPostButton.setOnClickListener { view: View ->

@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import com.example.faithandroid.*
 import com.example.faithandroid.databinding.BulletinboardBinding
 import com.example.faithandroid.PostAdapter
+import com.example.faithandroid.models.Post
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
@@ -79,8 +80,11 @@ class BulletinboardFragment: Fragment() {
 
         binding.viewModel = postViewModel
         binding.BulletinBoardRecycler.adapter =
-            PostAdapter()
-
+            PostAdapter(object : CustomLongClick {
+                override fun onClick(post: Post) {
+                    true
+                }
+            })
 
         postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view

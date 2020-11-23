@@ -126,7 +126,11 @@ class addPhotoFragment: Fragment() {
         )
         binding.viewModel = viewModel
         binding.addImageRecyclerView.adapter =
-            PostAdapter()
+            PostAdapter(object : CustomLongClick {
+                override fun onClick(post: Post) {
+                    true
+                }
+            })
 
         binding.fotoToevoegenButton.setOnClickListener{
 

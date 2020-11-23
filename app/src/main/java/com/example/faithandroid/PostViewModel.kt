@@ -131,6 +131,33 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
         return bool
         }
 
+    fun addExistingPostToPlace(id: Int, placeType: PlaceType)
+    {
+        viewModelScope.launch {
+            val stringCall: Call<Void> =
+                FaithApi.retrofitService.addExistingPostToPlace(3, placeType.ordinal)
+            stringCall.enqueue(object : Callback<Void> {
+
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    Log.d("res",response.code().toString() + response.message())
+                    if (response.isSuccessful()) {
+                        val responseString: String? = response.code().toString()
+
+                        if (responseString != null) {
+
+
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<Void>?, t: Throwable?) {
+
+                }
+            })
+        }
+    }
+
 
 
 }

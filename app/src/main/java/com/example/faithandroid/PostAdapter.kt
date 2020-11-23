@@ -1,6 +1,7 @@
 package com.example.faithandroid
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,12 +19,12 @@ import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.FormatStyle
 
 
-class PostAdapter : ListAdapter<Post, PostAdapter.TreasureChestPostViewHolder>(
+class PostAdapter( private var listener: CustomLongClick) : ListAdapter<Post, PostAdapter.TreasureChestPostViewHolder>(
     DiffCallback
 ) {
 
 
-    class TreasureChestPostViewHolder(private var binding: ListdataPostBinding):
+    class TreasureChestPostViewHolder(private var binding: ListdataPostBinding, private var listener: CustomLongClick):
         RecyclerView.ViewHolder(binding.root){
 
 
@@ -59,7 +60,8 @@ class PostAdapter : ListAdapter<Post, PostAdapter.TreasureChestPostViewHolder>(
 
 
         return TreasureChestPostViewHolder(
-            ListdataPostBinding.inflate(LayoutInflater.from(parent.context))
+            ListdataPostBinding.inflate(LayoutInflater.from(parent.context)),
+            listener
         )
     }
 
@@ -69,6 +71,11 @@ class PostAdapter : ListAdapter<Post, PostAdapter.TreasureChestPostViewHolder>(
     ) {
         val post = getItem(position)
         holder.bind(post)
+
+        holder.itemView.setOnLongClickListener{
+            listener.onClick(post)
+            true
+        }
 
         holder.itemView.setOnClickListener { view: View ->
             when (post.postType) {
