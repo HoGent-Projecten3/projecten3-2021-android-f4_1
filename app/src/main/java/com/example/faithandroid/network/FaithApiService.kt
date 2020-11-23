@@ -1,7 +1,12 @@
 package com.example.faithandroid.network
 
+
 import com.example.faithandroid.login.data.User
 import com.example.faithandroid.models.Adolescent
+
+import com.example.faithandroid.PlaceType
+import com.example.faithandroid.PostType
+
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.TextPost
@@ -10,7 +15,6 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.Deferred
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
@@ -71,7 +75,15 @@ interface FaithApiService {
     fun getPostsOfBulletinBoardByAdolescentEmail(@Query("email") email: String):
         Deferred<List<Post>>
 
-    @GET("City/GetBillboardGoalsByAdolescentEmail")
+    @GET("City/GetPostsOfBackpackByAdolescentEmail")
+    fun getPostsOfBackpackByAdolescentEmail(@Query("email") email: String):
+            Deferred<List<Post>>
+
+    @GET("City/GetPostsOfTreasureChestByAdolescentEmail")
+    fun getPostsOfTreasureChestByAdolescentEmail(@Query("email") email: String):
+            Deferred<List<Post>>
+
+    @GET("City/GetBillboardGoalsByAdolescentMail")
     fun getBillboardGoalsByAdolescentEmail(@Query("email") email: String): Deferred<List<GoalPost>>
 
 
@@ -86,9 +98,24 @@ interface FaithApiService {
     @POST("City/DeleteGoalByEmail")
     fun removeGoal(@Query("id") id: Int, @Query("email") email: String)
 
-    @GET("Account/GetAdolescent")
-    fun GetAdolescent(@Query("email")email: String): Deferred<Adolescent>
+    @GET("City/GetFilteredPostsFromPlace")
+    fun getFilteredFromPlace(@Query("placeType") placeType: Int, @Query("postType") postType: Int, @Query("email") email: String): Call<List<Post>>
 
+
+    @GET("City/GetPostsOfPlaceByAdolescentEmail")
+    fun getPostsOfPlaceByAdolescentEmail(@Query("placeType") placeType: Int, @Query("email")email: String): Call<List<Post>>
+
+    @Headers("Content-Type: application/json", "accept: application/json")
+    @POST("City/AddPostByEmail")
+    fun addPostByEmail(@Body post: Post, @Query("email") email: String, @Query("placeType") placeType: Int): Call<Void>
+
+    @Headers("Content-Type: application/json", "accept: application/json")
+    @PUT("City/DeletePostByEmail")
+    fun deletePostByEmail(@Query("id") id: Int, @Query("email") email: String, @Query("placeType") placeType: Int): Call<Void>
+
+    @Headers("Content-Type: application/json", "accept: application/json")
+    @PUT("City/AddExistingPostToPlace")
+    fun addExistingPostToPlace(@Query("postId") id: Int, @Query("placeType")placeType: Int): Call<Void>
 
 }
 

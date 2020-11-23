@@ -43,7 +43,7 @@ class SkyscraperViewModel : ViewModel() {
         get() = _getStatus
   
     private var testLiveData = MutableLiveData<List<GoalPost>>()
-    private var test = mutableListOf<GoalPost>(GoalPost(0,"Test","Test", false, listOf(Step(0,"test"), Step(1, "Nog een test"), Step(2, "Oh boy nog een test")), "test"));
+    private var test = mutableListOf<GoalPost>();
 
 
     val testLive: LiveData<List<GoalPost>>
@@ -54,7 +54,7 @@ class SkyscraperViewModel : ViewModel() {
 
     init {
 
-        //GetPostsOfSkyscraper("dora.theexplorer1999@gmail.com")
+        GetPostsOfSkyscraper("dora.theexplorer1999@gmail.com")
         testLiveData.value = test;
     }
 
@@ -62,13 +62,14 @@ class SkyscraperViewModel : ViewModel() {
         coroutineScope.launch {
             var getPropertiesDeferred = FaithApi.retrofitService.getPostsOfSkyScraperByAdolescentEmail(email);
             try {
+
                 var listResult = getPropertiesDeferred.await()
                 if(listResult.size > 0){
 
                     testLiveData.value = listResult
                 }
             } catch (e: Exception){
-                Log.d("lalala",e.localizedMessage)
+
                 _getStatus.value = e.localizedMessage
             }
         }
@@ -78,7 +79,7 @@ class SkyscraperViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 FaithApi.retrofitService.checkGoal("dora.theexplorer1999@gmail.com", id)
-                Log.d("editGoal", "Goal checked")
+
                 _completedStatus.value = R.string.doel_gedeeld.toString();
             } catch (e: Exception) {
                 _completedStatus.value = e.localizedMessage
@@ -87,11 +88,11 @@ class SkyscraperViewModel : ViewModel() {
     }
 
     fun postNewGoalPost(email: String, goalPost: GoalPost) {
-        Log.d("post", "Begint nu met posten")
+
         viewModelScope.launch {
             val response = FaithApi.retrofitService.postGoalPost(goalPost, email)
-            //Log.d("post", response.message())
-            Log.d("post", "Gepost")
+
+
         }
 
     }

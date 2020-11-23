@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +15,9 @@ import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModel
+
 import androidx.lifecycle.ViewModelProvider
+
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -36,11 +40,14 @@ import kotlinx.android.synthetic.main.app_nav_header_main.view.*
 //import androidx.databinding.DataBindingUtil
 
 class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNavigationItemSelectedListener {
-
+    
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var viewModel: LoginViewModel
     private  var username: String = ""
+
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,8 +84,6 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setHomeButtonEnabled(true)
 
-    /*    val taskIntent =  Intent(this,LoginActivity::class.java)
-        startActivity(taskIntent)*/
     }
 
 
