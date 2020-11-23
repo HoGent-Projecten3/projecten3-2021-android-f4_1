@@ -66,6 +66,8 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
 
             var card = binding.card
 
+
+            Glide.with(itemView.context).load(post.uri).into(binding.TreasurechestVideo)
             card.setOnClickListener { view: View ->
                 when (post.postType) {
                     PostType.Image.ordinal -> {
