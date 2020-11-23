@@ -118,10 +118,6 @@ class LoginActivity : AppCompatActivity() {
                 loginViewModel.login(username.text.toString(), password.text.toString())
                //  supportFragmentManager.findFragmentById(R.id.action_loginFragment_to_homeFragment) as LoginFragment
              //  this.findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-
-                val taskIntent =  Intent(context,MainActivity::class.java)
-                startActivity(taskIntent)
-
             }
             catch (e: Exception ){
               Log.d("ERROR", e.stackTraceToString())

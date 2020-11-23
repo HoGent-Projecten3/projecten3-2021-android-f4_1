@@ -27,26 +27,26 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private val _loginResult = MutableLiveData<LoginResult>()
     val loginResult: LiveData<LoginResult> = _loginResult
 
-   private var viewModelJob = Job()
-    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
-
-
     fun login(username: String, password: String) {
         // can be launched in a separate asynchronous job
-        val result = loginRepository.login(username, password)
+        MainScope().launch {
+            val result = loginRepository.login(username, password)
 
-        if (result is Result.Success) {
-            _loginResult.value =
-                LoginResult(
-                    success = LoggedInUserView(
-                        displayName = result.data.email //result.data.firstname +" "  + result.data.name
+            if (result is Result.Success) {
+
+                _loginResult.value =
+                    LoginResult(
+                        success = LoggedInUserView(
+                            displayName = result.data.firstName + " "  + result.data.name
+                        )
                     )
-                )
-            //getAdolescent(username)
-        } else {
-            _loginResult.value =
-                LoginResult(error = R.string.login_failed)
+
+            } else {
+                _loginResult.value =
+                    LoginResult(error = R.string.login_failed)
+            }
         }
+
 
 
     }

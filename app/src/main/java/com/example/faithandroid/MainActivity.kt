@@ -46,6 +46,9 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
         super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_test)
 
+        val taskIntent =  Intent(this,LoginActivity::class.java)
+        startActivity(taskIntent)
+
         viewModel = ViewModelProvider(this,
             LoginViewModelFactory()
         )

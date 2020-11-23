@@ -5,10 +5,8 @@ import com.example.faithandroid.login.data.LoggedInUser
 import com.example.faithandroid.login.uilogin.LoginResult
 import com.example.faithandroid.models.Adolescent
 import com.example.faithandroid.network.FaithApi
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import java.lang.NullPointerException
 
 /**
  * Class that requests authentication and user information from the remote data source and
@@ -40,18 +38,34 @@ class LoginRepository(val dataSource: LoginDataSource) {
         dataSource.logout()
     }
 
-      fun login(username: String, password: String): Result<Adolescent> {
-        // handle login
-        val result = dataSource.login(username, password)
+      suspend fun  login(username: String, password: String): Result<Adolescent> {
+          // handle login
 
-        if (result is Result.Success) {
-           // setLoggedInUser(result.data)
+          var result2: Result<Adolescent>? = null
 
-            setLoggedInUser(result.data)
-        }
 
-        return result
-    }
+              val result = dataSource.login(username, password)
+
+              if (result is Result.Success) {
+                  result2 = dataSource.getAdolescent(username)
+                  if (result2 is Result.Success) {
+
+                      setLoggedInUser((result2).data)
+
+
+                  }
+              }
+
+          if (result2 != null)
+          {
+              return result2
+          }
+          else
+          {
+              throw NullPointerException("oei")
+          }
+
+      }
 
     private fun setLoggedInUser(loggedInUser: Adolescent) { // loggedInUser: Adolescent
         this.user = loggedInUser
