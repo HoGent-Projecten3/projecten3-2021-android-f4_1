@@ -55,10 +55,6 @@ class FilteredPostAdapter(private var listener: CustomClick) : ListAdapter<Post,
             var card = binding.filteredPostCard
 
             card.setOnLongClickListener {
-                Log.d("loggg", parent.childCount.toString())
-                parent.children.forEach { view: View ->
-                    card.setChecked(false)
-                }
                 card.setChecked(!card.isChecked)
                 listener.onClick(post)
 
