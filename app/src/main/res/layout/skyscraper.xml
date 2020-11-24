@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#c2ebff">
+        android:background="#c4ebff">
 
         <include
             android:id="@+id/include3"
@@ -49,13 +49,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="179dp"
                     android:background="#c2ebff"
-                    app:srcCompat="@drawable/bovenkant_skyscraper" />
+                    app:srcCompat="@drawable/bovenkant_skyscraper1" />
 
                 <ImageView
                     android:id="@+id/onderkantSkyscraper"
                     android:layout_width="match_parent"
                     android:layout_height="119dp"
-                    app:srcCompat="@drawable/onderkant_skyscraper" />
+                    app:srcCompat="@drawable/onderkant_skyscraper1" />
 
             </LinearLayout>
         </ScrollView>

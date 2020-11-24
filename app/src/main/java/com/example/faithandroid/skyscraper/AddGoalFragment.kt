@@ -1,11 +1,15 @@
 package com.example.faithandroid.skyscraper
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.view.children
+import androidx.core.view.isEmpty
+import androidx.core.view.isNotEmpty
+import androidx.core.view.iterator
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -14,7 +18,12 @@ import com.example.faithandroid.R
 import com.example.faithandroid.databinding.SkyscraperAddGoalBinding
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Step
+import kotlinx.android.synthetic.main.app_bar_main.view.*
 import kotlinx.android.synthetic.main.skyscraper_add_goal.*
+import kotlinx.android.synthetic.main.skyscraper_add_goal.view.*
+import kotlinx.android.synthetic.main.skyscraper_add_goal.view.stepList
+import kotlinx.android.synthetic.main.skyscraper_goaldetails.view.*
+import java.util.function.Consumer
 
 class addGoalFragment : Fragment() {
 
@@ -43,18 +52,41 @@ class addGoalFragment : Fragment() {
         }
 
         binding.voegToeButton.setOnClickListener { view: View ->
-            var titel : String = binding.titelText.text.toString()
-            var beschrijving : String = binding.beschrijvingText.text.toString()
+            var titel : String = binding.titleDoelText.text.toString()
+            var beschrijving : String = binding.descriptionDoelText.text.toString()
             var steps : List<Step> = emptyList();
-            binding.stepList.children.forEach { step: View ->
+            var i = 0;
+            for ( i in binding.stepList.children){
+
+                var t :TextView
+                t =  i as TextView
+
+               val stepsss = t.text.split("-")
+               val iterator=  stepsss.iterator()
+                iterator.forEach { Log.d("AAAA", "$it")
+                  //  steps.plus(Step(0, it))
+                    val stap:Step = Step(0, it)
+                    steps.plus(stap)
+               }
+
+               /* for (sep in stepsss){
+                    Log.d("STAPTE",sep)
+
+                }*/
+              //  steps.plus(Step(0, t.text.toString()))
+              //     Log.d("STAPTE",t.text.toString())
+        }
+        /* binding.stepList.children.forEach { step: View ->
+
+                Log.d("STEP", step.toString())
                 steps.plus(Step(0, step.toString()));
-            }
+            }*/
             var newGoal = GoalPost(0, titel, beschrijving, false, steps, "2020-11-05T22:34:57.61")
 
             //var newPost : TextPost = TextPost(titel, beschrijving)
 
 
-            //viewModel.postNewGoalPost("dora.theexplorer1999@gmail.com",newGoal);
+            viewModel.postNewGoalPost("dora.theexplorer1999@gmail.com",newGoal);
 
 
 
@@ -66,8 +98,8 @@ class addGoalFragment : Fragment() {
         binding.addStepButton.setOnClickListener{run{
                 //innerStepList.add
                 var newView: TextView = TextView(this.context);
-                newView.text =  " - " + binding.stepTekst.text;
-                binding.stepTekst.text.clear()
+                newView.text =  " - " + binding.stepText.text;
+                binding.stepText.text.clear()
                 newView.setOnClickListener{
                     run{
                         stepList.removeView(newView)

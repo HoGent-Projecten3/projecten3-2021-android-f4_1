@@ -81,7 +81,11 @@
     <string name="vul_hier_je_titel_in">vul hier je titel in:</string>
     <string name="nieuwe_video_post_toevoegen">nieuwe video post toevoegen</string>
     <string name="nieuwe_post_toevoegen">nieuwe post toevoegen</string>
-
+    <string name="title_goal">Titel van het doel</string>
+    <string name="add_a_step">Voeg een stap toe:</string>
+    <string name="add_new_goal">Voeg toe</string>
+    <string name="lbl_list_goalsteps">De stappen:</string>
+    <string name="lbl_description_goal">Beschrijving</string>
 
 
 </resources>
