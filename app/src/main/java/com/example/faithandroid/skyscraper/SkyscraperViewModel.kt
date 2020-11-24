@@ -80,7 +80,7 @@ class SkyscraperViewModel : ViewModel() {
             try {
                 FaithApi.retrofitService.checkGoal("dora.theexplorer1999@gmail.com", id)
 
-                _completedStatus.value = R.string.doel_gedeeld.toString();
+                _completedStatus.value = "Doel behaald".toString();
             } catch (e: Exception) {
                 _completedStatus.value = e.localizedMessage
             }
