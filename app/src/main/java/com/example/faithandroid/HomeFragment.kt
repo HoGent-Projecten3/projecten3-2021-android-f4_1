@@ -27,15 +27,13 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<AppHomeschermBinding>(inflater, R.layout.app_homescherm, container, false);
 
-        binding.imgPrikbord.setOnClickListener { view: View ->
+        binding.imgBulletinboard.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_homeFragment_to_bulletinBoardFragment)
         }
         binding.imgBillboard.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_homeFragment_to_billboardFragment)
         }
-        binding.imgCinema.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_homeFragment_to_cinemaFragment)
-        }
+
         binding.imgMusicRoom.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_homeFragment_to_musicRoomFragment)
         }
