@@ -15,6 +15,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.Deferred
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
@@ -62,9 +63,9 @@ interface FaithApiService {
     suspend fun postGoalPost(@Body goal: GoalPost, @Query("email") email:String)
 
   
-    @Headers("Content-Type: application/json")
+    //@Headers("Content-Type: application/json")
     @PUT("City/MarkGoalAsCompleted")
-    suspend fun checkGoal(@Query("email") email: String, @Query("id") id: Int): Call<Void>
+    suspend fun checkGoal(@Query("email") email: String, @Query("id") id: Int): Response<String>
 
   
     @GET("City/GetPostsOfSkyScraperByAdolescentEmail")

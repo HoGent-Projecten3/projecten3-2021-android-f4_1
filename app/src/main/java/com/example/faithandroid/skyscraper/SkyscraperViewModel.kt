@@ -19,6 +19,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import org.threeten.bp.LocalDateTime
+import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.await
 
@@ -78,10 +79,19 @@ class SkyscraperViewModel : ViewModel() {
     fun goalBehaald(id:Int){
         viewModelScope.launch {
             try {
-                FaithApi.retrofitService.checkGoal("dora.theexplorer1999@gmail.com", id)
-
+                val response = FaithApi.retrofitService.checkGoal("dora.theexplorer1999@gmail.com", id)
+               // var response = FaithApi.retrofitService.checkGoal("dora.theexplorer1999@gmail.com", id)
+                Log.d("AAA",response.body().toString())
+                Log.d("HIER", "hier komt ie in")
+                var behaald : String = "Doel behaald"
                 _completedStatus.value = "Doel behaald".toString();
-            } catch (e: Exception) {
+                Log.d("CompletedValue", _completedStatus.value.toString())
+
+            }catch (e: HttpException) {
+                Log.d("FFF", e.localizedMessage)
+                _completedStatus.value = e.localizedMessage
+            }
+            catch (e: Exception) {
                 _completedStatus.value = e.localizedMessage
             }
         }
@@ -91,7 +101,6 @@ class SkyscraperViewModel : ViewModel() {
 
         viewModelScope.launch {
             val response = FaithApi.retrofitService.postGoalPost(goalPost, email)
-
 
         }
 
