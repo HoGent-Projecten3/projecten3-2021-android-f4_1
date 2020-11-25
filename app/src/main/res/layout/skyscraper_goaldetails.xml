@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="android.view.View" />
         <variable
-            name="goalDetailViewModel"
-            type="com.example.faithandroid.skyscraper.SkyscraperViewModel" />
+            name="skyscraper"
+            type="String" />
     </data>
 
 
@@ -36,11 +36,20 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="7dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/datumText"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:text="Datum:"
+                    android:textAlignment="viewEnd" />
 
                 <TextView
                     android:id="@+id/titelText"
@@ -48,15 +57,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Titel:"
+                    android:textSize="18dp"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-                <TextView
-                    android:id="@+id/datumText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Datum:"
-                    android:textAlignment="viewEnd" />
 
             </LinearLayout>
 
@@ -118,8 +121,7 @@
                         android:id="@+id/stepList"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="5dp">
+                        android:orientation="vertical">
 
                         <!--<TextView
                             android:id="@+id/stap"
@@ -153,6 +155,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:layout_weight="1"
+                    android:visibility="@{skyscraper.equals(`Doel behaald`)?View.VISIBLE:View.GONE}"
                     android:text="@string/behaald" />
 
                 <Button

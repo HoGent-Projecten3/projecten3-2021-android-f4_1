@@ -21,7 +21,7 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card"
+        android:id="@+id/cardGoal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="6dp"
@@ -33,9 +33,9 @@
        >
 
         <LinearLayout
-
             android:id="@+id/layout"
-            android:layout_width="match_parent"
+            android:minWidth="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:gravity="center"
