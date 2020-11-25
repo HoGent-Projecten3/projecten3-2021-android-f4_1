@@ -18,6 +18,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.faithandroid.skyscraper.GoalDetailsFragmentArgs
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.SkyscraperGoaldetailsBinding
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.skyscraper_goalpostimage.view.*
 import java.time.LocalDate
@@ -55,6 +56,7 @@ class GoalDetailsFragment: DialogFragment() {
 
         binding.titelText.text = args.goal.title
         binding.beschrijvingText.text = args.goal.description
+        binding.skyscraper = viewModel.completedStatus.value
 
         var date = LocalDateTime.parse(args.goal.date)
         var date3 = date.dayOfMonth.toString() +" "+ date.month.toString()+ " "+ date.year.toString()
@@ -70,6 +72,8 @@ class GoalDetailsFragment: DialogFragment() {
         if(viewModel.completedStatus.value.equals("Doel behaald")){
             binding.btnBehaald.isClickable =false
             binding.btnBehaald.isFocusable = false
+
+            view?.findViewById<MaterialCardView>(R.id.cardGoal)?.setBackgroundColor(Color.GREEN)
         }
 
         binding.btnDelen.setOnClickListener { view: View ->
@@ -80,7 +84,7 @@ class GoalDetailsFragment: DialogFragment() {
         binding.btnVerwijder.setOnClickListener { view: View ->
             Log.d("goalID", args.goal.id.toString())
             viewModel.deleteGoal(args.goal.id)
-          
+
             view.findNavController().navigate(R.id.skyscraperFragment)
         }
 
@@ -146,5 +150,5 @@ class GoalDetailsFragment: DialogFragment() {
         return binding.root
         * */
 
-
 }
+

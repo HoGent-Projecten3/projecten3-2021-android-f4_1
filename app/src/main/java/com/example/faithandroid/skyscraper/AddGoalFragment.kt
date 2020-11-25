@@ -1,5 +1,7 @@
 package com.example.faithandroid.skyscraper
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +19,7 @@ import com.example.faithandroid.R
 import com.example.faithandroid.databinding.SkyscraperAddGoalBinding
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Step
+import com.google.android.material.card.MaterialCardView
 import kotlinx.android.synthetic.main.app_bar_main.view.*
 import kotlinx.android.synthetic.main.skyscraper_add_goal.*
 import kotlinx.android.synthetic.main.skyscraper_add_goal.view.*
@@ -49,6 +52,11 @@ class addGoalFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
 
+
+        if(viewModel.completedStatus.value.equals("Doel behaald")){
+             var a = R.id.cardGoal as MaterialCardView
+            a.setCardBackgroundColor(Color.GREEN)
+        }
 
         binding.annuleerButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_addGoalFragment_to_skyscraperFragment)

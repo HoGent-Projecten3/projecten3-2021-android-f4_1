@@ -1,6 +1,7 @@
 
 package com.example.faithandroid.skyscraper
 
+import android.graphics.Color
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,6 +14,7 @@ import com.example.faithandroid.models.TextPost
 import com.example.faithandroid.network.FaithApi
 import com.example.faithandroid.network.FaithApiService
 import com.example.faithandroid.network.FaithProperty
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -94,6 +96,7 @@ class SkyscraperViewModel : ViewModel() {
                 _completedStatus.value = e.localizedMessage
             }
             catch (e: Exception) {
+
                 _completedStatus.value = e.localizedMessage
             }
         }
