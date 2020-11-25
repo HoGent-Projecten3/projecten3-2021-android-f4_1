@@ -80,12 +80,11 @@ class SkyscraperViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val response = FaithApi.retrofitService.checkGoal("dora.theexplorer1999@gmail.com", id)
-               // var response = FaithApi.retrofitService.checkGoal("dora.theexplorer1999@gmail.com", id)
-                Log.d("AAA",response.body().toString())
-                Log.d("HIER", "hier komt ie in")
+
                 var behaald : String = "Doel behaald"
                 _completedStatus.value = "Doel behaald".toString();
                 Log.d("CompletedValue", _completedStatus.value.toString())
+
 
             }catch (e: HttpException) {
                 Log.d("FFF", e.localizedMessage)

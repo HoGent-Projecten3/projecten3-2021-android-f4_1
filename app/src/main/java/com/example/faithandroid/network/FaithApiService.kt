@@ -62,10 +62,9 @@ interface FaithApiService {
     @POST("City/AddGoalByEmail")
     suspend fun postGoalPost(@Body goal: GoalPost, @Query("email") email:String)
 
-  
-    //@Headers("Content-Type: application/json")
+    @Headers("Content-Type: application/json")
     @PUT("City/MarkGoalAsCompleted")
-    suspend fun checkGoal(@Query("email") email: String, @Query("id") id: Int): Response<String>
+    suspend fun checkGoal(@Query("email") email: String, @Query("goalid") id: Int)
 
   
     @GET("City/GetPostsOfSkyScraperByAdolescentEmail")
