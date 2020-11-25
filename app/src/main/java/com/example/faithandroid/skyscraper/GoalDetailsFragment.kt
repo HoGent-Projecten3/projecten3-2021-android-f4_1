@@ -64,6 +64,7 @@ class GoalDetailsFragment: DialogFragment() {
         binding.btnBehaald.setOnClickListener { view: View ->
             Log.d("goalID", args.goal.id.toString())
             viewModel.goalBehaald(args.goal.id)
+
         }
 
         if(viewModel.completedStatus.value.equals("Doel behaald")){
@@ -79,6 +80,8 @@ class GoalDetailsFragment: DialogFragment() {
         binding.btnVerwijder.setOnClickListener { view: View ->
             Log.d("goalID", args.goal.id.toString())
             viewModel.deleteGoal(args.goal.id)
+          
+            view.findNavController().navigate(R.id.skyscraperFragment)
         }
 
         viewModel.shareStatus.observe(this.viewLifecycleOwner, Observer {
@@ -112,6 +115,7 @@ class GoalDetailsFragment: DialogFragment() {
         viewModel.removeStatus.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
+                Log.d("Deleted???", viewModel.removeStatus.value.toString())
                 Snackbar.make(contextView, viewModel.removeStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
                     "Doel verwijderd"
                 )

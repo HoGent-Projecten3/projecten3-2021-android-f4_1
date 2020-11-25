@@ -105,6 +105,7 @@ class SkyscraperViewModel : ViewModel() {
                  val response = FaithApi.retrofitService.shareGoal("dora.theexplorer1999@gmail.com", id)
 
                 response.await()
+
                  _shareStatus.value = "Doel gedeeld".toString();
             } catch (e: Exception){
                 Log.d("Fff", e.toString())
@@ -120,6 +121,7 @@ class SkyscraperViewModel : ViewModel() {
                 response.await()
                 _removeStatus.value = R.string.doel_verwijderd.toString()
             } catch (e: Exception){
+                Log.d("ee", e.toString())
                 _removeStatus.value = e.localizedMessage
             }
         }
