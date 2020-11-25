@@ -1,86 +1,122 @@
 [
     {
-        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_treasurechest.xml",
-        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\fragment_treasurechest.xml"
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/add_text.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/add_text.xml"
     },
     {
-        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_backpack.xml",
-        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\fragment_backpack.xml"
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/bulletinboard_text_post_toevoegen.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/bulletinboard_text_post_toevoegen.xml"
     },
     {
-        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_billboard.xml",
-        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\fragment_billboard.xml"
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/treasurechest.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/treasurechest.xml"
     },
     {
-        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_login.xml",
-        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\fragment_login.xml"
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/skyscraper_add_goal.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/skyscraper_add_goal.xml"
     },
     {
-        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_blank.xml",
-        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\fragment_blank.xml"
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fullscreen_image.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/fullscreen_image.xml"
     },
     {
-        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_skyscraper.xml",
-        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\fragment_skyscraper.xml"
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/backpack_post.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/backpack_post.xml"
     },
     {
-        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_home.xml",
-        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\fragment_home.xml"
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/bulletinboard.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/bulletinboard.xml"
     },
     {
-        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_bulletinboard.xml",
-        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\fragment_bulletinboard.xml"
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/bulletinboard_options_add_post.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/bulletinboard_options_add_post.xml"
     },
     {
-        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_goaldetails.xml",
-        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\fragment_goaldetails.xml"
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/shoppingcenter.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/shoppingcenter.xml"
     },
     {
-        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_add_goal.xml",
-        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\fragment_add_goal.xml"
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/backpack.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/backpack.xml"
     },
     {
-        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\grid_view_item.xml",
-        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\grid_view_item.xml"
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/billboard.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/billboard.xml"
     },
     {
-        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_text_post_toevoegen.xml",
-        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\fragment_text_post_toevoegen.xml"
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/audio_toevoegen.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/audio_toevoegen.xml"
     },
     {
-        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_cinema.xml",
-        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\fragment_cinema.xml"
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/login.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/login.xml"
     },
     {
-        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_musicroom.xml",
-        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\fragment_musicroom.xml"
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/profiel_changepassword.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/profiel_changepassword.xml"
     },
     {
-        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_shoppingcenter.xml",
-        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\fragment_shoppingcenter.xml"
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/billboard_goal.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/billboard_goal.xml"
     },
     {
-        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_test.xml",
-        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\activity_test.xml"
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/profiel.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/profiel.xml"
     },
     {
-        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\menu_homescherm.xml",
-        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\menu_homescherm.xml"
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/cinema.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/cinema.xml"
     },
     {
-        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\options_add_post.xml",
-        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\options_add_post.xml"
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_test.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/activity_test.xml"
     },
     {
-        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\bulletinboard_post.xml",
-        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\bulletinboard_post.xml"
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/filtered_post.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/filtered_post.xml"
     },
     {
-        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\gewoon_een_test_voor_de_backend.xml",
-        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\gewoon_een_test_voor_de_backend.xml"
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/exoplayer.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/exoplayer.xml"
     },
     {
-        "merged": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_bilboard_goal.xml",
-        "source": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\src\\main\\res\\layout\\fragment_bilboard_goal.xml"
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/skyscraper_goaldetails.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/skyscraper_goaldetails.xml"
+    },
+    {
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/video_nieuwe_video_post.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/video_nieuwe_video_post.xml"
+    },
+    {
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/skyscraper.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/skyscraper.xml"
+    },
+    {
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/bulletinboard_textpost.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/bulletinboard_textpost.xml"
+    },
+    {
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/add_photo.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/add_photo.xml"
+    },
+    {
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/video_toevoegen.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/video_toevoegen.xml"
+    },
+    {
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/musicroom.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/musicroom.xml"
+    },
+    {
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/app_nav_header_main.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/app_nav_header_main.xml"
+    },
+    {
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/post.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/post.xml"
+    },
+    {
+        "merged": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/app_homescherm.xml",
+        "source": "/Users/azizeergun/Desktop/android/app/src/main/res/layout/app_homescherm.xml"
     }
 ]

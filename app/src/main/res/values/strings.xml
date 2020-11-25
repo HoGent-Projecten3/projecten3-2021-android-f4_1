@@ -81,7 +81,10 @@
     <string name="vul_hier_je_titel_in">vul hier je titel in:</string>
     <string name="nieuwe_video_post_toevoegen">nieuwe video post toevoegen</string>
     <string name="nieuwe_post_toevoegen">nieuwe post toevoegen</string>
-
+    <string name="nieuwe_audio_post_toevoegen">nieuwe audio toevoegen</string>
+    <string name="start">start</string>
+    <string name="pauze">pauze</string>
+    <string name="stop">stop</string>
 
 
 </resources>

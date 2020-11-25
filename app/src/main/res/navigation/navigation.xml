@@ -53,6 +53,9 @@
         <action
             android:id="@+id/action_optionsAddPostFragment_to_addTextFragment"
             app:destination="@id/addTextFragment" />
+        <action
+            android:id="@+id/action_optionsAddPostFragment_to_audioToevoegenFragment"
+            app:destination="@id/audioToevoegenFragment" />
 
     </fragment>
 
@@ -275,6 +278,29 @@
             app:popUpTo="@id/treasureChestFragment"
             app:popUpToInclusive="true" />
 
+    </fragment>
+    <fragment
+        android:id="@+id/audioToevoegenFragment"
+        android:name="com.example.faithandroid.post.audio.AudioToevoegenFragment"
+        android:label="AudioToevoegenFragment" >
+        <argument
+            android:name="placeType"
+            app:argType="com.example.faithandroid.PlaceType" />
+        <action
+            android:id="@+id/action_audioToevoegenFragment_to_bulletinBoardFragment"
+            app:destination="@id/bulletinBoardFragment"
+            app:popUpTo="@id/bulletinBoardFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_audioToevoegenFragment_to_backpackFragment"
+            app:destination="@id/backpackFragment"
+            app:popUpTo="@id/backpackFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_audioToevoegenFragment_to_treasureChestFragment"
+            app:destination="@id/treasureChestFragment"
+            app:popUpTo="@id/treasureChestFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
 </navigation>

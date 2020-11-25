@@ -14,7 +14,8 @@ public class ActivityTestBindingImpl extends ActivityTestBinding  {
     static {
         sIncludes = null;
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.navView, 1);
+        sViewsWithIds.put(R.id.NavHostFragment, 1);
+        sViewsWithIds.put(R.id.navView, 2);
     }
     // views
     // variables
@@ -23,12 +24,13 @@ public class ActivityTestBindingImpl extends ActivityTestBinding  {
     // Inverse Binding Event Handlers
 
     public ActivityTestBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 2, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 3, sIncludes, sViewsWithIds));
     }
     private ActivityTestBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
+            , (androidx.fragment.app.FragmentContainerView) bindings[1]
             , (androidx.drawerlayout.widget.DrawerLayout) bindings[0]
-            , (com.google.android.material.navigation.NavigationView) bindings[1]
+            , (com.google.android.material.navigation.NavigationView) bindings[2]
             );
         this.drawerLayout.setTag(null);
         setRootTag(root);

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Documents\\J3\\ProjectenIII\\FaithAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h720dp-v13\\values-h720dp-v13.xml",
+            "outputFile": "/Users/azizeergun/Desktop/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\adam_\\.gradle\\caches\\transforms-2\\files-2.1\\82b185ca20d0e1b5a44fd1e6985f9f19\\appcompat-1.2.0\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "source": "/Users/azizeergun/.gradle/caches/transforms-2/files-2.1/82b185ca20d0e1b5a44fd1e6985f9f19/appcompat-1.2.0/res/values-h720dp-v13/values-h720dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentContainerView;
 import com.example.faithandroid.R;
 import com.google.android.material.navigation.NavigationView;
 import java.lang.Deprecated;
@@ -16,14 +17,18 @@ import java.lang.Object;
 
 public abstract class ActivityTestBinding extends ViewDataBinding {
   @NonNull
+  public final FragmentContainerView NavHostFragment;
+
+  @NonNull
   public final DrawerLayout drawerLayout;
 
   @NonNull
   public final NavigationView navView;
 
   protected ActivityTestBinding(Object _bindingComponent, View _root, int _localFieldCount,
-      DrawerLayout drawerLayout, NavigationView navView) {
+      FragmentContainerView NavHostFragment, DrawerLayout drawerLayout, NavigationView navView) {
     super(_bindingComponent, _root, _localFieldCount);
+    this.NavHostFragment = NavHostFragment;
     this.drawerLayout = drawerLayout;
     this.navView = navView;
   }

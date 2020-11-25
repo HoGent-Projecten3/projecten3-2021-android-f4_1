@@ -51,7 +51,11 @@ class OptionsAddPostFragment: Fragment() {
          * navigate to options for audio posts
          */
         binding.AudioButton.setOnClickListener {
-
+           view: View -> val action =
+            OptionsAddPostFragmentDirections.actionOptionsAddPostFragmentToAudioToevoegenFragment(
+                args.placeType
+            )
+            view.findNavController().navigate(action)
         }
 
         /**
