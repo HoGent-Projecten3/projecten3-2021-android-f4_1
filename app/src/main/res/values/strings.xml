@@ -4,12 +4,12 @@
     <string name="skyscraper">Wolkenkrabber</string>
     <string name="cinema">Cinema</string>
     <string name="treasure_chest">Schatkist</string>
-    <string name="musicRoom">Music Room</string>
+    <string name="musicRoom">Muziek</string>
     <string name="backpack">Rugzak</string>
     <string name="billboard">Billboard</string>
     <string name="bulletinboard">Prikbord</string>
     <string name="winkelCentrum">Winkelcentrum</string>
-
+    <string name="wolkenkrabber">Wolkenkrabber</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -26,7 +26,6 @@
     <string name="profiel">Profiel</string>
     <string name="uitloggen">Uitloggen</string>
     <string name="meest_bezocht">Meest Bezocht</string>
-    <string name="wolkenkrabber">Wolkenkrabber</string>
     <string name="welkom">Goed je terug te zien!</string>
     <string name="naam">Jane Doe</string>
     <!-- TODO: Remove or change this placeholder text -->
