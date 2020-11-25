@@ -51,7 +51,6 @@ class SkyscraperFragment: Fragment() {
         })
 
 
-
         binding.AddPostButton.setOnClickListener {view: View ->
             view.findNavController().navigate(R.id.action_skyscraperFragment_to_addGoalFragment)
 

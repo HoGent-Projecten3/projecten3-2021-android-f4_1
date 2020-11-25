@@ -95,12 +95,13 @@ interface FaithApiService {
     @PUT("Account/PostConsultationRequest")
     fun requestConsultation(@Query("email") email: String): Call<Void>
 
+    @Headers("Content-Type: application/json")
     @PUT("City/ShareGoalWithBillboard")
-    fun shareGoal(@Query("email") email: String, @Query("id") id: Int): Call<Void>
+    fun shareGoal(@Query("email") email: String, @Query("goalId") id: Int): Call<String>
 
-
-    @POST("City/DeleteGoalByEmail")
-    fun removeGoal(@Query("id") id: Int, @Query("email") email: String): Call<Void>
+    @Headers("Content-Type: application/json")
+    @DELETE("City/DeleteGoalByEmail")
+    fun removeGoal(@Query("id") id: Int, @Query("email") email: String): Call<String>
 
     @GET("City/GetFilteredPostsFromPlace")
     fun getFilteredFromPlace(@Query("placeType") placeType: Int, @Query("postType") postType: Int, @Query("email") email: String): Call<List<Post>>

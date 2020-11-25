@@ -75,19 +75,22 @@ class SkyscraperViewModel : ViewModel() {
             }
         }
     }
+    fun postNewGoalPost(email: String, goalPost: GoalPost) {
+        viewModelScope.launch {
+            val response = FaithApi.retrofitService.postGoalPost(goalPost, email)
+        }
+    }
 
     fun goalBehaald(id:Int){
         viewModelScope.launch {
             try {
                 val response = FaithApi.retrofitService.checkGoal("dora.theexplorer1999@gmail.com", id)
-
                 var behaald : String = "Doel behaald"
                 _completedStatus.value = "Doel behaald".toString();
                 Log.d("CompletedValue", _completedStatus.value.toString())
 
-
             }catch (e: HttpException) {
-                Log.d("FFF", e.localizedMessage)
+
                 _completedStatus.value = e.localizedMessage
             }
             catch (e: Exception) {
@@ -96,21 +99,15 @@ class SkyscraperViewModel : ViewModel() {
         }
     }
 
-    fun postNewGoalPost(email: String, goalPost: GoalPost) {
-
-        viewModelScope.launch {
-            val response = FaithApi.retrofitService.postGoalPost(goalPost, email)
-
-        }
-
-    }
-
     fun shareGoal(id:Int){
         coroutineScope.launch{
             try {
-                FaithApi.retrofitService.shareGoal("dora.theexplorer1999@gmail.com", id);
-                _shareStatus.value = R.string.doel_gedeeld.toString();
+                 val response = FaithApi.retrofitService.shareGoal("dora.theexplorer1999@gmail.com", id)
+
+                response.await()
+                 _shareStatus.value = "Doel gedeeld".toString();
             } catch (e: Exception){
+                Log.d("Fff", e.toString())
                 _shareStatus.value = e.localizedMessage
             }
         }
@@ -119,7 +116,8 @@ class SkyscraperViewModel : ViewModel() {
     fun deleteGoal(id:Int){
         coroutineScope.launch{
             try {
-                FaithApi.retrofitService.removeGoal(id, "dora.theexplorer1999@gmail.com");
+                val response =FaithApi.retrofitService.removeGoal(id, "dora.theexplorer1999@gmail.com");
+                response.await()
                 _removeStatus.value = R.string.doel_verwijderd.toString()
             } catch (e: Exception){
                 _removeStatus.value = e.localizedMessage
