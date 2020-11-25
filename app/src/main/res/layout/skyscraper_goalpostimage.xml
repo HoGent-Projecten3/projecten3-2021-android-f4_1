@@ -29,9 +29,11 @@
         app:layout_constraintBottom_toBottomOf="@+id/bellySkyscraper"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bellySkyscraper">
+        app:layout_constraintTop_toTopOf="@+id/bellySkyscraper"
+       >
 
         <LinearLayout
+
             android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,6 +47,7 @@
 
             <!-- Title, secondary and supporting text -->
             <TextView
+
                 android:id="@+id/titleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
