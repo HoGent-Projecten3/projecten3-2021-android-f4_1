@@ -72,22 +72,26 @@ class GoalDetailsFragment: DialogFragment() {
         }
 
         binding.btnDelen.setOnClickListener { view: View ->
+            Log.d("goalID", args.goal.id.toString())
             viewModel.shareGoal(args.goal.id)
         }
 
         binding.btnVerwijder.setOnClickListener { view: View ->
+            Log.d("goalID", args.goal.id.toString())
             viewModel.deleteGoal(args.goal.id)
         }
 
         viewModel.shareStatus.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
+
+                Log.d("Shared???", viewModel.shareStatus.value.toString())
                 Snackbar.make(contextView, viewModel.shareStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
-                    R.string.tryAgain
+                   "Goal gedeeld"
                 )
                 {
-                    Log.d("Shared?", viewModel.shareStatus.value.toString())
-                    viewModel.shareGoal(args.goal.id)
+                //    Log.d("Shared?", viewModel.shareStatus.value.toString())
+                   // viewModel.shareGoal(args.goal.id)
                 }.show()
             }
         })
@@ -99,7 +103,7 @@ class GoalDetailsFragment: DialogFragment() {
                     "Doel behaald"
                 )
                 {
-                    Log.d("Behaald?", viewModel.completedStatus.value.toString())
+                 //   Log.d("Behaald?", viewModel.completedStatus.value.toString())
                    // viewModel.goalBehaald(args.goal.id)
                 }.show()
             }
@@ -109,11 +113,11 @@ class GoalDetailsFragment: DialogFragment() {
             val contextView = this.view
             if (contextView != null) {
                 Snackbar.make(contextView, viewModel.removeStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
-                    R.string.tryAgain
+                    "Doel verwijderd"
                 )
                 {
-                    Log.d("Removed?", viewModel.removeStatus.value.toString())
-                    viewModel.deleteGoal(args.goal.id)
+                  //  Log.d("Removed?", viewModel.removeStatus.value.toString())
+                  //  viewModel.deleteGoal(args.goal.id)
                 }.show()
             }
         })
