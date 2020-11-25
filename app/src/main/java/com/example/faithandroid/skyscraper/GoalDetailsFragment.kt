@@ -1,11 +1,14 @@
 package com.example.faithandroid.skyscraper
 
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
@@ -17,6 +20,10 @@ import com.example.faithandroid.R
 import com.example.faithandroid.databinding.SkyscraperGoaldetailsBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.skyscraper_goalpostimage.view.*
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 
 class GoalDetailsFragment: DialogFragment() {
     val args: GoalDetailsFragmentArgs by navArgs()
@@ -26,6 +33,7 @@ class GoalDetailsFragment: DialogFragment() {
         super.onCreate(savedInstanceState)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,9 +56,19 @@ class GoalDetailsFragment: DialogFragment() {
 
         binding.titelText.text = args.goal.title
         binding.beschrijvingText.text = args.goal.description
+        Log.d("date", args.goal.date)
+        var date = LocalDateTime.parse(args.goal.date)
+        var formatter = DateTimeFormatter.ofPattern("dd MM yyyy")
+        var date3 = date.dayOfMonth.toString() +" "+ date.month.toString()+ " "+ date.year.toString()
+        Log.d("date2", date3)
+        binding.datumText.text = date3
 
         binding.btnBehaald.setOnClickListener { view: View ->
+            Log.d("goalID", args.goal.id.toString())
             viewModel.goalBehaald(args.goal.id)
+            if(viewModel.completedStatus.value.equals("Doel behaald")){
+                binding.titelText.setBackgroundColor(Color.GREEN)
+            }
         }
 
         binding.btnDelen.setOnClickListener { view: View ->
@@ -68,6 +86,7 @@ class GoalDetailsFragment: DialogFragment() {
                     R.string.tryAgain
                 )
                 {
+                    Log.d("Shared?", viewModel.shareStatus.value.toString())
                     viewModel.shareGoal(args.goal.id)
                 }.show()
             }
@@ -80,6 +99,7 @@ class GoalDetailsFragment: DialogFragment() {
                     R.string.tryAgain
                 )
                 {
+                    Log.d("Behaald?", viewModel.completedStatus.value.toString())
                     viewModel.goalBehaald(args.goal.id)
                 }.show()
             }
@@ -92,6 +112,7 @@ class GoalDetailsFragment: DialogFragment() {
                     R.string.tryAgain
                 )
                 {
+                    Log.d("Removed?", viewModel.removeStatus.value.toString())
                     viewModel.deleteGoal(args.goal.id)
                 }.show()
             }

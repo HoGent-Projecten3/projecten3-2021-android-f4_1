@@ -50,6 +50,13 @@
                     android:text="Titel:"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                <TextView
+                    android:id="@+id/datumText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Datum:"
+                    android:textAlignment="viewEnd" />
 
             </LinearLayout>
 
