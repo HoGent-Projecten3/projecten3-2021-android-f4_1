@@ -15,6 +15,7 @@ import com.example.faithandroid.network.FaithApi
 import com.example.faithandroid.network.FaithApiService
 import com.example.faithandroid.network.FaithProperty
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -100,6 +101,7 @@ class SkyscraperViewModel : ViewModel() {
         }
     }
 
+    // wordt shareUnshareGoal
     fun shareGoal(id:Int){
         coroutineScope.launch{
             try {
@@ -115,6 +117,7 @@ class SkyscraperViewModel : ViewModel() {
     }
 
     fun deleteGoal(id:Int){
+
         coroutineScope.launch{
             try {
                 val response =FaithApi.retrofitService.removeGoal(id, "dora.theexplorer1999@gmail.com");

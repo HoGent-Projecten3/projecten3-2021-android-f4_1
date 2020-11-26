@@ -95,6 +95,7 @@ interface FaithApiService {
     @PUT("Account/PostConsultationRequest")
     fun requestConsultation(@Query("email") email: String): Call<Void>
 
+    // wordt shareUnshareGoal
     @Headers("Content-Type: application/json")
     @PUT("City/ShareGoalWithBillboard")
     fun shareGoal(@Query("email") email: String, @Query("goalId") id: Int): Call<String>

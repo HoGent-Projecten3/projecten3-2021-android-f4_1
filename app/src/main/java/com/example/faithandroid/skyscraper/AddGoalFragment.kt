@@ -57,6 +57,7 @@ class addGoalFragment : Fragment() {
             view.findNavController().navigate(R.id.action_addGoalFragment_to_skyscraperFragment)
         }
 
+        
         binding.voegToeButton.setOnClickListener { view: View ->
             var titel : String = binding.titleDoelText.text.toString()
             var beschrijving : String = binding.descriptionDoelText.text.toString()
@@ -65,7 +66,6 @@ class addGoalFragment : Fragment() {
             for ( i in binding.stepList.children) {
                 var t: TextView
                 t = i as TextView
-
                 val stepsss = t.text.trim().split(" - ")
                 for (n in stepsss.indices) {
                     val stap: Step = Step(0, stepsss[n])
