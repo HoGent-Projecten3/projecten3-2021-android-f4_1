@@ -1,17 +1,19 @@
-package com.example.faithandroid
+package com.example.faithandroid.adapters
 
 import android.content.DialogInterface
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.core.view.children
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.faithandroid.CustomClick
+import com.example.faithandroid.ExoPlayerActivity
+import com.example.faithandroid.FullScreenImageActivity
+import com.example.faithandroid.PlaceType
 import com.example.faithandroid.databinding.FilteredPostBinding
 
 import com.example.faithandroid.models.Post

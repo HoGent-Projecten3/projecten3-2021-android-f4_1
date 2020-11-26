@@ -1,18 +1,17 @@
-package com.example.faithandroid
+package com.example.faithandroid.post
 
-import android.util.JsonReader
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.faithandroid.PlaceType
+import com.example.faithandroid.PostType
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.network.FaithApi
 import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.Body
 
 class PostViewModel(placeType: PlaceType): ViewModel() {
 

@@ -1,7 +1,6 @@
-package com.example.faithandroid
+package com.example.faithandroid.post.text
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.faithandroid.*
+import com.example.faithandroid.adapters.FilteredPostAdapter
 import com.example.faithandroid.databinding.AddTextBinding
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.post.PostViewModel
 
 class addTextFragment: Fragment() {
 

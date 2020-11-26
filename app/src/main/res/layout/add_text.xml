@@ -11,7 +11,7 @@
             type="Boolean" />
         <variable
             name="viewModel"
-            type="com.example.faithandroid.PostViewModel" />
+            type="com.example.faithandroid.post.PostViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

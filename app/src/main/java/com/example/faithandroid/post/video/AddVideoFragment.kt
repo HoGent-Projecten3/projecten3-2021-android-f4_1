@@ -18,18 +18,19 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.faithandroid.*
-import com.example.faithandroid.databinding.VideoToevoegenBinding
 import com.example.faithandroid.models.Post
-import com.example.faithandroid.FilteredPostAdapter
+import com.example.faithandroid.adapters.FilteredPostAdapter
+import com.example.faithandroid.databinding.AddVideoBinding
+import com.example.faithandroid.post.PostViewModel
 import com.google.android.material.textfield.TextInputLayout
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
 import java.util.*
 
 
-class VideoToevoegenFragment: Fragment() {
+class AddVideoFragment: Fragment() {
 
-    val args: VideoToevoegenFragmentArgs by navArgs()
+    val args: AddVideoFragmentArgs by navArgs()
 
     var post: Post? = null
 
@@ -53,9 +54,9 @@ class VideoToevoegenFragment: Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        var binding = DataBindingUtil.inflate<VideoToevoegenBinding>(
+        var binding = DataBindingUtil.inflate<AddVideoBinding>(
             inflater,
-            R.layout.video_toevoegen,
+            R.layout.add_video,
             container,
             false
         );
@@ -123,7 +124,7 @@ class VideoToevoegenFragment: Fragment() {
 
         binding.recyclerView.adapter = FilteredPostAdapter(object : CustomClick {
             override fun onClick(post: Post) {
-                this@VideoToevoegenFragment.post = post
+                this@AddVideoFragment.post = post
                 true
             }
         })

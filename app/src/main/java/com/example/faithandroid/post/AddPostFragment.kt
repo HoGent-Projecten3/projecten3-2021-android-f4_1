@@ -1,4 +1,4 @@
-package com.example.faithandroid
+package com.example.faithandroid.post
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,14 +8,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.faithandroid.bulletinboard.BulletinboardFragmentDirections
-import com.example.faithandroid.databinding.LoginBinding
-import com.example.faithandroid.databinding.BulletinboardOptionsAddPostBinding
-import com.example.faithandroid.skyscraper.GoalDetailsFragmentArgs
+import com.example.faithandroid.R
+import com.example.faithandroid.databinding.AddPostBinding
 
-class OptionsAddPostFragment: Fragment() {
+class AddPostFragment: Fragment() {
 
-    val args: OptionsAddPostFragmentArgs by navArgs()
+    val args: AddPostFragmentArgs by navArgs()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -27,9 +25,9 @@ class OptionsAddPostFragment: Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        val binding = DataBindingUtil.inflate<BulletinboardOptionsAddPostBinding>(
+        val binding = DataBindingUtil.inflate<AddPostBinding>(
             inflater,
-            R.layout.bulletinboard_options_add_post,
+            R.layout.add_post,
             container,
             false
         );
@@ -40,7 +38,7 @@ class OptionsAddPostFragment: Fragment() {
          */
         binding.TekstButton.setOnClickListener{
                 view: View ->  val action =
-            OptionsAddPostFragmentDirections.actionOptionsAddPostFragmentToAddTextFragment(
+            AddPostFragmentDirections.actionOptionsAddPostFragmentToAddTextFragment(
                 args.placeType
             )
             view.findNavController().navigate(action)
@@ -59,7 +57,7 @@ class OptionsAddPostFragment: Fragment() {
          */
         binding.FotoButton.setOnClickListener {
             view: View -> val action =
-            OptionsAddPostFragmentDirections.actionOptionsAddPostFragmentToAddPhotoFragment(
+            AddPostFragmentDirections.actionOptionsAddPostFragmentToAddPhotoFragment(
                 args.placeType
             )
             view.findNavController().navigate(action)
@@ -70,7 +68,10 @@ class OptionsAddPostFragment: Fragment() {
          * navigate to options for video posts
          */
         binding.VideoButton.setOnClickListener {
-          view: View -> val action = OptionsAddPostFragmentDirections.actionOptionsAddPostFragmentToVideoToevoegenFragment(args.placeType)
+          view: View -> val action =
+            AddPostFragmentDirections.actionOptionsAddPostFragmentToVideoToevoegenFragment(
+                args.placeType
+            )
             view.findNavController().navigate(action)
 
         }

@@ -19,9 +19,9 @@
     </fragment>
     <fragment
         android:id="@+id/optionsAddPostFragment"
-        android:name="com.example.faithandroid.OptionsAddPostFragment"
+        android:name="com.example.faithandroid.post.AddPostFragment"
         android:label="options_add_post"
-        tools:layout="@layout/bulletinboard_options_add_post" >
+        tools:layout="@layout/add_post" >
         <action
             android:id="@+id/action_optionsAddPostFragment_to_bulletinBoardFragment"
             app:destination="@id/bulletinBoardFragment"
@@ -98,7 +98,7 @@
 
     <fragment
         android:id="@+id/text_post_toevoegen"
-        android:name="com.example.faithandroid.TextPostToevoegenFragment"
+        android:name="com.example.faithandroid.post.text.TextPostToevoegenFragment"
         android:label="text_post_toevoegen">
         <action
             android:id="@+id/action_text_post_toevoegen_to_optionsAddPostFragment"
@@ -205,7 +205,7 @@
         tools:layout="@layout/app_sidebar" />
     <fragment
         android:id="@+id/videoToevoegenFragment"
-        android:name="com.example.faithandroid.post.video.VideoToevoegenFragment"
+        android:name="com.example.faithandroid.post.video.AddVideoFragment"
         android:label="VideoToevoegenFragment" >
         <argument
             android:name="placeType"
@@ -228,7 +228,7 @@
     </fragment>
     <fragment
         android:id="@+id/addPhotoFragment"
-        android:name="com.example.faithandroid.addPhotoFragment"
+        android:name="com.example.faithandroid.post.photo.addPhotoFragment"
         android:label="addPhotoFragment" >
         <argument
             android:name="placeType"
@@ -251,7 +251,7 @@
     </fragment>
     <fragment
         android:id="@+id/addTextFragment"
-        android:name="com.example.faithandroid.addTextFragment"
+        android:name="com.example.faithandroid.post.text.addTextFragment"
         android:label="addTextFragment" >
         <action
             android:id="@+id/action_addTextFragment_to_text_post_toevoegen"
