@@ -26,12 +26,12 @@ import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.FormatStyle
 
 
-class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAdapter.TreasureChestPostViewHolder>(
+class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAdapter.PostViewHolder>(
     DiffCallback
 ) {
 
 
-    class TreasureChestPostViewHolder(private var binding: PostBinding, private var listener: CustomClick, private var parent: ViewGroup):
+    class PostViewHolder(private var binding: PostBinding, private var listener: CustomClick, private var parent: ViewGroup):
         RecyclerView.ViewHolder(binding.root){
 
         fun bind(post: Post){
@@ -114,17 +114,17 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): TreasureChestPostViewHolder {
+    ): PostViewHolder {
 
 
-        return TreasureChestPostViewHolder(
+        return PostViewHolder(
             PostBinding.inflate(LayoutInflater.from(parent.context)),
             listener, parent
         )
     }
 
     override fun onBindViewHolder(
-        holder: TreasureChestPostViewHolder,
+        holder: PostViewHolder,
         position: Int
     ) {
         val post = getItem(position)

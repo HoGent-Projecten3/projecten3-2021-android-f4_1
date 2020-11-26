@@ -19,9 +19,9 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
     val postList: LiveData<List<Post>>
         get() = _posts
 
-    private val _filterdPosts = MutableLiveData<List<Post>>()
+    private val _filteredPosts = MutableLiveData<List<Post>>()
     val postListFiltered: LiveData<List<Post>>
-        get() = _filterdPosts
+        get() = _filteredPosts
 
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>
@@ -48,7 +48,7 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
                  override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
                     if (response.isSuccessful()) {
 
-                        _filterdPosts.value = response.body()
+                        _filteredPosts.value = response.body()
 
 
                     }
