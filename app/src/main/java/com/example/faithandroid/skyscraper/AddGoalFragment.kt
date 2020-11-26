@@ -53,11 +53,6 @@ class addGoalFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
 
 
-        if(viewModel.completedStatus.value.equals("Doel behaald")){
-             var a = R.id.cardGoal as MaterialCardView
-            a.setCardBackgroundColor(Color.GREEN)
-        }
-
         binding.annuleerButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_addGoalFragment_to_skyscraperFragment)
         }
@@ -67,25 +62,17 @@ class addGoalFragment : Fragment() {
             var beschrijving : String = binding.descriptionDoelText.text.toString()
             var steps : List<Step> = mutableListOf()
             var offsteps : List<Step> = mutableListOf()
-
             for ( i in binding.stepList.children) {
-
                 var t: TextView
                 t = i as TextView
 
                 val stepsss = t.text.trim().split(" - ")
                 for (n in stepsss.indices) {
-                    Log.d("UU", "(${stepsss[n]})")
                     val stap: Step = Step(0, stepsss[n])
-                    Log.d("STAP", stap.toString())
                     offsteps += stap
                 }
-
             }
-            Log.d("listSteps", offsteps.toString())
             var datum = LocalDateTime.now()
-            Log.d("Datum",datum.toString() )
-
             var newGoal = GoalPost(0, titel, beschrijving, false, offsteps, datum.toString())
 
             viewModel.postNewGoalPost("dora.theexplorer1999@gmail.com",newGoal);

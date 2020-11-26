@@ -87,9 +87,7 @@ class SkyscraperViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val response = FaithApi.retrofitService.checkGoal("dora.theexplorer1999@gmail.com", id)
-                var behaald : String = "Doel behaald"
                 _completedStatus.value = "Doel behaald".toString();
-                Log.d("CompletedValue", _completedStatus.value.toString())
 
             }catch (e: HttpException) {
 
@@ -108,8 +106,7 @@ class SkyscraperViewModel : ViewModel() {
                  val response = FaithApi.retrofitService.shareGoal("dora.theexplorer1999@gmail.com", id)
 
                 response.await()
-
-                 _shareStatus.value = "Doel gedeeld".toString();
+                 _shareStatus.value = "Doel gedeeld"
             } catch (e: Exception){
                 Log.d("Fff", e.toString())
                 _shareStatus.value = e.localizedMessage
