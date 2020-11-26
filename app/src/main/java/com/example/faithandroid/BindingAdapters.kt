@@ -2,6 +2,8 @@ package com.example.faithandroid
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.faithandroid.adapters.FilteredPostAdapter
+import com.example.faithandroid.adapters.PostAdapter
 import com.example.faithandroid.billboard.BillboardGridAdapter
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post

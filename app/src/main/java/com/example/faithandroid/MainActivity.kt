@@ -5,16 +5,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.ViewModel
 
 import androidx.lifecycle.ViewModelProvider
 
@@ -24,17 +19,12 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.example.faithandroid.databinding.AppNavHeaderMainBinding
-import com.example.faithandroid.login.LoginFragment
 import com.example.faithandroid.login.uilogin.LoginActivity
-import com.example.faithandroid.login.uilogin.LoginFormState
 import com.example.faithandroid.login.uilogin.LoginViewModel
 import com.example.faithandroid.login.uilogin.LoginViewModelFactory
 import com.example.faithandroid.profiel.profielFragment
-import com.google.android.material.internal.ContextUtils.getActivity
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_test.view.*
-import kotlinx.android.synthetic.main.app_nav_header_main.*
-import kotlinx.android.synthetic.main.app_nav_header_main.view.*
 
 
 //import androidx.databinding.DataBindingUtil
@@ -52,7 +42,7 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_test)
+            setContentView(R.layout.activity_main)
 
         val taskIntent =  Intent(this,LoginActivity::class.java)
         startActivityForResult(taskIntent, 1)

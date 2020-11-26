@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.faithandroid.PostViewModel" />
+            type="com.example.faithandroid.post.PostViewModel" />
     </data>
 
 
