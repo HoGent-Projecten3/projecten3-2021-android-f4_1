@@ -19,6 +19,7 @@ import com.example.faithandroid.skyscraper.GoalDetailsFragmentArgs
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.SkyscraperGoaldetailsBinding
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.skyscraper_goalpostimage.view.*
 import java.time.LocalDate
@@ -74,6 +75,19 @@ class GoalDetailsFragment: DialogFragment() {
         }
 
         binding.btnVerwijder.setOnClickListener { view: View ->
+            if(args.goal.shared){
+                MaterialAlertDialogBuilder(view.getContext())
+                    .setTitle("Goal verwijderen")
+                    .setMessage("Deze goal is gedeeld. Ben je zeker dat je deze goal wilt verwijderen? ")
+                          .setPositiveButton("Ja"){_, which ->
+                        // unshare goal en then delete goal
+                              viewModel.shareGoal(args.goal.id) // Dit wordt goalShareUnShare
+                              viewModel.deleteGoal(args.goal.id)
+                    }
+                    .setNegativeButton("Nee"){_, which ->
+                        // nothing has to happen
+                    }.show()
+            }
             viewModel.deleteGoal(args.goal.id)
             view.findNavController().navigate(R.id.skyscraperFragment)
         }
