@@ -56,7 +56,9 @@ class GoalDetailsFragment: DialogFragment() {
 
         binding.titelText.text = args.goal.title
         binding.beschrijvingText.text = args.goal.description
-        binding.skyscraper = viewModel.completedStatus.value
+
+       // binding.goalShared = args.goal.shared
+        binding.goalDetail = args.goal.completed
 
         var date = LocalDateTime.parse(args.goal.date)
         var date3 = date.dayOfMonth.toString() +" "+ date.month.toString()+ " "+ date.year.toString()
@@ -64,27 +66,15 @@ class GoalDetailsFragment: DialogFragment() {
 
 
         binding.btnBehaald.setOnClickListener { view: View ->
-            Log.d("goalID", args.goal.id.toString())
             viewModel.goalBehaald(args.goal.id)
-
-        }
-
-        if(viewModel.completedStatus.value.equals("Doel behaald")){
-            binding.btnBehaald.isClickable =false
-            binding.btnBehaald.isFocusable = false
-
-            view?.findViewById<MaterialCardView>(R.id.cardGoal)?.setBackgroundColor(Color.GREEN)
         }
 
         binding.btnDelen.setOnClickListener { view: View ->
-            Log.d("goalID", args.goal.id.toString())
             viewModel.shareGoal(args.goal.id)
         }
 
         binding.btnVerwijder.setOnClickListener { view: View ->
-            Log.d("goalID", args.goal.id.toString())
             viewModel.deleteGoal(args.goal.id)
-
             view.findNavController().navigate(R.id.skyscraperFragment)
         }
 
@@ -92,13 +82,11 @@ class GoalDetailsFragment: DialogFragment() {
             val contextView = this.view
             if (contextView != null) {
 
-                Log.d("Shared???", viewModel.shareStatus.value.toString())
                 Snackbar.make(contextView, viewModel.shareStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
                    "Goal gedeeld"
                 )
                 {
-                //    Log.d("Shared?", viewModel.shareStatus.value.toString())
-                   // viewModel.shareGoal(args.goal.id)
+
                 }.show()
             }
         })
@@ -110,8 +98,7 @@ class GoalDetailsFragment: DialogFragment() {
                     "Doel behaald"
                 )
                 {
-                 //   Log.d("Behaald?", viewModel.completedStatus.value.toString())
-                   // viewModel.goalBehaald(args.goal.id)
+
                 }.show()
             }
         })
@@ -124,8 +111,7 @@ class GoalDetailsFragment: DialogFragment() {
                     "Doel verwijderd"
                 )
                 {
-                  //  Log.d("Removed?", viewModel.removeStatus.value.toString())
-                  //  viewModel.deleteGoal(args.goal.id)
+
                 }.show()
             }
         })

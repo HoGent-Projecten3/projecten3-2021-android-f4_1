@@ -1,5 +1,6 @@
 package com.example.faithandroid.skyscraper
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -45,10 +46,12 @@ class SkyscraperFragment: Fragment() {
                     R.string.tryAgain
                 )
                 {
+
                     viewModel.GetPostsOfSkyscraper("dora.theexplorer1999@gmail.com")
                 }.show()
             }
         })
+
 
 
         binding.AddPostButton.setOnClickListener {view: View ->
@@ -60,6 +63,14 @@ class SkyscraperFragment: Fragment() {
             viewModel.testLive.value?.forEach{goal ->
                 val rowView: View = inflater.inflate(R.layout.skyscraper_goalpostimage, null)
                 rowView.titleText.text = goal.title
+
+                if(goal.completed){
+                    rowView.cardGoal.setBackgroundColor(Color.rgb(161, 214,134 ))
+                } else {
+                    rowView.cardGoal.setBackgroundColor(Color.WHITE)
+                }
+
+
                 rowView.layout.setOnClickListener{view: View ->
 
                     val action =

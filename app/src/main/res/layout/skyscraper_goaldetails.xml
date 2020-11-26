@@ -6,8 +6,11 @@
     <data>
         <import type="android.view.View" />
         <variable
-            name="skyscraper"
-            type="String" />
+            name="goalShared"
+            type="Boolean" />
+        <variable
+            name="goalDetail"
+            type="Boolean" />
     </data>
 
 
@@ -155,7 +158,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:layout_weight="1"
-                    android:visibility="@{skyscraper.equals(`Doel behaald`)?View.VISIBLE:View.GONE}"
+                    android:visibility="@{goalDetail? View.GONE : View.VISIBLE}"
                     android:text="@string/behaald" />
 
                 <Button
@@ -164,8 +167,9 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:layout_weight="1"
-                    android:text="@string/delen" />
-
+                    android:text="Delen"
+                    />
+<!-- android:text="@{goalShared? View.GONE : View.VISIBLE"}" -->
                 <Button
                     android:id="@+id/btnVerwijder"
                     android:layout_width="wrap_content"
