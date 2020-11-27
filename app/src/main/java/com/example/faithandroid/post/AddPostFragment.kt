@@ -50,7 +50,7 @@ class AddPostFragment: Fragment() {
          */
         binding.AudioButton.setOnClickListener {
             view: View -> val action =
-            OptionsAddPostFragmentDirections.actionOptionsAddPostFragmentToAudioToevoegenFragment(
+            AddPostFragmentDirections.actionOptionsAddPostFragmentToAudioToevoegenFragment(
                 args.placeType
             )
             view.findNavController().navigate(action)

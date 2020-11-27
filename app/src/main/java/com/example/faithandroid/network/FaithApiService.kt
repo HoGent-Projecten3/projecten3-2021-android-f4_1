@@ -11,6 +11,7 @@ import com.example.faithandroid.PostType
 
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
+
 import com.google.android.material.internal.ContextUtils.getActivity
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -60,6 +61,15 @@ interface FaithApiService {
     @GET("user/adolescent/{email}")
     fun getAdolescent(@Path("email") email: String):
            Deferred<Adolescent>
+
+    @GET("Account/GetAdolescentsByCounselorEmail/bob.debouwer1998@gmail.com")
+    fun getProperties():
+            Deferred<List<FaithProperty>>
+
+   /* @Headers("Content-Type: application/json")
+    @POST("City/AddPostByEmail")
+    fun postPost(@Body post: TextPost, @Query("email") email: String):
+            Call<Void>*/
 
     @Headers("Content-Type: application/json")
     @POST("City/AddGoalByEmail")

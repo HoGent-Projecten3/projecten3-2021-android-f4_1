@@ -1,6 +1,5 @@
 package com.example.faithandroid
 
-
 import android.content.Context
 import android.Manifest
 import android.content.Intent

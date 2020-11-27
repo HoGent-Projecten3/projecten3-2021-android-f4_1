@@ -19,8 +19,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.example.faithandroid.adapters.FilteredPostAdapter
 import com.example.faithandroid.databinding.AudioToevoegenBinding
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.post.PostViewModel
 import kotlinx.android.synthetic.main.audio_toevoegen.*
 import java.io.IOException
 
