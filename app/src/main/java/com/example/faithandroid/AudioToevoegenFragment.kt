@@ -4,10 +4,12 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.content.pm.PackageManager
+import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +27,6 @@ import com.example.faithandroid.models.Post
 import com.example.faithandroid.post.PostViewModel
 import kotlinx.android.synthetic.main.audio_toevoegen.*
 import java.io.IOException
-
 class AudioToevoegenFragment: Fragment() {
 
     val args: AudioToevoegenFragmentArgs by navArgs()
@@ -42,8 +43,6 @@ class AudioToevoegenFragment: Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
         output = Environment.getExternalStorageDirectory().absolutePath + "/audios.mp3"
         mediaRecorder = MediaRecorder()
 
@@ -57,7 +56,6 @@ class AudioToevoegenFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
 
         var binding = DataBindingUtil.inflate<AudioToevoegenBinding>(
             inflater,
@@ -136,7 +134,7 @@ class AudioToevoegenFragment: Fragment() {
             mediaRecorder?.prepare()
             mediaRecorder?.start()
             state = true
-          //  Toast.makeText(this, "Recording started!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.context, "Recording started!", Toast.LENGTH_SHORT).show()
         } catch (e: IllegalStateException) {
             e.printStackTrace()
         } catch (e: IOException) {
@@ -150,7 +148,7 @@ class AudioToevoegenFragment: Fragment() {
             mediaRecorder?.release()
             state = false
         }else{
-           // Toast.makeText(this, "You are not recording right now!", Toast.LENGTH_SHORT).show()
+           Toast.makeText(this.context, "You are not recording right now!", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -159,7 +157,7 @@ class AudioToevoegenFragment: Fragment() {
     private fun pauseRecording() {
         if(state) {
             if(!recordingStopped){
-               // Toast.makeText(this,"Stopped!", Toast.LENGTH_SHORT).show()
+               Toast.makeText(this.context,"Stopped!", Toast.LENGTH_SHORT).show()
                 mediaRecorder?.pause()
                 recordingStopped = true
                 pauze.text = "Resume"
@@ -172,7 +170,7 @@ class AudioToevoegenFragment: Fragment() {
     @SuppressLint("RestrictedApi", "SetTextI18n")
     @TargetApi(Build.VERSION_CODES.N)
     private fun resumeRecording() {
-       // Toast.makeText(this,"Resume!", Toast.LENGTH_SHORT).show()
+       Toast.makeText(this.context,"Resume!", Toast.LENGTH_SHORT).show()
         mediaRecorder?.resume()
         pauze.text = "Pause"
         recordingStopped = false
