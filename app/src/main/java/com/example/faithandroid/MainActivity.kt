@@ -30,7 +30,7 @@ import com.example.faithandroid.login.uilogin.LoginViewModel
 import com.example.faithandroid.login.uilogin.LoginViewModelFactory
 import com.example.faithandroid.profiel.profielFragment
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.activity_test.view.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 
 
 //import androidx.databinding.DataBindingUtil

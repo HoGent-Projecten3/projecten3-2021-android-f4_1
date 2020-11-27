@@ -9,7 +9,6 @@ import com.example.faithandroid.PostType
 
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
-import com.example.faithandroid.models.TextPost
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -52,10 +51,10 @@ interface FaithApiService {
     fun getProperties():
             Deferred<List<FaithProperty>>
 
-    @Headers("Content-Type: application/json")
+   /* @Headers("Content-Type: application/json")
     @POST("City/AddPostByEmail")
     fun postPost(@Body post: TextPost, @Query("email") email: String):
-            Call<Void>
+            Call<Void>*/
 
     @Headers("Content-Type: application/json")
     @POST("City/AddGoalByEmail")

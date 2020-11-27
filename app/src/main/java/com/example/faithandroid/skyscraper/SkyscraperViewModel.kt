@@ -9,7 +9,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.faithandroid.R
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Step
-import com.example.faithandroid.models.TextPost
 import com.example.faithandroid.network.FaithApi
 import com.example.faithandroid.network.FaithApiService
 import com.example.faithandroid.network.FaithProperty
