@@ -9,7 +9,6 @@ import com.example.faithandroid.PostType
 
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
-import com.example.faithandroid.models.TextPost
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -39,14 +38,14 @@ private val retrofit = Retrofit.Builder()
 interface FaithApiService {
 
     @Headers("Content-Type: application/json")
-    @POST("Account/CreateToken")
+    @POST("user/adolescent/login")
     fun loginAdolescent(@Body adolescent: User):
-           Call<String>
+            Call<String>
 
 
-    @GET("Account/GetAdolescent")
-    fun getAdolescent(@Query("email") email: String):
-           Deferred<Adolescent>
+    @GET("user/adolescent/{email}")
+    fun getAdolescent(@Path("email") email: String):
+            Deferred<Adolescent>
 
     @GET("Account/GetAdolescentsByCounselorEmail/bob.debouwer1998@gmail.com")
     fun getProperties():
@@ -54,7 +53,7 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json")
     @POST("City/AddPostByEmail")
-    fun postPost(@Body post: TextPost, @Query("email") email: String):
+    fun postPost(@Body post: Post, @Query("email") email: String):
             Call<Void>
 
     @Headers("Content-Type: application/json")

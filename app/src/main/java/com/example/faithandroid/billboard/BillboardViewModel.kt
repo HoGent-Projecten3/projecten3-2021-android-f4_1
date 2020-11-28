@@ -5,9 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Step
-import com.example.faithandroid.models.TextPost
 import com.example.faithandroid.network.FaithApi
-import com.example.faithandroid.network.FaithProperty
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
