@@ -31,13 +31,16 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         // can be launched in a separate asynchronous job
         MainScope().launch {
             val result = loginRepository.login(username, password)
-
             if (result is Result.Success) {
 
+                val result2 = loginRepository.getAdolescent(username)
+                if(result2 is Result.Success)
                 _loginResult.value =
                     LoginResult(
                         success = LoggedInUserView(
-                            displayName = result.data.firstName + " "  + result.data.name
+                            token = result.data,
+                            displayName =  result2.data.firstName,
+
                         )
                     )
 

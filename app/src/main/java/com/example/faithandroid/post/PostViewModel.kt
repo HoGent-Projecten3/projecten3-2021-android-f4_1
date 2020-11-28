@@ -74,7 +74,7 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
         viewModelScope.launch {
 
             val stringCall: Call<List<Post>> =
-                FaithApi.retrofitService.getPostsOfPlaceByAdolescentEmail(placeType.ordinal, email)
+                FaithApi.retrofitService.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
 
             stringCall.enqueue(object : Callback<List<Post>> {
 
