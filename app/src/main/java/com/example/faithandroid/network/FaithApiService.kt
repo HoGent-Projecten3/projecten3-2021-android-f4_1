@@ -13,6 +13,7 @@ import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
 import com.google.android.material.internal.ContextUtils.getActivity
 
+
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -54,13 +55,27 @@ interface FaithApiService {
     @Headers("Content-Type: application/json")
     @POST("user/adolescent/login")
     fun loginAdolescent(@Body adolescent: User):
-           Call<String>
+            Call<String>
 
 
     @GET("user/adolescent/{email}")
     fun getAdolescent(@Path("email") email: String):
+<<<<<<< HEAD
            Deferred<Adolescent>
 
+=======
+            Deferred<Adolescent>
+
+    @GET("Account/GetAdolescentsByCounselorEmail/bob.debouwer1998@gmail.com")
+    fun getProperties():
+            Deferred<List<FaithProperty>>
+
+    @Headers("Content-Type: application/json")
+    @POST("City/AddPostByEmail")
+    fun postPost(@Body post: Post, @Query("email") email: String):
+            Call<Void>
+
+>>>>>>> begonnen aan winkelcentrum
     @Headers("Content-Type: application/json")
     @POST("City/AddGoalByEmail")
     suspend fun postGoalPost(@Body goal: GoalPost, @Query("email") email:String)
