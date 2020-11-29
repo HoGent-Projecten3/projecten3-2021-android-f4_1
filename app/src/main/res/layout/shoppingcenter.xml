@@ -73,6 +73,7 @@
                 android:orientation="vertical" >
 
                 <androidx.recyclerview.widget.RecyclerView
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     android:id="@+id/shoppingCenterGridView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
