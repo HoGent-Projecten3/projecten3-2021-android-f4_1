@@ -121,10 +121,11 @@
                     app:layout_constraintVertical_bias="0.398" />
 
                 <Button
-                    android:id="@+id/pauze"
+                    android:id="@+id/beluister"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pauze"
+                    android:text="@string/Beluister"
+                    android:enabled="false"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.535"
@@ -137,10 +138,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/stop"
+                    android:enabled="false"
+
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.95"
-                    app:layout_constraintStart_toEndOf="@+id/pauze"
+                    app:layout_constraintStart_toEndOf="@+id/beluister"
                     app:layout_constraintTop_toBottomOf="@+id/recyclerView"
                     app:layout_constraintVertical_bias="0.398" />
 
@@ -149,6 +152,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/nieuwe_post_toevoegen"
+                    android:enabled="false"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

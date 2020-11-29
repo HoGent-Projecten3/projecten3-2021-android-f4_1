@@ -5,10 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.PostType
-<<<<<<< HEAD
 
-=======
->>>>>>> kleine aanpassingen die ik moest doen door rebase naar sprint5
 import com.example.faithandroid.network.FaithApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

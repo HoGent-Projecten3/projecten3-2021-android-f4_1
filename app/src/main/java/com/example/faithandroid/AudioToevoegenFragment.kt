@@ -33,23 +33,18 @@ class AudioToevoegenFragment: Fragment() {
     var post: Post? = null
     var nieuwePost: Boolean = false;
 
+    private var path: String? = null
+    lateinit var mr : MediaRecorder
 
-    private var output: String? = null
-    private var mediaRecorder: MediaRecorder? = null
-    private var state: Boolean = false
-    private var recordingStopped: Boolean = false
 
     private lateinit var viewModel: PostViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        output = Environment.getExternalStorageDirectory().absolutePath + "/audios.mp3"
-        mediaRecorder = MediaRecorder()
+        mr = MediaRecorder()
 
-        mediaRecorder?.setAudioSource(MediaRecorder.AudioSource.MIC)
-        mediaRecorder?.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
-        mediaRecorder?.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
-        mediaRecorder?.setOutputFile(output)
+        var path = Environment.getExternalStorageDirectory().toString() + "/audios.mp3"
+
     }
 
     override fun onCreateView(
@@ -112,15 +107,33 @@ class AudioToevoegenFragment: Fragment() {
             } else {
                 startRecording()
             }*/
-            startRecording()
+            mr.setAudioSource(MediaRecorder.AudioSource.MIC)
+            mr.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
+            mr.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB)
+            mr.setOutputFile(path)
+            mr.prepare()
+            mr.start()
+
+            binding.stop.isEnabled = true
+            binding.start.isEnabled = false
         }
-        binding.pauze.setOnClickListener{
-            pauseRecording()
+        binding.beluister.setOnClickListener{
+            var mp = MediaPlayer()
+            mp.setDataSource(path)
+            mp.prepare()
+            mp.start()
         }
 
         binding.stop.setOnClickListener{
-            stopRecording()
+
+            mr.stop()
+            binding.start.isEnabled = true
+            binding.stop.isEnabled = false
+            binding.beluister.isEnabled = true
         }
+
+
+
         binding.recyclerView.adapter = FilteredPostAdapter(object : CustomClick {
             override fun onClick(post: Post) {
                 this@AudioToevoegenFragment.post = post
@@ -129,50 +142,5 @@ class AudioToevoegenFragment: Fragment() {
         })
         return binding.root
     }
-    private fun startRecording() {
-        try {
-            mediaRecorder?.prepare()
-            mediaRecorder?.start()
-            state = true
-            Toast.makeText(this.context, "Recording started!", Toast.LENGTH_SHORT).show()
-        } catch (e: IllegalStateException) {
-            e.printStackTrace()
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-    }
 
-    private fun stopRecording(){
-        if(state){
-            mediaRecorder?.stop()
-            mediaRecorder?.release()
-            state = false
-        }else{
-           Toast.makeText(this.context, "You are not recording right now!", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    @SuppressLint("RestrictedApi", "SetTextI18n")
-    @TargetApi(Build.VERSION_CODES.N)
-    private fun pauseRecording() {
-        if(state) {
-            if(!recordingStopped){
-               Toast.makeText(this.context,"Stopped!", Toast.LENGTH_SHORT).show()
-                mediaRecorder?.pause()
-                recordingStopped = true
-                pauze.text = "Resume"
-            }else{
-                resumeRecording()
-            }
-        }
-    }
-
-    @SuppressLint("RestrictedApi", "SetTextI18n")
-    @TargetApi(Build.VERSION_CODES.N)
-    private fun resumeRecording() {
-       Toast.makeText(this.context,"Resume!", Toast.LENGTH_SHORT).show()
-        mediaRecorder?.resume()
-        pauze.text = "Pause"
-        recordingStopped = false
-    }
 }

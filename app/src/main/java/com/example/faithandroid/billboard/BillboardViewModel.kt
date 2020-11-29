@@ -5,10 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Step
-<<<<<<< HEAD
 
-=======
->>>>>>> kleine aanpassingen die ik moest doen door rebase naar sprint5
 import com.example.faithandroid.network.FaithApi
 import com.example.faithandroid.network.FaithProperty
 import kotlinx.coroutines.CoroutineScope
