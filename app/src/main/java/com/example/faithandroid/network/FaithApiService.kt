@@ -68,7 +68,7 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json")
     @PUT("city/skyscraper/goal/{goalId}/mark-completed")
-    suspend fun checkGoal(@Query("goalId") goalId : Int)
+    suspend fun checkGoal(@Path("goalId") goalId : Int)
 
   
     @GET("city/skyscraper/goal")
@@ -98,11 +98,11 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json")
     @PUT("city/skyscraper/goal/{goalId}/share-to-billboard")
-    fun shareGoal(@Query("goalId") goalId: Int): Call<String>
+    fun shareGoal(@Path("goalId") goalId: Int): Call<String>
 
     @Headers("Content-Type: application/json")
     @DELETE("city/skyscraper/goal/{id}")
-    fun removeGoal(@Query("id") id: Int): Call<String>
+    fun removeGoal(@Path("id") id: Int): Call<String>
 
     @GET("City/GetFilteredPostsFromPlace")
     fun getFilteredFromPlace(@Query("placeType") placeType: Int, @Query("postType") postType: Int, @Query("email") email: String): Call<List<Post>>

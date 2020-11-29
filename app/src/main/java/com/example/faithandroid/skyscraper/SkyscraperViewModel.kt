@@ -111,7 +111,7 @@ class SkyscraperViewModel : ViewModel() {
             try {
                 Log.d("GoalId", id.toString())
                  val response = FaithApi.retrofitService.shareGoal(id)
-                response.await()
+                 response.await()
                  _shareStatus.value = "Doel gedeeld"
             } catch (e: Exception){
                 _shareStatus.value = "Er liep iets mis"
@@ -123,8 +123,9 @@ class SkyscraperViewModel : ViewModel() {
     fun deleteGoal(id:Int){
         coroutineScope.launch{
             try {
-                val response = FaithApi.retrofitService.removeGoal(id);
-                response.await()
+                val response = FaithApi.retrofitService.removeGoal(id)
+               val stringResponse= response.await()
+                Log.d("SHIT", stringResponse)
                 _removeStatus.value = R.string.doel_verwijderd.toString()
             } catch (e: Exception){
                 _removeStatus.value = "Er liep iets mis"

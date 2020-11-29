@@ -67,15 +67,16 @@ class GoalDetailsFragment: DialogFragment() {
 
         binding.btnBehaald.setOnClickListener { view: View ->
             viewModel.goalBehaald(args.goal.id)
+            view.findNavController().navigate(R.id.skyscraperFragment)
         }
 
         binding.btnDelen.setOnClickListener { view: View ->
             viewModel.shareGoal(args.goal.id)
+           view.findNavController().navigate(R.id.billboardFragment)
         }
 
         binding.btnVerwijder.setOnClickListener { view: View ->
-            Log.d("Shared verwidjer",args.goal.shared.toString())
-            if (args.goal.shared) {
+          if (args.goal.shared) {
 
                 MaterialAlertDialogBuilder(view.getContext())
                     .setTitle("Goal verwijderen")
@@ -88,7 +89,13 @@ class GoalDetailsFragment: DialogFragment() {
                     .setNegativeButton("Nee") { _, which ->
                         // nothing has to happen here
                     }.show()
-            } else {
+            }else if(args.goal.completed){
+              Snackbar.make(view, "Deze goal is behaald, u kan deze dus niet verwijderen.", Snackbar.LENGTH_SHORT).setAction(
+               "" )
+              {
+              }.show()
+        }
+          else {
                 viewModel.deleteGoal(args.goal.id)
                 view.findNavController().navigate(R.id.skyscraperFragment)
             }
@@ -102,7 +109,7 @@ class GoalDetailsFragment: DialogFragment() {
                     "Je doel is gedeeld",
                     Toast.LENGTH_LONG
                 ).show()
-            }
+             }
             else {
                 Snackbar.make(contextView!!, viewModel.shareStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
                     "Probeer opnieuw"

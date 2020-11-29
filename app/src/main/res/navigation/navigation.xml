@@ -160,10 +160,12 @@
         <action
             android:id="@+id/action_skyscraperFragment_to_addGoalFragment"
             app:destination="@id/addGoalFragment"
+            app:popUpTo="@+id/skyscraperFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_skyscraperFragment_to_goalDetailsFragment"
             app:destination="@id/goalDetailsFragment"
+            app:popUpTo="@+id/skyscraperFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
