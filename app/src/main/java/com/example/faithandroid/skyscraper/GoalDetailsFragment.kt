@@ -58,12 +58,12 @@ class GoalDetailsFragment: DialogFragment() {
         binding.titelText.text = args.goal.title
         binding.beschrijvingText.text = args.goal.description
 
-       // binding.goalShared = args.goal.shared
+        binding.goalShared = args.goal.shared
         binding.goalDetail = args.goal.completed
 
-        var date = LocalDateTime.parse(args.goal.date)
-        var date3 = date.dayOfMonth.toString() +" "+ date.month.toString()+ " "+ date.year.toString()
-        binding.datumText.text = date3
+        var localdate = LocalDateTime.parse(args.goal.date)
+        var date = localdate.dayOfMonth.toString() +" "+ localdate.month.toString()+ " "+ localdate.year.toString()
+        binding.datumText.text = date
 
 
         binding.btnBehaald.setOnClickListener { view: View ->
@@ -85,7 +85,7 @@ class GoalDetailsFragment: DialogFragment() {
                               viewModel.deleteGoal(args.goal.id)
                     }
                     .setNegativeButton("Nee"){_, which ->
-                        // nothing has to happen
+                        // nothing has to happen here
                     }.show()
             }
             viewModel.deleteGoal(args.goal.id)
@@ -103,6 +103,13 @@ class GoalDetailsFragment: DialogFragment() {
 
                 }.show()
             }
+            else {
+                Snackbar.make(contextView!!, viewModel.shareStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                    "Probeer opnieuw"
+                )
+                {
+                }.show()
+            }
         })
 
         viewModel.completedStatus.observe(this.viewLifecycleOwner, Observer {
@@ -114,13 +121,18 @@ class GoalDetailsFragment: DialogFragment() {
                 {
 
                 }.show()
+            } else {
+                Snackbar.make(contextView!!, viewModel.completedStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                    "Probeer opnieuw"
+                )
+                {
+                }.show()
             }
         })
 
         viewModel.removeStatus.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
-                Log.d("Deleted???", viewModel.removeStatus.value.toString())
                 Snackbar.make(contextView, viewModel.removeStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
                     "Doel verwijderd"
                 )
@@ -128,6 +140,14 @@ class GoalDetailsFragment: DialogFragment() {
 
                 }.show()
             }
+            else {
+                Snackbar.make(contextView!!, viewModel.removeStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                    "Probeer opnieuw"
+                )
+                {
+                }.show()
+            }
+
         })
 
         args.goal.steps.forEach{step ->

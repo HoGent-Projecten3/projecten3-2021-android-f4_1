@@ -80,7 +80,11 @@ class SkyscraperViewModel : ViewModel() {
     }
     fun postNewGoalPost(email: String, goalPost: GoalPost) {
         viewModelScope.launch {
-            val response = FaithApi.retrofitService.postGoalPost(goalPost, email)
+            try {
+                val response = FaithApi.retrofitService.postGoalPost(goalPost, email)
+            }catch (e: Exception){
+                // error handling als new goal niet werkt/ er iets mis loopt
+            }
         }
     }
 
@@ -91,17 +95,17 @@ class SkyscraperViewModel : ViewModel() {
                 _completedStatus.value = "Doel behaald".toString();
 
             }catch (e: HttpException) {
-
-                _completedStatus.value = e.localizedMessage
+                _completedStatus.value = "Er liep iets mis. " + e.localizedMessage
+               // _completedStatus.value = e.localizedMessage
             }
             catch (e: Exception) {
-
-                _completedStatus.value = e.localizedMessage
+                _completedStatus.value = "Er liep iets mis"
+               // _completedStatus.value = e.localizedMessage
             }
         }
     }
 
-    // wordt shareUnshareGoal
+    // wordt shareUnshareGoalWithAdolescents
     fun shareGoal(id:Int){
         coroutineScope.launch{
             try {
@@ -110,22 +114,21 @@ class SkyscraperViewModel : ViewModel() {
                 response.await()
                  _shareStatus.value = "Doel gedeeld"
             } catch (e: Exception){
-                Log.d("Fff", e.toString())
-                _shareStatus.value = e.localizedMessage
+                _shareStatus.value = "Er liep iets mis"
+               // _shareStatus.value = e.localizedMessage
             }
         }
     }
 
     fun deleteGoal(id:Int){
-
         coroutineScope.launch{
             try {
                 val response =FaithApi.retrofitService.removeGoal(id, "dora.theexplorer1999@gmail.com");
                 response.await()
                 _removeStatus.value = R.string.doel_verwijderd.toString()
             } catch (e: Exception){
-                Log.d("ee", e.toString())
-                _removeStatus.value = e.localizedMessage
+                _removeStatus.value = "Er liep iets mis"
+               // _removeStatus.value = e.localizedMessage
             }
         }
     }
