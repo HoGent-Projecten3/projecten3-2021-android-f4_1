@@ -30,7 +30,6 @@ class TreasureChestViewModel : ViewModel() {
     val postList: LiveData<List<Post>>
         get() = _postList
 
-
     //GEEN IDEE
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
