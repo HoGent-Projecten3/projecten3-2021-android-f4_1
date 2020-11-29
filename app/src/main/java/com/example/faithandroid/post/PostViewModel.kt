@@ -8,20 +8,29 @@ import com.example.faithandroid.PlaceType
 import com.example.faithandroid.PostType
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.network.FaithApi
+import com.example.nativeapps.util.Resource
 import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.await
 
-class PostViewModel(placeType: PlaceType): ViewModel() {
+class PostViewModel(placeType: PlaceType,private val postRepository: PostRepository): ViewModel() {
 
     private val _posts = MutableLiveData<List<Post>>()
     val postList: LiveData<List<Post>>
         get() = _posts
 
+    val repPosts: LiveData<Resource<List<Post>>> =
+        postRepository.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
+
     private val _filteredPosts = MutableLiveData<List<Post>>()
     val postListFiltered: LiveData<List<Post>>
         get() = _filteredPosts
+
+    private val _requestConsultationStatus = MutableLiveData<String>("Er liep iets mis")
+    val requestConsultationStatus: LiveData<String>
+        get() = _requestConsultationStatus
 
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>
@@ -30,11 +39,6 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
 //    private var viewModelJob = Job()
 //    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    init
-    {
-        getPostsOfPlace(placeType, "dora.theexplorer1999@gmail.com")
-
-    }
 
     fun getFilteredPostFromPlace(placeType: PlaceType, postType: PostType, email: String) {
 
@@ -69,36 +73,10 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
         }
     }
 
-    fun getPostsOfPlace(placeType: PlaceType, email: String)
-    {
-        viewModelScope.launch {
-
-            val stringCall: Call<List<Post>> =
-                FaithApi.retrofitService.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
-
-            stringCall.enqueue(object : Callback<List<Post>> {
-
-                override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
-                    if (response.isSuccessful()) {
-                        _posts.value = response.body()
 
 
 
-                    }
 
-                }
-
-                override fun onFailure(call: Call<List<Post>>?, t: Throwable?) {
-                    t?.localizedMessage?.let {
-
-                    }
-
-
-
-                }
-            })
-        }
-    }
 
     fun addPostByEmail(post: Post, placeType: PlaceType, email: String): Boolean{
         var bool: Boolean = true
@@ -182,6 +160,22 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
                 }
             })
         }
+    }
+
+    fun requestConsultation()
+    {
+        viewModelScope.launch{
+            try{
+                FaithApi.retrofitService.requestConsultation("dora.theexplorer1999@gmail.com").await()
+                _requestConsultationStatus.value = "gelukt!"
+
+            }
+            catch (e: Exception)
+            {
+                _requestConsultationStatus.value = "niet gelukt!"
+            }
+        }
+
     }
 
 

@@ -10,20 +10,29 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.faithandroid.*
-import com.example.faithandroid.bulletinboard.BulletinBoardViewModel
+import com.example.faithandroid.data.local.PostDao
+import com.example.faithandroid.data.local.PostLocalDataSource
+import com.example.faithandroid.data.remote.PostRemoteDataSource
 import com.example.faithandroid.databinding.AddNewTextBinding
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.network.FaithApi
+import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
 
 
 class TextPostToevoegenFragment : Fragment() {
     // TODO: Rename and change types of parameters
+    private lateinit var postDao: PostDao
     val args: TextPostToevoegenFragmentArgs by navArgs()
-    private val postViewModel: PostViewModel by lazy{
-        ViewModelProvider(this, ViewModelFactory(args.placeType)).get(PostViewModel::class.java)
-    }
+    /*private val postViewModel: PostViewModel by lazy{
+        ViewModelProvider(this, ViewModelFactory(args.placeType, PostRepository(
+            PostLocalDataSource(postDao),
+            PostRemoteDataSource(FaithApi)
+        )
+        )).get(PostViewModel::class.java)
+    }*/
 
-    private lateinit var bulletinBoardViewModel: BulletinBoardViewModel
+    //private lateinit var bulletinBoardViewModel: BulletinBoardViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +49,7 @@ class TextPostToevoegenFragment : Fragment() {
 
         var binding = DataBindingUtil.inflate<AddNewTextBinding>(inflater,
             R.layout.add_new_text, container, false);
-        bulletinBoardViewModel = ViewModelProvider(this).get(BulletinBoardViewModel::class.java)
+        //bulletinBoardViewModel = ViewModelProvider(this).get(BulletinBoardViewModel::class.java)
         binding.placeType = "nieuwe post toevoegen aan " + args.placeType.toString()
 
         binding.textPostToevoegen.setOnClickListener{ view: View ->
@@ -49,7 +58,7 @@ class TextPostToevoegenFragment : Fragment() {
             {
 
                 val post: Post = Post(0, binding.textposttitel.text.toString(), binding.textposttext.text.toString(), "2020-11-05T22:34:57.61", PostType.Text.ordinal)
-                if(postViewModel.addPostByEmail(post, args.placeType, "dora.theexplorer1999@gmail.com"))
+                /*if(postViewModel.addPostByEmail(post, args.placeType, "dora.theexplorer1999@gmail.com"))
                 {
 
                     when (args.placeType) {
@@ -60,7 +69,7 @@ class TextPostToevoegenFragment : Fragment() {
 
                         }
                     }
-                }
+                }*/
 
             }
             catch (e: Exception)

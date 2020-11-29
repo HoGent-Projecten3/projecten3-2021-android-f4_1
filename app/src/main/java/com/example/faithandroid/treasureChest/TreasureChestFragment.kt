@@ -11,17 +11,31 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.faithandroid.*
 import com.example.faithandroid.adapters.PostAdapter
+import com.example.faithandroid.data.local.PostDao
+import com.example.faithandroid.data.local.PostLocalDataSource
+import com.example.faithandroid.data.remote.PostRemoteDataSource
 import com.example.faithandroid.databinding.TreasurechestBinding
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.network.FaithApi
+import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
 import com.google.android.material.snackbar.Snackbar
 
 
+
 class TreasureChestFragment: Fragment() {
 
-    private val postViewModel: PostViewModel by lazy{
-        ViewModelProvider(this, ViewModelFactory(PlaceType.Schatkist)).get(PostViewModel::class.java)
-    }
+    private lateinit var postDao: PostDao
+    private val postViewModel: PostViewModel
+        get() {
+            TODO()
+        }
+    /*by lazy{
+        ViewModelProvider(this, ViewModelFactory(PlaceType.Schatkist, PostRepository(
+            PostLocalDataSource(postDao),
+            PostRemoteDataSource(FaithApi)
+        ))).get(PostViewModel::class.java)
+    }*/
 
     private lateinit var  adapter: PostAdapter
 
@@ -69,7 +83,7 @@ class TreasureChestFragment: Fragment() {
                 override fun onClick(post: Post) {
 
                     postViewModel.deletePostByEmail(post.id, "dora.theexplorer1999@gmail.com", PlaceType.Schatkist)
-                    postViewModel.getPostsOfPlace(PlaceType.Schatkist, "dora.theexplorer1999@gmail")
+                    //postViewModel.getPostsOfPlace(PlaceType.Schatkist, "dora.theexplorer1999@gmail")
                     true
                 }
             })
@@ -81,7 +95,7 @@ class TreasureChestFragment: Fragment() {
                     R.string.tryAgain
                 )
                 {
-                    postViewModel.getPostsOfPlace(PlaceType.Schatkist, "dora.theexplorer1999@gmail.com")
+                   // postViewModel.getPostsOfPlace(PlaceType.Schatkist, "dora.theexplorer1999@gmail.com")
                 }.show()
             }
         })

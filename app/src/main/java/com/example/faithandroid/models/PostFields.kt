@@ -1,26 +1,24 @@
 package com.example.faithandroid.models
 
-import android.media.Image
 import android.os.Parcelable
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import com.squareup.moshi.JsonClass
-import com.example.faithandroid.models.PostType.Text
+import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
-import java.net.URI
 import java.io.Serializable
 
 @Parcelize
-@Entity(tableName = "posts")
-@JsonClass(generateAdapter = true)
-data class Post(
-    @PrimaryKey
+class PostFields(
+    @Json(name = "id")
     var id: Int = 0,
+    @Json(name = "title")
     var title: String = "",
+    @Json(name = "data")
     var data: String = "",
+    @Json(name = "date")
     var date: String = "2020-11-05T22:34:57.61",
+    @Json(name = "postType")
     var postType: Int,
+    @Json(name = "dataBytes")
     var dataBytes: String? = "",
+    @Json(name = "url")
     var uri: String? = ""
-): Serializable, Parcelable
-
+): Parcelable

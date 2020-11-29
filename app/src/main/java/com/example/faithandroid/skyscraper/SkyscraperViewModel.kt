@@ -1,26 +1,18 @@
 
 package com.example.faithandroid.skyscraper
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.faithandroid.R
 import com.example.faithandroid.models.GoalPost
-import com.example.faithandroid.models.Step
 
 import com.example.faithandroid.network.FaithApi
-import com.example.faithandroid.network.FaithApiService
-import com.example.faithandroid.network.FaithProperty
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import org.threeten.bp.LocalDateTime
-import retrofit2.Retrofit
-import retrofit2.await
 
 
 class SkyscraperViewModel : ViewModel() {

@@ -13,13 +13,19 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.faithandroid.*
 import com.example.faithandroid.adapters.FilteredPostAdapter
+import com.example.faithandroid.data.local.PostDao
+import com.example.faithandroid.data.local.PostLocalDataSource
+import com.example.faithandroid.data.remote.PostRemoteDataSource
 import com.example.faithandroid.databinding.AddTextBinding
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.network.FaithApi
+import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
 
 class addTextFragment: Fragment() {
 
 
+    private lateinit var postDao: PostDao
     val args: addTextFragmentArgs by navArgs()
 
     var post: Post? = null
@@ -47,7 +53,11 @@ class addTextFragment: Fragment() {
         )
         binding.lifecycleOwner = this
 
-        viewModel = ViewModelProvider(this, ViewModelFactory(args.placeType)).get(PostViewModel::class.java)
+        /*viewModel = ViewModelProvider(this, ViewModelFactory(args.placeType, PostRepository(
+                PostLocalDataSource(postDao),
+                PostRemoteDataSource(FaithApi)
+            )
+        )).get(PostViewModel::class.java)*/
 
         binding.imageView4.setOnClickListener{
                 view: View ->  val action =

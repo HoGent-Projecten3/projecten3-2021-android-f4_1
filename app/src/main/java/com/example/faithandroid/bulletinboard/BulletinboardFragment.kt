@@ -12,7 +12,12 @@ import androidx.navigation.findNavController
 import com.example.faithandroid.*
 import com.example.faithandroid.databinding.BulletinboardBinding
 import com.example.faithandroid.adapters.PostAdapter
+import com.example.faithandroid.data.local.PostDao
+import com.example.faithandroid.data.local.PostLocalDataSource
+import com.example.faithandroid.data.remote.PostRemoteDataSource
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.network.FaithApi
+import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
@@ -20,10 +25,18 @@ import com.google.android.material.snackbar.Snackbar
 
 class BulletinboardFragment: Fragment() {
 
-    private lateinit var viewModel: BulletinBoardViewModel
-    private val postViewModel: PostViewModel by lazy{
-        ViewModelProvider(this, ViewModelFactory(PlaceType.Prikbord)).get(PostViewModel::class.java)
-    }
+    private lateinit var postDao: PostDao
+    //private lateinit var viewModel: PostViewModel
+    private val postViewModel: PostViewModel
+        get() {
+            TODO()
+        }
+    /*by lazy{
+        ViewModelProvider(this, ViewModelFactory(PlaceType.Prikbord,PostRepository(
+            PostLocalDataSource(postDao),
+            PostRemoteDataSource(Faith)
+        ))).get(PostViewModel::class.java)
+    }*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,9 +64,9 @@ class BulletinboardFragment: Fragment() {
 
                     .setPositiveButton("Ja") { dialog, which ->
                         // Respond to positive button press
-                        viewModel.requestConsultation()
+                        postViewModel.requestConsultation()
                         this.view?.let { view ->
-                            viewModel.requestConsultationStatus.value?.let { string ->
+                            postViewModel.requestConsultationStatus.value?.let { string ->
                                 Snackbar.make(view, string, Snackbar.LENGTH_SHORT)
                                     .show()
                             }
@@ -77,7 +90,7 @@ class BulletinboardFragment: Fragment() {
             view.findNavController().navigate(action)
         }
 
-        viewModel = ViewModelProvider(this).get(BulletinBoardViewModel::class.java)
+        //viewModel = ViewModelProvider(this).get(PostViewModel::class.java)
 
         binding.viewModel = postViewModel
         binding.BulletinBoardRecycler.adapter =
@@ -92,7 +105,7 @@ class BulletinboardFragment: Fragment() {
         postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
-                Snackbar.make(contextView, viewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                Snackbar.make(contextView, postViewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
                     R.string.tryAgain
                 )
                 {
