@@ -96,7 +96,6 @@ class AudioToevoegenFragment: Fragment() {
         binding.viewModel = viewModel
 
 
-
         binding.start.setOnClickListener{
             //eerst controleren of de gebruiker daadwerkelijk permissie heeft gegeven om audio op te nemen
            /* if (ContextCompat.checkSelfPermission(this,
