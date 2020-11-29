@@ -131,6 +131,7 @@ interface FaithApiService {
     @PUT("City/AddExistingPostToPlace")
     fun addExistingPostToPlace(@Query("postId") id: Int, @Query("placeType")placeType: Int): Call<Void>
 
+
 }
 
 object FaithApi {

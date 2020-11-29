@@ -5,15 +5,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.faithandroid.databinding.AvatarpartBinding
 import com.example.faithandroid.databinding.ShoppingcenterBinding
 
 class ShoppingCenterGridAdapter : ListAdapter<String, ShoppingCenterGridAdapter.ShoppingCenterPropertyViewHolder>(
     DiffCallback
 ) {
-    class ShoppingCenterPropertyViewHolder(private var binding: ShoppingcenterBinding):
+    class ShoppingCenterPropertyViewHolder(private var binding: AvatarpartBinding):
         RecyclerView.ViewHolder(binding.root){
         fun bind(avatarpart: String){
-          // binding.property = avatarpart
+            binding.property = avatarpart
             binding.executePendingBindings()
         }
 
@@ -33,7 +34,7 @@ class ShoppingCenterGridAdapter : ListAdapter<String, ShoppingCenterGridAdapter.
         parent: ViewGroup,
         viewType: Int
     ): ShoppingCenterPropertyViewHolder {
-        return ShoppingCenterPropertyViewHolder(ShoppingcenterBinding.inflate(LayoutInflater.from(parent.context)))
+        return ShoppingCenterPropertyViewHolder(AvatarpartBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     override fun onBindViewHolder(
