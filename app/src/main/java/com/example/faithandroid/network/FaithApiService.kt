@@ -114,8 +114,8 @@ interface FaithApiService {
     fun addPostByEmail(@Body post: Post, @Query("email") email: String, @Query("placeType") placeType: Int): Call<Void>
 
     @Headers("Content-Type: application/json", "accept: application/json")
-    @PUT("City/DeletePostByEmail")
-    fun deletePostByEmail(@Query("id") id: Int, @Query("email") email: String, @Query("placeType") placeType: Int): Call<Void>
+    @PUT("city/{placeType}/post/remove/{postId}")
+    fun deletePostByEmail(@Path("placeType") placeType: Int, @Path("postId") postId: Int): Call<Void>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @PUT("City/AddExistingPostToPlace")

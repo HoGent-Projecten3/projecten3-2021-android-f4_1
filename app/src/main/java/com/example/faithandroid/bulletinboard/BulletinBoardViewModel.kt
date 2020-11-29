@@ -1,6 +1,7 @@
 package com.example.faithandroid.bulletinboard
 
 import android.content.res.Resources
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,6 +13,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.await
 
 class BulletinBoardViewModel : ViewModel() {
@@ -92,6 +96,35 @@ class BulletinBoardViewModel : ViewModel() {
             }
         }
 
+    }
+
+    fun deleteAllBulletinPosts(){
+        coroutineScope.launch{
+            var getPostList = FaithApi.retrofitService.getPostsOfPlaceByAdolescentEmail(0);
+            var result = getPostList.await()
+
+                for (post in result) {
+                    try{
+                        val stringCall: Call<Void> =
+                            FaithApi.retrofitService.deletePostByEmail(0, post.id)
+                        stringCall.enqueue(object : Callback<Void> {
+
+                            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                                if (response.isSuccessful()) {
+                                    val responseString: String? = response.code().toString()
+                                    if (responseString != null) {
+
+                                    }
+                                }
+                            }
+                            override fun onFailure(call: Call<Void>?, t: Throwable?) {
+                            }
+                        })
+                    }catch(e:Exception){
+                        throw Exception("Er liep iets mis tijdens het verwijderen");
+                    }
+                }
+        }
     }
 
 }
