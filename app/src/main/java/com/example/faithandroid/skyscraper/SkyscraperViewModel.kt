@@ -58,13 +58,13 @@ class SkyscraperViewModel : ViewModel() {
 
     init {
 
-        GetPostsOfSkyscraper("dora.theexplorer1999@gmail.com")
+        getPostsOfSkyscraper()
         testLiveData.value = test;
     }
 
-    fun GetPostsOfSkyscraper(email: String) {
+    fun getPostsOfSkyscraper() {
         coroutineScope.launch {
-            var getPropertiesDeferred = FaithApi.retrofitService.getPostsOfSkyScraperByAdolescentEmail(email);
+            var getPropertiesDeferred = FaithApi.retrofitService.getPostsOfSkyScraper();
             try {
 
                 var listResult = getPropertiesDeferred.await()
@@ -78,10 +78,10 @@ class SkyscraperViewModel : ViewModel() {
             }
         }
     }
-    fun postNewGoalPost(email: String, goalPost: GoalPost) {
+    fun postNewGoalPost( goalPost: GoalPost) {
         viewModelScope.launch {
             try {
-                val response = FaithApi.retrofitService.postGoalPost(goalPost, email)
+                val response = FaithApi.retrofitService.postGoalPost(goalPost)
             }catch (e: Exception){
                 // error handling als new goal niet werkt/ er iets mis loopt
             }
@@ -91,7 +91,8 @@ class SkyscraperViewModel : ViewModel() {
     fun goalBehaald(id:Int){
         viewModelScope.launch {
             try {
-                val response = FaithApi.retrofitService.checkGoal("dora.theexplorer1999@gmail.com", id)
+                Log.d("GoalId", id.toString())
+                val response = FaithApi.retrofitService.checkGoal(id)
                 _completedStatus.value = "Doel behaald".toString();
 
             }catch (e: HttpException) {
@@ -105,12 +106,11 @@ class SkyscraperViewModel : ViewModel() {
         }
     }
 
-    // wordt shareUnshareGoalWithAdolescents
     fun shareGoal(id:Int){
         coroutineScope.launch{
             try {
-                 val response = FaithApi.retrofitService.shareGoal("dora.theexplorer1999@gmail.com", id)
-
+                Log.d("GoalId", id.toString())
+                 val response = FaithApi.retrofitService.shareGoal(id)
                 response.await()
                  _shareStatus.value = "Doel gedeeld"
             } catch (e: Exception){
@@ -123,7 +123,7 @@ class SkyscraperViewModel : ViewModel() {
     fun deleteGoal(id:Int){
         coroutineScope.launch{
             try {
-                val response =FaithApi.retrofitService.removeGoal(id, "dora.theexplorer1999@gmail.com");
+                val response = FaithApi.retrofitService.removeGoal(id);
                 response.await()
                 _removeStatus.value = R.string.doel_verwijderd.toString()
             } catch (e: Exception){

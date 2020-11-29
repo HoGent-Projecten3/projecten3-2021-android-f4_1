@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
@@ -57,14 +58,12 @@ class GoalDetailsFragment: DialogFragment() {
 
         binding.titelText.text = args.goal.title
         binding.beschrijvingText.text = args.goal.description
-
         binding.goalShared = args.goal.shared
         binding.goalDetail = args.goal.completed
 
         var localdate = LocalDateTime.parse(args.goal.date)
         var date = localdate.dayOfMonth.toString() +" "+ localdate.month.toString()+ " "+ localdate.year.toString()
         binding.datumText.text = date
-
 
         binding.btnBehaald.setOnClickListener { view: View ->
             viewModel.goalBehaald(args.goal.id)
@@ -75,33 +74,34 @@ class GoalDetailsFragment: DialogFragment() {
         }
 
         binding.btnVerwijder.setOnClickListener { view: View ->
-            if(args.goal.shared){
+            Log.d("Shared verwidjer",args.goal.shared.toString())
+            if (args.goal.shared) {
+
                 MaterialAlertDialogBuilder(view.getContext())
                     .setTitle("Goal verwijderen")
                     .setMessage("Deze goal is gedeeld. Ben je zeker dat je deze goal wilt verwijderen? ")
-                          .setPositiveButton("Ja"){_, which ->
+                    .setPositiveButton("Ja") { _, which ->
                         // unshare goal en then delete goal
-                              viewModel.shareGoal(args.goal.id) // Dit wordt goalShareUnShare
-                              viewModel.deleteGoal(args.goal.id)
+                        viewModel.shareGoal(args.goal.id)
+                        viewModel.deleteGoal(args.goal.id)
                     }
-                    .setNegativeButton("Nee"){_, which ->
+                    .setNegativeButton("Nee") { _, which ->
                         // nothing has to happen here
                     }.show()
+            } else {
+                viewModel.deleteGoal(args.goal.id)
+                view.findNavController().navigate(R.id.skyscraperFragment)
             }
-            viewModel.deleteGoal(args.goal.id)
-            view.findNavController().navigate(R.id.skyscraperFragment)
         }
 
         viewModel.shareStatus.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
-
-                Snackbar.make(contextView, viewModel.shareStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
-                   "Goal gedeeld"
-                )
-                {
-
-                }.show()
+                Toast.makeText(
+                    context,
+                    "Je doel is gedeeld",
+                    Toast.LENGTH_LONG
+                ).show()
             }
             else {
                 Snackbar.make(contextView!!, viewModel.shareStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
@@ -115,12 +115,11 @@ class GoalDetailsFragment: DialogFragment() {
         viewModel.completedStatus.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
-                Snackbar.make(contextView, viewModel.completedStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
-                    "Doel behaald"
-                )
-                {
-
-                }.show()
+                Toast.makeText(
+                    context,
+                    "Je doel is behaald",
+                    Toast.LENGTH_LONG
+                ).show()
             } else {
                 Snackbar.make(contextView!!, viewModel.completedStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
                     "Probeer opnieuw"
@@ -133,12 +132,11 @@ class GoalDetailsFragment: DialogFragment() {
         viewModel.removeStatus.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
-                Snackbar.make(contextView, viewModel.removeStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
-                    "Doel verwijderd"
-                )
-                {
-
-                }.show()
+                Toast.makeText(
+                    context,
+                    "Je doel is verwijderd",
+                    Toast.LENGTH_LONG
+                ).show()
             }
             else {
                 Snackbar.make(contextView!!, viewModel.removeStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(

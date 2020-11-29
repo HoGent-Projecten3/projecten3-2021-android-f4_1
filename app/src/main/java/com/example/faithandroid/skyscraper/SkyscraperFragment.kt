@@ -47,7 +47,7 @@ class SkyscraperFragment: Fragment() {
                 )
                 {
 
-                    viewModel.GetPostsOfSkyscraper("dora.theexplorer1999@gmail.com")
+                    viewModel.getPostsOfSkyscraper()
                 }.show()
             }
         })

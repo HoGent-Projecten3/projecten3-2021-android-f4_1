@@ -63,16 +63,16 @@ interface FaithApiService {
            Deferred<Adolescent>
 
     @Headers("Content-Type: application/json")
-    @POST("City/AddGoalByEmail")
-    suspend fun postGoalPost(@Body goal: GoalPost, @Query("email") email:String)
+    @POST("/city/skyscraper/goal")
+    suspend fun postGoalPost(@Body goal: GoalPost)
 
     @Headers("Content-Type: application/json")
-    @PUT("City/MarkGoalAsCompleted")
-    suspend fun checkGoal(@Query("email") email: String, @Query("goalid") id: Int)
+    @PUT("city/skyscraper/goal/{goalId}/mark-completed")
+    suspend fun checkGoal(@Query("goalId") goalId : Int)
 
   
-    @GET("City/GetPostsOfSkyScraperByAdolescentEmail")
-    fun getPostsOfSkyScraperByAdolescentEmail(@Query("email") email: String): Deferred<List<GoalPost>>
+    @GET("city/skyscraper/goal")
+    fun getPostsOfSkyScraper(): Deferred<List<GoalPost>>
 
 
     @GET("City/GetPostsOfBulletinBoardByAdolescentEmail")
@@ -96,14 +96,13 @@ interface FaithApiService {
     fun requestConsultation(@Query("email") email: String): Call<Void>
 
 
-    // wordt shareUnshareGoalWith Adolescents, /api/City/ShareGoalWithAdolescents
     @Headers("Content-Type: application/json")
-    @PUT("City/ShareGoalWithBillboard")
-    fun shareGoal(@Query("email") email: String, @Query("goalId") id: Int): Call<String>
+    @PUT("city/skyscraper/goal/{goalId}/share-to-billboard")
+    fun shareGoal(@Query("goalId") goalId: Int): Call<String>
 
     @Headers("Content-Type: application/json")
-    @DELETE("City/DeleteGoalByEmail")
-    fun removeGoal(@Query("id") id: Int, @Query("email") email: String): Call<String>
+    @DELETE("city/skyscraper/goal/{id}")
+    fun removeGoal(@Query("id") id: Int): Call<String>
 
     @GET("City/GetFilteredPostsFromPlace")
     fun getFilteredFromPlace(@Query("placeType") placeType: Int, @Query("postType") postType: Int, @Query("email") email: String): Call<List<Post>>

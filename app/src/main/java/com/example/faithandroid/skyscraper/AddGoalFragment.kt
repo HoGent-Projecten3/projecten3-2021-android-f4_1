@@ -75,7 +75,7 @@ class addGoalFragment : Fragment() {
             var datum = LocalDateTime.now()
             var newGoal = GoalPost(0, titel, beschrijving, false, offsteps, datum.toString())
 
-            viewModel.postNewGoalPost("dora.theexplorer1999@gmail.com",newGoal);
+            viewModel.postNewGoalPost(newGoal);
 
             view.findNavController().navigate(R.id.action_addGoalFragment_to_skyscraperFragment)
         }
