@@ -1,6 +1,5 @@
 package com.example.faithandroid.post
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -161,13 +160,12 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
     fun deletePostByEmail(id: Int, email: String, placeType: PlaceType)
     {
         viewModelScope.launch {
-            try{
             val stringCall: Call<Void> =
                 FaithApi.retrofitService.deletePostByEmail(placeType.ordinal,id)
             stringCall.enqueue(object : Callback<Void> {
 
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    Log.d("DELETEPOSTS", "We do be deletin thoooo")
+
                     if (response.isSuccessful()) {
                         val responseString: String? = response.code().toString()
 
@@ -180,12 +178,9 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
                 }
 
                 override fun onFailure(call: Call<Void>?, t: Throwable?) {
-                    Log.d("DELETEPOSTS", "It failed :(")
+
                 }
             })
-            }catch(e:Exception){
-                Log.d("DELETEPOSTS", e.message.toString());
-            }
         }
     }
 

@@ -98,6 +98,7 @@ class BulletinBoardViewModel : ViewModel() {
 
     }
 
+    
     fun deleteAllBulletinPosts(){
         coroutineScope.launch{
             var getPostList = FaithApi.retrofitService.getPostsOfPlaceByAdolescentEmail(0);
