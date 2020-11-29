@@ -23,7 +23,7 @@ import com.example.faithandroid.MainActivity
 import com.example.faithandroid.R
 import com.example.faithandroid.login.LoginFragment
 import com.google.android.material.textfield.TextInputEditText
-import kotlinx.android.synthetic.main.activity_test.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.login.*
 import kotlinx.android.synthetic.main.login.view.*
 import javax.xml.parsers.DocumentBuilderFactory.newInstance
@@ -79,6 +79,7 @@ class LoginActivity : AppCompatActivity() {
 
             var intent: Intent = Intent()
             intent.putExtra("loggedInUser", loginResult.success?.displayName)
+            intent.putExtra("token", loginResult.success?.token)
 
 
             setResult(Activity.RESULT_OK, intent)

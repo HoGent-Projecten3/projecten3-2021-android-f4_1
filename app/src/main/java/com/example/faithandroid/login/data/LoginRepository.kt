@@ -22,7 +22,7 @@ class LoginRepository(val dataSource: LoginDataSource) {
     val isLoggedIn: Boolean
         get() = user != null
 
-
+    var token: String = ""
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -38,32 +38,37 @@ class LoginRepository(val dataSource: LoginDataSource) {
         dataSource.logout()
     }
 
-      suspend fun  login(username: String, password: String): Result<Adolescent> {
+    suspend fun getAdolescent(username: String): Result<Adolescent>
+    {
+
+        val result2 = dataSource.getAdolescent(username)
+        if (result2 is Result.Success) {
+
+            setLoggedInUser(result2.data)
+            return result2
+        }
+        else
+        {
+            throw NullPointerException()
+        }
+
+
+    }
+
+      suspend fun  login(username: String, password: String): Result<String> {
           // handle login
-
-          var result2: Result<Adolescent>? = null
-
 
               val result = dataSource.login(username, password)
 
               if (result is Result.Success) {
-                  result2 = dataSource.getAdolescent(username)
-                  if (result2 is Result.Success) {
+                  AppPreferences.token = result.data
+                  return result
 
-                      setLoggedInUser((result2).data)
-
-
-                  }
               }
-
-          if (result2 != null)
-          {
-              return result2
-          }
-          else
-          {
-              throw NullPointerException()
-          }
+              else
+              {
+                  throw NullPointerException()
+              }
 
       }
 

@@ -1,5 +1,6 @@
 package com.example.faithandroid
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -24,7 +25,7 @@ import com.example.faithandroid.login.uilogin.LoginViewModel
 import com.example.faithandroid.login.uilogin.LoginViewModelFactory
 import com.example.faithandroid.profiel.profielFragment
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.activity_test.view.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 
 
 //import androidx.databinding.DataBindingUtil
@@ -43,6 +44,8 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_main)
+
+        AppPreferences.setup(applicationContext)
 
         val taskIntent =  Intent(this,LoginActivity::class.java)
         startActivityForResult(taskIntent, 1)
@@ -133,6 +136,19 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
         super.onActivityResult(requestCode, resultCode, data)
 
         this.username = data?.getStringExtra("loggedInUser").toString()
+        var token = data?.getStringExtra("token").toString();
+
+        AppPreferences.token = token
+        AppPreferences.username = this.username
+//
+//        val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return
+//        with (sharedPref.edit()) {
+//            putString("username", data?.getStringExtra("loggedInUser").toString())
+//            apply()
+//        }
+
+
+        Log.d("sharedPref", AppPreferences.token.toString())
     }
 
 

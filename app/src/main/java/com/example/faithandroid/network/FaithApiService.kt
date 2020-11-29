@@ -1,6 +1,8 @@
 package com.example.faithandroid.network
 
 
+import android.content.SharedPreferences
+import android.preference.PreferenceManager
 import com.example.faithandroid.login.data.User
 import com.example.faithandroid.models.Adolescent
 
@@ -9,11 +11,14 @@ import com.example.faithandroid.PostType
 
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
-import com.example.faithandroid.models.TextPost
+import com.google.android.material.internal.ContextUtils.getActivity
+
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.Deferred
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -22,7 +27,7 @@ import retrofit2.http.*
 import javax.security.auth.callback.Callback
 
 //TODO: give url
-private const val BASE_URL = "https://apigrow.azurewebsites.net/api/"
+private const val BASE_URL = "https://apigrow.azurewebsites.net/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -33,29 +38,28 @@ private val retrofit = Retrofit.Builder()
     .addConverterFactory(ScalarsConverterFactory.create())
     .addConverterFactory(MoshiConverterFactory.create(moshi))
     .addCallAdapterFactory(CoroutineCallAdapterFactory())
+    .client(OkHttpClient().newBuilder().addInterceptor{ chain ->
+        val newRequest = chain.request().newBuilder()
+            .addHeader("Authorization", "Bearer " + AppPreferences.token)
+            .build()
+        chain.proceed(newRequest)
+    }
+    .build())
     .baseUrl(BASE_URL)
     .build()
+
 
 interface FaithApiService {
 
     @Headers("Content-Type: application/json")
-    @POST("Account/CreateToken")
+    @POST("user/adolescent/login")
     fun loginAdolescent(@Body adolescent: User):
            Call<String>
 
 
-    @GET("Account/GetAdolescent")
-    fun getAdolescent(@Query("email") email: String):
+    @GET("user/adolescent/{email}")
+    fun getAdolescent(@Path("email") email: String):
            Deferred<Adolescent>
-
-    @GET("Account/GetAdolescentsByCounselorEmail/bob.debouwer1998@gmail.com")
-    fun getProperties():
-            Deferred<List<FaithProperty>>
-
-    @Headers("Content-Type: application/json")
-    @POST("City/AddPostByEmail")
-    fun postPost(@Body post: TextPost, @Query("email") email: String):
-            Call<Void>
 
     @Headers("Content-Type: application/json")
     @POST("City/AddGoalByEmail")
@@ -102,8 +106,8 @@ interface FaithApiService {
     fun getFilteredFromPlace(@Query("placeType") placeType: Int, @Query("postType") postType: Int, @Query("email") email: String): Call<List<Post>>
 
 
-    @GET("City/GetPostsOfPlaceByAdolescentEmail")
-    fun getPostsOfPlaceByAdolescentEmail(@Query("placeType") placeType: Int, @Query("email")email: String): Call<List<Post>>
+    @GET("city/{placeType}/post")
+    fun getPostsOfPlaceByAdolescentEmail(@Path("placeType") placeType: Int): Call<List<Post>>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @POST("City/AddPostByEmail")
