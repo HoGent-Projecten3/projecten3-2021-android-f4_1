@@ -161,7 +161,7 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
     {
         viewModelScope.launch {
             val stringCall: Call<Void> =
-                FaithApi.retrofitService.deletePostByEmail(id, email, placeType.ordinal)
+                FaithApi.retrofitService.deletePostByEmail(placeType.ordinal,id)
             stringCall.enqueue(object : Callback<Void> {
 
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
