@@ -13,7 +13,7 @@ class ShoppingCenterGridAdapter : ListAdapter<String, ShoppingCenterGridAdapter.
     class ShoppingCenterPropertyViewHolder(private var binding: ShoppingcenterBinding):
         RecyclerView.ViewHolder(binding.root){
         fun bind(avatarpart: String){
-          //  binding.property = avatarpart
+          // binding.property = avatarpart
             binding.executePendingBindings()
         }
 
