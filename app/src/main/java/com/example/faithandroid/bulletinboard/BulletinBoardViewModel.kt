@@ -98,7 +98,7 @@ class BulletinBoardViewModel : ViewModel() {
 
     }
 
-    
+
     fun deleteAllBulletinPosts(){
         coroutineScope.launch{
             var getPostList = FaithApi.retrofitService.getPostsOfPlaceByAdolescentEmail(0);
@@ -119,6 +119,7 @@ class BulletinBoardViewModel : ViewModel() {
                                 }
                             }
                             override fun onFailure(call: Call<Void>?, t: Throwable?) {
+                                throw Exception("Er liep iets mis tijdens het verwijderen")
                             }
                         })
                     }catch(e:Exception){
