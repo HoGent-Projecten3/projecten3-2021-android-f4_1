@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -23,6 +24,7 @@ import com.google.android.material.snackbar.Snackbar
 class BackpackFragment: Fragment() {
 
     private lateinit var viewModel: BackpackViewModel
+    private lateinit var dropdownList: AutoCompleteTextView
     private val postViewModel: PostViewModel by lazy{
         ViewModelProvider(this, ViewModelFactory(PlaceType.Rugzak)).get(PostViewModel::class.java)
     }
@@ -35,7 +37,7 @@ class BackpackFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-      val binding = DataBindingUtil.inflate<BackpackBinding>(
+      var binding = DataBindingUtil.inflate<BackpackBinding>(
           inflater,
           R.layout.backpack,
           container,
@@ -54,14 +56,11 @@ class BackpackFragment: Fragment() {
                 PostType.values()
             )
         }
+        dropdownList = binding.dropdownFilter
+        dropdownList.setAdapter(adapter)
+        dropdownList.setText("Alles", false)
 
-        binding.dropdownFilter.setAdapter(adapter)
-        binding.dropdownFilter.setOnClickListener{
-            binding.dropdownFilter.setAdapter(adapter)
-        }
-        binding.dropdownFilter.setText("Alles", false)
-
-        binding.dropdownFilter.setOnItemClickListener { parent, view, position, id ->
+        dropdownList.setOnItemClickListener { parent, view, position, id ->
 
             postViewModel.getFilteredPostFromPlace(
                 PlaceType.Rugzak,
@@ -107,6 +106,15 @@ class BackpackFragment: Fragment() {
 
     override fun onResume() {
         Log.d("Filter","OnRESUMEBACKPACK")
+        val adapter = this.context?.let {
+            ArrayAdapter<PostType>(
+                it,
+                R.layout.dropdown_menu_popup_item_extra,
+                PostType.values()
+            )
+        }
+
+        dropdownList.setAdapter(adapter)
         super.onResume()
     }
 

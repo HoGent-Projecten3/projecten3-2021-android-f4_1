@@ -51,13 +51,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/closeFilterBtn"
-                android:layout_width="49dp"
-                android:layout_height="62dp"
-                android:layout_weight="1"
-                app:tint="#000000"
-                app:srcCompat="@drawable/ic_close" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layoutFilter"
@@ -77,6 +70,15 @@
                     android:inputType="none" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/closeFilterBtn"
+                android:layout_width="49dp"
+                android:layout_height="62dp"
+                android:layout_weight="1"
+                app:tint="@color/colorPrimary"
+                app:srcCompat="@drawable/ic_baseline_cancel_24" />
+
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
