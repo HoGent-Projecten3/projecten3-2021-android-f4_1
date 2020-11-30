@@ -109,16 +109,14 @@ class AddVideoFragment: Fragment() {
         binding.filledExposedDropdown.setOnItemClickListener { parent, view, position, id ->
             viewModel.getFilteredPostFromPlace(
                 placeTypes[position],
-                PostType.Video,
-                "dora.theexplorer1999@gmail.com"
+                PostType.Video
             )
         }
 
 
         viewModel.getFilteredPostFromPlace(
             PlaceType.Rugzak,
-            PostType.Video,
-            "dora.theexplorer1999@gmail.com"
+            PostType.Video
         )
         binding.viewModel = viewModel
 

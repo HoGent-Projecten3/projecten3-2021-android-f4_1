@@ -102,8 +102,8 @@ interface FaithApiService {
     @POST("City/DeleteGoalByEmail")
     fun removeGoal(@Query("id") id: Int, @Query("email") email: String)
 
-    @GET("City/GetFilteredPostsFromPlace")
-    fun getFilteredFromPlace(@Query("placeType") placeType: Int, @Query("postType") postType: Int, @Query("email") email: String): Call<List<Post>>
+    @GET("city/{placeType}/filtered-post")
+    fun getFilteredFromPlace(@Path("placeType") placeType: Int, @Query("postType") postType: Int): Call<List<Post>>
 
 
     @GET("city/{placeType}/post")
