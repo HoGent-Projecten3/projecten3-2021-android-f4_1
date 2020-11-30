@@ -105,7 +105,6 @@ class BackpackFragment: Fragment() {
     }
 
     override fun onResume() {
-        Log.d("Filter","OnRESUMEBACKPACK")
         val adapter = this.context?.let {
             ArrayAdapter<PostType>(
                 it,
