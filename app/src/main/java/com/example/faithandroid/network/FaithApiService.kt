@@ -8,7 +8,6 @@ import com.example.faithandroid.models.Adolescent
 
 import com.example.faithandroid.PlaceType
 import com.example.faithandroid.PostType
-import com.example.faithandroid.models.GetPostsApiModel
 
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
@@ -97,7 +96,7 @@ interface FaithApiService {
 
 
     @GET("city/{placeType}/post")
-    suspend fun getPostsOfPlaceByAdolescentEmail(@Path("placeType") placeType: Int): Response<GetPostsApiModel>
+    suspend fun getPostsOfPlaceByAdolescentEmail(@Path("placeType") placeType: Int,@Header("Authorization")token: String): Response<List<Post>>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @POST("City/AddPostByEmail")

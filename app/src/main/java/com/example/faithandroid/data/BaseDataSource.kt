@@ -5,7 +5,7 @@ import com.example.nativeapps.util.Resource
 import retrofit2.Response
 
 abstract class BaseDataSource {
-    protected suspend fun <T> getResult(call: suspend () -> Response<T>): Resource<T> {
+    protected suspend fun <T> getResult(call: suspend () -> Response<List<T>>): Resource<List<T>> {
         try {
             val response = call()
             if (response.isSuccessful) {

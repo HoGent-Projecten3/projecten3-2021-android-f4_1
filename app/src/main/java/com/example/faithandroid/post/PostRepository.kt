@@ -11,6 +11,6 @@ class PostRepository(val localDataSource: PostLocalDataSource, val remoteDataSou
 
         databaseQuery = { localDataSource.getPostsOfPlaceByAdolescentEmail(placeType) },
         networkCall = { remoteDataSource.getPostsOfPlaceByAdolescentEmail(placeType) },
-        saveCallResult = { localDataSource.savePosts(it.records) }
+        saveCallResult = { localDataSource.savePosts(it) }
     )
 }
