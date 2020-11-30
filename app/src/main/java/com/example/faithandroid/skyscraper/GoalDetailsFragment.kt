@@ -85,6 +85,7 @@ class GoalDetailsFragment: DialogFragment() {
                         // unshare goal en then delete goal
                         viewModel.shareGoal(args.goal.id)
                         viewModel.deleteGoal(args.goal.id)
+                        view.findNavController().navigate(R.id.skyscraperFragment)
                     }
                     .setNegativeButton("Nee") { _, which ->
                         // nothing has to happen here
