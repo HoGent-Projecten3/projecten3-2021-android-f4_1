@@ -1,6 +1,7 @@
 package com.example.faithandroid.post.text
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -76,17 +77,16 @@ class addTextFragment: Fragment() {
         binding.filledExposedDropdown.setOnItemClickListener { parent, view, position, id ->
             viewModel.getFilteredPostFromPlace(
                 placeTypes[position],
-                PostType.Text,
-                "dora.theexplorer1999@gmail.com"
+                PostType.Text
             )
         }
 
 
         viewModel.getFilteredPostFromPlace(
             PlaceType.Rugzak,
-            PostType.Text,
-            "dora.theexplorer1999@gmail.com"
+            PostType.Text
         )
+        Log.d("FILTER", "it got filtered");
         binding.viewModel = viewModel
         binding.recyclerView.adapter =
             FilteredPostAdapter(object : CustomClick {
