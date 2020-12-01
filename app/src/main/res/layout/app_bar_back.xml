@@ -48,6 +48,7 @@
                 android:id="@+id/deletePostsBtn"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
+                android:visibility="invisible"
                 app:srcCompat="@drawable/ic_baseline_delete_24" />
 
         </LinearLayout>

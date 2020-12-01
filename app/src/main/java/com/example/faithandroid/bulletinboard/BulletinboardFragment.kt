@@ -1,9 +1,15 @@
 package com.example.faithandroid.bulletinboard
 
+import android.opengl.Visibility
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -26,6 +32,7 @@ class BulletinboardFragment: Fragment() {
     private val postViewModel: PostViewModel by lazy{
         ViewModelProvider(this, ViewModelFactory(PlaceType.Prikbord)).get(PostViewModel::class.java)
     }
+    private lateinit var deleteBtn: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +51,10 @@ class BulletinboardFragment: Fragment() {
       );
 
         binding.lifecycleOwner = this
+
+        Log.d("visibil","oncreate")
+
+        deleteBtn = binding.include.deletePostsBtn
 
         binding.requestConsultationButton.setOnClickListener {
             this.context?.let { context ->
@@ -135,5 +146,17 @@ class BulletinboardFragment: Fragment() {
 
 
         return binding.root
+    }
+
+    override fun onStart(){
+        super.onStart()
+        Log.d("visibil","onstart")
+        deleteBtn.visibility = VISIBLE
+    }
+
+    override fun onStop(){
+        super.onStop()
+        Log.d("visibil","onstop")
+        deleteBtn.visibility = INVISIBLE
     }
 }
