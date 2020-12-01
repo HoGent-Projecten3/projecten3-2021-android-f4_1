@@ -1,5 +1,7 @@
 package com.example.faithandroid.billboard
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,6 +14,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
 
 class BillboardViewModel : ViewModel() {
 
@@ -20,10 +23,11 @@ class BillboardViewModel : ViewModel() {
     val status: LiveData<String>
         get() = _status
 
+    @RequiresApi(Build.VERSION_CODES.O)
     val mockData = mutableListOf<GoalPost>(
-        GoalPost(0, "Huiswerk maken", "Mijn huiwerk maken voor Nederlands, Wiskunde & Geschiedenis", true, listOf<Step>(Step(0, "step")), "03-11-2020"),
-        GoalPost(0, "Kamer restylen", "Kamer een makeover geven in de stijl van New York dus met schilderen, posters ophangen en eventueel meubels verplaatsen enzo", true, listOf<Step>(Step(0, "step")), "29-08-2020")
-
+        GoalPost(0, "Huiswerk maken", "Mijn huiwerk maken voor Nederlands, Wiskunde & Geschiedenis", true, listOf<Step>(Step(0, "step")), "03/12/2020") ,
+        GoalPost(0, "Kamer restylen", "Kamer een makeover geven in de stijl van New York dus met schilderen, posters ophangen en eventueel meubels verplaatsen enzo", true, listOf<Step>(Step(0, "step")), "29/12/2020")
+// LocalDateTime.of(2020, 7, 3, 12, 0 ))
     )
 
     private val _properties = MutableLiveData<List<GoalPost>>()
