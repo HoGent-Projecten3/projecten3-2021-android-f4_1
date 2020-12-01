@@ -21,8 +21,12 @@ object AppPreferences {
         get() = Key.TOKEN.getString()
         set(value) = Key.TOKEN.setString(value)
 
+    var spotifyToken: String?
+        get() = Key.SPOTIFYTOKEN.getString()
+        set(value) = Key.SPOTIFYTOKEN.setString(value)
+
     private enum class Key {
-        USERNAME, TOKEN; // TODO step 3: replace these cases with your stored values keys
+        USERNAME, TOKEN, SPOTIFYTOKEN; // TODO step 3: replace these cases with your stored values keys
 
         fun getBoolean(): Boolean? = if (sharedPreferences!!.contains(name)) sharedPreferences!!.getBoolean(name, false) else null
         fun getFloat(): Float? = if (sharedPreferences!!.contains(name)) sharedPreferences!!.getFloat(name, 0f) else null
