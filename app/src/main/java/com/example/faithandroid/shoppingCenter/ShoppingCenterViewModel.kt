@@ -20,7 +20,13 @@ class ShoppingCenterViewModel : ViewModel() {
      val status: LiveData<String>
           get() = _status
 
-     val data = mutableListOf<String>("Hair_Standaard","Skin_Standaard","Upperbody_Standaard","Eye_Standaard")
+    val data = mutableListOf<String>("Hair_Standaard","Skin_Standaard","Upperbody_Standaard","Eye_Standaard")
+
+    val Hair = mutableListOf<String>("Hair_Standaard","Skin_Standaard","Upperbody_Standaard","Eye_Standaard")
+    val Skin = mutableListOf<String>("Hair_Standaard","Skin_Standaard","Upperbody_Standaard","Eye_Standaard")
+    val UpperBody = mutableListOf<String>("Hair_Standaard","Skin_Standaard","Upperbody_Standaard","Eye_Standaard")
+    val Eye = mutableListOf<String>("Hair_Standaard","Skin_Standaard","Upperbody_Standaard","Eye_Standaard")
+
 
 private val _properties = MutableLiveData<List<String>>()
 
@@ -39,7 +45,6 @@ private val _properties = MutableLiveData<List<String>>()
           coroutineScope.launch {
 
                try {
-
                     if(data.size > 0){
                          _properties.value = data
                     }
@@ -48,6 +53,56 @@ private val _properties = MutableLiveData<List<String>>()
                }
           }
      }
+
+    public fun getHair() {
+        coroutineScope.launch {
+
+            try {
+                if(Hair.size > 0){
+                    _properties.value = Hair
+                }
+            } catch (e: Exception){
+                _status.value = "Failure: ${e.message}"
+            }
+        }
+    }
+    public fun getEye() {
+        coroutineScope.launch {
+
+            try {
+                if(Eye.size > 0){
+                    _properties.value = Eye
+                }
+            } catch (e: Exception){
+                _status.value = "Failure: ${e.message}"
+            }
+        }
+    }
+    public fun getSkin() {
+        coroutineScope.launch {
+
+            try {
+                if(Skin.size > 0){
+                    _properties.value = Skin
+                }
+            } catch (e: Exception){
+                _status.value = "Failure: ${e.message}"
+            }
+        }
+    }
+
+    public fun getUpperBody() {
+        coroutineScope.launch {
+
+            try {
+                if(UpperBody.size > 0){
+                    _properties.value = UpperBody
+                }
+            } catch (e: Exception){
+                _status.value = "Failure: ${e.message}"
+            }
+        }
+    }
 
 
 

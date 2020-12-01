@@ -13,7 +13,9 @@ import com.example.faithandroid.billboard.BillboardGridAdapter
 import com.example.faithandroid.billboard.BillboardViewModel
 import com.example.faithandroid.databinding.ShoppingcenterBinding
 import com.google.android.material.snackbar.Snackbar
-
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
+import com.google.android.material.tabs.TabLayout.TabLayoutOnPageChangeListener
 
 class ShoppingCenterFragment: Fragment() {
 
@@ -53,6 +55,16 @@ class ShoppingCenterFragment: Fragment() {
                 }.show()
             }
         })
+
+       /* tabLayout = findViewById(R.id.tabLayout)
+        viewPager = findViewById(R.id.viewPager)
+        tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                viewPager.currentItem = tab.position
+            }
+            override fun onTabUnselected(tab: TabLayout.Tab) {}
+            override fun onTabReselected(tab: TabLayout.Tab) {}
+        })*/
 
 
         return binding.root
