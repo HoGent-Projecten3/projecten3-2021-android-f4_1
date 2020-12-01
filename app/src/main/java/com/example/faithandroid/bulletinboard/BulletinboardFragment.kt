@@ -16,6 +16,8 @@ import com.example.faithandroid.models.Post
 import com.example.faithandroid.post.PostViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.app_bar_back.view.*
+import kotlinx.android.synthetic.main.skyscraper_add_goal.view.*
 
 
 class BulletinboardFragment: Fragment() {
@@ -100,6 +102,37 @@ class BulletinboardFragment: Fragment() {
                 }.show()
             }
         })
+
+        binding.include.deletePostsBtn.setOnClickListener{
+            try{
+                this.context?.let { context ->
+                    MaterialAlertDialogBuilder(context)
+                        .setTitle("Alle posts verwijderen")
+                        .setMessage("Bent u zeker dat u alle posts uit bulletinbord weg wilt?")
+
+                        .setPositiveButton("Ja") { dialog, which ->
+                            // Respond to positive button press
+                            viewModel.deleteAllBulletinPosts();
+                            this.view?.let { view ->
+                                Snackbar.make(view, "Posts verwijdert", Snackbar.LENGTH_SHORT)
+                                    .show()
+                            }
+
+                        }
+                        .setNegativeButton("Nee")
+                        {
+                                dialog, which ->
+                        }
+                        .show()
+                }
+            }catch(e: Exception){
+                this.view?.let{ view ->
+                        Snackbar.make(view, e.message.toString(), Snackbar.LENGTH_SHORT).show()
+                }
+            }
+
+        }
+
 
         return binding.root
     }

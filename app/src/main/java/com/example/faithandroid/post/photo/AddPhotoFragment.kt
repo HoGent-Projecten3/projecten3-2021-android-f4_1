@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -113,17 +114,16 @@ class addPhotoFragment: Fragment() {
         binding.dropdownPlaatsen.setOnItemClickListener { parent, view, position, id ->
             viewModel.getFilteredPostFromPlace(
                 placeTypes[position],
-                PostType.Image,
-                "dora.theexplorer1999@gmail.com"
+                PostType.Image
             )
         }
 
 
         viewModel.getFilteredPostFromPlace(
             PlaceType.Rugzak,
-            PostType.Image,
-            "dora.theexplorer1999@gmail.com"
+            PostType.Image
         )
+        Log.d("FILTER", "it got filtered")
         binding.viewModel = viewModel
 
         binding.addImageRecyclerView.adapter = FilteredPostAdapter(object : CustomClick {

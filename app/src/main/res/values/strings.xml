@@ -85,6 +85,6 @@
     <string name="add_new_goal">Voeg toe</string>
     <string name="lbl_list_goalsteps">De stappen:</string>
     <string name="lbl_description_goal">Beschrijving</string>
-
+    <string name="soort_post_filter">Soort post filter</string>
 
 </resources>

@@ -104,8 +104,8 @@ interface FaithApiService {
     @DELETE("city/skyscraper/goal/{id}")
     fun removeGoal(@Path("id") id: Int): Call<String>
 
-    @GET("City/GetFilteredPostsFromPlace")
-    fun getFilteredFromPlace(@Query("placeType") placeType: Int, @Query("postType") postType: Int, @Query("email") email: String): Call<List<Post>>
+    @GET("city/{placeType}/filtered-post")
+    fun getFilteredFromPlace(@Path("placeType") placeType: Int, @Query("postType") postType: Int): Call<List<Post>>
 
 
     @GET("city/{placeType}/post")
@@ -116,8 +116,8 @@ interface FaithApiService {
     fun addPostByEmail(@Body post: Post, @Query("email") email: String, @Query("placeType") placeType: Int): Call<Void>
 
     @Headers("Content-Type: application/json", "accept: application/json")
-    @PUT("City/DeletePostByEmail")
-    fun deletePostByEmail(@Query("id") id: Int, @Query("email") email: String, @Query("placeType") placeType: Int): Call<Void>
+    @PUT("city/{placeType}/post/remove/{postId}")
+    fun deletePostByEmail(@Path("placeType") placeType: Int, @Path("postId") postId: Int): Call<Void>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @PUT("City/AddExistingPostToPlace")
