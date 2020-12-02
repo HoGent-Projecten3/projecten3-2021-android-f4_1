@@ -13,10 +13,6 @@ import com.example.faithandroid.shoppingCenter.SkinFragment
 
 class ShoppingCenterTabAdapter(private val myContext: Context?, fm: FragmentManager?, internal var totalTabs: Int) : FragmentStatePagerAdapter(fm!!, FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
-    fun ShoppingCenterTabAdapter(fm: FragmentManager?) {
-        super(fm)
-    }
-
     override fun getItem(position: Int): Fragment {
         when (position) {
             0 -> return HairFragment()
@@ -33,8 +29,10 @@ class ShoppingCenterTabAdapter(private val myContext: Context?, fm: FragmentMana
 
     override fun getPageTitle(position: Int): CharSequence? {
         return when (position) {
-            0 -> "Tab 1"
-            1 -> "Tab 2"
+            0 -> "Haar"
+            1 -> "Ogen"
+            2 -> "Lichaam"
+            3 -> "Huidskleur"
             else -> null
         }
     }

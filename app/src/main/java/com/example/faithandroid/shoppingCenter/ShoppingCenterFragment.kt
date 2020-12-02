@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
@@ -57,7 +58,7 @@ class ShoppingCenterFragment: Fragment() {
 
         val tabAdapter = ShoppingCenterTabAdapter(this.context,
             activity?.supportFragmentManager, tabLayout!!.tabCount)
-        viewPager!!.adapter = tabAdapter
+        viewPager!!.adapter = tabAdapter as RecyclerView.Adapter<(raw) RecyclerView.ViewHolder!>?
 
 
         viewPager!!.registerOnPageChangeCallback(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
