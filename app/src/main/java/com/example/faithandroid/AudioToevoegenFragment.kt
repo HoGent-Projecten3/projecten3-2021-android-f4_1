@@ -2,6 +2,7 @@ package com.example.faithandroid
 
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
+import android.database.Cursor
 import android.media.MediaRecorder
 import android.net.Uri
 import android.os.Build
@@ -29,6 +30,7 @@ import kotlinx.android.synthetic.main.audio_toevoegen.*
 import java.io.File
 import java.io.IOException
 
+
 class AudioToevoegenFragment: Fragment() {
 
     val args: AudioToevoegenFragmentArgs by navArgs()
@@ -45,6 +47,8 @@ class AudioToevoegenFragment: Fragment() {
     private var state: Boolean = false
     private var recordingStopped: Boolean = false
     lateinit var uitvoer: String
+
+    var uri: Uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
 
     private lateinit var viewModel: PostViewModel
 
@@ -64,6 +68,8 @@ class AudioToevoegenFragment: Fragment() {
         mediaRecorder?.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
         mediaRecorder?.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
         mediaRecorder?.setOutputFile(output)
+
+
 
     }
 
@@ -165,6 +171,24 @@ class AudioToevoegenFragment: Fragment() {
             nieuwePost = true
             this.view?.findViewById<TextInputLayout>(R.id.titelVeld)?.visibility = View.VISIBLE
 
+
+            val yourFilePath = requireContext().filesDir.toString() + "/" + "recording.mp3"
+            val yourFile = File(yourFilePath)
+            Log.d("yourfile","lijn172")
+
+
+            val projection = arrayOf(
+                MediaStore.Audio.AudioColumns.DATA,
+                MediaStore.Audio.AudioColumns.TITLE
+            )
+
+            val c: Cursor? = requireContext().contentResolver.query(
+                uri,
+                projection,
+                MediaStore.Audio.Media.DATA + " like ? ",
+                arrayOf("%utm%"),
+                null
+            )
 
         }
 
