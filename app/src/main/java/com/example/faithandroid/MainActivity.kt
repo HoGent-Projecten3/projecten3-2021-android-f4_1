@@ -62,7 +62,12 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
         var navHeader = findViewById<NavigationView>(R.id.navView)
         var bind = DataBindingUtil.inflate<AppNavHeaderMainBinding>(layoutInflater, R.layout.app_nav_header_main, navHeader.navView , false)
         navHeader.navView.addHeaderView(bind.root)
-        bind.adolescent = username
+        var pvm: ProfielViewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
+        pvm.getAdolescent()
+        pvm.adol.observe(this, {
+            username = it.firstName + " " + it.name
+            bind.nameText.text = username
+        })
       // var navHeader2 = findViewById<AppNavHeaderMainBinding>(R.id.) as AppNavHeaderMainBinding
 //        navHeader2.adolescent = viewModel
 
@@ -138,11 +143,7 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        var pvm: ProfielViewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
-        pvm.getAdolescent()
-        pvm.adol.observe(this, Observer {
-            this.username = it.firstName + " " + it.name
-        })
+
         //this.username = data?.getStringExtra("loggedInUser").toString()
         Log.d("UserMain",this.username)
         var token = data?.getStringExtra("token").toString();

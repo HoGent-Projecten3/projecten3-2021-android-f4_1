@@ -104,7 +104,7 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @PUT("city/{placeType}/add-existing/{postId}")
-    fun addExistingPostToPlace(@Path("placeType")placeType: Int, @Path("postId") id: Int): Call<Void>
+    fun addExistingPostToPlace(@Path("placeType") placeType: Int, @Path("postId") postId: Int): Call<Void>
 
 }
 
