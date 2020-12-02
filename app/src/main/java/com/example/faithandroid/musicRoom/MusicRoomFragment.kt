@@ -80,7 +80,7 @@ class MusicRoomFragment: Fragment() {
                 AuthenticationResponse.Type.TOKEN -> {
                     AppPreferences.spotifyToken = response.accessToken
                     Log.d("tokenSpotify", response.accessToken)
-
+                    musicRoomViewModel.getUser()
 
                 }
                 AuthenticationResponse.Type.ERROR -> {
