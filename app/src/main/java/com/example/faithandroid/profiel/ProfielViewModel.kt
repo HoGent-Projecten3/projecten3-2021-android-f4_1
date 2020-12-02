@@ -1,36 +1,57 @@
 package com.example.faithandroid.profiel
 
+import AppPreferences
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.faithandroid.models.Adolescent
+import com.example.faithandroid.models.Post
 import com.example.faithandroid.network.FaithApi
 import com.example.faithandroid.network.FaithApiService
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import retrofit2.*
+import retrofit2.awaitResponse
 
 class ProfielViewModel: ViewModel() {
 
-    private var viewModelJob = Job()
-    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    lateinit var adol: Adolescent
+    private var _adol = MutableLiveData<Adolescent>()
+    var adol: LiveData<Adolescent> = MutableLiveData<Adolescent>()
+        get() = _adol
 
-    fun getAdolescent(): Adolescent{
-        coroutineScope.launch{
-            try{
-                Log.d("User",AppPreferences.username.toString())
-                Log.d("User", AppPreferences.username.toString())
-                var ad =  FaithApi.retrofitService.getAdolescent(AppPreferences.username.toString())
-                adol = ad.await()
-                Log.d("UserVM", adol.toString())
-            }catch (e: Exception){
-                throw Exception(e.message)
-            }
+    fun getAdolescent(): Adolescent?{
+
+        viewModelScope.launch {
+
+            val stringCall: Call<Adolescent> =
+                FaithApi.retrofitService.getAdolescent(AppPreferences.username.toString())
+
+            _adol.value = stringCall.await()
+            Log.d("UserVM1", _adol.value.toString())
+            /*stringCall.enqueue( object : Callback<Adolescent> {
+
+                override fun onResponse(call: Call<Adolescent>, response: Response<Adolescent>) {
+                    if (response.isSuccessful()) {
+                        _adol.value = response.body()
+                        Log.d("UserVM2", _adol.value.toString())
+                    }
+                    else
+                    {
+                        throw Exception("Gebruiker kon niet worden opgehaald")
+                    }
+                }
+
+                override fun onFailure(call: Call<Adolescent>?, t: Throwable?) {
+                    throw Exception("Gebruiker kon niet worden opgehaald")
+                }
+
+
+
+            })*/
         }
-
-        return adol
+        return _adol.value
 
     }
 }

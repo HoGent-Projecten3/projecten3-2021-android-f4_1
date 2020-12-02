@@ -59,7 +59,7 @@ interface FaithApiService {
 
     @GET("user/adolescent/{email}")
     fun getAdolescent(@Path("email") email: String):
-           Deferred<Adolescent>
+           Call<Adolescent>
 
     @Headers("Content-Type: application/json")
     @POST("/city/skyscraper/goal")

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.faithandroid.R
 import com.example.faithandroid.bulletinboard.BulletinBoardViewModel
@@ -21,8 +22,9 @@ import com.google.android.material.snackbar.Snackbar
 class profielFragment: Fragment() {
 
     private lateinit var viewModel: ProfielViewModel
-    private lateinit var adolescent: Adolescent
+    private var adolescent: Adolescent? = null
     private var m_Text = ""
+    private lateinit var binding: ProfielBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,27 +35,24 @@ class profielFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<ProfielBinding>(
+        binding = DataBindingUtil.inflate<ProfielBinding>(
             inflater,
             R.layout.profiel,
             container,
             false
         );
 
-        try {
-            viewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
 
-            adolescent = viewModel.getAdolescent()
-            Log.d("UserFrag", adolescent.toString())
-            binding.profielNaam.text = String.format(adolescent.firstName + " " + adolescent.name)
-            binding.profielEmail.text = adolescent.email
-        }catch(e: Exception){
-            this.view?.let { view ->
+        viewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
 
-                    Snackbar.make(view, e.message.toString(), Snackbar.LENGTH_SHORT)
-                        .show()
-            }
-        }
+        viewModel.getAdolescent()
+
+        viewModel.adol.observe(viewLifecycleOwner, Observer {
+            adolescent = it
+            Log.d("UserFR", adolescent.toString())
+            binding.profielNaam.text = String.format(adolescent?.firstName + " " + adolescent?.name)
+            binding.profielEmail.text = adolescent?.email
+        })
 
         binding.wachtwoordWIjzigen.setOnClickListener(){
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
@@ -78,4 +77,5 @@ class profielFragment: Fragment() {
         }
         return binding.root
     }
+
 }

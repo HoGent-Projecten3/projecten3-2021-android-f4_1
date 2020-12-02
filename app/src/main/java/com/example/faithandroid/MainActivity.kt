@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 
 import androidx.lifecycle.ViewModelProvider
 
@@ -23,6 +25,7 @@ import com.example.faithandroid.databinding.AppNavHeaderMainBinding
 import com.example.faithandroid.login.uilogin.LoginActivity
 import com.example.faithandroid.login.uilogin.LoginViewModel
 import com.example.faithandroid.login.uilogin.LoginViewModelFactory
+import com.example.faithandroid.profiel.ProfielViewModel
 import com.example.faithandroid.profiel.profielFragment
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.view.*
@@ -135,8 +138,13 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        this.username = data?.getStringExtra("loggedInUser").toString()
-        Log.d("UserMain",data?.getStringExtra("username").toString())
+        var pvm: ProfielViewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
+        pvm.getAdolescent()
+        pvm.adol.observe(this, Observer {
+            this.username = it.firstName + " " + it.name
+        })
+        //this.username = data?.getStringExtra("loggedInUser").toString()
+        Log.d("UserMain",this.username)
         var token = data?.getStringExtra("token").toString();
 
         AppPreferences.token = token

@@ -49,11 +49,11 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/nav_header_textView"
+        android:id="@+id/nameText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
-        android:text="@{adolescent}"
+        android:text="@{viewModel.adol.firstName}"
         android:textStyle="bold"
         android:textSize="20dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
