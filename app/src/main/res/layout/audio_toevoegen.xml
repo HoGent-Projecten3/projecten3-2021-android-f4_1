@@ -31,9 +31,9 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingTop="20dp"
+                android:layout_marginTop="?attr/actionBarSize"
                 android:orientation="vertical"
-                android:layout_marginTop="?attr/actionBarSize">
+                android:paddingTop="20dp">
 
                 <LinearLayout
                     android:id="@+id/linearLayout2"
@@ -50,8 +50,8 @@
                         android:id="@+id/ic_voice"
                         android:layout_width="76dp"
                         android:layout_height="63dp"
+                        android:clickable="true"
                         app:srcCompat="@drawable/ic_voice" />
-
 
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -96,8 +96,8 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
-                    android:layout_width="407dp"
-                    android:layout_height="268dp"
+                    android:layout_width="410dp"
+                    android:layout_height="235dp"
                     android:layout_marginTop="16dp"
                     app:filteredPostData="@{viewModel.postListFiltered}"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -108,55 +108,52 @@
 
                 </androidx.recyclerview.widget.RecyclerView>
 
-                <Button
+                <ImageView
                     android:id="@+id/start"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/start"
+                    android:layout_width="58dp"
+                    android:layout_height="51dp"
+                    android:clickable="true"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.114"
+                    app:layout_constraintEnd_toStartOf="@+id/pauze"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-                    app:layout_constraintVertical_bias="0.398" />
+                    app:srcCompat="@drawable/ic_start" />
 
-                <Button
-                    android:id="@+id/beluister"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Beluister"
-                    android:enabled="false"
+                <ImageView
+                    android:id="@+id/pauze"
+                    android:layout_width="58dp"
+                    android:layout_height="51dp"
+                    android:clickable="true"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.535"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-                    app:layout_constraintVertical_bias="0.398" />
+                    app:srcCompat="@drawable/ic_pause" />
 
-                <Button
+                <ImageView
                     android:id="@+id/stop"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/stop"
-                    android:enabled="false"
-
+                    android:layout_width="58dp"
+                    android:layout_height="51dp"
+                    android:clickable="true"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.95"
-                    app:layout_constraintStart_toEndOf="@+id/beluister"
+                    app:layout_constraintStart_toEndOf="@+id/pauze"
                     app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-                    app:layout_constraintVertical_bias="0.398" />
+                    app:srcCompat="@drawable/ic_stop" />
 
                 <Button
-                    android:id="@+id/audioToevoegenButton"
+                    android:id="@+id/videoToevoegenButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/nieuwe_post_toevoegen"
-                    android:enabled="false"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/stop" />
+                    app:layout_constraintTop_toBottomOf="@+id/pauze" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>

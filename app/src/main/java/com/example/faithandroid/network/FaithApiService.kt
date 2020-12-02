@@ -111,8 +111,8 @@ interface FaithApiService {
     fun getPostsOfPlaceByAdolescentEmail(@Path("placeType") placeType: Int): Call<List<Post>>
 
     @Headers("Content-Type: application/json", "accept: application/json")
-    @POST("City/AddPostByEmail")
-    fun addPostByEmail(@Body post: Post, @Query("email") email: String, @Query("placeType") placeType: Int): Call<Void>
+    @POST("city/{placeType}/post")
+    fun addPostByEmail(@Body post: Post, @Path("placeType") placeType: Int): Call<Void>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @PUT("City/DeletePostByEmail")
