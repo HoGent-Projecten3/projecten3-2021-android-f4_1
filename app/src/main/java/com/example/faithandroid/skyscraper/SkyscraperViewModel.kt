@@ -60,7 +60,7 @@ class SkyscraperViewModel : ViewModel() {
 
     fun GetPostsOfSkyscraper(email: String) {
         coroutineScope.launch {
-            var getPropertiesDeferred = FaithApi.retrofitService.getPostsOfSkyScraperByAdolescentEmail(email);
+            var getPropertiesDeferred = FaithApi.retrofitService.getPostsOfSkyScraper();
             try {
 
                 var listResult = getPropertiesDeferred.await()
@@ -78,7 +78,7 @@ class SkyscraperViewModel : ViewModel() {
     fun goalBehaald(id:Int){
         viewModelScope.launch {
             try {
-                FaithApi.retrofitService.checkGoal("dora.theexplorer1999@gmail.com", id)
+                FaithApi.retrofitService.checkGoal(id)
 
                 _completedStatus.value = R.string.doel_gedeeld.toString();
             } catch (e: Exception) {
@@ -90,7 +90,7 @@ class SkyscraperViewModel : ViewModel() {
     fun postNewGoalPost(email: String, goalPost: GoalPost) {
 
         viewModelScope.launch {
-            val response = FaithApi.retrofitService.postGoalPost(goalPost, email)
+            val response = FaithApi.retrofitService.postGoalPost(goalPost)
 
 
         }
@@ -100,7 +100,7 @@ class SkyscraperViewModel : ViewModel() {
     fun shareGoal(id:Int){
         coroutineScope.launch{
             try {
-                FaithApi.retrofitService.shareGoal("dora.theexplorer1999@gmail.com", id);
+                FaithApi.retrofitService.shareGoal(id);
                 _shareStatus.value = R.string.doel_gedeeld.toString();
             } catch (e: Exception){
                 _shareStatus.value = e.localizedMessage
@@ -111,7 +111,7 @@ class SkyscraperViewModel : ViewModel() {
     fun deleteGoal(id:Int){
         coroutineScope.launch{
             try {
-                FaithApi.retrofitService.removeGoal(id, "dora.theexplorer1999@gmail.com");
+                FaithApi.retrofitService.removeGoal(id);
                 _removeStatus.value = R.string.doel_verwijderd.toString()
             } catch (e: Exception){
                 _removeStatus.value = e.localizedMessage

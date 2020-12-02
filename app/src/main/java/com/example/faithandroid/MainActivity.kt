@@ -136,10 +136,11 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
         super.onActivityResult(requestCode, resultCode, data)
 
         this.username = data?.getStringExtra("loggedInUser").toString()
+        Log.d("UserMain",data?.getStringExtra("username").toString())
         var token = data?.getStringExtra("token").toString();
 
         AppPreferences.token = token
-        AppPreferences.username = this.username
+        //AppPreferences.username = this.username
 //
 //        val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return
 //        with (sharedPref.edit()) {
