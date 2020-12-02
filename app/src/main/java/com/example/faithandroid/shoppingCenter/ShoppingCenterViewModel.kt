@@ -1,6 +1,7 @@
 package com.example.faithandroid.shoppingCenter
 
 import android.util.Log
+import android.widget.Switch
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,10 +23,10 @@ class ShoppingCenterViewModel : ViewModel() {
 
     val data = mutableListOf<String>("Hair_Standaard","Skin_Standaard","Upperbody_Standaard","Eye_Standaard")
 
-    val Hair = mutableListOf<String>("Hair_Standaard","Skin_Standaard","Upperbody_Standaard","Eye_Standaard")
-    val Skin = mutableListOf<String>("Hair_Standaard","Skin_Standaard","Upperbody_Standaard","Eye_Standaard")
-    val UpperBody = mutableListOf<String>("Hair_Standaard","Skin_Standaard","Upperbody_Standaard","Eye_Standaard")
-    val Eye = mutableListOf<String>("Hair_Standaard","Skin_Standaard","Upperbody_Standaard","Eye_Standaard")
+    val Hair = mutableListOf<String>("Hair_Standaard","Hair_Standaard2","Upperbody_Standaard","Eye_Standaard")
+    val Skin = mutableListOf<String>("Skin_Standaard2","Skin_Standaard","Upperbody_Standaard","Eye_Standaard")
+    val UpperBody = mutableListOf<String>("Body_Standaard2","Skin_Standaard","Upperbody_Standaard","Eye_Standaard")
+    val Eye = mutableListOf<String>("Eye_Standaard2","Skin_Standaard","Upperbody_Standaard","Eye_Standaard")
 
 
 private val _properties = MutableLiveData<List<String>>()
@@ -38,7 +39,7 @@ private val _properties = MutableLiveData<List<String>>()
      private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
      init {
-          getPosts()
+
      }
 
      public fun getPosts() {
