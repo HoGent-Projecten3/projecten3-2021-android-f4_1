@@ -1,4 +1,7 @@
+
+
 package com.example.faithandroid
+
 
 
 import AppPreferences
@@ -7,12 +10,12 @@ import android.net.Uri
 
 import android.content.Context
 import android.Manifest
+
 import android.content.Intent
 import android.graphics.Path
 import android.content.pm.PackageManager
 
 import android.os.Bundle
-import android.renderscript.ScriptGroup
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -29,6 +32,7 @@ import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 
+
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.replace
@@ -38,7 +42,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
@@ -48,7 +51,7 @@ import com.example.faithandroid.login.uilogin.LoginActivity
 import com.example.faithandroid.login.uilogin.LoginViewModel
 import com.example.faithandroid.login.uilogin.LoginViewModelFactory
 import com.example.faithandroid.profiel.ProfielViewModel
-import com.example.faithandroid.profiel.profielFragment
+import com.example.faithandroid.profiel.ProfielFragment
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import com.spotify.android.appremote.api.ConnectionParams
@@ -58,12 +61,13 @@ import com.spotify.sdk.android.authentication.AuthenticationClient
 import com.spotify.sdk.android.authentication.AuthenticationRequest
 import com.spotify.sdk.android.authentication.AuthenticationResponse
 
+
 import kotlinx.android.synthetic.main.activity_main.view.*
 
 
 //import androidx.databinding.DataBindingUtil
 
-class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavigationItemSelectedListener {
     
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
@@ -192,9 +196,13 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
 
         when (menuItem.itemId) {
             R.id.profielFragment -> {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.layoutToolBar, profielFragment())
+
+                 supportFragmentManager.beginTransaction()
+                    .replace(R.id.layoutToolBar, ProfielFragment())
+
                     .commit()
+
+                menuItem.onNavDestinationSelected(findNavController(R.id.NavHostFragment))
             }
             R.id.loginFragment -> {
 
@@ -206,14 +214,25 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
                     .replace(R.id.layoutToolBar, LoginFragment())
                     .commit()
 
-                //finishAffinity()
-                Toast.makeText(this, "Logged out!", Toast.LENGTH_LONG).show()
+
+                 //finishAffinity()
+                Toast.makeText(this,"Uitgelogd!", Toast.LENGTH_LONG).show()
+
                 Log.d("Token", AppPreferences.token.toString())
 
                 val taskIntent = Intent(this, LoginActivity::class.java)
                 startActivityForResult(taskIntent, 1)
 
             }
+
+            R.id.homeFragment -> {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.layoutToolBar, HomeFragment())
+                    .commit()
+
+                menuItem.onNavDestinationSelected(findNavController(R.id.NavHostFragment))
+            }
+
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
@@ -252,6 +271,4 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
 
 
 }
-
-
 
