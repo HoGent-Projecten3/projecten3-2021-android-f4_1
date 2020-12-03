@@ -2,6 +2,7 @@ package com.example.faithandroid
 
 import AppPreferences
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.renderscript.ScriptGroup
 import android.util.Log
@@ -84,7 +85,12 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
 
         drawerLayout = findViewById(R.id.drawerLayout)
         var navHeader = findViewById<NavigationView>(R.id.navView)
-        bind = DataBindingUtil.inflate<AppNavHeaderMainBinding>(layoutInflater, R.layout.app_nav_header_main, navHeader.navView , false)
+        bind = DataBindingUtil.inflate<AppNavHeaderMainBinding>(
+            layoutInflater,
+            R.layout.app_nav_header_main,
+            navHeader.navView,
+            false
+        )
 
         navHeader.navView.addHeaderView(bind.root)
 
@@ -163,7 +169,7 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
 
         when (menuItem.itemId) {
             R.id.profielFragment -> {
-                 supportFragmentManager.beginTransaction()
+                supportFragmentManager.beginTransaction()
                     .replace(R.id.layoutToolBar, profielFragment())
                     .commit()
             }
@@ -174,14 +180,14 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
                 AppPreferences.token = ""
                 AppPreferences.username = ""
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.layoutToolBar,LoginFragment())
+                    .replace(R.id.layoutToolBar, LoginFragment())
                     .commit()
 
-                 //finishAffinity()
-                Toast.makeText(this,"Logged out!", Toast.LENGTH_LONG).show()
+                //finishAffinity()
+                Toast.makeText(this, "Logged out!", Toast.LENGTH_LONG).show()
                 Log.d("Token", AppPreferences.token.toString())
 
-                val taskIntent =  Intent(this,LoginActivity::class.java)
+                val taskIntent = Intent(this, LoginActivity::class.java)
                 startActivityForResult(taskIntent, 1)
 
             }
@@ -212,42 +218,12 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
         super.onStart()
 
 
-        val connectionParams = ConnectionParams.Builder(CLIENT_ID)
-            .setRedirectUri(REDIRECT_URI)
-            .showAuthView(true)
-            .build()
-
-        SpotifyAppRemote.connect(this, connectionParams,
-            object : Connector.ConnectionListener {
-                override fun onConnected(spotifyAppRemote: SpotifyAppRemote) {
-                    spotifyAppRemoteLocal = spotifyAppRemote
-                    Log.d("MainActivity", "Connected! Yay!")
-                    // Now you can start interacting with App Remote
-                    connected()
-                }
-
-                override fun onFailure(throwable: Throwable) {
-                    Log.e("MainActivity", throwable.message, throwable)
-
-                    // Something went wrong when attempting to connect! Handle errors here
-                }
-            })
-
     }
 
-    private fun connected()
-    {
-
-
-    }
 
     override fun onStop()
     {
         super.onStop()
-//        if(spotifyAppRemoteLocal != null)
-//        {
-//            SpotifyAppRemote.disconnect(spotifyAppRemoteLocal);
-//        }
 
     }
 

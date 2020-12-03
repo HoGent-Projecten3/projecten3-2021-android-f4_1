@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     
     <data>
         <variable
@@ -61,6 +62,23 @@
                 </LinearLayout>
 
             </LinearLayout>
+
+            <ImageView
+                android:id="@+id/deletePlayListButton"
+                style="@style/pinkButtonStyle"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="top|end"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:clickable="true"
+                app:maxImageSize="100dp"
+                app:srcCompat="@drawable/ic_baseline_cancel_24"
+                app:tint="@color/colorPrimary"
+                tools:ignore="MissingConstraints" />
 
         </com.google.android.material.card.MaterialCardView>
 
