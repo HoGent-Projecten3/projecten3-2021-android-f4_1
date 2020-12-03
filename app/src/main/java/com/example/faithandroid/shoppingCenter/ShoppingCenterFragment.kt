@@ -11,7 +11,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat.VFullPath
 import com.example.faithandroid.AvatarCustomClick
 import com.example.faithandroid.BodyType
 import com.example.faithandroid.R
