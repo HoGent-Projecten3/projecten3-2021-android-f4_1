@@ -15,11 +15,19 @@ object AppPreferences {
     // TODO step 4: replace these example attributes with your stored values
     var username: String?
         get() = Key.USERNAME.getString()
-        set(value) = Key.USERNAME.setString(value)
-
+        set(value) = if(value.equals("")){
+            Key.USERNAME.remove()
+        }else {
+            Key.USERNAME.setString(value)
+        }
     var token: String?
         get() = Key.TOKEN.getString()
-        set(value) = Key.TOKEN.setString(value)
+        set(value) = if(value.equals("")){
+           Key.TOKEN.remove()
+        }else{
+            Key.TOKEN.setString(value)
+        }
+
 
     private enum class Key {
         USERNAME, TOKEN; // TODO step 3: replace these cases with your stored values keys

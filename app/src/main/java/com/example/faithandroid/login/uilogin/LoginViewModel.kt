@@ -86,4 +86,9 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         return password.length > 5
     }
 
+    fun logout(){
+        loginRepository.logout()
+        _loginResult.value = null
+        _loginForm.value = null
+    }
 }
