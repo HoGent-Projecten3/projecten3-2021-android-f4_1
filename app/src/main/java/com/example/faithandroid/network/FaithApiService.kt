@@ -11,6 +11,7 @@ import com.example.faithandroid.PostType
 
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
+
 import com.google.android.material.internal.ContextUtils.getActivity
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -96,6 +97,7 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @POST("city/{placeType}/post")
+
     fun addPostByEmail(@Path("placeType") placeType: Int, @Body post: Post): Call<Void>
 
     @Headers("Content-Type: application/json", "accept: application/json")

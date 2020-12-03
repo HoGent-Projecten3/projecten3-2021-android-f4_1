@@ -88,7 +88,9 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
         var bool: Boolean = true
         viewModelScope.launch {
             val stringCall: Call<Void> =
+
                 FaithApi.retrofitService.addPostByEmail(placeType.ordinal, post)
+
             stringCall.enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful()) {
