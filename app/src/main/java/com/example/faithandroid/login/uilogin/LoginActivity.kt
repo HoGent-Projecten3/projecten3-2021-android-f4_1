@@ -122,6 +122,7 @@ class LoginActivity : AppCompatActivity() {
                 loading.visibility = View.VISIBLE
                 Log.i("aaaaaa",username.text.toString() + " "  + password.text.toString())
                 loginViewModel.login(username.text.toString(), password.text.toString())
+                AppPreferences.username = username.text.toString()
                //  supportFragmentManager.findFragmentById(R.id.action_loginFragment_to_homeFragment) as LoginFragment
              //  this.findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
             }
@@ -135,6 +136,11 @@ class LoginActivity : AppCompatActivity() {
 
       /*  val taskIntent =  Intent(this, HomeFragment::class.java)
         startActivity(taskIntent)*/
+    }
+
+
+   override fun onBackPressed() {
+        finishAffinity()
     }
 
 
@@ -154,6 +160,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
 }
+
 
 
 /**

@@ -50,4 +50,6 @@
     <color name="BlackEye">#111111</color>
     <color name="GrayEye">#777777</color>
     <color name="RedEye">#FF0400</color>
+
+    <color name="okGreen">#A1D686</color>
 </resources>

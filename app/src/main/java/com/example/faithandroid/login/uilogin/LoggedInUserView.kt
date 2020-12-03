@@ -6,6 +6,7 @@ package com.example.faithandroid.login.uilogin
  */
 data class LoggedInUserView(
         val displayName: String,
-        val token: String
+        val token: String,
+        val email: String
         //... other data fields that may be accessible to the UI
 )

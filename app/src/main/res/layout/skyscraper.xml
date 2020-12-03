@@ -2,18 +2,55 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/app_bar_back"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#c2ebff">
+        android:background="#c4ebff"
+        android:layout_marginTop="?attr/actionBarSize">
 
-        <include
-            android:id="@+id/include3"
-            layout="@layout/app_bar_back"
+
+
+        <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            >
 
+            <LinearLayout
+                android:id="@+id/lijst"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#C2EBFF"
+                android:gravity="bottom"
+                android:orientation="vertical"
+
+                >
+
+                <ImageView
+                    android:id="@+id/bovenkantSkyscraper"
+                    android:layout_width="match_parent"
+                    android:layout_height="179dp"
+                    android:background="#c2ebff"
+                    app:srcCompat="@drawable/bovenkant_skyscraper1" />
+
+                <ImageView
+                    android:id="@+id/onderkantSkyscraper"
+                    android:layout_width="match_parent"
+                    android:layout_height="119dp"
+                    app:srcCompat="@drawable/onderkant_skyscraper1" />
+
+            </LinearLayout>
+        </ScrollView>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/AddPostButton"
             style="@style/pinkButtonStyle"
@@ -31,34 +68,6 @@
             app:maxImageSize="45dp"
             app:srcCompat="@android:drawable/ic_input_add" />
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <LinearLayout
-                android:id="@+id/lijst"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#C2EBFF"
-                android:gravity="bottom"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/bovenkantSkyscraper"
-                    android:layout_width="match_parent"
-                    android:layout_height="179dp"
-                    android:background="#c2ebff"
-                    app:srcCompat="@drawable/bovenkant_skyscraper" />
-
-                <ImageView
-                    android:id="@+id/onderkantSkyscraper"
-                    android:layout_width="match_parent"
-                    android:layout_height="119dp"
-                    app:srcCompat="@drawable/onderkant_skyscraper" />
-
-            </LinearLayout>
-        </ScrollView>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
 </layout>

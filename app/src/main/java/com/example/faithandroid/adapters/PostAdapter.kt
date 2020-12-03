@@ -44,7 +44,7 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
 
             val dialogClickListener = DialogInterface.OnClickListener{ _, which ->
                 when(which){
-                    DialogInterface.BUTTON_POSITIVE -> FaithApi.retrofitService.deletePostByEmail(post.id, "dora.theexplorer1999@gmail.com", PlaceType.Schatkist.ordinal)
+                    DialogInterface.BUTTON_POSITIVE -> FaithApi.retrofitService.deletePostByEmail(PlaceType.Schatkist.ordinal, post.id)
                 }
             }
 
