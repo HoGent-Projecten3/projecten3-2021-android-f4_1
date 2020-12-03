@@ -25,31 +25,14 @@ class ProfielViewModel: ViewModel() {
 
         viewModelScope.launch {
 
+            try{
             val stringCall: Call<Adolescent> =
                 FaithApi.retrofitService.getAdolescent(AppPreferences.username.toString())
 
             _adol.value = stringCall.await()
-            Log.d("UserVM1", _adol.value.toString())
-            /*stringCall.enqueue( object : Callback<Adolescent> {
-
-                override fun onResponse(call: Call<Adolescent>, response: Response<Adolescent>) {
-                    if (response.isSuccessful()) {
-                        _adol.value = response.body()
-                        Log.d("UserVM2", _adol.value.toString())
-                    }
-                    else
-                    {
-                        throw Exception("Gebruiker kon niet worden opgehaald")
-                    }
-                }
-
-                override fun onFailure(call: Call<Adolescent>?, t: Throwable?) {
-                    throw Exception("Gebruiker kon niet worden opgehaald")
-                }
-
-
-
-            })*/
+            }catch(e: Exception){
+                throw Exception("Gebruiker kon niet worden opgehaald")
+            }
         }
         return _adol.value
 

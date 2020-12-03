@@ -57,7 +57,6 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
             LoginViewModelFactory()
         )
             .get(LoginViewModel::class.java)
-        viewModel.adolescent.value?.name?.let { Log.d("ADOLESCETN", it) }
         drawerLayout = findViewById(R.id.drawerLayout)
         var navHeader = findViewById<NavigationView>(R.id.navView)
         bind = DataBindingUtil.inflate<AppNavHeaderMainBinding>(layoutInflater, R.layout.app_nav_header_main, navHeader.navView , false)
@@ -95,7 +94,6 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
     fun ClickMenu(view: View){
         //open drawer
         var pvm: ProfielViewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
-        Log.d("UserAPPELS", "Start")
         pvm.getAdolescent()
         pvm.adol.observe(this, {
             username = it.firstName + " " + it.name
@@ -149,7 +147,6 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
 
 
         //this.username = data?.getStringExtra("loggedInUser").toString()
-        Log.d("UserMain",this.username)
 
 
         if(requestCode == LOGIN_REQUEST_CODE){

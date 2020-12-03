@@ -49,7 +49,6 @@ class profielFragment: Fragment() {
 
         viewModel.adol.observe(viewLifecycleOwner, Observer {
             adolescent = it
-            Log.d("UserFR", adolescent.toString())
             binding.profielNaam.text = String.format(adolescent?.firstName + " " + adolescent?.name)
             binding.profielEmail.text = adolescent?.email
         })

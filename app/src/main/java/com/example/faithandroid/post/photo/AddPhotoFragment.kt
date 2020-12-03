@@ -123,7 +123,6 @@ class addPhotoFragment: Fragment() {
             PlaceType.Rugzak,
             PostType.Image
         )
-        Log.d("FILTER", "it got filtered")
         binding.viewModel = viewModel
 
         binding.addImageRecyclerView.adapter = FilteredPostAdapter(object : CustomClick {
@@ -140,7 +139,6 @@ class addPhotoFragment: Fragment() {
             {
                 post?.title = binding.titelImage.text.toString()
                 post?.data = binding.titelImage.text?.replace("\\s".toRegex(), "").toString()
-                Log.d("AddPost", AppPreferences.token.toString())
                 post?.let { it1 ->
 
                     viewModel.addPostByEmail(

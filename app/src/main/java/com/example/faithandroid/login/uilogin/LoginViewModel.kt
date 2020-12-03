@@ -86,17 +86,4 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         return password.length > 5
     }
 
-   /* private fun getAdolescent(username: String) {
-        coroutineScope.launch {
-            try {
-                val adolescent = FaithApi.retrofitService.getAdolescent(username)
-                 val a= adolescent.await()
-                _adolescent.value = a
-                Log.d("adolescent", "NICE " + a.firstName + " " +a.name)
-                Log.d("HHH", _adolescent.value.toString())
-            } catch (e: Exception) {
-                Log.i("FOUT", "FOUT opgelopen")
-            }
-        }
-    }*/
 }

@@ -52,7 +52,6 @@ class BulletinboardFragment: Fragment() {
 
         binding.lifecycleOwner = this
 
-        Log.d("visibil","oncreate")
 
         deleteBtn = binding.include.deletePostsBtn
 
@@ -150,13 +149,11 @@ class BulletinboardFragment: Fragment() {
 
     override fun onStart(){
         super.onStart()
-        Log.d("visibil","onstart")
         deleteBtn.visibility = VISIBLE
     }
 
     override fun onStop(){
         super.onStop()
-        Log.d("visibil","onstop")
         deleteBtn.visibility = INVISIBLE
     }
 }
