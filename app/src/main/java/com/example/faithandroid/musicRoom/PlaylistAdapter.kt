@@ -9,6 +9,7 @@ import com.example.faithandroid.billboard.BillboardGridAdapter
 import com.example.faithandroid.databinding.BillboardGoalBinding
 import com.example.faithandroid.databinding.MusicroomPlaylistPostBinding
 import com.example.faithandroid.models.Playlist
+import com.squareup.picasso.Picasso
 
 class PlaylistAdapter  : ListAdapter<Playlist, PlaylistAdapter.PlaylistViewHolder>(
     DiffCallback
@@ -17,6 +18,10 @@ class PlaylistAdapter  : ListAdapter<Playlist, PlaylistAdapter.PlaylistViewHolde
         RecyclerView.ViewHolder(binding.root){
         fun bind(playlist: Playlist){
             binding.playlist = playlist
+            if(playlist.url.isNotEmpty())
+            {
+                Picasso.get().load(playlist.url).into(binding.playListCover)
+            }
             binding.executePendingBindings()
         }
 

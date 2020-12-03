@@ -55,6 +55,11 @@ interface SpotifyApiService {
     @GET("me/playlists")
     fun getPlaylists(): Call<PlaylistWrapper>
 
+
+    @Headers("Content-Type: application/json", "accept: application/json")
+    @GET("playlists/{spotify_cover}/images")
+    fun getPlaylistCover(@Path("spotify_cover") cover: String): Call<List<SpotifyCover>>
+
 }
 
 object SpotifyApi {

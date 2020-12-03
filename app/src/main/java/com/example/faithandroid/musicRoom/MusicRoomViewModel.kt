@@ -4,10 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.faithandroid.models.Playlist
-import com.example.faithandroid.models.PlaylistWrapper
-import com.example.faithandroid.models.Post
-import com.example.faithandroid.models.SpotifyUser
+import com.example.faithandroid.models.*
 import com.example.faithandroid.network.SpotifyApi
 import com.example.faithandroid.network.SpotifyApiService
 import kotlinx.coroutines.MainScope
@@ -25,7 +22,6 @@ class MusicRoomViewModel : ViewModel() {
 
     init
     {
-        getPlaylists()
     }
 
 
@@ -51,13 +47,32 @@ class MusicRoomViewModel : ViewModel() {
             MainScope().launch {
                 var call: Call<PlaylistWrapper> = SpotifyApi.retrofitService.getPlaylists()
                 var list: List<Playlist> = call.await().items
+                list.forEach { p ->
+                    var call: Call<List<SpotifyCover>> = SpotifyApi.retrofitService.getPlaylistCover(p.id)
+                    var coverList = call.await()
+                    p.url = coverList[0].url
+                }
                 _playlists.value = list
-                Log.d("spotifyUser", list[0].name)
+
             }
         }
         catch(e: Exception){
             Log.d("error", e.localizedMessage)
         }
+    }
+
+    fun getPlaylistCovers()
+    {
+        try {
+            MainScope().launch {
+
+            }
+        }
+        catch(e: Exception)
+        {
+            Log.d("error", e.localizedMessage)
+        }
+
     }
 
 

@@ -86,5 +86,7 @@
     <string name="lbl_list_goalsteps">De stappen:</string>
     <string name="lbl_description_goal">Beschrijving</string>
     <string name="soort_post_filter">Soort post filter</string>
+    <string name="albumcover">album hoes</string>
+
 
 </resources>

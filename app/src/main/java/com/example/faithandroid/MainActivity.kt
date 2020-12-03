@@ -248,7 +248,7 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
 //        {
 //            SpotifyAppRemote.disconnect(spotifyAppRemoteLocal);
 //        }
-        
+
     }
 
 
