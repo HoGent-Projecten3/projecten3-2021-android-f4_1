@@ -33,9 +33,9 @@
                     app:navGraph="@navigation/navigation" />-->
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_marginStart="0dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent">
 
@@ -51,14 +51,14 @@
                         app:layout_constraintVertical_bias="0.0" />
 
                     <TextView
-                            android:id="@+id/lbl_bulletinboard"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="@string/bulletinboard"
-                            android:textColor="@color/colorPrimary"
-                            android:textStyle="bold"
-                            android:padding="5dp"
+                        android:id="@+id/lbl_bulletinboard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="@string/bulletinboard"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toTopOf="@id/lbl_bulletinboard"
                         app:layout_constraintEnd_toEndOf="@+id/img_bulletinboard"
                         app:layout_constraintStart_toStartOf="@+id/img_bulletinboard"
@@ -71,7 +71,7 @@
                         android:contentDescription="@string/skyscraper"
                         android:scaleType="centerCrop"
                         android:src="@drawable/skyscraper"
-                        app:layout_constraintEnd_toStartOf="@+id/img_billboard"
+                        app:layout_constraintEnd_toStartOf="@id/img_billboard"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/lbl_bulletinboard" />
 
@@ -79,42 +79,43 @@
                         android:id="@+id/lbl_wolkenkrabber"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
                         android:text="@string/skyscraper"
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold"
-                        android:padding="5dp"
                         app:layout_constraintBottom_toTopOf="@id/lbl_wolkenkrabber"
                         app:layout_constraintEnd_toEndOf="@+id/img_wolkenkrabber"
                         app:layout_constraintStart_toStartOf="@+id/img_wolkenkrabber"
                         app:layout_constraintTop_toBottomOf="@+id/img_wolkenkrabber" />
 
                     <ImageView
-                         android:id="@+id/img_billboard"
-                         android:layout_width="0dp"
-                         android:layout_height="200dp"
-                         android:contentDescription="@string/billboard"
-                         android:scaleType="centerCrop"
-                         android:src="@drawable/billboard"
-                         app:layout_constraintBottom_toTopOf="@id/lbl_billboard"
-                         app:layout_constraintEnd_toEndOf="parent"
-                         app:layout_constraintStart_toEndOf="@id/img_wolkenkrabber"
-                         app:layout_constraintTop_toBottomOf="@id/lbl_bulletinboard" />
+                        android:id="@+id/img_billboard"
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:contentDescription="@string/billboard"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/billboard"
+                        app:layout_constraintBottom_toTopOf="@id/lbl_billboard"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/img_wolkenkrabber"
+                        app:layout_constraintTop_toBottomOf="@id/lbl_bulletinboard" />
 
-                     <TextView
-                         android:id="@+id/lbl_billboard"
-                         android:layout_width="0dp"
-                         android:layout_height="wrap_content"
-                         android:gravity="center"
-                         android:text="@string/billboard"
-                         android:textColor="@color/colorPrimary"
-                         android:textStyle="bold"
-                         android:padding="5dp"
-                         app:layout_constraintBottom_toTopOf="@+id/img_billboard"
-                         app:layout_constraintEnd_toEndOf="@+id/img_billboard"
-                         app:layout_constraintStart_toStartOf="@+id/img_billboard"
-                         app:layout_constraintTop_toBottomOf="@+id/img_billboard" />
--->
+                    <TextView
+                        android:id="@+id/lbl_billboard"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="@string/billboard"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/img_billboard"
+                        app:layout_constraintEnd_toEndOf="@+id/img_billboard"
+                        app:layout_constraintStart_toStartOf="@+id/img_billboard"
+                        app:layout_constraintTop_toBottomOf="@+id/img_billboard" />
+                    -->
+
                     <ImageView
                         android:id="@+id/img_schatkist"
                         android:layout_width="0dp"
@@ -131,12 +132,11 @@
                         android:id="@+id/lbl_schatkist"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_marginBottom="1dp"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
                         android:text="@string/treasure_chest"
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold"
-                        android:padding="5dp"
                         app:layout_constraintEnd_toEndOf="@+id/img_schatkist"
                         app:layout_constraintStart_toStartOf="@+id/img_schatkist"
                         app:layout_constraintTop_toBottomOf="@+id/img_schatkist" />
@@ -157,42 +157,42 @@
                         android:id="@+id/lbl_musicRoom"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
                         android:text="@string/musicRoom"
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold"
-                        android:padding="5dp"
                         app:layout_constraintBottom_toTopOf="@+id/img_musicRoom"
                         app:layout_constraintEnd_toEndOf="@+id/img_musicRoom"
                         app:layout_constraintStart_toStartOf="@+id/img_musicRoom"
                         app:layout_constraintTop_toBottomOf="@+id/img_musicRoom" />
 
                     <ImageView
-                       android:id="@+id/img_rugzak"
-                       android:layout_width="0dp"
-                       android:layout_height="200dp"
-                       android:contentDescription="@string/backpack"
-                       android:scaleType="centerCrop"
-                       android:src="@drawable/backpack"
-                       app:layout_constraintBottom_toTopOf="@id/lbl_rugzak"
-                       app:layout_constraintEnd_toStartOf="@id/img_billboard"
-                       app:layout_constraintStart_toStartOf="parent"
-                       app:layout_constraintTop_toBottomOf="@id/lbl_schatkist" />
+                        android:id="@+id/img_rugzak"
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:contentDescription="@string/backpack"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/backpack"
+                        app:layout_constraintBottom_toTopOf="@id/lbl_rugzak"
+                        app:layout_constraintEnd_toStartOf="@id/img_billboard"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/lbl_schatkist" />
 
                     <TextView
-                       android:id="@+id/lbl_rugzak"
+                        android:id="@+id/lbl_rugzak"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                       android:text="@string/backpack"
-                       android:textColor="@color/colorPrimary"
-                       android:textStyle="bold"
-                       android:padding="5dp"
-                       app:layout_constraintEnd_toEndOf="@+id/img_rugzak"
-                       app:layout_constraintStart_toStartOf="@+id/img_rugzak"
-                       app:layout_constraintTop_toBottomOf="@+id/img_rugzak" />
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="@string/backpack"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@+id/img_rugzak"
+                        app:layout_constraintStart_toStartOf="@+id/img_rugzak"
+                        app:layout_constraintTop_toBottomOf="@+id/img_rugzak" />
 
-                     <ImageView
+                    <ImageView
                         android:id="@+id/img_winkelcentrum"
                         android:layout_width="0dp"
                         android:layout_height="200dp"
@@ -208,17 +208,17 @@
                         android:id="@+id/lbl_winkelcentrum"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
                         android:text="@string/winkelCentrum"
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold"
-                        android:padding="5dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@id/img_winkelcentrum"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/img_winkelcentrum"
                         app:layout_constraintTop_toBottomOf="@+id/img_winkelcentrum" />
 
-                   <!-- <ImageView
+                    <!-- <ImageView
                         android:id="@+id/img_prikbord"
                         android:layout_width="200dp"
                         android:layout_height="200dp"
