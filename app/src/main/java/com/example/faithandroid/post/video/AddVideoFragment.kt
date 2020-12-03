@@ -39,7 +39,7 @@ class AddVideoFragment: Fragment() {
 
 
     val PICK_IMAGE = 1
-    val REQUEST_VIDEO_CAPTURE = 1
+    val REQUEST_VIDEO_CAPTURE = 2
 
     private lateinit var viewModel: PostViewModel
 

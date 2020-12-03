@@ -3,6 +3,7 @@ package com.example.faithandroid
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.renderscript.ScriptGroup
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -11,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 
 import androidx.lifecycle.ViewModelProvider
 
@@ -23,6 +26,7 @@ import com.example.faithandroid.databinding.AppNavHeaderMainBinding
 import com.example.faithandroid.login.uilogin.LoginActivity
 import com.example.faithandroid.login.uilogin.LoginViewModel
 import com.example.faithandroid.login.uilogin.LoginViewModelFactory
+import com.example.faithandroid.profiel.ProfielViewModel
 import com.example.faithandroid.profiel.profielFragment
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.view.*
@@ -36,9 +40,8 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var viewModel: LoginViewModel
     private  var username: String = ""
-
-
-
+    private lateinit var bind: AppNavHeaderMainBinding
+    private val LOGIN_REQUEST_CODE: Int = 1
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,19 +50,19 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
 
         AppPreferences.setup(applicationContext)
 
-        val taskIntent =  Intent(this,LoginActivity::class.java)
-        startActivityForResult(taskIntent, 1)
+        val taskIntent =  Intent(this, LoginActivity::class.java)
+        startActivityForResult(taskIntent, LOGIN_REQUEST_CODE)
 
         viewModel = ViewModelProvider(this,
             LoginViewModelFactory()
         )
             .get(LoginViewModel::class.java)
-        viewModel.adolescent.value?.name?.let { Log.d("ADOLESCETN", it) }
         drawerLayout = findViewById(R.id.drawerLayout)
         var navHeader = findViewById<NavigationView>(R.id.navView)
-        var bind = DataBindingUtil.inflate<AppNavHeaderMainBinding>(layoutInflater, R.layout.app_nav_header_main, navHeader.navView , false)
+        bind = DataBindingUtil.inflate<AppNavHeaderMainBinding>(layoutInflater, R.layout.app_nav_header_main, navHeader.navView , false)
         navHeader.navView.addHeaderView(bind.root)
-        bind.adolescent = username
+
+
       // var navHeader2 = findViewById<AppNavHeaderMainBinding>(R.id.) as AppNavHeaderMainBinding
 //        navHeader2.adolescent = viewModel
 
@@ -90,7 +93,14 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
 
     fun ClickMenu(view: View){
         //open drawer
+        var pvm: ProfielViewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
+        pvm.getAdolescent()
+        pvm.adol.observe(this, {
+            username = it.firstName + " " + it.name
+            bind.nameText.text = username
+        })
         openDrawer(drawerLayout)
+
     }
 
     private  fun  openDrawer(drawerLayout: DrawerLayout) {
@@ -135,11 +145,15 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        this.username = data?.getStringExtra("loggedInUser").toString()
-        var token = data?.getStringExtra("token").toString();
 
-        AppPreferences.token = token
-        AppPreferences.username = this.username
+        //this.username = data?.getStringExtra("loggedInUser").toString()
+
+
+        if(requestCode == LOGIN_REQUEST_CODE){
+            var token = data?.getStringExtra("token").toString();
+            AppPreferences.token = token
+        }
+        //AppPreferences.username = this.username
 //
 //        val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return
 //        with (sharedPref.edit()) {

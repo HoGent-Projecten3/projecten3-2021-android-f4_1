@@ -86,7 +86,6 @@ class addTextFragment: Fragment() {
             PlaceType.Rugzak,
             PostType.Text
         )
-        Log.d("FILTER", "it got filtered");
         binding.viewModel = viewModel
         binding.recyclerView.adapter =
             FilteredPostAdapter(object : CustomClick {

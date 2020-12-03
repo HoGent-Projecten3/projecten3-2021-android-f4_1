@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_options"
-            android:icon="@drawable/ic_tool"
-            android:title="@string/instellingen" />
         <item
             android:id="@+id/profielFragment"
             android:checkable="false"
@@ -16,11 +13,4 @@
             android:title="@string/uitloggen" />
     </group>
 
-    <item android:title="@string/meest_bezocht">
-        <menu>
-            <item android:id="@+id/nav_item_six"
-                android:icon="@drawable/ic_favorite"
-                android:title="@string/wolkenkrabber" />
-        </menu>
-    </item>
 </menu>

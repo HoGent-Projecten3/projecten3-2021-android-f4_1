@@ -114,6 +114,8 @@ class BackpackFragment: Fragment() {
         }
 
         dropdownList.setAdapter(adapter)
+
+
         super.onResume()
     }
 

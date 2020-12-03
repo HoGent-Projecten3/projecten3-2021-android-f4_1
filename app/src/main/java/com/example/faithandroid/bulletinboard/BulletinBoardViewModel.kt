@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bumptech.glide.load.engine.Resource
+import com.example.faithandroid.PlaceType
 import com.example.faithandroid.R
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.network.FaithApi
@@ -58,7 +59,7 @@ class BulletinBoardViewModel : ViewModel() {
     {
         coroutineScope.launch{
            try{
-               var getPostList = FaithApi.retrofitService.getPostsOfBulletinBoardByAdolescentEmail("dora.theexplorer1999@gmail.com")
+               var getPostList = FaithApi.retrofitService.getPostsOfPlaceByAdolescentEmail(PlaceType.Prikbord.ordinal)
                var result = getPostList.await()
                if(result.size > 0){
 
@@ -86,7 +87,7 @@ class BulletinBoardViewModel : ViewModel() {
     {
         coroutineScope.launch{
             try{
-                FaithApi.retrofitService.requestConsultation("dora.theexplorer1999@gmail.com").await()
+                FaithApi.retrofitService.requestConsultation().await()
                 _requestConsultationStatus.value = "gelukt!"
 
             }
