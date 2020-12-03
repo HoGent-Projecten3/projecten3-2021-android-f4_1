@@ -41,9 +41,7 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
     private lateinit var viewModel: LoginViewModel
     private  var username: String = ""
     private lateinit var bind: AppNavHeaderMainBinding
-
-
-
+    private val LOGIN_REQUEST_CODE: Int = 1
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,8 +50,8 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
 
         AppPreferences.setup(applicationContext)
 
-        val taskIntent =  Intent(this,LoginActivity::class.java)
-        startActivityForResult(taskIntent, 1)
+        val taskIntent =  Intent(this, LoginActivity::class.java)
+        startActivityForResult(taskIntent, LOGIN_REQUEST_CODE)
 
         viewModel = ViewModelProvider(this,
             LoginViewModelFactory()
@@ -152,9 +150,12 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
 
         //this.username = data?.getStringExtra("loggedInUser").toString()
         Log.d("UserMain",this.username)
-        var token = data?.getStringExtra("token").toString();
 
-        AppPreferences.token = token
+
+        if(requestCode == LOGIN_REQUEST_CODE){
+            var token = data?.getStringExtra("token").toString();
+            AppPreferences.token = token
+        }
         //AppPreferences.username = this.username
 //
 //        val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return

@@ -78,7 +78,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             var intent: Intent = Intent()
-            intent.putExtra("loggedInUser", loginResult.success?.displayName?.split(".")?.first())
+            intent.putExtra("loggedInUser", loginResult.success?.displayName)
             intent.putExtra("token", loginResult.success?.token)
 
 
