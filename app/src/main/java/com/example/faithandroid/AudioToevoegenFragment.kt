@@ -90,7 +90,6 @@ class AudioToevoegenFragment: Fragment() {
         viewModel =
             ViewModelProvider(this, ViewModelFactory(args.placeType)).get(PostViewModel::class.java)
 
-
         val placeTypes = PlaceType.values()
 
         val adapter = this.context?.let {
@@ -200,11 +199,12 @@ class AudioToevoegenFragment: Fragment() {
         })
 
         binding.videoToevoegenButton.setOnClickListener {
+
             if(nieuwePost)
             {
                 Log.d("AZIZA","if nieuwe post")
                 post?.title = binding.titel.text.toString()
-                post?.data = uitvoer.toString()
+                post?.data = uitvoer
 
                 Log.d("dataPost",post?.data.toString())
 
@@ -264,6 +264,7 @@ class AudioToevoegenFragment: Fragment() {
     private fun stopRecording(){
         if(state){
             mediaRecorder?.stop()
+            //debuggen op release
             mediaRecorder?.release()
             state = false
 
