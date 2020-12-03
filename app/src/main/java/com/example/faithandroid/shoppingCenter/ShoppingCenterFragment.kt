@@ -4,32 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat.VFullPath
+import com.example.faithandroid.AvatarCustomClick
+import com.example.faithandroid.BodyType
 import com.example.faithandroid.R
-import com.example.faithandroid.billboard.BillboardGridAdapter
-import com.example.faithandroid.billboard.BillboardViewModel
 import com.example.faithandroid.databinding.ShoppingcenterBinding
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
-import com.google.android.material.tabs.TabLayout.TabLayoutOnPageChangeListener
-import com.google.android.material.tabs.TabLayoutMediator
-import example.javatpoint.com.kotlintablayoutexample.ShoppingCenterTabAdapter
+
 
 class ShoppingCenterFragment: Fragment() {
     private lateinit var viewModel: ShoppingCenterViewModel
-    var tabLayout: TabLayout? = null
-    var viewPager: ViewPager2? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,40 +37,51 @@ class ShoppingCenterFragment: Fragment() {
             false
         );
 
-        tabLayout = binding.tablayout
-        viewPager = binding.pager
-
-        tabLayout!!.addTab(tabLayout!!.newTab().setText("Haar"))
-        tabLayout!!.addTab(tabLayout!!.newTab().setText("Ogen"))
-        tabLayout!!.addTab(tabLayout!!.newTab().setText("Huid"))
-        tabLayout!!.addTab(tabLayout!!.newTab().setText("Lichaam"))
-        tabLayout!!.tabGravity = TabLayout.GRAVITY_FILL
-
-
-        val tabAdapter = ShoppingCenterTabAdapter(this.context,
-            activity?.supportFragmentManager, tabLayout!!.tabCount)
-        viewPager!!.adapter = tabAdapter as RecyclerView.Adapter<(raw) RecyclerView.ViewHolder!>?
-
-
-        viewPager!!.registerOnPageChangeCallback(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
-        tabLayout!!.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                viewPager!!.currentItem = tab.position
-            }
-            override fun onTabUnselected(tab: TabLayout.Tab) {
-
-            }
-            override fun onTabReselected(tab: TabLayout.Tab) {
-
-            }
-        })
-
         binding.lifecycleOwner = this
 
         viewModel = ViewModelProvider(this).get(ShoppingCenterViewModel::class.java)
         binding.shoppingCenterViewModel = viewModel
 
-        binding.shoppingCenterGridView.adapter = ShoppingCenterGridAdapter()
+
+        binding.hairGridView.adapter = ShoppingCenterGridAdapter(BodyType.Hair, object: AvatarCustomClick {
+            override fun onClick(avatarpart: Int){
+                var drawable = this@ShoppingCenterFragment.context?.let { AppCompatResources.getDrawable(it, R.drawable.ic_avatar_female) }
+                //val path1: VFullPath = vector.findPathByName("path1")
+            }
+        })
+
+        binding.eyeGridView.adapter = ShoppingCenterGridAdapter(BodyType.Eye, object: AvatarCustomClick {
+            override fun onClick(avatarpart: Int){
+                var drawable = this@ShoppingCenterFragment.context?.let { AppCompatResources.getDrawable(it, R.drawable.ic_avatar_female) }
+            }
+        })
+
+        binding.skinGridView.adapter = ShoppingCenterGridAdapter(BodyType.Skin, object: AvatarCustomClick {
+            override fun onClick(avatarpart: Int){
+                var drawable = this@ShoppingCenterFragment.context?.let { AppCompatResources.getDrawable(it, R.drawable.ic_avatar_female) }
+            }
+        })
+
+        binding.bodyGridView.adapter = ShoppingCenterGridAdapter(BodyType.Body, object:AvatarCustomClick{
+            override fun onClick(avatarpart:Int){
+                var drawable = this@ShoppingCenterFragment.context?.let { AppCompatResources.getDrawable(it, R.drawable.ic_avatar_female) }
+            }
+        })
+
+        val hairLayoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        val eyeLayoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        val skinLayoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        val bodyLayoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+
+        val hairList = binding.hairGridView as RecyclerView
+        val eyeList = binding.eyeGridView as RecyclerView
+        val skinList = binding.skinGridView as RecyclerView
+        val bodyList = binding.bodyGridView as RecyclerView
+
+        hairList.layoutManager = hairLayoutManager
+        eyeList.layoutManager = eyeLayoutManager
+        skinList.layoutManager = skinLayoutManager
+        bodyList.layoutManager = bodyLayoutManager
 
         /*binding.ClothesTab.setOnClickListener{
             this.context?.let { context ->
@@ -98,7 +100,7 @@ class ShoppingCenterFragment: Fragment() {
                     R.string.tryAgain
                 )
                 {
-                    viewModel.getPosts()
+                    viewModel.getProperties()
                 }.show()
             }
         })

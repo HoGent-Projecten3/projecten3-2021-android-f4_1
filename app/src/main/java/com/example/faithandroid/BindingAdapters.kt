@@ -28,7 +28,7 @@ fun bindRecyclerViewBillboard(recyclerView: RecyclerView, data: List<GoalPost>?)
 }
 
 @BindingAdapter("AvatarParts")
-fun bindRecyclerViewShoppingcenter(recyclerView: RecyclerView, data: List<String>?){
+fun bindRecyclerViewShoppingcenter(recyclerView: RecyclerView, data: List<Int>?){
     val adapter = recyclerView.adapter as ShoppingCenterGridAdapter
     adapter.submitList(data)
 }

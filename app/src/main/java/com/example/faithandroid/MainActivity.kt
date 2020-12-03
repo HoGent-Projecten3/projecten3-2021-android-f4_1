@@ -2,12 +2,14 @@ package com.example.faithandroid
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Path
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
@@ -76,7 +78,6 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
         supportActionBar?.setHomeButtonEnabled(true)
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setHomeButtonEnabled(true)
-
     }
 
 

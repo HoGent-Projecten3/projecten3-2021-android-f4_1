@@ -6,3 +6,7 @@ interface CustomClick {
 
     fun onClick(post: Post)
 }
+
+interface AvatarCustomClick{
+    fun onClick(avatarpart: Int)
+}

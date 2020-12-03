@@ -7,18 +7,19 @@
     <data>
         <variable
             name="property"
-            type="java.lang.String" />
+            type="java.lang.Integer" />
     </data>
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:fadingEdgeLength="10dp">
         <!--tools:context="."-->
 
         <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/cardView"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:fadingEdgeLength="10dp"
@@ -32,7 +33,18 @@
                 android:outlineAmbientShadowColor="#FFFFFF"
                 android:outlineSpotShadowColor="#090909">
 
-                <TextView
+
+                <ImageView
+                    android:id="@+id/colourView"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    tools:srcCompat="@tools:sample/avatars"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@{property}"/>
+
+               <!-- <TextView
                     android:id="@+id/description"
                     android:layout_width="275dp"
                     android:layout_height="0dp"
@@ -43,8 +55,8 @@
                     android:text="@{property}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/cardprofile"
-                    app:layout_constraintTop_toBottomOf="@+id/button" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/colourView" /> -->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
