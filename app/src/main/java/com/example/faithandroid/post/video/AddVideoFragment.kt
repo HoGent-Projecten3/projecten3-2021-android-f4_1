@@ -39,7 +39,7 @@ class AddVideoFragment: Fragment() {
 
 
     val PICK_IMAGE = 1
-    val REQUEST_VIDEO_CAPTURE = 1
+    val REQUEST_VIDEO_CAPTURE = 2
 
     private lateinit var viewModel: PostViewModel
 
@@ -109,16 +109,14 @@ class AddVideoFragment: Fragment() {
         binding.filledExposedDropdown.setOnItemClickListener { parent, view, position, id ->
             viewModel.getFilteredPostFromPlace(
                 placeTypes[position],
-                PostType.Video,
-                "dora.theexplorer1999@gmail.com"
+                PostType.Video
             )
         }
 
 
         viewModel.getFilteredPostFromPlace(
             PlaceType.Rugzak,
-            PostType.Video,
-            "dora.theexplorer1999@gmail.com"
+            PostType.Video
         )
         binding.viewModel = viewModel
 

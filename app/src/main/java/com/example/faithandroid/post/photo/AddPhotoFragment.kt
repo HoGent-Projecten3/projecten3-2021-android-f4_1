@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,7 +43,7 @@ class addPhotoFragment: Fragment() {
 
 
     val PICK_IMAGE = 1
-    val REQUEST_PICTURE_CAPTURE = 1
+    val REQUEST_PICTURE_CAPTURE = 2
 
     private lateinit var  viewModel: PostViewModel
     private lateinit var  dropdown : Spinner
@@ -113,16 +114,14 @@ class addPhotoFragment: Fragment() {
         binding.dropdownPlaatsen.setOnItemClickListener { parent, view, position, id ->
             viewModel.getFilteredPostFromPlace(
                 placeTypes[position],
-                PostType.Image,
-                "dora.theexplorer1999@gmail.com"
+                PostType.Image
             )
         }
 
 
         viewModel.getFilteredPostFromPlace(
             PlaceType.Rugzak,
-            PostType.Image,
-            "dora.theexplorer1999@gmail.com"
+            PostType.Image
         )
         binding.viewModel = viewModel
 
@@ -140,8 +139,8 @@ class addPhotoFragment: Fragment() {
             {
                 post?.title = binding.titelImage.text.toString()
                 post?.data = binding.titelImage.text?.replace("\\s".toRegex(), "").toString()
-
                 post?.let { it1 ->
+
                     viewModel.addPostByEmail(
                         it1,
                         args.placeType,

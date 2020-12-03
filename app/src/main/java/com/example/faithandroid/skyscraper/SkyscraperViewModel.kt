@@ -1,6 +1,7 @@
 
 package com.example.faithandroid.skyscraper
 
+import android.graphics.Color
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,12 +14,15 @@ import com.example.faithandroid.models.Step
 import com.example.faithandroid.network.FaithApi
 import com.example.faithandroid.network.FaithApiService
 import com.example.faithandroid.network.FaithProperty
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import org.threeten.bp.LocalDateTime
+import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.await
 
@@ -54,13 +58,13 @@ class SkyscraperViewModel : ViewModel() {
 
     init {
 
-        GetPostsOfSkyscraper("dora.theexplorer1999@gmail.com")
+        getPostsOfSkyscraper()
         testLiveData.value = test;
     }
 
-    fun GetPostsOfSkyscraper(email: String) {
+    fun getPostsOfSkyscraper() {
         coroutineScope.launch {
-            var getPropertiesDeferred = FaithApi.retrofitService.getPostsOfSkyScraperByAdolescentEmail(email);
+            var getPropertiesDeferred = FaithApi.retrofitService.getPostsOfSkyScraper();
             try {
 
                 var listResult = getPropertiesDeferred.await()
@@ -74,36 +78,43 @@ class SkyscraperViewModel : ViewModel() {
             }
         }
     }
-
-    fun goalBehaald(id:Int){
+    fun postNewGoalPost( goalPost: GoalPost) {
         viewModelScope.launch {
             try {
-                FaithApi.retrofitService.checkGoal("dora.theexplorer1999@gmail.com", id)
-
-                _completedStatus.value = R.string.doel_gedeeld.toString();
-            } catch (e: Exception) {
-                _completedStatus.value = e.localizedMessage
+                val response = FaithApi.retrofitService.postGoalPost(goalPost)
+            }catch (e: Exception){
+                // error handling als new goal niet werkt/ er iets mis loopt
             }
         }
     }
 
-    fun postNewGoalPost(email: String, goalPost: GoalPost) {
-
+    fun goalBehaald(id:Int){
         viewModelScope.launch {
-            val response = FaithApi.retrofitService.postGoalPost(goalPost, email)
+            try {
+                Log.d("GoalId", id.toString())
+                val response = FaithApi.retrofitService.checkGoal(id)
+                _completedStatus.value = "Doel behaald".toString();
 
-
+            }catch (e: HttpException) {
+                _completedStatus.value = "Er liep iets mis. " + e.localizedMessage
+               // _completedStatus.value = e.localizedMessage
+            }
+            catch (e: Exception) {
+                _completedStatus.value = "Er liep iets mis"
+               // _completedStatus.value = e.localizedMessage
+            }
         }
-
     }
 
     fun shareGoal(id:Int){
         coroutineScope.launch{
             try {
-                FaithApi.retrofitService.shareGoal("dora.theexplorer1999@gmail.com", id);
-                _shareStatus.value = R.string.doel_gedeeld.toString();
+                 val response = FaithApi.retrofitService.shareGoal(id)
+                 response.await()
+                 _shareStatus.value = "Doel gedeeld"
             } catch (e: Exception){
-                _shareStatus.value = e.localizedMessage
+                _shareStatus.value = "Er liep iets mis"
+               // _shareStatus.value = e.localizedMessage
             }
         }
     }
@@ -111,10 +122,12 @@ class SkyscraperViewModel : ViewModel() {
     fun deleteGoal(id:Int){
         coroutineScope.launch{
             try {
-                FaithApi.retrofitService.removeGoal(id, "dora.theexplorer1999@gmail.com");
+                val response = FaithApi.retrofitService.removeGoal(id)
+               val stringResponse= response.await()
                 _removeStatus.value = R.string.doel_verwijderd.toString()
             } catch (e: Exception){
-                _removeStatus.value = e.localizedMessage
+                _removeStatus.value = "Er liep iets mis"
+               // _removeStatus.value = e.localizedMessage
             }
         }
     }

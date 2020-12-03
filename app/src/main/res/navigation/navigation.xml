@@ -162,10 +162,12 @@
         tools:layout="@layout/skyscraper">
         <action
             android:id="@+id/action_skyscraperFragment_to_addGoalFragment"
-            app:destination="@id/addGoalFragment" />
+            app:destination="@id/addGoalFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_skyscraperFragment_to_goalDetailsFragment"
-            app:destination="@id/goalDetailsFragment" />
+            app:destination="@id/goalDetailsFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/treasureChestFragment"
@@ -183,7 +185,9 @@
         android:label="addGoalFragment" >
         <action
             android:id="@+id/action_addGoalFragment_to_skyscraperFragment"
-            app:destination="@id/skyscraperFragment" />
+            app:destination="@id/skyscraperFragment"
+            app:popUpTo="@id/skyscraperFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/goalDetailsFragment"

@@ -61,16 +61,18 @@ class LoginFragment : Fragment() {
 
 
        binding.loginButton.setOnClickListener { view: View ->
-            Log.i("zzzz", "DIT word gedaan")
 
             view.findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
 
         }
+
+
         // drawer = requireView().findViewById(R.id.drawerLayout)
 
         // drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
         return binding.root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
