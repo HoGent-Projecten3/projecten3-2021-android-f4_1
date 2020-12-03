@@ -171,7 +171,7 @@ class AudioToevoegenFragment: Fragment() {
             this.view?.findViewById<TextInputLayout>(R.id.titelVeld)?.visibility = View.VISIBLE
 
 
-            val yourFilePath = requireContext().filesDir.toString() + "/" + "recording.mp3"
+           /* val yourFilePath = requireContext().filesDir.toString() + "/" + "recording.mp3"
             val yourFile = File(yourFilePath)
             Log.d("yourfile","lijn172")
 
@@ -187,7 +187,7 @@ class AudioToevoegenFragment: Fragment() {
                 MediaStore.Audio.Media.DATA + " like ? ",
                 arrayOf("%utm%"),
                 null
-            )
+            )*/
 
         }
 
