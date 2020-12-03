@@ -31,6 +31,7 @@ class BackpackFragment: Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onCreateView(
@@ -66,6 +67,9 @@ class BackpackFragment: Fragment() {
                 PlaceType.Rugzak,
                 postTypes[position]
             )
+        /*    Snackbar.make( view,postViewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(""
+            )
+            { }.show()*/
         }
         binding.postViewModel = postViewModel
 
@@ -85,16 +89,23 @@ class BackpackFragment: Fragment() {
         binding.BackpackRecycler.adapter =
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
-                    postViewModel.deletePostByEmail(post.id, "dora.theexplorer1999@gmail.com", PlaceType.Rugzak)
+                       postViewModel.pemanentlyDeletePost(post.id)
                     true
+                    postViewModel.getPostsOfPlace(PlaceType.Rugzak)
                 }
-            })
+
+            }
+         )
 
         postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
-                Snackbar.make(contextView, viewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
-                    R.string.tryAgain
+              
+               /* Snackbar.make(contextView, viewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                    "Probeer opnieuw""
+                )*/
+                Snackbar.make(contextView, "Er is niets om weer te geven", Snackbar.LENGTH_SHORT).setAction(
+                 ""
                 )
                 {
 
