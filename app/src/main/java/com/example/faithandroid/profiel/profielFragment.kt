@@ -47,66 +47,68 @@ class profielFragment: Fragment() {
         );
 
 
-        binding.wachtwoordWIjzigen.setOnClickListener{
+        binding.wachtwoordWIjzigen.setOnClickListener {
 
-        viewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
+            viewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
 
-        viewModel.getAdolescent()
+            viewModel.getAdolescent()
 
-        viewModel.adol.observe(viewLifecycleOwner, Observer {
-            adolescent = it
-            binding.profielNaam.text = String.format(adolescent?.firstName + " " + adolescent?.name)
-            binding.profielEmail.text = adolescent?.email
-        })
+            viewModel.adol.observe(viewLifecycleOwner, Observer {
+                adolescent = it
+                binding.profielNaam.text =
+                    String.format(adolescent?.firstName + " " + adolescent?.name)
+                binding.profielEmail.text = adolescent?.email
+            })
 
-        binding.wachtwoordWIjzigen.setOnClickListener(){
+            binding.wachtwoordWIjzigen.setOnClickListener() {
 
-            val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-            builder.setTitle("Wachtwoord wijzigen")
+                val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+                builder.setTitle("Wachtwoord wijzigen")
 
-            val viewInflated: View = LayoutInflater.from(context)
-                .inflate(R.layout.profiel_changepassword, view as ViewGroup?, false)
+                val viewInflated: View = LayoutInflater.from(context)
+                    .inflate(R.layout.profiel_changepassword, view as ViewGroup?, false)
 
-            val input = viewInflated.findViewById<View>(R.id.nieuwwwfld) as EditText
+                val input = viewInflated.findViewById<View>(R.id.nieuwwwfld) as EditText
 
-            builder.setView(viewInflated)
+                builder.setView(viewInflated)
 
-            builder.setPositiveButton(android.R.string.ok,
-                DialogInterface.OnClickListener { dialog, which ->
-                    dialog.dismiss()
-                    m_Text = input.text.toString()
-                })
-            builder.setNegativeButton(android.R.string.cancel,
-                DialogInterface.OnClickListener { dialog, which -> dialog.cancel() })
+                builder.setPositiveButton(android.R.string.ok,
+                    DialogInterface.OnClickListener { dialog, which ->
+                        dialog.dismiss()
+                        m_Text = input.text.toString()
+                    })
+                builder.setNegativeButton(android.R.string.cancel,
+                    DialogInterface.OnClickListener { dialog, which -> dialog.cancel() })
 
-            builder.show()
+                builder.show()
+            }
+            val toggle: SwitchCompat = binding.donkereModus
+            toggle.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    MyPreference(this.context).darkMode = 0
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    MyPreference(this.context).darkMode = 1
+                }
+            }
+            return binding.root
         }
-        val toggle: SwitchCompat = binding.donkereModus
-        toggle.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                MyPreference(this.context).darkMode = 0
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                MyPreference(this.context).darkMode = 1
-            }
-        }
-        return binding.root
-    }
 
 
-    private fun checkTheme() {
-        when (MyPreference(this.context).darkMode) {
-            0 -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            }
-            1 -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            }
-            2 -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        private fun checkTheme() {
+            when (MyPreference(this.context).darkMode) {
+                0 -> {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                }
+                1 -> {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                }
+                2 -> {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                }
             }
         }
-    }
+
 
 }
