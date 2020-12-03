@@ -106,6 +106,11 @@ interface FaithApiService {
     @PUT("city/{placeType}/add-existing/{postId}")
     fun addExistingPostToPlace(@Path("placeType") placeType: Int, @Path("postId") postId: Int): Call<Void>
 
+    @Headers("Content-Type: application/json", "accept: application/octet-stream")
+    @DELETE("city/post/{postId}")
+    fun permanentlyDeletePost(@Path("postId") postId: Int):Call<Void>
+
+
 }
 
 object FaithApi {
