@@ -10,6 +10,7 @@ import com.example.faithandroid.PlaceType
 import com.example.faithandroid.PostType
 
 import com.example.faithandroid.models.GoalPost
+import com.example.faithandroid.models.Playlist
 import com.example.faithandroid.models.Post
 
 import com.google.android.material.internal.ContextUtils.getActivity
@@ -110,9 +111,23 @@ interface FaithApiService {
     fun addExistingPostToPlace(@Path("placeType") placeType: Int, @Path("postId") postId: Int): Call<Void>
 
 
+    @Headers("Content-Type: application/json", "accept: application/json")
+    @GET("city/musicroom/playlist")
+    fun getPlaylists(): Call<List<Playlist>>
+
+    @Headers("Content-Type: application/json", "accept: application/json")
+    @POST("city/musicroom/playlist")
+    fun addPlaylist(@Body playlist: Playlist): Call<Void>
+
+    @Headers("Content-Type: application/json", "accept: application/json")
+    @DELETE("city/musicroom/playlist/{id}")
+    fun deletePlaylist(@Path("id") primaryKey: Int): Call<Void>
+
+
     @Headers("Content-Type: application/json", "accept: application/octet-stream")
     @DELETE("city/post/{postId}")
     fun permanentlyDeletePost(@Path("postId") postId: Int):Call<Void>
+
 
 }
 
