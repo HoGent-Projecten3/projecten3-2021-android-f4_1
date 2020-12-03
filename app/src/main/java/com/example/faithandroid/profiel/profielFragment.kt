@@ -2,27 +2,24 @@ package com.example.faithandroid.profiel
 
 import android.app.AlertDialog
 import android.content.DialogInterface
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import androidx.appcompat.app.AppCompatDelegate
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.faithandroid.MainActivity
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.ProfielBinding
-import com.example.faithandroid.models.ChangePassword
-import com.example.faithandroid.skyscraper.SkyscraperViewModel
 
 
 class ProfielFragment: Fragment() {
 
     private lateinit var viewModel: ProfielViewModel
     private var nieuwww = ""
+    private var nieuwcon = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,11 +53,33 @@ class ProfielFragment: Fragment() {
             builder.setView(viewInflated)
             builder.setPositiveButton(android.R.string.ok,
                 DialogInterface.OnClickListener { dialog, _ ->
-                        dialog.dismiss()
-                        nieuwww = inputNieuw.text.toString()
 
-                        var changep =  ChangePassword("","",nieuwww)
-                        viewModel.changePassword(changep)
+                    nieuwww = inputNieuw.text.toString()
+                    nieuwcon = inputNieuwConfirm.text.toString()
+                    if(nieuwww.matches(Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$^+=!*()@%&]).{8,}$"))) {
+                            if (nieuwww == nieuwcon) {
+
+                                viewModel.changePassword(nieuwww)
+                                dialog.dismiss()
+                                Toast.makeText(
+                                    this.context,
+                                    "Nieuw wachtwoord ingesteld",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } else {
+                                Toast.makeText(
+                                    this.context,
+                                    "Beide wachtwoorden komen niet overeen",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        } else{
+                        Toast.makeText(
+                            this.context,
+                            "wachtwoord moet 8 karakters, minstens 1 nummer, minstens 1 drukletter & kleineletter bevatten",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
                 })
             builder.setNegativeButton(android.R.string.cancel,
                 DialogInterface.OnClickListener { dialog, _ -> dialog.cancel() })
@@ -68,16 +87,6 @@ class ProfielFragment: Fragment() {
             builder.show()
         }
 
-        binding.donkereModus.setOnClickListener(){
-
-            val isNightTheme = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-            when (isNightTheme) {
-                Configuration.UI_MODE_NIGHT_YES ->
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                Configuration.UI_MODE_NIGHT_NO ->
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            }
-        }
         return binding.root
     }
 }

@@ -1,36 +1,22 @@
 package com.example.faithandroid.network
 
-import android.content.SharedPreferences
-import android.preference.PreferenceManager
 import com.example.faithandroid.login.data.User
 import com.example.faithandroid.models.Adolescent
 
-import com.example.faithandroid.PlaceType
-import com.example.faithandroid.PostType
-
-
-import android.net.Proxy
-import android.net.http.HttpResponseCache
-import android.util.Log
-import com.example.faithandroid.models.ChangePassword
 
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
-import com.google.android.material.internal.ContextUtils.getActivity
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.Deferred
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.*
-import javax.security.auth.callback.Callback
 
 //TODO: give url
 private const val BASE_URL = "https://apigrow.azurewebsites.net/"
@@ -112,8 +98,8 @@ interface FaithApiService {
     fun addExistingPostToPlace(@Path("placeType") placeType: Int, @Path("postId") postId: Int): Call<Void>
 
     @Headers("Content-Type: application/json")
-    @POST("/api/Account/changepassword")
-    fun changepassword(@Body  body : ChangePassword) : Call<Void>
+    @POST("user/change-password")
+    fun changepassword(@Query("ww") ww: String) : Call<String>
 
 }
 

@@ -2,10 +2,8 @@
 package com.example.faithandroid
 
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.renderscript.ScriptGroup
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -15,18 +13,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.replace
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
 
 
 import androidx.lifecycle.ViewModelProvider
 
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
@@ -38,7 +30,6 @@ import com.example.faithandroid.login.uilogin.LoginViewModelFactory
 import com.example.faithandroid.profiel.ProfielViewModel
 import com.example.faithandroid.profiel.ProfielFragment
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
 
 
@@ -151,6 +142,8 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
                  supportFragmentManager.beginTransaction()
                     .replace(R.id.layoutToolBar, ProfielFragment())
                     .commit()
+
+                menuItem.onNavDestinationSelected(findNavController(R.id.NavHostFragment))
             }
             R.id.loginFragment -> {
 
@@ -163,13 +156,22 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
                     .commit()
 
                  //finishAffinity()
-                Toast.makeText(this,"Logged out!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Uitgelogd!", Toast.LENGTH_LONG).show()
                 Log.d("Token", AppPreferences.token.toString())
 
                 val taskIntent =  Intent(this,LoginActivity::class.java)
                 startActivityForResult(taskIntent, 1)
 
             }
+
+            R.id.homeFragment -> {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.layoutToolBar, HomeFragment())
+                    .commit()
+
+                menuItem.onNavDestinationSelected(findNavController(R.id.NavHostFragment))
+            }
+
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
