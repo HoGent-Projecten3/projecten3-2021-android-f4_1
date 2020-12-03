@@ -41,7 +41,6 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
             val stringCall: Call<List<Post>> =
                 FaithApi.retrofitService.getFilteredFromPlace(placeType.ordinal, postType.ordinal)
 
-            Log.d("Filter", placeType.ordinal.toString() + " " + postType.ordinal.toString())
             stringCall.enqueue(object : Callback<List<Post>> {
 
                  override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
@@ -89,7 +88,7 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
         var bool: Boolean = true
         viewModelScope.launch {
             val stringCall: Call<Void> =
-                FaithApi.retrofitService.addPostByEmail(post,email, placeType.ordinal)
+                FaithApi.retrofitService.addPostByEmail(placeType.ordinal, post)
             stringCall.enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful()) {

@@ -43,7 +43,7 @@ class addPhotoFragment: Fragment() {
 
 
     val PICK_IMAGE = 1
-    val REQUEST_PICTURE_CAPTURE = 1
+    val REQUEST_PICTURE_CAPTURE = 2
 
     private lateinit var  viewModel: PostViewModel
     private lateinit var  dropdown : Spinner
@@ -123,7 +123,6 @@ class addPhotoFragment: Fragment() {
             PlaceType.Rugzak,
             PostType.Image
         )
-        Log.d("FILTER", "it got filtered")
         binding.viewModel = viewModel
 
         binding.addImageRecyclerView.adapter = FilteredPostAdapter(object : CustomClick {
@@ -140,8 +139,8 @@ class addPhotoFragment: Fragment() {
             {
                 post?.title = binding.titelImage.text.toString()
                 post?.data = binding.titelImage.text?.replace("\\s".toRegex(), "").toString()
-
                 post?.let { it1 ->
+
                     viewModel.addPostByEmail(
                         it1,
                         args.placeType,
