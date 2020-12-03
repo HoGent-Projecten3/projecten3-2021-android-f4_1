@@ -6,25 +6,32 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.replace
 
 import androidx.lifecycle.ViewModelProvider
 
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.example.faithandroid.databinding.AppNavHeaderMainBinding
+import com.example.faithandroid.login.LoginFragment
 import com.example.faithandroid.login.uilogin.LoginActivity
 import com.example.faithandroid.login.uilogin.LoginViewModel
 import com.example.faithandroid.login.uilogin.LoginViewModelFactory
 import com.example.faithandroid.profiel.profielFragment
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
 
 
@@ -37,11 +44,8 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
     private lateinit var viewModel: LoginViewModel
     private  var username: String = ""
 
-
-
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
+        override fun onCreate(savedInstanceState: Bundle?) {
+            Log.i("MainActivity", "onStart called")
         super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_main)
 
@@ -54,7 +58,7 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
             LoginViewModelFactory()
         )
             .get(LoginViewModel::class.java)
-        viewModel.adolescent.value?.name?.let { Log.d("ADOLESCETN", it) }
+        viewModel.adolescent.value?.name?.let { Log.d("ADOLESCENT", it) }
         drawerLayout = findViewById(R.id.drawerLayout)
         var navHeader = findViewById<NavigationView>(R.id.navView)
         var bind = DataBindingUtil.inflate<AppNavHeaderMainBinding>(layoutInflater, R.layout.app_nav_header_main, navHeader.navView , false)
@@ -77,6 +81,8 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setHomeButtonEnabled(true)
 
+       val navigationView: NavigationView = findViewById(R.id.navView)
+       navigationView.setNavigationItemSelectedListener(this)
     }
 
 
@@ -84,6 +90,7 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
         } else {
+            
             super.onBackPressed()
         }
     }
@@ -115,6 +122,7 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
         val navController = findNavController(R.id.NavHostFragment)
         return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
     }
@@ -123,18 +131,35 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
 
         when (menuItem.itemId) {
             R.id.profielFragment -> {
-                supportFragmentManager.beginTransaction()
+                 supportFragmentManager.beginTransaction()
                     .replace(R.id.layoutToolBar, profielFragment())
                     .commit()
-                drawerLayout.close()
+            }
+            R.id.loginFragment -> {
+
+                viewModel.logout()
+                this.username = ""
+                AppPreferences.token = ""
+                AppPreferences.username = ""
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.layoutToolBar,LoginFragment())
+                    .commit()
+
+                 //finishAffinity()
+                Toast.makeText(this,"Logged out!", Toast.LENGTH_LONG).show()
+                Log.d("Token", AppPreferences.token.toString())
+
+                val taskIntent =  Intent(this,LoginActivity::class.java)
+                startActivityForResult(taskIntent, 1)
+
             }
         }
+        drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         this.username = data?.getStringExtra("loggedInUser").toString()
         var token = data?.getStringExtra("token").toString();
 
@@ -147,9 +172,11 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
 //            apply()
 //        }
 
-
         Log.d("sharedPref", AppPreferences.token.toString())
     }
 
 
 }
+
+
+

@@ -35,7 +35,7 @@ class LoginRepository(val dataSource: LoginDataSource) {
 
     fun logout() {
         user = null
-        dataSource.logout()
+        //dataSource.logout()
     }
 
     suspend fun getAdolescent(username: String): Result<Adolescent>

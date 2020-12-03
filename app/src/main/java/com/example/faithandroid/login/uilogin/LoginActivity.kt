@@ -138,6 +138,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
+   override fun onBackPressed() {
+        finishAffinity()
+    }
+
+
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome)
         val displayName = model.displayName
@@ -154,6 +159,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
 }
+
 
 
 /**
