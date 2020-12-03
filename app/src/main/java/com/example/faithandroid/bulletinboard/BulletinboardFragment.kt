@@ -96,7 +96,7 @@ class BulletinboardFragment: Fragment() {
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
 
-                    postViewModel.deletePostByEmail(post.id, "dora.theexplorer1999@gmail.com", PlaceType.Prikbord)
+                    postViewModel.deletePostByEmail(post.id,  PlaceType.Prikbord)
                     true
                 }
             })

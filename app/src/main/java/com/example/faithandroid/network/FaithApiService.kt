@@ -11,6 +11,7 @@ import com.example.faithandroid.PostType
 
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
+
 import com.google.android.material.internal.ContextUtils.getActivity
 
 
@@ -97,6 +98,7 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @POST("city/{placeType}/post")
+
     fun addPostByEmail(@Path("placeType") placeType: Int, @Body post: Post): Call<Void>
 
     @Headers("Content-Type: application/json", "accept: application/json")
@@ -107,6 +109,10 @@ interface FaithApiService {
     @PUT("city/{placeType}/add-existing/{postId}")
     fun addExistingPostToPlace(@Path("placeType") placeType: Int, @Path("postId") postId: Int): Call<Void>
 
+
+    @Headers("Content-Type: application/json", "accept: application/octet-stream")
+    @DELETE("city/post/{postId}")
+    fun permanentlyDeletePost(@Path("postId") postId: Int):Call<Void>
 
 }
 
