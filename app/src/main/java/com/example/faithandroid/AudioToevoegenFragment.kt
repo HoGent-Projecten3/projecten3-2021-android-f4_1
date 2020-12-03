@@ -46,7 +46,7 @@ class AudioToevoegenFragment: Fragment() {
     private var mediaRecorder: MediaRecorder? = null
     private var state: Boolean = false
     private var recordingStopped: Boolean = false
-    lateinit var uitvoer: String
+    //lateinit var output: String
 
     var uri: Uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
 
@@ -198,13 +198,13 @@ class AudioToevoegenFragment: Fragment() {
             }
         })
 
-        binding.videoToevoegenButton.setOnClickListener {
+        binding.audioToevoegenButton.setOnClickListener {
 
             if(nieuwePost)
             {
                 Log.d("AZIZA","if nieuwe post")
                 post?.title = binding.titel.text.toString()
-                post?.data = uitvoer
+                post?.data = output
 
                 Log.d("dataPost",post?.data.toString())
 
