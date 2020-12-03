@@ -63,15 +63,6 @@ interface FaithApiService {
     fun getAdolescent(@Path("email") email: String):
            Call<Adolescent>
 
-    @GET("Account/GetAdolescentsByCounselorEmail/bob.debouwer1998@gmail.com")
-    fun getProperties():
-            Deferred<List<FaithProperty>>
-
-    @Headers("Content-Type: application/json")
-    @POST("City/AddPostByEmail")
-    fun postPost(@Body post: Post, @Query("email") email: String):
-            Call<Void>
-
     @Headers("Content-Type: application/json")
     @POST("/city/skyscraper/goal")
     suspend fun postGoalPost(@Body goal: GoalPost)
