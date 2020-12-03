@@ -20,6 +20,7 @@ import com.example.faithandroid.databinding.ProfielBinding
 
 class ProfielFragment: Fragment() {
 
+    private var adolescent: Adolescent? = null
     private lateinit var viewModel: ProfielViewModel
     private var nieuwww = ""
     private var nieuwcon = ""
@@ -45,6 +46,13 @@ class ProfielFragment: Fragment() {
 
 
         viewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
+        viewModel.getAdolescent()
+
+        viewModel.adol.observe(viewLifecycleOwner, Observer {
+            adolescent = it
+            binding.profielNaam.text = String.format(adolescent?.firstName + " " + adolescent?.name)
+            binding.profielEmail.text = adolescent?.email
+        })
 
         binding.wachtwoordWIjzigen.setOnClickListener(){
 
