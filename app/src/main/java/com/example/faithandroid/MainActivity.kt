@@ -3,6 +3,7 @@ package com.example.faithandroid
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.renderscript.ScriptGroup
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var viewModel: LoginViewModel
     private  var username: String = ""
+    private lateinit var bind: AppNavHeaderMainBinding
 
 
 
@@ -60,14 +62,10 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
         viewModel.adolescent.value?.name?.let { Log.d("ADOLESCETN", it) }
         drawerLayout = findViewById(R.id.drawerLayout)
         var navHeader = findViewById<NavigationView>(R.id.navView)
-        var bind = DataBindingUtil.inflate<AppNavHeaderMainBinding>(layoutInflater, R.layout.app_nav_header_main, navHeader.navView , false)
+        bind = DataBindingUtil.inflate<AppNavHeaderMainBinding>(layoutInflater, R.layout.app_nav_header_main, navHeader.navView , false)
         navHeader.navView.addHeaderView(bind.root)
-        var pvm: ProfielViewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
-        pvm.getAdolescent()
-        pvm.adol.observe(this, {
-            username = it.firstName + " " + it.name
-            bind.nameText.text = username
-        })
+
+
       // var navHeader2 = findViewById<AppNavHeaderMainBinding>(R.id.) as AppNavHeaderMainBinding
 //        navHeader2.adolescent = viewModel
 
@@ -98,7 +96,15 @@ class MainActivity : AppCompatActivity(),DrawerInterface,NavigationView.OnNaviga
 
     fun ClickMenu(view: View){
         //open drawer
+        var pvm: ProfielViewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
+        Log.d("UserAPPELS", "Start")
+        pvm.getAdolescent()
+        pvm.adol.observe(this, {
+            username = it.firstName + " " + it.name
+            bind.nameText.text = username
+        })
         openDrawer(drawerLayout)
+
     }
 
     private  fun  openDrawer(drawerLayout: DrawerLayout) {
