@@ -5,7 +5,13 @@ import com.example.faithandroid.login.data.User
 import com.example.faithandroid.models.Adolescent
 
 import com.example.faithandroid.models.GoalPost
+import com.example.faithandroid.models.Playlist
 import com.example.faithandroid.models.Post
+
+
+import com.google.android.material.internal.ContextUtils.getActivity
+
+
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
@@ -46,7 +52,7 @@ interface FaithApiService {
     @Headers("Content-Type: application/json")
     @POST("user/adolescent/login")
     fun loginAdolescent(@Body adolescent: User):
-           Call<String>
+            Call<String>
 
 
     @GET("user/adolescent/{email}")
@@ -87,6 +93,7 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @POST("city/{placeType}/post")
+
     fun addPostByEmail(@Path("placeType") placeType: Int, @Body post: Post): Call<Void>
 
     @Headers("Content-Type: application/json", "accept: application/json")
@@ -97,9 +104,29 @@ interface FaithApiService {
     @PUT("city/{placeType}/add-existing/{postId}")
     fun addExistingPostToPlace(@Path("placeType") placeType: Int, @Path("postId") postId: Int): Call<Void>
 
+
     @Headers("Content-Type: application/json")
     @POST("user/change-password")
     fun changepassword(@Query("ww") ww: String) : Call<String>
+
+
+    @Headers("Content-Type: application/json", "accept: application/json")
+    @GET("city/musicroom/playlist")
+    fun getPlaylists(): Call<List<Playlist>>
+
+    @Headers("Content-Type: application/json", "accept: application/json")
+    @POST("city/musicroom/playlist")
+    fun addPlaylist(@Body playlist: Playlist): Call<Void>
+
+    @Headers("Content-Type: application/json", "accept: application/json")
+    @DELETE("city/musicroom/playlist/{id}")
+    fun deletePlaylist(@Path("id") primaryKey: Int): Call<Void>
+
+
+    @Headers("Content-Type: application/json", "accept: application/octet-stream")
+    @DELETE("city/post/{postId}")
+    fun permanentlyDeletePost(@Path("postId") postId: Int):Call<Void>
+
 
 }
 

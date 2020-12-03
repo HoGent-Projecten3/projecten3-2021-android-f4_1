@@ -8,6 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import android.widget.ToggleButton
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.SwitchCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -24,6 +27,7 @@ class ProfielFragment: Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //checkTheme()
     }
 
     override fun onCreateView(
@@ -37,9 +41,13 @@ class ProfielFragment: Fragment() {
             false
         );
 
+
+
+
         viewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
 
         binding.wachtwoordWIjzigen.setOnClickListener(){
+
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
             builder.setTitle("Wachtwoord wijzigen")
 
@@ -87,6 +95,34 @@ class ProfielFragment: Fragment() {
             builder.show()
         }
 
+
         return binding.root
+    }
+        val toggle: SwitchCompat = binding.donkereModus
+        toggle.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                MyPreference(this.context).darkMode = 0
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                MyPreference(this.context).darkMode = 1
+            }
+        }
+        return binding.root
+    }
+
+
+    private fun checkTheme() {
+        when (MyPreference(this.context).darkMode) {
+            0 -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+            1 -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
+            2 -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+            }
+        }
     }
 }
