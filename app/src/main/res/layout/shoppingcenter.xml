@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="ShoppingCenterViewModel"
+            type="com.example.faithandroid.shoppingCenter.ShoppingCenterViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,14 +19,92 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/imgAvatar"
+            android:layout_width="175dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="?attr/actionBarSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/shoppingScroll"
+            tools:srcCompat="@tools:sample/avatars"
+            app:srcCompat="@drawable/ic_avatar_female"
+            android:scaleType="centerCrop"
+            android:scrollY="-175dp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/under_construction"
+            android:id="@+id/shoppingScroll"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/imgAvatar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/lblHair"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Haarkleur:" />
+
+                <androidx.recyclerview.widget.RecyclerView
+
+                    android:id="@+id/hairGridView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:AvatarParts="@{ShoppingCenterViewModel.hairProperties}"
+                    />
+
+                <TextView
+                    android:id="@+id/lblEye"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Oogkleur:" />
+
+                <androidx.recyclerview.widget.RecyclerView
+
+                    android:id="@+id/eyeGridView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:AvatarParts="@{ShoppingCenterViewModel.eyeProperties}"
+                    />
+
+                <TextView
+                    android:id="@+id/lblSkin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Huidskleur:" />
+
+                <androidx.recyclerview.widget.RecyclerView
+
+                    android:id="@+id/skinGridView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:AvatarParts="@{ShoppingCenterViewModel.skinProperties}"
+                    />
+
+                <TextView
+                    android:id="@+id/lblBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kleren:" />
+
+                <androidx.recyclerview.widget.RecyclerView
+
+                    android:id="@+id/bodyGridView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:AvatarParts="@{ShoppingCenterViewModel.bodyProperties}"
+                    />
+            </LinearLayout>
+        </ScrollView>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
