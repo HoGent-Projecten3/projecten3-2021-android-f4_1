@@ -7,6 +7,7 @@ import com.example.faithandroid.adapters.PostAdapter
 import com.example.faithandroid.billboard.BillboardGridAdapter
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.shoppingCenter.ShoppingCenterGridAdapter
 
 @BindingAdapter("filteredPostData")
 fun bindRecyclerViewFilteredPost(recyclerView: RecyclerView, data: List<Post>?){
@@ -20,10 +21,14 @@ fun bindRecyclerViewPost(recyclerView: RecyclerView, data: List<Post>?){
     adapter.submitList(data)
 }
 
-
-
 @BindingAdapter("BillboardListData")
 fun bindRecyclerViewBillboard(recyclerView: RecyclerView, data: List<GoalPost>?){
     val adapter = recyclerView.adapter as BillboardGridAdapter
+    adapter.submitList(data)
+}
+
+@BindingAdapter("AvatarParts")
+fun bindRecyclerViewShoppingcenter(recyclerView: RecyclerView, data: List<Int>?){
+    val adapter = recyclerView.adapter as ShoppingCenterGridAdapter
     adapter.submitList(data)
 }

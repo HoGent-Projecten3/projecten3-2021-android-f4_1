@@ -3,6 +3,7 @@ package com.example.faithandroid
 import android.content.Context
 import android.Manifest
 import android.content.Intent
+import android.graphics.Path
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.renderscript.ScriptGroup
@@ -12,9 +13,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+
 
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil

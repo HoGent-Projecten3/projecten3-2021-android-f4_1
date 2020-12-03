@@ -14,6 +14,7 @@ import com.example.faithandroid.models.Post
 
 import com.google.android.material.internal.ContextUtils.getActivity
 
+
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -56,7 +57,7 @@ interface FaithApiService {
     @Headers("Content-Type: application/json")
     @POST("user/adolescent/login")
     fun loginAdolescent(@Body adolescent: User):
-           Call<String>
+            Call<String>
 
 
     @GET("user/adolescent/{email}")
@@ -108,10 +109,10 @@ interface FaithApiService {
     @PUT("city/{placeType}/add-existing/{postId}")
     fun addExistingPostToPlace(@Path("placeType") placeType: Int, @Path("postId") postId: Int): Call<Void>
 
+
     @Headers("Content-Type: application/json", "accept: application/octet-stream")
     @DELETE("city/post/{postId}")
     fun permanentlyDeletePost(@Path("postId") postId: Int):Call<Void>
-
 
 }
 
