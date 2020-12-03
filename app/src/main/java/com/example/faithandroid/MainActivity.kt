@@ -1,4 +1,5 @@
 
+
 package com.example.faithandroid
 
 
@@ -200,6 +201,4 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
 
 
 }
-
-
 

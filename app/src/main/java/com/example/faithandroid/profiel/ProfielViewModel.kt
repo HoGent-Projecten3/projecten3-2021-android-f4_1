@@ -1,16 +1,20 @@
 package com.example.faithandroid.profiel
 
 
+
 import AppPreferences
+
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+
 import com.example.faithandroid.models.Adolescent
 import com.example.faithandroid.network.FaithApi
 import retrofit2.*
+
 
 import kotlinx.coroutines.launch
 
@@ -50,6 +54,5 @@ class ProfielViewModel: ViewModel() {
              }
          }
     }
-
 
 }
