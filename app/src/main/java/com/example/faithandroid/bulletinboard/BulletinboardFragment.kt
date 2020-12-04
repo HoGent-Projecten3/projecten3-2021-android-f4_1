@@ -149,6 +149,7 @@ class BulletinboardFragment: Fragment() {
 
     override fun onStart(){
         super.onStart()
+        postViewModel.getPostsOfPlace(PlaceType.Prikbord)
         deleteBtn.visibility = VISIBLE
     }
 

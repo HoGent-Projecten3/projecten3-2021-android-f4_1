@@ -41,16 +41,14 @@
 
                     <ImageView
                         android:id="@+id/img_bulletinboard"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="250dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/bulletinboard_large"
                         app:layout_constraintBottom_toTopOf="@id/lbl_bulletinboard"
-                        app:layout_constraintEnd_toStartOf="@+id/img_wolkenkrabber"
-                        app:layout_constraintHorizontal_weight="2"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/lbl_bulletinboard"
@@ -73,9 +71,8 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/skyscraper"
                         app:layout_constraintEnd_toStartOf="@id/img_billboard"
-                        app:layout_constraintHorizontal_weight="1"
-                        app:layout_constraintStart_toEndOf="@id/img_bulletinboard"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/lbl_bulletinboard" />
 
                     <TextView
                         android:id="@+id/lbl_wolkenkrabber"
@@ -98,10 +95,9 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/billboard"
                         app:layout_constraintBottom_toTopOf="@id/lbl_billboard"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_weight="1"
+                        app:layout_constraintEnd_toStartOf="@id/img_schatkist"
                         app:layout_constraintStart_toEndOf="@+id/img_wolkenkrabber"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@id/lbl_bulletinboard" />
 
                     <TextView
                         android:id="@+id/lbl_billboard"
@@ -124,8 +120,8 @@
                         android:contentDescription="@string/treasure_chest"
                         android:scaleType="centerCrop"
                         android:src="@drawable/treasurechest"
-                        app:layout_constraintEnd_toStartOf="@id/img_musicRoom"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/img_billboard"
                         app:layout_constraintTop_toBottomOf="@id/lbl_bulletinboard" />
 
                     <TextView
@@ -150,7 +146,7 @@
                         android:src="@drawable/headphones"
                         app:layout_constraintBottom_toTopOf="@id/lbl_musicRoom"
                         app:layout_constraintEnd_toStartOf="@id/img_rugzak"
-                        app:layout_constraintStart_toEndOf="@id/img_schatkist"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/lbl_wolkenkrabber" />
 
                     <TextView
@@ -177,7 +173,7 @@
                         app:layout_constraintBottom_toTopOf="@id/lbl_rugzak"
                         app:layout_constraintEnd_toStartOf="@id/img_winkelcentrum"
                         app:layout_constraintStart_toEndOf="@id/img_musicRoom"
-                        app:layout_constraintTop_toBottomOf="@id/lbl_wolkenkrabber" />
+                        app:layout_constraintTop_toBottomOf="@id/lbl_billboard" />
 
                     <TextView
                         android:id="@+id/lbl_rugzak"
@@ -202,7 +198,7 @@
                         app:layout_constraintBottom_toTopOf="@id/lbl_winkelcentrum"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/img_rugzak"
-                        app:layout_constraintTop_toBottomOf="@id/lbl_billboard" />
+                        app:layout_constraintTop_toBottomOf="@id/lbl_schatkist" />
 
                     <TextView
                         android:id="@+id/lbl_winkelcentrum"
