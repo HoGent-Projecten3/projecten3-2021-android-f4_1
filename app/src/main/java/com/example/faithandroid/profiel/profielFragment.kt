@@ -49,11 +49,12 @@ class ProfielFragment: Fragment() {
 
         viewModel.adol.observe(viewLifecycleOwner, Observer {
             adolescent = it
-            binding.profielNaam.text = String.format(adolescent?.firstName + " " + adolescent?.name)
+            binding.profielNaam.text =
+                String.format(adolescent?.firstName + " " + adolescent?.name)
             binding.profielEmail.text = adolescent?.email
         })
 
-        binding.wachtwoordWIjzigen.setOnClickListener(){
+        binding.wachtwoordWIjzigen.setOnClickListener() {
 
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
             builder.setTitle("Wachtwoord wijzigen")
@@ -63,7 +64,8 @@ class ProfielFragment: Fragment() {
 
             val inputOudww = viewInflated.findViewById<View>(R.id.oudwwfld) as EditText
             val inputNieuw = viewInflated.findViewById<View>(R.id.nieuwwwfld) as EditText
-            val inputNieuwConfirm = viewInflated.findViewById<View>(R.id.nieuwwwfldconfirm) as EditText
+            val inputNieuwConfirm =
+                viewInflated.findViewById<View>(R.id.nieuwwwfldconfirm) as EditText
 
             builder.setView(viewInflated)
             builder.setPositiveButton(android.R.string.ok,
@@ -71,24 +73,24 @@ class ProfielFragment: Fragment() {
 
                     nieuwww = inputNieuw.text.toString()
                     nieuwcon = inputNieuwConfirm.text.toString()
-                    if(nieuwww.matches(Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$^+=!*()@%&]).{8,}$"))) {
-                            if (nieuwww == nieuwcon) {
+                    if (nieuwww.matches(Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$^+=!*()@%&]).{8,}$"))) {
+                        if (nieuwww == nieuwcon) {
 
-                                viewModel.changePassword(nieuwww)
-                                dialog.dismiss()
-                                Toast.makeText(
-                                    this.context,
-                                    "Nieuw wachtwoord ingesteld",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            } else {
-                                Toast.makeText(
-                                    this.context,
-                                    "Beide wachtwoorden komen niet overeen",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        } else{
+                            viewModel.changePassword(nieuwww)
+                            dialog.dismiss()
+                            Toast.makeText(
+                                this.context,
+                                "Nieuw wachtwoord ingesteld",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } else {
+                            Toast.makeText(
+                                this.context,
+                                "Beide wachtwoorden komen niet overeen",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    } else {
                         Toast.makeText(
                             this.context,
                             "wachtwoord moet 8 karakters, minstens 1 nummer, minstens 1 drukletter & kleineletter bevatten",
@@ -110,11 +112,12 @@ class ProfielFragment: Fragment() {
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 MyPreference(this.context).darkMode = 1
+
             }
         }
+
         return binding.root
     }
-
 
     private fun checkTheme() {
         when (MyPreference(this.context).darkMode) {
@@ -127,3 +130,4 @@ class ProfielFragment: Fragment() {
         }
     }
 }
+
