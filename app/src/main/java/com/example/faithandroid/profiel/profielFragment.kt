@@ -13,9 +13,11 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SwitchCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.ProfielBinding
+import com.example.faithandroid.models.Adolescent
 
 
 class ProfielFragment: Fragment() {
@@ -41,9 +43,6 @@ class ProfielFragment: Fragment() {
             container,
             false
         );
-
-
-
 
         viewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
         viewModel.getAdolescent()
@@ -103,9 +102,6 @@ class ProfielFragment: Fragment() {
             builder.show()
         }
 
-
-        return binding.root
-    }
         val toggle: SwitchCompat = binding.donkereModus
         toggle.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -127,9 +123,6 @@ class ProfielFragment: Fragment() {
             }
             1 -> {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            }
-            2 -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
             }
         }
     }

@@ -48,10 +48,10 @@ class SkyscraperViewModel : ViewModel() {
     val getStatus: LiveData<String>
         get() = _getStatus
   
-    private var testLiveData = MutableLiveData<List<GoalPost>>()
+
     private var test = mutableListOf<GoalPost>();
 
-
+    private var testLiveData = MutableLiveData<List<GoalPost>>()
     val testLive: LiveData<List<GoalPost>>
         get() = testLiveData
 
@@ -67,13 +67,17 @@ class SkyscraperViewModel : ViewModel() {
     fun getPostsOfSkyscraper() {
         coroutineScope.launch {
             var getPropertiesDeferred = FaithApi.retrofitService.getPostsOfSkyScraper();
+
             try {
 
                 var listResult = getPropertiesDeferred.await()
+                Log.d("Skyscraper", listResult.toString())
                 if(listResult.size > 0){
 
                     testLiveData.value = listResult
                 }
+
+                Log.d("Skyscraper", testLiveData.value.toString())
             } catch (e: Exception){
 
                 _getStatus.value = e.localizedMessage

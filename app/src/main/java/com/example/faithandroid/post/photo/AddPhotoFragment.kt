@@ -143,8 +143,7 @@ class addPhotoFragment: Fragment() {
 
                     viewModel.addPostByEmail(
                         it1,
-                        args.placeType,
-                        "dora.theexplorer1999@gmail.com"
+                        args.placeType
                     )
                 }
             }

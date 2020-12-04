@@ -55,7 +55,7 @@
             app:destination="@id/addTextFragment" />
         <action
             android:id="@+id/action_optionsAddPostFragment_to_audioToevoegenFragment"
-            app:destination="@id/audioToevoegenFragment" />
+            app:destination="@id/AudioToevoegenFragment" />
 
     </fragment>
 
@@ -139,7 +139,13 @@
         android:id="@+id/billboardFragment"
         android:name="com.example.faithandroid.billboard.BillboardFragment"
         android:label="BillboardFragment"
-        tools:layout="@layout/billboard"/>
+        tools:layout="@layout/billboard">
+        <action
+            android:id="@+id/action_billboardFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/cinemaFragment"
         android:name="com.example.faithandroid.cinema.CinemaFragment"
@@ -167,6 +173,11 @@
         <action
             android:id="@+id/action_skyscraperFragment_to_goalDetailsFragment"
             app:destination="@id/goalDetailsFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_skyscraperFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -287,7 +298,7 @@
 
     </fragment>
     <fragment
-        android:id="@+id/audioToevoegenFragment"
+        android:id="@+id/AudioToevoegenFragment"
         android:name="com.example.faithandroid.AudioToevoegenFragment"
         android:label="AudioToevoegenFragment" >
         <action

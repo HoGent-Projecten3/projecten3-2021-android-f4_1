@@ -87,7 +87,7 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
         }
     }
 
-    fun addPostByEmail(post: Post, placeType: PlaceType, email: String): Boolean{
+    fun addPostByEmail(post: Post, placeType: PlaceType): Boolean{
         var bool: Boolean = true
         viewModelScope.launch {
             val stringCall: Call<Void> =
