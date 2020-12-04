@@ -107,16 +107,14 @@ class AudioToevoegenFragment: Fragment() {
         binding.filledExposedDropdown.setOnItemClickListener { parent, view, position, id ->
             viewModel.getFilteredPostFromPlace(
                 placeTypes[position],
-                PostType.Audio,
-                "dora.theexplorer1999@gmail.com"
+                PostType.Audio
             )
         }
 
 
         viewModel.getFilteredPostFromPlace(
             PlaceType.Rugzak,
-            PostType.Audio,
-            "dora.theexplorer1999@gmail.com"
+            PostType.Audio
         )
         binding.viewModel = viewModel
 
@@ -210,9 +208,7 @@ class AudioToevoegenFragment: Fragment() {
 
                 post?.let { it1 -> viewModel.addPostByEmail(
                     it1,
-                    args.placeType,
-                    "dora.theexplorer1999@gmail.com"
-
+                    args.placeType
                 ) }
             }
             else

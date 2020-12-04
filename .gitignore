@@ -18,6 +18,8 @@
 /app/build/outputs/logs
 /app/build/outputs/apk/debug
 /captures
+/spotify-auth/build
+/spotify-remote/build
 .externalNativeBuild
 .cxx
 

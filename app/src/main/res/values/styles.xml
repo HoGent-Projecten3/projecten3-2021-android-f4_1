@@ -9,6 +9,7 @@
     </style>
     <style name="AppThemeDark" parent="Theme.MaterialComponents.DayNight">
         <!-- Customize your theme here. -->
+
         ...
     </style>
 </resources>

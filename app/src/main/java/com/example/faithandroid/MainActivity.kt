@@ -11,7 +11,6 @@ import android.net.Uri
 import android.content.Context
 import android.Manifest
 
-import android.content.Intent
 import android.graphics.Path
 import android.content.pm.PackageManager
 
@@ -26,6 +25,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+
 
 
 import androidx.core.view.GravityCompat
@@ -252,20 +252,6 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
 
 
         Log.d("sharedPref", AppPreferences.token.toString())
-
-    }
-
-    override fun onStart()
-    {
-        super.onStart()
-
-
-    }
-
-
-    override fun onStop()
-    {
-        super.onStop()
 
     }
 
