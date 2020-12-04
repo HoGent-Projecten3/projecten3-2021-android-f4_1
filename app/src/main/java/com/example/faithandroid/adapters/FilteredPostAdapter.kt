@@ -2,18 +2,17 @@ package com.example.faithandroid.adapters
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.faithandroid.CustomClick
-import com.example.faithandroid.ExoPlayerActivity
-import com.example.faithandroid.FullScreenImageActivity
-import com.example.faithandroid.PlaceType
+import com.example.faithandroid.*
 import com.example.faithandroid.databinding.FilteredPostBinding
 
 import com.example.faithandroid.models.Post
@@ -40,7 +39,14 @@ class FilteredPostAdapter(private var listener: CustomClick) : ListAdapter<Post,
             //inding.TreasurechestVideo.setVideoURI(Uri.parse(post.uri))
             if (post.postType == PostType.Image.ordinal){
                 Picasso.get().load(post.uri).into(binding.TreasurechestImage)
-                binding.TreasurechestImage.scaleType = ImageView.ScaleType.CENTER_CROP
+                //binding.TreasurechestImage.scaleType = ImageView.ScaleType.CENTER_CROP
+            }else if(post.postType == PostType.Audio.ordinal){
+                binding.TreasurechestImage.setImageResource(R.drawable.sound)
+            }
+            else if(post.postType == PostType.Video.ordinal){
+                Glide.with(itemView.context).load(post.uri).into(binding.TreasurechestImage)
+            }else{
+                binding.TreasurechestImage.visibility = INVISIBLE
             }
 
             val dialogClickListener = DialogInterface.OnClickListener{ _, which ->
@@ -49,7 +55,7 @@ class FilteredPostAdapter(private var listener: CustomClick) : ListAdapter<Post,
                 }
             }
 
-            Glide.with(itemView.context).load(post.uri).into(binding.TreasurechestVideo)
+
 
             binding.date = LocalDate.parse(post.date, DateTimeFormatter.ISO_LOCAL_DATE_TIME).format(
                 DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))

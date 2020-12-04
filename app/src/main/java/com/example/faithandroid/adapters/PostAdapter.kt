@@ -10,10 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.faithandroid.CustomClick
-import com.example.faithandroid.ExoPlayerActivity
-import com.example.faithandroid.FullScreenImageActivity
-import com.example.faithandroid.PlaceType
+import com.example.faithandroid.*
 import com.example.faithandroid.databinding.PostBinding
 
 import com.example.faithandroid.models.Post
@@ -37,10 +34,22 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
         fun bind(post: Post){
 
             binding.post = post
-            if (post.postType == PostType.Image.ordinal){
+            /*if (post.postType == PostType.Image.ordinal){
                 Picasso.get().load(post.uri).into(binding.TreasurechestImage)
                 binding.TreasurechestImage.scaleType = ImageView.ScaleType.CENTER_CROP
+            }*/
+            if (post.postType == PostType.Image.ordinal){
+                Picasso.get().load(post.uri).into(binding.TreasurechestImage)
+                //binding.TreasurechestImage.scaleType = ImageView.ScaleType.CENTER_CROP
+            }else if(post.postType == PostType.Audio.ordinal){
+                binding.TreasurechestImage.setImageResource(R.drawable.sound)
             }
+            else if(post.postType == PostType.Video.ordinal){
+                Glide.with(itemView.context).load(post.uri).into(binding.TreasurechestImage)
+            }else{
+                binding.TreasurechestImage.visibility = View.INVISIBLE
+            }
+
 
             val dialogClickListener = DialogInterface.OnClickListener{ _, which ->
                 when(which){
@@ -68,7 +77,7 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
             var card = binding.card
 
 
-            Glide.with(itemView.context).load(post.uri).into(binding.TreasurechestVideo)
+            //Glide.with(itemView.context).load(post.uri).into(binding.TreasurechestImage)
             card.setOnClickListener { view: View ->
                 when (post.postType) {
                     PostType.Image.ordinal -> {
