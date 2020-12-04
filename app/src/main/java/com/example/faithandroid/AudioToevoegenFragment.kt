@@ -2,7 +2,9 @@ package com.example.faithandroid
 
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
-import android.database.Cursor
+import android.app.Activity
+import android.content.Intent
+import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.net.Uri
 import android.os.Build
@@ -15,6 +17,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -36,17 +39,13 @@ class AudioToevoegenFragment: Fragment() {
     val args: AudioToevoegenFragmentArgs by navArgs()
     var post: Post? = null
     var nieuwePost: Boolean = false;
-
-    private var path: String? = null
-    private var myfile: String? = null
-        lateinit var mr : MediaRecorder
-
+    val PICK_AUDIO = 1
     lateinit var output: String
 
+    private var data: Intent? = null
     private var mediaRecorder: MediaRecorder? = null
     private var state: Boolean = false
     private var recordingStopped: Boolean = false
-    //lateinit var output: String
 
     var uri: Uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
 
@@ -54,12 +53,6 @@ class AudioToevoegenFragment: Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-       /* val path =
-            Environment.getExternalStorageDirectory().absolutePath + "/storage/emulated/0/Android/media/"
-        val dir = File(path)
-        if (!dir.exists()) dir.mkdirs()
-         myfile = path + "filename" + ".mp4"*/
 
         output = Environment.getExternalStorageDirectory().absolutePath + "/recording.mp3"
         mediaRecorder = MediaRecorder()
@@ -168,25 +161,6 @@ class AudioToevoegenFragment: Fragment() {
             nieuwePost = true
             this.view?.findViewById<TextInputLayout>(R.id.titelVeld)?.visibility = View.VISIBLE
 
-
-           /* val yourFilePath = requireContext().filesDir.toString() + "/" + "recording.mp3"
-            val yourFile = File(yourFilePath)
-            Log.d("yourfile","lijn172")
-
-
-            val projection = arrayOf(
-                MediaStore.Audio.AudioColumns.DATA,
-                MediaStore.Audio.AudioColumns.TITLE
-            )
-
-            val c: Cursor? = requireContext().contentResolver.query(
-                uri,
-                projection,
-                MediaStore.Audio.Media.DATA + " like ? ",
-                arrayOf("%utm%"),
-                null
-            )*/
-
         }
 
         binding.recyclerView.adapter = FilteredPostAdapter(object : CustomClick {
@@ -198,11 +172,42 @@ class AudioToevoegenFragment: Fragment() {
 
         binding.audioToevoegenButton.setOnClickListener {
 
+
+            val player = MediaPlayer()
+
+            try {
+                player.setDataSource(output)
+                player.prepare()
+                Log.d("MediaPlayer","lijn180: player")
+            } catch (e: IllegalArgumentException) {
+                e.printStackTrace()
+            } catch (e: Exception) {
+                println("Exception of type : $e")
+                e.printStackTrace()
+            }
+
+            Log.d("nieuwePost",nieuwePost.toString())
+
+
+
+            val audioString = data?.data?.let {
+
+                this.post = Post(
+                    0,
+                    "audio",
+                    "audio.mp4",
+                    "2020-11-19T21:19:39.362Z",
+                    PostType.Audio.ordinal,
+                    output,
+                    ""
+                )
+            }
+
             if(nieuwePost)
             {
-                Log.d("AZIZA","if nieuwe post")
+                Log.d("Audio","if nieuwe post")
                 post?.title = binding.titel.text.toString()
-                post?.data = output
+                post?.data = audioString.toString()
 
                 Log.d("dataPost",post?.data.toString())
 
@@ -290,5 +295,4 @@ class AudioToevoegenFragment: Fragment() {
         mediaRecorder?.resume()
         recordingStopped = false
     }
-
 }
