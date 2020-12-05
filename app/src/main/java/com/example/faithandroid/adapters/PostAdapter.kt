@@ -43,13 +43,10 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
                 //binding.TreasurechestImage.scaleType = ImageView.ScaleType.CENTER_CROP
             }else if(post.postType == PostType.Audio.ordinal){
                 binding.TreasurechestImage.setImageResource(R.drawable.sound)
-            }
-            else if(post.postType == PostType.Video.ordinal){
-                Glide.with(itemView.context).load(post.uri).into(binding.TreasurechestImage)
             }else{
                 binding.TreasurechestImage.visibility = View.INVISIBLE
             }
-
+            Glide.with(itemView.context).load(post.uri).into(binding.TreasurechestImage)
 
             val dialogClickListener = DialogInterface.OnClickListener{ _, which ->
                 when(which){
