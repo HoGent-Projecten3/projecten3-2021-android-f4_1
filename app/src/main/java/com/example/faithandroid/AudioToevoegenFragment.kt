@@ -175,7 +175,7 @@ class AudioToevoegenFragment: Fragment() {
 
             val player = MediaPlayer()
 
-            try {
+           /* try {
                 player.setDataSource(output)
                 player.prepare()
                 Log.d("MediaPlayer","lijn180: player")
@@ -186,7 +186,7 @@ class AudioToevoegenFragment: Fragment() {
                 e.printStackTrace()
             }
 
-            Log.d("nieuwePost",nieuwePost.toString())
+            Log.d("nieuwePost",nieuwePost.toString())*/
 
 
 
@@ -249,7 +249,6 @@ class AudioToevoegenFragment: Fragment() {
 
     private fun startRecording() {
         try {
-            Log.d("AziZEEE", "Start: ")
             mediaRecorder?.prepare()
             mediaRecorder?.start()
             state = true
@@ -265,9 +264,13 @@ class AudioToevoegenFragment: Fragment() {
     private fun stopRecording(){
         if(state){
             mediaRecorder?.stop()
-            //debuggen op release
             mediaRecorder?.release()
             state = false
+
+            val pickIntent =
+                Intent(Intent.ACTION_PICK, Uri.parse(output) )
+            pickIntent.type = "*"
+            startActivityForResult(pickIntent, 10)
 
         }else{
             Toast.makeText(this.context, "You are not recording right now!", Toast.LENGTH_SHORT).show()
