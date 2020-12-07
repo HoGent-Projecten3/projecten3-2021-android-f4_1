@@ -39,7 +39,6 @@ class AudioToevoegenFragment: Fragment() {
     val args: AudioToevoegenFragmentArgs by navArgs()
     var post: Post? = null
     var nieuwePost: Boolean = false;
-    val PICK_AUDIO = 1
     lateinit var output: String
 
     private var data: Intent? = null
@@ -47,6 +46,7 @@ class AudioToevoegenFragment: Fragment() {
     private var state: Boolean = false
     private var recordingStopped: Boolean = false
 
+    lateinit var audioPost : String
     var uri: Uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
 
     private lateinit var viewModel: PostViewModel
@@ -66,6 +66,7 @@ class AudioToevoegenFragment: Fragment() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -119,22 +120,7 @@ class AudioToevoegenFragment: Fragment() {
 
         }
 
-        val path = context?.filesDir?.absolutePath
-        val file = File("$path/recording.mp3")
-        Log.d("fileAzize",file.toString())
-
-
-
         binding.start.setOnClickListener{
-            //eerst controleren of de gebruiker daadwerkelijk permissie heeft gegeven om audio op te nemen
-           /* if (ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                val permissions = arrayOf(android.Manifest.permission.RECORD_AUDIO, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE)
-                ActivityCompat.requestPermissions(this, permissions,0)
-            } else {
-
-            }*/
             startRecording()
 
             binding.start.isEnabled = false
@@ -172,44 +158,28 @@ class AudioToevoegenFragment: Fragment() {
 
         binding.audioToevoegenButton.setOnClickListener {
 
-
-            val player = MediaPlayer()
-
-           /* try {
-                player.setDataSource(output)
-                player.prepare()
-                Log.d("MediaPlayer","lijn180: player")
-            } catch (e: IllegalArgumentException) {
-                e.printStackTrace()
-            } catch (e: Exception) {
-                println("Exception of type : $e")
-                e.printStackTrace()
-            }
-
-            Log.d("nieuwePost",nieuwePost.toString())*/
-
-
-
-            val audioString = data?.data?.let {
+            val audioString = data?.data?.let { uriToBase64(Uri.parse("file://$output")) }
 
                 this.post = Post(
                     0,
                     "audio",
-                    "audio.mp4",
+                    "recording.mp3",
                     "2020-11-19T21:19:39.362Z",
                     PostType.Audio.ordinal,
-                    output,
+                    audioPost,
                     ""
                 )
-            }
+
+            Log.d("audioString",audioString.toString())
 
             if(nieuwePost)
             {
                 Log.d("Audio","if nieuwe post")
                 post?.title = binding.titel.text.toString()
                 post?.data = audioString.toString()
+                //post?.data = audioPost
 
-                Log.d("dataPost",post?.data.toString())
+                Log.d("Audio",post?.data.toString())
 
                 post?.let { it1 -> viewModel.addPostByEmail(
                     it1,
@@ -242,8 +212,6 @@ class AudioToevoegenFragment: Fragment() {
         }
 
 
-
-
         return binding.root
     }
 
@@ -268,31 +236,8 @@ class AudioToevoegenFragment: Fragment() {
             mediaRecorder?.release()
             state = false
 
-            uriToBase64(Uri.parse("file://$output"))
+            audioPost =  uriToBase64(Uri.parse("file://$output"))
 
-
-            var fileInputStream: FileInputStream? = null
-            fileInputStream = context?.applicationContext?.openFileInput("")
-
-            var inputStreamReader: InputStreamReader = InputStreamReader(fileInputStream)
-            val bufferedReader: BufferedReader = BufferedReader(inputStreamReader)
-            val stringBuilder: StringBuilder = StringBuilder()
-            var text: String? = null
-            while ({ text = bufferedReader.readLine(); text }() != null) {
-                stringBuilder.append(text)
-            }
-
-
-//            val getIntent = Intent(Intent.ACTION_GET_CONTENT)
-//            getIntent.type = "audio/*"
-//
-//            val pickIntent =
-//                Intent(Intent.ACTION_PICK, Uri.parse(output) )
-//            pickIntent.type = "/*"
-//            val chooserIntent = Intent.createChooser(getIntent, "Select Audio")
-//            chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, arrayOf(pickIntent))
-//
-//            startActivityForResult(chooserIntent, 10)
 
 
         }else{
@@ -342,9 +287,9 @@ class AudioToevoegenFragment: Fragment() {
         }
         val arr = byteBuffer.toByteArray()
 
-        val image: String = Base64.getEncoder().encodeToString(arr)
-        Log.d("audio", image);
-        return image
+        val audio: String = Base64.getEncoder().encodeToString(arr)
+        Log.d("audio", audio);
+        return audio
 
     }
 }
