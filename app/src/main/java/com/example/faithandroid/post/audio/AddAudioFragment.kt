@@ -1,17 +1,14 @@
-package com.example.faithandroid
+package com.example.faithandroid.post.audio
 
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
-import android.app.Activity
 import android.content.Intent
-import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +21,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.faithandroid.*
 import com.example.faithandroid.adapters.FilteredPostAdapter
 import com.example.faithandroid.databinding.AudioToevoegenBinding
 import com.example.faithandroid.models.Post
@@ -34,21 +32,16 @@ import java.io.*
 import java.util.*
 
 
-class AudioToevoegenFragment: Fragment() {
+class AddAudioFragment: Fragment() {
 
-    val args: AudioToevoegenFragmentArgs by navArgs()
+    val args: AddAudioFragmentArgs by navArgs()
     var post: Post? = null
     var nieuwePost: Boolean = false;
     lateinit var output: String
-
-    private var data: Intent? = null
     private var mediaRecorder: MediaRecorder? = null
     private var state: Boolean = false
     private var recordingStopped: Boolean = false
-
     lateinit var audioPost : String
-    var uri: Uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
-
     private lateinit var viewModel: PostViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,8 +54,6 @@ class AudioToevoegenFragment: Fragment() {
         mediaRecorder?.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
         mediaRecorder?.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
         mediaRecorder?.setOutputFile(output)
-
-
 
     }
 
@@ -82,7 +73,9 @@ class AudioToevoegenFragment: Fragment() {
         binding.lifecycleOwner = this
 
         viewModel =
-            ViewModelProvider(this, ViewModelFactory(args.placeType)).get(PostViewModel::class.java)
+            ViewModelProvider(this,
+                ViewModelFactory(args.placeType)
+            ).get(PostViewModel::class.java)
 
         val placeTypes = PlaceType.values()
 
@@ -94,7 +87,6 @@ class AudioToevoegenFragment: Fragment() {
             )
         }
 
-
         binding.filledExposedDropdown.setAdapter(adapter)
         binding.filledExposedDropdown.setText(PlaceType.Rugzak.name, false)
 
@@ -104,7 +96,6 @@ class AudioToevoegenFragment: Fragment() {
                 PostType.Audio
             )
         }
-
 
         viewModel.getFilteredPostFromPlace(
             PlaceType.Rugzak,
@@ -116,8 +107,6 @@ class AudioToevoegenFragment: Fragment() {
             start.isVisible = true
             stop.isVisible = true
             pauze.isVisible = true
-
-
         }
 
         binding.start.setOnClickListener{
@@ -126,7 +115,6 @@ class AudioToevoegenFragment: Fragment() {
             binding.start.isEnabled = false
             binding.stop.isEnabled = true
             binding.pauze.isEnabled = true
-
 
         }
         binding.pauze.setOnClickListener{
@@ -149,16 +137,15 @@ class AudioToevoegenFragment: Fragment() {
 
         }
 
-        binding.recyclerView.adapter = FilteredPostAdapter(object : CustomClick {
+        binding.recyclerView.adapter = FilteredPostAdapter(object :
+            CustomClick {
             override fun onClick(post: Post) {
-                this@AudioToevoegenFragment.post = post
+                this@AddAudioFragment.post = post
                 true
             }
         })
 
         binding.audioToevoegenButton.setOnClickListener {
-
-            val audioString = data?.data?.let { uriToBase64(Uri.parse("file://$output")) }
 
                 this.post = Post(
                     0,
@@ -170,13 +157,10 @@ class AudioToevoegenFragment: Fragment() {
                     ""
                 )
 
-
             if(nieuwePost)
             {
                 post?.title = binding.titel.text.toString()
                 post?.dataBytes = audioPost
-
-
 
                 post?.let { it1 -> viewModel.addPostByEmail(
                     it1,
@@ -187,7 +171,6 @@ class AudioToevoegenFragment: Fragment() {
             {
                 if(post != null)
                 {
-
                     viewModel.addExistingPostToPlace(post!!.id, args.placeType)
                 }
             }
@@ -207,8 +190,6 @@ class AudioToevoegenFragment: Fragment() {
                 }
             }
         }
-
-
         return binding.root
     }
 
@@ -234,8 +215,6 @@ class AudioToevoegenFragment: Fragment() {
             state = false
 
             audioPost =  uriToBase64(Uri.parse("file://$output"))
-
-
 
         }else{
             Toast.makeText(this.context, "You are not recording right now!", Toast.LENGTH_SHORT).show()

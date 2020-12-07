@@ -300,7 +300,7 @@
     </fragment>
     <fragment
         android:id="@+id/AudioToevoegenFragment"
-        android:name="com.example.faithandroid.AudioToevoegenFragment"
+        android:name="com.example.faithandroid.post.audio.AddAudioFragment"
         android:label="AudioToevoegenFragment" >
         <action
             android:id="@+id/action_audioToevoegenFragment_to_treasureChestFragment"
