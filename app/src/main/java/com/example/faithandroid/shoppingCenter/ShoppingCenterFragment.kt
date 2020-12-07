@@ -1,5 +1,7 @@
 package com.example.faithandroid.shoppingCenter
 
+import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -44,8 +46,7 @@ class ShoppingCenterFragment: Fragment() {
 
         binding.hairGridView.adapter = ShoppingCenterGridAdapter(BodyType.Hair, object: AvatarCustomClick {
             override fun onClick(avatarpart: Int){
-                var drawable = this@ShoppingCenterFragment.context?.let { AppCompatResources.getDrawable(it, R.drawable.ic_avatar_female) }
-                //val path1: VFullPath = vector.findPathByName("path1")
+                
             }
         })
 
