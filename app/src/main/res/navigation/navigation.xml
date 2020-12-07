@@ -96,7 +96,8 @@
             app:destination="@id/skyscraperFragment" />
         <action
             android:id="@+id/action_homeFragment_to_treasureChestFragment"
-            app:destination="@id/treasureChestFragment" />
+            app:destination="@id/treasureChestFragment"
+            app:enterAnim="@anim/fragment_fade_enter" />
     </fragment>
 
     <fragment

@@ -30,8 +30,8 @@ import com.example.faithandroid.models.Post
 import com.example.faithandroid.post.PostViewModel
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.audio_toevoegen.*
-import java.io.File
-import java.io.IOException
+import java.io.*
+import java.util.*
 
 
 class AudioToevoegenFragment: Fragment() {
@@ -54,7 +54,7 @@ class AudioToevoegenFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        output = Environment.getExternalStorageDirectory().absolutePath + "/recording.mp3"
+        output = Environment.getExternalStorageDirectory().absolutePath + "/Alarms/recording.mp3"
         mediaRecorder = MediaRecorder()
 
         mediaRecorder?.setAudioSource(MediaRecorder.AudioSource.MIC)
@@ -261,16 +261,39 @@ class AudioToevoegenFragment: Fragment() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun stopRecording(){
         if(state){
             mediaRecorder?.stop()
             mediaRecorder?.release()
             state = false
 
-            val pickIntent =
-                Intent(Intent.ACTION_PICK, Uri.parse(output) )
-            pickIntent.type = "*"
-            startActivityForResult(pickIntent, 10)
+            uriToBase64(Uri.parse("file://$output"))
+
+
+            var fileInputStream: FileInputStream? = null
+            fileInputStream = context?.applicationContext?.openFileInput("")
+
+            var inputStreamReader: InputStreamReader = InputStreamReader(fileInputStream)
+            val bufferedReader: BufferedReader = BufferedReader(inputStreamReader)
+            val stringBuilder: StringBuilder = StringBuilder()
+            var text: String? = null
+            while ({ text = bufferedReader.readLine(); text }() != null) {
+                stringBuilder.append(text)
+            }
+
+
+//            val getIntent = Intent(Intent.ACTION_GET_CONTENT)
+//            getIntent.type = "audio/*"
+//
+//            val pickIntent =
+//                Intent(Intent.ACTION_PICK, Uri.parse(output) )
+//            pickIntent.type = "/*"
+//            val chooserIntent = Intent.createChooser(getIntent, "Select Audio")
+//            chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, arrayOf(pickIntent))
+//
+//            startActivityForResult(chooserIntent, 10)
+
 
         }else{
             Toast.makeText(this.context, "You are not recording right now!", Toast.LENGTH_SHORT).show()
@@ -297,5 +320,31 @@ class AudioToevoegenFragment: Fragment() {
         Toast.makeText(this.context,"Resume!", Toast.LENGTH_SHORT).show()
         mediaRecorder?.resume()
         recordingStopped = false
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun uriToBase64(uri: Uri): String
+    {
+        val inputStream: InputStream? =
+            getActivity()?.getContentResolver()?.openInputStream(uri)
+
+        val byteBuffer = ByteArrayOutputStream()
+        val bufferSize = 1024
+        val buffer = ByteArray(bufferSize)
+
+        var len = 0
+        while (inputStream?.read(buffer).also {
+                if (it != null) {
+                    len = it
+                }
+            } != -1) {
+            byteBuffer.write(buffer, 0, len)
+        }
+        val arr = byteBuffer.toByteArray()
+
+        val image: String = Base64.getEncoder().encodeToString(arr)
+        Log.d("audio", image);
+        return image
+
     }
 }
