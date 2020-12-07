@@ -10,6 +10,27 @@
     <style name="AppThemeDark" parent="Theme.MaterialComponents.DayNight">
         <!-- Customize your theme here. -->
 
-        ...
+    <style name="hair1">
+        <item name="android:tint">@color/Hair1</item>
+    </style>
+
+    <style name="hair2">
+        <item name="android:tint">@color/Hair2</item>
+    </style>
+
+    <style name="hair3">
+        <item name="android:tint">@color/Hair3</item>
+    </style>
+
+    <style name="hair4">
+        <item name="android:tint">@color/Hair4</item>
+    </style>
+
+    <style name="hair5">
+        <item name="android:tint">@color/Hair5</item>
+    </style>
+
+    <style name="hair6">
+        <item name="android:tint">@color/Hair6</item>
     </style>
 </resources>
