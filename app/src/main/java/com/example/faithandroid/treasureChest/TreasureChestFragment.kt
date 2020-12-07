@@ -68,8 +68,8 @@ class TreasureChestFragment: Fragment() {
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
 
-                    postViewModel.deletePostByEmail(post.id, "dora.theexplorer1999@gmail.com", PlaceType.Schatkist)
-                    postViewModel.getPostsOfPlace(PlaceType.Schatkist, "dora.theexplorer1999@gmail")
+                    postViewModel.deletePostByEmail(post.id,  PlaceType.Schatkist)
+                    postViewModel.getPostsOfPlace(PlaceType.Schatkist)
                     true
                 }
             })
@@ -81,7 +81,7 @@ class TreasureChestFragment: Fragment() {
                     R.string.tryAgain
                 )
                 {
-                    postViewModel.getPostsOfPlace(PlaceType.Schatkist, "dora.theexplorer1999@gmail.com")
+                    postViewModel.getPostsOfPlace(PlaceType.Schatkist)
                 }.show()
             }
         })
