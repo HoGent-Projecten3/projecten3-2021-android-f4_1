@@ -77,11 +77,6 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
     private lateinit var bind: AppNavHeaderMainBinding
     private val LOGIN_REQUEST_CODE: Int = 1
 
-    private val CLIENT_ID = "95bc88d8f6084f1893dd648d88732210"
-    private val REDIRECT_URI = "faithandroid://callback"
-    private lateinit var spotifyAppRemoteLocal: SpotifyAppRemote
-    private val REQUEST_CODE = 1337
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
 

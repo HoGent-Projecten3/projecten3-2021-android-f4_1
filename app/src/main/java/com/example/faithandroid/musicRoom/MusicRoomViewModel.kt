@@ -136,7 +136,9 @@ class MusicRoomViewModel : ViewModel() {
                 list.forEach { p ->
                     var call: Call<List<SpotifyCover>> = SpotifyApi.retrofitService.getPlaylistCover(p.id)
                     var coverList = call.await()
-                    p.url = coverList[0].url
+                    if(coverList.isNotEmpty()) {
+                        p.url = coverList[0].url
+                    }
                 }
                 _allPlaylists.value = list
                 filterPlaylists()

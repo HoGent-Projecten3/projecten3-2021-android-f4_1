@@ -104,7 +104,7 @@ class ProfielFragment: Fragment() {
             builder.show()
         }
 
-        val toggle: SwitchCompat = binding.donkereModus
+        /*val toggle: SwitchCompat = binding.donkereModus
         toggle.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -114,7 +114,7 @@ class ProfielFragment: Fragment() {
                 MyPreference(this.context).darkMode = 1
 
             }
-        }
+        }*/
 
         return binding.root
     }

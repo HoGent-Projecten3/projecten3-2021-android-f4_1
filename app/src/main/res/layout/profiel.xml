@@ -63,14 +63,14 @@
                 android:textAlignment="center"
                 android:textSize="18sp" />
             
-            <androidx.appcompat.widget.SwitchCompat
+            <!--<androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/donkereModus"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="175dp"
                 android:gravity="center"
-                android:text="@string/donkere_modus" />
+                android:text="@string/donkere_modus" />-->
 
             <Button
                 android:id="@+id/wachtwoordWIjzigen"
@@ -79,6 +79,7 @@
                 android:layout_gravity="center"
                 android:clickable="true"
                 android:enabled="true"
+                android:layout_marginTop="175dp"
                 android:focusable="true"
                 android:gravity="center"
                 android:onClick="@string/wachtwoord_wijzigen"

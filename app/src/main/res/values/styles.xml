@@ -9,7 +9,7 @@
     </style>
     <style name="AppThemeDark" parent="Theme.MaterialComponents.DayNight">
         <!-- Customize your theme here. -->
-
+    </style>
     <style name="hair1">
         <item name="android:tint">@color/Hair1</item>
     </style>
