@@ -27,7 +27,8 @@
         <activity android:name=".login.uilogin.LoginActivity">
 
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize">
          <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,6 +36,10 @@
             </intent-filter>
 
         </activity>
+
+        <activity
+            android:name="com.spotify.sdk.android.authentication.LoginActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
     </application>
 

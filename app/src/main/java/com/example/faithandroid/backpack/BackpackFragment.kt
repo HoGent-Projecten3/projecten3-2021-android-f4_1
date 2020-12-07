@@ -1,7 +1,6 @@
 package com.example.faithandroid.backpack
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.faithandroid.*
-import com.example.faithandroid.adapters.FilteredPostAdapter
 import com.example.faithandroid.adapters.PostAdapter
 import com.example.faithandroid.databinding.BackpackBinding
 import com.example.faithandroid.models.Post
@@ -45,8 +45,13 @@ class BackpackFragment: Fragment() {
           false
       );
 
+
         binding.lifecycleOwner = this
         viewModel = ViewModelProvider(this).get(BackpackViewModel::class.java)
+
+        // staggeredGridLayoutManager with 3 columns and vertical orientation
+        val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+        binding.BackpackRecycler.layoutManager = staggeredGridLayoutManager
 
         val postTypes =  PostType.values()
 
@@ -89,27 +94,28 @@ class BackpackFragment: Fragment() {
         binding.BackpackRecycler.adapter =
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
-                       postViewModel.pemanentlyDeletePost(post.id)
+                    postViewModel.pemanentlyDeletePost(post.id)
                     true
                     postViewModel.getPostsOfPlace(PlaceType.Rugzak)
                 }
 
             }
-         )
+            )
 
         postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
-              
-               /* Snackbar.make(contextView, viewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+
+                /* Snackbar.make(contextView, viewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
                     "Probeer opnieuw""
                 )*/
-                Snackbar.make(contextView, "Er is niets om weer te geven", Snackbar.LENGTH_SHORT).setAction(
-                 ""
-                )
-                {
+                Snackbar.make(contextView, "Er is niets om weer te geven", Snackbar.LENGTH_SHORT)
+                    .setAction(
+                        ""
+                    )
+                    {
 
-                }.show()
+                    }.show()
             }
         })
         return binding.root

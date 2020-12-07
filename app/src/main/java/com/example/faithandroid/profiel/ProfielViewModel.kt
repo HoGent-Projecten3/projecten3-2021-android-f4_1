@@ -1,18 +1,22 @@
 package com.example.faithandroid.profiel
 
+
+
 import AppPreferences
+
+
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+
 import com.example.faithandroid.models.Adolescent
-import com.example.faithandroid.models.Post
 import com.example.faithandroid.network.FaithApi
-import com.example.faithandroid.network.FaithApiService
-import kotlinx.coroutines.*
 import retrofit2.*
-import retrofit2.awaitResponse
+
+
+import kotlinx.coroutines.launch
 
 class ProfielViewModel: ViewModel() {
 
@@ -37,4 +41,18 @@ class ProfielViewModel: ViewModel() {
         return _adol.value
 
     }
+
+     fun changePassword(ww: String) {
+        Log.d("post", "post nu nieuw wachtwoord: $ww")
+
+         viewModelScope.launch {
+             try {
+                 val response = FaithApi.retrofitService.changepassword(ww)
+                 response.await()
+             } catch (e: java.lang.Exception) {
+                 throw e
+             }
+         }
+    }
+
 }

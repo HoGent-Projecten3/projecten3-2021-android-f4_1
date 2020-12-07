@@ -62,7 +62,7 @@
                 android:text="@string/jane_doe_gmail_com"
                 android:textAlignment="center"
                 android:textSize="18sp" />
-
+            
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/donkereModus"
                 android:layout_width="160dp"
