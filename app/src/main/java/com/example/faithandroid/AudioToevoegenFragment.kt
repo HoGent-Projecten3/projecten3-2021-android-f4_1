@@ -170,16 +170,13 @@ class AudioToevoegenFragment: Fragment() {
                     ""
                 )
 
-            Log.d("audioString",audioString.toString())
 
             if(nieuwePost)
             {
-                Log.d("Audio","if nieuwe post")
                 post?.title = binding.titel.text.toString()
-                post?.data = audioString.toString()
-                //post?.data = audioPost
+                post?.dataBytes = audioPost
 
-                Log.d("Audio",post?.data.toString())
+
 
                 post?.let { it1 -> viewModel.addPostByEmail(
                     it1,
@@ -288,7 +285,6 @@ class AudioToevoegenFragment: Fragment() {
         val arr = byteBuffer.toByteArray()
 
         val audio: String = Base64.getEncoder().encodeToString(arr)
-        Log.d("audio", audio);
         return audio
 
     }
