@@ -4,12 +4,12 @@
     <string name="skyscraper">Wolkenkrabber</string>
     <string name="cinema">Cinema</string>
     <string name="treasure_chest">Schatkist</string>
-    <string name="musicRoom">Music Room</string>
+    <string name="musicRoom">Muziek</string>
     <string name="backpack">Rugzak</string>
     <string name="billboard">Billboard</string>
     <string name="bulletinboard">Prikbord</string>
     <string name="winkelCentrum">Winkelcentrum</string>
-
+    <string name="wolkenkrabber">Wolkenkrabber</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -26,7 +26,6 @@
     <string name="profiel">Profiel</string>
     <string name="uitloggen">Uitloggen</string>
     <string name="meest_bezocht">Meest Bezocht</string>
-    <string name="wolkenkrabber">Wolkenkrabber</string>
     <string name="welkom">Goed je terug te zien!</string>
     <string name="naam">Jane Doe</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -51,7 +50,7 @@
     <string name="tekst">Tekst</string>
     <string name="under_construction">Aan dit deel wordt nog gewerkt</string>
 
-    <string name="welcome">"Welcome !"</string>
+    <string name="welcome">"Welkom "</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
@@ -82,6 +81,18 @@
     <string name="nieuwe_video_post_toevoegen">nieuwe video post toevoegen</string>
     <string name="nieuwe_post_toevoegen">nieuwe post toevoegen</string>
 
+    <string name="start">Start</string>
+    <string name="pauze">Pauze</string>
+    <string name="stop">Stop</string>
+    <string name="Beluister">Beluister</string>
+    <string name="Pauze">Pauze</string>
 
-
+    <string name="title_goal">Titel van het doel</string>
+    <string name="add_a_step">Voeg een stap toe:</string>
+    <string name="add_new_goal">Voeg toe</string>
+    <string name="lbl_list_goalsteps">De stappen:</string>
+    <string name="lbl_description_goal">Beschrijving</string>
+    <string name="soort_post_filter">Soort post filter</string>
+    <string name="city">Stad</string>
+    <string name="albumcover">album hoes</string>
 </resources>

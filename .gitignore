@@ -8,9 +8,18 @@
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
 /.idea/gradle.xml
+/.idea/shelf
 /.idea/misc.xml
 .DS_Store
+/app/build/generated
+/app/build/intermediates
+/app/build/kotlin/
+/app/build/tmp
+/app/build/outputs/logs
+/app/build/outputs/apk/debug
 /captures
+/spotify-auth/build
+/spotify-remote/build
 .externalNativeBuild
 .cxx
 

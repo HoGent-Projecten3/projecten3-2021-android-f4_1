@@ -3,14 +3,15 @@ package com.example.faithandroid.backpack
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.faithandroid.PlaceType
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.PostType
-import com.example.faithandroid.models.TextPost
 import com.example.faithandroid.network.FaithApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import retrofit2.await
 
 class BackpackViewModel : ViewModel() {
     //Error status
@@ -51,7 +52,7 @@ class BackpackViewModel : ViewModel() {
     {
         coroutineScope.launch{
             try{
-                var getPostList = FaithApi.retrofitService.getPostsOfBackpackByAdolescentEmail("dora.theexplorer1999@gmail.com")
+                var getPostList = FaithApi.retrofitService.getPostsOfPlaceByAdolescentEmail(PlaceType.Rugzak.ordinal)
                 var result = getPostList.await()
                 if(result.size > 0){
 

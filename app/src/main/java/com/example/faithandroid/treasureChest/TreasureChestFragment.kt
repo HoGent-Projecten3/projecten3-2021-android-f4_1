@@ -1,7 +1,6 @@
 package com.example.faithandroid.treasureChest
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +10,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.faithandroid.*
+import com.example.faithandroid.adapters.PostAdapter
 import com.example.faithandroid.databinding.TreasurechestBinding
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.post.PostViewModel
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -67,8 +68,8 @@ class TreasureChestFragment: Fragment() {
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
 
-                    postViewModel.deletePostByEmail(post.id, "dora.theexplorer1999@gmail.com", PlaceType.Schatkist)
-                    postViewModel.getPostsOfPlace(PlaceType.Schatkist, "dora.theexplorer1999@gmail")
+                    postViewModel.deletePostByEmail(post.id,  PlaceType.Schatkist)
+                    postViewModel.getPostsOfPlace(PlaceType.Schatkist)
                     true
                 }
             })
@@ -80,7 +81,7 @@ class TreasureChestFragment: Fragment() {
                     R.string.tryAgain
                 )
                 {
-                    postViewModel.getPostsOfPlace(PlaceType.Schatkist, "dora.theexplorer1999@gmail.com")
+                    postViewModel.getPostsOfPlace(PlaceType.Schatkist)
                 }.show()
             }
         })

@@ -31,13 +31,16 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         // can be launched in a separate asynchronous job
         MainScope().launch {
             val result = loginRepository.login(username, password)
-
             if (result is Result.Success) {
 
+                val result2 = loginRepository.getAdolescent(username)
+                if(result2 is Result.Success)
                 _loginResult.value =
                     LoginResult(
                         success = LoggedInUserView(
-                            displayName = result.data.firstName + " "  + result.data.name
+                            token = result.data,
+                            displayName =  result2.data.firstName + " " + result2.data.name,
+                            email = result2.data.email
                         )
                     )
 
@@ -83,17 +86,9 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         return password.length > 5
     }
 
-   /* private fun getAdolescent(username: String) {
-        coroutineScope.launch {
-            try {
-                val adolescent = FaithApi.retrofitService.getAdolescent(username)
-                 val a= adolescent.await()
-                _adolescent.value = a
-                Log.d("adolescent", "NICE " + a.firstName + " " +a.name)
-                Log.d("HHH", _adolescent.value.toString())
-            } catch (e: Exception) {
-                Log.i("FOUT", "FOUT opgelopen")
-            }
-        }
-    }*/
+    fun logout(){
+        loginRepository.logout()
+        _loginResult.value = null
+        _loginForm.value = null
+    }
 }

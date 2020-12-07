@@ -13,7 +13,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
-import com.example.faithandroid.profiel.profielFragment
+import com.example.faithandroid.profiel.ProfielFragment
 import com.google.android.material.navigation.NavigationView
 import com.squareup.picasso.Picasso
 

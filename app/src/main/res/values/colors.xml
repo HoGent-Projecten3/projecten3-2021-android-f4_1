@@ -5,4 +5,58 @@
     <color name="colorAccent">#F8A59E</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="darkGray">#444444</color>
+
+    <color name="Hair">#EEEE94</color>
+    <color name="Skin">#F9B77D</color>
+    <color name="Body">#FF0400</color>
+    <color name="Eye">#2D02EB</color>
+
+
+
+
+
+
+    <color name="Hair1">#EEEE94</color>
+    <color name="Hair2">#C46200</color>
+    <color name="Hair3">#9C4E00</color>
+    <color name="Hair4">#5E2F00</color>
+    <color name="Hair5">#2E1700</color>
+    <color name="Hair6">#EEEEEE</color>
+    <color name="Hair7">#FF8000</color>
+    <color name="Hair8">#FF0400</color>
+    <color name="Hair9">#00B500</color>
+    <color name="Hair10">#2D02EB</color>
+
+    <color name="Skin1">#F9B77D</color>
+    <color name="Skin2">#B57134</color>
+    <color name="Skin3">#8B5413</color>
+    <color name="Skin4">#7B360F</color>
+    <color name="Skin5">#58290D</color>
+    <color name="Skin6">#EB5757</color>
+    <color name="Skin7">#2F80ED</color>
+    <color name="Skin8">#219653</color>
+    <color name="Skin9">#F2C94C</color>
+    <color name="Skin10">#9B51E0</color>
+    <color name="Skin11">#EB5ACF</color>
+
+    <color name="Body1">#111111</color>
+    <color name="Body2">#EEEEEE</color>
+    <color name="Body3">#FF0400</color>
+    <color name="Body4">#00B500</color>
+    <color name="Body5">#2D02EB</color>
+    <color name="Body6">#F5E301</color>
+    <color name="Body7">#FF8000</color>
+    <color name="Body8">#7900EB</color>
+    <color name="Body9">#BD5F00</color>
+    <color name="Body10">#EB5ACF</color>
+    <color name="Body11">#777777</color>
+    <color name="Body12">#DB9200</color>
+
+    <color name="Eye1">#2D02EB</color>
+    <color name="Eye2">#00B500</color>
+    <color name="Eye3">#9C4E00</color>
+    <color name="Eye4">#FF8000</color>
+    <color name="Eye5">#111111</color>
+    <color name="Eye6">#777777</color>
+    <color name="Eye7">#FF0400</color>
 </resources>

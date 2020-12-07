@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.faithandroid.PostViewModel" />
+            type="com.example.faithandroid.post.PostViewModel" />
     </data>
 
 
@@ -62,19 +62,19 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 
 
-                        android:hint="@string/plaatsen"
-                        android:layout_marginLeft="10dp">
+                        android:layout_marginLeft="10dp"
+                        android:hint="@string/plaatsen">
 
                         <AutoCompleteTextView
                             android:id="@+id/dropdownPlaatsen"
 
-                            android:inputType="none"
-                            android:layout_width="220dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:inputType="none"
                             android:textColorHint="#FFFFFF" />
 
 
@@ -109,7 +109,7 @@
                         android:id="@+id/addImageRecyclerView"
                         android:layout_width="405dp"
                         android:layout_height="455dp"
-                        app:filteredPostData="@{viewModel.postListFiltered}"
+                        app:filteredPostData="@{viewModel.postList}"
                         app:spanCount="2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

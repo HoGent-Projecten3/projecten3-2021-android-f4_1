@@ -1,8 +1,8 @@
 package com.example.faithandroid
 
-import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.faithandroid.post.PostViewModel
 
 
 public class ViewModelFactory(//private lateinit var application: Application

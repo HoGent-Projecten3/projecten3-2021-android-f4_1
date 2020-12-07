@@ -18,20 +18,22 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
-                    android:layout_marginTop="150dp"
                     android:layout_marginEnd="32dp"
                     android:hint="@string/email"
+                    android:paddingTop="30dp"
+                    app:boxBackgroundColor="?android:attr/windowBackground"
+                    app:boxStrokeColor="?android:attr/windowBackground"
                     app:layout_constraintBottom_toTopOf="@+id/password_field"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toBottomOf="@+id/textView">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtemail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:text="dora.theexplorer1999@gmail.com"/>
+                        android:text="dora.theexplorer1999@gmail.com" />
 
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -44,6 +46,8 @@
                     android:layout_marginEnd="32dp"
 
                     android:hint="@string/password"
+                    app:boxBackgroundColor="?android:attr/windowBackground"
+                    app:boxStrokeColor="?android:attr/windowBackground"
                     app:layout_constraintBottom_toTopOf="@+id/login_button"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -56,14 +60,15 @@
                         android:inputType="textPassword"
                         android:password="true"
                         android:singleLine="true"
-                        android:text="ZwieberNee!NietStelen1"/>
+                        android:text="ZwieberNee!NietStelen1" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
                     android:id="@+id/login_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="100dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="35dp"
                     android:text="@string/login"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -75,22 +80,27 @@
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
                     android:text="@string/grow."
                     android:textColor="@color/colorPrimary"
                     android:textSize="25sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/login_field"
-                    app:layout_constraintStart_toStartOf="@+id/login_field" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="154dp"
-                    android:layout_height="200dp"
-                    android:layout_marginTop="52dp"
-                    app:layout_constraintBottom_toTopOf="@+id/textView"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="100dp"
+                    android:paddingRight="100dp"
+                    android:paddingBottom="0dp"
+                    android:maxHeight="100dp"
+                    android:maxWidth="100dp"
+                    app:layout_constraintBottom_toTopOf="@id/textView"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/biglogo" />

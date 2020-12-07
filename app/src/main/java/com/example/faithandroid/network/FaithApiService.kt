@@ -4,25 +4,28 @@ package com.example.faithandroid.network
 import com.example.faithandroid.login.data.User
 import com.example.faithandroid.models.Adolescent
 
-import com.example.faithandroid.PlaceType
-import com.example.faithandroid.PostType
-
 import com.example.faithandroid.models.GoalPost
+import com.example.faithandroid.models.Playlist
 import com.example.faithandroid.models.Post
-import com.example.faithandroid.models.TextPost
+
+
+import com.google.android.material.internal.ContextUtils.getActivity
+
+
+
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.Deferred
+import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.*
-import javax.security.auth.callback.Callback
 
 //TODO: give url
-private const val BASE_URL = "https://apigrow.azurewebsites.net/api/"
+private const val BASE_URL = "https://apigrow.azurewebsites.net/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -33,89 +36,97 @@ private val retrofit = Retrofit.Builder()
     .addConverterFactory(ScalarsConverterFactory.create())
     .addConverterFactory(MoshiConverterFactory.create(moshi))
     .addCallAdapterFactory(CoroutineCallAdapterFactory())
+    .client(OkHttpClient().newBuilder().addInterceptor{ chain ->
+        val newRequest = chain.request().newBuilder()
+            .addHeader("Authorization", "Bearer " + AppPreferences.token)
+            .build()
+        chain.proceed(newRequest)
+    }
+    .build())
     .baseUrl(BASE_URL)
     .build()
+
 
 interface FaithApiService {
 
     @Headers("Content-Type: application/json")
-    @POST("Account/CreateToken")
+    @POST("user/adolescent/login")
     fun loginAdolescent(@Body adolescent: User):
-           Call<String>
+            Call<String>
 
 
-    @GET("Account/GetAdolescent")
-    fun getAdolescent(@Query("email") email: String):
-           Deferred<Adolescent>
-
-    @GET("Account/GetAdolescentsByCounselorEmail/bob.debouwer1998@gmail.com")
-    fun getProperties():
-            Deferred<List<FaithProperty>>
+    @GET("user/adolescent/{email}")
+    fun getAdolescent(@Path("email") email: String):
+           Call<Adolescent>
 
     @Headers("Content-Type: application/json")
-    @POST("City/AddPostByEmail")
-    fun postPost(@Body post: TextPost, @Query("email") email: String):
-            Call<Void>
+    @POST("/city/skyscraper/goal")
+    suspend fun postGoalPost(@Body goal: GoalPost)
 
     @Headers("Content-Type: application/json")
-    @POST("City/AddGoalByEmail")
-    suspend fun postGoalPost(@Body goal: GoalPost, @Query("email") email:String)
+    @PUT("city/skyscraper/goal/{goalId}/mark-completed")
+    suspend fun checkGoal(@Path("goalId") goalId : Int)
 
-  
-    @Headers("Content-Type: application/json")
-    @PUT("City/MarkGoalAsCompleted")
-    suspend fun checkGoal(@Query("email") email: String, @Query("id") id: Int)
+    @GET("city/skyscraper/goal")
+    fun getPostsOfSkyScraper(): Deferred<List<GoalPost>>
 
-  
-    @GET("City/GetPostsOfSkyScraperByAdolescentEmail")
-    fun getPostsOfSkyScraperByAdolescentEmail(@Query("email") email: String): Deferred<List<GoalPost>>
-
-
-    @GET("City/GetPostsOfBulletinBoardByAdolescentEmail")
-    fun getPostsOfBulletinBoardByAdolescentEmail(@Query("email") email: String):
-        Deferred<List<Post>>
-
-    @GET("City/GetPostsOfBackpackByAdolescentEmail")
-    fun getPostsOfBackpackByAdolescentEmail(@Query("email") email: String):
-            Deferred<List<Post>>
-
-    @GET("City/GetPostsOfTreasureChestByAdolescentEmail")
-    fun getPostsOfTreasureChestByAdolescentEmail(@Query("email") email: String):
-            Deferred<List<Post>>
-
-    @GET("City/GetBillboardGoalsByAdolescentMail")
-    fun getBillboardGoalsByAdolescentEmail(@Query("email") email: String): Deferred<List<GoalPost>>
-
+    @GET("city/billboard/goal")
+    fun getBillboardGoals(): Deferred<List<GoalPost>>
 
     @Headers("Content-Type: application/json")
-    @PUT("Account/PostConsultationRequest")
-    fun requestConsultation(@Query("email") email: String): Call<Void>
+    @PUT("user/counselor/delete-adolescent")
+    fun requestConsultation(): Call<Void>
 
-    @PUT("City/ShareGoalWithBillboard")
-    fun shareGoal(@Query("email") email: String, @Query("id") id: Int)
+    @Headers("Content-Type: application/json")
+    @PUT("city/skyscraper/goal/{goalId}/share-to-billboard")
+    fun shareGoal(@Path("goalId") goalId: Int): Call<String>
 
+    @Headers("Content-Type: application/json")
+    @DELETE("city/skyscraper/goal/{id}")
+    fun removeGoal(@Path("id") id: Int): Call<String>
 
-    @POST("City/DeleteGoalByEmail")
-    fun removeGoal(@Query("id") id: Int, @Query("email") email: String)
+    @GET("city/{placeType}/filtered-post")
+    fun getFilteredFromPlace(@Path("placeType") placeType: Int, @Query("postType") postType: Int): Call<List<Post>>
 
-    @GET("City/GetFilteredPostsFromPlace")
-    fun getFilteredFromPlace(@Query("placeType") placeType: Int, @Query("postType") postType: Int, @Query("email") email: String): Call<List<Post>>
-
-
-    @GET("City/GetPostsOfPlaceByAdolescentEmail")
-    fun getPostsOfPlaceByAdolescentEmail(@Query("placeType") placeType: Int, @Query("email")email: String): Call<List<Post>>
+    @GET("city/{placeType}/post")
+    fun getPostsOfPlaceByAdolescentEmail(@Path("placeType") placeType: Int): Call<List<Post>>
 
     @Headers("Content-Type: application/json", "accept: application/json")
-    @POST("City/AddPostByEmail")
-    fun addPostByEmail(@Body post: Post, @Query("email") email: String, @Query("placeType") placeType: Int): Call<Void>
+    @POST("city/{placeType}/post")
+
+    fun addPostByEmail(@Path("placeType") placeType: Int, @Body post: Post): Call<Void>
 
     @Headers("Content-Type: application/json", "accept: application/json")
-    @PUT("City/DeletePostByEmail")
-    fun deletePostByEmail(@Query("id") id: Int, @Query("email") email: String, @Query("placeType") placeType: Int): Call<Void>
+    @PUT("city/{placeType}/post/remove/{postId}")
+    fun deletePostByEmail(@Path("placeType") placeType: Int, @Path("postId") postId: Int): Call<Void>
 
     @Headers("Content-Type: application/json", "accept: application/json")
-    @PUT("City/AddExistingPostToPlace")
-    fun addExistingPostToPlace(@Query("postId") id: Int, @Query("placeType")placeType: Int): Call<Void>
+    @PUT("city/{placeType}/add-existing/{postId}")
+    fun addExistingPostToPlace(@Path("placeType") placeType: Int, @Path("postId") postId: Int): Call<Void>
+
+
+    @Headers("Content-Type: application/json")
+    @POST("user/change-password")
+    fun changepassword(@Query("ww") ww: String) : Call<String>
+
+
+    @Headers("Content-Type: application/json", "accept: application/json")
+    @GET("city/musicroom/playlist")
+    fun getPlaylists(): Call<List<Playlist>>
+
+    @Headers("Content-Type: application/json", "accept: application/json")
+    @POST("city/musicroom/playlist")
+    fun addPlaylist(@Body playlist: Playlist): Call<Void>
+
+    @Headers("Content-Type: application/json", "accept: application/json")
+    @DELETE("city/musicroom/playlist/{id}")
+    fun deletePlaylist(@Path("id") primaryKey: Int): Call<Void>
+
+
+    @Headers("Content-Type: application/json", "accept: application/octet-stream")
+    @DELETE("city/post/{postId}")
+    fun permanentlyDeletePost(@Path("postId") postId: Int):Call<Void>
+
 
 }
 

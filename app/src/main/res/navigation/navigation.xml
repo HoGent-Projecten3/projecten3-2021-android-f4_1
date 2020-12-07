@@ -19,9 +19,9 @@
     </fragment>
     <fragment
         android:id="@+id/optionsAddPostFragment"
-        android:name="com.example.faithandroid.OptionsAddPostFragment"
+        android:name="com.example.faithandroid.post.AddPostFragment"
         android:label="options_add_post"
-        tools:layout="@layout/bulletinboard_options_add_post" >
+        tools:layout="@layout/add_post" >
         <action
             android:id="@+id/action_optionsAddPostFragment_to_bulletinBoardFragment"
             app:destination="@id/bulletinBoardFragment"
@@ -53,6 +53,9 @@
         <action
             android:id="@+id/action_optionsAddPostFragment_to_addTextFragment"
             app:destination="@id/addTextFragment" />
+        <action
+            android:id="@+id/action_optionsAddPostFragment_to_audioToevoegenFragment"
+            app:destination="@id/AudioToevoegenFragment" />
 
     </fragment>
 
@@ -93,12 +96,13 @@
             app:destination="@id/skyscraperFragment" />
         <action
             android:id="@+id/action_homeFragment_to_treasureChestFragment"
-            app:destination="@id/treasureChestFragment" />
+            app:destination="@id/treasureChestFragment"
+            app:enterAnim="@anim/fragment_fade_enter" />
     </fragment>
 
     <fragment
         android:id="@+id/text_post_toevoegen"
-        android:name="com.example.faithandroid.TextPostToevoegenFragment"
+        android:name="com.example.faithandroid.post.text.TextPostToevoegenFragment"
         android:label="text_post_toevoegen">
         <action
             android:id="@+id/action_text_post_toevoegen_to_optionsAddPostFragment"
@@ -136,7 +140,13 @@
         android:id="@+id/billboardFragment"
         android:name="com.example.faithandroid.billboard.BillboardFragment"
         android:label="BillboardFragment"
-        tools:layout="@layout/billboard"/>
+        tools:layout="@layout/billboard">
+        <action
+            android:id="@+id/action_billboardFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/cinemaFragment"
         android:name="com.example.faithandroid.cinema.CinemaFragment"
@@ -159,10 +169,17 @@
         tools:layout="@layout/skyscraper">
         <action
             android:id="@+id/action_skyscraperFragment_to_addGoalFragment"
-            app:destination="@id/addGoalFragment" />
+            app:destination="@id/addGoalFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_skyscraperFragment_to_goalDetailsFragment"
-            app:destination="@id/goalDetailsFragment" />
+            app:destination="@id/goalDetailsFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_skyscraperFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/treasureChestFragment"
@@ -180,7 +197,9 @@
         android:label="addGoalFragment" >
         <action
             android:id="@+id/action_addGoalFragment_to_skyscraperFragment"
-            app:destination="@id/skyscraperFragment" />
+            app:destination="@id/skyscraperFragment"
+            app:popUpTo="@id/skyscraperFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/goalDetailsFragment"
@@ -192,11 +211,14 @@
     </fragment>
     <fragment
         android:id="@+id/profielFragment"
-        android:name="com.example.faithandroid.profiel.profielFragment"
-        android:label="profielFragment" >
+        android:name="com.example.faithandroid.profiel.ProfielFragment"
+        android:label="profielFragment">
+
         <action
             android:id="@+id/action_profielFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <activity
         android:id="@+id/mainActivity"
@@ -205,7 +227,7 @@
         tools:layout="@layout/app_sidebar" />
     <fragment
         android:id="@+id/videoToevoegenFragment"
-        android:name="com.example.faithandroid.post.video.VideoToevoegenFragment"
+        android:name="com.example.faithandroid.post.video.AddVideoFragment"
         android:label="VideoToevoegenFragment" >
         <argument
             android:name="placeType"
@@ -228,7 +250,7 @@
     </fragment>
     <fragment
         android:id="@+id/addPhotoFragment"
-        android:name="com.example.faithandroid.addPhotoFragment"
+        android:name="com.example.faithandroid.post.photo.addPhotoFragment"
         android:label="addPhotoFragment" >
         <argument
             android:name="placeType"
@@ -251,7 +273,7 @@
     </fragment>
     <fragment
         android:id="@+id/addTextFragment"
-        android:name="com.example.faithandroid.addTextFragment"
+        android:name="com.example.faithandroid.post.text.addTextFragment"
         android:label="addTextFragment" >
         <action
             android:id="@+id/action_addTextFragment_to_text_post_toevoegen"
@@ -275,6 +297,29 @@
             app:popUpTo="@id/treasureChestFragment"
             app:popUpToInclusive="true" />
 
+    </fragment>
+    <fragment
+        android:id="@+id/AudioToevoegenFragment"
+        android:name="com.example.faithandroid.post.audio.AddAudioFragment"
+        android:label="AudioToevoegenFragment" >
+        <action
+            android:id="@+id/action_audioToevoegenFragment_to_treasureChestFragment"
+            app:destination="@id/treasureChestFragment"
+            app:popUpTo="@id/treasureChestFragment"
+            app:popUpToInclusive="true"/>
+        <argument
+            android:name="placeType"
+            app:argType="com.example.faithandroid.PlaceType" />
+        <action
+            android:id="@+id/action_audioToevoegenFragment_to_backpackFragment"
+            app:destination="@id/backpackFragment"
+            app:popUpTo="@id/backpackFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_audioToevoegenFragment_to_bulletinBoardFragment"
+            app:destination="@id/bulletinBoardFragment"
+            app:popUpTo="@id/bulletinBoardFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
 </navigation>

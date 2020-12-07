@@ -1,5 +1,6 @@
 package com.example.faithandroid.skyscraper
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -45,7 +46,6 @@ class SkyscraperFragment: Fragment() {
                     R.string.tryAgain
                 )
                 {
-                    viewModel.GetPostsOfSkyscraper("dora.theexplorer1999@gmail.com")
                 }.show()
             }
         })
@@ -57,10 +57,19 @@ class SkyscraperFragment: Fragment() {
 
         }
 
+        //viewModel.getPostsOfSkyscraper()
+
         viewModel.testLive.observe(this.viewLifecycleOwner, Observer{
-            viewModel.testLive.value?.forEach{goal ->
+            it.forEach{goal ->
+                Log.d("Skyscraper", "iterated")
                 val rowView: View = inflater.inflate(R.layout.skyscraper_goalpostimage, null)
                 rowView.titleText.text = goal.title
+
+                if(goal.completed){
+                    rowView.cardGoal.setBackgroundColor(Color.rgb(161, 214,134 ))
+                } else {
+                    rowView.cardGoal.setBackgroundColor(Color.WHITE)
+                }
                 rowView.layout.setOnClickListener{view: View ->
 
                     val action =
@@ -73,14 +82,12 @@ class SkyscraperFragment: Fragment() {
                 }
             })
 
-
-
-
-
-//        viewModel.test.forEach{goal ->
-//            val rowView: View = inflater.inflate(R.layout.goalpostimage, null)
-//            binding.lijst.addView(rowView, binding.lijst.childCount - 1)
-//        }
         return binding.root
     }
+
+    override fun onStart(){
+        super.onStart()
+        Log.d("Skyscraper","onstart")
+    }
+
 }

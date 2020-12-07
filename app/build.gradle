@@ -19,6 +19,7 @@ android {
         versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
     signingConfigs {
         release {
@@ -66,6 +67,7 @@ dependencies {
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
+    implementation 'androidx.viewpager:viewpager:1.0.0'
 
 
     testImplementation 'junit:junit:4.12'
@@ -127,6 +129,17 @@ dependencies {
 
     
     implementation 'com.github.bumptech.glide:glide:4.11.0'
+
+
+    implementation project(':spotify-remote')
+    implementation project(':spotify-auth')
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.spotify.android:auth:1.1.0'
+    implementation 'androidx.browser:browser:1.0.0'
+
+    //compile 'com.github.devsideal:VectorChildFinder:1.0.0'
+
+
 
 }
 

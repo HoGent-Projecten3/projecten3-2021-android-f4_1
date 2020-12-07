@@ -23,7 +23,7 @@ import com.example.faithandroid.MainActivity
 import com.example.faithandroid.R
 import com.example.faithandroid.login.LoginFragment
 import com.google.android.material.textfield.TextInputEditText
-import kotlinx.android.synthetic.main.activity_test.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.login.*
 import kotlinx.android.synthetic.main.login.view.*
 import javax.xml.parsers.DocumentBuilderFactory.newInstance
@@ -79,6 +79,7 @@ class LoginActivity : AppCompatActivity() {
 
             var intent: Intent = Intent()
             intent.putExtra("loggedInUser", loginResult.success?.displayName)
+            intent.putExtra("token", loginResult.success?.token)
 
 
             setResult(Activity.RESULT_OK, intent)
@@ -121,6 +122,7 @@ class LoginActivity : AppCompatActivity() {
                 loading.visibility = View.VISIBLE
                 Log.i("aaaaaa",username.text.toString() + " "  + password.text.toString())
                 loginViewModel.login(username.text.toString(), password.text.toString())
+                AppPreferences.username = username.text.toString()
                //  supportFragmentManager.findFragmentById(R.id.action_loginFragment_to_homeFragment) as LoginFragment
              //  this.findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
             }
@@ -134,6 +136,11 @@ class LoginActivity : AppCompatActivity() {
 
       /*  val taskIntent =  Intent(this, HomeFragment::class.java)
         startActivity(taskIntent)*/
+    }
+
+
+   override fun onBackPressed() {
+        finishAffinity()
     }
 
 
@@ -153,6 +160,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
 }
+
 
 
 /**
