@@ -35,10 +35,10 @@
 
                 <TextView
                     android:id="@+id/description"
-                    android:layout_width="275dp"
+                    android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_margin="10dp"
-                    android:layout_marginStart="282dp"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
                     android:layout_weight="1"
                     android:text="@{property.description}"
@@ -65,7 +65,7 @@
 
                 <TextView
                     android:id="@+id/titleGoal"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_marginStart="10dp"
