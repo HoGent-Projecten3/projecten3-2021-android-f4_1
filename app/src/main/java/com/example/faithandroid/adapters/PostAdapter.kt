@@ -33,14 +33,13 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
 
         fun bind(post: Post){
 
+            if(binding.TreasurechestImage.height>200){
+                binding.TreasurechestImage.height.rangeTo(200)
+            }
+
             binding.post = post
-            /*if (post.postType == PostType.Image.ordinal){
-                Picasso.get().load(post.uri).into(binding.TreasurechestImage)
-                binding.TreasurechestImage.scaleType = ImageView.ScaleType.CENTER_CROP
-            }*/
             if (post.postType == PostType.Image.ordinal){
                 Picasso.get().load(post.uri).into(binding.TreasurechestImage)
-                //binding.TreasurechestImage.scaleType = ImageView.ScaleType.CENTER_CROP
             }else if(post.postType == PostType.Audio.ordinal){
                 binding.TreasurechestImage.setImageResource(R.drawable.sound)
             }else{
