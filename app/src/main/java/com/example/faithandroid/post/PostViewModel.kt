@@ -45,7 +45,6 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
                     if (response.isSuccessful()) {
                        if(response.body()!!.isEmpty())
                         {
-                            Log.d("x", "leeg")
                             _status.value = "Sorry er is niets om weer te geven"
                             _posts.value = response.body()
                         }else {
@@ -156,7 +155,6 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
             val stringCall: Call<Void> = FaithApi.retrofitService.permanentlyDeletePost(postId)
             stringCall.enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    Log.d("res", response.toString())
                     if (response.isSuccessful()) {
                         val responseString: String? = response.code().toString()
                         if (responseString != null) {

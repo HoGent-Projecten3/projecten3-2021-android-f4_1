@@ -71,13 +71,11 @@ class SkyscraperViewModel : ViewModel() {
             try {
 
                 var listResult = getPropertiesDeferred.await()
-                Log.d("Skyscraper", listResult.toString())
                 if(listResult.size > 0){
 
                     testLiveData.value = listResult
                 }
 
-                Log.d("Skyscraper", testLiveData.value.toString())
             } catch (e: Exception){
 
                 _getStatus.value = e.localizedMessage
@@ -97,7 +95,6 @@ class SkyscraperViewModel : ViewModel() {
     fun goalBehaald(id:Int){
         viewModelScope.launch {
             try {
-                Log.d("GoalId", id.toString())
                 val response = FaithApi.retrofitService.checkGoal(id)
                 _completedStatus.value = "Doel behaald".toString();
 

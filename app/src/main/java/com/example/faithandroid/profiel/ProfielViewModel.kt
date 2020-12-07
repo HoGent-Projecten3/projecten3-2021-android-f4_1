@@ -43,7 +43,6 @@ class ProfielViewModel: ViewModel() {
     }
 
      fun changePassword(ww: String) {
-        Log.d("post", "post nu nieuw wachtwoord: $ww")
 
          viewModelScope.launch {
              try {

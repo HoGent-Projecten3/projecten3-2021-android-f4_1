@@ -67,12 +67,10 @@ class MusicRoomFragment: Fragment() {
                         startActivity(intent)
                         return true
                     } else {
-                        Log.d("spotify", "niet connected")
                         return false
                     }
 
                 } else {
-                    Log.d("spotify", "geen connector")
 
                     return false
                 }
@@ -121,7 +119,6 @@ class MusicRoomFragment: Fragment() {
 
     override fun onStart() {
         super.onStart()
-        Log.d("token", "wat start")
 
         val connectionParams = ConnectionParams.Builder(CLIENT_ID)
             .setRedirectUri(REDIRECT_URI)
@@ -133,12 +130,10 @@ class MusicRoomFragment: Fragment() {
                 object : Connector.ConnectionListener {
                     override fun onConnected(spotifyAppRemote: SpotifyAppRemote) {
                         spotifyAppRemoteLocal = spotifyAppRemote
-                        Log.d("MainActivity", "Connected! Yay!")
                         // Now you can start interacting with App Remote
                     }
 
                     override fun onFailure(throwable: Throwable) {
-                        Log.e("MainActivity", throwable.message, throwable)
 
                         // Something went wrong when attempting to connect! Handle errors here
                     }
@@ -176,47 +171,32 @@ class MusicRoomFragment: Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        Log.d("token", "wat")
 
         if (requestCode === REQUEST_CODE) {
             val response = AuthenticationClient.getResponse(resultCode, data)
-            Log.d("token", response.type.toString())
             when (response.type) {
                 AuthenticationResponse.Type.TOKEN -> {
                     AppPreferences.spotifyToken = response.accessToken
-                    Log.d("tokenSpotify", response.accessToken)
                     musicRoomViewModel.getAllPlaylists()
 
                 }
                 AuthenticationResponse.Type.ERROR -> {
-                    Log.d("tokenSpotify", response.error)
                 }
                 AuthenticationResponse.Type.EMPTY -> {
-                    Log.d(
-                        "tokenSpotify",
-                        response.error + " empty"
-                    )
+
                 }
                 AuthenticationResponse.Type.CODE -> {
-                    Log.d(
-                        "tokenSpotify",
-                        response.error + " code"
-                    )
+
                 }
                 AuthenticationResponse.Type.UNKNOWN -> {
-                    Log.d(
-                        "tokenSpotify",
-                        response.error + " unknown"
-                    )
+
                 }
                 else -> {
-                    Log.d("tokenSpotify", "KUT")
                 }
             }
         }
         else
         {
-            Log.d("token", "wat")
         }
     }
 

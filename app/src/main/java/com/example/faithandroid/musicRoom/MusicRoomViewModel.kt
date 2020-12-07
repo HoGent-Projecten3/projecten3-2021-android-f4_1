@@ -32,26 +32,12 @@ class MusicRoomViewModel : ViewModel() {
 
     init
     {
-        getPlaylists()
+        getPlayRemotelists()
     }
 
 
-    fun getUser()
-    {
-        try{
-            MainScope().launch {
-                var call: Call<SpotifyUser> = SpotifyApi.retrofitService.getUser()
-                var user: SpotifyUser = call.await()
-                Log.d("spotifyUser", user.id)
-            }
 
-        }
-        catch(e: Exception){
-            Log.d("error", e.localizedMessage)
-        }
-    }
-
-    fun getPlaylists()
+    fun getPlayRemotelists()
     {
         try {
             MainScope().launch {
@@ -63,7 +49,6 @@ class MusicRoomViewModel : ViewModel() {
         }
         catch (e: Exception )
         {
-            Log.d("error", e.localizedMessage)
         }
     }
 
@@ -78,7 +63,7 @@ class MusicRoomViewModel : ViewModel() {
                         if (response.isSuccessful()) {
                             val responseString: String? = response.code().toString()
                             if (responseString != null) {
-                                getPlaylists()
+                                getPlayRemotelists()
 
                             }
                         }
@@ -93,7 +78,6 @@ class MusicRoomViewModel : ViewModel() {
         }
         catch (e: java.lang.Exception)
         {
-            Log.d("error", e.localizedMessage)
         }
     }
 
@@ -108,7 +92,7 @@ class MusicRoomViewModel : ViewModel() {
                         if (response.isSuccessful()) {
                             val responseString: String? = response.code().toString()
                             if (responseString != null) {
-                                getPlaylists()
+                                getPlayRemotelists()
 
                             }
                         }
@@ -122,7 +106,6 @@ class MusicRoomViewModel : ViewModel() {
         }
         catch (e: java.lang.Exception)
         {
-            Log.d("error", e.localizedMessage)
         }
     }
 
@@ -146,7 +129,6 @@ class MusicRoomViewModel : ViewModel() {
             }
         }
         catch(e: Exception){
-            Log.d("error", e.localizedMessage)
         }
     }
 

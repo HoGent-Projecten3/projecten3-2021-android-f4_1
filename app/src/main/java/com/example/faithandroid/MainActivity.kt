@@ -213,7 +213,6 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
                  //finishAffinity()
                 Toast.makeText(this,"Uitgelogd!", Toast.LENGTH_LONG).show()
 
-                Log.d("Token", AppPreferences.token.toString())
 
                 val taskIntent = Intent(this, LoginActivity::class.java)
                 startActivityForResult(taskIntent, 1)
@@ -246,7 +245,6 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
         }
 
 
-        Log.d("sharedPref", AppPreferences.token.toString())
 
     }
 

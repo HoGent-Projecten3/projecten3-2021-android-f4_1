@@ -61,7 +61,6 @@ class SkyscraperFragment: Fragment() {
 
         viewModel.testLive.observe(this.viewLifecycleOwner, Observer{
             it.forEach{goal ->
-                Log.d("Skyscraper", "iterated")
                 val rowView: View = inflater.inflate(R.layout.skyscraper_goalpostimage, null)
                 rowView.titleText.text = goal.title
 
@@ -87,7 +86,6 @@ class SkyscraperFragment: Fragment() {
 
     override fun onStart(){
         super.onStart()
-        Log.d("Skyscraper","onstart")
     }
 
 }
