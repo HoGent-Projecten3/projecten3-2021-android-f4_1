@@ -94,7 +94,7 @@ class BackpackFragment: Fragment() {
         binding.BackpackRecycler.adapter =
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
-                    postViewModel.pemanentlyDeletePost(post.id)
+                    //postViewModel.pemanentlyDeletePost(post.id)
                     true
                     postViewModel.getPostsOfPlace(PlaceType.Rugzak)
                 }

@@ -2,8 +2,13 @@ package com.example.faithandroid.network.local
 
 import androidx.room.TypeConverter
 import com.example.faithandroid.models.GoalPostFields
+import com.example.faithandroid.models.Step
 import com.example.faithandroid.models.StepFields
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+
+
+
 
 class Converters {
 
@@ -26,4 +31,10 @@ class Converters {
     fun stepPlayersToString(fields: StepFields): String {
         return Gson().toJson(fields)
     }
+
+    @TypeConverter
+    fun listToJson(value: List<Step>?) = Gson().toJson(value)
+
+    @TypeConverter
+    fun jsonToList(value: String) = Gson().fromJson(value, Array<Step>::class.java).toList()
 }

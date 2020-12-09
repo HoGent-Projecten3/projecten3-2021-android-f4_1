@@ -25,27 +25,8 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.*
 
-//TODO: give url
-private const val BASE_URL = "https://apigrow.azurewebsites.net/"
 
-private val moshi = Moshi.Builder()
-    .add(KotlinJsonAdapterFactory())
 
-    .build()
-
-private val retrofit = Retrofit.Builder()
-    .addConverterFactory(ScalarsConverterFactory.create())
-    .addConverterFactory(MoshiConverterFactory.create(moshi))
-    .addCallAdapterFactory(CoroutineCallAdapterFactory())
-    .client(OkHttpClient().newBuilder().addInterceptor{ chain ->
-        val newRequest = chain.request().newBuilder()
-            .addHeader("Authorization", "Bearer " + AppPreferences.token)
-            .build()
-        chain.proceed(newRequest)
-    }
-    .build())
-    .baseUrl(BASE_URL)
-    .build()
 
 
 interface FaithApiService {
@@ -131,9 +112,5 @@ interface FaithApiService {
 
 }
 
-object FaithApi {
-    val retrofitService : FaithApiService by lazy {
-        retrofit.create(FaithApiService::class.java)
-    }
-}
+
 

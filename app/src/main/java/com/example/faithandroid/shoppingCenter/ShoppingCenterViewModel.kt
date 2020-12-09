@@ -11,7 +11,6 @@ import com.example.faithandroid.BodyType
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.Step
-import com.example.faithandroid.network.FaithApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

@@ -45,7 +45,7 @@ class ProfielFragment: Fragment() {
         );
 
         viewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
-        viewModel.getAdolescent()
+        //viewModel.getAdolescent()
 
         viewModel.adol.observe(viewLifecycleOwner, Observer {
             adolescent = it

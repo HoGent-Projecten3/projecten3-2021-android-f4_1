@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 
 import com.example.faithandroid.models.Adolescent
-import com.example.faithandroid.network.FaithApi
 import retrofit2.*
 
 
@@ -25,7 +24,7 @@ class ProfielViewModel: ViewModel() {
     var adol: LiveData<Adolescent> = MutableLiveData<Adolescent>()
         get() = _adol
 
-    fun getAdolescent(): Adolescent?{
+    /*fun getAdolescent(): Adolescent?{
 
         viewModelScope.launch {
 
@@ -40,18 +39,18 @@ class ProfielViewModel: ViewModel() {
         }
         return _adol.value
 
-    }
+    }*/
 
      fun changePassword(ww: String) {
 
-         viewModelScope.launch {
+         /*viewModelScope.launch {
              try {
                  val response = FaithApi.retrofitService.changepassword(ww)
                  response.await()
              } catch (e: java.lang.Exception) {
                  throw e
              }
-         }
+         }*/
     }
 
 }

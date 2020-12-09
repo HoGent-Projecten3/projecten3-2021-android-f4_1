@@ -97,7 +97,7 @@ class addTextFragment: Fragment() {
 
 
 
-        binding.textToevoegenButton.setOnClickListener{
+        /*binding.textToevoegenButton.setOnClickListener{
 
 
             post?.let { it1 -> viewModel.addPostByEmail(
@@ -119,7 +119,7 @@ class addTextFragment: Fragment() {
                         .navigate(R.id.action_addTextFragment_to_treasureChestFragment)
                 }
             }
-        }
+        }*/
 
         return binding.root
 

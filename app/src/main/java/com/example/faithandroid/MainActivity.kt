@@ -49,7 +49,6 @@ import com.example.faithandroid.databinding.AppNavHeaderMainBinding
 import com.example.faithandroid.login.LoginFragment
 import com.example.faithandroid.login.uilogin.LoginActivity
 import com.example.faithandroid.login.uilogin.LoginViewModel
-import com.example.faithandroid.login.uilogin.LoginViewModelFactory
 import com.example.faithandroid.profiel.ProfielViewModel
 import com.example.faithandroid.profiel.ProfielFragment
 import com.google.android.material.navigation.NavigationView
@@ -63,6 +62,7 @@ import com.spotify.sdk.android.authentication.AuthenticationResponse
 
 
 import kotlinx.android.synthetic.main.activity_main.view.*
+import org.koin.android.ext.android.inject
 
 
 //import androidx.databinding.DataBindingUtil
@@ -88,13 +88,8 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
         val taskIntent =  Intent(this, LoginActivity::class.java)
 
         startActivityForResult(taskIntent, LOGIN_REQUEST_CODE)
+        val viewModel : LoginViewModel by inject()
 
-
-        viewModel = ViewModelProvider(
-            this,
-            LoginViewModelFactory()
-        )
-            .get(LoginViewModel::class.java)
 
         drawerLayout = findViewById(R.id.drawerLayout)
         var navHeader = findViewById<NavigationView>(R.id.navView)
@@ -151,7 +146,7 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
     fun ClickMenu(view: View){
         //open drawer
         var pvm: ProfielViewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
-        pvm.getAdolescent()
+        //pvm.getAdolescent()
         pvm.adol.observe(this, {
             username = it.firstName + " " + it.name
             bind.nameText.text = username

@@ -2,6 +2,9 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import androidx.core.content.edit
+import com.example.faithandroid.network.FaithApiService
+import retrofit2.Retrofit
+
 
 object AppPreferences {
     private var sharedPreferences: SharedPreferences? = null

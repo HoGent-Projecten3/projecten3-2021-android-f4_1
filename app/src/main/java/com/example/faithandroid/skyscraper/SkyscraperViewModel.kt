@@ -13,8 +13,6 @@ import com.example.faithandroid.models.Step
 
 import com.example.faithandroid.models.Post
 
-import com.example.faithandroid.network.FaithApi
-import com.example.faithandroid.network.FaithApiService
 import com.example.faithandroid.network.FaithProperty
 import com.example.faithandroid.util.Resource
 import com.google.android.material.card.MaterialCardView

@@ -17,6 +17,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        buildConfigField 'String', 'BASE_URL',"\"https://apigrow.azurewebsites.net/\""
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -158,6 +159,9 @@ dependencies {
     // Koin AndroidX Fragment features
     implementation "org.koin:koin-androidx-fragment:$koin_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$interceptor_version"
 
 
 }
