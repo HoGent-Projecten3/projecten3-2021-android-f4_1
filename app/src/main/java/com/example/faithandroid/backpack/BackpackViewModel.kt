@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.example.faithandroid.PlaceType
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.PostType
-import com.example.faithandroid.network.FaithApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -50,7 +49,7 @@ class BackpackViewModel : ViewModel() {
     //OPHALEN VAN DE LIJST
     fun getPostsOfBackpack()
     {
-        coroutineScope.launch{
+        /*coroutineScope.launch{
             try{
                 var getPostList = FaithApi.retrofitService.getPostsOfPlaceByAdolescentEmail(PlaceType.Rugzak.ordinal)
                 var result = getPostList.await()
@@ -67,6 +66,6 @@ class BackpackViewModel : ViewModel() {
             {
                 _status.value = "Kan geen verbinding maken met de server"
             }
-        }
+        }*/
     }
 }

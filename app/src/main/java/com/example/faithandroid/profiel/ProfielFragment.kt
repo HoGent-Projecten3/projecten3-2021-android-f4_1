@@ -53,7 +53,7 @@ class ProfielFragment: Fragment() {
         this.vectorMasterViewB = binding.imgAvatarB as VectorMasterView
 
         viewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
-        viewModel.getAdolescent()
+        //viewModel.getAdolescent()
 
         binding.imgAvatarB.setVisibility(View.GONE)
 

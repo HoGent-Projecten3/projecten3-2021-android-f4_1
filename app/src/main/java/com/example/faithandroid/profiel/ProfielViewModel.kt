@@ -12,8 +12,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 
 import com.example.faithandroid.models.Adolescent
+<<<<<<< HEAD
 import com.example.faithandroid.models.Avatar
 import com.example.faithandroid.network.FaithApi
+=======
+>>>>>>> 18cbca2 (repository goalposts werkt)
 import retrofit2.*
 
 
@@ -26,6 +29,7 @@ class ProfielViewModel: ViewModel() {
     var adol: LiveData<Adolescent> = MutableLiveData<Adolescent>()
         get() = _adol
 
+<<<<<<< HEAD
 
     private var _currentAvatar = MutableLiveData<Avatar>()
     var avatar: LiveData<Avatar> = MutableLiveData<Avatar>()
@@ -33,6 +37,9 @@ class ProfielViewModel: ViewModel() {
 
 
     fun getAdolescent(): Adolescent?{
+=======
+    /*fun getAdolescent(): Adolescent?{
+>>>>>>> 18cbca2 (repository goalposts werkt)
 
         viewModelScope.launch {
 
@@ -47,18 +54,18 @@ class ProfielViewModel: ViewModel() {
         }
         return _adol.value
 
-    }
+    }*/
 
      fun changePassword(ww: String) {
 
-         viewModelScope.launch {
+         /*viewModelScope.launch {
              try {
                  val response = FaithApi.retrofitService.changepassword(ww)
                  response.await()
              } catch (e: java.lang.Exception) {
                  throw e
              }
-         }
+         }*/
     }
 
 }

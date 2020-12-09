@@ -4,7 +4,6 @@ import android.util.Log
 import com.example.faithandroid.login.data.LoggedInUser
 import com.example.faithandroid.login.uilogin.LoginResult
 import com.example.faithandroid.models.Adolescent
-import com.example.faithandroid.network.FaithApi
 import kotlinx.coroutines.*
 import retrofit2.await
 import java.lang.NullPointerException

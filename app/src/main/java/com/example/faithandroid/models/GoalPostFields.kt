@@ -17,6 +17,8 @@ data class GoalPostFields(
     val description: String = "",
     @Json(name = "completed")
     val completed: Boolean = false,
+    @Json(name = "steps")
+    val steps: List<StepFields>,
     @Json(name = "date")
     val date: String = "",
     @Json(name = "shared")
@@ -25,11 +27,12 @@ data class GoalPostFields(
     val name : String = ""
 ) : Parcelable
 
-/*data class GoalWithSteps(
-    @Embedded val goalPost: GoalPostFields,
+/*@Parcelize
+data class GoalWithSteps(
+    @Embedded val goalPost: GoalPost,
     @Relation(
         parentColumn = "id",
         entityColumn = "goalId"
     )
-    val Steps: List<StepFields>
-)*/
+    val Steps: List<Step>
+): Parcelable*/

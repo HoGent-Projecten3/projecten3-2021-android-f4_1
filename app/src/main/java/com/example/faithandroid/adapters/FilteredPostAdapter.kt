@@ -17,7 +17,6 @@ import com.example.faithandroid.databinding.FilteredPostBinding
 
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.PostType
-import com.example.faithandroid.network.FaithApi
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import org.threeten.bp.LocalDate
@@ -49,11 +48,11 @@ class FilteredPostAdapter(private var listener: CustomClick) : ListAdapter<Post,
                 binding.TreasurechestImage.visibility = INVISIBLE
             }
 
-            val dialogClickListener = DialogInterface.OnClickListener{ _, which ->
+            /*val dialogClickListener = DialogInterface.OnClickListener{ _, which ->
                 when(which){
-                    DialogInterface.BUTTON_POSITIVE -> FaithApi.retrofitService.deletePostByEmail(PlaceType.Schatkist.ordinal, post.id )
+                    DialogInterface.BUTTON_POSITIVE -> retrofitService.deletePostByEmail(PlaceType.Schatkist.ordinal, post.id )
                 }
-            }
+            }*/
 
 
 

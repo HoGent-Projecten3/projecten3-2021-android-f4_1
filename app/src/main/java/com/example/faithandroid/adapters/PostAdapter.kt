@@ -15,7 +15,6 @@ import com.example.faithandroid.databinding.PostBinding
 
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.PostType
-import com.example.faithandroid.network.FaithApi
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import org.threeten.bp.LocalDate
@@ -47,11 +46,11 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
             }
             Glide.with(itemView.context).load(post.uri).into(binding.TreasurechestImage)
 
-            val dialogClickListener = DialogInterface.OnClickListener{ _, which ->
+            /*val dialogClickListener = DialogInterface.OnClickListener{ _, which ->
                 when(which){
                     DialogInterface.BUTTON_POSITIVE -> FaithApi.retrofitService.deletePostByEmail(PlaceType.Schatkist.ordinal, post.id)
                 }
-            }
+            }*/
 
             binding.DeletePostButton.setOnClickListener{
                 view: View ->

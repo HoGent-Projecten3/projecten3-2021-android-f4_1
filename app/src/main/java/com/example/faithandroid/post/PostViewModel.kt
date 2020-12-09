@@ -9,7 +9,6 @@ import com.example.faithandroid.PlaceType
 import com.example.faithandroid.PostType
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
-import com.example.faithandroid.network.FaithApi
 import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -34,7 +33,7 @@ class PostViewModel(private var placeType: PlaceType): ViewModel() {
 
     fun getFilteredPostFromPlace(placeType: PlaceType, postType: PostType) {
 
-        viewModelScope.launch {
+        /*viewModelScope.launch {
 
             val stringCall: Call<List<Post>> =
                 FaithApi.retrofitService.getFilteredFromPlace(placeType.ordinal, postType.ordinal)
@@ -63,12 +62,12 @@ class PostViewModel(private var placeType: PlaceType): ViewModel() {
             })
 
 
-        }
+        }*/
 
     }
 
     fun getPostsOfPlace(placeType: PlaceType)    {
-        viewModelScope.launch {
+       /* viewModelScope.launch {
             val stringCall: Call<List<Post>> =
                 FaithApi.retrofitService.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
             stringCall.enqueue(object : Callback<List<Post>> {
@@ -83,10 +82,10 @@ class PostViewModel(private var placeType: PlaceType): ViewModel() {
                     }
                 }
             })
-        }
+        }*/
     }
 
-    fun addPostByEmail(post: Post, placeType: PlaceType): Boolean{
+    /*fun addPostByEmail(post: Post, placeType: PlaceType): Boolean{
         var bool: Boolean = true
         viewModelScope.launch {
             val stringCall: Call<Void> =
@@ -172,6 +171,6 @@ class PostViewModel(private var placeType: PlaceType): ViewModel() {
                 }
             })
         }
-    }
+    }*/
 
 }

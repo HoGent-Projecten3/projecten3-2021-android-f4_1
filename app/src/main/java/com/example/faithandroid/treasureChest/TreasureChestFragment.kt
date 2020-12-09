@@ -68,7 +68,7 @@ class TreasureChestFragment: Fragment() {
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
 
-                    postViewModel.deletePostByEmail(post.id,  PlaceType.Schatkist)
+                    //postViewModel.deletePostByEmail(post.id,  PlaceType.Schatkist)
                     postViewModel.getPostsOfPlace(PlaceType.Schatkist)
                     true
                 }

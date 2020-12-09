@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 import com.example.faithandroid.models.*
-import com.example.faithandroid.network.FaithApi
 import com.example.faithandroid.network.SpotifyApi
 import com.example.faithandroid.network.SpotifyApiService
 import kotlinx.coroutines.MainScope
@@ -39,7 +38,7 @@ class MusicRoomViewModel : ViewModel() {
 
     fun getPlayRemotelists()
     {
-        try {
+        /*try {
             MainScope().launch {
                 var call: Call<List<Playlist>> = FaithApi.retrofitService.getPlaylists()
                 var list = call.await()
@@ -49,12 +48,12 @@ class MusicRoomViewModel : ViewModel() {
         }
         catch (e: Exception )
         {
-        }
+        }*/
     }
 
     fun addPlaylist(playlist: Playlist)
     {
-        try{
+        /*try{
             MainScope().launch {
                 var call = FaithApi.retrofitService.addPlaylist(playlist)
                 call.enqueue(object : Callback<Void> {
@@ -78,12 +77,12 @@ class MusicRoomViewModel : ViewModel() {
         }
         catch (e: java.lang.Exception)
         {
-        }
+        }*/
     }
 
     fun deletePlaylist(primaryKey: Int)
     {
-        try{
+        /*try{
             MainScope().launch {
                 var call = FaithApi.retrofitService.deletePlaylist(primaryKey)
                 call.enqueue(object : Callback<Void> {
@@ -106,7 +105,7 @@ class MusicRoomViewModel : ViewModel() {
         }
         catch (e: java.lang.Exception)
         {
-        }
+        }*/
     }
 
     fun getAllPlaylists()

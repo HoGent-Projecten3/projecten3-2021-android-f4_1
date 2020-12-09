@@ -25,18 +25,19 @@ import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.login.*
 import kotlinx.android.synthetic.main.login.view.*
+import org.koin.android.ext.android.inject
 import javax.xml.parsers.DocumentBuilderFactory.newInstance
 import javax.xml.transform.TransformerFactory.newInstance
 
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var loginViewModel: LoginViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val loginViewModel : LoginViewModel by inject()
         setContentView(R.layout.login)
 
         val username = findViewById<EditText>(R.id.txtemail)
@@ -46,10 +47,6 @@ class LoginActivity : AppCompatActivity() {
 
 
 
-        loginViewModel = ViewModelProvider(this,
-            LoginViewModelFactory()
-        )
-                .get(LoginViewModel::class.java)
 
         loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
             val loginState = it ?: return@Observer

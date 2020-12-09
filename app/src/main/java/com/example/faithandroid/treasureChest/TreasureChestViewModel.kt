@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.example.faithandroid.PlaceType
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.PostType
-import com.example.faithandroid.network.FaithApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -46,7 +45,7 @@ class TreasureChestViewModel : ViewModel() {
     fun getPostsOfTreasureChest()
     {
         coroutineScope.launch{
-            try{
+            /*try{
                 var getPostList = FaithApi.retrofitService.getPostsOfPlaceByAdolescentEmail(PlaceType.Schatkist.ordinal)
                 var result = getPostList.await()
                 if(result.size > 0){
@@ -61,7 +60,7 @@ class TreasureChestViewModel : ViewModel() {
             catch (e: Exception)
             {
                 _status.value = "Kan geen verbinding maken met de server"
-            }
+            }*/
         }
     }
 }

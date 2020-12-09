@@ -49,7 +49,7 @@ class TextPostToevoegenFragment : Fragment() {
             {
 
                 val post: Post = Post(0, binding.textposttitel.text.toString(), binding.textposttext.text.toString(), "2020-11-05T22:34:57.61", PostType.Text.ordinal)
-                if(postViewModel.addPostByEmail(post, args.placeType))
+                /*if(postViewModel.addPostByEmail(post, args.placeType))
                 {
 
                     when (args.placeType) {
@@ -60,7 +60,7 @@ class TextPostToevoegenFragment : Fragment() {
 
                         }
                     }
-                }
+                }*/
 
             }
             catch (e: Exception)
