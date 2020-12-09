@@ -53,6 +53,7 @@ class TextPostToevoegenFragment : Fragment() {
 
             try
             {
+<<<<<<< HEAD
                 val post: Post = Post(0, binding.textposttitel.text.toString(), binding.textposttext.text.toString(), LocalDateTime.now().toString(), PostType.Text.ordinal,"","",
                     backpack = false,
                     bulletinBoard = false,
@@ -71,6 +72,11 @@ class TextPostToevoegenFragment : Fragment() {
                     }
                 }
                 if(postViewModel.addPostByEmail(post, args.placeType))
+=======
+
+                val post: Post = Post(0, binding.textposttitel.text.toString(), binding.textposttext.text.toString(), "2020-11-05T22:34:57.61", PostType.Text.ordinal)
+                /*if(postViewModel.addPostByEmail(post, args.placeType))
+>>>>>>> 18cbca2 (repository goalposts werkt)
                 {
 
                     when (args.placeType) {
@@ -81,7 +87,12 @@ class TextPostToevoegenFragment : Fragment() {
 
                         }
                     }
+<<<<<<< HEAD
                 }
+=======
+                }*/
+
+>>>>>>> 18cbca2 (repository goalposts werkt)
             }
             catch (e: Exception)
             {

@@ -23,8 +23,6 @@ import retrofit2.http.*
 
 
 
-
-
 interface FaithApiService {
 
     @Headers("Content-Type: application/json")

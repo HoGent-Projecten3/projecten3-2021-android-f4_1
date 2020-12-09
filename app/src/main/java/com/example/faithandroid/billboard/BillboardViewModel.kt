@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Step
-
 import com.example.faithandroid.skyscraper.GoalPostRepository
 import com.example.faithandroid.util.Resource
 import kotlinx.coroutines.CoroutineScope

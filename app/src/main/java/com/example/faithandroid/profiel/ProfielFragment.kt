@@ -53,6 +53,7 @@ class ProfielFragment: Fragment() {
             false
         );
 
+<<<<<<< HEAD:app/src/main/java/com/example/faithandroid/profiel/ProfielFragment.kt
         this.vectorMasterViewA = binding.imgAvatarA as VectorMasterView
         this.vectorMasterViewB = binding.imgAvatarB as VectorMasterView
 
@@ -61,6 +62,10 @@ class ProfielFragment: Fragment() {
         //viewModel.getAdolescent()
 
         binding.imgAvatarB.setVisibility(View.GONE)
+=======
+        viewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
+        //viewModel.getAdolescent()
+>>>>>>> 18cbca2 (repository goalposts werkt):app/src/main/java/com/example/faithandroid/ProfielFragment.kt
 
         viewModel.adol.observe(viewLifecycleOwner, Observer {
             adolescent = it

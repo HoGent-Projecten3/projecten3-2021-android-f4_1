@@ -84,7 +84,6 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
             startActivityForResult(taskIntent, LOGIN_REQUEST_CODE)
         }
 
-
         drawerLayout = findViewById(R.id.drawerLayout)
         var navHeader = findViewById<NavigationView>(R.id.navView)
         bind = DataBindingUtil.inflate<AppNavHeaderMainBinding>(

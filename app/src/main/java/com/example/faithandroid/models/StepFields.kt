@@ -15,5 +15,5 @@ data class StepFields (
     val goalId: Int,
     @Json(name = "stepText")
     val stepText: String
-): Parcelable
 
+): Parcelable

@@ -75,6 +75,7 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
         }
     }*/
 
+
     fun addPostByEmail(post: Post, placeType: PlaceType): Boolean{
         var bool: Boolean = true
         viewModelScope.launch {
@@ -171,4 +172,5 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
             }
         }
 }
+
 
