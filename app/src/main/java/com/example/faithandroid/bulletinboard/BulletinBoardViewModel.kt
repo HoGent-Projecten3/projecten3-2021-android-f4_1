@@ -84,7 +84,7 @@ class BulletinBoardViewModel : ViewModel() {
     }
     /*fun requestConsultation()
     {
-        coroutineScope.launch{
+        /*coroutineScope.launch{
             try{
                 FaithApi.retrofitService.requestConsultation().await()
                 _requestConsultationStatus.value = "gelukt!"
@@ -94,7 +94,7 @@ class BulletinBoardViewModel : ViewModel() {
             {
                 _requestConsultationStatus.value = "niet gelukt!"
             }
-        }
+        }*/
 
     }*/
 

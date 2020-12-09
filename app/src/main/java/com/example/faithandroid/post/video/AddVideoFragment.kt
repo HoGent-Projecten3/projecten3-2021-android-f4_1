@@ -135,7 +135,7 @@ class AddVideoFragment: Fragment() {
 
        binding.videoToevoegenButton.setOnClickListener{
 
-            if(nieuwePost)
+            /*if(nieuwePost)
             {
                 post?.title = binding.titel.text.toString()
                 post?.data = binding.titel.text?.replace("\\s".toRegex(), "").toString()
@@ -152,7 +152,7 @@ class AddVideoFragment: Fragment() {
 
                     viewModel.addExistingPostToPlace(post!!.id, args.placeType)
                 }
-            }
+            }*/
 
 
             when(args.placeType)
