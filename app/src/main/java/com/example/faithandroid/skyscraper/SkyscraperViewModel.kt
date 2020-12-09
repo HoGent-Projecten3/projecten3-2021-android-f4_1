@@ -16,6 +16,7 @@ import com.example.faithandroid.models.Post
 import com.example.faithandroid.network.FaithApi
 import com.example.faithandroid.network.FaithApiService
 import com.example.faithandroid.network.FaithProperty
+import com.example.faithandroid.util.Resource
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
@@ -29,7 +30,7 @@ import retrofit2.Retrofit
 import retrofit2.await
 
 
-class SkyscraperViewModel : ViewModel() {
+class SkyscraperViewModel(private val goalPostRepository: GoalPostRepository) : ViewModel() {
     private val _shareStatus = MutableLiveData<String>()
     private val _completedStatus = MutableLiveData<String>()
     private val _removeStatus = MutableLiveData<String>()
@@ -51,14 +52,13 @@ class SkyscraperViewModel : ViewModel() {
 
     private var test = mutableListOf<GoalPost>();
 
-    private var testLiveData = MutableLiveData<List<GoalPost>>()
-    val testLive: LiveData<List<GoalPost>>
-        get() = testLiveData
+    var testLive : LiveData<Resource<List<GoalPost>>> = goalPostRepository.getPostsOfSkyScraper()
+
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    init {
+    /*init {
 
         getPostsOfSkyscraper()
         testLiveData.value = test;
@@ -66,14 +66,14 @@ class SkyscraperViewModel : ViewModel() {
 
     fun getPostsOfSkyscraper() {
         coroutineScope.launch {
-            var getPropertiesDeferred = FaithApi.retrofitService.getPostsOfSkyScraper();
+            var getPropertiesDeferred = goalPostRepository.getPostsOfSkyScraper();
 
             try {
 
-                var listResult = getPropertiesDeferred.await()
-                if(listResult.size > 0){
+                var listResult = getPropertiesDeferred
+                if(listResult.value?.data != null){
 
-                    testLiveData.value = listResult
+                    testLiveData = listResult
                 }
 
             } catch (e: Exception){
@@ -81,11 +81,12 @@ class SkyscraperViewModel : ViewModel() {
                 _getStatus.value = e.localizedMessage
             }
         }
-    }
+    }*/
+
     fun postNewGoalPost( goalPost: GoalPost) {
         viewModelScope.launch {
             try {
-                val response = FaithApi.retrofitService.postGoalPost(goalPost)
+                val response = goalPostRepository.postGoalPost(goalPost)
             }catch (e: Exception){
                 // error handling als new goal niet werkt/ er iets mis loopt
             }
@@ -95,7 +96,7 @@ class SkyscraperViewModel : ViewModel() {
     fun goalBehaald(id:Int){
         viewModelScope.launch {
             try {
-                val response = FaithApi.retrofitService.checkGoal(id)
+                val response = goalPostRepository.checkGoal(id)
                 _completedStatus.value = "Doel behaald".toString();
 
             }catch (e: HttpException) {
@@ -112,7 +113,7 @@ class SkyscraperViewModel : ViewModel() {
     fun shareGoal(id:Int){
         coroutineScope.launch{
             try {
-                 val response = FaithApi.retrofitService.shareGoal(id)
+                 val response = goalPostRepository.shareGoal(id)
                  response.await()
                  _shareStatus.value = "Doel gedeeld"
             } catch (e: Exception){
@@ -125,7 +126,7 @@ class SkyscraperViewModel : ViewModel() {
     fun deleteGoal(id:Int){
         coroutineScope.launch{
             try {
-                val response = FaithApi.retrofitService.removeGoal(id)
+                val response = goalPostRepository.removeGoal(id)
                val stringResponse= response.await()
                 _removeStatus.value = R.string.doel_verwijderd.toString()
             } catch (e: Exception){
