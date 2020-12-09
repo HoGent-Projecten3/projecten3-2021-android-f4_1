@@ -15,6 +15,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.Deferred
 import okhttp3.OkHttpClient
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
@@ -64,10 +65,11 @@ interface FaithApiService {
     suspend fun checkGoal(@Path("goalId") goalId : Int)
 
     @GET("city/skyscraper/goal")
-    fun getPostsOfSkyScraper(): Deferred<List<GoalPost>>
+    suspend fun getPostsOfSkyScraper(): Response<List<GoalPost>>
 
-    @GET("city/billboard/group")
-    fun getBillboardGoals(): Deferred<List<GoalPost>>
+    @GET("city/billboard/goal")
+    suspend fun getBillboardGoals(): Response<List<GoalPost>>
+
 
     @Headers("Content-Type: application/json")
     @PUT("user/counselor/delete-adolescent")
@@ -104,7 +106,6 @@ interface FaithApiService {
     @Headers("Content-Type: application/json")
     @POST("user/change-password")
     fun changepassword(@Query("ww") ww: String) : Call<String>
-
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @GET("city/musicroom/playlist")
