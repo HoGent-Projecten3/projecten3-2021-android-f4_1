@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Step
+
 import com.example.faithandroid.skyscraper.GoalPostRepository
 import com.example.faithandroid.util.Resource
 import kotlinx.coroutines.CoroutineScope
@@ -23,7 +24,6 @@ class BillboardViewModel(private val goalPostRepository: GoalPostRepository) : V
         get() = _status
 
    /* @RequiresApi(Build.VERSION_CODES.O)
-
     val mockData = mutableListOf<GoalPost>(
         GoalPost(0, "Huiswerk maken", "Mijn huiwerk maken voor Nederlands, Wiskunde & Geschiedenis", true, listOf<Step>(Step(0, "step")), LocalDateTime.of(2020, 11, 3,0, 0,0).toString()) , //  android:layout_marginTop="7dp"
         GoalPost(0, "Kamer restylen", "Kamer een makeover geven in de stijl van New York dus met schilderen, posters ophangen en eventueel meubels verplaatsen enzo", true, listOf<Step>(Step(0, "step")), "29/12/2020")

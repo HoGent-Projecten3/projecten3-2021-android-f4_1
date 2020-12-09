@@ -18,7 +18,6 @@ abstract class BaseDataSource {
             return error(e.message ?: e.toString())
         }
     }
-
     protected suspend fun <T> getObjectResult(call: suspend () -> Response<T>): Resource<T> {
         try {
             val response = call()
@@ -31,6 +30,7 @@ abstract class BaseDataSource {
             return error(e.message ?: e.toString())
         }
     }
+
 
     private fun <T> error(message: String): Resource<T> {
         Log.e("remoteDataSource", message)

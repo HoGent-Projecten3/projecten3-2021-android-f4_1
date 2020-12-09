@@ -27,12 +27,4 @@ data class GoalPostFields(
     val name : String = ""
 ) : Parcelable
 
-/*@Parcelize
-data class GoalWithSteps(
-    @Embedded val goalPost: GoalPost,
-    @Relation(
-        parentColumn = "id",
-        entityColumn = "goalId"
-    )
-    val Steps: List<Step>
-): Parcelable*/
+

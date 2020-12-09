@@ -23,7 +23,10 @@ import org.koin.android.ext.android.inject
 
 class SkyscraperFragment: Fragment() {
 
+<<<<<<< HEAD
     private val loadingDialogFragment by lazy { LoadingFragment() }
+=======
+>>>>>>> 1ae52e1 (repository deel goal niet af)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,8 +93,11 @@ class SkyscraperFragment: Fragment() {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
+<<<<<<< HEAD
                         showProgress(false)
                         binding.lijst.removeViews(1,binding.lijst.childCount - 2)
+=======
+>>>>>>> 1ae52e1 (repository deel goal niet af)
                         resource.data?.forEach { goal ->
                             val rowView: View = inflater.inflate(R.layout.skyscraper_goalpostimage, null)
                             rowView.titleText.text = goal.title
@@ -113,10 +119,17 @@ class SkyscraperFragment: Fragment() {
                         }
                     }
                     Status.LOADING -> {
+<<<<<<< HEAD
                         showProgress(true)
                     }
                     Status.ERROR -> {
                         showProgress(false)
+=======
+                        //showProgress(true)
+                    }
+                    Status.ERROR -> {
+                        //showProgress(false)
+>>>>>>> 1ae52e1 (repository deel goal niet af)
                     }
                 }
             }

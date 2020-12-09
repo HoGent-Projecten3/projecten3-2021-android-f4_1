@@ -21,7 +21,9 @@ import org.koin.android.ext.android.inject
 
 
 
+
 class BillboardFragment: Fragment() {
+
 
     private lateinit var adapter: BillboardGridAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +48,7 @@ class BillboardFragment: Fragment() {
         //viewModel = ViewModelProvider(this).get(BillboardViewModel::class.java)
         binding.viewmodelBillboard = viewModel
 
-        binding.billboardGridView.adapter = BillboardGridAdapter()
+        binding.billboardGridView.adapter = adapter
 
 
         viewModel.status.observe(this.viewLifecycleOwner, Observer {
@@ -58,6 +60,24 @@ class BillboardFragment: Fragment() {
                 {
                     viewModel.properties
                 }.show()
+            }
+        })
+
+        viewModel.properties.observe(this.viewLifecycleOwner, Observer
+        {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        //showProgress(false)
+                        adapter.submitList(resource.data)
+                    }
+                    Status.LOADING -> {
+                        //showProgress(true)
+                    }
+                    Status.ERROR -> {
+                        //showProgress(false)
+                    }
+                }
             }
         })
 

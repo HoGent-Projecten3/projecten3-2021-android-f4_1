@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
+
 @Parcelize
 data class StepFields (
     @Json(name = "id")
@@ -15,3 +16,4 @@ data class StepFields (
     @Json(name = "stepText")
     val stepText: String
 ): Parcelable
+

@@ -8,7 +8,11 @@ class GoalPostRemoteDataSource(private val apiService: FaithApiService): BaseDat
 
     suspend fun getPostsOfSkyScraper() = getResult { apiService.getPostsOfSkyScraper()}
 
+<<<<<<< HEAD
     suspend fun getBillboardGoals() = getResult {apiService.getGoalsOfGroup() }
+=======
+    suspend fun getBillboardGoals() = getResult {apiService.getBillboardGoals() }
+>>>>>>> 1ae52e1 (repository deel goal niet af)
 
     suspend fun postGoalPost(goal : GoalPost) = apiService.postGoalPost(goal)
 
