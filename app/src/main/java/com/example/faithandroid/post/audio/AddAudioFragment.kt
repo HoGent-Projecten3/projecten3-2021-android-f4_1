@@ -163,7 +163,7 @@ class AddAudioFragment: Fragment() {
                     false
                 )
 
-            /*if(nieuwePost)
+            if(nieuwePost)
             {
                 post?.title = binding.titel.text.toString()
                 post?.dataBytes = audioPost
@@ -179,7 +179,7 @@ class AddAudioFragment: Fragment() {
                 {
                     viewModel.addExistingPostToPlace(post!!.id, args.placeType)
                 }
-            }*/
+            }
             when(args.placeType)
             {
                 PlaceType.Prikbord -> {
