@@ -34,7 +34,7 @@ import java.io.InputStream
 import java.util.*
 
 
-/*class addPhotoFragment: Fragment() {
+class addPhotoFragment: Fragment() {
 
     val args: addPhotoFragmentArgs by navArgs()
 
@@ -245,4 +245,4 @@ import java.util.*
         return image
 
     }
-}*/
+}
