@@ -1,9 +1,7 @@
 package com.example.faithandroid.network.local
 
 import androidx.room.TypeConverter
-import com.example.faithandroid.models.GoalPostFields
-import com.example.faithandroid.models.Step
-import com.example.faithandroid.models.StepFields
+import com.example.faithandroid.models.*
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -29,6 +27,26 @@ class Converters {
 
     @TypeConverter
     fun stepPlayersToString(fields: StepFields): String {
+        return Gson().toJson(fields)
+    }
+
+    @TypeConverter
+    fun playListStringToFields(value: String): PlaylistFields {
+        return Gson().fromJson(value, PlaylistFields::class.java)
+    }
+
+    @TypeConverter
+    fun playListPlayersToString(fields: PlaylistFields): String {
+        return Gson().toJson(fields)
+    }
+
+    @TypeConverter
+    fun stringToFields(value: String): PostFields {
+        return Gson().fromJson(value, PostFields::class.java)
+    }
+
+    @TypeConverter
+    fun playersToString(fields: PostFields): String {
         return Gson().toJson(fields)
     }
 

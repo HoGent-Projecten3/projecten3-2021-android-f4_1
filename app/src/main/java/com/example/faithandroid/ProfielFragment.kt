@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.ProfielBinding
 import com.example.faithandroid.models.Adolescent
+import org.koin.android.ext.android.inject
 
 
 class ProfielFragment: Fragment() {
@@ -37,6 +38,7 @@ class ProfielFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val viewModel : ProfielViewModel by inject()
         val binding = DataBindingUtil.inflate<ProfielBinding>(
             inflater,
             R.layout.profiel,
@@ -44,7 +46,6 @@ class ProfielFragment: Fragment() {
             false
         );
 
-        viewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
         //viewModel.getAdolescent()
 
         viewModel.adol.observe(viewLifecycleOwner, Observer {

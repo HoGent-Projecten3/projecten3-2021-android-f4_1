@@ -13,17 +13,22 @@ import com.example.faithandroid.*
 import com.example.faithandroid.adapters.PostAdapter
 import com.example.faithandroid.databinding.TreasurechestBinding
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
+import com.example.faithandroid.util.Status
 import com.google.android.material.snackbar.Snackbar
+import org.koin.android.ext.android.inject
 
 
 class TreasureChestFragment: Fragment() {
 
+    val postRepository : PostRepository by inject()
     private val postViewModel: PostViewModel by lazy{
-        ViewModelProvider(this, ViewModelFactory(PlaceType.Schatkist)).get(PostViewModel::class.java)
+        ViewModelProvider(this, ViewModelFactory(PlaceType.Schatkist,postRepository)).get(PostViewModel::class.java)
     }
 
     private lateinit var  adapter: PostAdapter
+    private val loadingDialogFragment by lazy { LoadingFragment() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +46,7 @@ class TreasureChestFragment: Fragment() {
           container,
           false
       );
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
         binding.viewModel = postViewModel
 
@@ -68,13 +73,13 @@ class TreasureChestFragment: Fragment() {
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
 
-                    //postViewModel.deletePostByEmail(post.id,  PlaceType.Schatkist)
-                    postViewModel.getPostsOfPlace(PlaceType.Schatkist)
+                    postViewModel.deletePostByEmail(post.id,  PlaceType.Schatkist)
+                    postViewModel.postList
                     true
                 }
             })
 
-        postViewModel.status.observe(this.viewLifecycleOwner, Observer {
+        /*postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
                 Snackbar.make(contextView, postViewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
@@ -89,12 +94,42 @@ class TreasureChestFragment: Fragment() {
         postViewModel.postList.observe(this.viewLifecycleOwner, Observer{
 
             this.adapter.notifyDataSetChanged()
+        })*/
+
+        postViewModel.postList.observe(this.viewLifecycleOwner, Observer{
+
+            this.adapter.notifyDataSetChanged()
+        })
+
+        postViewModel.postList.observe(this.viewLifecycleOwner, Observer
+        {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        showProgress(false)
+                        adapter.submitList(resource.data)
+                    }
+                    Status.LOADING -> {
+                        showProgress(true)
+                    }
+                    Status.ERROR -> {
+                        showProgress(false)
+                    }
+                }
+            }
         })
 
         return binding.root
     }
-
-
-
-
+    private fun showProgress(b: Boolean) {
+        if (b) {
+            if (!loadingDialogFragment.isAdded) {
+                loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
+            }
+        } else {
+            if (loadingDialogFragment.isAdded) {
+                loadingDialogFragment.dismissAllowingStateLoss()
+            }
+        }
+    }
 }

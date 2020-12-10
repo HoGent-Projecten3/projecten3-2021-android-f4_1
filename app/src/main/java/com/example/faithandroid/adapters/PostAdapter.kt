@@ -37,12 +37,16 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
             }
 
             binding.post = post
-            if (post.postType == PostType.Image.ordinal){
-                Picasso.get().load(post.uri).into(binding.TreasurechestImage)
-            }else if(post.postType == PostType.Audio.ordinal){
-                binding.TreasurechestImage.setImageResource(R.drawable.sound)
-            }else{
-                binding.TreasurechestImage.visibility = View.INVISIBLE
+            when (post.postType) {
+                PostType.Image.ordinal -> {
+                    Picasso.get().load(post.uri).into(binding.TreasurechestImage)
+                }
+                PostType.Audio.ordinal -> {
+                    binding.TreasurechestImage.setImageResource(R.drawable.sound)
+                }
+                else -> {
+                    binding.TreasurechestImage.visibility = View.INVISIBLE
+                }
             }
             Glide.with(itemView.context).load(post.uri).into(binding.TreasurechestImage)
 

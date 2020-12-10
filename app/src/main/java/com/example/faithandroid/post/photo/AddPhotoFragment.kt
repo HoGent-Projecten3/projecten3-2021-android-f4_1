@@ -25,14 +25,16 @@ import com.example.faithandroid.*
 import com.example.faithandroid.adapters.FilteredPostAdapter
 import com.example.faithandroid.databinding.AddPhotoBinding
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
 import com.google.android.material.textfield.TextInputLayout
+import org.koin.android.ext.android.inject
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
 import java.util.*
 
 
-/*class addPhotoFragment: Fragment() {
+class addPhotoFragment: Fragment() {
 
     val args: addPhotoFragmentArgs by navArgs()
 
@@ -47,6 +49,7 @@ import java.util.*
 
     private lateinit var  viewModel: PostViewModel
     private lateinit var  dropdown : Spinner
+    val postRepository : PostRepository by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,7 +68,7 @@ import java.util.*
         )
         binding.lifecycleOwner = this
 
-        viewModel = ViewModelProvider(this, ViewModelFactory(args.placeType)).get(PostViewModel::class.java)
+        viewModel = ViewModelProvider(this, ViewModelFactory(args.placeType,postRepository)).get(PostViewModel::class.java)
 
         binding.IconFolder.setOnClickListener { view: View ->
 
@@ -203,7 +206,10 @@ import java.util.*
                  "2020-11-19T21:19:39.362Z",
                  PostType.Image.ordinal,
                  imageString,
-                 ""
+                 "",
+                 backpack = false,
+                 bulletinBoard = false,
+                 treasureChest = false,
              )
             nieuwePost = true;
 
@@ -239,4 +245,4 @@ import java.util.*
         return image
 
     }
-}*/
+}

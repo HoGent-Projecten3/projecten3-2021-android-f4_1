@@ -50,7 +50,7 @@ class addGoalFragment : Fragment() {
             false
         );
 
-        viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
+        //viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
 
 
         binding.annuleerButton.setOnClickListener { view: View ->

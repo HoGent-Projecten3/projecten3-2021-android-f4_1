@@ -42,21 +42,21 @@ class BillboardFragment: Fragment() {
         //viewModel = ViewModelProvider(this).get(BillboardViewModel::class.java)
         binding.viewmodelBillboard = viewModel
 
-        binding.billboardGridView.adapter = adapter
+        binding.billboardGridView.adapter = BillboardGridAdapter()
 
-        /*viewModel.status.observe(this.viewLifecycleOwner, Observer {
+        viewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
                 Snackbar.make(contextView, "Kon niet verbinding maken met de server", Snackbar.LENGTH_SHORT).setAction(
                     R.string.tryAgain
                 )
                 {
-                    viewModel.properties()
+                    viewModel.properties
                 }.show()
             }
-        })*/
+        })
 
-        viewModel.properties.observe(this.viewLifecycleOwner, Observer
+        /*viewModel.properties.observe(this.viewLifecycleOwner, Observer
         {
             it?.let { resource ->
                 when (resource.status) {
@@ -72,7 +72,7 @@ class BillboardFragment: Fragment() {
                     }
                 }
             }
-        })
+        })*/
 
         return binding.root
     }

@@ -13,9 +13,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.example.faithandroid.CustomPlaylistClick
+import com.example.faithandroid.LoadingFragment
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.MusicroomBinding
 import com.example.faithandroid.models.Playlist
+import com.example.faithandroid.util.Status
 import com.spotify.android.appremote.api.ConnectionParams
 import com.spotify.android.appremote.api.Connector
 import com.spotify.android.appremote.api.SpotifyAppRemote
@@ -23,6 +25,7 @@ import com.spotify.sdk.android.authentication.AuthenticationClient
 import com.spotify.sdk.android.authentication.AuthenticationRequest
 import com.spotify.sdk.android.authentication.AuthenticationResponse
 import kotlinx.android.synthetic.main.app_bar_musicroom.view.*
+import org.koin.android.ext.android.inject
 
 
 class MusicRoomFragment: Fragment() {
@@ -31,10 +34,8 @@ class MusicRoomFragment: Fragment() {
     private val REDIRECT_URI = "faithandroid://callback"
     private val CLIENT_ID = "95bc88d8f6084f1893dd648d88732210"
     private var spotifyAppRemoteLocal: SpotifyAppRemote? = null
+    private val loadingDialogFragment by lazy { LoadingFragment() }
 
-    private val musicRoomViewModel: MusicRoomViewModel by lazy{
-        MusicRoomViewModel()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +45,7 @@ class MusicRoomFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val musicRoomViewModel: MusicRoomViewModel by inject()
       val binding = DataBindingUtil.inflate<MusicroomBinding>(
           inflater,
           R.layout.musicroom,
@@ -92,13 +94,13 @@ class MusicRoomFragment: Fragment() {
         binding.include4.newPlaylistButton.setOnClickListener{
             val popup = PopupMenu(context, it)
 
-            musicRoomViewModel.allPlaylists.value?.forEach{
+            musicRoomViewModel.allPlaylists.value?.data?.forEach{
                 popup.menu.add(it.name)
             }
             popup.setOnMenuItemClickListener {
 
 
-                var playlist = musicRoomViewModel.allPlaylists.value?.find { playlist: Playlist ->
+                var playlist = musicRoomViewModel.allPlaylists.value?.data?.find { playlist: Playlist ->
                     playlist.name == it.title
                 }
 
@@ -171,35 +173,49 @@ class MusicRoomFragment: Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
+        val musicRoomViewModel: MusicRoomViewModel by inject()
         if (requestCode === REQUEST_CODE) {
             val response = AuthenticationClient.getResponse(resultCode, data)
             when (response.type) {
                 AuthenticationResponse.Type.TOKEN -> {
                     AppPreferences.spotifyToken = response.accessToken
-                    musicRoomViewModel.getAllPlaylists()
 
-                }
-                AuthenticationResponse.Type.ERROR -> {
-                }
-                AuthenticationResponse.Type.EMPTY -> {
+                    musicRoomViewModel.allPlaylists.observe(
+                        viewLifecycleOwner,
+                        Observer {
+                            it?.let { resource ->
+                                when (resource.status) {
+                                    Status.SUCCESS -> {
+                                        showProgress(false)
 
-                }
-                AuthenticationResponse.Type.CODE -> {
-
-                }
-                AuthenticationResponse.Type.UNKNOWN -> {
-
-                }
-                else -> {
+                                    }
+                                    Status.LOADING -> {
+                                        showProgress(true)
+                                    }
+                                    Status.ERROR -> {
+                                        showProgress(false)
+                                    }
+                                }
+                            }
+                        }
+                    )
                 }
             }
-        }
-        else
-        {
+
         }
     }
 
+    private fun showProgress(b: Boolean) {
+        if (b) {
+            if (!loadingDialogFragment.isAdded) {
+                loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
+            }
+        } else {
+            if (loadingDialogFragment.isAdded) {
+                loadingDialogFragment.dismissAllowingStateLoss()
+            }
+        }
+    }
     override fun onDestroy() {
         super.onDestroy()
 

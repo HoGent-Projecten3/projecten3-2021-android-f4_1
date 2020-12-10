@@ -16,7 +16,9 @@ import com.example.faithandroid.*
 import com.example.faithandroid.adapters.FilteredPostAdapter
 import com.example.faithandroid.databinding.AddTextBinding
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
+import org.koin.android.ext.android.inject
 
 class addTextFragment: Fragment() {
 
@@ -28,6 +30,7 @@ class addTextFragment: Fragment() {
     private lateinit var  viewModel: PostViewModel
 
     private lateinit var  dropdown : Spinner
+    val postRepository : PostRepository by inject()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +51,7 @@ class addTextFragment: Fragment() {
         )
         binding.lifecycleOwner = this
 
-        viewModel = ViewModelProvider(this, ViewModelFactory(args.placeType)).get(PostViewModel::class.java)
+        viewModel = ViewModelProvider(this, ViewModelFactory(args.placeType,postRepository)).get(PostViewModel::class.java)
 
         binding.imageView4.setOnClickListener{
                 view: View ->  val action =
@@ -97,7 +100,7 @@ class addTextFragment: Fragment() {
 
 
 
-        /*binding.textToevoegenButton.setOnClickListener{
+        binding.textToevoegenButton.setOnClickListener{
 
 
             post?.let { it1 -> viewModel.addPostByEmail(
@@ -119,7 +122,7 @@ class addTextFragment: Fragment() {
                         .navigate(R.id.action_addTextFragment_to_treasureChestFragment)
                 }
             }
-        }*/
+        }
 
         return binding.root
 
