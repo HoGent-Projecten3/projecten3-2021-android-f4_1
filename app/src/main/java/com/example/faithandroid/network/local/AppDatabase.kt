@@ -16,7 +16,6 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun postDao(): PostDao
     abstract fun avatarDao(): AvatarDao
 
-
     companion object {
         @Volatile private var instance: AppDatabase? = null
 

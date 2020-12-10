@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.ProfielBinding
 import com.example.faithandroid.models.Adolescent
+import org.koin.android.ext.android.inject
 
 import com.example.faithandroid.models.Avatar
 import com.sdsmdg.harjot.vectormaster.VectorMasterView
@@ -54,6 +55,7 @@ class ProfielFragment: Fragment() {
         );
 
 <<<<<<< HEAD:app/src/main/java/com/example/faithandroid/profiel/ProfielFragment.kt
+<<<<<<< HEAD:app/src/main/java/com/example/faithandroid/profiel/ProfielFragment.kt
         this.vectorMasterViewA = binding.imgAvatarA as VectorMasterView
         this.vectorMasterViewB = binding.imgAvatarB as VectorMasterView
 
@@ -64,6 +66,8 @@ class ProfielFragment: Fragment() {
         binding.imgAvatarB.setVisibility(View.GONE)
 =======
         viewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
+=======
+>>>>>>> 8b69d0a (repository spotify + posts niet af):app/src/main/java/com/example/faithandroid/ProfielFragment.kt
         //viewModel.getAdolescent()
 >>>>>>> 18cbca2 (repository goalposts werkt):app/src/main/java/com/example/faithandroid/ProfielFragment.kt
 

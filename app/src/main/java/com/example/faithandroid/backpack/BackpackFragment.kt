@@ -81,7 +81,7 @@ class BackpackFragment: Fragment() {
         binding.postViewModel = postViewModel
 
         binding.closeFilterBtn.setOnClickListener{
-            postViewModel.getPostsOfPlace(PlaceType.Rugzak)
+            postViewModel.postList
         }
 
         binding.AddPostButton.setOnClickListener { view: View ->
@@ -100,9 +100,9 @@ class BackpackFragment: Fragment() {
         binding.BackpackRecycler.adapter =
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
-                    //postViewModel.pemanentlyDeletePost(post.id)
+                    postViewModel.pemanentlyDeletePost(post.id)
                     true
-                    postViewModel.getPostsOfPlace(PlaceType.Rugzak)
+                    postViewModel.postList
                 }
 
             }
@@ -114,11 +114,23 @@ class BackpackFragment: Fragment() {
                 when (resource.status) {
                     Status.SUCCESS -> {
                         showProgress(false)
+<<<<<<< HEAD
                         Log.d("repodata",postViewModel.postList.value?.data.toString())
                         postAdapter.submitList(resource.data)
                     }
                 })
                 return binding.root
+=======
+                        adapter.submitList(resource.data)
+                    }
+                    Status.LOADING -> {
+                        showProgress(true)
+                    }
+                    Status.ERROR -> {
+                        showProgress(false)
+                    }
+                }
+>>>>>>> 8b69d0a (repository spotify + posts niet af)
             }
         })*/
         return binding.root
@@ -155,6 +167,4 @@ class BackpackFragment: Fragment() {
                 TODO("Not yet implemented")
             }
         }
-
-
 

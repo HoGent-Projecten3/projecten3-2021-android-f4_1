@@ -93,8 +93,6 @@ class TreasureChestFragment: Fragment() {
 
             this.adapter.notifyDataSetChanged()
         })*/
-
-
         postViewModel.postList.observe(this.viewLifecycleOwner, Observer{
 
             this.adapter.notifyDataSetChanged()

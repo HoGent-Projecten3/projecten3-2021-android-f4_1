@@ -7,9 +7,12 @@ import androidx.lifecycle.ViewModel
 
 import com.example.faithandroid.models.*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import com.example.faithandroid.network.SpotifyApi
 >>>>>>> 18cbca2 (repository goalposts werkt)
+=======
+>>>>>>> 8b69d0a (repository spotify + posts niet af)
 import com.example.faithandroid.network.SpotifyApiService
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -38,7 +41,7 @@ class MusicRoomViewModel(private val spotifyRepository : SpotifyRepository) : Vi
 
     /*fun getPlayRemotelists()
     {
-        /*try {
+        try {
             MainScope().launch {
                 var call: Call<List<Playlist>> = spotifyRepository.getPlaylistsFaith()
                 var list = call.await()
@@ -49,16 +52,21 @@ class MusicRoomViewModel(private val spotifyRepository : SpotifyRepository) : Vi
         catch (e: Exception )
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
         }
     }*/
 =======
         }*/
     }
 >>>>>>> 18cbca2 (repository goalposts werkt)
+=======
+        }
+    }*/
+>>>>>>> 8b69d0a (repository spotify + posts niet af)
 
     fun addPlaylist(playlist: Playlist)
     {
-        /*try{
+        try{
             MainScope().launch {
                 var call = spotifyRepository.addPlaylist(playlist)
                 call.enqueue(object : Callback<Void> {
@@ -82,12 +90,12 @@ class MusicRoomViewModel(private val spotifyRepository : SpotifyRepository) : Vi
         }
         catch (e: java.lang.Exception)
         {
-        }*/
+        }
     }
 
     fun deletePlaylist(primaryKey: Int)
     {
-        /*try{
+        try{
             MainScope().launch {
                 var call = spotifyRepository.deletePlaylist(primaryKey)
                 call.enqueue(object : Callback<Void> {
@@ -110,7 +118,7 @@ class MusicRoomViewModel(private val spotifyRepository : SpotifyRepository) : Vi
         }
         catch (e: java.lang.Exception)
         {
-        }*/
+        }
     }
 
     fun getAllPlaylists()

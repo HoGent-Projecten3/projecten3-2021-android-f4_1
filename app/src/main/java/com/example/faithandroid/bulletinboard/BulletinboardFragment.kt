@@ -115,7 +115,7 @@ class BulletinboardFragment: Fragment() {
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
 
-                    //postViewModel.deletePostByEmail(post.id,  PlaceType.Prikbord)
+                    postViewModel.deletePostByEmail(post.id,  PlaceType.Prikbord)
                     true
                 }
             })
@@ -124,7 +124,7 @@ class BulletinboardFragment: Fragment() {
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
 
-                    //postViewModel.deletePostByEmail(post.id,  PlaceType.Prikbord)
+                    postViewModel.deletePostByEmail(post.id,  PlaceType.Prikbord)
                     true
                 }
             })
@@ -201,7 +201,6 @@ class BulletinboardFragment: Fragment() {
         super.onStop()
         deleteBtn.visibility = INVISIBLE
     }
-
 
     private fun showProgress(b: Boolean) {
         if (b) {

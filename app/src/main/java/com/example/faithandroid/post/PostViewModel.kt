@@ -9,6 +9,7 @@ import com.example.faithandroid.PlaceType
 import com.example.faithandroid.PostType
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
+
 import com.example.faithandroid.network.FaithApiService
 import com.example.faithandroid.network.FaithProperty
 import com.example.faithandroid.util.Resource
@@ -40,9 +41,9 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
 //    private var viewModelJob = Job()
 //    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    init   {
+    /*init   {
         getPostsOfPlace(placeType)
-    }
+    }*/
 
      fun getPostsOfPlace(placeType: PlaceType)    {
         var test = postRepository.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
@@ -74,7 +75,6 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
             })
         }
     }*/
-
 
     fun addPostByEmail(post: Post, placeType: PlaceType): Boolean{
         var bool: Boolean = true
@@ -152,6 +152,7 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
     }
 
 
+
         fun pemanentlyDeletePost(postId: Int) {
             viewModelScope.launch {
                 val stringCall: Call<Void> = postRepository.permanentlyDeletePost(postId)
@@ -172,5 +173,6 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
             }
         }
 }
+
 
 

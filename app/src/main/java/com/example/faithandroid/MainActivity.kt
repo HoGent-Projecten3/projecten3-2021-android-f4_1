@@ -78,7 +78,6 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
 
-
         if (AppPreferences.username == null) {
             val taskIntent =  Intent(this, LoginActivity::class.java)
             startActivityForResult(taskIntent, LOGIN_REQUEST_CODE)

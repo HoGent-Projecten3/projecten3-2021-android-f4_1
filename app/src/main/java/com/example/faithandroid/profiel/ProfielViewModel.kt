@@ -11,12 +11,18 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.faithandroid.login.data.LoginRepository
+<<<<<<< HEAD
 import com.example.faithandroid.models.Adolescent
 <<<<<<< HEAD
 import com.example.faithandroid.models.Avatar
 import com.example.faithandroid.post.PostRepository
 =======
 >>>>>>> 18cbca2 (repository goalposts werkt)
+=======
+
+import com.example.faithandroid.models.Adolescent
+import com.example.faithandroid.post.PostRepository
+>>>>>>> 8b69d0a (repository spotify + posts niet af)
 import retrofit2.*
 
 
@@ -57,14 +63,14 @@ class ProfielViewModel(private val postRepository: PostRepository): ViewModel() 
 
      fun changePassword(ww: String) {
 
-         /*viewModelScope.launch {
+         viewModelScope.launch {
              try {
                  val response = postRepository.changePassword(ww)
                  response.await()
              } catch (e: java.lang.Exception) {
                  throw e
              }
-         }*/
+         }
     }
 
 }

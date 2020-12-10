@@ -24,9 +24,13 @@ import org.koin.android.ext.android.inject
 class SkyscraperFragment: Fragment() {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     private val loadingDialogFragment by lazy { LoadingFragment() }
 =======
 >>>>>>> 1ae52e1 (repository deel goal niet af)
+=======
+    private val loadingDialogFragment by lazy { LoadingFragment() }
+>>>>>>> 8b69d0a (repository spotify + posts niet af)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,10 +98,14 @@ class SkyscraperFragment: Fragment() {
                 when (resource.status) {
                     Status.SUCCESS -> {
 <<<<<<< HEAD
+<<<<<<< HEAD
                         showProgress(false)
                         binding.lijst.removeViews(1,binding.lijst.childCount - 2)
 =======
 >>>>>>> 1ae52e1 (repository deel goal niet af)
+=======
+                        showProgress(false)
+>>>>>>> 8b69d0a (repository spotify + posts niet af)
                         resource.data?.forEach { goal ->
                             val rowView: View = inflater.inflate(R.layout.skyscraper_goalpostimage, null)
                             rowView.titleText.text = goal.title
@@ -120,6 +128,7 @@ class SkyscraperFragment: Fragment() {
                     }
                     Status.LOADING -> {
 <<<<<<< HEAD
+<<<<<<< HEAD
                         showProgress(true)
                     }
                     Status.ERROR -> {
@@ -130,6 +139,12 @@ class SkyscraperFragment: Fragment() {
                     Status.ERROR -> {
                         //showProgress(false)
 >>>>>>> 1ae52e1 (repository deel goal niet af)
+=======
+                        showProgress(true)
+                    }
+                    Status.ERROR -> {
+                        showProgress(false)
+>>>>>>> 8b69d0a (repository spotify + posts niet af)
                     }
                 }
             }
@@ -150,7 +165,11 @@ class SkyscraperFragment: Fragment() {
         }
     }
 
+<<<<<<< HEAD
    /* override fun onStart(){
+=======
+    override fun onStart(){
+>>>>>>> 8b69d0a (repository spotify + posts niet af)
         super.onStart()
 
         viewModel.getPostsOfSkyscraper()

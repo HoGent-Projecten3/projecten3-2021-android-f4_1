@@ -48,8 +48,7 @@ class BillboardFragment: Fragment() {
         //viewModel = ViewModelProvider(this).get(BillboardViewModel::class.java)
         binding.viewmodelBillboard = viewModel
 
-        binding.billboardGridView.adapter = adapter
-
+        binding.billboardGridView.adapter = BillboardGridAdapter()
 
         viewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
@@ -63,7 +62,7 @@ class BillboardFragment: Fragment() {
             }
         })
 
-        viewModel.properties.observe(this.viewLifecycleOwner, Observer
+        /*viewModel.properties.observe(this.viewLifecycleOwner, Observer
         {
             it?.let { resource ->
                 when (resource.status) {
@@ -79,7 +78,7 @@ class BillboardFragment: Fragment() {
                     }
                 }
             }
-        })
+        })*/
 
         /*viewModel.properties.observe(this.viewLifecycleOwner, Observer
         {

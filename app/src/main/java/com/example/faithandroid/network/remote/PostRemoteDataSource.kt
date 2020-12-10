@@ -1,6 +1,5 @@
 package com.example.faithandroid.network.remote
 
-
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.network.BaseDataSource
 import com.example.faithandroid.network.FaithApiService
@@ -23,5 +22,6 @@ class PostRemoteDataSource(private val apiService: FaithApiService) : BaseDataSo
     fun permanentlyDeletePost(postId: Int) = apiService.permanentlyDeletePost(postId)
 
     fun changePassword(ww: String) = apiService.changePassword(ww)
+
 
 }
