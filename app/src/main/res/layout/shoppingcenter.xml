@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <ImageView
+        <com.sdsmdg.harjot.vectormaster.VectorMasterView
             android:id="@+id/imgAvatar"
             android:layout_width="175dp"
             android:layout_height="300dp"
@@ -29,7 +29,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/shoppingScroll"
             tools:srcCompat="@tools:sample/avatars"
-            app:srcCompat="@drawable/ic_avatar_female"
+            app:vector_src="@drawable/ic_avatar_female"
             android:scaleType="centerCrop"
             android:scrollY="-175dp"/>
 
