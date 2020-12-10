@@ -60,8 +60,8 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
     
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var viewModel: LoginViewModel
     private  var username: String = ""
+    val viewModel : LoginViewModel by inject()
 
     private lateinit var bind: AppNavHeaderMainBinding
     private val LOGIN_REQUEST_CODE: Int = 1
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
 
 
         startActivityForResult(taskIntent, LOGIN_REQUEST_CODE)
-        val viewModel : LoginViewModel by inject()
+
 
         if (AppPreferences.username == null) {
             val taskIntent =  Intent(this, LoginActivity::class.java)
@@ -142,7 +142,7 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
 
     fun ClickMenu(view: View){
         //open drawer
-        var pvm: ProfielViewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
+        val pvm: ProfielViewModel by inject()
         //pvm.getAdolescent()
         pvm.adol.observe(this, {
             username = it.firstName + " " + it.name

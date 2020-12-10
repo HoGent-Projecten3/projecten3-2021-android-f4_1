@@ -23,4 +23,5 @@ abstract class BaseDataSource {
         Log.e("remoteDataSource", message)
         return Resource.error(data = null, message = "Network call has failed for a following reason: $message")
     }
+
 }

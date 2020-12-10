@@ -18,16 +18,20 @@ import com.example.faithandroid.*
 import com.example.faithandroid.adapters.PostAdapter
 import com.example.faithandroid.databinding.BackpackBinding
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
+import com.example.faithandroid.util.Status
 import com.google.android.material.snackbar.Snackbar
+import org.koin.android.ext.android.inject
 
 
 class BackpackFragment: Fragment() {
 
-    private lateinit var viewModel: BackpackViewModel
     private lateinit var dropdownList: AutoCompleteTextView
+    private val loadingDialogFragment by lazy { LoadingFragment() }
+    val postRepository : PostRepository by inject()
     private val postViewModel: PostViewModel by lazy{
-        ViewModelProvider(this, ViewModelFactory(PlaceType.Rugzak)).get(PostViewModel::class.java)
+        ViewModelProvider(this, ViewModelFactory(PlaceType.Schatkist,postRepository)).get(PostViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,7 +53,6 @@ class BackpackFragment: Fragment() {
 
 
         binding.lifecycleOwner = this
-        viewModel = ViewModelProvider(this).get(BackpackViewModel::class.java)
 
         // staggeredGridLayoutManager with 3 columns and vertical orientation
         val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
@@ -57,7 +60,7 @@ class BackpackFragment: Fragment() {
 
         val postTypes =  PostType.values()
 
-        val adapter = this.context?.let {
+        val adapter1 = this.context?.let {
             ArrayAdapter<PostType>(
                 it,
                 R.layout.dropdown_menu_popup_item_extra,
@@ -65,7 +68,7 @@ class BackpackFragment: Fragment() {
             )
         }
         dropdownList = binding.dropdownFilter
-        dropdownList.setAdapter(adapter)
+        dropdownList.setAdapter(adapter1)
         dropdownList.setText("Alles", false)
         dropdownList.setOnItemClickListener { parent, view, position, id ->
 
@@ -78,7 +81,7 @@ class BackpackFragment: Fragment() {
         binding.postViewModel = postViewModel
 
         binding.closeFilterBtn.setOnClickListener{
-            postViewModel.getPostsOfPlace(PlaceType.Rugzak)
+            postViewModel.postList
         }
 
         binding.AddPostButton.setOnClickListener { view: View ->
@@ -93,14 +96,15 @@ class BackpackFragment: Fragment() {
         binding.BackpackRecycler.adapter =
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
-                    //postViewModel.pemanentlyDeletePost(post.id)
+                    postViewModel.pemanentlyDeletePost(post.id)
                     true
-                    postViewModel.getPostsOfPlace(PlaceType.Rugzak)
+                    postViewModel.postList
                 }
 
             }
             )
 
+<<<<<<< HEAD
         postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
@@ -112,8 +116,25 @@ class BackpackFragment: Fragment() {
                     {
 
                     }.show()
+=======
+        /*postViewModel.postList.observe(this.viewLifecycleOwner, Observer
+        {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        showProgress(false)
+                        adapter.submitList(resource.data)
+                    }
+                    Status.LOADING -> {
+                        showProgress(true)
+                    }
+                    Status.ERROR -> {
+                        showProgress(false)
+                    }
+                }
+>>>>>>> 8b69d0a (repository spotify + posts niet af)
             }
-        })
+        })*/
         return binding.root
     }
 
@@ -135,6 +156,18 @@ class BackpackFragment: Fragment() {
         dropdownList.setAdapter(adapter)
         postViewModel.getPostsOfPlace(PlaceType.Rugzak)
         super.onResume()
+    }
+
+    private fun showProgress(b: Boolean) {
+        if (b) {
+            if (!loadingDialogFragment.isAdded) {
+                loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
+            }
+        } else {
+            if (loadingDialogFragment.isAdded) {
+                loadingDialogFragment.dismissAllowingStateLoss()
+            }
+        }
     }
 
 }

@@ -21,8 +21,10 @@ import com.example.faithandroid.*
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.adapters.FilteredPostAdapter
 import com.example.faithandroid.databinding.AddVideoBinding
+import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
 import com.google.android.material.textfield.TextInputLayout
+import org.koin.android.ext.android.inject
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
 import java.util.*
@@ -35,6 +37,7 @@ class AddVideoFragment: Fragment() {
     var post: Post? = null
 
     var nieuwePost: Boolean = false;
+    val postRepository : PostRepository by inject()
 
 
 
@@ -64,7 +67,7 @@ class AddVideoFragment: Fragment() {
 
         binding.lifecycleOwner = this
 
-        viewModel = ViewModelProvider(this, ViewModelFactory(args.placeType)).get(PostViewModel::class.java)
+        viewModel = ViewModelProvider(this, ViewModelFactory(args.placeType,postRepository)).get(PostViewModel::class.java)
 
         binding.album.setOnClickListener{ view: View ->
             val getIntent = Intent(Intent.ACTION_GET_CONTENT)
@@ -132,7 +135,7 @@ class AddVideoFragment: Fragment() {
 
        binding.videoToevoegenButton.setOnClickListener{
 
-            /*if(nieuwePost)
+            if(nieuwePost)
             {
                 post?.title = binding.titel.text.toString()
                 post?.data = binding.titel.text?.replace("\\s".toRegex(), "").toString()
@@ -149,7 +152,7 @@ class AddVideoFragment: Fragment() {
 
                     viewModel.addExistingPostToPlace(post!!.id, args.placeType)
                 }
-            }*/
+            }
 
 
             when(args.placeType)
@@ -189,7 +192,11 @@ class AddVideoFragment: Fragment() {
                 "2020-11-19T21:19:39.362Z",
                 PostType.Video.ordinal,
                 videoString,
-                "")
+                "",
+                backpack = false,
+                bulletinBoard = false,
+                treasureChest = false
+            )
 
             nieuwePost = true
         }

@@ -25,9 +25,11 @@ import com.example.faithandroid.*
 import com.example.faithandroid.adapters.FilteredPostAdapter
 import com.example.faithandroid.databinding.AudioToevoegenBinding
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.audio_toevoegen.*
+import org.koin.android.ext.android.inject
 import java.io.*
 import java.util.*
 
@@ -43,6 +45,7 @@ class AddAudioFragment: Fragment() {
     private var recordingStopped: Boolean = false
     lateinit var audioPost : String
     private lateinit var viewModel: PostViewModel
+    val postRepository : PostRepository by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,7 +77,7 @@ class AddAudioFragment: Fragment() {
 
         viewModel =
             ViewModelProvider(this,
-                ViewModelFactory(args.placeType)
+                ViewModelFactory(args.placeType,postRepository)
             ).get(PostViewModel::class.java)
 
         val placeTypes = PlaceType.values()
@@ -154,10 +157,13 @@ class AddAudioFragment: Fragment() {
                     "2020-11-19T21:19:39.362Z",
                     PostType.Audio.ordinal,
                     audioPost,
-                    ""
+                    "",
+                    false,
+                    false,
+                    false
                 )
 
-            /*if(nieuwePost)
+            if(nieuwePost)
             {
                 post?.title = binding.titel.text.toString()
                 post?.dataBytes = audioPost
@@ -173,7 +179,7 @@ class AddAudioFragment: Fragment() {
                 {
                     viewModel.addExistingPostToPlace(post!!.id, args.placeType)
                 }
-            }*/
+            }
             when(args.placeType)
             {
                 PlaceType.Prikbord -> {

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.example.faithandroid.LoadingFragment
 import com.example.faithandroid.R
 //import com.example.faithandroid.SkyscraperDirections
 import com.example.faithandroid.databinding.SkyscraperBinding
@@ -22,6 +23,7 @@ import org.koin.android.ext.android.inject
 
 class SkyscraperFragment: Fragment() {
 
+    private val loadingDialogFragment by lazy { LoadingFragment() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,6 +90,7 @@ class SkyscraperFragment: Fragment() {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
+                        showProgress(false)
                         resource.data?.forEach { goal ->
                             val rowView: View = inflater.inflate(R.layout.skyscraper_goalpostimage, null)
                             rowView.titleText.text = goal.title
@@ -109,16 +112,28 @@ class SkyscraperFragment: Fragment() {
                         }
                     }
                     Status.LOADING -> {
-                        //showProgress(true)
+                        showProgress(true)
                     }
                     Status.ERROR -> {
-                        //showProgress(false)
+                        showProgress(false)
                     }
                 }
             }
         })
 
         return binding.root
+    }
+
+    private fun showProgress(b: Boolean) {
+        if (b) {
+            if (!loadingDialogFragment.isAdded) {
+                loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
+            }
+        } else {
+            if (loadingDialogFragment.isAdded) {
+                loadingDialogFragment.dismissAllowingStateLoss()
+            }
+        }
     }
 
     override fun onStart(){

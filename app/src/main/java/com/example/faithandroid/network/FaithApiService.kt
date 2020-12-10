@@ -65,10 +65,10 @@ interface FaithApiService {
     fun removeGoal(@Path("id") id: Int): Call<String>
 
     @GET("city/{placeType}/filtered-post")
-    fun getFilteredFromPlace(@Path("placeType") placeType: Int, @Query("postType") postType: Int): Call<List<Post>>
+    suspend fun getFilteredFromPlace(@Path("placeType") placeType: Int, @Query("postType") postType: Int): Response<List<Post>>
 
     @GET("city/{placeType}/post")
-    fun getPostsOfPlaceByAdolescentEmail(@Path("placeType") placeType: Int): Call<List<Post>>
+    suspend fun getPostsOfPlaceByAdolescentEmail(@Path("placeType") placeType: Int): Response<List<Post>>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @POST("city/{placeType}/post")
@@ -90,7 +90,7 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @GET("city/musicroom/playlist")
-    fun getPlaylists(): Call<List<Playlist>>
+    suspend fun getPlaylists(): Response<List<Playlist>>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @POST("city/musicroom/playlist")

@@ -19,8 +19,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.ProfielBinding
 import com.example.faithandroid.models.Adolescent
+<<<<<<< HEAD:app/src/main/java/com/example/faithandroid/profiel/ProfielFragment.kt
 import com.example.faithandroid.models.Avatar
 import com.sdsmdg.harjot.vectormaster.VectorMasterView
+=======
+import org.koin.android.ext.android.inject
+>>>>>>> 8b69d0a (repository spotify + posts niet af):app/src/main/java/com/example/faithandroid/ProfielFragment.kt
 
 
 class ProfielFragment: Fragment() {
@@ -42,6 +46,7 @@ class ProfielFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val viewModel : ProfielViewModel by inject()
         val binding = DataBindingUtil.inflate<ProfielBinding>(
             inflater,
             R.layout.profiel,
@@ -49,10 +54,13 @@ class ProfielFragment: Fragment() {
             false
         );
 
+<<<<<<< HEAD:app/src/main/java/com/example/faithandroid/profiel/ProfielFragment.kt
         this.vectorMasterViewA = binding.imgAvatarA as VectorMasterView
         this.vectorMasterViewB = binding.imgAvatarB as VectorMasterView
 
         viewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
+=======
+>>>>>>> 8b69d0a (repository spotify + posts niet af):app/src/main/java/com/example/faithandroid/ProfielFragment.kt
         //viewModel.getAdolescent()
 
         binding.imgAvatarB.setVisibility(View.GONE)

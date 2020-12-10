@@ -10,19 +10,24 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.faithandroid.login.data.LoginRepository
 
 import com.example.faithandroid.models.Adolescent
+<<<<<<< HEAD
 <<<<<<< HEAD
 import com.example.faithandroid.models.Avatar
 import com.example.faithandroid.network.FaithApi
 =======
 >>>>>>> 18cbca2 (repository goalposts werkt)
+=======
+import com.example.faithandroid.post.PostRepository
+>>>>>>> 8b69d0a (repository spotify + posts niet af)
 import retrofit2.*
 
 
 import kotlinx.coroutines.launch
 
-class ProfielViewModel: ViewModel() {
+class ProfielViewModel(private val postRepository: PostRepository): ViewModel() {
 
 
     private var _adol = MutableLiveData<Adolescent>()
@@ -45,7 +50,7 @@ class ProfielViewModel: ViewModel() {
 
             try{
             val stringCall: Call<Adolescent> =
-                FaithApi.retrofitService.getAdolescent(AppPreferences.username.toString())
+                loginRepository.getAdolescent(AppPreferences.username.toString())
 
             _adol.value = stringCall.await()
             }catch(e: Exception){
@@ -58,14 +63,14 @@ class ProfielViewModel: ViewModel() {
 
      fun changePassword(ww: String) {
 
-         /*viewModelScope.launch {
+         viewModelScope.launch {
              try {
-                 val response = FaithApi.retrofitService.changepassword(ww)
+                 val response = postRepository.changePassword(ww)
                  response.await()
              } catch (e: java.lang.Exception) {
                  throw e
              }
-         }*/
+         }
     }
 
 }

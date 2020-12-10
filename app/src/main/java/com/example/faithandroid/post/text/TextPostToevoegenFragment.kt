@@ -13,14 +13,17 @@ import com.example.faithandroid.*
 import com.example.faithandroid.bulletinboard.BulletinBoardViewModel
 import com.example.faithandroid.databinding.AddNewTextBinding
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
+import org.koin.android.ext.android.inject
 
 
 class TextPostToevoegenFragment : Fragment() {
     // TODO: Rename and change types of parameters
     val args: TextPostToevoegenFragmentArgs by navArgs()
+    val postRepository : PostRepository by inject()
     private val postViewModel: PostViewModel by lazy{
-        ViewModelProvider(this, ViewModelFactory(args.placeType)).get(PostViewModel::class.java)
+        ViewModelProvider(this, ViewModelFactory(args.placeType,postRepository)).get(PostViewModel::class.java)
     }
 
     private lateinit var bulletinBoardViewModel: BulletinBoardViewModel
@@ -48,7 +51,11 @@ class TextPostToevoegenFragment : Fragment() {
             try
             {
 
-                val post: Post = Post(0, binding.textposttitel.text.toString(), binding.textposttext.text.toString(), "2020-11-05T22:34:57.61", PostType.Text.ordinal)
+                val post: Post = Post(0, binding.textposttitel.text.toString(), binding.textposttext.text.toString(), "2020-11-05T22:34:57.61", PostType.Text.ordinal,"","",
+                    backpack = false,
+                    bulletinBoard = false,
+                    treasureChest = false
+                )
                 /*if(postViewModel.addPostByEmail(post, args.placeType))
                 {
 

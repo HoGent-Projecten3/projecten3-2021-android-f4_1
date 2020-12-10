@@ -1,12 +1,19 @@
-package com.example.faithandroid.modules
+package com.example.faithandroid.DI
 
 import com.example.faithandroid.BuildConfig
+import com.example.faithandroid.data.local.PostLocalDataSource
 import com.example.faithandroid.login.data.LoginDataSource
 import com.example.faithandroid.login.data.LoginRepository
+import com.example.faithandroid.musicRoom.SpotifyRepository
 import com.example.faithandroid.network.FaithApiService
+import com.example.faithandroid.network.SpotifyApiService
 import com.example.faithandroid.network.local.AppDatabase
 import com.example.faithandroid.network.local.GoalPostLocalDataSource
+import com.example.faithandroid.network.local.SpotifyLocalDataSource
 import com.example.faithandroid.network.remote.GoalPostRemoteDataSource
+import com.example.faithandroid.network.remote.PostRemoteDataSource
+import com.example.faithandroid.network.remote.SpotifyRemoteDataSource
+import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.skyscraper.GoalPostRepository
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
@@ -22,14 +29,30 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 
 val networkModule = module {
     single { provideOkHttpClient() }
-    single { provideRetrofit(get(), BuildConfig.BASE_URL) }
-    single {
-        provideApiService(get())
-    }
+
+    single { provideRetrofitFaith(get(),"https://apigrow.azurewebsites.net") }
+    single { provideApiService(get()) }
+
+    //single { provideRetrofitSpotify(get(),"https://api.spotify.com/v1/") }
+    single { provideSpotifyApiService(provideRetrofitSpotify(get(),"https://api.spotify.com/v1/")) }
+
+    single { AppDatabase.getDatabase(androidApplication()).postDao() }
+    single { AppDatabase.getDatabase(androidApplication()).spotifyDao() }
     single { AppDatabase.getDatabase(androidApplication()).goalPostDao() }
+
+    single { PostRemoteDataSource(get()) }
+    single { PostLocalDataSource(get()) }
+    single { PostRepository(get(), get()) }
+
     single { GoalPostRemoteDataSource(get()) }
     single { GoalPostLocalDataSource(get()) }
     single { GoalPostRepository(get(), get()) }
+
+    single { SpotifyRemoteDataSource(get(),get()) }
+    single { SpotifyLocalDataSource(get()) }
+    single { SpotifyRepository(get(),get()) }
+    
+
     single { LoginDataSource(get()) }
     single { LoginRepository(get()) }
 
@@ -39,6 +62,7 @@ val networkModule = module {
     .add(KotlinJsonAdapterFactory())
 
     .build()
+
 
 private fun provideOkHttpClient() =
     if (BuildConfig.DEBUG) {
@@ -51,7 +75,24 @@ private fun provideOkHttpClient() =
         .Builder()
         .build()
 
-    private fun provideRetrofit(
+    private fun provideRetrofitFaith(
+        okHttpClient: OkHttpClient,
+        BASE_URL: String
+    ): Retrofit =Retrofit.Builder()
+        .addConverterFactory(ScalarsConverterFactory.create())
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .addCallAdapterFactory(CoroutineCallAdapterFactory())
+        .client(OkHttpClient().newBuilder().addInterceptor { chain ->
+            val newRequest = chain.request().newBuilder()
+                .addHeader("Authorization", "Bearer " + AppPreferences.token)
+                .build()
+            chain.proceed(newRequest)
+        }
+            .build())
+        .baseUrl(BASE_URL)
+        .build()
+
+    private fun provideRetrofitSpotify(
         okHttpClient: OkHttpClient,
         BASE_URL: String
     ): Retrofit =Retrofit.Builder()
@@ -71,3 +112,5 @@ private fun provideOkHttpClient() =
 private fun provideApiService(retrofit: Retrofit) : FaithApiService =
     retrofit.create(FaithApiService::class.java)
 
+private fun provideSpotifyApiService(retrofit : Retrofit) : SpotifyApiService =
+    retrofit.create(SpotifyApiService::class.java)
