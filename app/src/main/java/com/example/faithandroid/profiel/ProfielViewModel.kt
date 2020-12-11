@@ -25,6 +25,9 @@ class ProfielViewModel: ViewModel() {
     var adol: LiveData<Adolescent> = MutableLiveData<Adolescent>()
         get() = _adol
 
+    /*var darkMode = AppPreferences.darkMode
+        get() = AppPreferences.darkMode*/
+
     fun getAdolescent(): Adolescent?{
 
         viewModelScope.launch {
