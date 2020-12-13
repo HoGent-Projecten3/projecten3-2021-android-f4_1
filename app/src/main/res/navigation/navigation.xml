@@ -66,7 +66,11 @@
         tools:layout="@layout/login" >
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -87,17 +91,28 @@
             app:destination="@id/cinemaFragment" />
         <action
             android:id="@+id/action_homeFragment_to_musicRoomFragment"
-            app:destination="@id/musicRoomFragment" />
+            app:destination="@id/musicRoomFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_homeFragment_to_shoppingCenterFragment"
             app:destination="@id/shoppingCenterFragment" />
         <action
             android:id="@+id/action_homeFragment_to_skyscraperFragment"
-            app:destination="@id/skyscraperFragment" />
+            app:destination="@id/skyscraperFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_homeFragment_to_treasureChestFragment"
             app:destination="@id/treasureChestFragment"
-            app:enterAnim="@anim/fragment_fade_enter" />
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
 
     <fragment
