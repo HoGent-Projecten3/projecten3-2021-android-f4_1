@@ -180,6 +180,7 @@ class SkyscraperFragment: Fragment() {
     }
 
 
+<<<<<<< HEAD
     override fun onResume() {
         super.onResume()
 
@@ -187,4 +188,6 @@ class SkyscraperFragment: Fragment() {
     }*/
 
 
+=======
+>>>>>>> 45fbaa9 (animatie toegevoegd aan homescreen => skyscraper & homescreen => musicroom)
 }
