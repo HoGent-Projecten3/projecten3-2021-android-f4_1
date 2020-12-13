@@ -25,37 +25,63 @@
         <action
             android:id="@+id/action_optionsAddPostFragment_to_bulletinBoardFragment"
             app:destination="@id/bulletinBoardFragment"
-
-
             app:popUpTo="@id/bulletinBoardFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_optionsAddPostFragment_to_backpackFragment"
             app:destination="@id/backpackFragment"
             app:popUpTo="@id/backpackFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_optionsAddPostFragment_to_treasureChestFragment"
             app:destination="@id/treasureChestFragment"
             app:popUpTo="@id/treasureChestFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <argument
             android:name="placeType"
             app:argType="com.example.faithandroid.PlaceType" />
         <action
             android:id="@+id/action_optionsAddPostFragment_to_videoToevoegenFragment"
-            app:destination="@id/videoToevoegenFragment" />
+            app:destination="@id/videoToevoegenFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_optionsAddPostFragment_to_addPhotoFragment"
             app:destination="@id/addPhotoFragment"
             app:popUpTo="@id/optionsAddPostFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_optionsAddPostFragment_to_addTextFragment"
-            app:destination="@id/addTextFragment" />
+            app:destination="@id/addTextFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_optionsAddPostFragment_to_audioToevoegenFragment"
-            app:destination="@id/AudioToevoegenFragment" />
+            app:destination="@id/AudioToevoegenFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
 
     </fragment>
 
@@ -79,16 +105,32 @@
         tools:layout="@layout/app_homescherm" >
         <action
             android:id="@+id/action_homeFragment_to_backpackFragment"
-            app:destination="@id/backpackFragment" />
+            app:destination="@id/backpackFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_homeFragment_to_billboardFragment"
-            app:destination="@id/billboardFragment" />
+            app:destination="@id/billboardFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_homeFragment_to_bulletinBoardFragment"
-            app:destination="@id/bulletinBoardFragment" />
+            app:destination="@id/bulletinBoardFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_homeFragment_to_cinemaFragment"
-            app:destination="@id/cinemaFragment" />
+            app:destination="@id/cinemaFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_homeFragment_to_musicRoomFragment"
             app:destination="@id/musicRoomFragment"
@@ -98,7 +140,11 @@
             app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_homeFragment_to_shoppingCenterFragment"
-            app:destination="@id/shoppingCenterFragment" />
+            app:destination="@id/shoppingCenterFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_homeFragment_to_skyscraperFragment"
             app:destination="@id/skyscraperFragment"
@@ -109,10 +155,10 @@
         <action
             android:id="@+id/action_homeFragment_to_treasureChestFragment"
             app:destination="@id/treasureChestFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out" />
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -122,7 +168,11 @@
         <action
             android:id="@+id/action_text_post_toevoegen_to_optionsAddPostFragment"
             app:destination="@id/optionsAddPostFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <argument
             android:name="placeType"
             app:argType="com.example.faithandroid.PlaceType" />
@@ -130,17 +180,29 @@
             android:id="@+id/action_text_post_toevoegen_to_bulletinBoardFragment"
             app:destination="@id/bulletinBoardFragment"
             app:popUpTo="@id/bulletinBoardFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_text_post_toevoegen_to_backpackFragment"
             app:destination="@id/backpackFragment"
             app:popUpTo="@id/backpackFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_text_post_toevoegen_to_treasureChestFragment"
             app:destination="@id/treasureChestFragment"
             app:popUpTo="@id/treasureChestFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/backpackFragment"
@@ -149,7 +211,11 @@
         tools:layout="@layout/backpack">
         <action
             android:id="@+id/action_backpackFragment_to_optionsAddPostFragment"
-            app:destination="@id/optionsAddPostFragment" />
+            app:destination="@id/optionsAddPostFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/billboardFragment"
@@ -160,7 +226,11 @@
             android:id="@+id/action_billboardFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/cinemaFragment"
@@ -185,16 +255,28 @@
         <action
             android:id="@+id/action_skyscraperFragment_to_addGoalFragment"
             app:destination="@id/addGoalFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_skyscraperFragment_to_goalDetailsFragment"
             app:destination="@id/goalDetailsFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_skyscraperFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/treasureChestFragment"
@@ -204,7 +286,11 @@
         <action
             android:id="@+id/action_treasureChestFragment_to_optionsAddPostFragment"
             app:destination="@id/optionsAddPostFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/addGoalFragment"
@@ -214,7 +300,11 @@
             android:id="@+id/action_addGoalFragment_to_skyscraperFragment"
             app:destination="@id/skyscraperFragment"
             app:popUpTo="@id/skyscraperFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/goalDetailsFragment"
@@ -233,7 +323,11 @@
             android:id="@+id/action_profielFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <activity
         android:id="@+id/mainActivity"
@@ -251,17 +345,29 @@
             android:id="@+id/action_videoToevoegenFragment_to_bulletinBoardFragment"
             app:destination="@id/bulletinBoardFragment"
             app:popUpTo="@id/bulletinBoardFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_videoToevoegenFragment_to_backpackFragment"
             app:destination="@id/backpackFragment"
             app:popUpTo="@id/backpackFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_videoToevoegenFragment_to_treasureChestFragment"
             app:destination="@id/treasureChestFragment"
             app:popUpTo="@id/treasureChestFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/addPhotoFragment"
@@ -274,17 +380,29 @@
             android:id="@+id/action_addPhotoFragment_to_bulletinBoardFragment"
             app:destination="@id/bulletinBoardFragment"
             app:popUpTo="@id/bulletinBoardFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_addPhotoFragment_to_treasureChestFragment"
             app:destination="@id/treasureChestFragment"
             app:popUpTo="@id/treasureChestFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_addPhotoFragment_to_backpackFragment"
             app:destination="@id/backpackFragment"
             app:popUpTo="@id/backpackFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/addTextFragment"
@@ -293,24 +411,40 @@
         <action
             android:id="@+id/action_addTextFragment_to_text_post_toevoegen"
             app:destination="@id/text_post_toevoegen"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <argument
             android:name="placeType"
             app:argType="com.example.faithandroid.PlaceType" />
         <action
             android:id="@+id/action_addTextFragment_to_bulletinBoardFragment"
             app:destination="@id/bulletinBoardFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_addTextFragment_to_backpackFragment"
             app:destination="@id/backpackFragment"
             app:popUpTo="@id/backpackFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_addTextFragment_to_treasureChestFragment"
             app:destination="@id/treasureChestFragment"
             app:popUpTo="@id/treasureChestFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
 
     </fragment>
     <fragment
@@ -321,20 +455,33 @@
             android:id="@+id/action_audioToevoegenFragment_to_treasureChestFragment"
             app:destination="@id/treasureChestFragment"
             app:popUpTo="@id/treasureChestFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <argument
             android:name="placeType"
-            app:argType="com.example.faithandroid.PlaceType" />
+            app:argType="com.example.faithandroid.PlaceType"
+            />
         <action
             android:id="@+id/action_audioToevoegenFragment_to_backpackFragment"
             app:destination="@id/backpackFragment"
             app:popUpTo="@id/backpackFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_audioToevoegenFragment_to_bulletinBoardFragment"
             app:destination="@id/bulletinBoardFragment"
             app:popUpTo="@id/bulletinBoardFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
 </navigation>
