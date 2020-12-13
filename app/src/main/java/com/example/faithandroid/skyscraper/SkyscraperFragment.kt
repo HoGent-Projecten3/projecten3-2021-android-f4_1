@@ -96,4 +96,5 @@ class SkyscraperFragment: Fragment() {
         viewModel.getPostsOfSkyscraper()
     }
 
+
 }
