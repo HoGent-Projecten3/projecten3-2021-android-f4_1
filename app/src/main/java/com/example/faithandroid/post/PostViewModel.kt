@@ -45,7 +45,7 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
     /*init   {
         getPostsOfPlace(placeType)
     }*/
-    
+
      fun getPostsOfPlace(placeType: PlaceType)    {
         var test = postRepository.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
         _postList = test as MutableLiveData<Resource<List<Post>>>
