@@ -70,7 +70,7 @@ interface FaithApiService {
     @GET("city/skyscraper/goal")
     fun getPostsOfSkyScraper(): Deferred<List<GoalPost>>
 
-    @GET("city/billboard/goal")
+    @GET("city/billboard/group")
     fun getBillboardGoals(): Deferred<List<GoalPost>>
 
     @Headers("Content-Type: application/json")
