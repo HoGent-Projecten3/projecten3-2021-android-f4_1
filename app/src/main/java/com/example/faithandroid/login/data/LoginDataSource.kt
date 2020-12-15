@@ -56,6 +56,7 @@ class LoginDataSource(private val apiService: FaithApiService) {
             try {
                 val adolescent = apiService.getAdolescent(username)
                 val a = adolescent.await()
+                Log.d("zzzz", a.toString())
                 return Result.Success(a)
 
             } catch (e: HttpException) {
