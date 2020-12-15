@@ -63,14 +63,17 @@ class BillboardFragment: Fragment() {
     }
 
 
+
     override fun onResume() {
         super.onResume()
 
         viewModel.getPosts()
     }
+
     fun dateParsing(date: LocalDateTime){
         SimpleDateFormat("dd/MM/yyyy").format(date)
     }
+
 
 
 }
