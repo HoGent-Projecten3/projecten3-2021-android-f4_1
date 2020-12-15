@@ -56,6 +56,7 @@ class LoginDataSource {
             try {
                 val adolescent = FaithApi.retrofitService.getAdolescent(username)
                 val a = adolescent.await()
+                Log.d("zzzz", a.toString())
                 return Result.Success(a)
 
             } catch (e: HttpException) {

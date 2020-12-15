@@ -6,6 +6,7 @@ import com.example.faithandroid.login.uilogin.LoginResult
 import com.example.faithandroid.models.Adolescent
 import com.example.faithandroid.network.FaithApi
 import kotlinx.coroutines.*
+import retrofit2.await
 import java.lang.NullPointerException
 
 /**
@@ -41,9 +42,11 @@ class LoginRepository(val dataSource: LoginDataSource) {
     suspend fun getAdolescent(username: String): Result<Adolescent>
     {
 
+        Log.d("tag", username)
         val result2 = dataSource.getAdolescent(username)
-        if (result2 is Result.Success) {
 
+        if (result2 is Result.Success) {
+            Log.d("tag", result2.data.toString())
             setLoggedInUser(result2.data)
             return result2
         }
