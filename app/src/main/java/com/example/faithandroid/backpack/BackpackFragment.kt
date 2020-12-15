@@ -121,6 +121,13 @@ class BackpackFragment: Fragment() {
         return binding.root
     }
 
+
+    override fun onStart() {
+        super.onStart()
+
+        postViewModel.getPostsOfPlace(PlaceType.Rugzak)
+    }
+
     override fun onResume() {
         val adapter = this.context?.let {
             ArrayAdapter<PostType>(
@@ -131,7 +138,7 @@ class BackpackFragment: Fragment() {
         }
 
         dropdownList.setAdapter(adapter)
-
+        postViewModel.getPostsOfPlace(PlaceType.Rugzak)
 
         super.onResume()
     }

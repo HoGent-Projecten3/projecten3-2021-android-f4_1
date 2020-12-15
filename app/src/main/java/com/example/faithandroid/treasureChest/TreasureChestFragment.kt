@@ -94,6 +94,16 @@ class TreasureChestFragment: Fragment() {
         return binding.root
     }
 
+    override fun onStart() {
+        super.onStart()
+        postViewModel.getPostsOfPlace(PlaceType.Schatkist)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        postViewModel.getPostsOfPlace(PlaceType.Schatkist)
+    }
+
 
 
 

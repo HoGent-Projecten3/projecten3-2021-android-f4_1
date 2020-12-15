@@ -56,4 +56,10 @@ class BillboardFragment: Fragment() {
 
         return binding.root
     }
+
+    override fun onResume() {
+        super.onResume()
+
+        viewModel.getPosts()
+    }
 }
