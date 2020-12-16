@@ -101,7 +101,7 @@ private fun provideOkHttpClient() =
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .client(OkHttpClient().newBuilder().addInterceptor { chain ->
             val newRequest = chain.request().newBuilder()
-                .addHeader("Authorization", "Bearer " + AppPreferences.token)
+                .addHeader("Authorization", "Bearer " + AppPreferences.spotifyToken)
                 .build()
             chain.proceed(newRequest)
         }

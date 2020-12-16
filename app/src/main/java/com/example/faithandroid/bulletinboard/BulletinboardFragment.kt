@@ -38,7 +38,7 @@ class BulletinboardFragment: Fragment() {
     private val loadingDialogFragment by lazy { LoadingFragment() }
     val postRepository : PostRepository by inject()
     private val postViewModel: PostViewModel by lazy{
-        ViewModelProvider(this, ViewModelFactory(PlaceType.Schatkist,postRepository)).get(PostViewModel::class.java)
+        ViewModelProvider(this, ViewModelFactory(PlaceType.Prikbord,postRepository)).get(PostViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -21,6 +21,7 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
 
     var postList: LiveData<Resource<List<Post>>> = postRepository.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
 
+
     private val _requestConsultationStatus = MutableLiveData<String>("Er liep iets mis")
     val requestConsultationStatus: LiveData<String>
         get() = _requestConsultationStatus
@@ -36,14 +37,14 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
         getPostsOfPlace(placeType)
     }*/
 
-    fun getFilteredPostFromPlace(placeType: PlaceType, postType: PostType) {
+     fun getFilteredPostFromPlace(placeType: PlaceType, postType: PostType) {
 
         viewModelScope.launch {
-
-            val stringCall: LiveData<Resource<List<Post>>> =
+            val stringCall =
                 postRepository.getFilteredFromPlace(placeType.ordinal, postType.ordinal)
-
             postList = stringCall
+
+            Log.d("repo", postList.value.toString())
             /*stringCall.observe(object : Callback<List<Post>> {
 
                  override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
@@ -51,9 +52,9 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
                        if(response.body()!!.isEmpty())
                         {
                             _status.value = "Sorry er is niets om weer te geven"
-                            _posts.value = response.body()
+                            postList.value = response.body()
                         }else {
-                            _posts.value = response.body()
+                           postList.value = response.body()
                        }
                     }
                   else {

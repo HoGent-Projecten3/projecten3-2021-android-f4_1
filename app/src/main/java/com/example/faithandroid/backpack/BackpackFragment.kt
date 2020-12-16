@@ -25,8 +25,9 @@ import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
 
 
-class BackpackFragment: Fragment() {
+class BackpackFragment: Fragment(), CustomClick {
 
+    private lateinit var postAdapter: PostAdapter
     private lateinit var dropdownList: AutoCompleteTextView
     private val loadingDialogFragment by lazy { LoadingFragment() }
     val postRepository : PostRepository by inject()
@@ -93,81 +94,74 @@ class BackpackFragment: Fragment() {
         }
 
 
+
+
+        postAdapter = PostAdapter(this)
+
         binding.BackpackRecycler.adapter =
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
                     postViewModel.pemanentlyDeletePost(post.id)
                     true
-                    postViewModel.postList
+                    //postViewModel.postList
                 }
 
             }
             )
+                postViewModel.postList.observe(this.viewLifecycleOwner, Observer
+                {
+                    it?.let { resource ->
+                        when (resource.status) {
+                            Status.SUCCESS -> {
+                                showProgress(false)
+                                postAdapter.submitList(resource.data)
+                            }
+                            Status.LOADING -> {
+                                showProgress(true)
+                            }
+                            Status.ERROR -> {
+                                showProgress(false)
+                            }
+                        }
+                    }
+                })
+                return binding.root
+            }
 
-<<<<<<< HEAD
-        postViewModel.status.observe(this.viewLifecycleOwner, Observer {
-            val contextView = this.view
-            if (contextView != null) {
 
-                Snackbar.make(contextView, "Er is niets om weer te geven", Snackbar.LENGTH_SHORT)
-                    .setAction(
-                        ""
+            override fun onStart() {
+                super.onStart()
+            }
+
+            override fun onResume() {
+                val adapter = this.context?.let {
+                    ArrayAdapter<PostType>(
+                        it,
+                        R.layout.dropdown_menu_popup_item_extra,
+                        PostType.values()
                     )
-                    {
+                }
 
-                    }.show()
-=======
-        /*postViewModel.postList.observe(this.viewLifecycleOwner, Observer
-        {
-            it?.let { resource ->
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                        showProgress(false)
-                        adapter.submitList(resource.data)
+                dropdownList.setAdapter(adapter)
+                super.onResume()
+            }
+
+            private fun showProgress(b: Boolean) {
+                if (b) {
+                    if (!loadingDialogFragment.isAdded) {
+                        loadingDialogFragment.show(
+                            requireActivity().supportFragmentManager,
+                            "loader"
+                        )
                     }
-                    Status.LOADING -> {
-                        showProgress(true)
-                    }
-                    Status.ERROR -> {
-                        showProgress(false)
+                } else {
+                    if (loadingDialogFragment.isAdded) {
+                        loadingDialogFragment.dismissAllowingStateLoss()
                     }
                 }
->>>>>>> 8b69d0a (repository spotify + posts niet af)
             }
-        })*/
-        return binding.root
-    }
 
-
-    override fun onStart() {
-        super.onStart()
-        postViewModel.getPostsOfPlace(PlaceType.Rugzak)
-    }
-
-    override fun onResume() {
-        val adapter = this.context?.let {
-            ArrayAdapter<PostType>(
-                it,
-                R.layout.dropdown_menu_popup_item_extra,
-                PostType.values()
-            )
-        }
-
-        dropdownList.setAdapter(adapter)
-        postViewModel.getPostsOfPlace(PlaceType.Rugzak)
-        super.onResume()
-    }
-
-    private fun showProgress(b: Boolean) {
-        if (b) {
-            if (!loadingDialogFragment.isAdded) {
-                loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
-            }
-        } else {
-            if (loadingDialogFragment.isAdded) {
-                loadingDialogFragment.dismissAllowingStateLoss()
+            override fun onClick(post: Post) {
+                TODO("Not yet implemented")
             }
         }
-    }
-
-}
