@@ -124,10 +124,14 @@ private fun provideOkHttpClient() =
         .client(OkHttpClient().newBuilder().addInterceptor { chain ->
             val newRequest = chain.request().newBuilder()
 <<<<<<< HEAD
+<<<<<<< HEAD
                 .addHeader("Authorization", "Bearer " + AppPreferences.spotifyToken)
 =======
                 .addHeader("Authorization", "Bearer " + AppPreferences.token)
 >>>>>>> 8b69d0a (repository spotify + posts niet af)
+=======
+                .addHeader("Authorization", "Bearer " + AppPreferences.spotifyToken)
+>>>>>>> 97bc67a (kleine aanpassingen)
                 .build()
             chain.proceed(newRequest)
         }

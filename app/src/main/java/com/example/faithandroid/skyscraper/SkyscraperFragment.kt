@@ -105,7 +105,11 @@ class SkyscraperFragment: Fragment() {
 >>>>>>> 1ae52e1 (repository deel goal niet af)
 =======
                         showProgress(false)
+<<<<<<< HEAD
 >>>>>>> 8b69d0a (repository spotify + posts niet af)
+=======
+                        binding.lijst.removeViews(1,binding.lijst.childCount - 2)
+>>>>>>> 97bc67a (kleine aanpassingen)
                         resource.data?.forEach { goal ->
                             val rowView: View = inflater.inflate(R.layout.skyscraper_goalpostimage, null)
                             rowView.titleText.text = goal.title

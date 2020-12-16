@@ -30,6 +30,7 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
         get() = _postList
 
 
+
     private val _requestConsultationStatus = MutableLiveData<String>("Er liep iets mis")
     val requestConsultationStatus: LiveData<String>
         get() = _requestConsultationStatus
@@ -44,7 +45,7 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
     /*init   {
         getPostsOfPlace(placeType)
     }*/
-
+    
      fun getPostsOfPlace(placeType: PlaceType)    {
         var test = postRepository.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
         _postList = test as MutableLiveData<Resource<List<Post>>>

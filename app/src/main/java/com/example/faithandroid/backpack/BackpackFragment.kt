@@ -25,7 +25,7 @@ import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
 
 
-class BackpackFragment: Fragment() {
+class BackpackFragment: Fragment(), CustomClick {
 
     private lateinit var postAdapter: PostAdapter
     private lateinit var dropdownList: AutoCompleteTextView
@@ -95,25 +95,29 @@ class BackpackFragment: Fragment() {
 
 
 
+<<<<<<< HEAD
         //postAdapter = PostAdapter()
+=======
+        postAdapter = PostAdapter(this)
+>>>>>>> 97bc67a (kleine aanpassingen)
 
         binding.BackpackRecycler.adapter =
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
                     postViewModel.pemanentlyDeletePost(post.id)
                     true
-                    postViewModel.postList
+                    //postViewModel.postList
                 }
 
             }
             )
-
-        /*postViewModel.postList.observe(this.viewLifecycleOwner, Observer
+        postViewModel.postList.observe(this.viewLifecycleOwner, Observer
         {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
                         showProgress(false)
+<<<<<<< HEAD
 <<<<<<< HEAD
                         Log.d("repodata",postViewModel.postList.value?.data.toString())
                         postAdapter.submitList(resource.data)
@@ -122,6 +126,9 @@ class BackpackFragment: Fragment() {
                 return binding.root
 =======
                         adapter.submitList(resource.data)
+=======
+                        postAdapter.submitList(resource.data)
+>>>>>>> 97bc67a (kleine aanpassingen)
                     }
                     Status.LOADING -> {
                         showProgress(true)
@@ -132,7 +139,7 @@ class BackpackFragment: Fragment() {
                 }
 >>>>>>> 8b69d0a (repository spotify + posts niet af)
             }
-        })*/
+        })
         return binding.root
     }
 
@@ -168,3 +175,11 @@ class BackpackFragment: Fragment() {
             }
         }
 
+<<<<<<< HEAD
+=======
+    override fun onClick(post: Post) {
+        TODO("Not yet implemented")
+    }
+
+}
+>>>>>>> 97bc67a (kleine aanpassingen)
