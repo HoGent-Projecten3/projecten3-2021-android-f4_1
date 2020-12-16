@@ -1,6 +1,7 @@
 package com.example.faithandroid.backpack
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -138,6 +139,7 @@ class BackpackFragment: Fragment() {
         }
 
         dropdownList.setAdapter(adapter)
+        Log.d("backpack", postViewModel.postList.value?.size.toString())
         postViewModel.getPostsOfPlace(PlaceType.Rugzak)
 
         super.onResume()
