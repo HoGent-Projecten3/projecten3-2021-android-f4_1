@@ -40,11 +40,9 @@ class LoginRepository(val dataSource: LoginDataSource) {
 
     suspend fun getAdolescent(username: String): Result<Adolescent>
     {
-<<<<<<< HEAD
-=======
 
         Log.d("tag", username)
->>>>>>> b670cfb (Delen billboard aangepast)
+
         val result2 = dataSource.getAdolescent(username)
 
         if (result2 is Result.Success) {
