@@ -16,7 +16,6 @@
         android:fadingEdgeLength="10dp">
         <!--tools:context="."-->
 
-
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,18 +33,28 @@
                 android:outlineSpotShadowColor="#090909">
 
                 <TextView
-                    android:id="@+id/description"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_margin="10dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_weight="1"
-                    android:text="@{property.description}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/cardprofile"
-                    app:layout_constraintTop_toBottomOf="@+id/button" />
+                    android:id="@+id/naam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="7dp"
+
+                    android:layout_marginBottom="4dp"
+                    android:text="@{property.name}"
+                    app:layout_constraintBottom_toTopOf="@id/cardprofile"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/datum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="7dp"
+                    android:text="@{property.date}"
+                    app:layout_constraintEnd_toStartOf="@id/button"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
                 <ImageView
@@ -65,9 +74,8 @@
 
                 <TextView
                     android:id="@+id/titleGoal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_width="239dp"
+                    android:layout_height="27dp"
                     android:layout_marginStart="10dp"
                     android:text="@{property.title}"
                     android:textSize="25dp"
@@ -75,9 +83,22 @@
                     app:flow_horizontalAlign="center"
                     app:layout_constraintBottom_toTopOf="@+id/description"
                     app:layout_constraintEnd_toStartOf="@+id/button"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/cardprofile"
-                    app:layout_constraintTop_toTopOf="parent" />
-
+                    app:layout_constraintTop_toBottomOf="@id/datum" />
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="279dp"
+                    android:layout_height="59dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="@{property.description}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/cardprofile"
+                    app:layout_constraintTop_toBottomOf="@+id/titleGoal" />
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardprofile"
                     android:layout_width="100dp"
@@ -105,7 +126,6 @@
                 </androidx.cardview.widget.CardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         </androidx.cardview.widget.CardView>
 
