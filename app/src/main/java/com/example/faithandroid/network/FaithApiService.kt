@@ -2,11 +2,7 @@ package com.example.faithandroid.network
 
 
 import com.example.faithandroid.login.data.User
-import com.example.faithandroid.models.Adolescent
-
-import com.example.faithandroid.models.GoalPost
-import com.example.faithandroid.models.Playlist
-import com.example.faithandroid.models.Post
+import com.example.faithandroid.models.*
 
 
 import com.google.android.material.internal.ContextUtils.getActivity
@@ -127,7 +123,11 @@ interface FaithApiService {
     @DELETE("city/post/{postId}")
     fun permanentlyDeletePost(@Path("postId") postId: Int):Call<Void>
 
+    @GET("avatar/avatar")
+    fun getAvatar(): Deferred<Avatar>
 
+    @POST("avatar/change-avatar")
+    fun postAvatar(avatarInts: Avatar): Call<Void>
 }
 
 object FaithApi {

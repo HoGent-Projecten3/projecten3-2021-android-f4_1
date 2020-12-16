@@ -1,8 +1,8 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="199.57dp"
-    android:height="696.12dp"
+    android:height="300dp"
     android:viewportWidth="199.57"
-    android:viewportHeight="696.12"
+    android:viewportHeight="300"
     >
   <path
       android:name="Hair1"
