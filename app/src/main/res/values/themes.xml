@@ -9,28 +9,4 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="Theme.Hair1" parent="Theme.AppCompat.Light">
-        <item name="hair">@style/hair1</item>
-    </style>
-
-    <style name="Theme.Hair2" parent="Theme.AppCompat.Light">
-        <item name="hair">@style/hair2</item>
-    </style>
-
-    <style name="Theme.Hair3" parent="Theme.AppCompat.Light">
-        <item name="hair">@style/hair3</item>
-    </style>
-
-    <style name="Theme.Hair4" parent="Theme.AppCompat.Light">
-        <item name="hair">@style/hair4</item>
-    </style>
-
-    <style name="Theme.Hair5" parent="Theme.AppCompat.Light">
-        <item name="hair">@style/hair5</item>
-    </style>
-
-    <style name="Theme.Hair6" parent="Theme.AppCompat.Light">
-        <item name="hair">@style/hair6</item>
-    </style>
-
 </resources>

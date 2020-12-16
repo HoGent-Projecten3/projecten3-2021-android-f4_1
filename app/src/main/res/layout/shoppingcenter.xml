@@ -19,20 +19,85 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <ImageView
-            android:id="@+id/imgAvatar"
-            android:layout_width="175dp"
-            android:layout_height="300dp"
-            android:layout_marginTop="?attr/actionBarSize"
+        <LinearLayout
+            android:id="@+id/linLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/shoppingScroll"
-            tools:srcCompat="@tools:sample/avatars"
-            app:srcCompat="@drawable/ic_avatar_female"
-            android:scaleType="centerCrop"
-            android:scrollY="-175dp"/>
+            android:gravity="center">
 
+        <LinearLayout
+            android:id="@+id/people"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/personA"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Persoon A"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="#F8A59E"
+                android:padding="5dp"
+                android:layout_margin="10dp">
+            </Button>
+            <Button
+                android:id="@+id/personB"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Persoon B"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="#F8A59E"
+                android:padding="5dp"
+                android:layout_margin="10dp">
+            </Button>
+        </LinearLayout>
+
+            <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                android:id="@+id/imgAvatarA"
+                android:layout_width="135dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="?attr/actionBarSize"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/shoppingScroll"
+                tools:srcCompat="@tools:sample/avatars"
+                app:vector_src="@drawable/ic_avatar_female"
+                android:scaleType="centerCrop" />
+
+            <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                android:id="@+id/imgAvatarB"
+                android:layout_width="135dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="?attr/actionBarSize"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/shoppingScroll"
+                tools:srcCompat="@tools:sample/avatars"
+                app:vector_src="@drawable/ic_avatar_male"
+                android:scaleType="centerCrop" />
+
+            <Button
+                android:id="@+id/save_person"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Opslaan"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="#F8A59E"
+                android:padding="5dp"
+                android:layout_margin="10dp">
+            </Button>
+
+        </LinearLayout>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -41,7 +106,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imgAvatar">
+            app:layout_constraintTop_toBottomOf="@id/linLayout">
 
             <LinearLayout
                 android:layout_width="match_parent"
