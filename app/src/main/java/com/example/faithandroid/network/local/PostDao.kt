@@ -19,13 +19,13 @@ interface PostDao {
     @Query("select * from posts where backpack = 1")
     fun getPostsOfBackpack(): LiveData<List<Post>>
 
-    @Query("select * from posts where postType =:postType and bulletinBoard = 1")
+    @Query("select * from posts where postType =:postType and bulletinBoard = 0")
     fun getFilteredFromBulletinboard(postType: Int) : LiveData<List<Post>>
 
-    @Query("select * from posts where postType =:postType and treasureChest = 1")
+    @Query("select * from posts where postType =:postType and treasureChest = 0")
     fun getFilteredFromTreasureChest(postType: Int) : LiveData<List<Post>>
 
-    @Query("select * from posts where postType =:postType and backpack = 1")
+    @Query("select * from posts where postType =:postType and backpack = 0")
     fun getFilteredFromBackPack(postType: Int) : LiveData<List<Post>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

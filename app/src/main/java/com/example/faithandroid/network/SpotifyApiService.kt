@@ -54,7 +54,7 @@ interface SpotifyApiService {
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @GET("me/playlists")
-    suspend fun getPlaylists(): Response<List<Playlist>>
+    suspend fun getPlaylists(): Response<PlaylistWrapper>
 
 
     @Headers("Content-Type: application/json", "accept: application/json")

@@ -27,7 +27,7 @@ class SpotifyRepository(val localDataSource: SpotifyLocalDataSource,private val 
 
         databaseQuery = { localDataSource.getPlaylists() },
         networkCall = { remoteDataSource.getPlaylistsSpotify() },
-        saveCallResult = { localDataSource.savePlayList(it) }
+        saveCallResult = { localDataSource.savePlayList(it.items) }
     )
 
     fun getPlaylistCover(cover: String) = remoteDataSource.getPlaylistCover(cover)

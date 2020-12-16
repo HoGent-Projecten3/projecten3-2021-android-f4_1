@@ -24,8 +24,9 @@ import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
 
 
-class BackpackFragment: Fragment() {
+class BackpackFragment: Fragment(), CustomClick {
 
+    private lateinit var postAdapter: PostAdapter
     private lateinit var dropdownList: AutoCompleteTextView
     private val loadingDialogFragment by lazy { LoadingFragment() }
     val postRepository : PostRepository by inject()
@@ -94,24 +95,27 @@ class BackpackFragment: Fragment() {
         }
 
 
+
+
+        postAdapter = PostAdapter(this)
+
         binding.BackpackRecycler.adapter =
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
                     postViewModel.pemanentlyDeletePost(post.id)
                     true
-                    postViewModel.postList
+                    //postViewModel.postList
                 }
 
             }
             )
-
-        /*postViewModel.postList.observe(this.viewLifecycleOwner, Observer
+        postViewModel.postList.observe(this.viewLifecycleOwner, Observer
         {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
                         showProgress(false)
-                        adapter.submitList(resource.data)
+                        postAdapter.submitList(resource.data)
                     }
                     Status.LOADING -> {
                         showProgress(true)
@@ -121,7 +125,7 @@ class BackpackFragment: Fragment() {
                     }
                 }
             }
-        })*/
+        })
         return binding.root
     }
 
@@ -150,6 +154,10 @@ class BackpackFragment: Fragment() {
                 loadingDialogFragment.dismissAllowingStateLoss()
             }
         }
+    }
+
+    override fun onClick(post: Post) {
+        TODO("Not yet implemented")
     }
 
 }

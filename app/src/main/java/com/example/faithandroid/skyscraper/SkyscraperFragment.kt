@@ -91,6 +91,7 @@ class SkyscraperFragment: Fragment() {
                 when (resource.status) {
                     Status.SUCCESS -> {
                         showProgress(false)
+                        binding.lijst.removeViews(1,binding.lijst.childCount - 2)
                         resource.data?.forEach { goal ->
                             val rowView: View = inflater.inflate(R.layout.skyscraper_goalpostimage, null)
                             rowView.titleText.text = goal.title

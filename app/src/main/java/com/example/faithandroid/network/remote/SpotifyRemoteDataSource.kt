@@ -15,7 +15,7 @@ class SpotifyRemoteDataSource(private val apiService: FaithApiService, private  
 
     fun getUser() = spotifyApiService.getUser()
 
-    suspend fun getPlaylistsSpotify() = getResult { spotifyApiService.getPlaylists() }
+    suspend fun getPlaylistsSpotify() = getSpotifyResult { spotifyApiService.getPlaylists() }
 
     fun getPlaylistCover(cover: String) = spotifyApiService.getPlaylistCover(cover)
 }
