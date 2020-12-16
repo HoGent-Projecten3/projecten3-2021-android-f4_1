@@ -1,18 +1,10 @@
 package com.example.faithandroid.shoppingCenter
 
 import android.graphics.Color
-import android.util.Log
-import android.widget.Switch
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.faithandroid.BodyType
-import com.example.faithandroid.PlaceType
 import com.example.faithandroid.models.Avatar
-
-import com.example.faithandroid.models.GoalPost
-import com.example.faithandroid.models.Post
-import com.example.faithandroid.models.Step
 import com.example.faithandroid.network.FaithApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -76,27 +68,15 @@ class ShoppingCenterViewModel : ViewModel() {
 
         )
 
-    private var _currentCharacter = MutableLiveData<Int>()
-    private var _currentHair = MutableLiveData<Int>()
-    private var _currentEyes = MutableLiveData<Int>()
-    private var _currentSkin = MutableLiveData<Int>()
-    private var _currentBody = MutableLiveData<Int>()
+    private var _currentAvatar = MutableLiveData<Avatar>()
 
     private val _hairProperties = MutableLiveData<List<Int>>()
     private val _eyeProperties = MutableLiveData<List<Int>>()
     private val _skinProperties = MutableLiveData<List<Int>>()
     private val _bodyProperties = MutableLiveData<List<Int>>()
 
-    val currentCharacter: MutableLiveData<Int>
-        get() = _currentCharacter
-    val currentHair: MutableLiveData<Int>
-        get() = _currentHair
-    val currentEyes: MutableLiveData<Int>
-        get() = _currentEyes
-    val currentSkin: MutableLiveData<Int>
-        get() = _currentSkin
-    val currentBody: MutableLiveData<Int>
-        get() = _currentBody
+    val currentAvatar: MutableLiveData<Avatar>
+        get() = _currentAvatar
 
     val hairProperties: MutableLiveData<List<Int>>
         get() = _hairProperties
@@ -142,22 +122,11 @@ class ShoppingCenterViewModel : ViewModel() {
 
             coroutineScope.launch{
                 try{
-                    var getAvatar = FaithApi.retrofitService.getAvatar(
-                        )
+                    var getAvatar = FaithApi.retrofitService.getAvatar()
                     var result = getAvatar.await()
-                    if(result != null){
 
-                        _currentCharacter.value = result.person
-                        _currentHair.value = result.hair
-                        _currentEyes.value = result.eyes
-                        _currentSkin.value = result.skin
-                        _currentBody.value = result.upperBody
+                    _currentAvatar.value = result
 
-                    }
-                    else
-                    {
-                        _status.value = "De avatar was niet compleet"
-                    }
                 }
                 catch (e: Exception)
                 {
@@ -170,7 +139,6 @@ class ShoppingCenterViewModel : ViewModel() {
     public fun postAvatar(character: Int, hair: Int, eyes: Int, skin: Int, body: Int){
         coroutineScope.launch{
             try{
-                val avatarInts = listOf(character, hair, eyes, skin, body)
                 val avatar: Avatar = Avatar(person = character, hair = hair, eyes = eyes, skin = skin, upperBody = body)
                 FaithApi.retrofitService.postAvatar(avatar).await()
                 _status.value = "gelukt!"

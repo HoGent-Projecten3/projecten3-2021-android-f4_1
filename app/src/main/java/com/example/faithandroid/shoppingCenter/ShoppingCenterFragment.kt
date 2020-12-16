@@ -141,8 +141,8 @@ class ShoppingCenterFragment: Fragment() {
 
         Log.d("drawing", drawing.toString())
 
-        viewModel.currentCharacter.observe(this.viewLifecycleOwner, Observer{
-            character = viewModel.currentCharacter.value!!
+        viewModel.currentAvatar.observe(this.viewLifecycleOwner, Observer{
+            character = viewModel.currentAvatar.value?.person!!
             if (character == 0){
                 binding.imgAvatarA.setVisibility(View.VISIBLE)
                 binding.imgAvatarB.setVisibility(View.GONE)
@@ -150,29 +150,19 @@ class ShoppingCenterFragment: Fragment() {
                 binding.imgAvatarA.setVisibility(View.GONE)
                 binding.imgAvatarB.setVisibility(View.VISIBLE)
             }
-        })
 
-        viewModel.currentHair.observe(this.viewLifecycleOwner, Observer{
-            hair = viewModel.currentHair.value!!
+            hair = viewModel.currentAvatar.value?.hair!!
             setHair(hair)
-        })
 
-        viewModel.currentEyes.observe(this.viewLifecycleOwner, Observer{
-            eyes = viewModel.currentEyes.value!!
+            eyes = viewModel.currentAvatar.value?.eyes!!
             setEyes(eyes)
-        })
 
-        viewModel.currentSkin.observe(this.viewLifecycleOwner, Observer{
-            skin = viewModel.currentSkin.value!!
+            skin = viewModel.currentAvatar.value?.skin!!
             setSkin(skin)
-        })
 
-        viewModel.currentBody.observe(this.viewLifecycleOwner, Observer{
-            body = viewModel.currentBody.value!!
+            body = viewModel.currentAvatar.value?.upperBody!!
             setBody(body)
         })
-
-
 
         viewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view

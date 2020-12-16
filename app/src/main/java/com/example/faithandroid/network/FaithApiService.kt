@@ -123,11 +123,13 @@ interface FaithApiService {
     @DELETE("city/post/{postId}")
     fun permanentlyDeletePost(@Path("postId") postId: Int):Call<Void>
 
-    @GET("avatar/avatar")
-    fun getAvatar(): Deferred<Avatar>
+    @Headers("Content-Type: application/json", "accept: application/json")
+    @GET("/avatar")
+    fun getAvatar(): Call<Avatar>
 
-    @POST("avatar/change-avatar")
-    fun postAvatar(avatarInts: Avatar): Call<Void>
+    @Headers("Content-Type: application/json", "accept: application/json")
+    @PUT("/change-avatar")
+    fun postAvatar(@Body avatar: Avatar): Call<Void>
 }
 
 object FaithApi {
