@@ -199,10 +199,10 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
         when (menuItem.itemId) {
             R.id.profielFragment -> {
 
-                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.layoutToolBar, ProfielFragment())
-
-                    .commit()
+//                 supportFragmentManager.beginTransaction()
+//                    .replace(R.id.layoutToolBar, ProfielFragment())
+//
+//                    .commit()
 
                 menuItem.onNavDestinationSelected(findNavController(R.id.NavHostFragment))
             }
@@ -212,9 +212,9 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
                 this.username = ""
                 AppPreferences.token = ""
                 AppPreferences.username = ""
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.layoutToolBar, LoginFragment())
-                    .commit()
+//                supportFragmentManager.beginTransaction()
+//                    .replace(R.id.layoutToolBar, LoginFragment())
+//                    .commit()
 
 
                  //finishAffinity()
@@ -227,9 +227,9 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
             }
 
             R.id.homeFragment -> {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.layoutToolBar, LoginFragment())
-                    .commit()
+//                supportFragmentManager.beginTransaction()
+//                    .replace(R.id.layoutToolBar, LoginFragment())
+//                    .commit()
 
                 menuItem.onNavDestinationSelected(findNavController(R.id.NavHostFragment))
             }

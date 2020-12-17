@@ -59,7 +59,7 @@ class LoginFragment : Fragment() {
 
        binding.loginButton.setOnClickListener { view: View ->
 
-           var intent: Intent = Intent(view.getContext(), HomeActivity::class.java).apply{
+           var intent: Intent = Intent(view.getContext(), MainActivity::class.java).apply{
 
            }
            view.getContext().startActivity(intent)
