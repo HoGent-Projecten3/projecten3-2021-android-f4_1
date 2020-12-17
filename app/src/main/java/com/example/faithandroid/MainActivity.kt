@@ -237,10 +237,6 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
 
     }
 
-    override fun finish() {
-        super.finish()
-        ActivityNavigator.applyPopAnimationsToPendingTransition(this)
-    }
 
 
 }
