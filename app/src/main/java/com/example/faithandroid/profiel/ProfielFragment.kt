@@ -2,6 +2,7 @@ package com.example.faithandroid.profiel
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.ProfielBinding
 import com.example.faithandroid.models.Adolescent
+import com.example.faithandroid.models.Avatar
+import com.sdsmdg.harjot.vectormaster.VectorMasterView
 
 
 class ProfielFragment: Fragment() {
@@ -26,6 +29,8 @@ class ProfielFragment: Fragment() {
     private lateinit var viewModel: ProfielViewModel
     private var nieuwww = ""
     private var nieuwcon = ""
+    private lateinit var vectorMasterViewA: VectorMasterView
+    private lateinit var vectorMasterViewB: VectorMasterView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,8 +49,13 @@ class ProfielFragment: Fragment() {
             false
         );
 
+        this.vectorMasterViewA = binding.imgAvatarA as VectorMasterView
+        this.vectorMasterViewB = binding.imgAvatarB as VectorMasterView
+
         viewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
         viewModel.getAdolescent()
+
+        binding.imgAvatarB.setVisibility(View.GONE)
 
         viewModel.adol.observe(viewLifecycleOwner, Observer {
             adolescent = it
@@ -53,6 +63,19 @@ class ProfielFragment: Fragment() {
                 String.format(adolescent?.firstName + " " + adolescent?.name)
             binding.profielEmail.text = adolescent?.email
         })
+
+            if (AppPreferences.currentPerson == 0){
+                binding.imgAvatarA.setVisibility(View.VISIBLE)
+                binding.imgAvatarB.setVisibility(View.GONE)
+            } else {
+                binding.imgAvatarA.setVisibility(View.GONE)
+                binding.imgAvatarB.setVisibility(View.VISIBLE)
+            }
+
+        AppPreferences.currentHair?.let { ColorSvgs.setHair(it, vectorMasterViewA, vectorMasterViewB) }
+        AppPreferences.currentEyes?.let { ColorSvgs.setEyes(it, vectorMasterViewA, vectorMasterViewB) }
+        AppPreferences.currentSkin?.let { ColorSvgs.setSkin(it, vectorMasterViewA, vectorMasterViewB) }
+        AppPreferences.currentBody?.let { ColorSvgs.setBody(it, vectorMasterViewA, vectorMasterViewB) }
 
         binding.wachtwoordWIjzigen.setOnClickListener() {
 
@@ -103,28 +126,28 @@ class ProfielFragment: Fragment() {
 
             builder.show()
         }
-
-        /*val toggle: SwitchCompat = binding.donkereModus
+        val toggle: SwitchCompat = binding.donkereModus
+        AppPreferences.darkMode?.let { toggle.isChecked = it }
         toggle.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                MyPreference(this.context).darkMode = 0
+                AppPreferences.darkMode = true
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                MyPreference(this.context).darkMode = 1
+                AppPreferences.darkMode = false
 
             }
-        }*/
+        }
 
         return binding.root
     }
 
     private fun checkTheme() {
-        when (MyPreference(this.context).darkMode) {
-            0 -> {
+        when (AppPreferences.darkMode) {
+            false -> {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
-            1 -> {
+            true -> {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
         }

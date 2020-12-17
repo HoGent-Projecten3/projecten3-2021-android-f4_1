@@ -60,6 +60,7 @@ class SkyscraperFragment: Fragment() {
         //viewModel.getPostsOfSkyscraper()
 
         viewModel.testLive.observe(this.viewLifecycleOwner, Observer{
+            binding.lijst.removeViews(1,binding.lijst.childCount - 2)
             it.forEach{goal ->
                 val rowView: View = inflater.inflate(R.layout.skyscraper_goalpostimage, null)
                 rowView.titleText.text = goal.title
@@ -86,6 +87,16 @@ class SkyscraperFragment: Fragment() {
 
     override fun onStart(){
         super.onStart()
+
+        viewModel.getPostsOfSkyscraper()
     }
+
+
+    override fun onResume() {
+        super.onResume()
+
+        viewModel.getPostsOfSkyscraper()
+    }
+
 
 }

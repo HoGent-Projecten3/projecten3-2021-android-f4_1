@@ -12,6 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.BillboardBinding
 import com.google.android.material.snackbar.Snackbar
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.util.*
 
 
 class BillboardFragment: Fragment() {
@@ -42,6 +45,8 @@ class BillboardFragment: Fragment() {
 
         binding.billboardGridView.adapter = BillboardGridAdapter()
 
+
+
         viewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
@@ -55,5 +60,16 @@ class BillboardFragment: Fragment() {
         })
 
         return binding.root
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+
+        viewModel.getPosts()
+    }
+
+    fun dateParsing(date: LocalDateTime){
+        SimpleDateFormat("dd/MM/yyyy").format(date)
     }
 }

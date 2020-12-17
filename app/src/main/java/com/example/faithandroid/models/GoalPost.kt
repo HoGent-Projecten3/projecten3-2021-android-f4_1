@@ -14,7 +14,9 @@ data class GoalPost(var id: Int = 0,
                     var completed: Boolean = false,
                     var steps: List<Step> = listOf(),
                     var date: String = "",
-                    var shared : Boolean = false
+                    var shared : Boolean = false,
+                    var name: String =""
+
 ) : Serializable
 
 

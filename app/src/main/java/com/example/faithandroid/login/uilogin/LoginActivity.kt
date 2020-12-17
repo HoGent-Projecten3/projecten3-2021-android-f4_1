@@ -18,7 +18,6 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import com.example.faithandroid.HomeFragment
 import com.example.faithandroid.MainActivity
 import com.example.faithandroid.R
 import com.example.faithandroid.login.LoginFragment
@@ -75,17 +74,19 @@ class LoginActivity : AppCompatActivity() {
             }
             if (loginResult.success != null) {
                 updateUiWithUser(loginResult.success)
+
+                var intent: Intent = Intent()
+                intent.putExtra("loggedInUser", loginResult.success?.displayName)
+                intent.putExtra("token", loginResult.success?.token)
+
+
+                setResult(Activity.RESULT_OK, intent)
+
+                //Complete and destroy login activity once successful
+                finish()
             }
 
-            var intent: Intent = Intent()
-            intent.putExtra("loggedInUser", loginResult.success?.displayName)
-            intent.putExtra("token", loginResult.success?.token)
 
-
-            setResult(Activity.RESULT_OK, intent)
-
-            //Complete and destroy login activity once successful
-            finish()
         })
 
 

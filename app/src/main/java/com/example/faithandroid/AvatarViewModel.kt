@@ -1,23 +1,18 @@
-package com.example.faithandroid.shoppingCenter
+package com.example.faithandroid
 
 import android.graphics.Color
-import android.util.Log
-import android.widget.Switch
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.faithandroid.BodyType
-
-import com.example.faithandroid.models.GoalPost
-import com.example.faithandroid.models.Post
-import com.example.faithandroid.models.Step
+import com.example.faithandroid.models.Avatar
 import com.example.faithandroid.network.FaithApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import retrofit2.await
 
-class ShoppingCenterViewModel : ViewModel() {
+class AvatarViewModel : ViewModel() {
 
      private val _status = MutableLiveData<String>()
      val status: LiveData<String>
@@ -73,10 +68,15 @@ class ShoppingCenterViewModel : ViewModel() {
 
         )
 
+    private var _currentAvatar = MutableLiveData<Avatar>()
+
     private val _hairProperties = MutableLiveData<List<Int>>()
     private val _eyeProperties = MutableLiveData<List<Int>>()
     private val _skinProperties = MutableLiveData<List<Int>>()
     private val _bodyProperties = MutableLiveData<List<Int>>()
+
+    val currentAvatar: MutableLiveData<Avatar>
+        get() = _currentAvatar
 
     val hairProperties: MutableLiveData<List<Int>>
         get() = _hairProperties
@@ -93,6 +93,7 @@ class ShoppingCenterViewModel : ViewModel() {
 
      init {
         getProperties()
+         getAvatar()
      }
 
      public fun getProperties() {
@@ -117,8 +118,48 @@ class ShoppingCenterViewModel : ViewModel() {
           }
      }
 
-    public fun changeAvatarPart(bodyType: BodyType, color: Int){
+    public fun getAvatar(){
 
+            coroutineScope.launch{
+                try{
+                    var getAvatar = FaithApi.retrofitService.getAvatar()
+                    var result = getAvatar.await()
+
+                    _currentAvatar.value = result
+                    AppPreferences.currentPerson = result.person
+                    AppPreferences.currentHair = result.hair
+                    AppPreferences.currentEyes = result.eyes
+                    AppPreferences.currentSkin = result.skin
+                    AppPreferences.currentBody = result.upperBody
+
+                }
+                catch (e: Exception)
+                {
+                    _status.value = "Kan geen verbinding maken met de server"
+                }
+            }
+
+    }
+
+    public fun postAvatar(character: Int, hair: Int, eyes: Int, skin: Int, body: Int){
+        coroutineScope.launch{
+            try{
+                val avatar: Avatar = Avatar(person = character, hair = hair, eyes = eyes, skin = skin, upperBody = body)
+                FaithApi.retrofitService.postAvatar(avatar).await()
+                _currentAvatar.value = avatar
+                AppPreferences.currentPerson = character
+                AppPreferences.currentHair = hair
+                AppPreferences.currentEyes = eyes
+                AppPreferences.currentSkin = skin
+                AppPreferences.currentBody = body
+                _status.value = "gelukt!"
+
+            }
+            catch (e: Exception)
+            {
+                _status.value = "niet gelukt!"
+            }
+        }
     }
 
 

@@ -3,6 +3,7 @@ package com.example.faithandroid.login.data
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.bumptech.glide.load.engine.Resource
 import com.example.faithandroid.models.Adolescent
 import com.example.faithandroid.network.FaithApi
 import kotlinx.coroutines.CoroutineScope
@@ -10,6 +11,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import retrofit2.*
+import retrofit2.Response.success
+import kotlin.Result.Companion.success
 
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.
@@ -31,25 +34,15 @@ class LoginDataSource {
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
       suspend fun login(username: String, password: String): Result<String>{
-          try {
-              val stringCall: Call<String> =
-                  FaithApi.retrofitService.loginAdolescent(User(username, password))
-              var token = stringCall.await()
-              if (token != null)
-              {
+
+              try {
+                  val stringCall: Call<String> =
+                      FaithApi.retrofitService.loginAdolescent(User(username, password))
+                  var token = stringCall.await()
                   return Result.Success(token)
+              } catch (e: Exception) {
+                  return Result.Error(e.message.toString())
               }
-              else
-              {
-                  return Result.Error(token)
-              }
-          }
-          catch(e: HttpException)
-          {
-
-              return Result.Error(e.message())
-          }
-
     }
     suspend fun getAdolescent(username: String): Result<Adolescent> {
 
@@ -67,3 +60,5 @@ class LoginDataSource {
         // TODO: revoke authentication
     }*/
 }
+
+

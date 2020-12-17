@@ -2,6 +2,7 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import androidx.core.content.edit
+import com.example.faithandroid.models.Avatar
 
 object AppPreferences {
     private var sharedPreferences: SharedPreferences? = null
@@ -28,13 +29,38 @@ object AppPreferences {
             Key.TOKEN.setString(value)
         }
 
+    var darkMode: Boolean?
+        get() = Key.DARKMODE.getBoolean()
+        set(value) = Key.DARKMODE.setBoolean(value)
 
     var spotifyToken: String?
         get() = Key.SPOTIFYTOKEN.getString()
         set(value) = Key.SPOTIFYTOKEN.setString(value)
 
+    var currentPerson: Int?
+        get() = Key.CURRENTPERSON.getInt()
+        set(value) = Key.CURRENTPERSON.setInt(value)
+
+    var currentHair: Int?
+        get() = Key.CURRENTHAIR.getInt()
+        set(value) = Key.CURRENTHAIR.setInt(value)
+
+    var currentEyes: Int?
+        get() = Key.CURRENTEYES.getInt()
+        set(value) = Key.CURRENTEYES.setInt(value)
+
+    var currentSkin: Int?
+        get() = Key.CURRENTSKIN.getInt()
+        set(value) = Key.CURRENTSKIN.setInt(value)
+
+    var currentBody: Int?
+        get() = Key.CURRENTBODY.getInt()
+        set(value) = Key.CURRENTBODY.setInt(value)
+
     private enum class Key {
-        USERNAME, TOKEN, SPOTIFYTOKEN; // TODO step 3: replace these cases with your stored values keys
+
+        USERNAME, TOKEN, SPOTIFYTOKEN, DARKMODE,
+        CURRENTPERSON, CURRENTHAIR, CURRENTEYES, CURRENTSKIN, CURRENTBODY; // TODO step 3: replace these cases with your stored values keys
 
         fun getBoolean(): Boolean? = if (sharedPreferences!!.contains(name)) sharedPreferences!!.getBoolean(name, false) else null
         fun getFloat(): Float? = if (sharedPreferences!!.contains(name)) sharedPreferences!!.getFloat(name, 0f) else null
