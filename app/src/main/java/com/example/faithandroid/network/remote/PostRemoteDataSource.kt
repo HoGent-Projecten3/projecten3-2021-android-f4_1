@@ -23,5 +23,4 @@ class PostRemoteDataSource(private val apiService: FaithApiService) : BaseDataSo
 
     fun changePassword(ww: String) = apiService.changePassword(ww)
 
-
 }

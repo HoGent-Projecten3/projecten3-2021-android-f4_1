@@ -9,7 +9,6 @@ import com.example.faithandroid.PlaceType
 import com.example.faithandroid.PostType
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
-
 import com.example.faithandroid.network.FaithApiService
 import com.example.faithandroid.network.FaithProperty
 import com.example.faithandroid.util.Resource
@@ -30,7 +29,6 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
         get() = _postList
 
 
-
     private val _requestConsultationStatus = MutableLiveData<String>("Er liep iets mis")
     val requestConsultationStatus: LiveData<String>
         get() = _requestConsultationStatus
@@ -42,9 +40,9 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
 //    private var viewModelJob = Job()
 //    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    /*init   {
+    init   {
         getPostsOfPlace(placeType)
-    }*/
+    }
 
      fun getPostsOfPlace(placeType: PlaceType)    {
         var test = postRepository.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
@@ -174,6 +172,4 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
             }
         }
 }
-
-
 

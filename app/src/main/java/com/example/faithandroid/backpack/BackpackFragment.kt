@@ -25,7 +25,7 @@ import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
 
 
-class BackpackFragment: Fragment(), CustomClick {
+class BackpackFragment: Fragment() {
 
     private lateinit var postAdapter: PostAdapter
     private lateinit var dropdownList: AutoCompleteTextView
@@ -44,7 +44,10 @@ class BackpackFragment: Fragment(), CustomClick {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+<<<<<<< HEAD
 
+=======
+>>>>>>> a623ab5 (kleine aanpassingen)
       val binding = DataBindingUtil.inflate<BackpackBinding>(
           inflater,
           R.layout.backpack,
@@ -77,11 +80,17 @@ class BackpackFragment: Fragment(), CustomClick {
                 PlaceType.Rugzak,
                 postTypes[position]
             )
+<<<<<<< HEAD
+=======
+            /*Snackbar.make( view,postViewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(""
+            )
+            { }.show()*/
+>>>>>>> a623ab5 (kleine aanpassingen)
         }
         binding.postViewModel = postViewModel
 
         binding.closeFilterBtn.setOnClickListener{
-            postViewModel.postList
+            postViewModel.getPostsOfPlace(PlaceType.Rugzak)
         }
 
         binding.AddPostButton.setOnClickListener { view: View ->
@@ -96,27 +105,32 @@ class BackpackFragment: Fragment(), CustomClick {
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         //postAdapter = PostAdapter()
 =======
         postAdapter = PostAdapter(this)
 >>>>>>> 97bc67a (kleine aanpassingen)
+=======
+        //postAdapter = PostAdapter()
+>>>>>>> a623ab5 (kleine aanpassingen)
 
         binding.BackpackRecycler.adapter =
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
                     //postViewModel.pemanentlyDeletePost(post.id)
                     true
-                    //postViewModel.postList
+                    postViewModel.getPostsOfPlace(PlaceType.Rugzak)
                 }
 
             }
             )
-        postViewModel.postList.observe(this.viewLifecycleOwner, Observer
+        /*postViewModel.postList.observe(this.viewLifecycleOwner, Observer
         {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
                         showProgress(false)
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                         Log.d("repodata",postViewModel.postList.value?.data.toString())
@@ -127,6 +141,9 @@ class BackpackFragment: Fragment(), CustomClick {
 =======
                         adapter.submitList(resource.data)
 =======
+=======
+                        Log.d("repodata",postViewModel.postList.value?.data.toString())
+>>>>>>> a623ab5 (kleine aanpassingen)
                         postAdapter.submitList(resource.data)
 >>>>>>> 97bc67a (kleine aanpassingen)
                     }
@@ -139,7 +156,7 @@ class BackpackFragment: Fragment(), CustomClick {
                 }
 >>>>>>> 8b69d0a (repository spotify + posts niet af)
             }
-        })
+        })*/
         return binding.root
     }
 
@@ -176,10 +193,13 @@ class BackpackFragment: Fragment(), CustomClick {
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     override fun onClick(post: Post) {
         TODO("Not yet implemented")
     }
+=======
+>>>>>>> a623ab5 (kleine aanpassingen)
 
 }
 >>>>>>> 97bc67a (kleine aanpassingen)
