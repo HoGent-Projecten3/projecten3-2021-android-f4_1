@@ -5,7 +5,7 @@
     <data>
         <variable
             name="ShoppingCenterViewModel"
-            type="com.example.faithandroid.shoppingCenter.ShoppingCenterViewModel" />
+            type="com.example.faithandroid.AvatarViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

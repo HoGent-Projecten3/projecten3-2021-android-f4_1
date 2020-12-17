@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 
 import com.example.faithandroid.models.Adolescent
+import com.example.faithandroid.models.Avatar
 import com.example.faithandroid.network.FaithApi
 import retrofit2.*
 
@@ -24,6 +25,10 @@ class ProfielViewModel: ViewModel() {
     private var _adol = MutableLiveData<Adolescent>()
     var adol: LiveData<Adolescent> = MutableLiveData<Adolescent>()
         get() = _adol
+
+    private var _currentAvatar = MutableLiveData<Avatar>()
+    var avatar: LiveData<Avatar> = MutableLiveData<Avatar>()
+        get() = _currentAvatar
 
     fun getAdolescent(): Adolescent?{
 
