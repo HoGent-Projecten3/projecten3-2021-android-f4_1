@@ -2,6 +2,7 @@ package com.example.faithandroid.profiel
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -125,28 +126,28 @@ class ProfielFragment: Fragment() {
 
             builder.show()
         }
-
-        /*val toggle: SwitchCompat = binding.donkereModus
+        val toggle: SwitchCompat = binding.donkereModus
+        //toggle.isChecked = AppPreferences.darkMode!!
         toggle.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                MyPreference(this.context).darkMode = 0
+                AppPreferences.darkMode = true
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                MyPreference(this.context).darkMode = 1
+                AppPreferences.darkMode = false
 
             }
-        }*/
+        }
 
         return binding.root
     }
 
     private fun checkTheme() {
-        when (MyPreference(this.context).darkMode) {
-            0 -> {
+        when (AppPreferences.darkMode) {
+            false -> {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
-            1 -> {
+            true -> {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
         }

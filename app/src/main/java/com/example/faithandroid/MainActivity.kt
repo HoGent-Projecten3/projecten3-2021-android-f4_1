@@ -17,6 +17,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
@@ -29,7 +33,9 @@ import androidx.drawerlayout.widget.DrawerLayout
 
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+
 import androidx.navigation.ActivityNavigator
+
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -68,10 +74,15 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
 
         AppPreferences.setup(applicationContext)
 
-        val taskIntent =  Intent(this, LoginActivity::class.java)
+        if (AppPreferences.darkMode == true){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
 
-        startActivityForResult(taskIntent, LOGIN_REQUEST_CODE)
 
+        if (AppPreferences.username == null) {
+            val taskIntent =  Intent(this, LoginActivity::class.java)
+            startActivityForResult(taskIntent, LOGIN_REQUEST_CODE)
+        }
 
         viewModel = ViewModelProvider(
             this,
@@ -177,10 +188,10 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
         when (menuItem.itemId) {
             R.id.profielFragment -> {
 
-                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.layoutToolBar, ProfielFragment())
-
-                    .commit()
+//                 supportFragmentManager.beginTransaction()
+//                    .replace(R.id.layoutToolBar, ProfielFragment())
+//
+//                    .commit()
 
                 menuItem.onNavDestinationSelected(findNavController(R.id.NavHostFragment))
             }
@@ -190,9 +201,9 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
                 this.username = ""
                 AppPreferences.token = ""
                 AppPreferences.username = ""
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.layoutToolBar, LoginFragment())
-                    .commit()
+//                supportFragmentManager.beginTransaction()
+//                    .replace(R.id.layoutToolBar, LoginFragment())
+//                    .commit()
 
 
                  //finishAffinity()
@@ -205,9 +216,9 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
             }
 
             R.id.homeFragment -> {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.layoutToolBar, HomeFragment())
-                    .commit()
+//                supportFragmentManager.beginTransaction()
+//                    .replace(R.id.layoutToolBar, LoginFragment())
+//                    .commit()
 
                 menuItem.onNavDestinationSelected(findNavController(R.id.NavHostFragment))
             }

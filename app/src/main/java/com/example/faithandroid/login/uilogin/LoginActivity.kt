@@ -18,7 +18,6 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import com.example.faithandroid.HomeFragment
 import com.example.faithandroid.MainActivity
 import com.example.faithandroid.R
 import com.example.faithandroid.login.LoginFragment

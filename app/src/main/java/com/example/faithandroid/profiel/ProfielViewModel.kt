@@ -26,9 +26,11 @@ class ProfielViewModel: ViewModel() {
     var adol: LiveData<Adolescent> = MutableLiveData<Adolescent>()
         get() = _adol
 
+
     private var _currentAvatar = MutableLiveData<Avatar>()
     var avatar: LiveData<Avatar> = MutableLiveData<Avatar>()
         get() = _currentAvatar
+
 
     fun getAdolescent(): Adolescent?{
 
