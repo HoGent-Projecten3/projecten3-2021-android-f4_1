@@ -22,7 +22,9 @@ data class GoalPostFields(
     @Json(name = "date")
     val date: String = "",
     @Json(name = "shared")
-    val shared : Boolean = false
+    val shared : Boolean = false,
+    @Json(name = "name")
+    var name: String = ""
 ) : Parcelable
 
 /*@Parcelize

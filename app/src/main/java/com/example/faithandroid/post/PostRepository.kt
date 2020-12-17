@@ -29,7 +29,7 @@ class PostRepository(private val localDataSource: PostLocalDataSource, private v
             saveCallResult = { localDataSource.savePosts(it) }
         )
 
-    suspend fun getFilteredFromPlace(placeType: Int,postType: Int) =
+     fun getFilteredFromPlace(placeType: Int,postType: Int) =
 
         performGetOperation(
             databaseQuery = {

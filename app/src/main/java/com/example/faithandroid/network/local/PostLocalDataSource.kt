@@ -1,7 +1,7 @@
 package com.example.faithandroid.data.local
 
 import com.example.faithandroid.models.Post
-import com.example.faithandroid.models.PostType
+import com.example.faithandroid.network.local.PostDao
 
 
 class PostLocalDataSource(val postDao: PostDao) {

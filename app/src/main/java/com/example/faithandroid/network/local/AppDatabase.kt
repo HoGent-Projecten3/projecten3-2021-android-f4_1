@@ -5,13 +5,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.faithandroid.data.local.PostDao
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Playlist
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.Step
 
-@Database(entities = [GoalPost::class,Step::class,Playlist::class,Post::class], version = 3, exportSchema = false)
+@Database(entities = [GoalPost::class,Step::class,Playlist::class,Post::class], version = 4, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 

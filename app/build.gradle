@@ -81,7 +81,6 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
 
-
     //Navigation Component
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
@@ -133,6 +132,7 @@ dependencies {
 
     implementation project(':spotify-remote')
     implementation project(':spotify-auth')
+    implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.spotify.android:auth:1.1.0'
     implementation 'androidx.browser:browser:1.0.0'
 

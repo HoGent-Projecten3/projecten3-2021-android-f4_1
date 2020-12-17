@@ -1,4 +1,4 @@
-package com.example.faithandroid.data.local
+package com.example.faithandroid.network.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -10,22 +10,22 @@ import com.example.faithandroid.models.Post
 @Dao
 interface PostDao {
 
-    @Query("select * from posts where bulletinBoard = 1")
+    @Query("select * from posts where bulletinBoard == 1")
     fun getPostsOfBulletinBoard(): LiveData<List<Post>>
 
-    @Query("select * from posts where treasureChest = 1")
+    @Query("select * from posts where treasureChest == 1")
     fun getPostsOfTreasureChest(): LiveData<List<Post>>
 
-    @Query("select * from posts where backpack = 1")
+    @Query("select * from posts")
     fun getPostsOfBackpack(): LiveData<List<Post>>
 
-    @Query("select * from posts where postType =:postType and bulletinBoard = 0")
+    @Query("select * from posts where postType ==:postType and bulletinBoard == 1")
     fun getFilteredFromBulletinboard(postType: Int) : LiveData<List<Post>>
 
-    @Query("select * from posts where postType =:postType and treasureChest = 0")
+    @Query("select * from posts where postType ==:postType and treasureChest == 1")
     fun getFilteredFromTreasureChest(postType: Int) : LiveData<List<Post>>
 
-    @Query("select * from posts where postType =:postType and backpack = 0")
+    @Query("select * from posts where postType ==:postType")
     fun getFilteredFromBackPack(postType: Int) : LiveData<List<Post>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
