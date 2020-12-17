@@ -15,7 +15,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PostViewModel(placeType: PlaceType): ViewModel() {
+class PostViewModel(private var placeType: PlaceType): ViewModel() {
 
     private var _posts = MutableLiveData<List<Post>>()
     var postList: LiveData<List<Post>> = MutableLiveData<List<Post>>()
@@ -97,6 +97,7 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful()) {
                         val responseString: String? = response.code().toString()
+                        getPostsOfPlace(this@PostViewModel.placeType)
                         if (responseString != null) {
 
                         }
@@ -118,6 +119,7 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful()) {
                         val responseString: String? = response.code().toString()
+                        getPostsOfPlace(this@PostViewModel.placeType)
                         if (responseString != null) {
 
                         }
@@ -138,6 +140,7 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful()) {
                         val responseString: String? = response.code().toString()
+                        getPostsOfPlace(this@PostViewModel.placeType)
                         if (responseString != null) {
 
                         }
@@ -157,6 +160,7 @@ class PostViewModel(placeType: PlaceType): ViewModel() {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful()) {
                         val responseString: String? = response.code().toString()
+                        getPostsOfPlace(placeType)
                         if (responseString != null) {
 
                         }

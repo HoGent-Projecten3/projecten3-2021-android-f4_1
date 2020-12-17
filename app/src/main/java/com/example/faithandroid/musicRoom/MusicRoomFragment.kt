@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.Observer
 import com.example.faithandroid.CustomPlaylistClick
 import com.example.faithandroid.R
@@ -113,6 +114,9 @@ class MusicRoomFragment: Fragment() {
             popup.show()
         }
 
+        this.lifecycle.addObserver(object: LifecycleObserver{
+
+        })
 
         return binding.root
     }
@@ -154,17 +158,16 @@ class MusicRoomFragment: Fragment() {
         val request = builder.build()
         var intent = AuthenticationClient.createLoginActivityIntent(activity, request)
         startActivityForResult(intent, REQUEST_CODE)
-        //AuthenticationClient.openLoginInBrowser(this.activity, request)
     }
 
 
     override fun onStop()
     {
         super.onStop()
-//        if(spotifyAppRemoteLocal != null)
-//        {
-//            SpotifyAppRemote.disconnect(spotifyAppRemoteLocal);
-//        }
+        if(spotifyAppRemoteLocal != null)
+        {
+            SpotifyAppRemote.disconnect(spotifyAppRemoteLocal);
+        }
 
     }
 
@@ -172,31 +175,23 @@ class MusicRoomFragment: Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode === REQUEST_CODE) {
+        if (requestCode == REQUEST_CODE) {
             val response = AuthenticationClient.getResponse(resultCode, data)
-            when (response.type) {
-                AuthenticationResponse.Type.TOKEN -> {
+            if (response.type == AuthenticationResponse.Type.TOKEN) {
+
                     AppPreferences.spotifyToken = response.accessToken
                     musicRoomViewModel.getAllPlaylists()
 
                 }
-                AuthenticationResponse.Type.ERROR -> {
-                }
-                AuthenticationResponse.Type.EMPTY -> {
-
-                }
-                AuthenticationResponse.Type.CODE -> {
-
-                }
-                AuthenticationResponse.Type.UNKNOWN -> {
-
-                }
-                else -> {
-                }
+            else {
+                //errorhandeling
             }
+
+
         }
         else
         {
+            //errorhandeling
         }
     }
 

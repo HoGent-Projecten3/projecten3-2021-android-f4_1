@@ -1,6 +1,7 @@
 package com.example.faithandroid.backpack
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +39,8 @@ class BackpackFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-      var binding = DataBindingUtil.inflate<BackpackBinding>(
+
+        val binding = DataBindingUtil.inflate<BackpackBinding>(
           inflater,
           R.layout.backpack,
           container,
@@ -65,16 +67,13 @@ class BackpackFragment: Fragment() {
         dropdownList = binding.dropdownFilter
         dropdownList.setAdapter(adapter)
         dropdownList.setText("Alles", false)
-
         dropdownList.setOnItemClickListener { parent, view, position, id ->
 
             postViewModel.getFilteredPostFromPlace(
                 PlaceType.Rugzak,
                 postTypes[position]
             )
-        /*    Snackbar.make( view,postViewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(""
-            )
-            { }.show()*/
+
         }
         binding.postViewModel = postViewModel
 
@@ -106,9 +105,6 @@ class BackpackFragment: Fragment() {
             val contextView = this.view
             if (contextView != null) {
 
-                /* Snackbar.make(contextView, viewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
-                    "Probeer opnieuw""
-                )*/
                 Snackbar.make(contextView, "Er is niets om weer te geven", Snackbar.LENGTH_SHORT)
                     .setAction(
                         ""
@@ -121,6 +117,12 @@ class BackpackFragment: Fragment() {
         return binding.root
     }
 
+
+    override fun onStart() {
+        super.onStart()
+        postViewModel.getPostsOfPlace(PlaceType.Rugzak)
+    }
+
     override fun onResume() {
         val adapter = this.context?.let {
             ArrayAdapter<PostType>(
@@ -131,8 +133,7 @@ class BackpackFragment: Fragment() {
         }
 
         dropdownList.setAdapter(adapter)
-
-
+        postViewModel.getPostsOfPlace(PlaceType.Rugzak)
         super.onResume()
     }
 
