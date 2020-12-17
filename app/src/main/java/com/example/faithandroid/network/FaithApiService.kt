@@ -2,11 +2,7 @@ package com.example.faithandroid.network
 
 
 import com.example.faithandroid.login.data.User
-import com.example.faithandroid.models.Adolescent
-
-import com.example.faithandroid.models.GoalPost
-import com.example.faithandroid.models.Playlist
-import com.example.faithandroid.models.Post
+import com.example.faithandroid.models.*
 
 
 import com.google.android.material.internal.ContextUtils.getActivity
@@ -70,7 +66,7 @@ interface FaithApiService {
     @GET("city/skyscraper/goal")
     fun getPostsOfSkyScraper(): Deferred<List<GoalPost>>
 
-    @GET("city/billboard/goal")
+    @GET("city/billboard/group")
     fun getBillboardGoals(): Deferred<List<GoalPost>>
 
     @Headers("Content-Type: application/json")
@@ -127,7 +123,13 @@ interface FaithApiService {
     @DELETE("city/post/{postId}")
     fun permanentlyDeletePost(@Path("postId") postId: Int):Call<Void>
 
+    @Headers("Content-Type: application/json", "accept: application/json")
+    @GET("/avatar")
+    fun getAvatar(): Call<Avatar>
 
+    @Headers("Content-Type: application/json", "accept: application/json")
+    @PUT("/change-avatar")
+    fun postAvatar(@Body avatar: Avatar): Call<Void>
 }
 
 object FaithApi {

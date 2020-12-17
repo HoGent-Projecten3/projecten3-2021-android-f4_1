@@ -42,6 +42,9 @@ import androidx.lifecycle.Observer
 
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+
+import androidx.navigation.ActivityNavigator
+
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -251,10 +254,12 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
             AppPreferences.token = token
         }
 
-
-
     }
 
+    override fun finish() {
+        super.finish()
+        ActivityNavigator.applyPopAnimationsToPendingTransition(this)
+    }
 
 }
 
