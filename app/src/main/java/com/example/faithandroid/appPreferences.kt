@@ -29,6 +29,10 @@ object AppPreferences {
             Key.TOKEN.setString(value)
         }
 
+    var darkMode: Boolean?
+        get() = Key.DARKMODE.getBoolean()
+        set(value) = Key.DARKMODE.setBoolean(value)
+
     var spotifyToken: String?
         get() = Key.SPOTIFYTOKEN.getString()
         set(value) = Key.SPOTIFYTOKEN.setString(value)
@@ -54,7 +58,8 @@ object AppPreferences {
         set(value) = Key.CURRENTBODY.setInt(value)
 
     private enum class Key {
-        USERNAME, TOKEN, SPOTIFYTOKEN,
+
+        USERNAME, TOKEN, SPOTIFYTOKEN, DARKMODE,
         CURRENTPERSON, CURRENTHAIR, CURRENTEYES, CURRENTSKIN, CURRENTBODY; // TODO step 3: replace these cases with your stored values keys
 
         fun getBoolean(): Boolean? = if (sharedPreferences!!.contains(name)) sharedPreferences!!.getBoolean(name, false) else null

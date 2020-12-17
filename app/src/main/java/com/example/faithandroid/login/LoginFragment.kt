@@ -13,10 +13,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.example.faithandroid.DrawerInterface
-import com.example.faithandroid.HomeFragment
-import com.example.faithandroid.MainActivity
-import com.example.faithandroid.R
+import com.example.faithandroid.*
 import com.example.faithandroid.databinding.LoginBinding
 import com.example.faithandroid.login.uilogin.LoginActivity
 import com.example.faithandroid.login.uilogin.LoginViewModel
@@ -62,7 +59,10 @@ class LoginFragment : Fragment() {
 
        binding.loginButton.setOnClickListener { view: View ->
 
-            view.findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+           var intent: Intent = Intent(view.getContext(), MainActivity::class.java).apply{
+
+           }
+           view.getContext().startActivity(intent)
 
         }
 
