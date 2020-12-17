@@ -19,6 +19,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.ProfielBinding
 import com.example.faithandroid.models.Adolescent
+import com.example.faithandroid.models.Avatar
+import com.sdsmdg.harjot.vectormaster.VectorMasterView
 
 
 class ProfielFragment: Fragment() {
@@ -27,6 +29,8 @@ class ProfielFragment: Fragment() {
     private lateinit var viewModel: ProfielViewModel
     private var nieuwww = ""
     private var nieuwcon = ""
+    private lateinit var vectorMasterViewA: VectorMasterView
+    private lateinit var vectorMasterViewB: VectorMasterView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,8 +49,13 @@ class ProfielFragment: Fragment() {
             false
         );
 
+        this.vectorMasterViewA = binding.imgAvatarA as VectorMasterView
+        this.vectorMasterViewB = binding.imgAvatarB as VectorMasterView
+
         viewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
         viewModel.getAdolescent()
+
+        binding.imgAvatarB.setVisibility(View.GONE)
 
         viewModel.adol.observe(viewLifecycleOwner, Observer {
             adolescent = it
@@ -54,6 +63,19 @@ class ProfielFragment: Fragment() {
                 String.format(adolescent?.firstName + " " + adolescent?.name)
             binding.profielEmail.text = adolescent?.email
         })
+
+            if (AppPreferences.currentPerson == 0){
+                binding.imgAvatarA.setVisibility(View.VISIBLE)
+                binding.imgAvatarB.setVisibility(View.GONE)
+            } else {
+                binding.imgAvatarA.setVisibility(View.GONE)
+                binding.imgAvatarB.setVisibility(View.VISIBLE)
+            }
+
+        AppPreferences.currentHair?.let { ColorSvgs.setHair(it, vectorMasterViewA, vectorMasterViewB) }
+        AppPreferences.currentEyes?.let { ColorSvgs.setEyes(it, vectorMasterViewA, vectorMasterViewB) }
+        AppPreferences.currentSkin?.let { ColorSvgs.setSkin(it, vectorMasterViewA, vectorMasterViewB) }
+        AppPreferences.currentBody?.let { ColorSvgs.setBody(it, vectorMasterViewA, vectorMasterViewB) }
 
         binding.wachtwoordWIjzigen.setOnClickListener() {
 

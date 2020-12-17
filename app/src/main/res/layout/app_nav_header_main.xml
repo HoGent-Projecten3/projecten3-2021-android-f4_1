@@ -38,11 +38,20 @@
             app:cardCornerRadius="250dp"
             android:layout_gravity="center">
 
-            <ImageView
+            <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                android:id="@+id/imgAvatarA"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
-                android:src="@drawable/profielfoto"
-                android:scaleType="centerCrop"/>
+                android:contentDescription="@string/profiel"
+                app:vector_src="@drawable/ic_avatar_female"
+                android:scaleType="centerCrop" />
+
+            <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                android:id="@+id/imgAvatarB"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                app:vector_src="@drawable/ic_avatar_male"
+                android:scaleType="centerCrop" />
 
         </androidx.cardview.widget.CardView>
 

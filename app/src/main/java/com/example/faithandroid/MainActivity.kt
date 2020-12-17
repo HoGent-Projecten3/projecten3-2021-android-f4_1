@@ -6,21 +6,18 @@ package com.example.faithandroid
 
 import AppPreferences
 import android.content.Intent
-import android.net.Uri
 
-import android.content.Context
 import android.Manifest
 
-import android.graphics.Path
 import android.content.pm.PackageManager
 
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
@@ -33,12 +30,6 @@ import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 
-
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.replace
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
 
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
@@ -58,13 +49,6 @@ import com.example.faithandroid.login.uilogin.LoginViewModelFactory
 import com.example.faithandroid.profiel.ProfielViewModel
 import com.example.faithandroid.profiel.ProfielFragment
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.activity_main.*
-import com.spotify.android.appremote.api.ConnectionParams
-import com.spotify.android.appremote.api.Connector
-import com.spotify.android.appremote.api.SpotifyAppRemote
-import com.spotify.sdk.android.authentication.AuthenticationClient
-import com.spotify.sdk.android.authentication.AuthenticationRequest
-import com.spotify.sdk.android.authentication.AuthenticationResponse
 
 
 import kotlinx.android.synthetic.main.activity_main.view.*
@@ -105,6 +89,8 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
             LoginViewModelFactory()
         )
             .get(LoginViewModel::class.java)
+
+        val shoppingCenterViewModel = ViewModelProvider(this).get(AvatarViewModel::class.java)
 
         drawerLayout = findViewById(R.id.drawerLayout)
         var navHeader = findViewById<NavigationView>(R.id.navView)
@@ -260,6 +246,8 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
         super.finish()
         ActivityNavigator.applyPopAnimationsToPendingTransition(this)
     }
+
+
 
 }
 

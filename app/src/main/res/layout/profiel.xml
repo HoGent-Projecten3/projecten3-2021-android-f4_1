@@ -36,12 +36,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:id="@+id/profielImage"
+                <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                    android:id="@+id/imgAvatarA"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:contentDescription="@string/profiel"
-                    android:src="@drawable/profielfoto" />
+                    app:vector_src="@drawable/ic_avatar_female"
+                    android:scaleType="centerCrop" />
+
+                <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                    android:id="@+id/imgAvatarB"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    app:vector_src="@drawable/ic_avatar_male"
+                    android:scaleType="centerCrop" />
 
             </androidx.cardview.widget.CardView>
 

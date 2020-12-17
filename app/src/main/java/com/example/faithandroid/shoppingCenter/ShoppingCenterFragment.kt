@@ -1,8 +1,6 @@
 package com.example.faithandroid.shoppingCenter
 
-import android.content.res.Resources
 import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.graphics.drawable.VectorDrawable
 import android.os.Build
 import android.os.Bundle
@@ -12,28 +10,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.content.res.ResourcesCompat
-import androidx.core.graphics.toColor
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.faithandroid.AvatarCustomClick
-import com.example.faithandroid.BodyType
-import com.example.faithandroid.PlaceType
-import com.example.faithandroid.R
+import com.example.faithandroid.*
 import com.example.faithandroid.databinding.ShoppingcenterBinding
-import com.example.faithandroid.treasureChest.TreasureChestFragmentDirections
 import com.google.android.material.snackbar.Snackbar
 import com.sdsmdg.harjot.vectormaster.VectorMasterView
-import kotlinx.android.synthetic.main.shoppingcenter.view.*
 
 
 class ShoppingCenterFragment: Fragment() {
-    private lateinit var viewModel: ShoppingCenterViewModel
+    private lateinit var viewModel: AvatarViewModel
     private lateinit var vectorMasterViewA: VectorMasterView
     private lateinit var vectorMasterViewB: VectorMasterView
 
@@ -63,13 +53,13 @@ class ShoppingCenterFragment: Fragment() {
         this.vectorMasterViewA = binding.imgAvatarA as VectorMasterView
         this.vectorMasterViewB = binding.imgAvatarB as VectorMasterView
 
-        viewModel = ViewModelProvider(this).get(ShoppingCenterViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(AvatarViewModel::class.java)
         binding.shoppingCenterViewModel = viewModel
 
-        setHair(hair)
-        setEyes(eyes)
-        setSkin(skin)
-        setBody(body)
+        hair.let { ColorSvgs.setHair(it, vectorMasterViewA, vectorMasterViewB) }
+        eyes.let { ColorSvgs.setEyes(it, vectorMasterViewA, vectorMasterViewB) }
+        skin.let { ColorSvgs.setSkin(it, vectorMasterViewA, vectorMasterViewB) }
+        body.let { ColorSvgs.setBody(it, vectorMasterViewA, vectorMasterViewB) }
         if (character == 0){
             binding.imgAvatarB.setVisibility(View.GONE)
         } else {
@@ -78,25 +68,29 @@ class ShoppingCenterFragment: Fragment() {
 
         binding.hairGridView.adapter = ShoppingCenterGridAdapter(BodyType.Hair, object: AvatarCustomClick {
             override fun onClick(avatarpart: Int){
-                setHair(avatarpart)
+                hair = avatarpart
+                avatarpart.let { ColorSvgs.setHair(it, vectorMasterViewA, vectorMasterViewB) }
             }
         })
 
         binding.eyeGridView.adapter = ShoppingCenterGridAdapter(BodyType.Eye, object: AvatarCustomClick {
             override fun onClick(avatarpart: Int){
-                setEyes(avatarpart)
+                eyes = avatarpart
+                avatarpart.let { ColorSvgs.setEyes(it, vectorMasterViewA, vectorMasterViewB) }
             }
         })
 
         binding.skinGridView.adapter = ShoppingCenterGridAdapter(BodyType.Skin, object: AvatarCustomClick {
             override fun onClick(avatarpart: Int){
-                setSkin(avatarpart)
+                skin = avatarpart
+                avatarpart.let { ColorSvgs.setSkin(it, vectorMasterViewA, vectorMasterViewB) }
             }
         })
 
         binding.bodyGridView.adapter = ShoppingCenterGridAdapter(BodyType.Body, object:AvatarCustomClick{
             override fun onClick(avatarpart:Int){
-                setBody(avatarpart)
+                body = avatarpart
+                avatarpart.let { ColorSvgs.setBody(it, vectorMasterViewA, vectorMasterViewB) }
             }
         })
 
@@ -152,16 +146,16 @@ class ShoppingCenterFragment: Fragment() {
             }
 
             hair = viewModel.currentAvatar.value?.hair!!
-            setHair(hair)
+            hair.let { ColorSvgs.setHair(it, vectorMasterViewA, vectorMasterViewB) }
 
             eyes = viewModel.currentAvatar.value?.eyes!!
-            setEyes(eyes)
+            eyes.let { ColorSvgs.setEyes(it, vectorMasterViewA, vectorMasterViewB) }
 
             skin = viewModel.currentAvatar.value?.skin!!
-            setSkin(skin)
+            skin.let { ColorSvgs.setSkin(it, vectorMasterViewA, vectorMasterViewB) }
 
             body = viewModel.currentAvatar.value?.upperBody!!
-            setBody(body)
+            body.let { ColorSvgs.setBody(it, vectorMasterViewA, vectorMasterViewB) }
         })
 
         viewModel.status.observe(this.viewLifecycleOwner, Observer {
@@ -193,63 +187,5 @@ class ShoppingCenterFragment: Fragment() {
 
 
         return binding.root
-    }
-
-    fun setHair(avatarpart: Int){
-        hair = avatarpart
-        var path1 = vectorMasterViewA.getPathModelByName("Hair1")
-        var path2 = vectorMasterViewA.getPathModelByName("Hair2")
-        var path3 = vectorMasterViewB.getPathModelByName("Hair")
-        path1.fillColor = avatarpart
-        path2.fillColor = avatarpart
-        path3.fillColor = avatarpart
-        vectorMasterViewA.update()
-        vectorMasterViewB.update()
-    }
-
-    fun setEyes(avatarpart: Int){
-        eyes = avatarpart
-        var path1 = vectorMasterViewA.getPathModelByName("Eye1")
-        var path2 = vectorMasterViewA.getPathModelByName("Eye2")
-        var path3 = vectorMasterViewB.getPathModelByName("Eye1")
-        var path4 = vectorMasterViewB.getPathModelByName("Eye2")
-        path1.fillColor = avatarpart
-        path2.fillColor = avatarpart
-        path3.fillColor = avatarpart
-        path4.fillColor = avatarpart
-        vectorMasterViewA.update()
-        vectorMasterViewB.update()
-    }
-
-    fun setSkin(avatarpart: Int){
-        skin = avatarpart
-        var path1 = vectorMasterViewA.getPathModelByName("Skin1")
-        var path2 = vectorMasterViewA.getPathModelByName("Skin2")
-        var path3 = vectorMasterViewA.getPathModelByName("Skin3")
-        var path4 = vectorMasterViewA.getPathModelByName("Skin4")
-        var path5 = vectorMasterViewB.getPathModelByName("Skin1")
-        var path6 = vectorMasterViewB.getPathModelByName("Skin2")
-        var path7 = vectorMasterViewB.getPathModelByName("Skin3")
-        var path8 = vectorMasterViewB.getPathModelByName("Skin4")
-        path1.fillColor = avatarpart
-        path2.fillColor = avatarpart
-        path3.fillColor = avatarpart
-        path4.fillColor = avatarpart
-        path5.fillColor = avatarpart
-        path6.fillColor = avatarpart
-        path7.fillColor = avatarpart
-        path8.fillColor = avatarpart
-        vectorMasterViewA.update()
-        vectorMasterViewB.update()
-    }
-
-    fun setBody(avatarpart: Int){
-        body = avatarpart
-        var path1 = vectorMasterViewA.getPathModelByName("Body")
-        var path2 = vectorMasterViewB.getPathModelByName("Body")
-        path1.fillColor = avatarpart
-        path2.fillColor = avatarpart
-        vectorMasterViewA.update()
-        vectorMasterViewB.update()
     }
 }
