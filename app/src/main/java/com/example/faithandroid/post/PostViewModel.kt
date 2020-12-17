@@ -9,8 +9,11 @@ import com.example.faithandroid.PlaceType
 import com.example.faithandroid.PostType
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.network.FaithApiService
+import com.example.faithandroid.network.FaithProperty
 import com.example.faithandroid.util.Resource
 import kotlinx.coroutines.*
+import okhttp3.internal.wait
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,7 +22,11 @@ import retrofit2.await
 
 class PostViewModel(placeType: PlaceType,private val postRepository: PostRepository): ViewModel() {
 
-    var postList: LiveData<Resource<List<Post>>> = postRepository.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
+    //lateinit var postList: LiveData<Resource<List<Post>>>
+
+    private var _postList = MutableLiveData<Resource<List<Post>>>()
+    var postList: LiveData<Resource<List<Post>>> = MutableLiveData<Resource<List<Post>>>()
+        get() = _postList
 
 
     private val _requestConsultationStatus = MutableLiveData<String>("Er liep iets mis")
@@ -33,44 +40,20 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
 //    private var viewModelJob = Job()
 //    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    /*init   {
+    init   {
         getPostsOfPlace(placeType)
-    }*/
+    }
 
-     fun getFilteredPostFromPlace(placeType: PlaceType, postType: PostType) {
-
-        viewModelScope.launch {
-            val stringCall =
-                postRepository.getFilteredFromPlace(placeType.ordinal, postType.ordinal)
-            postList = stringCall
-
-            Log.d("repo", postList.value.toString())
-            /*stringCall.observe(object : Callback<List<Post>> {
-
-                 override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
-                    if (response.isSuccessful()) {
-                       if(response.body()!!.isEmpty())
-                        {
-                            _status.value = "Sorry er is niets om weer te geven"
-                            postList.value = response.body()
-                        }else {
-                           postList.value = response.body()
-                       }
-                    }
-                  else {
-                            _status.value = "Er kon geen verbinding gemaakt worden"
-                        }
-                    }
-
-                override fun onFailure(call: Call<List<Post>>?, t: Throwable?) {
-                    _status.value = "Er liep iets mis"
-                    }
-
-            })*/
-
-
+     fun getPostsOfPlace(placeType: PlaceType)    {
+        var test = postRepository.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
+        _postList = test as MutableLiveData<Resource<List<Post>>>
         }
 
+      fun getFilteredPostFromPlace(placeType: PlaceType, postType: PostType) {
+            _postList = postRepository.getFilteredFromPlace(
+                placeType.ordinal,
+                postType.ordinal
+            ) as MutableLiveData<Resource<List<Post>>>
     }
 
     /*fun getPostsOfPlace(placeType: PlaceType)    {
@@ -189,3 +172,4 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
             }
         }
 }
+

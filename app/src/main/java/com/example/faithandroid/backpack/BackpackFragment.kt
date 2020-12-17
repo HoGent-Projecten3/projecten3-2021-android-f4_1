@@ -25,14 +25,14 @@ import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
 
 
-class BackpackFragment: Fragment(), CustomClick {
+class BackpackFragment: Fragment() {
 
     private lateinit var postAdapter: PostAdapter
     private lateinit var dropdownList: AutoCompleteTextView
     private val loadingDialogFragment by lazy { LoadingFragment() }
     val postRepository : PostRepository by inject()
     private val postViewModel: PostViewModel by lazy{
-        ViewModelProvider(this, ViewModelFactory(PlaceType.Schatkist,postRepository)).get(PostViewModel::class.java)
+        ViewModelProvider(this, ViewModelFactory(PlaceType.Rugzak,postRepository)).get(PostViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +45,7 @@ class BackpackFragment: Fragment(), CustomClick {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding = DataBindingUtil.inflate<BackpackBinding>(
+      val binding = DataBindingUtil.inflate<BackpackBinding>(
           inflater,
           R.layout.backpack,
           container,
@@ -53,7 +53,7 @@ class BackpackFragment: Fragment(), CustomClick {
       );
 
 
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
         // staggeredGridLayoutManager with 3 columns and vertical orientation
         val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
@@ -77,12 +77,11 @@ class BackpackFragment: Fragment(), CustomClick {
                 PlaceType.Rugzak,
                 postTypes[position]
             )
-
         }
         binding.postViewModel = postViewModel
 
         binding.closeFilterBtn.setOnClickListener{
-            postViewModel.postList
+            postViewModel.getPostsOfPlace(PlaceType.Rugzak)
         }
 
         binding.AddPostButton.setOnClickListener { view: View ->
@@ -96,53 +95,44 @@ class BackpackFragment: Fragment(), CustomClick {
 
 
 
-        postAdapter = PostAdapter(this)
+        //postAdapter = PostAdapter()
 
         binding.BackpackRecycler.adapter =
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
                     //postViewModel.pemanentlyDeletePost(post.id)
                     true
-                    //postViewModel.postList
+                    postViewModel.getPostsOfPlace(PlaceType.Rugzak)
                 }
 
             }
             )
-                postViewModel.postList.observe(this.viewLifecycleOwner, Observer
-                {
-                    it?.let { resource ->
-                        when (resource.status) {
-                            Status.SUCCESS -> {
-                                showProgress(false)
-                                postAdapter.submitList(resource.data)
-                            }
-                            Status.LOADING -> {
-                                showProgress(true)
-                            }
-                            Status.ERROR -> {
-                                showProgress(false)
-                            }
-                        }
+
+        /*postViewModel.postList.observe(this.viewLifecycleOwner, Observer
+        {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        showProgress(false)
+                        Log.d("repodata",postViewModel.postList.value?.data.toString())
+                        postAdapter.submitList(resource.data)
                     }
                 })
                 return binding.root
             }
+        })*/
+        return binding.root
+    }
 
-
-            override fun onStart() {
-                super.onStart()
-            }
-
-            override fun onResume() {
-                val adapter = this.context?.let {
-                    ArrayAdapter<PostType>(
-                        it,
-                        R.layout.dropdown_menu_popup_item_extra,
-                        PostType.values()
-                    )
-                }
-
-                dropdownList.setAdapter(adapter)
+    override fun onResume() {
+        val adapter = this.context?.let {
+            ArrayAdapter<PostType>(
+                it,
+                R.layout.dropdown_menu_popup_item_extra,
+                PostType.values()
+            )
+        }
+        dropdownList.setAdapter(adapter)
                 super.onResume()
             }
 
@@ -161,7 +151,10 @@ class BackpackFragment: Fragment(), CustomClick {
                 }
             }
 
-            override fun onClick(post: Post) {
+            fun onClick(post: Post) {
                 TODO("Not yet implemented")
             }
         }
+
+
+

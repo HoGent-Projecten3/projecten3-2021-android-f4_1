@@ -86,7 +86,7 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json")
     @POST("user/change-password")
-    fun changepassword(@Query("ww") ww: String) : Call<String>
+    fun changePassword(@Query("ww") ww: String) : Call<String>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @GET("city/musicroom/playlist")
