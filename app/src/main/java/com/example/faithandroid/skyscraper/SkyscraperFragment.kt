@@ -90,6 +90,7 @@ class SkyscraperFragment: Fragment() {
         viewModel.getPostsOfSkyscraper()
     }
 
+
     override fun onResume() {
         super.onResume()
 

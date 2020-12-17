@@ -62,6 +62,7 @@ class BillboardFragment: Fragment() {
         return binding.root
     }
 
+
     override fun onResume() {
         super.onResume()
 
@@ -71,7 +72,4 @@ class BillboardFragment: Fragment() {
     fun dateParsing(date: LocalDateTime){
         SimpleDateFormat("dd/MM/yyyy").format(date)
     }
-
-
-
 }
