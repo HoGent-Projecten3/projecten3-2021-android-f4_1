@@ -74,17 +74,19 @@ class LoginActivity : AppCompatActivity() {
             }
             if (loginResult.success != null) {
                 updateUiWithUser(loginResult.success)
+
+                var intent: Intent = Intent()
+                intent.putExtra("loggedInUser", loginResult.success?.displayName)
+                intent.putExtra("token", loginResult.success?.token)
+
+
+                setResult(Activity.RESULT_OK, intent)
+
+                //Complete and destroy login activity once successful
+                finish()
             }
 
-            var intent: Intent = Intent()
-            intent.putExtra("loggedInUser", loginResult.success?.displayName)
-            intent.putExtra("token", loginResult.success?.token)
 
-
-            setResult(Activity.RESULT_OK, intent)
-
-            //Complete and destroy login activity once successful
-            finish()
         })
 
 

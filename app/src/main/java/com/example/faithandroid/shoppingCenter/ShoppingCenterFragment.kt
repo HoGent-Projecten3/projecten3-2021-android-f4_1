@@ -133,7 +133,6 @@ class ShoppingCenterFragment: Fragment() {
 
         var drawing: VectorDrawable = this.context?.let { AppCompatResources.getDrawable(it, R.drawable.ic_avatar_female) } as VectorDrawable
 
-        Log.d("drawing", drawing.toString())
 
         viewModel.currentAvatar.observe(this.viewLifecycleOwner, Observer{
             character = viewModel.currentAvatar.value?.person!!
