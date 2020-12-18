@@ -41,6 +41,61 @@ We hebben de opdracht gekregen van HOGENT om voor het vak Projecten-Workshops II
   - Home
 - Viewmodels toegevoegd
 
+26/10 (sprint3)
+- Toevoegen item
+- Deployment
+- Afwerken API connecties
+- Billboard
+  - Layout
+  - Recyclerview
+  - Functionaliteit
+- Prikbord Viewmodel afwerken
+- Wolkenkrabber
+  - Layout
+  - Implementatie aanmaken doel
+  - Details bekijken doel
+
+09/11 (sprint4)
+- CI/CD pipeline
+- Profiel layout
+- Layout foto toevoegen
+- Toevoegen post
+- Aanpassen doel (wolkenkrabber)
+- Toevoegen item (rugzak)
+- Toevoegen item (schatkist)
+- Implementatie inloggen jongeren
+- Layout video toevoegen
+- Implementatie video toevoegen
+
+23/11 (sprint5)
+- Homescreen redesign
+- Layout
+  - Rugzak
+  - Schatkist
+  - Billboard (aanpassen)
+  - Wolkenkrabber (aanpassen)
+  - Audio toevoegen
+  - Music club
+  - Winkelcentrum
+  - Landscape mode
+  - Tablet versie
+- Implmentatie Music club
+- Implementatie audio
+- Implementatie avatar aanpassen 
+- Functionaliteiten Profiel
+- Prikbord delete all knop
+- Rugzak filteren posts
+- Uitloggen
+- Refactoring
+- Repository pattern toepassen
+
+07/12 (sprint6)
+- Navigatie animatie toevoegen
+- Implementatie avatar aanpassen
+- Lifecycle
+- Refactoring
+- Repository pattern toepassen
+
 Project moet tegen week 15 beschikbaar zijn voor de klant om het te testen
 
 ## Contact
