@@ -107,7 +107,7 @@ Project moet tegen week 15 beschikbaar zijn voor de klant om het te testen
   - anthony.james@student.hogent.be
 - Azize Ergun
   - azize.ergun@student.hogent.be
-- Jules Dekyvere
-  - jules.dekyvere@student.hogent.be
+- Jule Dekyvere
+  - jule.dekyvere@student.hogent.be
 - Lukas Kindt
   - lukas.kindt@student.hogent.be
