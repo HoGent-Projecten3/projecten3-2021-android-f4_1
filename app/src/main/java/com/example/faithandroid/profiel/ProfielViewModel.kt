@@ -4,24 +4,20 @@ package com.example.faithandroid.profiel
 
 import AppPreferences
 
-
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.faithandroid.login.data.LoginRepository
+import com.example.faithandroid.login.data.Result
 import com.example.faithandroid.models.Adolescent
 import com.example.faithandroid.models.Avatar
 import com.example.faithandroid.post.PostRepository
-
-
 import retrofit2.*
-
-
 import kotlinx.coroutines.launch
+import org.koin.java.KoinJavaComponent.inject
 
-class ProfielViewModel(private val postRepository: PostRepository): ViewModel() {
+class ProfielViewModel(private val postRepository: PostRepository,private val loginRepository: LoginRepository): ViewModel() {
 
 
     private var _adol = MutableLiveData<Adolescent>()
@@ -32,22 +28,25 @@ class ProfielViewModel(private val postRepository: PostRepository): ViewModel() 
     var avatar: LiveData<Avatar> = MutableLiveData<Avatar>()
         get() = _currentAvatar
 
-    /*fun getAdolescent(): Adolescent?{
+    fun getAdolescent(): Adolescent?{
 
         viewModelScope.launch {
 
             try{
-            val stringCall: Call<Adolescent> =
+            val stringCall: Result<Adolescent> =
                 loginRepository.getAdolescent(AppPreferences.username.toString())
-
-            _adol.value = stringCall.await()
+            if(stringCall is Result.Success){
+                _adol.value = stringCall.data
+            }else{
+                throw Exception()
+            }
             }catch(e: Exception){
                 throw Exception("Gebruiker kon niet worden opgehaald")
             }
         }
         return _adol.value
 
-    }*/
+    }
 
      fun changePassword(ww: String) {
 

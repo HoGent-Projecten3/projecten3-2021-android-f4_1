@@ -36,54 +36,54 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
     private var _status = MutableLiveData<String>()
     var status: LiveData<String>
         get() = _status
-        set(text) { _status.value = text.value }
+        set(text) {
+            _status.value = text.value
+        }
 
 //    private var viewModelJob = Job()
 //    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    init   {
+    init {
         getPostsOfPlace(placeType)
     }
 
-     /*fun getPostsOfPlace(placeType: PlaceType)    {
+    /*fun getPostsOfPlace(placeType: PlaceType)    {
         var test = postRepository.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
         _postList = test as MutableLiveData<Resource<List<Post>>>
         }*/
 
-      fun getFilteredPostFromPlace(placeType: PlaceType, postType: PostType) {
-          viewModelScope.launch {
+    fun getFilteredPostFromPlace(placeType: PlaceType, postType: PostType) {
+        viewModelScope.launch {
 
-              val stringCall: Call<List<Post>> =
-                  postRepository.getFilteredFromPlace(placeType.ordinal, postType.ordinal)
+            val stringCall: Call<List<Post>> =
+                postRepository.getFilteredFromPlace(placeType.ordinal, postType.ordinal)
 
-              stringCall.enqueue(object : Callback<List<Post>> {
+            stringCall.enqueue(object : Callback<List<Post>> {
 
-                  override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
-                      if (response.isSuccessful()) {
-                          if(response.body()!!.isEmpty())
-                          {
-                              _status.value = "Sorry er is niets om weer te geven"
-                              _postList.value = response.body()
-                          }else {
-                              _postList.value = response.body()
-                          }
-                      }
-                      else {
-                          _status.value = "Er kon geen verbinding gemaakt worden"
-                      }
-                  }
+                override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
+                    if (response.isSuccessful()) {
+                        if (response.body()!!.isEmpty()) {
+                            _status.value = "Sorry er is niets om weer te geven"
+                            _postList.value = response.body()
+                        } else {
+                            _postList.value = response.body()
+                        }
+                    } else {
+                        _status.value = "Er kon geen verbinding gemaakt worden"
+                    }
+                }
 
-                  override fun onFailure(call: Call<List<Post>>?, t: Throwable?) {
-                      _status.value = "Er liep iets mis"
-                  }
+                override fun onFailure(call: Call<List<Post>>?, t: Throwable?) {
+                    _status.value = "Er liep iets mis"
+                }
 
-              })
+            })
 
 
-          }
+        }
     }
 
-    fun getPostsOfPlace(placeType: PlaceType)    {
+    fun getPostsOfPlace(placeType: PlaceType) {
         viewModelScope.launch {
             val stringCall: Call<List<Post>> =
                 postRepository.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
@@ -93,6 +93,7 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
                         _postList.value = response.body()
                     }
                 }
+
                 override fun onFailure(call: Call<List<Post>>?, t: Throwable?) {
                     t?.localizedMessage?.let {
 
@@ -103,11 +104,11 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
         }
     }
 
-    fun addPostByEmail(post: Post, placeType: PlaceType): Boolean{
+    fun addPostByEmail(post: Post, placeType: PlaceType): Boolean {
         var bool: Boolean = true
         viewModelScope.launch {
             val stringCall: Call<Void> =
-                postRepository.addPostByEmail(post,placeType.ordinal)
+                postRepository.addPostByEmail(post, placeType.ordinal)
 
             stringCall.enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
@@ -119,6 +120,7 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
                         }
                     }
                 }
+
                 override fun onFailure(call: Call<Void>?, t: Throwable?) {
                     bool = false
                     _status.value = "Er liep iets mis bij het toevoegen."
@@ -126,9 +128,9 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
             })
         }
         return bool
-        }
+    }
 
-    fun addExistingPostToPlace(id: Int, placeType: PlaceType)    {
+    fun addExistingPostToPlace(id: Int, placeType: PlaceType) {
 
         viewModelScope.launch {
             Log.d("testVideo", id.toString() + placeType.name)
@@ -143,6 +145,7 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
                         _status.value = "Post toegevoegd!"
                     }
                 }
+
                 override fun onFailure(call: Call<Void>?, t: Throwable?) {
                     _status.value = "Er liep iets mis bij het toevoegen.";
                 }
@@ -151,10 +154,10 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
         Log.d("testVideo", "Heeft methode doorlopen")
     }
 
-    fun deletePostByEmail(id: Int,  placeType: PlaceType)    {
+    fun deletePostByEmail(id: Int, placeType: PlaceType) {
         viewModelScope.launch {
             val stringCall: LiveData<Resource<Void>> =
-                postRepository.deletePostByEmail(placeType.ordinal,id)
+                postRepository.deletePostByEmail(placeType.ordinal, id)
             /*stringCall.enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful()) {
@@ -184,23 +187,24 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
     }
 
 
+    fun pemanentlyDeletePost(postId: Int) {
+        viewModelScope.launch {
+            val stringCall: Call<Void> = postRepository.permanentlyDeletePost(postId)
+            stringCall.enqueue(object : Callback<Void> {
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    if (response.isSuccessful()) {
+                        val responseString: String? = response.code().toString()
+                        if (responseString != null) {
 
-        fun pemanentlyDeletePost(postId: Int) {
-            viewModelScope.launch {
-                val stringCall: Call<Void> = postRepository.permanentlyDeletePost(postId)
-                stringCall.enqueue(object : Callback<Void> {
-                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                        if (response.isSuccessful()) {
-                            val responseString: String? = response.code().toString()
-                            if (responseString != null) {
-
-                            }
                         }
                     }
+                }
+
                 override fun onFailure(call: Call<Void>?, t: Throwable?) {
                     _status.value = "Er liep iets mis bij het verwijderen."
                 }
             })
         }
+    }
 }
 

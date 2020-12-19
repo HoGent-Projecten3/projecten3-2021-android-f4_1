@@ -38,9 +38,7 @@ class LoginDataSource(private val apiService: FaithApiService) {
               val stringCall: Call<String> =
                   apiService.loginAdolescent(User(username, password))
               var token = stringCall.await()
-              if (token != null)
-              {
-                  return Result.Success(token)
+             return Result.Success(token)
               } catch (e: Exception) {
                   return Result.Error(e.message.toString())
               }

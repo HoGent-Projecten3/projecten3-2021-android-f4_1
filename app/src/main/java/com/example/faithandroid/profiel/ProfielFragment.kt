@@ -30,7 +30,6 @@ import java.lang.Exception
 class ProfielFragment: Fragment() {
 
     private var adolescent: Adolescent? = null
-    private lateinit var viewModel: ProfielViewModel
     private var nieuwww = ""
     private var nieuwcon = ""
     private lateinit var vectorMasterViewA: VectorMasterView

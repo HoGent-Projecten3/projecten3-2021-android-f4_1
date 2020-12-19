@@ -48,12 +48,12 @@ class MusicRoomFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val musicRoomViewModel: MusicRoomViewModel by inject()
-      val binding = DataBindingUtil.inflate<MusicroomBinding>(
-          inflater,
-          R.layout.musicroom,
-          container,
-          false
-      );
+        val binding = DataBindingUtil.inflate<MusicroomBinding>(
+            inflater,
+            R.layout.musicroom,
+            container,
+            false
+        );
 
 
         binding.lifecycleOwner = this
@@ -82,7 +82,7 @@ class MusicRoomFragment: Fragment() {
 
 
             }
-        }, object: CustomPlaylistClick{
+        }, object : CustomPlaylistClick {
             override fun onClick(playlist: Playlist): Boolean {
                 musicRoomViewModel.deletePlaylist(playlist.primaryKey)
                 return true
@@ -94,21 +94,21 @@ class MusicRoomFragment: Fragment() {
 //        })
 
 
-        binding.include4.newPlaylistButton.setOnClickListener{
+        binding.include4.newPlaylistButton.setOnClickListener {
             val popup = PopupMenu(context, it)
 
-            musicRoomViewModel.allPlaylists.value?.data?.forEach{
+            musicRoomViewModel.allPlaylists.value?.data?.forEach {
                 popup.menu.add(it.name)
             }
             popup.setOnMenuItemClickListener {
 
 
-                var playlist = musicRoomViewModel.allPlaylists.value?.data?.find { playlist: Playlist ->
-                    playlist.name == it.title
-                }
+                var playlist =
+                    musicRoomViewModel.allPlaylists.value?.data?.find { playlist: Playlist ->
+                        playlist.name == it.title
+                    }
 
-                if(playlist != null)
-                {
+                if (playlist != null) {
                     musicRoomViewModel.addPlaylist(playlist)
                 }
 
@@ -118,7 +118,7 @@ class MusicRoomFragment: Fragment() {
             popup.show()
         }
 
-        this.lifecycle.addObserver(object: LifecycleObserver{
+        this.lifecycle.addObserver(object : LifecycleObserver {
 
         })
 
@@ -133,8 +133,7 @@ class MusicRoomFragment: Fragment() {
             .setRedirectUri(REDIRECT_URI)
             .showAuthView(true)
             .build()
-        if(SpotifyAppRemote.isSpotifyInstalled(this.context))
-        {
+        if (SpotifyAppRemote.isSpotifyInstalled(this.context)) {
             SpotifyAppRemote.connect(this.context, connectionParams,
                 object : Connector.ConnectionListener {
                     override fun onConnected(spotifyAppRemote: SpotifyAppRemote) {
@@ -146,7 +145,11 @@ class MusicRoomFragment: Fragment() {
 
                         // Something went wrong when attempting to connect! Handle errors here
 
-                        Snackbar.make(contextView!!, "Er liep iets mis bij het inloggen", Snackbar.LENGTH_SHORT)
+                        Snackbar.make(
+                            contextView!!,
+                            "Er liep iets mis bij het inloggen",
+                            Snackbar.LENGTH_SHORT
+                        )
                             .setAction(
                                 "Try again"
                             )
@@ -156,8 +159,6 @@ class MusicRoomFragment: Fragment() {
                     }
                 })
         }
-
-
 
 
         val builder = AuthenticationRequest.Builder(
@@ -174,11 +175,9 @@ class MusicRoomFragment: Fragment() {
     }
 
 
-    override fun onStop()
-    {
+    override fun onStop() {
         super.onStop()
-        if(spotifyAppRemoteLocal != null)
-        {
+        if (spotifyAppRemoteLocal != null) {
             SpotifyAppRemote.disconnect(spotifyAppRemoteLocal);
         }
 
@@ -191,33 +190,36 @@ class MusicRoomFragment: Fragment() {
         if (requestCode === REQUEST_CODE) {
             val response = AuthenticationClient.getResponse(resultCode, data)
             if (response.type == AuthenticationResponse.Type.TOKEN) {
-                    AppPreferences.spotifyToken = response.accessToken
-                    musicRoomViewModel.allPlaylists.observe(
-                        viewLifecycleOwner,
-                        Observer {
-                            it?.let { resource ->
-                                when (resource.status) {
-                                    Status.SUCCESS -> {
-                                        showProgress(false)
+                AppPreferences.spotifyToken = response.accessToken
+                musicRoomViewModel.allPlaylists.observe(
+                    viewLifecycleOwner,
+                    Observer {
+                        it?.let { resource ->
+                            when (resource.status) {
+                                Status.SUCCESS -> {
+                                    showProgress(false)
 
-                                    }
-                                    Status.LOADING -> {
-                                        showProgress(true)
-                                    }
-                                    Status.ERROR -> {
-                                        showProgress(false)
-                                    }
+                                }
+                                Status.LOADING -> {
+                                    showProgress(true)
+                                }
+                                Status.ERROR -> {
+                                    showProgress(false)
                                 }
                             }
                         }
-                    )
-                }
-            else {
+                    }
+                )
+            } else {
                 //errorhandling
                 val contextView = this.view
                 if (contextView != null) {
 
-                    Snackbar.make(contextView, "U bent niet ingelogd bij spotify", Snackbar.LENGTH_SHORT)
+                    Snackbar.make(
+                        contextView,
+                        "U bent niet ingelogd bij spotify",
+                        Snackbar.LENGTH_SHORT
+                    )
                         .setAction(
                             ""
                         )
@@ -228,6 +230,7 @@ class MusicRoomFragment: Fragment() {
             }
 
         }
+    }
 
     private fun showProgress(b: Boolean) {
         if (b) {
@@ -237,21 +240,11 @@ class MusicRoomFragment: Fragment() {
         } else {
             if (loadingDialogFragment.isAdded) {
                 loadingDialogFragment.dismissAllowingStateLoss()
-        else
-        {
-            val contextView = this.view
-            if (contextView != null) {
 
-                Snackbar.make(contextView, "Er liep iets mis", Snackbar.LENGTH_SHORT)
-                    .setAction(
-                        ""
-                    )
-                    {
-
-                    }.show()
             }
         }
     }
+
     override fun onDestroy() {
         super.onDestroy()
 

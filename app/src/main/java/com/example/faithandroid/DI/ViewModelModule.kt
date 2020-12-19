@@ -14,7 +14,7 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel { SkyscraperViewModel(get()) }
     viewModel { BillboardViewModel(get()) }
-    viewModel { ProfielViewModel(get()) }
+    viewModel { ProfielViewModel(get(),get()) }
     viewModel { MusicRoomViewModel(get()) }
     viewModel { LoginViewModel(get()) }
     viewModel { AvatarViewModel(get()) }

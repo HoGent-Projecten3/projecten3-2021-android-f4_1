@@ -89,10 +89,8 @@ class SkyscraperViewModel(private val goalPostRepository: GoalPostRepository) : 
     fun goalBehaald(id:Int){
         viewModelScope.launch {
             try {
-                val response = FaithApi.retrofitService.checkGoal(id)
+                val response = goalPostRepository.checkGoal(id)
                 _status.value = "Doel behaald"
-                getPostsOfSkyscraper()
-
             }catch (e: HttpException) {
                 _status.value = "Er liep iets mis" + e.localizedMessage
             }
@@ -107,7 +105,6 @@ class SkyscraperViewModel(private val goalPostRepository: GoalPostRepository) : 
             try {
                  val response = goalPostRepository.shareGoal(id)
                  response.await()
-                getPostsOfSkyscraper()
                 _status.value = "Doel gedeeld"
             } catch (e: Exception){
                 _status.value = "Er liep iets mis"
@@ -121,7 +118,6 @@ class SkyscraperViewModel(private val goalPostRepository: GoalPostRepository) : 
                 goalPostRepository.removeGoal(id)
                 val response = goalPostRepository.removeGoal(id)
                val stringResponse= response.await()
-                getPostsOfSkyscraper()
                 _status.value = "Doel verwijderd";
             } catch (e: Exception){
                 _status.value = "Er liep iets mis"

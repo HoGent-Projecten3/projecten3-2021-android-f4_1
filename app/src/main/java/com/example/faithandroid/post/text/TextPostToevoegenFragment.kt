@@ -49,8 +49,6 @@ class TextPostToevoegenFragment : Fragment() {
         // Inflate the layout for this fragment
         var binding = DataBindingUtil.inflate<AddNewTextBinding>(inflater,
             R.layout.add_new_text, container, false);
-        bulletinBoardViewModel = ViewModelProvider(this).get(BulletinBoardViewModel::class.java)
-
         postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             Snackbar.make(contextView!!, postViewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
