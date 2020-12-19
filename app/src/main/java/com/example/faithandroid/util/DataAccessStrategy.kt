@@ -23,3 +23,22 @@ fun <T, A> performGetOperation(
             emitSource(source)
         }
     }
+
+fun <A> performDelOperation(
+    databaseQuery: () -> Unit,
+    networkCall: suspend () -> Resource<A>,
+    saveCallResult: suspend (A) -> Unit
+): LiveData<Resource<A>> =
+    liveData(Dispatchers.IO) {
+        emit(Resource.loading())
+        val source = databaseQuery.invoke()
+        //emitSource(source)
+
+        val responseStatus = networkCall.invoke()
+        if (responseStatus.status == Status.SUCCESS) {
+            saveCallResult(responseStatus.data!!)
+        } else if (responseStatus.status == Status.ERROR) {
+            emit(Resource.error(responseStatus.message!!))
+            //emitSource(source)
+        }
+    }

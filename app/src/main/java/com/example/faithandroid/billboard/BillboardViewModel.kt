@@ -13,6 +13,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import retrofit2.await
 import java.time.LocalDateTime
 
 class BillboardViewModel(private val goalPostRepository: GoalPostRepository) : ViewModel() {
@@ -31,28 +32,31 @@ class BillboardViewModel(private val goalPostRepository: GoalPostRepository) : V
 
     //private val _properties = MutableLiveData<List<GoalPost>>()
 
-    var properties: LiveData<Resource<List<GoalPost>>> = goalPostRepository.getBillboardGoals()
+    private val _properties = MutableLiveData<List<GoalPost>>()
+
+    val properties: LiveData<List<GoalPost>>
+        get() = _properties
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    /*init {
+    init {
         getPosts()
     }
 
-    public fun getPosts() {
+      fun getPosts() {
         coroutineScope.launch {
             var getPropertiesDeferred = goalPostRepository.getBillboardGoals()
             try {
-                var listResult = getPropertiesDeferred
-                if(listResult.value?.data != null){
+                var listResult = getPropertiesDeferred.await()
+                if(listResult.size > 0){
                     _properties.value = listResult
                 }
             } catch (e: Exception){
                 _status.value = "Failure: ${e.message}"
             }
         }
-    }*/
+    }
 
 
 

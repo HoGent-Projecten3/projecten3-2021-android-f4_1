@@ -7,9 +7,9 @@ import com.example.faithandroid.network.FaithApiService
 class PostRemoteDataSource(private val apiService: FaithApiService) : BaseDataSource() {
 
 
-    suspend fun getPostsOfPlaceByAdolescentEmail(placeType: Int) = getResult {apiService.getPostsOfPlaceByAdolescentEmail(placeType) }
+    fun getPostsOfPlaceByAdolescentEmail(placeType: Int) = apiService.getPostsOfPlaceByAdolescentEmail(placeType)
 
-    suspend fun getFilteredFromPlace(placeType: Int,postType: Int) = getResult { apiService.getFilteredFromPlace(placeType,postType) }
+    fun getFilteredFromPlace(placeType: Int,postType: Int) = apiService.getFilteredFromPlace(placeType,postType)
 
     fun addPostByEmail(post: Post, placeType: Int) = apiService.addPostByEmail(placeType,post)
 

@@ -47,7 +47,7 @@ interface FaithApiService {
     suspend fun getPostsOfSkyScraper(): Response<List<GoalPost>>
 
     @GET("city/billboard/group")
-    suspend fun getGoalsOfGroup(): Response<List<GoalPost>>
+    fun getGoalsOfGroup(): Call<List<GoalPost>>
 
 
     @Headers("Content-Type: application/json")
@@ -63,10 +63,10 @@ interface FaithApiService {
     fun removeGoal(@Path("id") id: Int): Call<String>
 
     @GET("city/{placeType}/filtered-post")
-    suspend fun getFilteredFromPlace(@Path("placeType") placeType: Int, @Query("postType") postType: Int): Response<List<Post>>
+    fun getFilteredFromPlace(@Path("placeType") placeType: Int, @Query("postType") postType: Int): Call<List<Post>>
 
     @GET("city/{placeType}/post")
-    suspend fun getPostsOfPlaceByAdolescentEmail(@Path("placeType") placeType: Int): Response<List<Post>>
+    fun getPostsOfPlaceByAdolescentEmail(@Path("placeType") placeType: Int): Call<List<Post>>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @POST("city/{placeType}/post")
@@ -104,7 +104,7 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @GET("/avatar")
-    suspend fun getAvatar(): Response<Avatar>
+     fun getAvatar(): Call<Avatar>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @PUT("/change-avatar")

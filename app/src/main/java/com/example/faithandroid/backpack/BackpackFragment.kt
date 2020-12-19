@@ -27,7 +27,7 @@ import org.koin.android.ext.android.inject
 
 class BackpackFragment: Fragment() {
 
-    private lateinit var postAdapter: PostAdapter
+    //private lateinit var postAdapter: PostAdapter
     private lateinit var dropdownList: AutoCompleteTextView
     private val loadingDialogFragment by lazy { LoadingFragment() }
     val postRepository : PostRepository by inject()
@@ -44,10 +44,6 @@ class BackpackFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-<<<<<<< HEAD
-
-=======
->>>>>>> a623ab5 (kleine aanpassingen)
       val binding = DataBindingUtil.inflate<BackpackBinding>(
           inflater,
           R.layout.backpack,
@@ -64,7 +60,7 @@ class BackpackFragment: Fragment() {
 
         val postTypes =  PostType.values()
 
-        val adapter1 = this.context?.let {
+        val adapter = this.context?.let {
             ArrayAdapter<PostType>(
                 it,
                 R.layout.dropdown_menu_popup_item_extra,
@@ -72,7 +68,7 @@ class BackpackFragment: Fragment() {
             )
         }
         dropdownList = binding.dropdownFilter
-        dropdownList.setAdapter(adapter1)
+        dropdownList.setAdapter(adapter)
         dropdownList.setText("Alles", false)
         dropdownList.setOnItemClickListener { parent, view, position, id ->
 
@@ -80,12 +76,6 @@ class BackpackFragment: Fragment() {
                 PlaceType.Rugzak,
                 postTypes[position]
             )
-<<<<<<< HEAD
-=======
-            /*Snackbar.make( view,postViewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(""
-            )
-            { }.show()*/
->>>>>>> a623ab5 (kleine aanpassingen)
         }
         binding.postViewModel = postViewModel
 
@@ -103,16 +93,10 @@ class BackpackFragment: Fragment() {
 
 
 
+        //postAdapter = PostAdapter()
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        //postAdapter = PostAdapter()
-=======
-        postAdapter = PostAdapter(this)
->>>>>>> 97bc67a (kleine aanpassingen)
-=======
-        //postAdapter = PostAdapter()
->>>>>>> a623ab5 (kleine aanpassingen)
+
+
 
         binding.BackpackRecycler.adapter =
             PostAdapter(object : CustomClick {
@@ -130,33 +114,29 @@ class BackpackFragment: Fragment() {
                 when (resource.status) {
                     Status.SUCCESS -> {
                         showProgress(false)
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                         Log.d("repodata",postViewModel.postList.value?.data.toString())
                         postAdapter.submitList(resource.data)
                     }
                 })
                 return binding.root
-=======
-                        adapter.submitList(resource.data)
-=======
-=======
-                        Log.d("repodata",postViewModel.postList.value?.data.toString())
->>>>>>> a623ab5 (kleine aanpassingen)
                         postAdapter.submitList(resource.data)
->>>>>>> 97bc67a (kleine aanpassingen)
-                    }
-                    Status.LOADING -> {
-                        showProgress(true)
-                    }
-                    Status.ERROR -> {
-                        showProgress(false)
-                    }
-                }
->>>>>>> 8b69d0a (repository spotify + posts niet af)
             }
         })*/
+
+        postViewModel.status.observe(this.viewLifecycleOwner, Observer {
+            val contextView = this.view
+            if (contextView != null) {
+
+                Snackbar.make(contextView, "Er is niets om weer te geven", Snackbar.LENGTH_SHORT)
+                    .setAction(
+                        ""
+                    )
+                    {
+
+                    }.show()
+            }
+        })
+
         return binding.root
     }
 
@@ -192,14 +172,3 @@ class BackpackFragment: Fragment() {
             }
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    override fun onClick(post: Post) {
-        TODO("Not yet implemented")
-    }
-=======
->>>>>>> a623ab5 (kleine aanpassingen)
-
-}
->>>>>>> 97bc67a (kleine aanpassingen)
