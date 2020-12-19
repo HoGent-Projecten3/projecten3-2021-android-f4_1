@@ -129,17 +129,17 @@ class BulletinboardFragment: Fragment() {
                 }
             })
 
-        /*postViewModel.status.observe(this.viewLifecycleOwner, Observer {
+        postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
                 Snackbar.make(contextView, postViewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
                     R.string.tryAgain
                 )
                 {
-                    //viewModel.getPostsOfBulletinBoard()
+                    postViewModel.getPostsOfPlace(PlaceType.Prikbord)
                 }.show()
             }
-        })*/
+        })
 
         binding.include.deletePostsBtn.setOnClickListener{
             try{
@@ -171,7 +171,7 @@ class BulletinboardFragment: Fragment() {
 
         }
 
-        postViewModel.postList.observe(this.viewLifecycleOwner, Observer
+       /* postViewModel.postList.observe(this.viewLifecycleOwner, Observer
         {
             it?.let { resource ->
                 when (resource.status) {
@@ -187,7 +187,7 @@ class BulletinboardFragment: Fragment() {
                     }
                 }
             }
-        })
+        })*/
 
         return binding.root
     }

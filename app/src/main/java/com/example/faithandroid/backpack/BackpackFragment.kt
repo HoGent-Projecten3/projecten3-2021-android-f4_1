@@ -27,7 +27,7 @@ import org.koin.android.ext.android.inject
 
 class BackpackFragment: Fragment() {
 
-    private lateinit var postAdapter: PostAdapter
+    //private lateinit var postAdapter: PostAdapter
     private lateinit var dropdownList: AutoCompleteTextView
     private val loadingDialogFragment by lazy { LoadingFragment() }
     val postRepository : PostRepository by inject()
@@ -61,7 +61,7 @@ class BackpackFragment: Fragment() {
 
         val postTypes =  PostType.values()
 
-        val adapter1 = this.context?.let {
+        val adapter = this.context?.let {
             ArrayAdapter<PostType>(
                 it,
                 R.layout.dropdown_menu_popup_item_extra,
@@ -69,7 +69,7 @@ class BackpackFragment: Fragment() {
             )
         }
         dropdownList = binding.dropdownFilter
-        dropdownList.setAdapter(adapter1)
+        dropdownList.setAdapter(adapter)
         dropdownList.setText("Alles", false)
         dropdownList.setOnItemClickListener { parent, view, position, id ->
 
@@ -92,10 +92,6 @@ class BackpackFragment: Fragment() {
             view.findNavController().navigate(action)
         }
 
-
-
-
-        //postAdapter = PostAdapter()
 
         binding.BackpackRecycler.adapter =
             PostAdapter(object : CustomClick {
@@ -121,6 +117,21 @@ class BackpackFragment: Fragment() {
                 return binding.root
             }
         })*/
+
+        postViewModel.status.observe(this.viewLifecycleOwner, Observer {
+            val contextView = this.view
+            if (contextView != null) {
+
+                Snackbar.make(contextView, "Er is niets om weer te geven", Snackbar.LENGTH_SHORT)
+                    .setAction(
+                        ""
+                    )
+                    {
+
+                    }.show()
+            }
+        })
+
         return binding.root
     }
 

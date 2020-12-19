@@ -56,7 +56,7 @@ class BillboardFragment: Fragment() {
                     R.string.tryAgain
                 )
                 {
-                    viewModel.properties
+                    viewModel.getPosts()
                 }.show()
             }
         })

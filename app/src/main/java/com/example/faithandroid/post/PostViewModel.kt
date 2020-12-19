@@ -24,8 +24,8 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
 
     //lateinit var postList: LiveData<Resource<List<Post>>>
 
-    private var _postList = MutableLiveData<Resource<List<Post>>>()
-    var postList: LiveData<Resource<List<Post>>> = MutableLiveData<Resource<List<Post>>>()
+    private var _postList = MutableLiveData<List<Post>>()
+    var postList: LiveData<List<Post>> = MutableLiveData<List<Post>>()
         get() = _postList
 
 
@@ -44,26 +44,52 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
         getPostsOfPlace(placeType)
     }
 
-     fun getPostsOfPlace(placeType: PlaceType)    {
+     /*fun getPostsOfPlace(placeType: PlaceType)    {
         var test = postRepository.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
         _postList = test as MutableLiveData<Resource<List<Post>>>
-        }
+        }*/
 
       fun getFilteredPostFromPlace(placeType: PlaceType, postType: PostType) {
-            _postList = postRepository.getFilteredFromPlace(
-                placeType.ordinal,
-                postType.ordinal
-            ) as MutableLiveData<Resource<List<Post>>>
+          viewModelScope.launch {
+
+              val stringCall: Call<List<Post>> =
+                  postRepository.getFilteredFromPlace(placeType.ordinal, postType.ordinal)
+
+              stringCall.enqueue(object : Callback<List<Post>> {
+
+                  override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
+                      if (response.isSuccessful()) {
+                          if(response.body()!!.isEmpty())
+                          {
+                              _status.value = "Sorry er is niets om weer te geven"
+                              _postList.value = response.body()
+                          }else {
+                              _postList.value = response.body()
+                          }
+                      }
+                      else {
+                          _status.value = "Er kon geen verbinding gemaakt worden"
+                      }
+                  }
+
+                  override fun onFailure(call: Call<List<Post>>?, t: Throwable?) {
+                      _status.value = "Er liep iets mis"
+                  }
+
+              })
+
+
+          }
     }
 
-    /*fun getPostsOfPlace(placeType: PlaceType)    {
+    fun getPostsOfPlace(placeType: PlaceType)    {
         viewModelScope.launch {
             val stringCall: Call<List<Post>> =
-                FaithApi.retrofitService.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
+                postRepository.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
             stringCall.enqueue(object : Callback<List<Post>> {
                 override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
                     if (response.isSuccessful()) {
-                        _posts.value = response.body()
+                        _postList.value = response.body()
                     }
                 }
                 override fun onFailure(call: Call<List<Post>>?, t: Throwable?) {
@@ -73,7 +99,7 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
                 }
             })
         }
-    }*/
+    }
 
     fun addPostByEmail(post: Post, placeType: PlaceType): Boolean{
         var bool: Boolean = true
@@ -120,9 +146,9 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
 
     fun deletePostByEmail(id: Int,  placeType: PlaceType)    {
         viewModelScope.launch {
-            val stringCall: Call<Void> =
+            val stringCall: LiveData<Resource<Void>> =
                 postRepository.deletePostByEmail(placeType.ordinal,id)
-            stringCall.enqueue(object : Callback<Void> {
+            /*stringCall.enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful()) {
                         val responseString: String? = response.code().toString()
@@ -134,7 +160,7 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
                 override fun onFailure(call: Call<Void>?, t: Throwable?) {
 
                 }
-            })
+            })*/
         }
     }
 

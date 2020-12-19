@@ -166,7 +166,7 @@ class ShoppingCenterFragment: Fragment() {
             body.let { ColorSvgs.setBody(it, vectorMasterViewA, vectorMasterViewB) }
         })*/
 
-        viewModel.currentAvatar.observe(this.viewLifecycleOwner, Observer
+        /*viewModel.currentAvatar.observe(this.viewLifecycleOwner, Observer
         {
             it?.let { resource ->
                 when (resource.status) {
@@ -204,6 +204,29 @@ class ShoppingCenterFragment: Fragment() {
                     }
                 }
             }
+        })*/
+
+        viewModel.currentAvatar.observe(this.viewLifecycleOwner, Observer{
+            character = viewModel.currentAvatar.value?.person!!
+            if (character == 0){
+                binding.imgAvatarA.setVisibility(View.VISIBLE)
+                binding.imgAvatarB.setVisibility(View.GONE)
+            } else {
+                binding.imgAvatarA.setVisibility(View.GONE)
+                binding.imgAvatarB.setVisibility(View.VISIBLE)
+            }
+
+            hair = viewModel.currentAvatar.value?.hair!!
+            hair.let { ColorSvgs.setHair(it, vectorMasterViewA, vectorMasterViewB) }
+
+            eyes = viewModel.currentAvatar.value?.eyes!!
+            eyes.let { ColorSvgs.setEyes(it, vectorMasterViewA, vectorMasterViewB) }
+
+            skin = viewModel.currentAvatar.value?.skin!!
+            skin.let { ColorSvgs.setSkin(it, vectorMasterViewA, vectorMasterViewB) }
+
+            body = viewModel.currentAvatar.value?.upperBody!!
+            body.let { ColorSvgs.setBody(it, vectorMasterViewA, vectorMasterViewB) }
         })
 
         viewModel.status.observe(this.viewLifecycleOwner, Observer {

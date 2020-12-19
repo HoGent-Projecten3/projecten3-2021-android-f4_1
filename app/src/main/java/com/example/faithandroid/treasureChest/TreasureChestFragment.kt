@@ -77,7 +77,7 @@ class TreasureChestFragment: Fragment() {
                 }
             })
 
-        /*postViewModel.status.observe(this.viewLifecycleOwner, Observer {
+        postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
                 Snackbar.make(contextView, postViewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
@@ -92,15 +92,9 @@ class TreasureChestFragment: Fragment() {
         postViewModel.postList.observe(this.viewLifecycleOwner, Observer{
 
             this.adapter.notifyDataSetChanged()
-        })*/
-
-
-        postViewModel.postList.observe(this.viewLifecycleOwner, Observer{
-
-            this.adapter.notifyDataSetChanged()
         })
 
-        postViewModel.postList.observe(this.viewLifecycleOwner, Observer
+       /* postViewModel.postList.observe(this.viewLifecycleOwner, Observer
         {
             it?.let { resource ->
                 when (resource.status) {
@@ -116,7 +110,7 @@ class TreasureChestFragment: Fragment() {
                     }
                 }
             }
-        })
+        })*/
 
         return binding.root
     }

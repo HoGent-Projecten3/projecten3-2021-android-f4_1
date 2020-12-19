@@ -12,6 +12,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import okhttp3.internal.wait
 import retrofit2.await
 
 class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewModel() {
@@ -70,15 +71,15 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
 
         )
 
-    var currentAvatar : LiveData<Resource<Avatar>> = avatarRepository.getAvatar()
+    private var _currentAvatar = MutableLiveData<Avatar>()
 
     private val _hairProperties = MutableLiveData<List<Int>>()
     private val _eyeProperties = MutableLiveData<List<Int>>()
     private val _skinProperties = MutableLiveData<List<Int>>()
     private val _bodyProperties = MutableLiveData<List<Int>>()
 
-    //val currentAvatar: MutableLiveData<Avatar>
-      //  get() = _currentAvatar
+    val currentAvatar: MutableLiveData<Avatar>
+        get() = _currentAvatar
 
     val hairProperties: MutableLiveData<List<Int>>
         get() = _hairProperties
@@ -121,33 +122,30 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
      }
 
      private fun getAvatar(){
+         coroutineScope.launch {
 
+             try {
+                 var getAvatar = avatarRepository.getAvatar()
+                 var result = getAvatar.await()
+                 _currentAvatar.value = result
+                 AppPreferences.currentPerson = currentAvatar.value?.person
+                 AppPreferences.currentHair = currentAvatar.value?.hair
+                 AppPreferences.currentEyes = currentAvatar.value?.eyes
+                 AppPreferences.currentSkin = currentAvatar.value?.skin
+                 AppPreferences.currentBody = currentAvatar.value?.upperBody
 
-                try{
-                    //var getAvatar = avatarRepository.getAvatar()
-                    //var result = getAvatar.value?.data
-
-                    //_currentAvatar.value = result
-                    AppPreferences.currentPerson = currentAvatar.value?.data?.person
-                    AppPreferences.currentHair = currentAvatar.value?.data?.hair
-                    AppPreferences.currentEyes = currentAvatar.value?.data?.eyes
-                    AppPreferences.currentSkin = currentAvatar.value?.data?.skin
-                    AppPreferences.currentBody = currentAvatar.value?.data?.upperBody
-
-                }
-                catch (e: Exception)
-                {
-                    _status.value = "Kan geen verbinding maken met de server"
-                }
-
+             } catch (e: Exception) {
+                 _status.value = "Kan geen verbinding maken met de server"
+             }
+         }
     }
 
      fun postAvatar(character: Int, hair: Int, eyes: Int, skin: Int, body: Int){
-        //coroutineScope.launch{
+        coroutineScope.launch{
             try{
                 val avatar: Avatar = Avatar(id = 0,person = character, hair = hair, eyes = eyes, skin = skin, upperBody = body)
-                avatarRepository.postAvatar(avatar)
-                //currentAvatar = avatar
+                avatarRepository.postAvatar(avatar).await()
+                _currentAvatar.value = avatar
                 AppPreferences.currentPerson = character
                 AppPreferences.currentHair = hair
                 AppPreferences.currentEyes = eyes
@@ -161,7 +159,7 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
                 _status.value = "niet gelukt!"
             }
         }
-    //}
+    }
 
 
 

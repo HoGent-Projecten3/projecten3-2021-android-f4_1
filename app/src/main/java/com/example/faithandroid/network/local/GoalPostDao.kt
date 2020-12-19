@@ -16,11 +16,11 @@ interface GoalPostDao {
     @Query("select * from goalPosts")
     fun getGoalsWithSteps(): List<GoalWithSteps>*/
 
-    @Query("select * from goalPosts where shared = 1")
+    @Query("select * from goalPosts where shared == 1")
     fun getBillboardGoals(): LiveData<List<GoalPost>>
 
-    //@Insert
-    //fun postGoalPost(goal: GoalPost)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAllBill(list: List<GoalPost>)
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

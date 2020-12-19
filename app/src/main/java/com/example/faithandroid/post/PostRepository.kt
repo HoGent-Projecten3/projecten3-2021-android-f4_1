@@ -4,12 +4,13 @@ import com.example.faithandroid.data.local.PostLocalDataSource
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.network.remote.PostRemoteDataSource
+import com.example.faithandroid.util.performDelOperation
 import com.example.faithandroid.util.performGetOperation
 import retrofit2.http.Path
 
 class PostRepository(private val localDataSource: PostLocalDataSource, private val remoteDataSource: PostRemoteDataSource) {
 
-     fun getPostsOfPlaceByAdolescentEmail(placeType: Int) =
+     /*fun getPostsOfPlaceByAdolescentEmail(placeType: Int) =
 
         performGetOperation(
             databaseQuery = {
@@ -27,9 +28,11 @@ class PostRepository(private val localDataSource: PostLocalDataSource, private v
             },
             networkCall = { remoteDataSource.getPostsOfPlaceByAdolescentEmail(placeType) },
             saveCallResult = { localDataSource.savePosts(it) }
-        )
+        )*/
 
-     fun getFilteredFromPlace(placeType: Int,postType: Int) =
+    fun getPostsOfPlaceByAdolescentEmail(placeType: Int) = remoteDataSource.getPostsOfPlaceByAdolescentEmail(placeType)
+
+     /*fun getFilteredFromPlace(placeType: Int,postType: Int) =
 
         performGetOperation(
             databaseQuery = {
@@ -47,16 +50,17 @@ class PostRepository(private val localDataSource: PostLocalDataSource, private v
             },
             networkCall = { remoteDataSource.getFilteredFromPlace(placeType, postType) },
             saveCallResult = { localDataSource.savePosts(it) }
-        )
+        )*/
 
+    fun getFilteredFromPlace(placeType: Int,postType: Int) = remoteDataSource.getFilteredFromPlace(placeType,postType)
 
     fun addPostByEmail(post: Post, placeType: Int) = remoteDataSource.addPostByEmail(post,placeType)
 
     fun deletePostByEmail(placeType: Int,postId: Int) =
-        performGetOperation(
-            databaseQuery = {remoteDataSource.deletePostByEmail(postId)},
+        performDelOperation(
+            databaseQuery = {localDataSource.deletePostFromPlace(postId)},
             networkCall = {remoteDataSource.deletePostByEmail(placeType,postId)},
-            saveCallResult = {}
+            saveCallResult = {localDataSource.deletePostFromPlace(postId)}
         )
 
 
