@@ -120,8 +120,6 @@ class addPhotoFragment: Fragment() {
                 PostType.Image
             )
         }
-
-
         viewModel.getFilteredPostFromPlace(
             PlaceType.Rugzak,
             PostType.Image
@@ -154,7 +152,6 @@ class addPhotoFragment: Fragment() {
             {
                 if(post != null)
                 {
-
                     viewModel.addExistingPostToPlace(post!!.id, args.placeType)
                 }
             }
@@ -175,11 +172,6 @@ class addPhotoFragment: Fragment() {
                 }
             }
         }
-
-
-
-
-
         return binding.root
     }
 
@@ -197,8 +189,6 @@ class addPhotoFragment: Fragment() {
             }else{
              imageString = data?.data?.let { uriToBase64(it) }
             }
-
-
              this.post = Post(
                  0,
                  "foto van hond",

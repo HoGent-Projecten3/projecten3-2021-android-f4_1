@@ -47,14 +47,12 @@ class SkyscraperFragment: Fragment() {
             val contextView = this.view
             if (contextView != null) {
                 Snackbar.make(contextView, viewModel.getStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
-                    R.string.tryAgain
+                    ""//R.string.tryAgain
                 )
                 {
                 }.show()
             }
         })
-
-
 
         binding.AddPostButton.setOnClickListener {view: View ->
             view.findNavController().navigate(R.id.action_skyscraperFragment_to_addGoalFragment)
@@ -140,13 +138,11 @@ class SkyscraperFragment: Fragment() {
    /* override fun onStart(){
 
         super.onStart()
-
         viewModel.getPostsOfSkyscraper()
     }
 
     override fun onResume() {
         super.onResume()
-
         viewModel.getPostsOfSkyscraper()
     }*/
 

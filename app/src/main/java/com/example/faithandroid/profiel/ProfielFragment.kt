@@ -24,7 +24,7 @@ import org.koin.android.ext.android.inject
 import com.example.faithandroid.models.Avatar
 import com.sdsmdg.harjot.vectormaster.VectorMasterView
 import org.koin.android.ext.android.inject
-
+import java.lang.Exception
 
 
 class ProfielFragment: Fragment() {
@@ -57,7 +57,21 @@ class ProfielFragment: Fragment() {
         this.vectorMasterViewA = binding.imgAvatarA as VectorMasterView
         this.vectorMasterViewB = binding.imgAvatarB as VectorMasterView
 
-        //viewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
+        try {
+            viewModel.getAdolescent()
+        }catch(e: Exception){
+            var contextView = this.view;
+            com.google.android.material.snackbar.Snackbar.make(
+                contextView!!,
+                "Er liep iets mis bij het ophalen van de gebruiker",
+                com.google.android.material.snackbar.Snackbar.LENGTH_SHORT)
+            .setAction(
+                "Try again"
+            )
+            {
+                viewModel.getAdolescent();
+            }.show()
+        }
 
         //viewModel.getAdolescent()
 

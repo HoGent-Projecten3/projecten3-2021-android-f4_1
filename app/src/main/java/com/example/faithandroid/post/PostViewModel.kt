@@ -33,9 +33,10 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
     val requestConsultationStatus: LiveData<String>
         get() = _requestConsultationStatus
 
-    private val _status = MutableLiveData<String>()
-    val status: LiveData<String>
+    private var _status = MutableLiveData<String>()
+    var status: LiveData<String>
         get() = _status
+        set(text) { _status.value = text.value }
 
 //    private var viewModelJob = Job()
 //    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -96,6 +97,7 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
                     t?.localizedMessage?.let {
 
                     }
+                    _status.value = "Er kon geen posts worden opgehaald."
                 }
             })
         }
@@ -110,6 +112,7 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
             stringCall.enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful()) {
+
                         val responseString: String? = response.code().toString()
                         if (responseString != null) {
 
@@ -118,6 +121,7 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
                 }
                 override fun onFailure(call: Call<Void>?, t: Throwable?) {
                     bool = false
+                    _status.value = "Er liep iets mis bij het toevoegen."
                 }
             })
         }
@@ -125,7 +129,9 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
         }
 
     fun addExistingPostToPlace(id: Int, placeType: PlaceType)    {
+
         viewModelScope.launch {
+            Log.d("testVideo", id.toString() + placeType.name)
             val stringCall: Call<Void> =
                 postRepository.addExistingPostToPlace(id, placeType.ordinal)
             stringCall.enqueue(object : Callback<Void> {
@@ -133,15 +139,16 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
                     if (response.isSuccessful()) {
                         val responseString: String? = response.code().toString()
                         if (responseString != null) {
-
                         }
+                        _status.value = "Post toegevoegd!"
                     }
                 }
                 override fun onFailure(call: Call<Void>?, t: Throwable?) {
-
+                    _status.value = "Er liep iets mis bij het toevoegen.";
                 }
             })
         }
+        Log.d("testVideo", "Heeft methode doorlopen")
     }
 
     fun deletePostByEmail(id: Int,  placeType: PlaceType)    {
@@ -158,7 +165,7 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
                     }
                 }
                 override fun onFailure(call: Call<Void>?, t: Throwable?) {
-
+                    _status.value = "Er liep iets mis bij het verwijderen."
                 }
             })*/
         }
@@ -190,12 +197,10 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
                             }
                         }
                     }
-
-                    override fun onFailure(call: Call<Void>?, t: Throwable?) {
-
-                    }
-                })
-            }
+                override fun onFailure(call: Call<Void>?, t: Throwable?) {
+                    _status.value = "Er liep iets mis bij het verwijderen."
+                }
+            })
         }
 }
 

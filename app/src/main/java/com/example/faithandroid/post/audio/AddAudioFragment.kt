@@ -18,6 +18,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
@@ -27,6 +28,7 @@ import com.example.faithandroid.databinding.AudioToevoegenBinding
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.audio_toevoegen.*
 import org.koin.android.ext.android.inject
@@ -43,7 +45,7 @@ class AddAudioFragment: Fragment() {
     private var mediaRecorder: MediaRecorder? = null
     private var state: Boolean = false
     private var recordingStopped: Boolean = false
-    lateinit var audioPost : String
+    var audioPost : String =""
     private lateinit var viewModel: PostViewModel
     val postRepository : PostRepository by inject()
 
@@ -80,6 +82,15 @@ class AddAudioFragment: Fragment() {
                 ViewModelFactory(args.placeType,postRepository)
             ).get(PostViewModel::class.java)
 
+        viewModel.status.observe(this.viewLifecycleOwner, Observer {
+            val contextView = this.view
+            Snackbar.make(contextView!!, viewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                ""
+            )
+            {
+            }.show()
+        })
+
         val placeTypes = PlaceType.values()
 
         val adapter = this.context?.let {
@@ -104,6 +115,9 @@ class AddAudioFragment: Fragment() {
             PlaceType.Rugzak,
             PostType.Audio
         )
+
+
+
         binding.viewModel = viewModel
 
         binding.icVoice.setOnClickListener{
@@ -140,16 +154,20 @@ class AddAudioFragment: Fragment() {
 
         }
 
-        binding.recyclerView.adapter = FilteredPostAdapter(object :
-            CustomClick {
+        binding.recyclerView.adapter = FilteredPostAdapter(object :CustomClick {
             override fun onClick(post: Post) {
                 this@AddAudioFragment.post = post
                 true
             }
         })
 
+
         binding.audioToevoegenButton.setOnClickListener {
 
+
+
+            if(nieuwePost)
+            {
                 this.post = Post(
                     0,
                     "audio",
@@ -163,8 +181,6 @@ class AddAudioFragment: Fragment() {
                     false
                 )
 
-            if(nieuwePost)
-            {
                 post?.title = binding.titel.text.toString()
                 post?.dataBytes = audioPost
 

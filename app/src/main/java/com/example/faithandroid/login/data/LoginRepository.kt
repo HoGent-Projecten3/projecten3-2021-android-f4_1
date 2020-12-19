@@ -46,13 +46,12 @@ class LoginRepository(val dataSource: LoginDataSource) {
         val result2 = dataSource.getAdolescent(username)
 
         if (result2 is Result.Success) {
-            Log.d("tag", result2.data.toString())
             setLoggedInUser(result2.data)
             return result2
         }
         else
         {
-            throw NullPointerException()
+           return Result.Error(result2.toString())
         }
 
 
@@ -70,7 +69,7 @@ class LoginRepository(val dataSource: LoginDataSource) {
               }
               else
               {
-                  throw NullPointerException()
+                  return Result.Error(result.toString())
               }
 
       }

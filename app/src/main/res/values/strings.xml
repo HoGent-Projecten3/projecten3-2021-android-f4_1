@@ -53,7 +53,7 @@
     <string name="welcome">"Welkom "</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="login_failed">"Inloggen is niet gelukt!"</string>
     <string name="email">Vul hier je e-mail in</string>
     <string name="tryAgain">probeer opnieuw</string>
     <string name="aanvraag_gesprek_dialogbox">Gesprek met je begeleider</string>
