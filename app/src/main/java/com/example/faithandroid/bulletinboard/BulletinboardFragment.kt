@@ -21,20 +21,25 @@ import com.example.faithandroid.*
 import com.example.faithandroid.databinding.BulletinboardBinding
 import com.example.faithandroid.adapters.PostAdapter
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
+import com.example.faithandroid.util.Status
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.app_bar_back.view.*
 import kotlinx.android.synthetic.main.skyscraper_add_goal.view.*
+import org.koin.android.ext.android.inject
 
 
 class BulletinboardFragment: Fragment() {
 
-    private lateinit var viewModel: BulletinBoardViewModel
-    private val postViewModel: PostViewModel by lazy{
-        ViewModelProvider(this, ViewModelFactory(PlaceType.Prikbord)).get(PostViewModel::class.java)
-    }
     private lateinit var deleteBtn: ImageView
+    private lateinit var adapter: PostAdapter
+    private val loadingDialogFragment by lazy { LoadingFragment() }
+    val postRepository : PostRepository by inject()
+    private val postViewModel: PostViewModel by lazy{
+        ViewModelProvider(this, ViewModelFactory(PlaceType.Prikbord,postRepository)).get(PostViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,8 +57,8 @@ class BulletinboardFragment: Fragment() {
           false
       );
 
-        binding.lifecycleOwner = this
-
+        binding.lifecycleOwner = viewLifecycleOwner
+        postViewModel.getPostsOfPlace(PlaceType.Prikbord)
 
         deleteBtn = binding.include.deletePostsBtn
 
@@ -68,9 +73,9 @@ class BulletinboardFragment: Fragment() {
 
                     .setPositiveButton("Ja") { dialog, which ->
                         // Respond to positive button press
-                        viewModel.requestConsultation()
+                        postViewModel.requestConsultation()
                         this.view?.let { view ->
-                            viewModel.requestConsultationStatus.value?.let { string ->
+                            postViewModel.requestConsultationStatus.value?.let { string ->
                                 Snackbar.make(view, string, Snackbar.LENGTH_SHORT)
                                     .show()
                             }
@@ -86,6 +91,8 @@ class BulletinboardFragment: Fragment() {
 
         }
 
+
+
         binding.AddPostButton.setOnClickListener { view: View ->
             val action =
                 BulletinboardFragmentDirections.actionBulletinBoardFragmentToOptionsAddPostFragment(
@@ -94,9 +101,16 @@ class BulletinboardFragment: Fragment() {
             view.findNavController().navigate(action)
         }
 
-        viewModel = ViewModelProvider(this).get(BulletinBoardViewModel::class.java)
 
         binding.viewModel = postViewModel
+        adapter = PostAdapter(object : CustomClick {
+            override fun onClick(post: Post) {
+
+                postViewModel.deletePostByEmail(post.id, PlaceType.Prikbord)
+                true
+            }
+        })
+
         binding.BulletinBoardRecycler?.adapter =
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
@@ -118,11 +132,11 @@ class BulletinboardFragment: Fragment() {
         postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
-                Snackbar.make(contextView, viewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                Snackbar.make(contextView, postViewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
                     R.string.tryAgain
                 )
                 {
-                    //viewModel.getPostsOfBulletinBoard()
+                    postViewModel.getPostsOfPlace(PlaceType.Prikbord)
                 }.show()
             }
         })
@@ -136,7 +150,7 @@ class BulletinboardFragment: Fragment() {
 
                         .setPositiveButton("Ja") { dialog, which ->
                             // Respond to positive button press
-                            viewModel.deleteAllBulletinPosts();
+                            //postViewModel.deleteAllBulletinPosts();
                             this.view?.let { view ->
                                 Snackbar.make(view, "Posts verwijdert", Snackbar.LENGTH_SHORT)
                                     .show()
@@ -156,6 +170,24 @@ class BulletinboardFragment: Fragment() {
             }
 
         }
+
+       /* postViewModel.postList.observe(this.viewLifecycleOwner, Observer
+        {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        showProgress(false)
+                        adapter.submitList(resource.data)
+                    }
+                    Status.LOADING -> {
+                        showProgress(true)
+                    }
+                    Status.ERROR -> {
+                        showProgress(false)
+                    }
+                }
+            }
+        })*/
 
         postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
@@ -177,7 +209,6 @@ class BulletinboardFragment: Fragment() {
 
     override fun onStart(){
         super.onStart()
-        postViewModel.getPostsOfPlace(PlaceType.Prikbord)
         deleteBtn.visibility = VISIBLE
     }
 
@@ -186,9 +217,15 @@ class BulletinboardFragment: Fragment() {
         deleteBtn.visibility = INVISIBLE
     }
 
-    override fun onResume() {
-        super.onResume()
-
-        postViewModel.getPostsOfPlace(PlaceType.Prikbord)
+    private fun showProgress(b: Boolean) {
+        if (b) {
+            if (!loadingDialogFragment.isAdded) {
+                loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
+            }
+        } else {
+            if (loadingDialogFragment.isAdded) {
+                loadingDialogFragment.dismissAllowingStateLoss()
+            }
+        }
     }
 }

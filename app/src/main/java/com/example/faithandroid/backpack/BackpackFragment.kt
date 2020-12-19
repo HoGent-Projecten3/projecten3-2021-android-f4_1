@@ -18,16 +18,21 @@ import com.example.faithandroid.*
 import com.example.faithandroid.adapters.PostAdapter
 import com.example.faithandroid.databinding.BackpackBinding
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
+import com.example.faithandroid.util.Status
 import com.google.android.material.snackbar.Snackbar
+import org.koin.android.ext.android.inject
 
 
 class BackpackFragment: Fragment() {
 
-    private lateinit var viewModel: BackpackViewModel
+    //private lateinit var postAdapter: PostAdapter
     private lateinit var dropdownList: AutoCompleteTextView
+    private val loadingDialogFragment by lazy { LoadingFragment() }
+    val postRepository : PostRepository by inject()
     private val postViewModel: PostViewModel by lazy{
-        ViewModelProvider(this, ViewModelFactory(PlaceType.Rugzak)).get(PostViewModel::class.java)
+        ViewModelProvider(this, ViewModelFactory(PlaceType.Rugzak,postRepository)).get(PostViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,8 +44,7 @@ class BackpackFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        val binding = DataBindingUtil.inflate<BackpackBinding>(
+      val binding = DataBindingUtil.inflate<BackpackBinding>(
           inflater,
           R.layout.backpack,
           container,
@@ -48,8 +52,7 @@ class BackpackFragment: Fragment() {
       );
 
 
-        binding.lifecycleOwner = this
-        viewModel = ViewModelProvider(this).get(BackpackViewModel::class.java)
+        binding.lifecycleOwner = viewLifecycleOwner
 
         // staggeredGridLayoutManager with 3 columns and vertical orientation
         val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
@@ -73,7 +76,6 @@ class BackpackFragment: Fragment() {
                 PlaceType.Rugzak,
                 postTypes[position]
             )
-
         }
         binding.postViewModel = postViewModel
 
@@ -90,16 +92,36 @@ class BackpackFragment: Fragment() {
         }
 
 
+
+        //postAdapter = PostAdapter()
+
+
+
+
         binding.BackpackRecycler.adapter =
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
-                    postViewModel.pemanentlyDeletePost(post.id)
+                    //postViewModel.pemanentlyDeletePost(post.id)
                     true
                     postViewModel.getPostsOfPlace(PlaceType.Rugzak)
                 }
 
             }
             )
+        /*postViewModel.postList.observe(this.viewLifecycleOwner, Observer
+        {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        showProgress(false)
+                        Log.d("repodata",postViewModel.postList.value?.data.toString())
+                        postAdapter.submitList(resource.data)
+                    }
+                })
+                return binding.root
+                        postAdapter.submitList(resource.data)
+            }
+        })*/
 
         postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
@@ -114,13 +136,8 @@ class BackpackFragment: Fragment() {
                     }.show()
             }
         })
+
         return binding.root
-    }
-
-
-    override fun onStart() {
-        super.onStart()
-        postViewModel.getPostsOfPlace(PlaceType.Rugzak)
     }
 
     override fun onResume() {
@@ -131,10 +148,27 @@ class BackpackFragment: Fragment() {
                 PostType.values()
             )
         }
-
         dropdownList.setAdapter(adapter)
-        postViewModel.getPostsOfPlace(PlaceType.Rugzak)
-        super.onResume()
-    }
+                super.onResume()
+            }
 
-}
+            private fun showProgress(b: Boolean) {
+                if (b) {
+                    if (!loadingDialogFragment.isAdded) {
+                        loadingDialogFragment.show(
+                            requireActivity().supportFragmentManager,
+                            "loader"
+                        )
+                    }
+                } else {
+                    if (loadingDialogFragment.isAdded) {
+                        loadingDialogFragment.dismissAllowingStateLoss()
+                    }
+                }
+            }
+
+            fun onClick(post: Post) {
+                TODO("Not yet implemented")
+            }
+        }
+

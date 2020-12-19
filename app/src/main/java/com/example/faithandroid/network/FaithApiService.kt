@@ -21,27 +21,6 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.*
 
-//TODO: give url
-private const val BASE_URL = "https://apigrow.azurewebsites.net/"
-
-private val moshi = Moshi.Builder()
-    .add(KotlinJsonAdapterFactory())
-
-    .build()
-
-private val retrofit = Retrofit.Builder()
-    .addConverterFactory(ScalarsConverterFactory.create())
-    .addConverterFactory(MoshiConverterFactory.create(moshi))
-    .addCallAdapterFactory(CoroutineCallAdapterFactory())
-    .client(OkHttpClient().newBuilder().addInterceptor{ chain ->
-        val newRequest = chain.request().newBuilder()
-            .addHeader("Authorization", "Bearer " + AppPreferences.token)
-            .build()
-        chain.proceed(newRequest)
-    }
-    .build())
-    .baseUrl(BASE_URL)
-    .build()
 
 
 interface FaithApiService {
@@ -65,10 +44,11 @@ interface FaithApiService {
     suspend fun checkGoal(@Path("goalId") goalId : Int)
 
     @GET("city/skyscraper/goal")
-    fun getPostsOfSkyScraper(): Deferred<List<GoalPost>>
+    suspend fun getPostsOfSkyScraper(): Response<List<GoalPost>>
 
     @GET("city/billboard/group")
-    fun getBillboardGoals(): Deferred<List<GoalPost>>
+    fun getGoalsOfGroup(): Call<List<GoalPost>>
+
 
     @Headers("Content-Type: application/json")
     @PUT("user/counselor/delete-adolescent")
@@ -90,12 +70,11 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @POST("city/{placeType}/post")
-
     fun addPostByEmail(@Path("placeType") placeType: Int, @Body post: Post): Call<Void>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @PUT("city/{placeType}/post/remove/{postId}")
-    fun deletePostByEmail(@Path("placeType") placeType: Int, @Path("postId") postId: Int): Call<Void>
+    fun deletePostByEmail(@Path("placeType") placeType: Int, @Path("postId") postId: Int): Response<Void>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @PUT("city/{placeType}/add-existing/{postId}")
@@ -104,12 +83,11 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json")
     @POST("user/change-password")
-    fun changepassword(@Query("ww") ww: String) : Call<String>
-
+    fun changePassword(@Query("ww") ww: String) : Call<String>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @GET("city/musicroom/playlist")
-    fun getPlaylists(): Call<List<Playlist>>
+    suspend fun getPlaylists(): Response<List<Playlist>>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @POST("city/musicroom/playlist")
@@ -126,16 +104,12 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @GET("/avatar")
-    fun getAvatar(): Call<Avatar>
+     fun getAvatar(): Call<Avatar>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @PUT("/change-avatar")
     fun postAvatar(@Body avatar: Avatar): Call<Void>
 }
 
-object FaithApi {
-    val retrofitService : FaithApiService by lazy {
-        retrofit.create(FaithApiService::class.java)
-    }
-}
+
 

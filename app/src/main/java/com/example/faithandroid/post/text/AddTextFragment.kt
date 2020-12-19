@@ -17,7 +17,9 @@ import com.example.faithandroid.*
 import com.example.faithandroid.adapters.FilteredPostAdapter
 import com.example.faithandroid.databinding.AddTextBinding
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
+import org.koin.android.ext.android.inject
 import com.google.android.material.snackbar.Snackbar
 
 class addTextFragment: Fragment() {
@@ -26,6 +28,7 @@ class addTextFragment: Fragment() {
     var post: Post? = null
     private lateinit var  viewModel: PostViewModel
     private lateinit var  dropdown : Spinner
+    val postRepository : PostRepository by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +42,7 @@ class addTextFragment: Fragment() {
         )
         binding.lifecycleOwner = this
 
-        viewModel = ViewModelProvider(this, ViewModelFactory(args.placeType)).get(PostViewModel::class.java)
+        viewModel = ViewModelProvider(this, ViewModelFactory(args.placeType,postRepository)).get(PostViewModel::class.java)
 
         viewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view

@@ -9,7 +9,6 @@ import com.bumptech.glide.load.engine.Resource
 import com.example.faithandroid.PlaceType
 import com.example.faithandroid.R
 import com.example.faithandroid.models.Post
-import com.example.faithandroid.network.FaithApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -57,7 +56,7 @@ class BulletinBoardViewModel : ViewModel() {
     //OPHALEN VAN DE LIJST
     fun getPostsOfBulletinBoard()
     {
-        coroutineScope.launch{
+        /*coroutineScope.launch{
            try{
                var getPostList = FaithApi.retrofitService.getPostsOfPlaceByAdolescentEmail(PlaceType.Prikbord.ordinal)
                var result = getPostList.await()
@@ -74,7 +73,7 @@ class BulletinBoardViewModel : ViewModel() {
            {
                _status.value = "Kan geen verbinding maken met de server"
            }
-        }
+        }*/
     }
 
 
@@ -83,7 +82,7 @@ class BulletinBoardViewModel : ViewModel() {
     {
 
     }
-    fun requestConsultation()
+    /*fun requestConsultation()
     {
         coroutineScope.launch{
             try{
@@ -97,11 +96,11 @@ class BulletinBoardViewModel : ViewModel() {
             }
         }
 
-    }
+    }*/
 
 
     fun deleteAllBulletinPosts(){
-        coroutineScope.launch{
+        /*coroutineScope.launch{
             var getPostList = FaithApi.retrofitService.getPostsOfPlaceByAdolescentEmail(0);
             var result = getPostList.await()
 
@@ -127,7 +126,7 @@ class BulletinBoardViewModel : ViewModel() {
                         throw Exception("Er liep iets mis tijdens het verwijderen");
                     }
                 }
-        }
+        }*/
     }
 
 }

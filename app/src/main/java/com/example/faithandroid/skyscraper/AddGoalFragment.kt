@@ -28,6 +28,7 @@ import kotlinx.android.synthetic.main.skyscraper_add_goal.*
 import kotlinx.android.synthetic.main.skyscraper_add_goal.view.*
 import kotlinx.android.synthetic.main.skyscraper_add_goal.view.stepList
 import kotlinx.android.synthetic.main.skyscraper_goaldetails.view.*
+import org.koin.android.ext.android.inject
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -35,7 +36,7 @@ import java.util.function.Consumer
 
 class addGoalFragment : Fragment() {
 
-    private lateinit var viewModel: SkyscraperViewModel
+    //private lateinit var viewModel: SkyscraperViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +47,7 @@ class addGoalFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val viewModel : SkyscraperViewModel by inject()
         val binding = DataBindingUtil.inflate<SkyscraperAddGoalBinding>(
             inflater,
             R.layout.skyscraper_add_goal,
@@ -53,7 +55,7 @@ class addGoalFragment : Fragment() {
             false
         );
 
-        viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
+        //viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
 
 
         binding.annuleerButton.setOnClickListener { view: View ->

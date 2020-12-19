@@ -5,14 +5,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.faithandroid.models.Avatar
-import com.example.faithandroid.network.FaithApi
+import com.example.faithandroid.shoppingCenter.AvatarRepository
+import com.example.faithandroid.skyscraper.GoalPostRepository
+import com.example.faithandroid.util.Resource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import okhttp3.internal.wait
 import retrofit2.await
 
-class AvatarViewModel : ViewModel() {
+class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewModel() {
 
      private val _status = MutableLiveData<String>()
      val status: LiveData<String>
@@ -92,11 +95,11 @@ class AvatarViewModel : ViewModel() {
      private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
      init {
-        getProperties()
+         getProperties()
          getAvatar()
      }
 
-     public fun getProperties() {
+      fun getProperties() {
           coroutineScope.launch {
 
                try {
@@ -118,34 +121,30 @@ class AvatarViewModel : ViewModel() {
           }
      }
 
-    public fun getAvatar(){
+     private fun getAvatar(){
+         coroutineScope.launch {
 
-            coroutineScope.launch{
-                try{
-                    var getAvatar = FaithApi.retrofitService.getAvatar()
-                    var result = getAvatar.await()
+             try {
+                 var getAvatar = avatarRepository.getAvatar()
+                 var result = getAvatar.await()
+                 _currentAvatar.value = result
+                 AppPreferences.currentPerson = currentAvatar.value?.person
+                 AppPreferences.currentHair = currentAvatar.value?.hair
+                 AppPreferences.currentEyes = currentAvatar.value?.eyes
+                 AppPreferences.currentSkin = currentAvatar.value?.skin
+                 AppPreferences.currentBody = currentAvatar.value?.upperBody
 
-                    _currentAvatar.value = result
-                    AppPreferences.currentPerson = result.person
-                    AppPreferences.currentHair = result.hair
-                    AppPreferences.currentEyes = result.eyes
-                    AppPreferences.currentSkin = result.skin
-                    AppPreferences.currentBody = result.upperBody
-
-                }
-                catch (e: Exception)
-                {
-                    _status.value = "Kan geen verbinding maken met de server"
-                }
-            }
-
+             } catch (e: Exception) {
+                 _status.value = "Kan geen verbinding maken met de server"
+             }
+         }
     }
 
-    public fun postAvatar(character: Int, hair: Int, eyes: Int, skin: Int, body: Int){
+     fun postAvatar(character: Int, hair: Int, eyes: Int, skin: Int, body: Int){
         coroutineScope.launch{
             try{
-                val avatar: Avatar = Avatar(person = character, hair = hair, eyes = eyes, skin = skin, upperBody = body)
-                FaithApi.retrofitService.postAvatar(avatar).await()
+                val avatar: Avatar = Avatar(id = 0,person = character, hair = hair, eyes = eyes, skin = skin, upperBody = body)
+                avatarRepository.postAvatar(avatar).await()
                 _currentAvatar.value = avatar
                 AppPreferences.currentPerson = character
                 AppPreferences.currentHair = hair

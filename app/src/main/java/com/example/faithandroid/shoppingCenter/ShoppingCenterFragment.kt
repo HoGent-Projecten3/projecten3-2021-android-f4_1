@@ -17,21 +17,28 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.faithandroid.*
+import com.example.faithandroid.adapters.PostAdapter
 import com.example.faithandroid.databinding.ShoppingcenterBinding
+import com.example.faithandroid.skyscraper.SkyscraperViewModel
+import com.example.faithandroid.util.Status
 import com.google.android.material.snackbar.Snackbar
 import com.sdsmdg.harjot.vectormaster.VectorMasterView
+import org.koin.android.ext.android.inject
 
 
 class ShoppingCenterFragment: Fragment() {
-    private lateinit var viewModel: AvatarViewModel
+    //private lateinit var viewModel: AvatarViewModel
     private lateinit var vectorMasterViewA: VectorMasterView
     private lateinit var vectorMasterViewB: VectorMasterView
+    private val loadingDialogFragment by lazy { LoadingFragment() }
 
     private var character: Int = 0
     private var hair: Int = Color.parseColor("#FFFFFFFF")
     private var eyes: Int = Color.parseColor("#FFFFFFFF")
     private var skin: Int = Color.parseColor("#FFFFFFFF")
     private var body: Int = Color.parseColor("#FFFFFFFF")
+
+    //private lateinit var  adapter: ShoppingCenterGridAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +49,7 @@ class ShoppingCenterFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val viewModel : AvatarViewModel by inject()
         val binding = DataBindingUtil.inflate<ShoppingcenterBinding>(
             inflater,
             R.layout.shoppingcenter,
@@ -49,11 +57,11 @@ class ShoppingCenterFragment: Fragment() {
             false
         );
 
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
         this.vectorMasterViewA = binding.imgAvatarA as VectorMasterView
         this.vectorMasterViewB = binding.imgAvatarB as VectorMasterView
 
-        viewModel = ViewModelProvider(this).get(AvatarViewModel::class.java)
+        //viewModel = ViewModelProvider(this).get(AvatarViewModel::class.java)
         binding.shoppingCenterViewModel = viewModel
 
         hair.let { ColorSvgs.setHair(it, vectorMasterViewA, vectorMasterViewB) }
@@ -134,6 +142,69 @@ class ShoppingCenterFragment: Fragment() {
         var drawing: VectorDrawable = this.context?.let { AppCompatResources.getDrawable(it, R.drawable.ic_avatar_female) } as VectorDrawable
 
 
+        /*viewModel.currentAvatar.observe(this.viewLifecycleOwner, Observer{
+            character = viewModel.currentAvatar.value?.person!!
+            if (character == 0){
+                binding.imgAvatarA.setVisibility(View.VISIBLE)
+                binding.imgAvatarB.setVisibility(View.GONE)
+            } else {
+                binding.imgAvatarA.setVisibility(View.GONE)
+                binding.imgAvatarB.setVisibility(View.VISIBLE)
+            }
+
+            hair = viewModel.currentAvatar.value?.hair!!
+            hair.let { ColorSvgs.setHair(it, vectorMasterViewA, vectorMasterViewB) }
+
+            eyes = viewModel.currentAvatar.value?.eyes!!
+            eyes.let { ColorSvgs.setEyes(it, vectorMasterViewA, vectorMasterViewB) }
+
+            skin = viewModel.currentAvatar.value?.skin!!
+            skin.let { ColorSvgs.setSkin(it, vectorMasterViewA, vectorMasterViewB) }
+
+            body = viewModel.currentAvatar.value?.upperBody!!
+            body.let { ColorSvgs.setBody(it, vectorMasterViewA, vectorMasterViewB) }
+        })*/
+
+        /*viewModel.currentAvatar.observe(this.viewLifecycleOwner, Observer
+        {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+
+                        character = viewModel.currentAvatar.value?.data?.person!!
+                        if (character == 0){
+                            binding.imgAvatarA.setVisibility(View.VISIBLE)
+                            binding.imgAvatarB.setVisibility(View.GONE)
+                        } else {
+                            binding.imgAvatarA.setVisibility(View.GONE)
+                            binding.imgAvatarB.setVisibility(View.VISIBLE)
+                        }
+
+                        hair = viewModel.currentAvatar.value?.data?.hair!!
+                        hair.let { ColorSvgs.setHair(it, vectorMasterViewA, vectorMasterViewB) }
+
+                        eyes = viewModel.currentAvatar.value?.data?.eyes!!
+                        eyes.let { ColorSvgs.setEyes(it, vectorMasterViewA, vectorMasterViewB) }
+
+                        skin = viewModel.currentAvatar.value?.data?.skin!!
+                        skin.let { ColorSvgs.setSkin(it, vectorMasterViewA, vectorMasterViewB) }
+
+                        body = viewModel.currentAvatar.value?.data?.upperBody!!
+                        body.let { ColorSvgs.setBody(it, vectorMasterViewA, vectorMasterViewB) }
+
+                        showProgress(false)
+                        //adapter.submitList(resource)
+                    }
+                    Status.LOADING -> {
+                        showProgress(true)
+                    }
+                    Status.ERROR -> {
+                        showProgress(false)
+                    }
+                }
+            }
+        })*/
+
         viewModel.currentAvatar.observe(this.viewLifecycleOwner, Observer{
             character = viewModel.currentAvatar.value?.person!!
             if (character == 0){
@@ -186,5 +257,17 @@ class ShoppingCenterFragment: Fragment() {
 
 
         return binding.root
+    }
+
+    private fun showProgress(b: Boolean) {
+        if (b) {
+            if (!loadingDialogFragment.isAdded) {
+                loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
+            }
+        } else {
+            if (loadingDialogFragment.isAdded) {
+                loadingDialogFragment.dismissAllowingStateLoss()
+            }
+        }
     }
 }

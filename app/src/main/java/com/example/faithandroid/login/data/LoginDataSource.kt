@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.bumptech.glide.load.engine.Resource
 import com.example.faithandroid.models.Adolescent
-import com.example.faithandroid.network.FaithApi
+import com.example.faithandroid.network.FaithApiService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -17,7 +17,7 @@ import kotlin.Result.Companion.success
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.
  */
-class LoginDataSource {
+class LoginDataSource(private val apiService: FaithApiService) {
 
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>
@@ -34,11 +34,12 @@ class LoginDataSource {
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
       suspend fun login(username: String, password: String): Result<String>{
-
-              try {
-                  val stringCall: Call<String> =
-                      FaithApi.retrofitService.loginAdolescent(User(username, password))
-                  var token = stringCall.await()
+          try {
+              val stringCall: Call<String> =
+                  apiService.loginAdolescent(User(username, password))
+              var token = stringCall.await()
+              if (token != null)
+              {
                   return Result.Success(token)
               } catch (e: Exception) {
                   return Result.Error(e.message.toString())
@@ -47,7 +48,7 @@ class LoginDataSource {
     suspend fun getAdolescent(username: String): Result<Adolescent> {
 
             try {
-                val adolescent = FaithApi.retrofitService.getAdolescent(username)
+                val adolescent = apiService.getAdolescent(username)
                 val a = adolescent.await()
                 return Result.Success(a)
 

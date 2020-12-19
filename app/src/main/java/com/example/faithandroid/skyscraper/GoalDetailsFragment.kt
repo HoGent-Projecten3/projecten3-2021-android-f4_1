@@ -23,6 +23,7 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.skyscraper_goalpostimage.view.*
+import org.koin.android.ext.android.inject
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -30,7 +31,6 @@ import java.time.format.FormatStyle
 
 class GoalDetailsFragment: DialogFragment() {
     val args: GoalDetailsFragmentArgs by navArgs()
-    private lateinit var viewModel: SkyscraperViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +43,8 @@ class GoalDetailsFragment: DialogFragment() {
     ): View? {
         //val application = requireNotNull(activity).application
 
-        viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
-
+        //viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
+        val viewModel : SkyscraperViewModel by inject()
         val binding = DataBindingUtil.inflate<SkyscraperGoaldetailsBinding>(
             inflater,
             R.layout.skyscraper_goaldetails,

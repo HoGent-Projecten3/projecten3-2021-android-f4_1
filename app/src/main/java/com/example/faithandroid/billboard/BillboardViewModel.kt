@@ -7,14 +7,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Step
-import com.example.faithandroid.network.FaithApi
+import com.example.faithandroid.skyscraper.GoalPostRepository
+import com.example.faithandroid.util.Resource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import retrofit2.await
 import java.time.LocalDateTime
 
-class BillboardViewModel : ViewModel() {
+class BillboardViewModel(private val goalPostRepository: GoalPostRepository) : ViewModel() {
 
     //ERROR STATUS
     private val _status = MutableLiveData<String>()
@@ -28,6 +30,8 @@ class BillboardViewModel : ViewModel() {
 // LocalDateTime.of(2020, 7, 3, 12, 0 ))
     )*/
 
+    //private val _properties = MutableLiveData<List<GoalPost>>()
+
     private val _properties = MutableLiveData<List<GoalPost>>()
 
     val properties: LiveData<List<GoalPost>>
@@ -40,9 +44,9 @@ class BillboardViewModel : ViewModel() {
         getPosts()
     }
 
-    public fun getPosts() {
+      fun getPosts() {
         coroutineScope.launch {
-            var getPropertiesDeferred = FaithApi.retrofitService.getBillboardGoals()
+            var getPropertiesDeferred = goalPostRepository.getBillboardGoals()
             try {
                 var listResult = getPropertiesDeferred.await()
                 if(listResult.size > 0){

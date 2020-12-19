@@ -1,7 +1,25 @@
 package com.example.faithandroid.models
 
-data class Step (
+import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.PrimaryKey
+import com.squareup.moshi.JsonClass
+import kotlinx.android.parcel.Parcelize
 
-   var id: Int = 0,
-   var stepText: String
-)
+
+/*@Entity(foreignKeys = [ForeignKey(
+   entity = GoalPost::class,
+   parentColumns = arrayOf("id"),
+   childColumns = arrayOf("goalId"
+   ))],tableName = "steps")*/
+
+@Parcelize
+@JsonClass(generateAdapter = true)
+@Entity(tableName = "steps")
+data class Step (
+   @PrimaryKey
+   val id: Int,
+   val stepText: String,
+   //val goalId: Int
+): Parcelable

@@ -9,6 +9,7 @@
 
 
     <application
+        android:name=".GROWApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_growlauncher"
         android:label="@string/app_name"

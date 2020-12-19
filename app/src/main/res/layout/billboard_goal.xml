@@ -38,7 +38,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="7dp"
-
                     android:layout_marginBottom="4dp"
                     android:text="@{property.name}"
                     app:layout_constraintBottom_toTopOf="@id/cardprofile"
@@ -49,7 +48,6 @@
                     android:id="@+id/datum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:layout_marginTop="12dp"
                     android:layout_marginRight="7dp"
                     android:text="@{property.date}"
@@ -99,6 +97,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/cardprofile"
                     app:layout_constraintTop_toBottomOf="@+id/titleGoal" />
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardprofile"
                     android:layout_width="100dp"
