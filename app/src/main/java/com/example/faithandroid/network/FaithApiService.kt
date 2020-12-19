@@ -76,7 +76,7 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @PUT("city/{placeType}/post/remove/{postId}")
-    fun deletePostByEmail(@Path("placeType") placeType: Int, @Path("postId") postId: Int): Call<Void>
+    fun deletePostByEmail(@Path("placeType") placeType: Int, @Path("postId") postId: Int): Response<Void>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @PUT("city/{placeType}/add-existing/{postId}")
