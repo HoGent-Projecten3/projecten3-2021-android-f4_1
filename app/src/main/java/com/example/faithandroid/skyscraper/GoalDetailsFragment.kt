@@ -67,12 +67,22 @@ class GoalDetailsFragment: DialogFragment() {
 
         binding.btnBehaald.setOnClickListener { view: View ->
             viewModel.goalBehaald(args.goal.id)
+            Toast.makeText(
+                context,
+                "Je doel is behaald",
+                Toast.LENGTH_LONG
+            ).show()
             view.findNavController().navigate(R.id.skyscraperFragment)
         }
 
         binding.btnDelen.setOnClickListener { view: View ->
             viewModel.shareGoal(args.goal.id)
            view.findNavController().navigate(R.id.billboardFragment)
+            Toast.makeText(
+                context,
+                "Je doel is gedeeld",
+                Toast.LENGTH_LONG
+            ).show()
         }
 
         binding.btnVerwijder.setOnClickListener { view: View ->
@@ -86,10 +96,18 @@ class GoalDetailsFragment: DialogFragment() {
                         viewModel.shareGoal(args.goal.id)
                         viewModel.deleteGoal(args.goal.id)
                         view.findNavController().navigate(R.id.skyscraperFragment)
+                        Toast.makeText(
+                            context,
+                            "Je doel is verwijderd",
+                            Toast.LENGTH_LONG
+                        ).show()
+
                     }
                     .setNegativeButton("Nee") { _, which ->
                         // nothing has to happen here
                     }.show()
+
+
             }else if(args.goal.completed){
               Snackbar.make(view, "Deze goal is behaald, u kan deze dus niet verwijderen.", Snackbar.LENGTH_SHORT).setAction(
                "" )
@@ -98,61 +116,26 @@ class GoalDetailsFragment: DialogFragment() {
         }
           else {
                 viewModel.deleteGoal(args.goal.id)
+              Toast.makeText(
+                  context,
+                  "Je doel is verwijderd",
+                  Toast.LENGTH_LONG
+              ).show()
                 view.findNavController().navigate(R.id.skyscraperFragment)
             }
         }
 
-        viewModel.shareStatus.observe(this.viewLifecycleOwner, Observer {
-            val contextView = this.view
-            if (contextView != null) {
-                Toast.makeText(
-                    context,
-                    "Je doel is gedeeld",
-                    Toast.LENGTH_LONG
-                ).show()
-             }
-            else {
-                Snackbar.make(contextView!!, viewModel.shareStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
-                    "Probeer opnieuw"
-                )
-                {
-                }.show()
-            }
-        })
 
-        viewModel.completedStatus.observe(this.viewLifecycleOwner, Observer {
-            val contextView = this.view
-            if (contextView != null) {
-                Toast.makeText(
-                    context,
-                    "Je doel is behaald",
-                    Toast.LENGTH_LONG
-                ).show()
-            } else {
-                Snackbar.make(contextView!!, viewModel.completedStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
-                    "Probeer opnieuw"
-                )
-                {
-                }.show()
-            }
-        })
 
-        viewModel.removeStatus.observe(this.viewLifecycleOwner, Observer {
+        viewModel.getStatus.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
-            if (contextView != null) {
-                Toast.makeText(
-                    context,
-                    "Je doel is verwijderd",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-            else {
-                Snackbar.make(contextView!!, viewModel.removeStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
-                    "Probeer opnieuw"
-                )
-                {
-                }.show()
-            }
+
+            Snackbar.make(contextView!!, viewModel.getStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                "Probeer opnieuw"
+            )
+            {
+            }.show()
+
 
         })
 

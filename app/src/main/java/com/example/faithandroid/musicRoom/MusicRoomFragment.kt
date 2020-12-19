@@ -17,6 +17,7 @@ import com.example.faithandroid.CustomPlaylistClick
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.MusicroomBinding
 import com.example.faithandroid.models.Playlist
+import com.google.android.material.snackbar.Snackbar
 import com.spotify.android.appremote.api.ConnectionParams
 import com.spotify.android.appremote.api.Connector
 import com.spotify.android.appremote.api.SpotifyAppRemote
@@ -55,6 +56,7 @@ class MusicRoomFragment: Fragment() {
 
         binding.lifecycleOwner = this
         binding.viewModel = musicRoomViewModel
+        val contextView = this.view
         binding.playlistRecycler.adapter = PlaylistAdapter(object : CustomPlaylistClick {
             override fun onClick(playlist: Playlist): Boolean {
                 if (spotifyAppRemoteLocal != null) {
@@ -124,6 +126,7 @@ class MusicRoomFragment: Fragment() {
     override fun onStart() {
         super.onStart()
 
+        val contextView = this.view
         val connectionParams = ConnectionParams.Builder(CLIENT_ID)
             .setRedirectUri(REDIRECT_URI)
             .showAuthView(true)
@@ -140,6 +143,14 @@ class MusicRoomFragment: Fragment() {
                     override fun onFailure(throwable: Throwable) {
 
                         // Something went wrong when attempting to connect! Handle errors here
+
+                        Snackbar.make(contextView!!, "Er liep iets mis bij het inloggen", Snackbar.LENGTH_SHORT)
+                            .setAction(
+                                "Try again"
+                            )
+                            {
+                                onStart();
+                            }.show()
                     }
                 })
         }
@@ -184,14 +195,35 @@ class MusicRoomFragment: Fragment() {
 
                 }
             else {
-                //errorhandeling
+                //errorhandling
+                val contextView = this.view
+                if (contextView != null) {
+
+                    Snackbar.make(contextView, "U bent niet ingelogd bij spotify", Snackbar.LENGTH_SHORT)
+                        .setAction(
+                            ""
+                        )
+                        {
+
+                        }.show()
+                }
             }
 
 
         }
         else
         {
-            //errorhandeling
+            val contextView = this.view
+            if (contextView != null) {
+
+                Snackbar.make(contextView, "Er liep iets mis", Snackbar.LENGTH_SHORT)
+                    .setAction(
+                        ""
+                    )
+                    {
+
+                    }.show()
+            }
         }
     }
 

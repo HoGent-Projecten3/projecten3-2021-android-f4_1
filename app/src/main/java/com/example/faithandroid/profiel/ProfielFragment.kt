@@ -21,6 +21,7 @@ import com.example.faithandroid.databinding.ProfielBinding
 import com.example.faithandroid.models.Adolescent
 import com.example.faithandroid.models.Avatar
 import com.sdsmdg.harjot.vectormaster.VectorMasterView
+import java.lang.Exception
 
 
 class ProfielFragment: Fragment() {
@@ -53,7 +54,21 @@ class ProfielFragment: Fragment() {
         this.vectorMasterViewB = binding.imgAvatarB as VectorMasterView
 
         viewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
-        viewModel.getAdolescent()
+        try {
+            viewModel.getAdolescent()
+        }catch(e: Exception){
+            var contextView = this.view;
+            com.google.android.material.snackbar.Snackbar.make(
+                contextView!!,
+                "Er liep iets mis bij het ophalen van de gebruiker",
+                com.google.android.material.snackbar.Snackbar.LENGTH_SHORT)
+            .setAction(
+                "Try again"
+            )
+            {
+                viewModel.getAdolescent();
+            }.show()
+        }
 
         binding.imgAvatarB.setVisibility(View.GONE)
 
