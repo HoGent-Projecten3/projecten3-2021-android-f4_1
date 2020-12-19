@@ -13,7 +13,7 @@ class PostRemoteDataSource(private val apiService: FaithApiService) : BaseDataSo
 
     fun addPostByEmail(post: Post, placeType: Int) = apiService.addPostByEmail(placeType,post)
 
-    fun deletePostByEmail(placeType: Int,postId: Int) = apiService.deletePostByEmail(placeType,postId)
+    suspend fun deletePostByEmail(placeType: Int, postId: Int) = getObjectResult { apiService.deletePostByEmail(placeType,postId) }
 
     fun addExistingPostToPlace(postId: Int,placeType: Int) = apiService.addExistingPostToPlace(postId,placeType)
 

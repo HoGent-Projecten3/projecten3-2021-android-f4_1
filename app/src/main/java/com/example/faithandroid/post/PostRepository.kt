@@ -52,7 +52,13 @@ class PostRepository(private val localDataSource: PostLocalDataSource, private v
 
     fun addPostByEmail(post: Post, placeType: Int) = remoteDataSource.addPostByEmail(post,placeType)
 
-    fun deletePostByEmail(placeType: Int,postId: Int) = remoteDataSource.deletePostByEmail(placeType,postId)
+    fun deletePostByEmail(placeType: Int,postId: Int) =
+        performGetOperation(
+            databaseQuery = {remoteDataSource.deletePostByEmail(postId)},
+            networkCall = {remoteDataSource.deletePostByEmail(placeType,postId)},
+            saveCallResult = {}
+        )
+
 
     fun addExistingPostToPlace(postId: Int,placeType: Int) = remoteDataSource.addExistingPostToPlace(postId,placeType)
 
