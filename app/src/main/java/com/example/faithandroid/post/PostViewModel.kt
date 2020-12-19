@@ -79,7 +79,6 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
         var bool: Boolean = true
         viewModelScope.launch {
             val stringCall: Call<Void> =
-
                 postRepository.addPostByEmail(post,placeType.ordinal)
 
             stringCall.enqueue(object : Callback<Void> {
@@ -142,7 +141,7 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
     fun requestConsultation() {
         viewModelScope.launch {
             try {
-                postRepository.requestConsultation().await()
+                postRepository.requestConsultation()
                 _requestConsultationStatus.value = "gelukt!"
 
             } catch (e: Exception) {

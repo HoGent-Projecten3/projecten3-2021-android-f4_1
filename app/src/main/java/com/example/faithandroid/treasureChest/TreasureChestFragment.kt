@@ -94,20 +94,8 @@ class TreasureChestFragment: Fragment() {
             this.adapter.notifyDataSetChanged()
         })*/
 
-<<<<<<< HEAD
-    override fun onStart() {
-        super.onStart()
-        postViewModel.getPostsOfPlace(PlaceType.Schatkist)
-    }
 
-    override fun onResume() {
-        super.onResume()
-        postViewModel.getPostsOfPlace(PlaceType.Schatkist)
-    }
-
-=======
         postViewModel.postList.observe(this.viewLifecycleOwner, Observer{
->>>>>>> 8b69d0a (repository spotify + posts niet af)
 
             this.adapter.notifyDataSetChanged()
         })

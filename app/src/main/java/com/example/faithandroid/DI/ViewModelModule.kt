@@ -1,5 +1,6 @@
 package com.example.faithandroid.DI
 
+import com.example.faithandroid.AvatarViewModel
 import com.example.faithandroid.PlaceType
 import com.example.faithandroid.billboard.BillboardViewModel
 import com.example.faithandroid.login.uilogin.LoginViewModel
@@ -16,5 +17,6 @@ val viewModelModule = module {
     viewModel { ProfielViewModel(get()) }
     viewModel { MusicRoomViewModel(get()) }
     viewModel { LoginViewModel(get()) }
+    viewModel { AvatarViewModel(get()) }
 
 }

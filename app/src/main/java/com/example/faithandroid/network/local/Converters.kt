@@ -55,4 +55,14 @@ class Converters {
 
     @TypeConverter
     fun jsonToList(value: String) = Gson().fromJson(value, Array<Step>::class.java).toList()
+
+    @TypeConverter
+    fun AvatarStringToFields(value: String): AvatarFields {
+        return Gson().fromJson(value, AvatarFields::class.java)
+    }
+
+    @TypeConverter
+    fun AvatarPlayersToString(fields: AvatarFields): String {
+        return Gson().toJson(fields)
+    }
 }

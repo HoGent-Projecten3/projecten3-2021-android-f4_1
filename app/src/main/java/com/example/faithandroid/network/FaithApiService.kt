@@ -48,8 +48,8 @@ interface FaithApiService {
     @GET("city/skyscraper/goal")
     suspend fun getPostsOfSkyScraper(): Response<List<GoalPost>>
 
-    @GET("city/billboard/goal")
-    suspend fun getBillboardGoals(): Response<List<GoalPost>>
+    @GET("city/billboard/group")
+    suspend fun getGoalsOfGroup(): Response<List<GoalPost>>
 
 
     @Headers("Content-Type: application/json")
@@ -72,7 +72,6 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @POST("city/{placeType}/post")
-
     fun addPostByEmail(@Path("placeType") placeType: Int, @Body post: Post): Call<Void>
 
     @Headers("Content-Type: application/json", "accept: application/json")
@@ -107,7 +106,7 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @GET("/avatar")
-    fun getAvatar(): Call<Avatar>
+    suspend fun getAvatar(): Response<Avatar>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @PUT("/change-avatar")

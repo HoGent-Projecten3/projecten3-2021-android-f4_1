@@ -137,7 +137,7 @@ class SkyscraperFragment: Fragment() {
         }
     }
 
-    override fun onStart(){
+   /* override fun onStart(){
         super.onStart()
 
         viewModel.getPostsOfSkyscraper()
@@ -148,7 +148,7 @@ class SkyscraperFragment: Fragment() {
         super.onResume()
 
         viewModel.getPostsOfSkyscraper()
-    }
+    }*/
 
 
 }

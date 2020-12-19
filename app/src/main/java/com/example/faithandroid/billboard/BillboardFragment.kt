@@ -48,13 +48,8 @@ class BillboardFragment: Fragment() {
 
         binding.billboardGridView.adapter = BillboardGridAdapter()
 
-<<<<<<< HEAD
 
-        /*viewModel.status.observe(this.viewLifecycleOwner, Observer {
-
-=======
         viewModel.status.observe(this.viewLifecycleOwner, Observer {
->>>>>>> 8b69d0a (repository spotify + posts niet af)
             val contextView = this.view
             if (contextView != null) {
                 Snackbar.make(contextView, "Kon niet verbinding maken met de server", Snackbar.LENGTH_SHORT).setAction(
@@ -94,7 +89,4 @@ class BillboardFragment: Fragment() {
         //viewModel.getPosts()
     }
 
-    fun dateParsing(date: LocalDateTime){
-        SimpleDateFormat("dd/MM/yyyy").format(date)
-    }
 }

@@ -79,9 +79,6 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
         }
 
 
-        startActivityForResult(taskIntent, LOGIN_REQUEST_CODE)
-
-
         if (AppPreferences.username == null) {
             val taskIntent =  Intent(this, LoginActivity::class.java)
             startActivityForResult(taskIntent, LOGIN_REQUEST_CODE)

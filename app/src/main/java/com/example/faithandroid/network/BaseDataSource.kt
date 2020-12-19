@@ -19,7 +19,7 @@ abstract class BaseDataSource {
         }
     }
 
-    protected suspend fun <T> getSpotifyResult(call: suspend () -> Response<T>): Resource<T> {
+    protected suspend fun <T> getObjectResult(call: suspend () -> Response<T>): Resource<T> {
         try {
             val response = call()
             if (response.isSuccessful) {

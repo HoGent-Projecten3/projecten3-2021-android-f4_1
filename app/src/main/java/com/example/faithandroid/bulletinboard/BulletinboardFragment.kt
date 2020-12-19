@@ -58,7 +58,7 @@ class BulletinboardFragment: Fragment() {
       );
 
         binding.lifecycleOwner = viewLifecycleOwner
-
+        postViewModel.getPostsOfPlace(PlaceType.Prikbord)
 
         deleteBtn = binding.include.deletePostsBtn
 
@@ -202,12 +202,7 @@ class BulletinboardFragment: Fragment() {
         deleteBtn.visibility = INVISIBLE
     }
 
-<<<<<<< HEAD
-    override fun onResume() {
-        super.onResume()
 
-        postViewModel.getPostsOfPlace(PlaceType.Prikbord)
-=======
     private fun showProgress(b: Boolean) {
         if (b) {
             if (!loadingDialogFragment.isAdded) {
@@ -218,6 +213,5 @@ class BulletinboardFragment: Fragment() {
                 loadingDialogFragment.dismissAllowingStateLoss()
             }
         }
->>>>>>> 8b69d0a (repository spotify + posts niet af)
     }
 }

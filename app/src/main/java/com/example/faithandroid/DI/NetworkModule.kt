@@ -8,12 +8,15 @@ import com.example.faithandroid.musicRoom.SpotifyRepository
 import com.example.faithandroid.network.FaithApiService
 import com.example.faithandroid.network.SpotifyApiService
 import com.example.faithandroid.network.local.AppDatabase
+import com.example.faithandroid.network.local.AvatarLocalDataSource
 import com.example.faithandroid.network.local.GoalPostLocalDataSource
 import com.example.faithandroid.network.local.SpotifyLocalDataSource
+import com.example.faithandroid.network.remote.AvatarRemoteDataSource
 import com.example.faithandroid.network.remote.GoalPostRemoteDataSource
 import com.example.faithandroid.network.remote.PostRemoteDataSource
 import com.example.faithandroid.network.remote.SpotifyRemoteDataSource
 import com.example.faithandroid.post.PostRepository
+import com.example.faithandroid.shoppingCenter.AvatarRepository
 import com.example.faithandroid.skyscraper.GoalPostRepository
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
@@ -39,6 +42,7 @@ val networkModule = module {
     single { AppDatabase.getDatabase(androidApplication()).postDao() }
     single { AppDatabase.getDatabase(androidApplication()).spotifyDao() }
     single { AppDatabase.getDatabase(androidApplication()).goalPostDao() }
+    single { AppDatabase.getDatabase(androidApplication()).avatarDao() }
 
     single { PostRemoteDataSource(get()) }
     single { PostLocalDataSource(get()) }
@@ -51,7 +55,10 @@ val networkModule = module {
     single { SpotifyRemoteDataSource(get(),get()) }
     single { SpotifyLocalDataSource(get()) }
     single { SpotifyRepository(get(),get()) }
-    
+
+    single { AvatarRemoteDataSource(get()) }
+    single { AvatarLocalDataSource(get()) }
+    single { AvatarRepository(get(),get()) }
 
     single { LoginDataSource(get()) }
     single { LoginRepository(get()) }
