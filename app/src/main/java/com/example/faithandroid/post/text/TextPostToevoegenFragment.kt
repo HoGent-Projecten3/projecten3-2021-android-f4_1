@@ -18,10 +18,7 @@ import com.example.faithandroid.models.Post
 import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
 import org.koin.android.ext.android.inject
-<<<<<<< HEAD
 import java.time.LocalDateTime
-=======
->>>>>>> 8b69d0a (repository spotify + posts niet af)
 
 
 class TextPostToevoegenFragment : Fragment() {
@@ -56,7 +53,6 @@ class TextPostToevoegenFragment : Fragment() {
 
             try
             {
-<<<<<<< HEAD
                 val post: Post = Post(0, binding.textposttitel.text.toString(), binding.textposttext.text.toString(), LocalDateTime.now().toString(), PostType.Text.ordinal,"","",
                     backpack = false,
                     bulletinBoard = false,
@@ -75,15 +71,6 @@ class TextPostToevoegenFragment : Fragment() {
                     }
                 }
                 if(postViewModel.addPostByEmail(post, args.placeType))
-=======
-
-                val post: Post = Post(0, binding.textposttitel.text.toString(), binding.textposttext.text.toString(), "2020-11-05T22:34:57.61", PostType.Text.ordinal,"","",
-                    backpack = false,
-                    bulletinBoard = false,
-                    treasureChest = false
-                )
-                /*if(postViewModel.addPostByEmail(post, args.placeType))
->>>>>>> 18cbca2 (repository goalposts werkt)
                 {
 
                     when (args.placeType) {
@@ -94,12 +81,8 @@ class TextPostToevoegenFragment : Fragment() {
 
                         }
                     }
-<<<<<<< HEAD
                 }
-=======
-                }*/
 
->>>>>>> 18cbca2 (repository goalposts werkt)
             }
             catch (e: Exception)
             {

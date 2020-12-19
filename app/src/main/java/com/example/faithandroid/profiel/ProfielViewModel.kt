@@ -11,18 +11,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.faithandroid.login.data.LoginRepository
-<<<<<<< HEAD
 import com.example.faithandroid.models.Adolescent
-<<<<<<< HEAD
 import com.example.faithandroid.models.Avatar
 import com.example.faithandroid.post.PostRepository
-=======
->>>>>>> 18cbca2 (repository goalposts werkt)
-=======
 
-import com.example.faithandroid.models.Adolescent
-import com.example.faithandroid.post.PostRepository
->>>>>>> 8b69d0a (repository spotify + posts niet af)
+
 import retrofit2.*
 
 
@@ -35,15 +28,10 @@ class ProfielViewModel(private val postRepository: PostRepository): ViewModel() 
     var adol: LiveData<Adolescent> = MutableLiveData<Adolescent>()
         get() = _adol
 
-<<<<<<< HEAD
-
     private var _currentAvatar = MutableLiveData<Avatar>()
     var avatar: LiveData<Avatar> = MutableLiveData<Avatar>()
         get() = _currentAvatar
 
-
-=======
->>>>>>> 18cbca2 (repository goalposts werkt)
     /*fun getAdolescent(): Adolescent?{
 
         viewModelScope.launch {

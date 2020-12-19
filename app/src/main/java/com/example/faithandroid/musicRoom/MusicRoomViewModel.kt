@@ -6,13 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 import com.example.faithandroid.models.*
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-import com.example.faithandroid.network.SpotifyApi
->>>>>>> 18cbca2 (repository goalposts werkt)
-=======
->>>>>>> 8b69d0a (repository spotify + posts niet af)
 import com.example.faithandroid.network.SpotifyApiService
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -51,18 +44,8 @@ class MusicRoomViewModel(private val spotifyRepository : SpotifyRepository) : Vi
         }
         catch (e: Exception )
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
         }
     }*/
-=======
-        }*/
-    }
->>>>>>> 18cbca2 (repository goalposts werkt)
-=======
-        }
-    }*/
->>>>>>> 8b69d0a (repository spotify + posts niet af)
 
     fun addPlaylist(playlist: Playlist)
     {

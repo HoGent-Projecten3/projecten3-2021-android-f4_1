@@ -181,10 +181,6 @@ class MusicRoomFragment: Fragment() {
             val response = AuthenticationClient.getResponse(resultCode, data)
             if (response.type == AuthenticationResponse.Type.TOKEN) {
                     AppPreferences.spotifyToken = response.accessToken
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b69d0a (repository spotify + posts niet af)
                     musicRoomViewModel.allPlaylists.observe(
                         viewLifecycleOwner,
                         Observer {
@@ -208,10 +204,6 @@ class MusicRoomFragment: Fragment() {
             }
 
         }
-<<<<<<< HEAD
-=======
-    }
->>>>>>> 8b69d0a (repository spotify + posts niet af)
 
     private fun showProgress(b: Boolean) {
         if (b) {

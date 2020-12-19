@@ -84,15 +84,8 @@ class SkyscraperViewModel(private val goalPostRepository: GoalPostRepository) : 
     fun postNewGoalPost( goalPost: GoalPost) {
         viewModelScope.launch {
             try {
-<<<<<<< HEAD
-<<<<<<< HEAD
                 goalPostRepository.postGoalPost(goalPost)
-=======
                 val response = goalPostRepository.postGoalPost(goalPost)
->>>>>>> 1ae52e1 (repository deel goal niet af)
-=======
-                goalPostRepository.postGoalPost(goalPost)
->>>>>>> a623ab5 (kleine aanpassingen)
             }catch (e: Exception){
                 // error handling als new goal niet werkt/ er iets mis loopt
             }
@@ -102,15 +95,8 @@ class SkyscraperViewModel(private val goalPostRepository: GoalPostRepository) : 
     fun goalBehaald(id:Int){
         viewModelScope.launch {
             try {
-<<<<<<< HEAD
-<<<<<<< HEAD
                 goalPostRepository.checkGoal(id)
-=======
                 val response = goalPostRepository.checkGoal(id)
->>>>>>> 1ae52e1 (repository deel goal niet af)
-=======
-                goalPostRepository.checkGoal(id)
->>>>>>> a623ab5 (kleine aanpassingen)
                 _completedStatus.value = "Doel behaald".toString();
 
             }catch (e: HttpException) {
@@ -140,16 +126,9 @@ class SkyscraperViewModel(private val goalPostRepository: GoalPostRepository) : 
     fun deleteGoal(id:Int){
         coroutineScope.launch{
             try {
-<<<<<<< HEAD
-<<<<<<< HEAD
                 goalPostRepository.removeGoal(id)
-=======
                 val response = goalPostRepository.removeGoal(id)
                val stringResponse= response.await()
->>>>>>> 1ae52e1 (repository deel goal niet af)
-=======
-                goalPostRepository.removeGoal(id)
->>>>>>> a623ab5 (kleine aanpassingen)
                 _removeStatus.value = R.string.doel_verwijderd.toString()
             } catch (e: Exception){
                 _removeStatus.value = "Er liep iets mis"
