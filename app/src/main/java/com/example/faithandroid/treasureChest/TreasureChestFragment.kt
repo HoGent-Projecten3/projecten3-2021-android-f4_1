@@ -29,8 +29,6 @@ class TreasureChestFragment: Fragment() {
         super.onCreate(savedInstanceState)
     }
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,9 +51,6 @@ class TreasureChestFragment: Fragment() {
 
         binding.TreasureChestRecycler.adapter = this.adapter
 
-
-
-
         binding.AddPostButton.setOnClickListener { view: View ->
             val action =
                 TreasureChestFragmentDirections.actionTreasureChestFragmentToOptionsAddPostFragment(
@@ -67,7 +62,6 @@ class TreasureChestFragment: Fragment() {
         binding.TreasureChestRecycler.adapter =
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
-
                     postViewModel.deletePostByEmail(post.id,  PlaceType.Schatkist)
                     postViewModel.getPostsOfPlace(PlaceType.Schatkist)
                     true

@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
@@ -14,6 +16,7 @@ import com.example.faithandroid.bulletinboard.BulletinBoardViewModel
 import com.example.faithandroid.databinding.AddNewTextBinding
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.post.PostViewModel
+import com.google.android.material.snackbar.Snackbar
 
 
 class TextPostToevoegenFragment : Fragment() {
@@ -41,6 +44,16 @@ class TextPostToevoegenFragment : Fragment() {
         var binding = DataBindingUtil.inflate<AddNewTextBinding>(inflater,
             R.layout.add_new_text, container, false);
         bulletinBoardViewModel = ViewModelProvider(this).get(BulletinBoardViewModel::class.java)
+
+        postViewModel.status.observe(this.viewLifecycleOwner, Observer {
+            val contextView = this.view
+            Snackbar.make(contextView!!, postViewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                ""
+            )
+            {
+            }.show()
+        })
+
         binding.placeType = "nieuwe post toevoegen aan " + args.placeType.toString()
 
         binding.textPostToevoegen.setOnClickListener{ view: View ->
@@ -65,7 +78,7 @@ class TextPostToevoegenFragment : Fragment() {
             }
             catch (e: Exception)
             {
-                throw e
+                postViewModel.status = MutableLiveData("Er liep iets mis met een bestaande post toevoegen")
             }
         }
 

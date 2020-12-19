@@ -157,6 +157,20 @@ class BulletinboardFragment: Fragment() {
 
         }
 
+        postViewModel.status.observe(this.viewLifecycleOwner, Observer {
+            val contextView = this.view
+            if (contextView != null) {
+
+                Snackbar.make(contextView, "Er is niets om weer te geven", Snackbar.LENGTH_SHORT)
+                    .setAction(
+                        ""
+                    )
+                    {
+
+                    }.show()
+            }
+        })
+
 
         return binding.root
     }
