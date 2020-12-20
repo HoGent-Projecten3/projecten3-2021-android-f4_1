@@ -12,6 +12,7 @@ We geven de jongere tools zodat
 * Screenshots
 * Login gegevens
 * Status
+* Extra
 * Contact
 
 ## Algemene informatie
@@ -27,7 +28,6 @@ We hebben de opdracht gekregen van HOGENT om voor het vak Projecten-Workshops II
 - Kotlin
 
 ## Screenshots
-
 |   |  |
 | ------------- | ------------- |
 | ![login](mockups/login.png)  | ![home](mockups/home.png)   |
@@ -46,7 +46,6 @@ We hebben de opdracht gekregen van HOGENT om voor het vak Projecten-Workshops II
   - Wachtwoord: ZwieberNee!NietStelen1
   
 ## Status
-
 12/10 - sprint2
 - Layout files
   - Bulletinboard
@@ -119,6 +118,10 @@ We hebben de opdracht gekregen van HOGENT om voor het vak Projecten-Workshops II
 
 Project moet tegen week 15 beschikbaar zijn voor de klant om het te testen
 
+## Extra
+- Document genereren
+  - ./gradlew dokkaHtml
+  
 ## Contact
 - Adam Vromman
   - adam.vromman@student.hogent.be
