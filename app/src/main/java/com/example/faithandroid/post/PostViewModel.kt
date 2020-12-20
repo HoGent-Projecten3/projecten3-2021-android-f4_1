@@ -24,8 +24,8 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
 
     //lateinit var postList: LiveData<Resource<List<Post>>>
 
-    private var _postList = MutableLiveData<List<Post>>()
-    var postList: LiveData<List<Post>> = MutableLiveData<List<Post>>()
+    private var _postList : LiveData<Resource<List<Post>>> = postRepository.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
+    val postList: LiveData<Resource<List<Post>>>
         get() = _postList
 
 
@@ -43,9 +43,9 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
 //    private var viewModelJob = Job()
 //    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    init {
+    /*init {
         getPostsOfPlace(placeType)
-    }
+    }*/
 
     /*fun getPostsOfPlace(placeType: PlaceType)    {
         var test = postRepository.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
@@ -53,7 +53,7 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
         }*/
 
     fun getFilteredPostFromPlace(placeType: PlaceType, postType: PostType) {
-        viewModelScope.launch {
+        /*viewModelScope.launch {
 
             val stringCall: Call<List<Post>> =
                 postRepository.getFilteredFromPlace(placeType.ordinal, postType.ordinal)
@@ -80,10 +80,10 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
             })
 
 
-        }
+        }*/
     }
 
-    fun getPostsOfPlace(placeType: PlaceType) {
+    /*fun getPostsOfPlace(placeType: PlaceType) {
         viewModelScope.launch {
             val stringCall: Call<List<Post>> =
                 postRepository.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
@@ -102,7 +102,7 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
                 }
             })
         }
-    }
+    }*/
 
     fun addPostByEmail(post: Post, placeType: PlaceType): Boolean {
         var bool: Boolean = true
@@ -156,7 +156,6 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
 
     fun deletePostByEmail(id: Int, placeType: PlaceType) {
         viewModelScope.launch {
-            val stringCall: LiveData<Resource<Void>> =
                 postRepository.deletePostByEmail(placeType.ordinal, id)
             /*stringCall.enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {

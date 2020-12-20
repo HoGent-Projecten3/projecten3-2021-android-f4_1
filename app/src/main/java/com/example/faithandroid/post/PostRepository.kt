@@ -10,7 +10,7 @@ import retrofit2.http.Path
 
 class PostRepository(private val localDataSource: PostLocalDataSource, private val remoteDataSource: PostRemoteDataSource) {
 
-     /*fun getPostsOfPlaceByAdolescentEmail(placeType: Int) =
+     fun getPostsOfPlaceByAdolescentEmail(placeType: Int) =
 
         performGetOperation(
             databaseQuery = {
@@ -28,9 +28,9 @@ class PostRepository(private val localDataSource: PostLocalDataSource, private v
             },
             networkCall = { remoteDataSource.getPostsOfPlaceByAdolescentEmail(placeType) },
             saveCallResult = { localDataSource.savePosts(it) }
-        )*/
+        )
 
-    fun getPostsOfPlaceByAdolescentEmail(placeType: Int) = remoteDataSource.getPostsOfPlaceByAdolescentEmail(placeType)
+    //fun getPostsOfPlaceByAdolescentEmail(placeType: Int) = remoteDataSource.getPostsOfPlaceByAdolescentEmail(placeType)
 
      /*fun getFilteredFromPlace(placeType: Int,postType: Int) =
 
@@ -56,12 +56,14 @@ class PostRepository(private val localDataSource: PostLocalDataSource, private v
 
     fun addPostByEmail(post: Post, placeType: Int) = remoteDataSource.addPostByEmail(post,placeType)
 
-    fun deletePostByEmail(placeType: Int,postId: Int) =
+    /*fun deletePostByEmail(placeType: Int,postId: Int) =
         performDelOperation(
             databaseQuery = {localDataSource.deletePostFromPlace(postId)},
             networkCall = {remoteDataSource.deletePostByEmail(placeType,postId)},
             saveCallResult = {localDataSource.deletePostFromPlace(postId)}
-        )
+        )*/
+
+    fun deletePostByEmail(placeType: Int,postId: Int) = remoteDataSource.deletePostByEmail(placeType,postId)
 
 
     fun addExistingPostToPlace(postId: Int,placeType: Int) = remoteDataSource.addExistingPostToPlace(postId,placeType)

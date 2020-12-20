@@ -27,7 +27,7 @@ import org.koin.android.ext.android.inject
 
 class BackpackFragment: Fragment() {
 
-    //private lateinit var postAdapter: PostAdapter
+    private lateinit var postAdapter: PostAdapter
     private lateinit var dropdownList: AutoCompleteTextView
     private val loadingDialogFragment by lazy { LoadingFragment() }
     val postRepository : PostRepository by inject()
@@ -80,7 +80,7 @@ class BackpackFragment: Fragment() {
         binding.postViewModel = postViewModel
 
         binding.closeFilterBtn.setOnClickListener{
-            postViewModel.getPostsOfPlace(PlaceType.Rugzak)
+            postViewModel.postList
         }
 
         binding.AddPostButton.setOnClickListener { view: View ->
@@ -91,6 +91,13 @@ class BackpackFragment: Fragment() {
             view.findNavController().navigate(action)
         }
 
+        postAdapter = PostAdapter(object : CustomClick {
+            override fun onClick(post: Post) {
+
+                postViewModel.pemanentlyDeletePost(post.id)
+                true
+            }
+        })
 
 
         //postAdapter = PostAdapter()
@@ -99,15 +106,7 @@ class BackpackFragment: Fragment() {
 
 
         binding.BackpackRecycler.adapter =
-            PostAdapter(object : CustomClick {
-                override fun onClick(post: Post) {
-                    //postViewModel.pemanentlyDeletePost(post.id)
-                    true
-                    postViewModel.getPostsOfPlace(PlaceType.Rugzak)
-                }
-
-            }
-            )
+           postAdapter
         /*postViewModel.postList.observe(this.viewLifecycleOwner, Observer
         {
             it?.let { resource ->
@@ -117,13 +116,28 @@ class BackpackFragment: Fragment() {
                         Log.d("repodata",postViewModel.postList.value?.data.toString())
                         postAdapter.submitList(resource.data)
                     }
-                })
-                return binding.root
-                        postAdapter.submitList(resource.data)
-            }
-        })*/
+                })*/
 
-        postViewModel.status.observe(this.viewLifecycleOwner, Observer {
+        postViewModel.postList.observe(this.viewLifecycleOwner, Observer
+        {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        showProgress(false)
+                        postAdapter.submitList(resource.data)
+                    }
+                    Status.LOADING -> {
+                        showProgress(true)
+                    }
+                    Status.ERROR -> {
+                        showProgress(false)
+                    }
+                }
+            }
+        })
+
+
+        /*postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
 
@@ -135,7 +149,7 @@ class BackpackFragment: Fragment() {
 
                     }.show()
             }
-        })
+        })*/
 
         return binding.root
     }

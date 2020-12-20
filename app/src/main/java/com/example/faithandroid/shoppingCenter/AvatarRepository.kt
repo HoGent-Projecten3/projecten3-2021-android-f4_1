@@ -9,14 +9,14 @@ import com.example.faithandroid.util.performGetOperation
 
 class AvatarRepository(private val localDataSource: AvatarLocalDataSource, private val remoteDataSource: AvatarRemoteDataSource) {
 
-      /*fun getAvatar() = performGetOperation(
+      fun getAvatar() = performGetOperation(
 
         databaseQuery = { localDataSource.getAvatar() },
         networkCall = { remoteDataSource.getAvatar() },
         saveCallResult = { localDataSource.saveAvatar(it) }
-    )*/
+    )
 
-    fun getAvatar() = remoteDataSource.getAvatar()
+    //fun getAvatar() = remoteDataSource.getAvatar()
 
 
     fun postAvatar(avatar: Avatar) = remoteDataSource.postAvatar(avatar)

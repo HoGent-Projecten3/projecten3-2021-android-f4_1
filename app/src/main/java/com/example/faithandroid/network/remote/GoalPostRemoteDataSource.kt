@@ -10,7 +10,6 @@ class GoalPostRemoteDataSource(private val apiService: FaithApiService): BaseDat
 
     fun getBillboardGoals() = apiService.getGoalsOfGroup()
 
-
     suspend fun postGoalPost(goal : GoalPost) = apiService.postGoalPost(goal)
 
     suspend fun checkGoal(id: Int) = apiService.checkGoal(id)
