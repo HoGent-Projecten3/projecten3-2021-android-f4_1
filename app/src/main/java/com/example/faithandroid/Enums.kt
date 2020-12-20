@@ -9,7 +9,7 @@ enum class PlaceType {
 }
 
 /**
- * enum class for postType --duplicate?
+ * enum class for postType
  */
 enum class PostType {
 
@@ -18,7 +18,7 @@ enum class PostType {
 }
 
 /**
- * enum class for BodyType --I don't think we use this anywhere
+ * enum class for BodyType
  */
 enum class BodyType {
     Hair, Eye, Skin, Body

@@ -17,7 +17,7 @@ import com.example.faithandroid.databinding.AddPostBinding
 class AddPostFragment: Fragment() {
 
     /**
-     * @args ---------????------------
+     * @property args is used to store the placetype
      */
     val args: AddPostFragmentArgs by navArgs()
     override fun onCreate(savedInstanceState: Bundle?) {

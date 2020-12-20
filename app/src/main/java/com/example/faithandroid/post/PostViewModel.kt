@@ -23,8 +23,8 @@ import retrofit2.Response
 class PostViewModel(private var placeType: PlaceType): ViewModel() {
 
     /**
-     * @param postList is the list of posts from a specific place, provided by the backend
-     * @param status shows the status of the data in postList
+     * @property postList is the list of posts from a specific place, provided by the backend
+     * @property status shows the status of the data in postList
      */
     private var _posts = MutableLiveData<List<Post>>()
     var postList: LiveData<List<Post>> = MutableLiveData<List<Post>>()
@@ -194,7 +194,7 @@ class PostViewModel(private var placeType: PlaceType): ViewModel() {
     /**
      * Deletes a post from every place it exists and from the app altogether
      *
-     * @param id is the id of the post to be deleted
+     * @param postId is the id of the post to be deleted
      */
     fun pemanentlyDeletePost(postId: Int) {
         viewModelScope.launch {

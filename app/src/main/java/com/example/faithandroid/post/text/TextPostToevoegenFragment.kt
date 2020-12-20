@@ -16,10 +16,13 @@ import com.example.faithandroid.models.Post
 import com.example.faithandroid.post.PostViewModel
 
 /**
- * ----------------????-----------------Why do we need this?
+ * this is a fragment for adding a textpost that doesn't exist yet in the app
  */
 class TextPostToevoegenFragment : Fragment() {
     // TODO: Rename and change types of parameters
+    /**
+     * @property args is used to store the placetype of the post
+     */
     val args: TextPostToevoegenFragmentArgs by navArgs()
     private val postViewModel: PostViewModel by lazy{
         ViewModelProvider(this, ViewModelFactory(args.placeType)).get(PostViewModel::class.java)

@@ -31,11 +31,8 @@ import kotlinx.android.synthetic.main.app_bar_musicroom.view.*
 class MusicRoomFragment: Fragment() {
 
     /**
-     * @param REQUEST_CODE is the request code for Spotify????-----------------------
-     * @param REDIRECT_URI is the uri the user is redirected to after logging in to Spotify????-----------------------
-     * @param CLIENTT_ID is the spotify id of grow????-----------------
-     * @param spotifyAppRemoteLocal -------------------????------------------
-     * @param musicRoomViewModel is the viewModel for the music room
+     * @property spotifyAppRemoteLocal is used to open Spotify when clicking on a playlist
+     * @property musicRoomViewModel is the viewModel for the music room
      */
     private val REQUEST_CODE = 1337
     private val REDIRECT_URI = "faithandroid://callback"

@@ -37,15 +37,15 @@ import java.util.*
 class AddAudioFragment: Fragment() {
 
     /**
-     * @param args ---------------????----------------
-     * @param post is the audiofragment to be added
-     * @param nieuwePost keeps track of whether the post is newly added to the app or transferred from another place in the app
-     * @param output is the place the audiofile is stored????-------------------------
-     * @param mediaRecorder is the mediaRecorder to record the audio
-     * @param state keeps track of whether the audio is recording
-     * @param recordingStopped keeps track of whether the recording of the audio is stopped
-     * @param audioPost is the data of the recorded audio????-----------------------
-     * @param viewModel is the viewModel for all posts
+     * @property args used to store the placetype
+     * @property post is the audiofragment to be added
+     * @property nieuwePost keeps track of whether the post is newly added to the app or transferred from another place in the app
+     * @property output is the place the audiofile is stored
+     * @property mediaRecorder is the mediaRecorder to record the audio
+     * @property state keeps track of whether the audio is recording
+     * @property recordingStopped keeps track of whether the recording of the audio is stopped
+     * @property audioPost is the data of the recorded audio
+     * @property viewModel is the viewModel for all posts
      */
     val args: AddAudioFragmentArgs by navArgs()
     var post: Post? = null

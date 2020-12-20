@@ -1,26 +1,20 @@
 package com.example.faithandroid.login.data
 
-import android.util.Log
-import com.example.faithandroid.login.data.LoggedInUser
-import com.example.faithandroid.login.uilogin.LoginResult
 import com.example.faithandroid.models.Adolescent
-import com.example.faithandroid.network.FaithApi
 import kotlinx.coroutines.*
-import retrofit2.await
-import java.lang.NullPointerException
 
 /**
  * Class that requests authentication and user information from the remote data source and
  * maintains an in-memory cache of login status and user credentials information.
  *
- * @property dataSource I'm not sure what this does
+ * @property dataSource handles authentication w/ login credentials and retrieves user information
  */
 
 class LoginRepository(val dataSource: LoginDataSource) {
 
     // in-memory cache of the loggedInUser object
     /**
-     * @param user is the adolescent
+     * @property user is the adolescent
      */
     var user: Adolescent? = null // Adolescent
         private set
@@ -39,11 +33,19 @@ class LoginRepository(val dataSource: LoginDataSource) {
         user = null
     }
 
+    /**
+     * logs out the user
+     */
     fun logout() {
         user = null
         //dataSource.logout()
     }
 
+    /**
+     * gets a specific adolescent
+     *
+     * @param username is the name by which the correct adolescent can be searched
+     */
     suspend fun getAdolescent(username: String): Result<Adolescent>
     {
         
@@ -61,6 +63,12 @@ class LoginRepository(val dataSource: LoginDataSource) {
 
     }
 
+    /**
+     * logs in the user
+     *
+     * @param username is the username given by the user trying to log in
+     * @param password is the password given by the user trying to log in
+     */
       suspend fun  login(username: String, password: String): Result<String> {
           // handle login
 
@@ -78,6 +86,11 @@ class LoginRepository(val dataSource: LoginDataSource) {
 
       }
 
+    /**
+     * sets an Adolescent as the logged in user
+     *
+     * @param loggedInUser is the user to be set as the logged in user
+     */
     private fun setLoggedInUser(loggedInUser: Adolescent) { // loggedInUser: Adolescent
         this.user = loggedInUser
 

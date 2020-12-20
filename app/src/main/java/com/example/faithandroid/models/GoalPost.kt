@@ -18,7 +18,7 @@ import java.time.LocalDateTime
  * @property steps is a list of steps needed to complete the goal
  * @property date is the date the goal was created
  * @property shared keeps track of whether the goal is shared to the billboard
- * @property name -----------------------????----------------------------------
+ * @property name is the name of the user
  */
 data class GoalPost(var id: Int = 0,
                     var title: String = "",

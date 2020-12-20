@@ -4,8 +4,8 @@ package com.example.faithandroid.models
  */
 data class Group (
     /**
-     * @param is the id of the group
-     * @param adolescents is a list of adolescent that belong to this group
+     * @property id is the id of the group
+     * @property adolescents is a list of adolescent that belong to this group
      */
     var id: Int = 0,
     var adolescents : List<Adolescent> = listOf()

@@ -25,8 +25,8 @@ import com.example.faithandroid.models.Post
 class MusicRoomViewModel : ViewModel() {
 
     /**
-     * @param allPlayliists is a list of all spotify playlists of the user
-     * @param playlists is a list of the spotify playlists that are added to the app
+     * @property allPlaylists is a list of all spotify playlists of the user
+     * @property playlists is a list of the spotify playlists that are added to the app
      */
     private val _allPlaylists = MutableLiveData<List<Playlist>>()
     val allPlaylists: LiveData<List<Playlist>>

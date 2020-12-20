@@ -28,9 +28,14 @@ import kotlinx.android.synthetic.main.login.view.*
 import javax.xml.parsers.DocumentBuilderFactory.newInstance
 import javax.xml.transform.TransformerFactory.newInstance
 
-
+/**
+ * activity for the logging in of a user
+ */
 class LoginActivity : AppCompatActivity() {
 
+    /**
+     * @property loginViewModel is the viewModel that is used for logging in
+     */
     private lateinit var loginViewModel: LoginViewModel
 
 
@@ -143,7 +148,6 @@ class LoginActivity : AppCompatActivity() {
    override fun onBackPressed() {
         finishAffinity()
     }
-
 
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome)

@@ -37,12 +37,10 @@ import java.util.*
 class addPhotoFragment: Fragment() {
 
     /**
-     * @param args --------------????----------------
-     * @param post is the post to be added
-     * @param nieuwePost keeps track of whether the post is newly added to the app or transferred from another place within the app
-     * @param PICK_IMAGE ------------????--------------
-     * @param REQUEST_PICTURE_CAPTURE ------------????-----------
-     * @param viewModel is the viewmodel for all posts
+     * @property args used to store the placetype
+     * @property post is the post to be added
+     * @property nieuwePost keeps track of whether the post is newly added to the app or transferred from another place within the app
+     * @property viewModel is the viewmodel for all posts
      */
     val args: addPhotoFragmentArgs by navArgs()
 

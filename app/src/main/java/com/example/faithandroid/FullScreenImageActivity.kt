@@ -25,8 +25,8 @@ import com.squareup.picasso.Picasso
 class FullScreenImageActivity : AppCompatActivity() {
 
     /**
-     * @param imageView is the view of the image
-     * @param imageUri is the uri the image needs to come from
+     * @property imageView is the view of the image
+     * @property imageUri is the uri the image needs to come from
      */
    // private lateinit var drawerLayout : DrawerLayout
     private lateinit var imageView: ImageView

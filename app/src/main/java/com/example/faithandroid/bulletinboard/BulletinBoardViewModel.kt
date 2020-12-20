@@ -25,9 +25,9 @@ class BulletinBoardViewModel : ViewModel() {
 
     //ERROR STATUS
     /**
-     * @param status shows the status of the data in the postlist
-     * @param requestConsultationStatus keeps track of whether the the request of a consultation was successful
-     * @param postLiist is the list of posts in the bulletinboard, provided by the backend
+     * @property status shows the status of the data in the postList
+     * @property requestConsultationStatus keeps track of whether the the request of a consultation was successful
+     * @property postLiist is the list of posts in the bulletinboard, provided by the backend
      */
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>

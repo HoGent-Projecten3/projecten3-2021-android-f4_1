@@ -8,11 +8,11 @@ import org.threeten.bp.LocalDateTime
  */
 data class Adolescent (
     /**
-     * @param firstName is the first name of the adolescent
-     * @param name is the surname of the adolescent
-     * @param email is the email adress of the adolescent
-     * @param wantsConsultation keeps track of whether the adolescent wants a consultation
-     * @param dateOfBirth is the birthdate of the adolescent
+     * @property firstName is the first name of the adolescent
+     * @property name is the surname of the adolescent
+     * @property email is the email adress of the adolescent
+     * @property wantsConsultation keeps track of whether the adolescent wants a consultation
+     * @property dateOfBirth is the birthdate of the adolescent
      */
     var firstName : String,
     var name: String,

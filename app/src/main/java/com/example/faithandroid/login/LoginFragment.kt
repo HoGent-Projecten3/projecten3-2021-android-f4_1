@@ -19,7 +19,9 @@ import com.example.faithandroid.login.uilogin.LoginActivity
 import com.example.faithandroid.login.uilogin.LoginViewModel
 import kotlinx.android.synthetic.main.login.*
 
-
+/**
+ * The fragment to log in
+ */
 class LoginFragment : Fragment() {
 
     private lateinit var drawer: DrawerLayout

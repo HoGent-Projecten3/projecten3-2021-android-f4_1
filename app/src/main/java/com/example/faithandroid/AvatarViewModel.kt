@@ -18,16 +18,16 @@ import retrofit2.await
 class AvatarViewModel : ViewModel() {
 
     /**
-     * @param status is the status of the data in the properties
-     * @param hair is a list of haircolors in the shopping center
-     * @param skin is a list of skintones in the shopping center
-     * @param upperBody is a list of colors of the clothes in the shopping center
-     * @param eye is a list of eyecolors in the shoppingcenter
-     * @param currentAvatar is the current avatar the adolescent is using
-     * @param hairProperties is a list of haircolors put into the recyclerview
-     * @param skinProperties is a list of skintones put into the recyclerview
-     * @param bodyProperties is a list of colors of the clothes put into the recyclerview
-     * @param eyeProperties is a list of eyecolors put into the recyclerview
+     * @property status is the status of the data in the properties
+     * @property Hair is a list of haircolors in the shopping center
+     * @property Skin is a list of skintones in the shopping center
+     * @property UpperBody is a list of colors of the clothes in the shopping center
+     * @property Eye is a list of eyecolors in the shoppingcenter
+     * @property currentAvatar is the current avatar the adolescent is using
+     * @property hairProperties is a list of haircolors put into the recyclerview
+     * @property skinProperties is a list of skintones put into the recyclerview
+     * @property bodyProperties is a list of colors of the clothes put into the recyclerview
+     * @property eyeProperties is a list of eyecolors put into the recyclerview
      */
      private val _status = MutableLiveData<String>()
      val status: LiveData<String>
@@ -169,7 +169,7 @@ class AvatarViewModel : ViewModel() {
      * @param hair is the haircolor of the avatar
      * @param eyes is the eyecolor of the avatar
      * @param skin is the skintone of the avatar
-     * @parm body is the color of the clothes of the avatar
+     * @param body is the color of the clothes of the avatar
      */
     public fun postAvatar(character: Int, hair: Int, eyes: Int, skin: Int, body: Int){
         coroutineScope.launch{

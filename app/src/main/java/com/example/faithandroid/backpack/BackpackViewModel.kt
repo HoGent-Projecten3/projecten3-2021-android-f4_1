@@ -20,7 +20,7 @@ class BackpackViewModel : ViewModel() {
     //Error status
 
     /**
-     * @param status shows the status of the data in the postlist
+     * @property status shows the status of the data in the postList
      */
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>
@@ -40,7 +40,7 @@ class BackpackViewModel : ViewModel() {
     )
 
     /**
-     * @param postList is a list of the posts in backpack
+     * @property postList is a list of the posts in backpack
      */
     private val _postList = MutableLiveData<List<Post>>()
     val postList: LiveData<List<Post>>

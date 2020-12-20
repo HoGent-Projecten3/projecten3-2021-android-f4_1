@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.skyscraper_goalpostimage.view.*
 class SkyscraperFragment: Fragment() {
 
     /**
-     * @param is the viewmodel for the skyscraper
+     * @property viewModel is the viewmodel for the skyscraper
      */
     private lateinit var viewModel: SkyscraperViewModel
 

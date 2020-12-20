@@ -34,7 +34,7 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
     /**
      * This is a viewHolder for the FilteredPostAdapter
      *
-     * @property binding is to bind a fiitered_post.xml file
+     * @property binding is to bind a filtered_post.xml file
      * @property listener is to put extra functionality to a click
      *
      */

@@ -36,7 +36,7 @@ import java.util.function.Consumer
 class addGoalFragment : Fragment() {
 
     /**
-     * @viewModel is the viewModel for skyscraper
+     * @property viewModel is the viewModel for skyscraper
      */
     private lateinit var viewModel: SkyscraperViewModel
 

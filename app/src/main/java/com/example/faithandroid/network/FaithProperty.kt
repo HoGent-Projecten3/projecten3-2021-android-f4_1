@@ -1,6 +1,8 @@
 package com.example.faithandroid.network
 
-
+/**
+ * Unused, used for testing purposes
+ */
 data class FaithProperty(
     val city: Integer,
     val avatar: Integer,

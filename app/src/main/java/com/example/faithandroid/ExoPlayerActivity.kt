@@ -23,9 +23,9 @@ import com.google.android.exoplayer2.util.Util
 class ExoPlayerActivity : AppCompatActivity() {
 
     /**
-     * @param playerView is the view of the exoplayer
-     * @param player is the exoplayer itself
-     * @param postUri is the uri where the post needs to come from
+     * @property playerView is the view of the exoplayer
+     * @property player is the exoplayer itself
+     * @property postUri is the uri where the post needs to come from
      */
     private lateinit var playerView: PlayerView
     private var player: SimpleExoPlayer? = null

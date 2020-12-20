@@ -10,11 +10,11 @@ data class Avatar (
     //var avatar: Int,
 
     /**
-     * @param person is the 'character' of the logged in user
-     * @param hair is the haircolor of the avatar
-     * @param eyes are the color of the eyes
-     * @param skin is the skintone of the avatar
-     * @param upperBody is the color of the clothes of the avatar
+     * @property person is the 'character' of the logged in user
+     * @property hair is the haircolor of the avatar
+     * @property eyes are the color of the eyes
+     * @property skin is the skintone of the avatar
+     * @property upperBody is the color of the clothes of the avatar
      */
     var person : Int,
     var hair: Int,

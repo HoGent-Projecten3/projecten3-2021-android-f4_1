@@ -19,14 +19,14 @@ import com.example.faithandroid.models.Post
 import com.example.faithandroid.post.PostViewModel
 
 /**
- * This is a fragment for adding a textpost
+ * This is a fragment for adding a textpost from one place to another
  */
 class addTextFragment: Fragment() {
 
     /**
-     * @param args --------------????--------------
-     * @post is the post to be added
-     * @viewModel is the viewmodel for all posts
+     * @property args used to store the placetype
+     * @property post is the post to be added
+     * @property viewModel is the viewmodel for all posts
      */
     val args: addTextFragmentArgs by navArgs()
 

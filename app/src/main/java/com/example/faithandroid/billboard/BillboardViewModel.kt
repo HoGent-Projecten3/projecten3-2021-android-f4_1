@@ -20,7 +20,7 @@ class BillboardViewModel : ViewModel() {
 
     //ERROR STATUS
     /**
-     * @param status shows the status of the data in the postlist
+     * @property status shows the status of the data in the postlist
      */
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>
@@ -33,7 +33,7 @@ class BillboardViewModel : ViewModel() {
 // LocalDateTime.of(2020, 7, 3, 12, 0 ))
     )*/
     /**
-     * @param properties holds a list of GoalPosts for Billboard
+     * @property properties holds a list of GoalPosts for Billboard
      */
     private val _properties = MutableLiveData<List<GoalPost>>()
 

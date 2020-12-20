@@ -13,10 +13,10 @@ import java.io.Serializable
  *
  * @property id is the id of the post
  * @property title is the title of the post
- * @property data -----------------????---------------- Isn't the data at the uri?
+ * @property data is a description of the post
  * @property date is the date the post was created
  * @property postType is the type of the post (video, audio, text or image)
- * @property dataBytes -----------------????-------------------
+ * @property dataBytes is the data of the post itself when you want to store it for the first time
  * @property uri is the link to the post
  */
 data class Post(

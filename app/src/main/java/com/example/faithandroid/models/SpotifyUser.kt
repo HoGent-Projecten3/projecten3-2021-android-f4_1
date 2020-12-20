@@ -1,7 +1,7 @@
 package com.example.faithandroid.models
 
 /**
- * -------------------????---------------------
+ * Unused
  */
 data class SpotifyUser(
     var id: String,

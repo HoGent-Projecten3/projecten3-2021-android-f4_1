@@ -19,8 +19,8 @@ import kotlin.Result.Companion.success
  */
 class LoginDataSource {
     /**
-     * @param status shows the status of the data in ado
-     * @param loggedInUser is the logged in user
+     * @property status shows whether the API call was successful
+     * @property loggedInUser is the logged in user
      */
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>

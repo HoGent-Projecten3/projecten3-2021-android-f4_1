@@ -33,9 +33,9 @@ import kotlinx.android.synthetic.main.skyscraper_add_goal.view.*
 class BulletinboardFragment: Fragment() {
 
     /**
-     * @param viewModel is the viewModel for the bulletinboard
-     * @param postViewModel is the viewModel for all posts
-     * @param deleteBtn is the button used to delete a post
+     * @property viewModel is the viewModel for the bulletinboard
+     * @property postViewModel is the viewModel for all posts
+     * @property deleteBtn is the button used to delete a post
      */
     private lateinit var viewModel: BulletinBoardViewModel
     private val postViewModel: PostViewModel by lazy{

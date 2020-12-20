@@ -27,9 +27,9 @@ import com.google.android.material.snackbar.Snackbar
 class BackpackFragment: Fragment() {
 
     /**
-     * @param viewModel is the viewModel for this fragment
-     * @param dropdownList dropdown list for filtering of posts
-     * @param postViewModel is the viewModel for all posts
+     * @property viewModel is the viewModel for this fragment
+     * @property dropdownList dropdown list for filtering of posts
+     * @property postViewModel is the viewModel for all posts
      */
     private lateinit var viewModel: BackpackViewModel
     private lateinit var dropdownList: AutoCompleteTextView
