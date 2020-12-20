@@ -1,21 +1,10 @@
 package com.example.faithandroid.post
 
-
-
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.faithandroid.data.local.PostLocalDataSource
-import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.network.remote.PostRemoteDataSource
-import com.example.faithandroid.util.Resource
 import com.example.faithandroid.util.performDelOperation
 import com.example.faithandroid.util.performGetOperation
-import retrofit2.Call
-import retrofit2.Response
-import retrofit2.await
-import retrofit2.http.Path
 import java.lang.Exception
 
 /**
@@ -43,12 +32,11 @@ class PostRepository(private val localDataSource: PostLocalDataSource, private v
             saveCallResult = { localDataSource.savePosts(it) }
         )
 
+    fun getFilteredFromPlace(placeType: Int, postType: Int) = remoteDataSource.getFilteredFromPlace(placeType, postType)
 
-    fun getFilteredFromPlace(placeType: Int,postType: Int) = remoteDataSource.getFilteredFromPlace(placeType, postType)
+    fun addPostByEmail(post: Post, placeType: Int) = remoteDataSource.addPostByEmail(post, placeType)
 
-    fun addPostByEmail(post: Post, placeType: Int) = remoteDataSource.addPostByEmail(post,placeType)
-
-    fun deletePostByEmail(placeType: Int,postId: Int) =
+    fun deletePostByEmail(placeType: Int, postId: Int) =
         performDelOperation(
             databaseQuery = {
                 when (placeType) {
@@ -62,13 +50,12 @@ class PostRepository(private val localDataSource: PostLocalDataSource, private v
                         throw Exception("Er liep onverwachts iets mis")
                     }
                 }
-
             },
-            networkCall = {remoteDataSource.deletePostByEmail(placeType,postId)}
+            networkCall = { remoteDataSource.deletePostByEmail(placeType, postId) }
         )
 
-    fun addExistingPostToPlace(postId: Int,placeType: Int) = performDelOperation(
-        databaseQuery = { when(placeType) {
+    fun addExistingPostToPlace(postId: Int, placeType: Int) = performDelOperation(
+        databaseQuery = { when (placeType) {
             0 -> {
                 localDataSource.addExistingPostToBulletinBoard(postId)
             }
@@ -77,8 +64,8 @@ class PostRepository(private val localDataSource: PostLocalDataSource, private v
             }
             else -> {
             }
-        }} ,
-        networkCall = {remoteDataSource.addExistingPostToPlace(postId,placeType)}
+        } },
+        networkCall = { remoteDataSource.addExistingPostToPlace(postId, placeType) }
     )
 
     fun requestConsultation() = remoteDataSource.requestConsultation()
@@ -86,9 +73,7 @@ class PostRepository(private val localDataSource: PostLocalDataSource, private v
     fun changePassword(ww: String) = remoteDataSource.changePassword(ww)
 
     fun permanentlyDeletePost(postId: Int) = performDelOperation(
-        databaseQuery = {localDataSource.deletePostFromBackpack(postId)},
-        networkCall = {remoteDataSource.permanentlyDeletePost(postId)}
+        databaseQuery = { localDataSource.deletePostFromBackpack(postId) },
+        networkCall = { remoteDataSource.permanentlyDeletePost(postId) }
     )
-
-
 }

@@ -1,19 +1,15 @@
 package com.example.faithandroid.login.uilogin
 
 import android.util.Log
+import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import android.util.Patterns
+import com.example.faithandroid.R
 import com.example.faithandroid.login.data.LoginRepository
 import com.example.faithandroid.login.data.Result
-
-import com.example.faithandroid.R
-import com.example.faithandroid.login.data.User
 import com.example.faithandroid.models.Adolescent
-import com.example.faithandroid.profiel.ProfielFragment
 import kotlinx.coroutines.*
-import retrofit2.await
 
 /**
  * viewModel for the logging in of a user
@@ -47,7 +43,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
             if (result is Result.Success) {
 
                 val result2 = loginRepository.getAdolescent(username)
-                if(result2 is Result.Success) {
+                if (result2 is Result.Success) {
                     _loginResult.value =
                         LoginResult(
                             success = LoggedInUserView(
@@ -65,9 +61,6 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
                     LoginResult(error = R.string.login_failed)
             }
         }
-
-
-
     }
 
     /**
@@ -91,7 +84,6 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
             _loginForm.value =
                 LoginFormState(isDataValid = true)
         }
-
     }
 
     /**
@@ -123,7 +115,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     /**
      * logs out the user
      */
-    fun logout(){
+    fun logout() {
         loginRepository.logout()
         _loginResult.value = null
         _loginForm.value = null

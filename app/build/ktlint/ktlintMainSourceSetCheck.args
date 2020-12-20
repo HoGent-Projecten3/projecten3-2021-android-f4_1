@@ -1,7 +1,6 @@
 --reporter=plain
 --color
---reporter=plain,output=D:\git\projecten3-2021-android-f4_1\app\build\reports\ktlint\ktlintMainSourceSetFormat\ktlintMainSourceSetFormat.txt
--F
+--reporter=plain,output=D:\git\projecten3-2021-android-f4_1\app\build\reports\ktlint\ktlintMainSourceSetCheck\ktlintMainSourceSetCheck.txt
 "src\\main\\java\\com\\example\\faithandroid\\adapters\\FilteredPostAdapter.kt"
 "src\\main\\java\\com\\example\\faithandroid\\adapters\\PostAdapter.kt"
 "src\\main\\java\\com\\example\\faithandroid\\AppPreferences.kt"

@@ -1,7 +1,6 @@
 package com.example.faithandroid.post.text
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,8 +18,8 @@ import com.example.faithandroid.databinding.AddTextBinding
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
-import org.koin.android.ext.android.inject
 import com.google.android.material.snackbar.Snackbar
+import org.koin.android.ext.android.inject
 
 /**
  * This is a fragment for adding a textpost from one place to another
@@ -29,15 +28,16 @@ import com.google.android.material.snackbar.Snackbar
  * @property post is the post to be added
  * @property viewModel is the viewmodel for all posts
  */
-class addTextFragment: Fragment() {
-    val args: addTextFragmentArgs by navArgs()
+class AddTextFragment : Fragment() {
+    val args: AddTextFragmentArgs by navArgs()
     var post: Post? = null
-    private lateinit var  viewModel: PostViewModel
-    private lateinit var  dropdown : Spinner
-    val postRepository : PostRepository by inject()
+    private lateinit var viewModel: PostViewModel
+    private lateinit var dropdown: Spinner
+    val postRepository: PostRepository by inject()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val binding = DataBindingUtil.inflate<AddTextBinding>(
@@ -48,26 +48,28 @@ class addTextFragment: Fragment() {
         )
         binding.lifecycleOwner = this
 
-        viewModel = ViewModelProvider(this, ViewModelFactory(args.placeType,postRepository)).get(PostViewModel::class.java)
+        viewModel = ViewModelProvider(this, ViewModelFactory(args.placeType, postRepository)).get(PostViewModel::class.java)
 
-        viewModel.status.observe(this.viewLifecycleOwner, Observer {
-            val contextView = this.view
-            Snackbar.make(contextView!!, viewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
-                ""
-            )
-            {
-            }.show()
-        })
+        viewModel.status.observe(
+            this.viewLifecycleOwner,
+            Observer {
+                val contextView = this.view
+                        Snackbar.make(contextView!!, viewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                            ""
+                        ) {
+                }.show()
+            }
+        )
 
-        binding.imageView4.setOnClickListener{
-                view: View ->  val action =
-            addTextFragmentDirections.actionAddTextFragmentToTextPostToevoegen(
+        binding.imageView4.setOnClickListener {
+                view: View -> val action =
+            AddTextFragmentDirections.actionAddTextFragmentToTextPostToevoegen(
                 args.placeType
             )
             view.findNavController().navigate(action)
         }
 
-        val placeTypes =  PlaceType.values()
+        val placeTypes = PlaceType.values()
 
         val adapter = this.context?.let {
             ArrayAdapter<PlaceType>(
@@ -77,7 +79,7 @@ class addTextFragment: Fragment() {
             )
         }
 
-        //val editTextFilledExposedDropdown: AutoCompleteTextView? = this.view?.findViewById(R.id.filled_exposed_dropdown)
+        // val editTextFilledExposedDropdown: AutoCompleteTextView? = this.view?.findViewById(R.id.filled_exposed_dropdown)
         binding.filledExposedDropdown.setAdapter(adapter)
         binding.filledExposedDropdown.setText(PlaceType.Rugzak.name, false)
 
@@ -94,21 +96,21 @@ class addTextFragment: Fragment() {
         )
         binding.viewModel = viewModel
         binding.recyclerView.adapter =
-            FilteredPostAdapter(object : CustomClick {
-                override fun onClick(post: Post) {
-                    this@addTextFragment.post = post
-                    true
-                }
-            })
+            FilteredPostAdapter(
+                object : CustomClick {
+override fun onClick(post: Post) {
+    this@AddTextFragment.post = post
+    true
+}
+}
+            )
 
-
-        binding.textToevoegenButton.setOnClickListener{
+        binding.textToevoegenButton.setOnClickListener {
             post?.let { it1 -> viewModel.addExistingPostToPlace(
                 it1.id,
                 args.placeType
             ) }
-            when(args.placeType)
-            {
+            when (args.placeType) {
                 PlaceType.Prikbord -> {
                     it.findNavController()
                         .navigate(R.id.action_addTextFragment_to_bulletinBoardFragment)
@@ -125,6 +127,5 @@ class addTextFragment: Fragment() {
         }
 
         return binding.root
-
     }
 }

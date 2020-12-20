@@ -3,14 +3,10 @@ package com.example.faithandroid.backpack
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.faithandroid.PlaceType
 import com.example.faithandroid.models.Post
-import com.example.faithandroid.models.PostType
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import retrofit2.await
 
 /**
  * This is a viewModel that gets and keeps a list of all posts in backpack
@@ -18,13 +14,13 @@ import retrofit2.await
  * @property status shows the status of the data in the postList
  */
 class BackpackViewModel : ViewModel() {
-    //Error status
+    // Error status
 
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>
         get() = _status
 
-    //Lijst van posts
+    // Lijst van posts
     var mockData = mutableListOf<Post>(
         /*Post(0, "Op maandag zag ik een hond", "Ik was gaan wandelen met mijn mama en zag de schattigste hond. Het was een lieve hond en ik mocht hem aaien, wat ik echt fantastisch vond. Ik heb gevraagd of ik er misschien eens mee mocht gaan wandelen. De meneer zei dat dat zeker mocht", "2012-03-19T03:22"),
         Post(1, "Stomme school", "IK HAAT SCHOOL, IK SNAP NIET DAT IEMAND OOIT NAAR SCHOOL GAAT LAAT MIJ GEWOON SLAPEN", "2012-03-19T04:22"),
@@ -44,8 +40,7 @@ class BackpackViewModel : ViewModel() {
     val postList: LiveData<List<Post>>
         get() = _postList
 
-
-    //GEEN IDEE
+    // GEEN IDEE
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
@@ -54,12 +49,10 @@ class BackpackViewModel : ViewModel() {
         getPostsOfBackpack()
     }
 
-
     /**
      * This method gets the posts in backpack from the backend and puts them in the postList variable
      */
-    fun getPostsOfBackpack()
-    {
+    fun getPostsOfBackpack() {
         /*coroutineScope.launch{
             try{
                 var getPostList = FaithApi.retrofitService.getPostsOfPlaceByAdolescentEmail(PlaceType.Rugzak.ordinal)

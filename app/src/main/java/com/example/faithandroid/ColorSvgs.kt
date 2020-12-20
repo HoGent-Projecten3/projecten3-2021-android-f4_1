@@ -12,7 +12,7 @@ class ColorSvgs {
          * @param vectorMasterViewA is the vector if the Avatar is person 1
          * @param vectorMasterViewB is the vector if the Avatar is person 2
          */
-        fun setHair(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView){
+        fun setHair(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView) {
             var path1 = vectorMasterViewA.getPathModelByName("Hair1")
             var path2 = vectorMasterViewA.getPathModelByName("Hair2")
             var path3 = vectorMasterViewB.getPathModelByName("Hair")
@@ -30,7 +30,7 @@ class ColorSvgs {
          * @param vectorMasterViewA is the vector if the Avatar is person 1
          * @param vectorMasterViewB is the vector if the Avatar is person 2
          */
-        fun setEyes(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView){
+        fun setEyes(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView) {
             var path1 = vectorMasterViewA.getPathModelByName("Eye1")
             var path2 = vectorMasterViewA.getPathModelByName("Eye2")
             var path3 = vectorMasterViewB.getPathModelByName("Eye1")
@@ -50,7 +50,7 @@ class ColorSvgs {
          * @param vectorMasterViewA is the vector if the Avatar is person 1
          * @param vectorMasterViewB is the vector if the Avatar is person 2
          */
-        fun setSkin(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView){
+        fun setSkin(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView) {
             var path1 = vectorMasterViewA.getPathModelByName("Skin1")
             var path2 = vectorMasterViewA.getPathModelByName("Skin2")
             var path3 = vectorMasterViewA.getPathModelByName("Skin3")
@@ -78,7 +78,7 @@ class ColorSvgs {
          * @param vectorMasterViewA is the vector if the Avatar is person 1
          * @param vectorMasterViewB is the vector if the Avatar is person 2
          */
-        fun setBody(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView){
+        fun setBody(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView) {
             var path1 = vectorMasterViewA.getPathModelByName("Body")
             var path2 = vectorMasterViewB.getPathModelByName("Body")
             path1.fillColor = avatarpart

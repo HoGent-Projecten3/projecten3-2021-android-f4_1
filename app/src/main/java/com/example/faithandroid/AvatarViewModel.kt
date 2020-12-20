@@ -7,13 +7,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.faithandroid.models.Avatar
 import com.example.faithandroid.shoppingCenter.AvatarRepository
-import com.example.faithandroid.skyscraper.GoalPostRepository
-import com.example.faithandroid.util.Resource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import okhttp3.internal.wait
 import retrofit2.await
 
 /**
@@ -85,10 +82,9 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
         Color.parseColor("#777777"),
         Color.parseColor("#FF0400"),
 
-        )
+    )
 
     private var _currentAvatar = MutableLiveData<Avatar>()
-
 
     private val _hairProperties = MutableLiveData<List<Int>>()
     private val _eyeProperties = MutableLiveData<List<Int>>()
@@ -107,7 +103,6 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
     val bodyProperties: MutableLiveData<List<Int>>
         get() = _bodyProperties
 
-
      private var viewModelJob = Job()
      private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
@@ -116,7 +111,6 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
          getAvatar()
      }
 
-
     /**
      * gets all the colors for the recyclerviews in the shopping center
      */
@@ -124,19 +118,19 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
           coroutineScope.launch {
 
                try {
-                    if(Hair.size > 0){
+                    if (Hair.size > 0) {
                         _hairProperties.value = Hair
                     }
-                   if(Eye.size > 0){
+                   if (Eye.size > 0) {
                        _eyeProperties.value = Eye
                    }
-                   if(Skin.size > 0){
+                   if (Skin.size > 0) {
                        _skinProperties.value = Skin
                    }
-                   if(UpperBody.size > 0){
+                   if (UpperBody.size > 0) {
                        _bodyProperties.value = UpperBody
                    }
-               } catch (e: Exception){
+               } catch (e: Exception) {
                     _status.value = "Failure: ${e.message}"
                }
           }
@@ -145,7 +139,7 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
     /**
      * gets the avatar for the logged in adolescent
      */
-     private fun getAvatar(){
+     private fun getAvatar() {
          coroutineScope.launch {
 
              try {
@@ -158,12 +152,11 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
                  AppPreferences.currentEyes = currentAvatar.value?.eyes
                  AppPreferences.currentSkin = currentAvatar.value?.skin
                  AppPreferences.currentBody = currentAvatar.value?.upperBody
-
              } catch (e: Exception) {
                  _status.value = "Kan geen verbinding maken met de server"
              }
          }
-         Log.d("hair",currentAvatar.value.toString())
+         Log.d("hair", currentAvatar.value.toString())
     }
 
     /**
@@ -175,10 +168,10 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
      * @param skin is the skintone of the avatar
      * @param body is the color of the clothes of the avatar
      */
-    public fun postAvatar(character: Int, hair: Int, eyes: Int, skin: Int, body: Int){
-        coroutineScope.launch{
-            try{
-                val avatar: Avatar = Avatar(id = 0,person = character, hair = hair, eyes = eyes, skin = skin, upperBody = body)
+    public fun postAvatar(character: Int, hair: Int, eyes: Int, skin: Int, body: Int) {
+        coroutineScope.launch {
+            try {
+                val avatar: Avatar = Avatar(id = 0, person = character, hair = hair, eyes = eyes, skin = skin, upperBody = body)
                 avatarRepository.postAvatar(avatar)
                 AppPreferences.currentPerson = character
                 AppPreferences.currentHair = hair
@@ -186,15 +179,9 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
                 AppPreferences.currentSkin = skin
                 AppPreferences.currentBody = body
                 _status.value = "gelukt!"
-
-            }
-            catch (e: Exception)
-            {
+            } catch (e: Exception) {
                 _status.value = "niet gelukt!"
             }
         }
     }
-
-
-
 }

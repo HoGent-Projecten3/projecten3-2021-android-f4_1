@@ -4,7 +4,6 @@ import AppPreferences
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,20 +34,20 @@ import org.koin.android.ext.android.inject
  * @property spotifyAppRemoteLocal is used to open Spotify when clicking on a playlist
  * @property musicRoomViewModel is the viewModel for the music room
  */
-class MusicRoomFragment: Fragment() {
+class MusicRoomFragment : Fragment() {
     private val REQUEST_CODE = 1337
     private val REDIRECT_URI = "faithandroid://callback"
     private val CLIENT_ID = "95bc88d8f6084f1893dd648d88732210"
     private var spotifyAppRemoteLocal: SpotifyAppRemote? = null
     private val loadingDialogFragment by lazy { LoadingFragment() }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val musicRoomViewModel: MusicRoomViewModel by inject()
@@ -57,46 +56,44 @@ class MusicRoomFragment: Fragment() {
             R.layout.musicroom,
             container,
             false
-        );
-
+        )
 
         binding.lifecycleOwner = this
         binding.viewModel = musicRoomViewModel
         val contextView = this.view
-        binding.playlistRecycler.adapter = PlaylistAdapter(object : CustomPlaylistClick {
-            override fun onClick(playlist: Playlist): Boolean {
-                if (spotifyAppRemoteLocal != null) {
-                    if (spotifyAppRemoteLocal!!.isConnected) {
-                        val intent = Intent(Intent.ACTION_VIEW)
-                        intent.data = Uri.parse("spotify:playlist:${playlist.id}")
-                        intent.putExtra(
-                            Intent.EXTRA_REFERRER,
-                            Uri.parse("android-app://" + this@MusicRoomFragment.context?.packageName)
-                        )
-                        startActivity(intent)
-                        return true
-                    } else {
-                        return false
+        binding.playlistRecycler.adapter = PlaylistAdapter(
+            object : CustomPlaylistClick {
+override fun onClick(playlist: Playlist): Boolean {
+if (spotifyAppRemoteLocal != null) {
+if (spotifyAppRemoteLocal!!.isConnected) {
+val intent = Intent(Intent.ACTION_VIEW)
+intent.data = Uri.parse("spotify:playlist:${playlist.id}")
+intent.putExtra(
+    Intent.EXTRA_REFERRER,
+    Uri.parse("android-app://" + this@MusicRoomFragment.context?.packageName)
+)
+startActivity(intent)
+return true
+} else {
+return false
+}
+} else {
+
+return false
+}
+}
+},
+            object : CustomPlaylistClick {
+                        override fun onClick(playlist: Playlist): Boolean {
+                            musicRoomViewModel.deletePlaylist(playlist.primaryKey)
+                            return true
+                        }
                     }
-
-                } else {
-
-                    return false
-                }
-
-
-            }
-        }, object : CustomPlaylistClick {
-            override fun onClick(playlist: Playlist): Boolean {
-                musicRoomViewModel.deletePlaylist(playlist.primaryKey)
-                return true
-            }
-        })
+        )
 
 //        musicRoomViewModel.allPlaylists.observe(viewLifecycleOwner, Observer {
 //
 //        })
-
 
         binding.include4.newPlaylistButton.setOnClickListener {
             val popup = PopupMenu(context, it)
@@ -105,7 +102,6 @@ class MusicRoomFragment: Fragment() {
                 popup.menu.add(it.name)
             }
             popup.setOnMenuItemClickListener {
-
 
                 var playlist =
                     musicRoomViewModel.allPlaylists.value?.data?.find { playlist: Playlist ->
@@ -122,9 +118,10 @@ class MusicRoomFragment: Fragment() {
             popup.show()
         }
 
-        this.lifecycle.addObserver(object : LifecycleObserver {
-
-        })
+        this.lifecycle.addObserver(
+            object : LifecycleObserver {
+}
+        )
 
         return binding.root
     }
@@ -138,7 +135,9 @@ class MusicRoomFragment: Fragment() {
             .showAuthView(true)
             .build()
         if (SpotifyAppRemote.isSpotifyInstalled(this.context)) {
-            SpotifyAppRemote.connect(this.context, connectionParams,
+            SpotifyAppRemote.connect(
+                this.context,
+                connectionParams,
                 object : Connector.ConnectionListener {
                     override fun onConnected(spotifyAppRemote: SpotifyAppRemote) {
                         spotifyAppRemoteLocal = spotifyAppRemote
@@ -156,14 +155,13 @@ class MusicRoomFragment: Fragment() {
                         )
                             .setAction(
                                 "Try again"
-                            )
-                            {
-                                onStart();
+                            ) {
+                                onStart()
                             }.show()
                     }
-                })
+                }
+            )
         }
-
 
         val builder = AuthenticationRequest.Builder(
             CLIENT_ID,
@@ -171,22 +169,18 @@ class MusicRoomFragment: Fragment() {
             REDIRECT_URI
         )
 
-
         builder.setScopes(arrayOf("streaming"))
         val request = builder.build()
         var intent = AuthenticationClient.createLoginActivityIntent(activity, request)
         startActivityForResult(intent, REQUEST_CODE)
     }
 
-
     override fun onStop() {
         super.onStop()
         if (spotifyAppRemoteLocal != null) {
-            SpotifyAppRemote.disconnect(spotifyAppRemoteLocal);
+            SpotifyAppRemote.disconnect(spotifyAppRemoteLocal)
         }
-
     }
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -202,7 +196,6 @@ class MusicRoomFragment: Fragment() {
                             when (resource.status) {
                                 Status.SUCCESS -> {
                                     showProgress(false)
-
                                 }
                                 Status.LOADING -> {
                                     showProgress(true)
@@ -215,7 +208,7 @@ class MusicRoomFragment: Fragment() {
                     }
                 )
             } else {
-                //errorhandling
+                // errorhandling
                 val contextView = this.view
                 if (contextView != null) {
 
@@ -226,13 +219,10 @@ class MusicRoomFragment: Fragment() {
                     )
                         .setAction(
                             ""
-                        )
-                        {
-
+                        ) {
                         }.show()
                 }
             }
-
         }
     }
 
@@ -244,13 +234,11 @@ class MusicRoomFragment: Fragment() {
         } else {
             if (loadingDialogFragment.isAdded) {
                 loadingDialogFragment.dismissAllowingStateLoss()
-
             }
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-
     }
 }

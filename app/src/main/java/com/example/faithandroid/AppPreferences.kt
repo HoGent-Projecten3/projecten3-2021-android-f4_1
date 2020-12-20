@@ -15,17 +15,17 @@ object AppPreferences {
     // TODO step 4: replace these example attributes with your stored values
     var name: String?
         get() = Key.NAME.getString()
-        set(value) = if(value.equals("")){
+        set(value) = if (value.equals("")) {
             Key.NAME.remove()
-        }else {
+        } else {
             Key.NAME.setString(value)
         }
 
     var firstname: String?
         get() = Key.FIRSTNAME.getString()
-        set(value) = if(value.equals("")){
+        set(value) = if (value.equals("")) {
             Key.FIRSTNAME.remove()
-        }else {
+        } else {
             Key.FIRSTNAME.setString(value)
         }
 
@@ -75,7 +75,7 @@ object AppPreferences {
 
     private enum class Key {
 
-        USERNAME, TOKEN, SPOTIFYTOKEN, DARKMODE,NAME,FIRSTNAME,
+        USERNAME, TOKEN, SPOTIFYTOKEN, DARKMODE, NAME, FIRSTNAME,
         CURRENTPERSON, CURRENTHAIR, CURRENTEYES, CURRENTSKIN, CURRENTBODY; // TODO step 3: replace these cases with your stored values keys
 
         fun getBoolean(): Boolean? = if (sharedPreferences!!.contains(name)) sharedPreferences!!.getBoolean(name, false) else null

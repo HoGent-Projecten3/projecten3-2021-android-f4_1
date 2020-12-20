@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.faithandroid.*
@@ -15,8 +14,6 @@ import com.example.faithandroid.databinding.TreasurechestBinding
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
-import com.example.faithandroid.util.Status
-import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
 
 /**
@@ -25,14 +22,14 @@ import org.koin.android.ext.android.inject
  * @property postViewModel is the viewmodel that is used by posts
  * @property adapter is the adapter that binds the posts in treasure chest to the recyclerview
  */
-class TreasureChestFragment: Fragment() {
-    val postRepository : PostRepository by inject()
+class TreasureChestFragment : Fragment() {
+    val postRepository: PostRepository by inject()
 
-    private val postViewModel: PostViewModel by lazy{
-        ViewModelProvider(this, ViewModelFactory(PlaceType.Schatkist,postRepository)).get(PostViewModel::class.java)
+    private val postViewModel: PostViewModel by lazy {
+        ViewModelProvider(this, ViewModelFactory(PlaceType.Schatkist, postRepository)).get(PostViewModel::class.java)
     }
 
-    private lateinit var  adapter: PostAdapter
+    private lateinit var adapter: PostAdapter
     private val loadingDialogFragment by lazy { LoadingFragment() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +37,8 @@ class TreasureChestFragment: Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
       val binding = DataBindingUtil.inflate<TreasurechestBinding>(
@@ -48,15 +46,17 @@ class TreasureChestFragment: Fragment() {
           R.layout.treasurechest,
           container,
           false
-      );
+      )
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.viewModel = postViewModel
 
-        this.adapter = PostAdapter(object : CustomClick {
-            override fun onClick(post: Post) {
-            }
-        })
+        this.adapter = PostAdapter(
+            object : CustomClick {
+override fun onClick(post: Post) {
+}
+}
+        )
 
         binding.TreasureChestRecycler?.adapter = this.adapter
 
@@ -69,18 +69,16 @@ class TreasureChestFragment: Fragment() {
         }
 
         binding.TreasureChestRecycler?.adapter =
-            PostAdapter(object : CustomClick {
-                override fun onClick(post: Post) {
-                    postViewModel.deletePostByEmail(post.id,  PlaceType.Schatkist)
-                    postViewModel.postList
-                    true
-                }
-            })
+            PostAdapter(
+                object : CustomClick {
+        override fun onClick(post: Post) {
+            postViewModel.deletePostByEmail(post.id, PlaceType.Schatkist)
+            postViewModel.postList
+            true
+        }
+    }
+            )
 
         return binding.root
     }
-
-
-
-
 }
