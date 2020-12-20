@@ -41,7 +41,7 @@ class FilteredPostAdapter(private var listener: CustomClick) : ListAdapter<Post,
                 Picasso.get().load(post.uri).into(binding.TreasurechestImage)
                 //binding.TreasurechestImage.scaleType = ImageView.ScaleType.CENTER_CROP
             }else if(post.postType == PostType.Audio.ordinal){
-                binding.TreasurechestImage.visibility = INVISIBLE
+                //binding.TreasurechestImage.visibility = GONE
             }
             else if(post.postType == PostType.Video.ordinal){
                 Glide.with(itemView.context).load(post.uri).into(binding.TreasurechestImage)

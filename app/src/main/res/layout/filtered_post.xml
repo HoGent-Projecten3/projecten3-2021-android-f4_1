@@ -17,9 +17,8 @@
     </data>
 
 
-
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <com.google.android.material.card.MaterialCardView
@@ -45,7 +44,6 @@
                     android:scaleType="fitCenter"
 
                     android:visibility='@{post.PostType == posttype.Text.ordinal()?View.GONE:View.VISIBLE}' />
-                <!--android:src="@drawable/cinema"-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -72,6 +70,7 @@
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
+
     </LinearLayout>
 
 

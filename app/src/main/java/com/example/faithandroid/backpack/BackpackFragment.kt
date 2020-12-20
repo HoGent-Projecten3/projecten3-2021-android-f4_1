@@ -12,15 +12,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.faithandroid.*
+import com.example.faithandroid.adapters.FilteredPostAdapter
 import com.example.faithandroid.adapters.PostAdapter
 import com.example.faithandroid.databinding.BackpackBinding
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
-import com.example.faithandroid.util.Status
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
 
@@ -115,7 +113,7 @@ class BackpackFragment: Fragment() {
                         postAdapter.submitList(resource.data)
                     }
                 })*/
-
+/*
         postViewModel.postList.observe(this.viewLifecycleOwner, Observer
         {
             it?.let { resource ->
@@ -133,7 +131,17 @@ class BackpackFragment: Fragment() {
                 }
             }
         })
+*/
+        binding.BackpackRecycler.adapter =
+            PostAdapter(object : CustomClick {
+                override fun onClick(post: Post) {
+                    postViewModel.pemanentlyDeletePost(post.id)
+                    true
+                    postViewModel.postList
+                }
 
+            }
+         )
 
         /*postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
@@ -145,10 +153,9 @@ class BackpackFragment: Fragment() {
                     )
                     {
 
-                    }.show()
+                }.show()
             }
         })*/
-
         return binding.root
     }
 
@@ -160,9 +167,12 @@ class BackpackFragment: Fragment() {
                 PostType.values()
             )
         }
+
         dropdownList.setAdapter(adapter)
-                super.onResume()
-            }
+
+
+        super.onResume()
+    }
 
             private fun showProgress(b: Boolean) {
                 if (b) {

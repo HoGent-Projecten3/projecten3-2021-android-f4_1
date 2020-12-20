@@ -74,8 +74,9 @@
 
                 <TextView
                     android:id="@+id/titleGoal"
-                    android:layout_width="239dp"
-                    android:layout_height="30dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:layout_marginStart="10dp"
                     android:text="@{property.title}"
                     android:textSize="25dp"
@@ -83,10 +84,8 @@
                     app:flow_horizontalAlign="center"
                     app:layout_constraintBottom_toTopOf="@+id/description"
                     app:layout_constraintEnd_toStartOf="@+id/button"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/cardprofile"
                     app:layout_constraintTop_toBottomOf="@id/datum" />
-
                 <TextView
                     android:id="@+id/description"
                     android:layout_width="0dp"
@@ -110,6 +109,7 @@
                     android:outlineAmbientShadowColor="#FFFFFF"
                     app:cardCornerRadius="250dp"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/description"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
