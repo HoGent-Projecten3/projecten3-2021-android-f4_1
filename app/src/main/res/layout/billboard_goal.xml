@@ -5,6 +5,13 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View" />
+        <variable
+            name="user"
+            type="String"/>
+        <variable
+            name="goalUser"
+            type="String"/>
         <variable
             name="property"
             type="com.example.faithandroid.models.GoalPost" />
@@ -41,7 +48,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="7dp"
                     android:layout_marginBottom="4dp"
-                    android:text="@{property.name}"
+                    android:text="@{ property.firstname + ` ` + property.name }"
                     app:layout_constraintBottom_toTopOf="@id/cardprofile"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -53,12 +60,12 @@
                     android:layout_marginTop="12dp"
                     android:layout_marginRight="7dp"
                     android:text="@{property.date}"
-                    app:layout_constraintEnd_toStartOf="@id/button"
+                    app:layout_constraintEnd_toStartOf="@id/sharedGoalDeleteButton"
                     app:layout_constraintTop_toTopOf="parent" />
 
 
                 <ImageView
-                    android:id="@+id/button"
+                    android:id="@+id/sharedGoalDeleteButton"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -68,22 +75,23 @@
                     android:clickable="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    android:visibility="@{goalUser.equals(user) ? View.VISIBLE : View.GONE }"/>
                     app:maxImageSize="100dp"
                     app:srcCompat="@drawable/ic_baseline_cancel_24"
                     app:tint="@color/colorPrimary" />
 
                 <TextView
                     android:id="@+id/titleGoal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_width="240dp"
+                    android:layout_height="34dp"
                     android:layout_marginStart="10dp"
-                    android:text="@{property.title}"
+                    android:text="@{property.title  }"
                     android:textSize="25dp"
                     android:textStyle="bold"
                     app:flow_horizontalAlign="center"
                     app:layout_constraintBottom_toTopOf="@+id/description"
-                    app:layout_constraintEnd_toStartOf="@+id/button"
+                    app:layout_constraintEnd_toStartOf="@+id/sharedGoalDeleteButton"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/cardprofile"
                     app:layout_constraintTop_toBottomOf="@id/datum" />
 

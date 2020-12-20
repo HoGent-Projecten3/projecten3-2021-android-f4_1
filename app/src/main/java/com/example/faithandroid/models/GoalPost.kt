@@ -22,7 +22,8 @@ data class GoalPost(
     var steps: List<Step>,
     var date: String,
     var shared : Boolean = false,
-    var name : String = ""
+    var name : String = "",
+    var firstname : String= ""
 ) : Serializable,Parcelable
 
 
