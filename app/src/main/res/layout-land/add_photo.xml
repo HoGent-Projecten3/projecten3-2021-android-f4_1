@@ -111,7 +111,7 @@
                     android:id="@+id/addImageRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:filteredPostData="@{viewModel.postList}"
+                    app:filteredPostData="@{viewModel.postList.data}"
                     app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

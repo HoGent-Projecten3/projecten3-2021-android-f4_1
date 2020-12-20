@@ -19,6 +19,7 @@ import com.example.faithandroid.databinding.BackpackBinding
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
+import com.example.faithandroid.util.Status
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
 
@@ -103,7 +104,7 @@ class BackpackFragment: Fragment() {
 
         binding.BackpackRecycler.adapter =
            postAdapter
-        /*postViewModel.postList.observe(this.viewLifecycleOwner, Observer
+        postViewModel.postList.observe(this.viewLifecycleOwner, Observer
         {
             it?.let { resource ->
                 when (resource.status) {
@@ -112,8 +113,10 @@ class BackpackFragment: Fragment() {
                         Log.d("repodata",postViewModel.postList.value?.data.toString())
                         postAdapter.submitList(resource.data)
                     }
-                })*/
-/*
+                }
+            }
+        })
+
         postViewModel.postList.observe(this.viewLifecycleOwner, Observer
         {
             it?.let { resource ->
@@ -131,7 +134,6 @@ class BackpackFragment: Fragment() {
                 }
             }
         })
-*/
         binding.BackpackRecycler.adapter =
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
@@ -143,7 +145,7 @@ class BackpackFragment: Fragment() {
             }
          )
 
-        /*postViewModel.status.observe(this.viewLifecycleOwner, Observer {
+        postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
 
@@ -155,8 +157,9 @@ class BackpackFragment: Fragment() {
 
                 }.show()
             }
-        })*/
+        })
         return binding.root
+
     }
 
     override fun onResume() {
