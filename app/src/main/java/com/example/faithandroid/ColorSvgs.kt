@@ -1,8 +1,18 @@
 import com.sdsmdg.harjot.vectormaster.VectorMasterView
 
+/**
+ * This class uses common used functions to color the svg of an avatar
+ */
 class ColorSvgs {
     companion object {
-        fun setHair(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView){
+        /**
+         * sets the haircolor of the avatar
+         *
+         * @param avatarpart is the color the hair is going to be
+         * @param vectorMasterViewA is the vector if the Avatar is person 1
+         * @param vectorMasterViewB is the vector if the Avatar is person 2
+         */
+        fun setHair(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView) {
             var path1 = vectorMasterViewA.getPathModelByName("Hair1")
             var path2 = vectorMasterViewA.getPathModelByName("Hair2")
             var path3 = vectorMasterViewB.getPathModelByName("Hair")
@@ -13,7 +23,14 @@ class ColorSvgs {
             vectorMasterViewB.update()
         }
 
-        fun setEyes(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView){
+        /**
+         * sets the eyecolor of the avatar
+         *
+         * @param avatarpart is the color the eyes are going to be
+         * @param vectorMasterViewA is the vector if the Avatar is person 1
+         * @param vectorMasterViewB is the vector if the Avatar is person 2
+         */
+        fun setEyes(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView) {
             var path1 = vectorMasterViewA.getPathModelByName("Eye1")
             var path2 = vectorMasterViewA.getPathModelByName("Eye2")
             var path3 = vectorMasterViewB.getPathModelByName("Eye1")
@@ -26,7 +43,14 @@ class ColorSvgs {
             vectorMasterViewB.update()
         }
 
-        fun setSkin(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView){
+        /**
+         * sets the skintone of the avatar
+         *
+         * @param avatarpart is the color the skin is going to be
+         * @param vectorMasterViewA is the vector if the Avatar is person 1
+         * @param vectorMasterViewB is the vector if the Avatar is person 2
+         */
+        fun setSkin(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView) {
             var path1 = vectorMasterViewA.getPathModelByName("Skin1")
             var path2 = vectorMasterViewA.getPathModelByName("Skin2")
             var path3 = vectorMasterViewA.getPathModelByName("Skin3")
@@ -47,7 +71,14 @@ class ColorSvgs {
             vectorMasterViewB.update()
         }
 
-        fun setBody(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView){
+        /**
+         * sets the color of the clothes of the avatar
+         *
+         * @param avatarpart is the color the clothes are going to be
+         * @param vectorMasterViewA is the vector if the Avatar is person 1
+         * @param vectorMasterViewB is the vector if the Avatar is person 2
+         */
+        fun setBody(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView) {
             var path1 = vectorMasterViewA.getPathModelByName("Body")
             var path2 = vectorMasterViewB.getPathModelByName("Body")
             path1.fillColor = avatarpart

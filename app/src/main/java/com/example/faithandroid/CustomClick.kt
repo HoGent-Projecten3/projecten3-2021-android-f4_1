@@ -8,11 +8,12 @@ interface CustomClick {
     fun onClick(post: Post)
 }
 
-
 interface CustomPlaylistClick {
     fun onClick(playlist: Playlist): Boolean
 }
-interface AvatarCustomClick{
+interface AvatarCustomClick {
     fun onClick(avatarpart: Int)
-
+}
+interface BillboardGoalCustomClick {
+    fun onClick(goalId: Int)
 }

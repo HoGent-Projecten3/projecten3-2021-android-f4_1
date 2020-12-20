@@ -124,13 +124,7 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
-        <action
-            android:id="@+id/action_homeFragment_to_cinemaFragment"
-            app:destination="@id/cinemaFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+
         <action
             android:id="@+id/action_homeFragment_to_musicRoomFragment"
             app:destination="@id/musicRoomFragment"
@@ -157,8 +151,7 @@
             app:destination="@id/treasureChestFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popEnterAnim="@anim/slide_in_left"/>
     </fragment>
 
     <fragment
@@ -232,11 +225,7 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
-    <fragment
-        android:id="@+id/cinemaFragment"
-        android:name="com.example.faithandroid.cinema.CinemaFragment"
-        android:label="CinemaFragment"
-        tools:layout="@layout/cinema"/>
+
     <fragment
         android:id="@+id/musicRoomFragment"
         android:name="com.example.faithandroid.musicRoom.MusicRoomFragment"
@@ -255,19 +244,19 @@
         <action
             android:id="@+id/action_skyscraperFragment_to_addGoalFragment"
             app:destination="@id/addGoalFragment"
-            app:popUpToInclusive="true"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_skyscraperFragment_to_goalDetailsFragment"
             app:destination="@id/goalDetailsFragment"
-            app:popUpToInclusive="true"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_skyscraperFragment_to_homeFragment"
             app:destination="@id/homeFragment"
@@ -294,7 +283,7 @@
     </fragment>
     <fragment
         android:id="@+id/addGoalFragment"
-        android:name="com.example.faithandroid.skyscraper.addGoalFragment"
+        android:name="com.example.faithandroid.skyscraper.AddGoalFragment"
         android:label="addGoalFragment" >
         <action
             android:id="@+id/action_addGoalFragment_to_skyscraperFragment"
@@ -313,6 +302,16 @@
         <argument
             android:name="goal"
             app:argType="com.example.faithandroid.models.GoalPost" />
+        <action
+            android:id="@+id/action_goalDetailsFragment_to_skyscraperFragment"
+            app:destination="@id/skyscraperFragment"
+            app:popUpTo="@id/skyscraperFragment"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+
     </fragment>
     <fragment
         android:id="@+id/profielFragment"
@@ -371,7 +370,7 @@
     </fragment>
     <fragment
         android:id="@+id/addPhotoFragment"
-        android:name="com.example.faithandroid.post.photo.addPhotoFragment"
+        android:name="com.example.faithandroid.post.photo.AddPhotoFragment"
         android:label="addPhotoFragment" >
         <argument
             android:name="placeType"
@@ -406,7 +405,7 @@
     </fragment>
     <fragment
         android:id="@+id/addTextFragment"
-        android:name="com.example.faithandroid.post.text.addTextFragment"
+        android:name="com.example.faithandroid.post.text.AddTextFragment"
         android:label="addTextFragment" >
         <action
             android:id="@+id/action_addTextFragment_to_text_post_toevoegen"

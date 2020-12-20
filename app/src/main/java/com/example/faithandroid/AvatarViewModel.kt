@@ -5,14 +5,29 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.faithandroid.models.Avatar
-import com.example.faithandroid.network.FaithApi
+import com.example.faithandroid.shoppingCenter.AvatarRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import retrofit2.await
 
-class AvatarViewModel : ViewModel() {
+/**
+ * This is the viewmodel for the avatar
+ *
+ * @property status is the status of the data in the properties
+ * @property Hair is a list of haircolors in the shopping center
+ * @property Skin is a list of skintones in the shopping center
+ * @property UpperBody is a list of colors of the clothes in the shopping center
+ * @property Eye is a list of eyecolors in the shoppingcenter
+ * @property currentAvatar is the current avatar the adolescent is using
+ * @property hairProperties is a list of haircolors put into the recyclerview
+ * @property skinProperties is a list of skintones put into the recyclerview
+ * @property bodyProperties is a list of colors of the clothes put into the recyclerview
+ * @property eyeProperties is a list of eyecolors put into the recyclerview
+ */
+
+class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewModel() {
 
      private val _status = MutableLiveData<String>()
      val status: LiveData<String>
@@ -66,7 +81,7 @@ class AvatarViewModel : ViewModel() {
         Color.parseColor("#777777"),
         Color.parseColor("#FF0400"),
 
-        )
+    )
 
     private var _currentAvatar = MutableLiveData<Avatar>()
 
@@ -87,81 +102,84 @@ class AvatarViewModel : ViewModel() {
     val bodyProperties: MutableLiveData<List<Int>>
         get() = _bodyProperties
 
-
      private var viewModelJob = Job()
      private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
      init {
-        getProperties()
+         getProperties()
          getAvatar()
      }
 
-     public fun getProperties() {
+    /**
+     * gets all the colors for the recyclerviews in the shopping center
+     */
+      fun getProperties() {
           coroutineScope.launch {
 
                try {
-                    if(Hair.size > 0){
+                    if (Hair.size > 0) {
                         _hairProperties.value = Hair
                     }
-                   if(Eye.size > 0){
+                   if (Eye.size > 0) {
                        _eyeProperties.value = Eye
                    }
-                   if(Skin.size > 0){
+                   if (Skin.size > 0) {
                        _skinProperties.value = Skin
                    }
-                   if(UpperBody.size > 0){
+                   if (UpperBody.size > 0) {
                        _bodyProperties.value = UpperBody
                    }
-               } catch (e: Exception){
+               } catch (e: Exception) {
                     _status.value = "Failure: ${e.message}"
                }
           }
      }
 
-    public fun getAvatar(){
+    /**
+     * gets the avatar for the logged in adolescent
+     */
+     private fun getAvatar() {
+         coroutineScope.launch {
 
-            coroutineScope.launch{
-                try{
-                    var getAvatar = FaithApi.retrofitService.getAvatar()
-                    var result = getAvatar.await()
+             try {
+                 var getAvatar = avatarRepository.getAvatar()
+                 var result = getAvatar.await()
+                 _currentAvatar.value = result
 
-                    _currentAvatar.value = result
-                    AppPreferences.currentPerson = result.person
-                    AppPreferences.currentHair = result.hair
-                    AppPreferences.currentEyes = result.eyes
-                    AppPreferences.currentSkin = result.skin
-                    AppPreferences.currentBody = result.upperBody
-
-                }
-                catch (e: Exception)
-                {
-                    _status.value = "Kan geen verbinding maken met de server"
-                }
-            }
-
+                 AppPreferences.currentPerson = currentAvatar.value?.person
+                 AppPreferences.currentHair = currentAvatar.value?.hair
+                 AppPreferences.currentEyes = currentAvatar.value?.eyes
+                 AppPreferences.currentSkin = currentAvatar.value?.skin
+                 AppPreferences.currentBody = currentAvatar.value?.upperBody
+             } catch (e: Exception) {
+                 _status.value = "Kan geen verbinding maken met de server"
+             }
+         }
     }
 
-    public fun postAvatar(character: Int, hair: Int, eyes: Int, skin: Int, body: Int){
-        coroutineScope.launch{
-            try{
-                val avatar: Avatar = Avatar(person = character, hair = hair, eyes = eyes, skin = skin, upperBody = body)
-                FaithApi.retrofitService.postAvatar(avatar).await()
-                _currentAvatar.value = avatar
+    /**
+     * posts a new avatar for the logged in user
+     *
+     * @param character is the person of the avatar
+     * @param hair is the haircolor of the avatar
+     * @param eyes is the eyecolor of the avatar
+     * @param skin is the skintone of the avatar
+     * @param body is the color of the clothes of the avatar
+     */
+    public fun postAvatar(character: Int, hair: Int, eyes: Int, skin: Int, body: Int) {
+        coroutineScope.launch {
+            try {
+                val avatar: Avatar = Avatar(id = 0, person = character, hair = hair, eyes = eyes, skin = skin, upperBody = body)
+                avatarRepository.postAvatar(avatar)
                 AppPreferences.currentPerson = character
                 AppPreferences.currentHair = hair
                 AppPreferences.currentEyes = eyes
                 AppPreferences.currentSkin = skin
                 AppPreferences.currentBody = body
                 _status.value = "gelukt!"
-
-            }
-            catch (e: Exception)
-            {
+            } catch (e: Exception) {
                 _status.value = "niet gelukt!"
             }
         }
     }
-
-
-
 }

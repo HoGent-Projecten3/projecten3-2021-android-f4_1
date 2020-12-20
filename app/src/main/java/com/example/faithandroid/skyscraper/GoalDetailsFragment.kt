@@ -1,9 +1,7 @@
 package com.example.faithandroid.skyscraper
 
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,24 +11,24 @@ import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.faithandroid.skyscraper.GoalDetailsFragmentArgs
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.SkyscraperGoaldetailsBinding
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.skyscraper_goalpostimage.view.*
-import java.time.LocalDate
+import org.koin.android.ext.android.inject
 import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
 
-class GoalDetailsFragment: DialogFragment() {
+/**
+ * This is a fragment for the details of a goal
+ *
+ * @property args is used to store the goal
+ * @property viewModel is the viewmodel for skyscraper
+ */
+class GoalDetailsFragment : DialogFragment() {
     val args: GoalDetailsFragmentArgs by navArgs()
-    private lateinit var viewModel: SkyscraperViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,23 +36,23 @@ class GoalDetailsFragment: DialogFragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //val application = requireNotNull(activity).application
+        // val application = requireNotNull(activity).application
 
-        viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
-
+        // viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
+        val viewModel: SkyscraperViewModel by inject()
         val binding = DataBindingUtil.inflate<SkyscraperGoaldetailsBinding>(
             inflater,
             R.layout.skyscraper_goaldetails,
             container,
             false
-        );
-        //binding.lifecycleOwner = this
+        )
+        // binding.lifecycleOwner = this
 
-        //val faithProperty = goalDetailsFragmentArgs.fromBundle(requireArguments()).title
-
+        // val faithProperty = goalDetailsFragmentArgs.fromBundle(requireArguments()).title
 
         binding.titelText.text = args.goal.title
         binding.beschrijvingText.text = args.goal.description
@@ -62,17 +60,27 @@ class GoalDetailsFragment: DialogFragment() {
         binding.goalDetail = args.goal.completed
 
         var localdate = LocalDateTime.parse(args.goal.date)
-        var date = localdate.dayOfMonth.toString() +" "+ localdate.month.toString()+ " "+ localdate.year.toString()
+        var date = localdate.dayOfMonth.toString() + " " + localdate.month.toString() + " " + localdate.year.toString()
         binding.datumText.text = date
 
         binding.btnBehaald.setOnClickListener { view: View ->
             viewModel.goalBehaald(args.goal.id)
+            Toast.makeText(
+                context,
+                "Je doel is behaald",
+                Toast.LENGTH_LONG
+            ).show()
             view.findNavController().navigate(R.id.skyscraperFragment)
         }
 
         binding.btnDelen.setOnClickListener { view: View ->
             viewModel.shareGoal(args.goal.id)
            view.findNavController().navigate(R.id.billboardFragment)
+            Toast.makeText(
+                context,
+                "Je doel is gedeeld",
+                Toast.LENGTH_LONG
+            ).show()
         }
 
         binding.btnVerwijder.setOnClickListener { view: View ->
@@ -86,95 +94,49 @@ class GoalDetailsFragment: DialogFragment() {
                         viewModel.shareGoal(args.goal.id)
                         viewModel.deleteGoal(args.goal.id)
                         view.findNavController().navigate(R.id.skyscraperFragment)
+                        Toast.makeText(
+                            context,
+                            "Je doel is verwijderd",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
                     .setNegativeButton("Nee") { _, which ->
                         // nothing has to happen here
                     }.show()
-            }else if(args.goal.completed){
+            } else if (args.goal.completed) {
               Snackbar.make(view, "Deze goal is behaald, u kan deze dus niet verwijderen.", Snackbar.LENGTH_SHORT).setAction(
-               "" )
-              {
+                  ""
+              ) {
               }.show()
-        }
-          else {
+        } else {
                 viewModel.deleteGoal(args.goal.id)
+              Toast.makeText(
+                  context,
+                  "Je doel is verwijderd",
+                  Toast.LENGTH_LONG
+              ).show()
                 view.findNavController().navigate(R.id.skyscraperFragment)
             }
         }
 
-        viewModel.shareStatus.observe(this.viewLifecycleOwner, Observer {
-            val contextView = this.view
-            if (contextView != null) {
-                Toast.makeText(
-                    context,
-                    "Je doel is gedeeld",
-                    Toast.LENGTH_LONG
-                ).show()
-             }
-            else {
-                Snackbar.make(contextView!!, viewModel.shareStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
-                    "Probeer opnieuw"
-                )
-                {
+        viewModel.getStatus.observe(
+            this.viewLifecycleOwner,
+            Observer {
+                val contextView = this.view
+
+                        Snackbar.make(contextView!!, viewModel.getStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                            "Probeer opnieuw"
+                        ) {
                 }.show()
             }
-        })
+        )
 
-        viewModel.completedStatus.observe(this.viewLifecycleOwner, Observer {
-            val contextView = this.view
-            if (contextView != null) {
-                Toast.makeText(
-                    context,
-                    "Je doel is behaald",
-                    Toast.LENGTH_LONG
-                ).show()
-            } else {
-                Snackbar.make(contextView!!, viewModel.completedStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
-                    "Probeer opnieuw"
-                )
-                {
-                }.show()
-            }
-        })
-
-        viewModel.removeStatus.observe(this.viewLifecycleOwner, Observer {
-            val contextView = this.view
-            if (contextView != null) {
-                Toast.makeText(
-                    context,
-                    "Je doel is verwijderd",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-            else {
-                Snackbar.make(contextView!!, viewModel.removeStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
-                    "Probeer opnieuw"
-                )
-                {
-                }.show()
-            }
-
-        })
-
-        args.goal.steps.forEach{step ->
+        args.goal.steps.forEach { step ->
             val textView = TextView(context)
             textView.text = step.stepText
             binding.stepList.addView(textView)
         }
 
         return binding.root
-
     }
-    /*
-    * val application = requireNotNull(activity).application
-        val binding = FragmentDetailBinding.inflate(inflater)
-        binding.lifecycleOwner = this
-        val marsProperty = DetailFragmentArgs.fromBundle(arguments!!).selectedProperty
-        val viewModelFactory = DetailViewModelFactory(marsProperty, application)
-        binding.viewModel = ViewModelProvider(
-                this, viewModelFactory).get(DetailViewModel::class.java)
-        return binding.root
-        * */
-
 }
-

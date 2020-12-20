@@ -11,39 +11,40 @@ import androidx.navigation.fragment.navArgs
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.AddPostBinding
 
-class AddPostFragment: Fragment() {
-
+/**
+ * This is a fragment for adding a post
+ *
+ * @property args is used to store the placetype
+ */
+class AddPostFragment : Fragment() {
     val args: AddPostFragmentArgs by navArgs()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<AddPostBinding>(
             inflater,
             R.layout.add_post,
             container,
             false
-        );
-
+        )
 
         /**
          * navigate to options for texts posts
          */
-        binding.TekstButton.setOnClickListener{
-                view: View ->  val action =
+        binding.TekstButton.setOnClickListener {
+                view: View -> val action =
             AddPostFragmentDirections.actionOptionsAddPostFragmentToAddTextFragment(
                 args.placeType
             )
             view.findNavController().navigate(action)
         }
-
 
         /**
          * navigate to options for audio posts
@@ -65,7 +66,6 @@ class AddPostFragment: Fragment() {
                 args.placeType
             )
             view.findNavController().navigate(action)
-
         }
 
         /**
@@ -77,11 +77,8 @@ class AddPostFragment: Fragment() {
                 args.placeType
             )
             view.findNavController().navigate(action)
-
         }
 
         return binding.root
-
     }
-
 }

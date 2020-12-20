@@ -2,70 +2,54 @@
 
 package com.example.faithandroid
 
-
-
 import AppPreferences
-import android.content.Intent
-
 import android.Manifest
-
+import android.content.Intent
 import android.content.pm.PackageManager
-
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-
-
-
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
-
-
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
-
 import androidx.navigation.ActivityNavigator
-
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.example.faithandroid.databinding.AppNavHeaderMainBinding
-import com.example.faithandroid.login.LoginFragment
 import com.example.faithandroid.login.uilogin.LoginActivity
 import com.example.faithandroid.login.uilogin.LoginViewModel
-import com.example.faithandroid.login.uilogin.LoginViewModelFactory
 import com.example.faithandroid.profiel.ProfielViewModel
-import com.example.faithandroid.profiel.ProfielFragment
 import com.google.android.material.navigation.NavigationView
-
-
 import kotlinx.android.synthetic.main.activity_main.view.*
+import org.koin.android.ext.android.inject
 
-
-//import androidx.databinding.DataBindingUtil
-
-class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavigationItemSelectedListener {
-    
-    private lateinit var drawerLayout : DrawerLayout
+// import androidx.databinding.DataBindingUtil
+/**
+ * the main activity where the app starts
+ *
+ * @property drawerLayout is the drawer layout
+ * @property viewModel is the viewmodel that has everything concerning the logging in
+ * @property username is the name of the user that needs to be displayed
+ * @property bind is to bind the appnavheadermain
+ */
+class MainActivity : AppCompatActivity(), DrawerInterface, NavigationView.OnNavigationItemSelectedListener {
+    private lateinit var drawerLayout: DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var viewModel: LoginViewModel
-    private  var username: String = ""
+    private var username: String = ""
+    val viewModel: LoginViewModel by inject()
 
     private lateinit var bind: AppNavHeaderMainBinding
     private val LOGIN_REQUEST_CODE: Int = 1
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -74,23 +58,14 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
 
         AppPreferences.setup(applicationContext)
 
-        if (AppPreferences.darkMode == true){
+        if (AppPreferences.darkMode == true) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
 
-
         if (AppPreferences.username == null) {
-            val taskIntent =  Intent(this, LoginActivity::class.java)
+            val taskIntent = Intent(this, LoginActivity::class.java)
             startActivityForResult(taskIntent, LOGIN_REQUEST_CODE)
         }
-
-        viewModel = ViewModelProvider(
-            this,
-            LoginViewModelFactory()
-        )
-            .get(LoginViewModel::class.java)
-
-        val shoppingCenterViewModel = ViewModelProvider(this).get(AvatarViewModel::class.java)
 
         drawerLayout = findViewById(R.id.drawerLayout)
         var navHeader = findViewById<NavigationView>(R.id.navView)
@@ -103,11 +78,10 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
 
         navHeader.navView.addHeaderView(bind.root)
 
-
       // var navHeader2 = findViewById<AppNavHeaderMainBinding>(R.id.) as AppNavHeaderMainBinding
 //        navHeader2.adolescent = viewModel
 
-        //setSupportActionBar(R.id.)
+        // setSupportActionBar(R.id.)
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.NavHostFragment) as NavHostFragment
         val navController = navHostFragment.navController
@@ -121,46 +95,57 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setHomeButtonEnabled(true)
 
-        //eerst controleren of de gebruiker daadwerkelijk permissie heeft gegeven om audio op te nemen
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        // eerst controleren of de gebruiker daadwerkelijk permissie heeft gegeven om audio op te nemen
+        if (ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.RECORD_AUDIO
+        ) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ) != PackageManager.PERMISSION_GRANTED) {
             val permissions = arrayOf(android.Manifest.permission.RECORD_AUDIO, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE)
-            ActivityCompat.requestPermissions(this, permissions,0)
+            ActivityCompat.requestPermissions(this, permissions, 0)
         }
 
        val navigationView: NavigationView = findViewById(R.id.navView)
        navigationView.setNavigationItemSelectedListener(this)
-
     }
-
 
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
         } else {
-            
+
             super.onBackPressed()
         }
     }
 
-    fun ClickMenu(view: View){
-        //open drawer
-        var pvm: ProfielViewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
+    /**
+     * what happens when you click the menu button
+     */
+    fun ClickMenu(view: View) {
+        // open drawer
+        val pvm: ProfielViewModel by inject()
         pvm.getAdolescent()
         pvm.adol.observe(this, {
             username = it.firstName + " " + it.name
             bind.nameText.text = username
-        })
-        openDrawer(drawerLayout)
+          })
 
+        openDrawer(drawerLayout)
     }
 
-    private  fun  openDrawer(drawerLayout: DrawerLayout) {
-    //open drawer layout
+    /**
+     * opens the drawer
+     */
+    private fun openDrawer(drawerLayout: DrawerLayout) {
+    // open drawer layout
         drawerLayout.openDrawer(GravityCompat.START)
     }
 
+    /**
+     * what happens when you click the back button
+     */
      fun ClickBack(view: View) {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
@@ -201,18 +186,17 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
                 this.username = ""
                 AppPreferences.token = ""
                 AppPreferences.username = ""
+                AppPreferences.name = ""
+                AppPreferences.firstname = ""
 //                supportFragmentManager.beginTransaction()
 //                    .replace(R.id.layoutToolBar, LoginFragment())
 //                    .commit()
 
-
-                 //finishAffinity()
-                Toast.makeText(this,"Uitgelogd!", Toast.LENGTH_LONG).show()
-
+                 // finishAffinity()
+                Toast.makeText(this, "Uitgelogd!", Toast.LENGTH_LONG).show()
 
                 val taskIntent = Intent(this, LoginActivity::class.java)
                 startActivityForResult(taskIntent, 1)
-
             }
 
             R.id.homeFragment -> {
@@ -222,7 +206,6 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
 
                 menuItem.onNavDestinationSelected(findNavController(R.id.NavHostFragment))
             }
-
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
@@ -231,24 +214,16 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
+        // this.username = data?.getStringExtra("loggedInUser").toString()
 
-        //this.username = data?.getStringExtra("loggedInUser").toString()
-
-
-        if(requestCode == LOGIN_REQUEST_CODE){
-            var token = data?.getStringExtra("token").toString();
+        if (requestCode == LOGIN_REQUEST_CODE) {
+            var token = data?.getStringExtra("token").toString()
             AppPreferences.token = token
         }
-
     }
 
     override fun finish() {
         super.finish()
         ActivityNavigator.applyPopAnimationsToPendingTransition(this)
-
     }
-
-
-
 }
-
