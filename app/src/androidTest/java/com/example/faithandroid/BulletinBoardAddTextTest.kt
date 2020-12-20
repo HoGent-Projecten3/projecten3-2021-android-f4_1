@@ -3,6 +3,8 @@ package com.example.faithandroid
 
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.matcher.ViewMatchers.*
@@ -10,22 +12,41 @@ import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import androidx.test.rule.GrantPermissionRule
 import androidx.test.runner.AndroidJUnit4
+import com.example.faithandroid.DI.viewModelModule
+import com.example.faithandroid.login.data.LoginRepository
+import com.example.faithandroid.login.uilogin.LoggedInUserView
+import com.example.faithandroid.login.uilogin.LoginResult
+import com.example.faithandroid.login.uilogin.LoginViewModel
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.TypeSafeMatcher
+import org.junit.After
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.koin.core.context.loadKoinModules
+import org.koin.core.context.stopKoin
+import org.koin.dsl.module
+import org.mockito.Mockito
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.`when`
+import org.mockito.junit.MockitoJUnitRunner
+
+
 
 @LargeTest
-@RunWith(AndroidJUnit4::class)
+@RunWith(MockitoJUnitRunner::class)
 class BulletinBoardAddTextTest {
+
 
     @Rule
     @JvmField
     var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
+
+
 
     @Rule
     @JvmField
@@ -36,186 +57,49 @@ class BulletinBoardAddTextTest {
             "android.permission.WRITE_EXTERNAL_STORAGE"
         )
 
+    lateinit var mockLoginViewModel: LoginViewModel
+    lateinit var mockLoginRepository: LoginRepository
+
+    @Before
+    fun before()
+    {
+        mockLoginRepository = mock(LoginRepository::class.java)
+        mockLoginViewModel = mock(LoginViewModel::class.java)
+
+
+        loadKoinModules( module
+        {
+            viewModelModule
+            {
+                mockLoginViewModel
+            }
+        })
+
+    }
+
+    @After
+    fun cleanUp() {
+        stopKoin()
+    }
+
     @Test
     fun bulletinBoardAddTextTest() {
-        val materialButton = onView(
-            allOf(
-                withId(R.id.login_button), withText("Log in"),
-                childAtPosition(
-                    childAtPosition(
-                        withClassName(`is`("android.widget.LinearLayout")),
-                        0
-                    ),
-                    2
-                ),
-                isDisplayed()
+
+        var loginResult = MutableLiveData<LoginResult>()
+        loginResult.value = LoginResult(
+            success = LoggedInUserView(
+                token = "whatever",
+                displayName = "test" + " " + "de bouwer",
+                email = "bob.debouwer1998@gmail.com"
             )
+        )
+
+        Mockito.`when`(mockLoginViewModel.login("bob.debouwer1998@gmail.com", "KunnenWeHetMaken?1"))
+        Mockito.`when`(mockLoginViewModel.loginResult).thenReturn(loginResult)
+        val materialButton = onView(
+            withId(R.id.login_button)
         )
         materialButton.perform(click())
-
-        val appCompatImageView = onView(
-            allOf(
-                withId(R.id.img_bulletinboard),
-                childAtPosition(
-                    childAtPosition(
-                        withClassName(`is`("android.widget.ScrollView")),
-                        0
-                    ),
-                    0
-                )
-            )
-        )
-        appCompatImageView.perform(scrollTo(), click())
-
-        val floatingActionButton = onView(
-            allOf(
-                withId(R.id.AddPostButton),
-                childAtPosition(
-                    childAtPosition(
-                        withId(R.id.NavHostFragment),
-                        0
-                    ),
-                    1
-                ),
-                isDisplayed()
-            )
-        )
-        floatingActionButton.perform(click())
-
-        val materialButton2 = onView(
-            allOf(
-                withId(R.id.TekstButton), withText("Tekst"),
-                childAtPosition(
-                    childAtPosition(
-                        withClassName(`is`("android.widget.TableLayout")),
-                        1
-                    ),
-                    1
-                ),
-                isDisplayed()
-            )
-        )
-        materialButton2.perform(click())
-
-        val materialButton3 = onView(
-            allOf(
-                withId(R.id.textToevoegenButton), withText("nieuwe post toevoegen"),
-                childAtPosition(
-                    childAtPosition(
-                        withClassName(`is`("android.widget.FrameLayout")),
-                        1
-                    ),
-                    2
-                ),
-                isDisplayed()
-            )
-        )
-        materialButton3.perform(click())
-
-        val floatingActionButton2 = onView(
-            allOf(
-                withId(R.id.AddPostButton),
-                childAtPosition(
-                    childAtPosition(
-                        withId(R.id.NavHostFragment),
-                        0
-                    ),
-                    1
-                ),
-                isDisplayed()
-            )
-        )
-        floatingActionButton2.perform(click())
-
-        val materialButton4 = onView(
-            allOf(
-                withId(R.id.TekstButton), withText("Tekst"),
-                childAtPosition(
-                    childAtPosition(
-                        withClassName(`is`("android.widget.TableLayout")),
-                        1
-                    ),
-                    1
-                ),
-                isDisplayed()
-            )
-        )
-        materialButton4.perform(click())
-
-        val appCompatImageView2 = onView(
-            allOf(
-                withId(R.id.imageView4),
-                childAtPosition(
-                    allOf(
-                        withId(R.id.linearLayout2),
-                        childAtPosition(
-                            withClassName(`is`("androidx.constraintlayout.widget.ConstraintLayout")),
-                            0
-                        )
-                    ),
-                    0
-                ),
-                isDisplayed()
-            )
-        )
-        appCompatImageView2.perform(click())
-
-        val textInputEditText = onView(
-            allOf(
-                withId(R.id.textposttitel),
-                childAtPosition(
-                    childAtPosition(
-                        withClassName(`is`("com.google.android.material.textfield.TextInputLayout")),
-                        0
-                    ),
-                    0
-                )
-            )
-        )
-        textInputEditText.perform(scrollTo(), replaceText("test"), closeSoftKeyboard())
-
-        val textInputEditText2 = onView(
-            allOf(
-                withId(R.id.textposttext),
-                childAtPosition(
-                    childAtPosition(
-                        withClassName(`is`("com.google.android.material.textfield.TextInputLayout")),
-                        0
-                    ),
-                    0
-                )
-            )
-        )
-        textInputEditText2.perform(scrollTo(), replaceText("test"), closeSoftKeyboard())
-
-        val materialButton5 = onView(
-            allOf(
-                withId(R.id.text_post_toevoegen), withText("Toevoegen"),
-                childAtPosition(
-                    childAtPosition(
-                        withClassName(`is`("android.widget.ScrollView")),
-                        0
-                    ),
-                    3
-                )
-            )
-        )
-        materialButton5.perform(scrollTo(), click())
-
-        val materialCardView = onView(
-            allOf(
-                withId(R.id.card),
-                childAtPosition(
-                    childAtPosition(
-                        withId(R.id.BulletinBoardRecycler),
-                        0
-                    ),
-                    0
-                ),
-                isDisplayed()
-            )
-        )
-        materialCardView.perform(click())
     }
 
     private fun childAtPosition(

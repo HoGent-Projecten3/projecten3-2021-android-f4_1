@@ -1,6 +1,7 @@
 package com.example.faithandroid
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.post.PostViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -12,16 +13,19 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
 import org.junit.jupiter.params.provider.EnumSource
 import org.junit.jupiter.params.provider.ValueSource
+import org.junit.runner.RunWith
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.dsl.module
 import org.koin.test.KoinTest
+
 
 @ExperimentalCoroutinesApi
 class PostViewModelTest: KoinTest {
 
     @get:Rule
     public val coroutineTestScope = CoroutineTestRule()
+
 
     @Rule
     @JvmField
@@ -33,7 +37,7 @@ class PostViewModelTest: KoinTest {
     {
         startKoin {
             modules(module {
-                single<Post> { Post(1, "testTitel", "testTekst", "2019-11-05T22:34:57.61", PostType.Text.ordinal, "", "" ) }
+                single<Post> { Post(1, "testTitel", "testTekst", "2019-11-05T22:34:57.61", PostType.Text.ordinal, "", "", true, true, true ) }
             })
         }
 
