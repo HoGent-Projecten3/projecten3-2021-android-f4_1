@@ -1,11 +1,9 @@
 package com.example.faithandroid.musicRoom
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.faithandroid.models.*
-import com.example.faithandroid.util.Resource
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -34,10 +32,7 @@ class MusicRoomViewModel(private val spotifyRepository: SpotifyRepository) : Vie
         getPlayRemotelists()
     }
 
-
-
-    fun getPlayRemotelists()
-    {
+    fun getPlayRemotelists() {
         try {
             MainScope().launch {
                 var call: Call<List<Playlist>> = spotifyRepository.getPlaylistsFaith()
@@ -45,95 +40,82 @@ class MusicRoomViewModel(private val spotifyRepository: SpotifyRepository) : Vie
                 _playlists.value = list
                 filterPlaylists()
             }
-        }
-        catch (e: Exception )
-        {
+        } catch (e: Exception) {
         }
     }
 
-    fun addPlaylist(playlist: Playlist)
-    {
-        try{
+    fun addPlaylist(playlist: Playlist) {
+        try {
             MainScope().launch {
                 var call = spotifyRepository.addPlaylist(playlist)
-                call.enqueue(object : Callback<Void> {
+                call.enqueue(
+                    object : Callback<Void> {
 
-                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                        if (response.isSuccessful()) {
-                            val responseString: String? = response.code().toString()
-                            if (responseString != null) {
-                                getPlayRemotelists()
+           override fun onResponse(call: Call<Void>, response: Response<Void>) {
+               if (response.isSuccessful()) {
+                   val responseString: String? = response.code().toString()
+                   if (responseString != null) {
+                       getPlayRemotelists()
+                   }
+               }
+           }
 
-                            }
-                        }
-                    }
-
-                    override fun onFailure(call: Call<Void>?, t: Throwable?) {
-                        throw Exception("Er liep iets mis tijdens het toevoegen")
-                    }
-                })
+           override fun onFailure(call: Call<Void>?, t: Throwable?) {
+               throw Exception("Er liep iets mis tijdens het toevoegen")
+           }
+       }
+                )
             }
-
-        }
-        catch (e: java.lang.Exception)
-        {
+        } catch (e: java.lang.Exception) {
         }
     }
 
-    fun deletePlaylist(primaryKey: Int)
-    {
-        try{
+    fun deletePlaylist(primaryKey: Int) {
+        try {
             MainScope().launch {
                 var call = spotifyRepository.deletePlaylist(primaryKey)
-                call.enqueue(object : Callback<Void> {
+                call.enqueue(
+                    object : Callback<Void> {
 
-                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                        if (response.isSuccessful()) {
-                            val responseString: String? = response.code().toString()
-                            if (responseString != null) {
-                                getPlayRemotelists()
+           override fun onResponse(call: Call<Void>, response: Response<Void>) {
+               if (response.isSuccessful()) {
+                   val responseString: String? = response.code().toString()
+                   if (responseString != null) {
+                       getPlayRemotelists()
+                   }
+               }
+           }
 
-                            }
-                        }
-                    }
-
-                    override fun onFailure(call: Call<Void>?, t: Throwable?) {
-                        throw Exception("Er liep iets mis tijdens het verwijderen")
-                    }
-                })
+           override fun onFailure(call: Call<Void>?, t: Throwable?) {
+               throw Exception("Er liep iets mis tijdens het verwijderen")
+           }
+       }
+                )
             }
-        }
-        catch (e: java.lang.Exception)
-        {
+        } catch (e: java.lang.Exception) {
         }
     }
 
-    fun getAllPlaylists()
-    {
-        try
-        {
+    fun getAllPlaylists() {
+        try {
             MainScope().launch {
                 var call: Call<PlaylistWrapper> = spotifyRepository.getPlaylistsSpotify()
                 var list: List<Playlist> = call.await().items
                 list.forEach { p ->
                     var call: Call<List<SpotifyCover>> = spotifyRepository.getPlaylistCover(p.id)
                     var coverList = call.await()
-                    if(coverList.isNotEmpty()) {
+                    if (coverList.isNotEmpty()) {
                         p.url = coverList[0].url
                     }
                 }
                 _allPlaylists.value = list
                 filterPlaylists()
-
             }
-        }
-        catch(e: Exception){
+        } catch (e: Exception) {
         }
     }
 
-    private fun filterPlaylists()
-    {
+    private fun filterPlaylists() {
         _allPlaylists.value = allPlaylists.value?.filter { p -> playlists.value?.any { it.name == p.name } == false }
     }
-
 }

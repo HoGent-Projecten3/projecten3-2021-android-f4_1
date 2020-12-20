@@ -13,7 +13,7 @@ class SpotifyRemoteDataSource(private val apiService: FaithApiService, private v
 
     fun deletePlaylist(id: Int) = apiService.deletePlaylist(id)
 
-    suspend fun getPlaylistsSpotify() =  spotifyApiService.getPlaylists()
+    fun getPlaylistsSpotify() = spotifyApiService.getPlaylists()
 
     fun getPlaylistCover(cover: String) = spotifyApiService.getPlaylistCover(cover)
 }

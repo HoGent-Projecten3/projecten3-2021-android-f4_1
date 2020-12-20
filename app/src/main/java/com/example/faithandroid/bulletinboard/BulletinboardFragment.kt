@@ -59,7 +59,6 @@ class BulletinboardFragment : Fragment() {
         )
         binding.lifecycleOwner = viewLifecycleOwner
 
-
         deleteBtn = binding.include.deletePostsBtn
 
         val staggeredGridLayoutManager = StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL)

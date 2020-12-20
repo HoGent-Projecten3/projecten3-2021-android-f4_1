@@ -39,7 +39,7 @@ class ProfielFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // checkTheme()
+
     }
 
     override fun onCreateView(
@@ -74,7 +74,6 @@ class ProfielFragment : Fragment() {
             }.show()
         }
 
-        // viewModel.getAdolescent()
 
         binding.imgAvatarB.setVisibility(View.GONE)
         viewModel.adol.observe(

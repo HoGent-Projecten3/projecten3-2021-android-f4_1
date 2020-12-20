@@ -5,7 +5,6 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
 
-// import androidx.databinding.DataBindingUtil
 
 /**
  * the activity for showing an image
@@ -14,7 +13,6 @@ import com.squareup.picasso.Picasso
  * @property imageUri is the uri the image needs to come from
  */
 class FullScreenImageActivity : AppCompatActivity() {
-   // private lateinit var drawerLayout : DrawerLayout
     private lateinit var imageView: ImageView
     private var imageUri: String = ""
 
@@ -34,7 +32,6 @@ class FullScreenImageActivity : AppCompatActivity() {
         actionBar?.setHomeButtonEnabled(true)
     }
 
-    // button links onderaan (driehoek) 
     override fun onBackPressed() {
         super.onBackPressed()
     }
