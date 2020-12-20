@@ -10,6 +10,9 @@
             name="user"
             type="String"/>
         <variable
+            name="goalUser"
+            type="String"/>
+        <variable
             name="property"
             type="com.example.faithandroid.models.GoalPost" />
     </data>
@@ -43,7 +46,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="7dp"
                     android:layout_marginBottom="4dp"
-                    android:text="@{ property.firstname+ ` ` +property.name }"
+                    android:text="@{ property.firstname + ` ` + property.name }"
                     app:layout_constraintBottom_toTopOf="@id/cardprofile"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -73,14 +76,14 @@
                     app:maxImageSize="100dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:visibility="@{property.firstname + ' ' + property.name  != user ? View.GONE : View.VISIBLE }"/>
+                    android:visibility="@{goalUser.equals(user) ? View.VISIBLE : View.GONE }"/>
 
                 <TextView
                     android:id="@+id/titleGoal"
                     android:layout_width="240dp"
                     android:layout_height="34dp"
                     android:layout_marginStart="10dp"
-                    android:text="@{property.title + ' '+ user                }"
+                    android:text="@{property.title  }"
                     android:textSize="25dp"
                     android:textStyle="bold"
                     app:flow_horizontalAlign="center"

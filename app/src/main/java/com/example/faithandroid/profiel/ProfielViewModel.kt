@@ -3,6 +3,7 @@ package com.example.faithandroid.profiel
 
 
 import AppPreferences
+import android.util.Log
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -36,6 +37,9 @@ class ProfielViewModel(private val postRepository: PostRepository,private val lo
                 loginRepository.getAdolescent(AppPreferences.username.toString())
             if(stringCall is Result.Success){
                 _adol.value = stringCall.data
+                AppPreferences.name = stringCall.data.name
+                AppPreferences.firstname = stringCall.data.firstName
+                Log.d("ttt", AppPreferences.firstname.toString())
             }else{
                 throw Exception()
             }

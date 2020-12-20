@@ -140,7 +140,8 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
         pvm.adol.observe(this, {
             username = it.firstName + " " + it.name
             bind.nameText.text = username
-        })
+          })
+
         openDrawer(drawerLayout)
 
     }
@@ -190,6 +191,8 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
                 this.username = ""
                 AppPreferences.token = ""
                 AppPreferences.username = ""
+                AppPreferences.name = ""
+                AppPreferences.firstname = ""
 //                supportFragmentManager.beginTransaction()
 //                    .replace(R.id.layoutToolBar, LoginFragment())
 //                    .commit()

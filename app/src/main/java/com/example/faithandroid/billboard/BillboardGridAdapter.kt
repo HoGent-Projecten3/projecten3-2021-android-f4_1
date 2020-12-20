@@ -20,7 +20,8 @@ class BillboardGridAdapter : ListAdapter<GoalPost, BillboardGridAdapter.Billboar
         fun bind(goalPost: GoalPost){
             binding.property = goalPost
             binding.executePendingBindings()
-            binding.user = AppPreferences.username;
+            binding.goalUser = goalPost.firstname + " "+goalPost.name;
+            binding.user = AppPreferences.firstname + " "+ AppPreferences.name ;
         }
 
     }
