@@ -18,7 +18,11 @@ class PostLocalDataSource(val postDao: PostDao) {
 
      fun getFilteredFromTreasureChest(postType: Int) = postDao.getFilteredFromTreasureChest(postType)
 
-     fun deletePostFromPlace(postId: Int) = postDao.deletePostFromPlace(postId)
+     fun deletePostFromBulletinBoard(postId: Int) = postDao.deletePostFromBulletinBoard(postId)
+
+     fun deletePostFromTreasureChest(postId: Int) = postDao.deletePostFromTreasureChest(postId)
+
+     fun deletePostFromBackpack(id: Int) = postDao.deletePostFromBackpack(id)
 
      fun savePosts(list: List<Post>)  = postDao.insertAll(list)
 

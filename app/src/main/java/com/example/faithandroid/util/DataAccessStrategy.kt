@@ -1,9 +1,13 @@
 package com.example.faithandroid.util
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.map
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.*
+import okhttp3.internal.wait
+import retrofit2.Call
+import retrofit2.Response
 
 fun <T, A> performGetOperation(
     databaseQuery: () -> LiveData<T>,
@@ -24,21 +28,29 @@ fun <T, A> performGetOperation(
         }
     }
 
-fun <A> performDelOperation(
+fun  performDelOperation(
     databaseQuery: () -> Unit,
-    networkCall: suspend () -> Resource<A>,
-    saveCallResult: suspend (A) -> Unit
-): LiveData<Resource<A>> =
+    networkCall: suspend () -> Response<Void>
+) {
+
+    var viewModelJob = Job()
+    val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.IO)
+
+   coroutineScope.launch {
+        databaseQuery.invoke()
+        networkCall.invoke()
+    }
+
+}
+
+fun <T> performFilterOperation(
+    databaseQuery: () -> LiveData<T>
+): LiveData<Resource<T>> =
     liveData(Dispatchers.IO) {
         emit(Resource.loading())
-        val source = databaseQuery.invoke()
-        //emitSource(source)
-
-        val responseStatus = networkCall.invoke()
-        if (responseStatus.status == Status.SUCCESS) {
-            saveCallResult(responseStatus.data!!)
-        } else if (responseStatus.status == Status.ERROR) {
-            emit(Resource.error(responseStatus.message!!))
-            //emitSource(source)
-        }
+        val source = databaseQuery.invoke().map { Resource.success(it) }
+        emitSource(source)
     }
+
+
+

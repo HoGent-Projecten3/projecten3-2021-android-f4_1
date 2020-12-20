@@ -28,6 +28,10 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
     val postList: LiveData<Resource<List<Post>>>
         get() = _postList
 
+    private var _filteredPostList : LiveData<List<Post>> = MutableLiveData<List<Post>>()
+    val filteredPostList: LiveData<List<Post>>
+        get() = _filteredPostList
+
 
     private val _requestConsultationStatus = MutableLiveData<String>("Er liep iets mis")
     val requestConsultationStatus: LiveData<String>
@@ -53,6 +57,8 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
         }*/
 
     fun getFilteredPostFromPlace(placeType: PlaceType, postType: PostType) {
+        Log.d("filteren", "get")
+        _postList = postRepository.getFilteredFromPlace(placeType.ordinal, postType.ordinal);
         /*viewModelScope.launch {
 
             val stringCall: Call<List<Post>> =
@@ -113,7 +119,6 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
             stringCall.enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful()) {
-
                         val responseString: String? = response.code().toString()
                         if (responseString != null) {
 
@@ -155,9 +160,8 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
     }
 
     fun deletePostByEmail(id: Int, placeType: PlaceType) {
-        viewModelScope.launch {
                 postRepository.deletePostByEmail(placeType.ordinal, id)
-            /*stringCall.enqueue(object : Callback<Void> {
+                /*stringCall.enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful()) {
                         val responseString: String? = response.code().toString()
@@ -170,7 +174,7 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
                     _status.value = "Er liep iets mis bij het verwijderen."
                 }
             })*/
-        }
+
     }
 
     fun requestConsultation() {
@@ -187,23 +191,7 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
 
 
     fun pemanentlyDeletePost(postId: Int) {
-        viewModelScope.launch {
-            val stringCall: Call<Void> = postRepository.permanentlyDeletePost(postId)
-            stringCall.enqueue(object : Callback<Void> {
-                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    if (response.isSuccessful()) {
-                        val responseString: String? = response.code().toString()
-                        if (responseString != null) {
-
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<Void>?, t: Throwable?) {
-                    _status.value = "Er liep iets mis bij het verwijderen."
-                }
-            })
-        }
+            postRepository.permanentlyDeletePost(postId) //ERRORHANDELING MET RESPONSE
     }
 }
 

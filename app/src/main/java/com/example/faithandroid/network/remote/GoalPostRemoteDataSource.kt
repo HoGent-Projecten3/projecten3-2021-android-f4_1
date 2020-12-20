@@ -16,5 +16,5 @@ class GoalPostRemoteDataSource(private val apiService: FaithApiService): BaseDat
 
     fun shareGoal(id : Int) = apiService.shareGoal(id)
 
-    fun removeGoal(id: Int) = apiService.removeGoal(id)
+    suspend fun removeGoal(id: Int) = apiService.removeGoal(id)
 }

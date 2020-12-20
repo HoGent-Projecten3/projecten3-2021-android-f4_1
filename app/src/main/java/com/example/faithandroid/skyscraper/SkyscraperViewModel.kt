@@ -116,8 +116,6 @@ class SkyscraperViewModel(private val goalPostRepository: GoalPostRepository) : 
         coroutineScope.launch{
             try {
                 goalPostRepository.removeGoal(id)
-                val response = goalPostRepository.removeGoal(id)
-               val stringResponse= response.await()
                 _status.value = "Doel verwijderd";
             } catch (e: Exception){
                 _status.value = "Er liep iets mis"

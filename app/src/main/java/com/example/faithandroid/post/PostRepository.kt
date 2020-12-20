@@ -1,12 +1,19 @@
 package com.example.faithandroid.post
 
+import android.util.Log
+import androidx.lifecycle.LiveData
 import com.example.faithandroid.data.local.PostLocalDataSource
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.network.remote.PostRemoteDataSource
 import com.example.faithandroid.util.performDelOperation
+import com.example.faithandroid.util.performFilterOperation
 import com.example.faithandroid.util.performGetOperation
+import retrofit2.Call
+import retrofit2.Response
+import retrofit2.await
 import retrofit2.http.Path
+import java.lang.Exception
 
 class PostRepository(private val localDataSource: PostLocalDataSource, private val remoteDataSource: PostRemoteDataSource) {
 
@@ -52,18 +59,45 @@ class PostRepository(private val localDataSource: PostLocalDataSource, private v
             saveCallResult = { localDataSource.savePosts(it) }
         )*/
 
-    fun getFilteredFromPlace(placeType: Int,postType: Int) = remoteDataSource.getFilteredFromPlace(placeType,postType)
+    fun getFilteredFromPlace(placeType: Int,postType: Int) = performFilterOperation {  when(placeType)
+    {
+        0 -> {
+            Log.d("filteren", "posttype: $postType placetype: $placeType")
+            localDataSource.getFilteredFromBulletinboard(postType)
+        }
+        1 -> {
+            Log.d("filteren", "posttype: $postType placetype: $placeType")
+            localDataSource.getFilteredFromTreasureChest(postType)
+        }
+        else -> {
+            Log.d("filteren", "posttype: $postType placetype: $placeType")
+            localDataSource.getFilteredFromBackPack(postType)
+
+        }        }
+    }
 
     fun addPostByEmail(post: Post, placeType: Int) = remoteDataSource.addPostByEmail(post,placeType)
 
-    /*fun deletePostByEmail(placeType: Int,postId: Int) =
+    fun deletePostByEmail(placeType: Int,postId: Int) =
         performDelOperation(
-            databaseQuery = {localDataSource.deletePostFromPlace(postId)},
-            networkCall = {remoteDataSource.deletePostByEmail(placeType,postId)},
-            saveCallResult = {localDataSource.deletePostFromPlace(postId)}
-        )*/
+            databaseQuery = {
+                when (placeType) {
+                    0 -> {
+                        localDataSource.deletePostFromBulletinBoard(postId)
+                    }
+                    1 -> {
+                        localDataSource.deletePostFromTreasureChest(postId)
+                    }
+                    else -> {
+                        throw Exception("Er liep onverwachts iets mis")
+                    }
+                }
 
-    fun deletePostByEmail(placeType: Int,postId: Int) = remoteDataSource.deletePostByEmail(placeType,postId)
+            },
+            networkCall = {remoteDataSource.deletePostByEmail(placeType,postId)}
+        )
+
+    //fun deletePostByEmail(placeType: Int,postId: Int) = remoteDataSource.deletePostByEmail(placeType,postId)
 
 
     fun addExistingPostToPlace(postId: Int,placeType: Int) = remoteDataSource.addExistingPostToPlace(postId,placeType)
@@ -72,7 +106,10 @@ class PostRepository(private val localDataSource: PostLocalDataSource, private v
 
     fun changePassword(ww: String) = remoteDataSource.changePassword(ww)
 
-    fun permanentlyDeletePost(postId: Int) = remoteDataSource.permanentlyDeletePost(postId)
+    fun permanentlyDeletePost(postId: Int) = performDelOperation(
+        databaseQuery = {localDataSource.deletePostFromBackpack(postId)},
+        networkCall = {remoteDataSource.permanentlyDeletePost(postId)}
+    )
 
 
 }

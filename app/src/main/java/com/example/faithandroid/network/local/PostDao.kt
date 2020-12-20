@@ -26,11 +26,17 @@ interface PostDao {
     @Query("select * from posts where postType ==:postType and treasureChest == 1")
     fun getFilteredFromTreasureChest(postType: Int) : LiveData<List<Post>>
 
-    @Query("select * from posts where postType ==:postType")
+    @Query("select * from posts where postType ==:postType and backpack == 1")
     fun getFilteredFromBackPack(postType: Int) : LiveData<List<Post>>
 
-    @Query("delete from posts where id == :postId")
-    fun deletePostFromPlace(postId: Int)
+    @Query("update posts set bulletinBoard = 0 where id ==:postId")
+    fun deletePostFromBulletinBoard(postId: Int)
+
+    @Query("update posts set treasureChest = 0 where id ==:postId")
+    fun deletePostFromTreasureChest(postId: Int)
+
+    @Query("delete from posts where id==:id")
+    fun deletePostFromBackpack(id: Int)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(list: List<Post>)

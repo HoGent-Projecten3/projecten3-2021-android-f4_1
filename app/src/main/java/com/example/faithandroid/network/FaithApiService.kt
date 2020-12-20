@@ -60,7 +60,7 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json")
     @DELETE("city/skyscraper/goal/{id}")
-    fun removeGoal(@Path("id") id: Int): Call<String>
+    suspend fun removeGoal(@Path("id") id: Int): Response<Void>
 
     @GET("city/{placeType}/filtered-post")
     fun getFilteredFromPlace(@Path("placeType") placeType: Int, @Query("postType") postType: Int): Call<List<Post>>
@@ -74,7 +74,7 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @PUT("city/{placeType}/post/remove/{postId}")
-    fun deletePostByEmail(@Path("placeType") placeType: Int, @Path("postId") postId: Int): Call<Void>
+    suspend fun deletePostByEmail(@Path("placeType") placeType: Int, @Path("postId") postId: Int): Response<Void>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @PUT("city/{placeType}/add-existing/{postId}")
@@ -100,7 +100,7 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json", "accept: application/octet-stream")
     @DELETE("city/post/{postId}")
-    fun permanentlyDeletePost(@Path("postId") postId: Int):Call<Void>
+    suspend fun permanentlyDeletePost(@Path("postId") postId: Int):Response<Void>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @GET("/avatar")
