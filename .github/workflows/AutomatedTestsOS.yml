@@ -24,6 +24,12 @@ jobs:
         with:
           java-version: 11.0.4
           java-package: jdk
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+      - name: install dos2unix
+        run: sudo apt-get install dos2unix
+      - name: convert gradlew
+        run: dos2unix ./gradlew
       - name: Android Emulator Runner
         uses: ReactiveCircus/android-emulator-runner@v2.13.0
         with:
