@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 //apply plugin: 'androidx.navigation.safeargs'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'kotlin-kapt'
+apply plugin : 'org.jetbrains.dokka'
 
 android {
     compileSdkVersion 30
@@ -110,7 +111,8 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
 
     implementation "com.github.bumptech.glide:glide:4.11.0"
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    //annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'com.github.bumptech.glide:compiler:4.11.0'
 
     implementation "androidx.recyclerview:recyclerview:1.1.0"
 
@@ -140,7 +142,9 @@ dependencies {
 
     //compile 'com.github.devsideal:VectorChildFinder:1.0.0'
 
-
+    //dokka
+    implementation("org.jetbrains.dokka:dokka-gradle-plugin:1.4.0")
+    implementation("org.jetbrains.dokka:dokka-core:1.4.0") // it was crashing without this
 
 }
 
