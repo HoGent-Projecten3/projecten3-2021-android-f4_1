@@ -46,6 +46,7 @@ class BulletinBoardTest {
                     R.id.txtemail
                 )
             ).perform(replaceText("jan.coppens@gmail.com"))
+            closeSoftKeyboard()
 
             onView(
                 withId(
