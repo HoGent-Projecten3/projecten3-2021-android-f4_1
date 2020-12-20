@@ -58,10 +58,10 @@ class AppNavHeaderMainFragment: Fragment() {
                 binding.imgAvatarB.setVisibility(View.VISIBLE)
             }
 
-            it.data?.let { it -> ColorSvgs.setHair(it.hair, vectorMasterViewA, vectorMasterViewB) }
-            it.data?.let { it -> ColorSvgs.setEyes(it.eyes, vectorMasterViewA, vectorMasterViewB) }
-            it.data?.let { it -> ColorSvgs.setSkin(it.skin, vectorMasterViewA, vectorMasterViewB) }
-            it.data?.let { it -> ColorSvgs.setBody(it.upperBody, vectorMasterViewA, vectorMasterViewB) }
+            it.let { it -> ColorSvgs.setHair(it.hair, vectorMasterViewA, vectorMasterViewB) }
+            it.let { it -> ColorSvgs.setEyes(it.eyes, vectorMasterViewA, vectorMasterViewB) }
+            it.let { it -> ColorSvgs.setSkin(it.skin, vectorMasterViewA, vectorMasterViewB) }
+            it.let { it -> ColorSvgs.setBody(it.upperBody, vectorMasterViewA, vectorMasterViewB) }
         })
 
         return binding.root

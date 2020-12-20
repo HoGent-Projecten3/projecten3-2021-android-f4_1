@@ -104,7 +104,7 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @GET("/avatar")
-    suspend fun getAvatar(): Response<Avatar>
+    fun getAvatar(): Call<Avatar>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @PUT("/change-avatar")

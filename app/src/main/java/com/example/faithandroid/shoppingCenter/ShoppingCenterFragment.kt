@@ -165,7 +165,7 @@ class ShoppingCenterFragment: Fragment() {
             body.let { ColorSvgs.setBody(it, vectorMasterViewA, vectorMasterViewB) }
         })*/
 
-        viewModel.currentAvatar.observe(this.viewLifecycleOwner, Observer
+        /*viewModel.currentAvatar.observe(this.viewLifecycleOwner, Observer
         {
             it?.let { resource ->
                 when (resource.status) {
@@ -203,9 +203,9 @@ class ShoppingCenterFragment: Fragment() {
                     }
                 }
             }
-        })
+        })*/
 
-        /*viewModel.currentAvatar.observe(this.viewLifecycleOwner, Observer{
+        viewModel.currentAvatar.observe(this.viewLifecycleOwner, Observer{
             character = viewModel.currentAvatar.value?.person!!
             if (character == 0){
                 binding.imgAvatarA.setVisibility(View.VISIBLE)
@@ -226,7 +226,7 @@ class ShoppingCenterFragment: Fragment() {
 
             body = viewModel.currentAvatar.value?.upperBody!!
             body.let { ColorSvgs.setBody(it, vectorMasterViewA, vectorMasterViewB) }
-        })*/
+        })
 
         viewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view

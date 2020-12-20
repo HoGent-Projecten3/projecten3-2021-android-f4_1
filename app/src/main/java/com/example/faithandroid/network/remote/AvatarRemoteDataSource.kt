@@ -6,7 +6,7 @@ import com.example.faithandroid.network.FaithApiService
 
 class AvatarRemoteDataSource(private val apiService: FaithApiService) : BaseDataSource() {
 
-    suspend fun getAvatar() = getObjectResult { apiService.getAvatar() }
+    fun getAvatar() = apiService.getAvatar()
 
     fun postAvatar(avatar: Avatar) =  apiService.postAvatar(avatar)
 }
