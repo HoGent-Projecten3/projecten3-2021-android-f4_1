@@ -9,8 +9,10 @@ import com.example.faithandroid.login.data.LoginRepository
 import com.example.faithandroid.login.data.Result
 
 import com.example.faithandroid.R
+import com.example.faithandroid.login.data.LoggedInUser
 import com.example.faithandroid.login.data.User
 import com.example.faithandroid.models.Adolescent
+import com.example.faithandroid.profiel.ProfielFragment
 import kotlinx.coroutines.*
 import retrofit2.await
 
@@ -46,16 +48,19 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
             if (result is Result.Success) {
 
                 val result2 = loginRepository.getAdolescent(username)
-                if(result2 is Result.Success)
-                _loginResult.value =
-                    LoginResult(
-                        success = LoggedInUserView(
-                            token = result.data,
-                            displayName =  result2.data.firstName + " " + result2.data.name,
-                            email = result2.data.email
+                if(result2 is Result.Success) {
+                    _loginResult.value =
+                        LoginResult(
+                            success = LoggedInUserView(
+                                token = result.data,
+                                displayName = result2.data.firstName + " " + result2.data.name,
+                                email = result2.data.email
+                            )
                         )
-                    )
 
+                    Log.d("zz", loginResult.value!!.success!!.displayName)
+                    Log.d("rrr", result2.toString())
+                }
             } else {
                 _loginResult.value =
                     LoginResult(error = R.string.login_failed)

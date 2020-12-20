@@ -72,12 +72,14 @@ class GoalDetailsFragment: DialogFragment() {
         binding.datumText.text = date
 
         binding.btnBehaald.setOnClickListener { view: View ->
+            Log.d("goal: ", args.goal.toString())
             viewModel.goalBehaald(args.goal.id)
             Toast.makeText(
                 context,
                 "Je doel is behaald",
                 Toast.LENGTH_LONG
             ).show()
+            Log.d("goalBehaald: ", args.goal.shared.toString())
             view.findNavController().navigate(R.id.skyscraperFragment)
         }
 

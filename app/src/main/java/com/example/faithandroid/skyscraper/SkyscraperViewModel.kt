@@ -55,7 +55,7 @@ class SkyscraperViewModel(private val goalPostRepository: GoalPostRepository) : 
         viewModelScope.launch {
             try {
                 goalPostRepository.postGoalPost(goalPost)
-                val response = goalPostRepository.postGoalPost(goalPost)
+
             }catch (e: Exception){
                 // error handling als new goal niet werkt/ er iets mis loopt
                 _status.value = e.localizedMessage

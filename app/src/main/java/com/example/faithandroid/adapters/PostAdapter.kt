@@ -85,6 +85,8 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
             binding.date = LocalDate.parse(post.date, DateTimeFormatter.ISO_LOCAL_DATE_TIME).format(
                 DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))
 
+
+
             var card = binding.card
 
 

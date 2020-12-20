@@ -3,6 +3,7 @@ package com.example.faithandroid.profiel
 
 
 import AppPreferences
+import android.util.Log
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -38,19 +39,22 @@ class ProfielViewModel(private val postRepository: PostRepository,private val lo
     /**
      * gets the logged in adolescent from the backend and puts it into the adol variable
      */
-    fun getAdolescent(): Adolescent?{
+    fun getAdolescent(): Adolescent? {
 
         viewModelScope.launch {
 
-            try{
-            val stringCall: Result<Adolescent> =
-                loginRepository.getAdolescent(AppPreferences.username.toString())
-            if(stringCall is Result.Success){
-                _adol.value = stringCall.data
-            }else{
-                throw Exception()
-            }
-            }catch(e: Exception){
+            try {
+                val stringCall: Result<Adolescent> =
+                    loginRepository.getAdolescent(AppPreferences.username.toString())
+                if (stringCall is Result.Success) {
+                    _adol.value = stringCall.data
+                    AppPreferences.name = stringCall.data.name
+                    AppPreferences.firstname = stringCall.data.firstName
+                    Log.d("ttt", AppPreferences.firstname.toString())
+                } else {
+                    throw Exception()
+                }
+            } catch (e: Exception) {
                 throw Exception("Gebruiker kon niet worden opgehaald")
             }
         }
@@ -63,6 +67,7 @@ class ProfielViewModel(private val postRepository: PostRepository,private val lo
      *
      * @param ww is the new password of the adolescent
      */
+
      fun changePassword(ww: String) {
 
          viewModelScope.launch {

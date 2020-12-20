@@ -61,7 +61,7 @@ class addTextFragment: Fragment() {
 
         binding.imageView4.setOnClickListener{
                 view: View ->  val action =
-            addTextFragmentDirections.actionAddTextFragmentToTextPostToevoegen(
+            AddTextFragmentDirections.actionAddTextFragmentToTextPostToevoegen(
                 args.placeType
             )
             view.findNavController().navigate(action)
