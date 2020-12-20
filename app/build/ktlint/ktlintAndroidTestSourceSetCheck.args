@@ -1,0 +1,6 @@
+--reporter=plain
+--color
+--reporter=plain,output=D:\git\projecten3-2021-android-f4_1\app\build\reports\ktlint\ktlintAndroidTestSourceSetCheck\ktlintAndroidTestSourceSetCheck.txt
+"src\\androidTest\\java\\com\\example\\faithandroid\\BulletinBoardTest.kt"
+"src\\androidTest\\java\\com\\example\\faithandroid\\LoginActivityTest.kt"
+"src\\androidTest\\java\\com\\example\\faithandroid\\testlalala.kt"

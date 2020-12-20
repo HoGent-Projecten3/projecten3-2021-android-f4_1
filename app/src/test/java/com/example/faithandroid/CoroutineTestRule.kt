@@ -31,4 +31,8 @@ class CoroutineTestRule(
         Dispatchers.resetMain()
         testDispatcher.cleanupTestCoroutines()
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> c6afd76110f5c37a45a5483459d72529cf0e04d3

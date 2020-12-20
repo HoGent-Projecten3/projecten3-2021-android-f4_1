@@ -1,0 +1,5 @@
+[90mD:\git\projecten3-2021-android-f4_1\app\src\androidTest\java\com\example\faithandroid\[0mBulletinBoardTest.kt[90m:[0m7[90m:49:[0m Wildcard import (cannot be auto-corrected)
+[90mD:\git\projecten3-2021-android-f4_1\app\src\androidTest\java\com\example\faithandroid\[0mBulletinBoardTest.kt[90m:[0m9[90m:63:[0m Wildcard import (cannot be auto-corrected)
+[90mD:\git\projecten3-2021-android-f4_1\app\src\androidTest\java\com\example\faithandroid\[0mLoginActivityTest.kt[90m:[0m4[90m:24:[0m Wildcard import (cannot be auto-corrected)
+[90mD:\git\projecten3-2021-android-f4_1\app\src\androidTest\java\com\example\faithandroid\[0mLoginActivityTest.kt[90m:[0m10[90m:35:[0m Wildcard import (cannot be auto-corrected)
+[90mD:\git\projecten3-2021-android-f4_1\app\src\androidTest\java\com\example\faithandroid\[0mtestlalala.kt[90m:[0m5[90m:30:[0m Wildcard import (cannot be auto-corrected)

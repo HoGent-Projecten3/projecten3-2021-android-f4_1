@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.faithandroid.PostViewModelTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-12-20T17:27:24" hostname="DESKTOP-NQ332T3" time="0.619">
+  <properties/>
+  <testcase name="getPostsOfPlace gets posts" classname="com.example.faithandroid.PostViewModelTest" time="0.619"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
