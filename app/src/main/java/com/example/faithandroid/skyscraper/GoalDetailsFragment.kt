@@ -29,6 +29,12 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
+/**
+ * This is a fragment for the details of a goal
+ *
+ * @property args is used to store the goal
+ * @property viewModel is the viewmodel for skyscraper
+ */
 class GoalDetailsFragment: DialogFragment() {
     val args: GoalDetailsFragmentArgs by navArgs()
 

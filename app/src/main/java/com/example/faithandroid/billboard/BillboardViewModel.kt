@@ -16,21 +16,20 @@ import kotlinx.coroutines.launch
 import retrofit2.await
 import java.time.LocalDateTime
 
+/**
+ * This is the viewModel for billboard
+ *
+ * @property status shows the status of the data in the postlist
+ * @property properties holds a list of GoalPosts for Billboard
+ */
 class BillboardViewModel(private val goalPostRepository: GoalPostRepository) : ViewModel() {
+
 
     //ERROR STATUS
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>
         get() = _status
 
-   /* @RequiresApi(Build.VERSION_CODES.O)
-    val mockData = mutableListOf<GoalPost>(
-        GoalPost(0, "Huiswerk maken", "Mijn huiwerk maken voor Nederlands, Wiskunde & Geschiedenis", true, listOf<Step>(Step(0, "step")), LocalDateTime.of(2020, 11, 3,0, 0,0).toString()) , //  android:layout_marginTop="7dp"
-        GoalPost(0, "Kamer restylen", "Kamer een makeover geven in de stijl van New York dus met schilderen, posters ophangen en eventueel meubels verplaatsen enzo", true, listOf<Step>(Step(0, "step")), "29/12/2020")
-// LocalDateTime.of(2020, 7, 3, 12, 0 ))
-    )*/
-
-    //private val _properties = MutableLiveData<List<GoalPost>>()
 
     private val _properties = MutableLiveData<List<GoalPost>>()
 
@@ -44,7 +43,11 @@ class BillboardViewModel(private val goalPostRepository: GoalPostRepository) : V
         getPosts()
     }
 
+    /**
+     * gets the posts in Billboard from the backend and puts them into the properties variable
+     */
       fun getPosts() {
+
         coroutineScope.launch {
             var getPropertiesDeferred = goalPostRepository.getBillboardGoals()
             try {
@@ -57,8 +60,6 @@ class BillboardViewModel(private val goalPostRepository: GoalPostRepository) : V
             }
         }
     }
-
-
 
     override fun onCleared() {
         super.onCleared()

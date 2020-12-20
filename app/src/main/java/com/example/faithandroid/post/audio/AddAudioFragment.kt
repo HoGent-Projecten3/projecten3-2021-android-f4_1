@@ -35,9 +35,20 @@ import org.koin.android.ext.android.inject
 import java.io.*
 import java.util.*
 
-
+/**
+ * This is a fragment for the adding of an audio fragment
+ *
+ * @property args used to store the placetype
+ * @property post is the audiofragment to be added
+ * @property nieuwePost keeps track of whether the post is newly added to the app or transferred from another place in the app
+ * @property output is the place the audiofile is stored
+ * @property mediaRecorder is the mediaRecorder to record the audio
+ * @property state keeps track of whether the audio is recording
+ * @property recordingStopped keeps track of whether the recording of the audio is stopped
+ * @property audioPost is the data of the recorded audio
+ * @property viewModel is the viewModel for all posts
+ */
 class AddAudioFragment: Fragment() {
-
     val args: AddAudioFragmentArgs by navArgs()
     var post: Post? = null
     var nieuwePost: Boolean = false;
@@ -214,7 +225,9 @@ class AddAudioFragment: Fragment() {
         }
         return binding.root
     }
-
+    /**
+     * Starts the recording of audio
+     */
     private fun startRecording() {
         try {
             mediaRecorder?.prepare()
@@ -229,6 +242,9 @@ class AddAudioFragment: Fragment() {
         }
     }
 
+    /**
+     * Stops the recording of audio
+     */
     @RequiresApi(Build.VERSION_CODES.O)
     private fun stopRecording(){
         if(state){
@@ -243,6 +259,9 @@ class AddAudioFragment: Fragment() {
         }
     }
 
+    /**
+     * Pauses the recording of audio
+     */
     @SuppressLint("RestrictedApi", "SetTextI18n")
     @TargetApi(Build.VERSION_CODES.N)
     private fun pauseRecording() {
@@ -257,6 +276,9 @@ class AddAudioFragment: Fragment() {
         }
     }
 
+    /**
+     * Resumes the recording of audio after pausing
+     */
     @SuppressLint("RestrictedApi", "SetTextI18n")
     @TargetApi(Build.VERSION_CODES.N)
     private fun resumeRecording() {
@@ -265,6 +287,12 @@ class AddAudioFragment: Fragment() {
         recordingStopped = false
     }
 
+    /**
+     * converts a uri to base64
+     *
+     * @param uri is the uri to be converted
+     * @return the base64 representation
+     */
     @RequiresApi(Build.VERSION_CODES.O)
     private fun uriToBase64(uri: Uri): String
     {

@@ -53,9 +53,15 @@ import org.koin.android.ext.android.inject
 
 
 //import androidx.databinding.DataBindingUtil
-
+/**
+ * the main activity where the app starts
+ *
+ * @property drawerLayout is the drawer layout
+ * @property viewModel is the viewmodel that has everything concerning the logging in
+ * @property username is the name of the user that needs to be displayed
+ * @property bind is to bind the appnavheadermain
+ */
 class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavigationItemSelectedListener {
-    
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
     private  var username: String = ""
@@ -133,6 +139,9 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
         }
     }
 
+    /**
+     * what happens when you click the menu button
+     */
     fun ClickMenu(view: View){
         //open drawer
         val pvm: ProfielViewModel by inject()
@@ -146,11 +155,17 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
 
     }
 
+    /**
+     * opens the drawer
+     */
     private  fun  openDrawer(drawerLayout: DrawerLayout) {
     //open drawer layout
         drawerLayout.openDrawer(GravityCompat.START)
     }
 
+    /**
+     * what happens when you click the back button
+     */
      fun ClickBack(view: View) {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)

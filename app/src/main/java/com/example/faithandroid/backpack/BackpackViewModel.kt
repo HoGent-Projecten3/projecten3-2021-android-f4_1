@@ -12,8 +12,14 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import retrofit2.await
 
+/**
+ * This is a viewModel that gets and keeps a list of all posts in backpack
+ *
+ * @property status shows the status of the data in the postList
+ */
 class BackpackViewModel : ViewModel() {
     //Error status
+
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>
         get() = _status
@@ -31,6 +37,9 @@ class BackpackViewModel : ViewModel() {
         Post(9, "Audio", "This is audio", "2012-03-19T07:22", PostType.Audio.ordinal)*/
     )
 
+    /**
+     * @property postList is a list of the posts in backpack
+     */
     private val _postList = MutableLiveData<List<Post>>()
     val postList: LiveData<List<Post>>
         get() = _postList
@@ -46,7 +55,9 @@ class BackpackViewModel : ViewModel() {
     }
 
 
-    //OPHALEN VAN DE LIJST
+    /**
+     * This method gets the posts in backpack from the backend and puts them in the postList variable
+     */
     fun getPostsOfBackpack()
     {
         /*coroutineScope.launch{

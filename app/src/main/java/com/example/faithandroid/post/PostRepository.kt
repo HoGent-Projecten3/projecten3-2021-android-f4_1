@@ -1,5 +1,7 @@
 package com.example.faithandroid.post
 
+
+
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -16,6 +18,9 @@ import retrofit2.await
 import retrofit2.http.Path
 import java.lang.Exception
 
+/**
+ * unused
+ */
 class PostRepository(private val localDataSource: PostLocalDataSource, private val remoteDataSource: PostRemoteDataSource) {
 
      fun getPostsOfPlaceByAdolescentEmail(placeType: Int) =

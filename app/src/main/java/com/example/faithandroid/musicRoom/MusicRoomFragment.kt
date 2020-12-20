@@ -29,9 +29,13 @@ import com.spotify.sdk.android.authentication.AuthenticationResponse
 import kotlinx.android.synthetic.main.app_bar_musicroom.view.*
 import org.koin.android.ext.android.inject
 
-
+/**
+ * Fragment for the Music Room
+ *
+ * @property spotifyAppRemoteLocal is used to open Spotify when clicking on a playlist
+ * @property musicRoomViewModel is the viewModel for the music room
+ */
 class MusicRoomFragment: Fragment() {
-
     private val REQUEST_CODE = 1337
     private val REDIRECT_URI = "faithandroid://callback"
     private val CLIENT_ID = "95bc88d8f6084f1893dd648d88732210"

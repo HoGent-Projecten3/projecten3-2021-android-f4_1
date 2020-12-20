@@ -24,15 +24,28 @@ import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.FormatStyle
 
-
+/**
+ * This is an adapter for the FilteredPosts
+ *
+ * @property listener is to put extra functionality to a click
+ */
 class FilteredPostAdapter(private var listener: CustomClick) : ListAdapter<Post, FilteredPostAdapter.FilteredPostViewHolder>(
     DiffCallback
 ) {
 
-
+    /**
+     * This is a viewHolder for the FilteredPostAdapter
+     *
+     * @property binding is to bind a filtered_post.xml file
+     * @property listener is to put extra functionality to a click
+     *
+     */
     class FilteredPostViewHolder(private var binding: FilteredPostBinding, private var listener: CustomClick, private var parent: ViewGroup):
         RecyclerView.ViewHolder(binding.root){
 
+        /**
+         * Binds the filtered post to the recyclerview
+         */
         fun bind(post: Post){
 
             binding.post = post

@@ -16,8 +16,15 @@ import com.example.faithandroid.models.Avatar
 import com.example.faithandroid.post.PostRepository
 import retrofit2.*
 import kotlinx.coroutines.launch
+
 import org.koin.java.KoinJavaComponent.inject
 
+/**
+ * This is the viewModel for the profile screen
+ *
+ * @property adol is the adolescent that is logged in and needs to be displayed on the profile screen
+ * @property currentAvatar is the avatar that needs to be displayed on the profile screen
+ */
 class ProfielViewModel(private val postRepository: PostRepository,private val loginRepository: LoginRepository): ViewModel() {
 
     private var _adol = MutableLiveData<Adolescent>()
@@ -28,28 +35,39 @@ class ProfielViewModel(private val postRepository: PostRepository,private val lo
     var avatar: LiveData<Avatar> = MutableLiveData<Avatar>()
         get() = _currentAvatar
 
-    fun getAdolescent(): Adolescent?{
+
+    /**
+     * gets the logged in adolescent from the backend and puts it into the adol variable
+     */
+    fun getAdolescent(): Adolescent? {
 
         viewModelScope.launch {
 
-            try{
-            val stringCall: Result<Adolescent> =
-                loginRepository.getAdolescent(AppPreferences.username.toString())
-            if(stringCall is Result.Success){
-                _adol.value = stringCall.data
-                AppPreferences.name = stringCall.data.name
-                AppPreferences.firstname = stringCall.data.firstName
-                Log.d("ttt", AppPreferences.firstname.toString())
-            }else{
-                throw Exception()
-            }
-            }catch(e: Exception){
+            try {
+                val stringCall: Result<Adolescent> =
+                    loginRepository.getAdolescent(AppPreferences.username.toString())
+                if (stringCall is Result.Success) {
+                    _adol.value = stringCall.data
+                    AppPreferences.name = stringCall.data.name
+                    AppPreferences.firstname = stringCall.data.firstName
+                    Log.d("ttt", AppPreferences.firstname.toString())
+                } else {
+                    throw Exception()
+                }
+            } catch (e: Exception) {
                 throw Exception("Gebruiker kon niet worden opgehaald")
             }
         }
         return _adol.value
 
     }
+
+    /**
+     * Changes the password of the logged in adolescent
+     *
+     * @param ww is the new password of the adolescent
+     */
+
      fun changePassword(ww: String) {
 
          viewModelScope.launch {

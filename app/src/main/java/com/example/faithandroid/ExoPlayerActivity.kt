@@ -17,8 +17,14 @@ import com.google.android.exoplayer2.util.Util
 
 //import androidx.databinding.DataBindingUtil
 
+/**
+ * the activity for when the exoplayer is started when watching a video or listening to audio
+ *
+ * @property playerView is the view of the exoplayer
+ * @property player is the exoplayer itself
+ * @property postUri is the uri where the post needs to come from
+ */
 class ExoPlayerActivity : AppCompatActivity() {
-
     private lateinit var playerView: PlayerView
     private var player: SimpleExoPlayer? = null
     private var postUri: String = ""
@@ -32,10 +38,16 @@ class ExoPlayerActivity : AppCompatActivity() {
         postUri = getIntent().getExtras()!!.getString("postUri").toString()
     }
 
+    /**
+     * initializes the playerView
+     */
     fun initializeViews(){
         playerView = findViewById(R.id.playerView)
     }
 
+    /**
+     * initializes the player and adds it to the view
+     */
     fun initializePlayer(){
         player = SimpleExoPlayer.Builder(this).build()
         playerView.setPlayer(player)
@@ -46,11 +58,20 @@ class ExoPlayerActivity : AppCompatActivity() {
         player?.setPlayWhenReady(true)
     }
 
+    /**
+     * gets the source of the media
+     *
+     * @param uri is the uri the post comes from
+     * @return the mediasource
+     */
     private fun buildMediaSource(uri: Uri): MediaSource{
         var dataSourceFactory: DataSource.Factory = DefaultDataSourceFactory(this, getString(R.string.app_name))
         return ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(uri)
     }
 
+    /**
+     * stops the player
+     */
     fun releasePlayer(){
         if (player != null){
             player?.release()

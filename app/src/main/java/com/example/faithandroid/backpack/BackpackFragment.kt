@@ -23,7 +23,13 @@ import com.example.faithandroid.util.Status
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
 
-
+/**
+ * This is a fragment for the backpack
+ *
+ * @property viewModel is the viewModel for this fragment
+ * @property dropdownList dropdown list for filtering of posts
+ * @property postViewModel is the viewModel for all posts
+ */
 class BackpackFragment: Fragment() {
 
     private lateinit var postAdapter: PostAdapter

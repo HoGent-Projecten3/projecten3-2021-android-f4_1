@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.faithandroid.*
-import com.example.faithandroid.bulletinboard.BulletinBoardViewModel
 import com.example.faithandroid.databinding.AddNewTextBinding
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.post.PostRepository
@@ -23,7 +22,11 @@ import org.koin.android.ext.android.inject
 import java.time.LocalDateTime
 import com.google.android.material.snackbar.Snackbar
 
-
+/**
+ * this is a fragment for adding a textpost that doesn't exist yet in the app
+ *
+ * @property args is used to store the placetype of the post
+ */
 class TextPostToevoegenFragment : Fragment() {
     // TODO: Rename and change types of parameters
     val args: TextPostToevoegenFragmentArgs by navArgs()

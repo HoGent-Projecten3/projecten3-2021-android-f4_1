@@ -29,7 +29,11 @@ import org.koin.android.ext.android.inject
 import javax.xml.parsers.DocumentBuilderFactory.newInstance
 import javax.xml.transform.TransformerFactory.newInstance
 
-
+/**
+ * activity for the logging in of a user
+ *
+ * @property loginViewModel is the viewModel that is used for logging in
+ */
 class LoginActivity : AppCompatActivity() {
 
 
@@ -140,7 +144,6 @@ class LoginActivity : AppCompatActivity() {
    override fun onBackPressed() {
         finishAffinity()
     }
-
 
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome)

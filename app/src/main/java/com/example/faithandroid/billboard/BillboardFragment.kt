@@ -23,6 +23,11 @@ import org.koin.android.ext.android.inject
 
 
 
+/**
+ * This is a fragment for the billboard
+ *
+ * @property viewModel This is the viewModel for the billboard
+ */
 
 class BillboardFragment: Fragment() {
 

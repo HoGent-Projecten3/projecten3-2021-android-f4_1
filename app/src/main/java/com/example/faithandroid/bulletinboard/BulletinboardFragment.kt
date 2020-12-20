@@ -20,7 +20,6 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.faithandroid.*
 import com.example.faithandroid.databinding.BulletinboardBinding
 import com.example.faithandroid.adapters.PostAdapter
-import com.example.faithandroid.login.data.LoggedInUser
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
@@ -31,7 +30,13 @@ import kotlinx.android.synthetic.main.app_bar_back.view.*
 import kotlinx.android.synthetic.main.skyscraper_add_goal.view.*
 import org.koin.android.ext.android.inject
 
-
+/**
+ * Fragment for the Bulletinboard
+ *
+ * @property viewModel is the viewModel for the bulletinboard
+ * @property postViewModel is the viewModel for all posts
+ * @property deleteBtn is the button used to delete a post
+ */
 class BulletinboardFragment: Fragment() {
 
     private lateinit var deleteBtn: ImageView

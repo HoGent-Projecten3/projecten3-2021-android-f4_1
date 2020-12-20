@@ -22,8 +22,14 @@ import com.example.faithandroid.post.PostViewModel
 import org.koin.android.ext.android.inject
 import com.google.android.material.snackbar.Snackbar
 
+/**
+ * This is a fragment for adding a textpost from one place to another
+ *
+ * @property args used to store the placetype
+ * @property post is the post to be added
+ * @property viewModel is the viewmodel for all posts
+ */
 class addTextFragment: Fragment() {
-
     val args: addTextFragmentArgs by navArgs()
     var post: Post? = null
     private lateinit var  viewModel: PostViewModel

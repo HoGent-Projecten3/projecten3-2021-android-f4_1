@@ -28,12 +28,13 @@ import retrofit2.Retrofit
 import retrofit2.await
 
 
+/**
+ * This is the viewmodel for the skyscraper
+ *
+ * @property getStatus is the status of whether the goal could be retrieved from the backend
+ */
 
 class SkyscraperViewModel(private val goalPostRepository: GoalPostRepository) : ViewModel() {
-    private val _shareStatus = MutableLiveData<String>()
-    private val _completedStatus = MutableLiveData<String>()
-    private val _removeStatus = MutableLiveData<String>()
-    private val _getStatus = MutableLiveData<String>()
 
 
     private val _status = MutableLiveData<String>()
@@ -49,30 +50,6 @@ class SkyscraperViewModel(private val goalPostRepository: GoalPostRepository) : 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    /*init {
-
-        getPostsOfSkyscraper()
-        testLiveData.value = test;
-    }
-
-    fun getPostsOfSkyscraper() {
-        coroutineScope.launch {
-            var getPropertiesDeferred = goalPostRepository.getPostsOfSkyScraper();
-
-            try {
-
-                var listResult = getPropertiesDeferred
-                if(listResult.value?.data != null){
-
-                    testLiveData = listResult
-                }
-
-            } catch (e: Exception){
-
-                _status.value = e.localizedMessage
-            }
-        }
-    }*/
 
     fun postNewGoalPost( goalPost: GoalPost) {
         viewModelScope.launch {
@@ -86,6 +63,11 @@ class SkyscraperViewModel(private val goalPostRepository: GoalPostRepository) : 
         }
     }
 
+    /**
+     * checks whether a goal has been completed
+     *
+     * @param id is the id of the goal to be checked
+     */
     fun goalBehaald(id:Int){
         viewModelScope.launch {
             try {
@@ -100,6 +82,11 @@ class SkyscraperViewModel(private val goalPostRepository: GoalPostRepository) : 
         }
     }
 
+    /**
+     * shares a goal to the billboard
+     *
+     * @param id is the id of the goal to be shared
+     */
     fun shareGoal(id:Int){
         coroutineScope.launch{
             try {
@@ -112,6 +99,11 @@ class SkyscraperViewModel(private val goalPostRepository: GoalPostRepository) : 
         }
     }
 
+    /**
+     * Deletes a goal
+     *
+     * @param id is the id of the goal to be deleted
+     */
     fun deleteGoal(id:Int){
         coroutineScope.launch{
             try {

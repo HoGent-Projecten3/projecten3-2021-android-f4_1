@@ -28,9 +28,17 @@ import org.koin.android.ext.android.bind
 import org.koin.android.ext.android.inject
 import java.lang.Exception
 
-
+/**
+ * This is a fragment for the profilescreen
+ *
+ * @property adolescent is the adolescent of whom the data needs to be displayed
+ * @property viewModel is the viewmodel for the profile
+ * @property niewww is the new password if you want to set a new password
+ * @property nieuwcon is a confirmation of the new password to check whether they are the same
+ * @property vectorMasterViewA is the profile picture when your avatar uses person A
+ * @property vectorMasterViewB is the profile picture when your avatar uses person B
+ */
 class ProfielFragment: Fragment() {
-
     private var adolescent: Adolescent? = null
     private var nieuwww = ""
     private var nieuwcon = ""

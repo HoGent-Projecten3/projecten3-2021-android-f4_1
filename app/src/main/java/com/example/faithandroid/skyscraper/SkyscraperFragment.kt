@@ -20,10 +20,15 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.skyscraper_goalpostimage.view.*
 import org.koin.android.ext.android.inject
 
-
+/**
+ * This is a fragment for the skyscraper
+ *
+ * @property viewModel is the viewmodel for the skyscraper
+ */
 class SkyscraperFragment: Fragment() {
 
     private val loadingDialogFragment by lazy { LoadingFragment() }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,29 +64,6 @@ class SkyscraperFragment: Fragment() {
 
         }
 
-        //viewModel.getPostsOfSkyscraper()
-
-        /*viewModel.testLive.observe(this.viewLifecycleOwner, Observer{
-            it.forEach{goal ->
-                val rowView: View = inflater.inflate(R.layout.skyscraper_goalpostimage, null)
-                rowView.titleText.text = goal.title
-
-                if(goal.completed){
-                    rowView.cardGoal.setBackgroundColor(Color.rgb(161, 214,134 ))
-                } else {
-                    rowView.cardGoal.setBackgroundColor(Color.WHITE)
-                }
-                rowView.layout.setOnClickListener{view: View ->
-
-                    val action =
-                        SkyscraperFragmentDirections.actionSkyscraperFragmentToGoalDetailsFragment(
-                            goal
-                        )
-                    view.findNavController().navigate(action)
-                    }
-                    binding.lijst.addView(rowView, 1)
-                }
-            })*/
 
         viewModel.testLive.observe(this.viewLifecycleOwner, Observer
         {

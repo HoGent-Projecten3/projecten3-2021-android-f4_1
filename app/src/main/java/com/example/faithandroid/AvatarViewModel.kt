@@ -16,6 +16,21 @@ import kotlinx.coroutines.launch
 import okhttp3.internal.wait
 import retrofit2.await
 
+/**
+ * This is the viewmodel for the avatar
+ *
+ * @property status is the status of the data in the properties
+ * @property Hair is a list of haircolors in the shopping center
+ * @property Skin is a list of skintones in the shopping center
+ * @property UpperBody is a list of colors of the clothes in the shopping center
+ * @property Eye is a list of eyecolors in the shoppingcenter
+ * @property currentAvatar is the current avatar the adolescent is using
+ * @property hairProperties is a list of haircolors put into the recyclerview
+ * @property skinProperties is a list of skintones put into the recyclerview
+ * @property bodyProperties is a list of colors of the clothes put into the recyclerview
+ * @property eyeProperties is a list of eyecolors put into the recyclerview
+ */
+
 class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewModel() {
 
      private val _status = MutableLiveData<String>()
@@ -101,6 +116,10 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
          getAvatar()
      }
 
+
+    /**
+     * gets all the colors for the recyclerviews in the shopping center
+     */
       fun getProperties() {
           coroutineScope.launch {
 
@@ -123,6 +142,9 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
           }
      }
 
+    /**
+     * gets the avatar for the logged in adolescent
+     */
      private fun getAvatar(){
          coroutineScope.launch {
 
@@ -144,7 +166,16 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
          Log.d("hair",currentAvatar.value.toString())
     }
 
-     fun postAvatar(character: Int, hair: Int, eyes: Int, skin: Int, body: Int){
+    /**
+     * posts a new avatar for the logged in user
+     *
+     * @param character is the person of the avatar
+     * @param hair is the haircolor of the avatar
+     * @param eyes is the eyecolor of the avatar
+     * @param skin is the skintone of the avatar
+     * @param body is the color of the clothes of the avatar
+     */
+    public fun postAvatar(character: Int, hair: Int, eyes: Int, skin: Int, body: Int){
         coroutineScope.launch{
             try{
                 val avatar: Avatar = Avatar(id = 0,person = character, hair = hair, eyes = eyes, skin = skin, upperBody = body)

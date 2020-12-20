@@ -14,6 +14,9 @@ import com.example.faithandroid.models.Playlist
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 
+/**
+ * adapter for the recyclerview in music room
+ */
 class PlaylistAdapter(private var listener: CustomPlaylistClick, private var deleteListener: CustomPlaylistClick)  : ListAdapter<Playlist, PlaylistAdapter.PlaylistViewHolder>(
     DiffCallback
 ) {

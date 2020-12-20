@@ -16,7 +16,9 @@ import com.example.faithandroid.R
 import com.example.faithandroid.databinding.AppNavHeaderMainBinding
 import com.sdsmdg.harjot.vectormaster.VectorMasterView
 
-
+/**
+ * This fragment is unused, we configure the appnavheadermain in mainActivity
+ */
 class AppNavHeaderMainFragment: Fragment() {
     private lateinit var viewModel: AvatarViewModel
     private lateinit var vectorMasterViewA: VectorMasterView

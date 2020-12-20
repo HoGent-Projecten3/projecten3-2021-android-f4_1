@@ -17,11 +17,15 @@ import retrofit2.await
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.util.Resource
 
-
+/**
+ * Viewmodel for the Music Room
+ *
+ * @property allPlaylists is a list of all spotify playlists of the user
+ * @property playlists is a list of the spotify playlists that are added to the app
+ */
 class MusicRoomViewModel(private val spotifyRepository : SpotifyRepository) : ViewModel() {
 
     var allPlaylists: LiveData<Resource<List<Playlist>>> = spotifyRepository.getPlaylistsSpotify()
-
 
     var playlists: LiveData<Resource<List<Playlist>>> = spotifyRepository.getPlaylistsFaith()
 
@@ -31,22 +35,9 @@ class MusicRoomViewModel(private val spotifyRepository : SpotifyRepository) : Vi
     }
 
 
-
-    /*fun getPlayRemotelists()
-    {
-        try {
-            MainScope().launch {
-                var call: Call<List<Playlist>> = spotifyRepository.getPlaylistsFaith()
-                var list = call.await()
-                    playlists.value.data = list
-    filterPlaylists()
-            }
-        }
-        catch (e: Exception )
-        {
-        }
-    }*/
-
+    /**
+     * Adds a playlist
+     */
     fun addPlaylist(playlist: Playlist)
     {
         try{
@@ -76,6 +67,9 @@ class MusicRoomViewModel(private val spotifyRepository : SpotifyRepository) : Vi
         }
     }
 
+    /**
+     * Removes a playlist from the app
+     */
     fun deletePlaylist(primaryKey: Int)
     {
         try{
@@ -104,6 +98,9 @@ class MusicRoomViewModel(private val spotifyRepository : SpotifyRepository) : Vi
         }
     }
 
+    /**
+     * Gets all the spotify playlists of the user and puts them into the allPlaylists variable
+     */
     fun getAllPlaylists()
     {
         try
@@ -127,6 +124,9 @@ class MusicRoomViewModel(private val spotifyRepository : SpotifyRepository) : Vi
         }
     }
 
+    /**
+     * filters the playlists on name
+     */
     private fun filterPlaylists()
     {
         //allPlaylists.value?.data = allPlaylists.value.data { p -> playlists.value?.data.any { it.name == p.name } == false }

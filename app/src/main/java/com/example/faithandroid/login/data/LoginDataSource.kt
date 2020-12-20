@@ -16,6 +16,9 @@ import kotlin.Result.Companion.success
 
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.
+ *
+ * @property status shows whether the API call was successful
+ * @property loggedInUser is the logged in user
  */
 class LoginDataSource(private val apiService: FaithApiService) {
 
@@ -33,6 +36,11 @@ class LoginDataSource(private val apiService: FaithApiService) {
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
+    /**
+     * Logs the user in
+     *
+     * @return the result of logging in
+     */
       suspend fun login(username: String, password: String): Result<String>{
           try {
               val stringCall: Call<String> =
@@ -43,6 +51,12 @@ class LoginDataSource(private val apiService: FaithApiService) {
                   return Result.Error(e.message.toString())
               }
     }
+    /**
+     * gets the information of the adolescent from the backend
+     *
+     * @param username is the username by which the adolescent is retrieved from the backend
+     * @return the result of getting the adolescent
+     */
     suspend fun getAdolescent(username: String): Result<Adolescent> {
 
             try {

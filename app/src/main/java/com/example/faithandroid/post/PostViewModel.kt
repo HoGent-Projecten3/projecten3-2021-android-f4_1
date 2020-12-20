@@ -19,9 +19,20 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.await
 
-
+/**
+ * This is the viewModel for all posts
+ *
+ * @param placeType is the place where the post needs to be added
+ * @property postList is the list of posts from a specific place, provided by the backend
+ * @property status shows the status of the data in postList
+ */
 class PostViewModel(placeType: PlaceType,private val postRepository: PostRepository): ViewModel() {
 
+    /**
+     * gets the posts of a specific place, regardless of their posttype
+     *
+     * @param placeType is the place the posts need to come from
+     */
     private var _postList : LiveData<Resource<List<Post>>> = postRepository.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
     val postList: LiveData<Resource<List<Post>>>
         get() = _postList
@@ -31,9 +42,11 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
         get() = _filteredPostList
 
 
+
     private val _requestConsultationStatus = MutableLiveData<String>("Er liep iets mis")
     val requestConsultationStatus: LiveData<String>
         get() = _requestConsultationStatus
+
 
     private var _status = MutableLiveData<String>()
     var status: LiveData<String>
@@ -42,6 +55,13 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
             _status.value = text.value
         }
 
+
+        /**
+         * gets the posts of a given type for a specific place
+         *
+         * @param placeType is the place the posts need to come from
+         * @param postType is the type the posts need to be
+         */
     fun getFilteredPostFromPlace(placeType: PlaceType, postType: PostType) {
         viewModelScope.launch {
             val stringCall: Call<List<Post>> =
@@ -64,12 +84,20 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
 
                 override fun onFailure(call: Call<List<Post>>?, t: Throwable?) {
                     _status.value = "Er liep iets mis"
+
                 }
         })
         }
     }
 
-    fun addPostByEmail(post: Post, placeType: PlaceType): Boolean {
+    /**
+     * adds a post to a specific place
+     *
+     * @param post is the post that is to be added
+     * @param placeType is the place the post is to be added to
+     * @return whether the adding of the post was successful
+     */
+    fun addPostByEmail(post: Post, placeType: PlaceType): Boolean{
         var bool: Boolean = true
         viewModelScope.launch {
             val stringCall: Call<Void> =
@@ -94,16 +122,44 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
         return bool
     }
 
-    fun addExistingPostToPlace(id: Int, placeType: PlaceType) {
 
+    /**
+     * Adds a post that already exists within the app to another place
+     *
+     * @param id is the id of the post
+     * @param placeType is the place the post needs to be added to
+     */
+    fun addExistingPostToPlace(id: Int, placeType: PlaceType) {
         postRepository.addExistingPostToPlace(id, placeType.ordinal)
 
     }
 
+
+
+    /**
+     * Deletes a post from every place it exists and from the app altogether
+     *
+     * @param postId is the id of the post to be deleted
+     */
+    fun pemanentlyDeletePost(postId: Int) {
+        postRepository.permanentlyDeletePost(postId) //ERRORHANDELING MET RESPONSE
+    }
+
+
+        /**
+         * Deletes a post from a specific place
+         *
+         * @param id is the id of the post
+         * @param placeType is the place the post will be deleted from
+         */
     fun deletePostByEmail(id: Int, placeType: PlaceType) {
                 postRepository.deletePostByEmail(placeType.ordinal, id)
     }
 
+
+    /**
+     * requests a consultation for the logged in adolescent
+     */
     fun requestConsultation() {
         viewModelScope.launch {
             try {
@@ -117,8 +173,6 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
     }
 
 
-    fun pemanentlyDeletePost(postId: Int) {
-            postRepository.permanentlyDeletePost(postId) //ERRORHANDELING MET RESPONSE
-    }
+
 }
 
