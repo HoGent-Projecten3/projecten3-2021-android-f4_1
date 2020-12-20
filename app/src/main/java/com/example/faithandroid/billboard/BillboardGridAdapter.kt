@@ -8,12 +8,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.faithandroid.databinding.BillboardBinding
 import com.example.faithandroid.databinding.BillboardGoalBinding
 import com.example.faithandroid.models.GoalPost
-
+/**
+ * This is the adapter for the recyclerview in billboard
+ */
 class BillboardGridAdapter : ListAdapter<GoalPost, BillboardGridAdapter.BillboardPropertyViewHolder>(
     DiffCallback
 ) {
+    /**
+     * This is a viewHolder for the BillboardGridAdapter
+     *
+     * @property binding is to bind a post.xml file
+     */
     class BillboardPropertyViewHolder(private var binding: BillboardGoalBinding):
         RecyclerView.ViewHolder(binding.root){
+        /**
+         * binds the post to the Recyclerview in billboard
+         */
         fun bind(goalPost: GoalPost){
             binding.property = goalPost
             binding.executePendingBindings()

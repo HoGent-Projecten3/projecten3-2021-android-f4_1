@@ -22,9 +22,19 @@ import com.example.faithandroid.models.Adolescent
 import com.example.faithandroid.models.Avatar
 import com.sdsmdg.harjot.vectormaster.VectorMasterView
 
-
+/**
+ * This is a fragment for the profilescreen
+ */
 class ProfielFragment: Fragment() {
 
+    /**
+     * @param adolescent is the adolescent of whom the data needs to be displayed
+     * @param viewModel is the viewmodel for the profile
+     * @param niewww is the new password if you want to set a new password
+     * @param nieuwcon is a confirmation of the new password to check whether they are the same
+     * @param vectorMasterViewA is the profile picture when your avatar uses person A
+     * @param vectorMasterViewB is the profile picture when your avatar uses person B
+     */
     private var adolescent: Adolescent? = null
     private lateinit var viewModel: ProfielViewModel
     private var nieuwww = ""

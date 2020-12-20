@@ -27,9 +27,16 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.app_bar_back.view.*
 import kotlinx.android.synthetic.main.skyscraper_add_goal.view.*
 
-
+/**
+ * Fragment for the Bulletinboard
+ */
 class BulletinboardFragment: Fragment() {
 
+    /**
+     * @param viewModel is the viewModel for the bulletinboard
+     * @param postViewModel is the viewModel for all posts
+     * @param deleteBtn is the button used to delete a post
+     */
     private lateinit var viewModel: BulletinBoardViewModel
     private val postViewModel: PostViewModel by lazy{
         ViewModelProvider(this, ViewModelFactory(PlaceType.Prikbord)).get(PostViewModel::class.java)

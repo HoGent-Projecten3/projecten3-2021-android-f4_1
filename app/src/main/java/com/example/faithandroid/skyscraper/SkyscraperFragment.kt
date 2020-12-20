@@ -17,9 +17,14 @@ import com.example.faithandroid.databinding.SkyscraperBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.skyscraper_goalpostimage.view.*
 
-
+/**
+ * This is a fragment for the skyscraper
+ */
 class SkyscraperFragment: Fragment() {
 
+    /**
+     * @param is the viewmodel for the skyscraper
+     */
     private lateinit var viewModel: SkyscraperViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {

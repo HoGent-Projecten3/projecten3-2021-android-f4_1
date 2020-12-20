@@ -21,9 +21,16 @@ import com.example.faithandroid.models.Post
 import com.example.faithandroid.post.PostViewModel
 import com.google.android.material.snackbar.Snackbar
 
-
+/**
+ * This is a fragment for the backpack
+ */
 class BackpackFragment: Fragment() {
 
+    /**
+     * @param viewModel is the viewModel for this fragment
+     * @param dropdownList dropdown list for filtering of posts
+     * @param postViewModel is the viewModel for all posts
+     */
     private lateinit var viewModel: BackpackViewModel
     private lateinit var dropdownList: AutoCompleteTextView
     private val postViewModel: PostViewModel by lazy{

@@ -18,10 +18,17 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.await
-
+/**
+ * This is the viewModel for the bulletinboard
+ */
 class BulletinBoardViewModel : ViewModel() {
 
     //ERROR STATUS
+    /**
+     * @param status shows the status of the data in the postlist
+     * @param requestConsultationStatus keeps track of whether the the request of a consultation was successful
+     * @param postLiist is the list of posts in the bulletinboard, provided by the backend
+     */
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>
         get() = _status
@@ -55,6 +62,9 @@ class BulletinBoardViewModel : ViewModel() {
 
 
     //OPHALEN VAN DE LIJST
+    /**
+     * gets the list of posts in bulletinboard from the backend and puts them into the postList variable
+     */
     fun getPostsOfBulletinBoard()
     {
         coroutineScope.launch{
@@ -83,6 +93,10 @@ class BulletinBoardViewModel : ViewModel() {
     {
 
     }
+
+    /**
+     * requests a consultation for the logged in adolescent
+     */
     fun requestConsultation()
     {
         coroutineScope.launch{
@@ -99,7 +113,9 @@ class BulletinBoardViewModel : ViewModel() {
 
     }
 
-
+    /**
+     * deletes all posts in the bulletinboard
+     */
     fun deleteAllBulletinPosts(){
         coroutineScope.launch{
             var getPostList = FaithApi.retrofitService.getPostsOfPlaceByAdolescentEmail(0);

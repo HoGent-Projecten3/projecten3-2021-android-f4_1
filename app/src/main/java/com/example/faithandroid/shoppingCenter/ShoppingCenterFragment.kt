@@ -21,8 +21,21 @@ import com.example.faithandroid.databinding.ShoppingcenterBinding
 import com.google.android.material.snackbar.Snackbar
 import com.sdsmdg.harjot.vectormaster.VectorMasterView
 
-
+/**
+ * This is a fragment for the shopping center
+ */
 class ShoppingCenterFragment: Fragment() {
+
+    /**
+     * @param viewModel is the viewModel for the avatar
+     * @param vectorMasterViewA is the vector that is used when the user chooses person A
+     * @param vectorMasterViewB is the vector that is used when the user chooses person B
+     * @param character is the person the user has chosen
+     * @param hair is the haircolor the user has chosen
+     * @param eyes is the eyecolor the user has chosen
+     * @param skin is the skintone the user has chosen
+     * @param body is the color of the clothes the user has chosen
+     */
     private lateinit var viewModel: AvatarViewModel
     private lateinit var vectorMasterViewA: VectorMasterView
     private lateinit var vectorMasterViewB: VectorMasterView

@@ -55,9 +55,18 @@ import kotlinx.android.synthetic.main.activity_main.view.*
 
 
 //import androidx.databinding.DataBindingUtil
-
+/**
+ * the main activity where the app starts
+ */
 class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavigationItemSelectedListener {
-    
+
+    /**
+     * @param drawerLayout is the drawer layout
+     * @param viewModel is the viewmodel that has everything concerning the logging in
+     * @param username is the name of the user that needs to be displayed
+     * @param bind is to bind the appnavheadermain
+     * @param LOGIN_REQUEST_CODE ----------------????---------------
+     */
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var viewModel: LoginViewModel
@@ -144,6 +153,9 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
         }
     }
 
+    /**
+     * -------------????-------------
+     */
     fun ClickMenu(view: View){
         //open drawer
         var pvm: ProfielViewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
@@ -156,11 +168,17 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
 
     }
 
+    /**
+     * -------------????-------------
+     */
     private  fun  openDrawer(drawerLayout: DrawerLayout) {
     //open drawer layout
         drawerLayout.openDrawer(GravityCompat.START)
     }
 
+    /**
+     * -------------????-------------
+     */
      fun ClickBack(view: View) {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)

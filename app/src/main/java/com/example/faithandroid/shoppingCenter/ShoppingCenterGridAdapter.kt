@@ -15,6 +15,9 @@ import com.example.faithandroid.databinding.AvatarpartBinding
 import com.example.faithandroid.databinding.ShoppingcenterBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
+/**
+ * This is an adapter to fill in the different recyclerviews in the shopping center
+ */
 class ShoppingCenterGridAdapter(private var bodyType: BodyType, private var listener: AvatarCustomClick): ListAdapter<Int, ShoppingCenterGridAdapter.ShoppingCenterPropertyViewHolder>(
     DiffCallback
 ) {

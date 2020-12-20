@@ -22,15 +22,28 @@ import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.FormatStyle
 
-
+/**
+ * This is an adapter for the posts
+ *
+ * @property listener is to put extra functionality to a click
+ */
 class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAdapter.PostViewHolder>(
     DiffCallback
 ) {
 
-
+    /**
+     * This is a viewHolder for the FilteredPostAdapter
+     *
+     * @property binding is to bind a fiitered_post.xml file
+     * @property listener is to put extra functionality to a click
+     *
+     */
     class PostViewHolder(private var binding: PostBinding, private var listener: CustomClick, private var parent: ViewGroup):
         RecyclerView.ViewHolder(binding.root){
 
+        /**
+         * Binds the filtered post to the recyclerview
+         */
         fun bind(post: Post){
 
             if(binding.TreasurechestImage.height>200){

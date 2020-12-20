@@ -16,9 +16,13 @@ import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.util.*
 
-
+/**
+ * This is a fragment for the billboard
+ */
 class BillboardFragment: Fragment() {
-
+    /**
+     * This is the viewModel for the billboard
+     */
     private lateinit var viewModel: BillboardViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {

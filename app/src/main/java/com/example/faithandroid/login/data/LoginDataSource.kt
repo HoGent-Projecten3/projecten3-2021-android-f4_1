@@ -18,7 +18,10 @@ import kotlin.Result.Companion.success
  * Class that handles authentication w/ login credentials and retrieves user information.
  */
 class LoginDataSource {
-
+    /**
+     * @param status shows the status of the data in ado
+     * @param loggedInUser is the logged in user
+     */
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>
         get() = _status
@@ -33,6 +36,9 @@ class LoginDataSource {
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
+    /**
+     * Logs the user in
+     */
       suspend fun login(username: String, password: String): Result<String>{
 
               try {
@@ -44,6 +50,9 @@ class LoginDataSource {
                   return Result.Error(e.message.toString())
               }
     }
+    /**
+     * gets the information of the adolescent from the backend
+     */
     suspend fun getAdolescent(username: String): Result<Adolescent> {
 
             try {

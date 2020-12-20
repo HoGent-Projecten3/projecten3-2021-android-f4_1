@@ -13,10 +13,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
-
+/**
+ * This is the viewModel for billboard
+ */
 class BillboardViewModel : ViewModel() {
 
     //ERROR STATUS
+    /**
+     * @param status shows the status of the data in the postlist
+     */
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>
         get() = _status
@@ -27,7 +32,9 @@ class BillboardViewModel : ViewModel() {
         GoalPost(0, "Kamer restylen", "Kamer een makeover geven in de stijl van New York dus met schilderen, posters ophangen en eventueel meubels verplaatsen enzo", true, listOf<Step>(Step(0, "step")), "29/12/2020")
 // LocalDateTime.of(2020, 7, 3, 12, 0 ))
     )*/
-
+    /**
+     * @param properties holds a list of GoalPosts for Billboard
+     */
     private val _properties = MutableLiveData<List<GoalPost>>()
 
     val properties: LiveData<List<GoalPost>>
@@ -40,6 +47,9 @@ class BillboardViewModel : ViewModel() {
         getPosts()
     }
 
+    /**
+     * gets the posts in Billboard from the backend and puts them into the properties variable
+     */
     public fun getPosts() {
         coroutineScope.launch {
             var getPropertiesDeferred = FaithApi.retrofitService.getBillboardGoals()

@@ -18,10 +18,15 @@ import retrofit2.*
 
 
 import kotlinx.coroutines.launch
-
+/**
+ * This is the viewModel for the profile screen
+ */
 class ProfielViewModel: ViewModel() {
 
-
+    /**
+     * @param adol is the adolescent that is logged in and needs to be displayed on the profile screen
+     * @param currentAvatar is the avatar that needs to be displayed on the profile screen
+     */
     private var _adol = MutableLiveData<Adolescent>()
     var adol: LiveData<Adolescent> = MutableLiveData<Adolescent>()
         get() = _adol
@@ -31,7 +36,9 @@ class ProfielViewModel: ViewModel() {
     var avatar: LiveData<Avatar> = MutableLiveData<Avatar>()
         get() = _currentAvatar
 
-
+    /**
+     * gets the logged in adolescent from the backend and puts it into the adol variable
+     */
     fun getAdolescent(): Adolescent?{
 
         viewModelScope.launch {
@@ -49,6 +56,11 @@ class ProfielViewModel: ViewModel() {
 
     }
 
+    /**
+     * Changes the password of the logged in adolescent
+     *
+     * @param ww is the new password of the adolescent
+     */
      fun changePassword(ww: String) {
 
          viewModelScope.launch {

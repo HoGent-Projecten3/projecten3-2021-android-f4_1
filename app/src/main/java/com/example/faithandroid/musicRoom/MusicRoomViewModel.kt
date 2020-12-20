@@ -19,9 +19,15 @@ import retrofit2.await
 import com.example.faithandroid.models.Post
 
 
-
+/**
+ * Viewmodel for the Music Room
+ */
 class MusicRoomViewModel : ViewModel() {
 
+    /**
+     * @param allPlayliists is a list of all spotify playlists of the user
+     * @param playlists is a list of the spotify playlists that are added to the app
+     */
     private val _allPlaylists = MutableLiveData<List<Playlist>>()
     val allPlaylists: LiveData<List<Playlist>>
         get() = _allPlaylists
@@ -36,7 +42,9 @@ class MusicRoomViewModel : ViewModel() {
     }
 
 
-
+    /**
+     * gets the playlists from the backend and puts them into the playlists variable
+     */
     fun getPlayRemotelists()
     {
         try {
@@ -52,6 +60,9 @@ class MusicRoomViewModel : ViewModel() {
         }
     }
 
+    /**
+     * Adds a playlist
+     */
     fun addPlaylist(playlist: Playlist)
     {
         try{
@@ -81,6 +92,9 @@ class MusicRoomViewModel : ViewModel() {
         }
     }
 
+    /**
+     * Removes a playlist from the app
+     */
     fun deletePlaylist(primaryKey: Int)
     {
         try{
@@ -109,6 +123,9 @@ class MusicRoomViewModel : ViewModel() {
         }
     }
 
+    /**
+     * Gets all the spotify playlists of the user and puts them into the allPlaylists variable
+     */
     fun getAllPlaylists()
     {
         try
@@ -132,6 +149,9 @@ class MusicRoomViewModel : ViewModel() {
         }
     }
 
+    /**
+     * filters the playlists on name
+     */
     private fun filterPlaylists()
     {
         _allPlaylists.value = allPlaylists.value?.filter { p -> playlists.value?.any { it.name == p.name } == false }

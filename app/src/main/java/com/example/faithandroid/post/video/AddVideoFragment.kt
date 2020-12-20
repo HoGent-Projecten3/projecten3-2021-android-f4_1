@@ -27,9 +27,19 @@ import java.io.ByteArrayOutputStream
 import java.io.InputStream
 import java.util.*
 
-
+/**
+ * This is a fragment for adding video
+ */
 class AddVideoFragment: Fragment() {
 
+    /**
+     * @param args -------------????--------------
+     * @param post is the post to be added
+     * @param nieuwePost keeps track of whether the post is newly added to the app or transferred from another place within the app
+     * @param PICK_IMAGE --------------????-------------
+     * @param REQUEST_VIDEO_CAPTURE ------------????-----------
+     * @param viewModel is the viewmodel for all posts
+     */
     val args: AddVideoFragmentArgs by navArgs()
 
     var post: Post? = null
@@ -199,6 +209,11 @@ class AddVideoFragment: Fragment() {
     }
 
 
+    /**
+     * converts a uri to base64
+     *
+     * @param uri is the uri to be converted
+     */
     @RequiresApi(Build.VERSION_CODES.O)
     private fun uriToBase64(uri: Uri): String
     {

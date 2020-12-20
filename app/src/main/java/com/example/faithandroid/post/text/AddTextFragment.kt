@@ -18,9 +18,16 @@ import com.example.faithandroid.databinding.AddTextBinding
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.post.PostViewModel
 
+/**
+ * This is a fragment for adding a textpost
+ */
 class addTextFragment: Fragment() {
 
-
+    /**
+     * @param args --------------????--------------
+     * @post is the post to be added
+     * @viewModel is the viewmodel for all posts
+     */
     val args: addTextFragmentArgs by navArgs()
 
     var post: Post? = null

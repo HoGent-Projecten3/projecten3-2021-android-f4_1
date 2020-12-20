@@ -11,8 +11,14 @@ import androidx.navigation.fragment.navArgs
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.AddPostBinding
 
+/**
+ * This is a fragment for adding a post
+ */
 class AddPostFragment: Fragment() {
 
+    /**
+     * @args ---------????------------
+     */
     val args: AddPostFragmentArgs by navArgs()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

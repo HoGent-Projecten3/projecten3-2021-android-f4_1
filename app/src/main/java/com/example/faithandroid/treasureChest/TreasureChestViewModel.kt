@@ -13,6 +13,9 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import retrofit2.await
 
+/**
+ * This is the viewmodel for the treasure chest that is unused apparently
+ */
 class TreasureChestViewModel : ViewModel() {
 
     //Error status

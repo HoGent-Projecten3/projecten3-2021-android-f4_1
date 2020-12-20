@@ -15,7 +15,9 @@ import com.example.faithandroid.databinding.AddNewTextBinding
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.post.PostViewModel
 
-
+/**
+ * ----------------????-----------------Why do we need this?
+ */
 class TextPostToevoegenFragment : Fragment() {
     // TODO: Rename and change types of parameters
     val args: TextPostToevoegenFragmentArgs by navArgs()

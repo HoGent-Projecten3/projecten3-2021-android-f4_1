@@ -9,9 +9,13 @@ import androidx.fragment.app.Fragment
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.CinemaBinding
 
-
+/**
+ * Fragment for the cinema, which ended up being unused
+ */
 class CinemaFragment: Fragment() {
-
+    /**
+     * @param viewModel is the viewmodel for the cinema, which remains unused
+     */
     private lateinit var viewModel: CinemaViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,4 +1,11 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        jcenter()
+    }
+}
 include ':spotify-auth'
 include ':spotify-remote'
 include ':app'
 rootProject.name = "FaithAndroid"
+

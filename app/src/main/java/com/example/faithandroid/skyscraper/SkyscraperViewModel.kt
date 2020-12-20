@@ -28,14 +28,21 @@ import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.await
 
-
+/**
+ * This is the viewmodel for the skyscraper
+ */
 class SkyscraperViewModel : ViewModel() {
     private val _shareStatus = MutableLiveData<String>()
     private val _completedStatus = MutableLiveData<String>()
     private val _removeStatus = MutableLiveData<String>()
     private val _getStatus = MutableLiveData<String>()
 
-
+    /**
+     * @param shareStatus is the status of whether the goal could be shared
+     * @param completedStatus is the status of whether the goal was completed
+     * @param removeStatus is the status of whether the goal could be successfully removed
+     * @param getStatus -----------------????---------------------
+     */
     val shareStatus: LiveData<String>
         get() = _shareStatus
 
@@ -64,6 +71,9 @@ class SkyscraperViewModel : ViewModel() {
         testLiveData.value = test;
     }
 
+    /**
+     * gets the posts stored in skyscraper
+     */
     fun getPostsOfSkyscraper() {
         coroutineScope.launch {
             var getPropertiesDeferred = FaithApi.retrofitService.getPostsOfSkyScraper();
@@ -82,6 +92,12 @@ class SkyscraperViewModel : ViewModel() {
             }
         }
     }
+
+    /**
+     * posts a new goal
+     *
+     * @param goalPost is the goal that is to be added
+     */
     fun postNewGoalPost( goalPost: GoalPost) {
         viewModelScope.launch {
             try {
@@ -93,6 +109,11 @@ class SkyscraperViewModel : ViewModel() {
         }
     }
 
+    /**
+     * checks whether a goal has been completed
+     *
+     * @param id is the id of the goal to be checked
+     */
     fun goalBehaald(id:Int){
         viewModelScope.launch {
             try {
@@ -111,6 +132,11 @@ class SkyscraperViewModel : ViewModel() {
         }
     }
 
+    /**
+     * shares a goal to the billboard
+     *
+     * @param id is the id of the goal to be shared
+     */
     fun shareGoal(id:Int){
         coroutineScope.launch{
             try {
@@ -125,6 +151,11 @@ class SkyscraperViewModel : ViewModel() {
         }
     }
 
+    /**
+     * Deletes a goal
+     *
+     * @param id is the id of the goal to be deleted
+     */
     fun deleteGoal(id:Int){
         coroutineScope.launch{
             try {

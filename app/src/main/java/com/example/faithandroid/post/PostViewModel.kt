@@ -15,8 +15,17 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+/**
+ * This is the viewModel for all posts
+ *
+ * @property placeType is the place where the post needs to be added
+ */
 class PostViewModel(private var placeType: PlaceType): ViewModel() {
 
+    /**
+     * @param postList is the list of posts from a specific place, provided by the backend
+     * @param status shows the status of the data in postList
+     */
     private var _posts = MutableLiveData<List<Post>>()
     var postList: LiveData<List<Post>> = MutableLiveData<List<Post>>()
         get() = _posts
@@ -32,6 +41,12 @@ class PostViewModel(private var placeType: PlaceType): ViewModel() {
         getPostsOfPlace(placeType)
     }
 
+    /**
+     * gets the posts of a given type for a specific place
+     *
+     * @param placeType is the place the posts need to come from
+     * @param postType is the type the posts need to be
+     */
     fun getFilteredPostFromPlace(placeType: PlaceType, postType: PostType) {
 
         viewModelScope.launch {
@@ -67,6 +82,11 @@ class PostViewModel(private var placeType: PlaceType): ViewModel() {
 
     }
 
+    /**
+     * gets the posts of a specific place, regardless of their posttype
+     *
+     * @param placeType is the place the posts need to come from
+     */
     fun getPostsOfPlace(placeType: PlaceType)    {
         viewModelScope.launch {
             val stringCall: Call<List<Post>> =
@@ -86,6 +106,12 @@ class PostViewModel(private var placeType: PlaceType): ViewModel() {
         }
     }
 
+    /**
+     * adds a post to a specific place
+     *
+     * @param post is the post that is to be added
+     * @param placeType is the place the post is to be added to
+     */
     fun addPostByEmail(post: Post, placeType: PlaceType): Boolean{
         var bool: Boolean = true
         viewModelScope.launch {
@@ -111,6 +137,12 @@ class PostViewModel(private var placeType: PlaceType): ViewModel() {
         return bool
         }
 
+    /**
+     * Adds a post that already exists within the app to another place
+     *
+     * @param id is the id of the post
+     * @param placeType is the place the post needs to be added to
+     */
     fun addExistingPostToPlace(id: Int, placeType: PlaceType)    {
         viewModelScope.launch {
             val stringCall: Call<Void> =
@@ -132,6 +164,12 @@ class PostViewModel(private var placeType: PlaceType): ViewModel() {
         }
     }
 
+    /**
+     * Deletes a post from a specific place
+     *
+     * @param id is the id of the post
+     * @param placeType is the place the post will be deleted from
+     */
     fun deletePostByEmail(id: Int,  placeType: PlaceType)    {
         viewModelScope.launch {
             val stringCall: Call<Void> =
@@ -153,6 +191,11 @@ class PostViewModel(private var placeType: PlaceType): ViewModel() {
         }
     }
 
+    /**
+     * Deletes a post from every place it exists and from the app altogether
+     *
+     * @param id is the id of the post to be deleted
+     */
     fun pemanentlyDeletePost(postId: Int) {
         viewModelScope.launch {
             val stringCall: Call<Void> = FaithApi.retrofitService.permanentlyDeletePost(postId)

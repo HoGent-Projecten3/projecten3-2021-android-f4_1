@@ -12,8 +12,23 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import retrofit2.await
 
+/**
+ * This is the viewmodel for the avatar
+ */
 class AvatarViewModel : ViewModel() {
 
+    /**
+     * @param status is the status of the data in the properties
+     * @param hair is a list of haircolors in the shopping center
+     * @param skin is a list of skintones in the shopping center
+     * @param upperBody is a list of colors of the clothes in the shopping center
+     * @param eye is a list of eyecolors in the shoppingcenter
+     * @param currentAvatar is the current avatar the adolescent is using
+     * @param hairProperties is a list of haircolors put into the recyclerview
+     * @param skinProperties is a list of skintones put into the recyclerview
+     * @param bodyProperties is a list of colors of the clothes put into the recyclerview
+     * @param eyeProperties is a list of eyecolors put into the recyclerview
+     */
      private val _status = MutableLiveData<String>()
      val status: LiveData<String>
           get() = _status
@@ -96,6 +111,9 @@ class AvatarViewModel : ViewModel() {
          getAvatar()
      }
 
+    /**
+     * gets all the colors for the recyclerviews in the shopping center
+     */
      public fun getProperties() {
           coroutineScope.launch {
 
@@ -118,6 +136,9 @@ class AvatarViewModel : ViewModel() {
           }
      }
 
+    /**
+     * gets the avatar for the logged in adolescent
+     */
     public fun getAvatar(){
 
             coroutineScope.launch{
@@ -141,6 +162,15 @@ class AvatarViewModel : ViewModel() {
 
     }
 
+    /**
+     * posts a new avatar for the logged in user
+     *
+     * @param character is the person of the avatar
+     * @param hair is the haircolor of the avatar
+     * @param eyes is the eyecolor of the avatar
+     * @param skin is the skintone of the avatar
+     * @parm body is the color of the clothes of the avatar
+     */
     public fun postAvatar(character: Int, hair: Int, eyes: Int, skin: Int, body: Int){
         coroutineScope.launch{
             try{

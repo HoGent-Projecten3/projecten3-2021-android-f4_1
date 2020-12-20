@@ -12,11 +12,16 @@ import java.lang.NullPointerException
 /**
  * Class that requests authentication and user information from the remote data source and
  * maintains an in-memory cache of login status and user credentials information.
+ *
+ * @property dataSource I'm not sure what this does
  */
 
 class LoginRepository(val dataSource: LoginDataSource) {
 
     // in-memory cache of the loggedInUser object
+    /**
+     * @param user is the adolescent
+     */
     var user: Adolescent? = null // Adolescent
         private set
 

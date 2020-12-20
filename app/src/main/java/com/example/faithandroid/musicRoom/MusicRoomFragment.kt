@@ -25,9 +25,18 @@ import com.spotify.sdk.android.authentication.AuthenticationRequest
 import com.spotify.sdk.android.authentication.AuthenticationResponse
 import kotlinx.android.synthetic.main.app_bar_musicroom.view.*
 
-
+/**
+ * Fragment for the Music Room
+ */
 class MusicRoomFragment: Fragment() {
 
+    /**
+     * @param REQUEST_CODE is the request code for Spotify????-----------------------
+     * @param REDIRECT_URI is the uri the user is redirected to after logging in to Spotify????-----------------------
+     * @param CLIENTT_ID is the spotify id of grow????-----------------
+     * @param spotifyAppRemoteLocal -------------------????------------------
+     * @param musicRoomViewModel is the viewModel for the music room
+     */
     private val REQUEST_CODE = 1337
     private val REDIRECT_URI = "faithandroid://callback"
     private val CLIENT_ID = "95bc88d8f6084f1893dd648d88732210"

@@ -19,9 +19,15 @@ import com.squareup.picasso.Picasso
 
 //import androidx.databinding.DataBindingUtil
 
+/**
+ * the activity for showing an image
+ */
 class FullScreenImageActivity : AppCompatActivity() {
 
-
+    /**
+     * @param imageView is the view of the image
+     * @param imageUri is the uri the image needs to come from
+     */
    // private lateinit var drawerLayout : DrawerLayout
     private lateinit var imageView: ImageView
     private var imageUri: String = ""

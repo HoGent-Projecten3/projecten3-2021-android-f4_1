@@ -30,8 +30,14 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.function.Consumer
 
+/**
+ * This is a fragment for adding a goal
+ */
 class addGoalFragment : Fragment() {
 
+    /**
+     * @viewModel is the viewModel for skyscraper
+     */
     private lateinit var viewModel: SkyscraperViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {

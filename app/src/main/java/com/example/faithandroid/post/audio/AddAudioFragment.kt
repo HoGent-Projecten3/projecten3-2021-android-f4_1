@@ -31,9 +31,22 @@ import kotlinx.android.synthetic.main.audio_toevoegen.*
 import java.io.*
 import java.util.*
 
-
+/**
+ * This is a fragment for the adding of an audio fragment
+ */
 class AddAudioFragment: Fragment() {
 
+    /**
+     * @param args ---------------????----------------
+     * @param post is the audiofragment to be added
+     * @param nieuwePost keeps track of whether the post is newly added to the app or transferred from another place in the app
+     * @param output is the place the audiofile is stored????-------------------------
+     * @param mediaRecorder is the mediaRecorder to record the audio
+     * @param state keeps track of whether the audio is recording
+     * @param recordingStopped keeps track of whether the recording of the audio is stopped
+     * @param audioPost is the data of the recorded audio????-----------------------
+     * @param viewModel is the viewModel for all posts
+     */
     val args: AddAudioFragmentArgs by navArgs()
     var post: Post? = null
     var nieuwePost: Boolean = false;
@@ -192,7 +205,9 @@ class AddAudioFragment: Fragment() {
         }
         return binding.root
     }
-
+    /**
+     * Starts the recording of audio
+     */
     private fun startRecording() {
         try {
             mediaRecorder?.prepare()
@@ -207,6 +222,9 @@ class AddAudioFragment: Fragment() {
         }
     }
 
+    /**
+     * Stops the recording of audio
+     */
     @RequiresApi(Build.VERSION_CODES.O)
     private fun stopRecording(){
         if(state){
@@ -221,6 +239,9 @@ class AddAudioFragment: Fragment() {
         }
     }
 
+    /**
+     * Pauses the recording of audio
+     */
     @SuppressLint("RestrictedApi", "SetTextI18n")
     @TargetApi(Build.VERSION_CODES.N)
     private fun pauseRecording() {
@@ -235,6 +256,9 @@ class AddAudioFragment: Fragment() {
         }
     }
 
+    /**
+     * Resumes the recording of audio after pausing
+     */
     @SuppressLint("RestrictedApi", "SetTextI18n")
     @TargetApi(Build.VERSION_CODES.N)
     private fun resumeRecording() {
@@ -243,6 +267,11 @@ class AddAudioFragment: Fragment() {
         recordingStopped = false
     }
 
+    /**
+     * converts a uri to base64
+     *
+     * @param uri is the uri to be converted
+     */
     @RequiresApi(Build.VERSION_CODES.O)
     private fun uriToBase64(uri: Uri): String
     {
