@@ -36,5 +36,6 @@ jobs:
         run: ./gradlew app:ktlintCheck
       - name: unit tests
         run: ./gradlew test
-      - name: run e2e tests
-	run: ./gradlew app:connectedAndroidTest
+      - name: e2e testing
+        run: ./gradlew app:connectedAndroidTest
+      
