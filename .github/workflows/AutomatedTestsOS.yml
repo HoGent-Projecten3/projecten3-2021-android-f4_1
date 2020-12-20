@@ -26,5 +26,7 @@ jobs:
           java-package: jdk
       - name: Android Emulator Runner
         uses: ReactiveCircus/android-emulator-runner@v2.13.0
+        with:
+          api-level: 19
 
       
