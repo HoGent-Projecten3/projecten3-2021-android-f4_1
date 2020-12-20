@@ -3,6 +3,7 @@ package com.example.faithandroid.skyscraper
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.network.local.GoalPostLocalDataSource
 import com.example.faithandroid.network.remote.GoalPostRemoteDataSource
+import com.example.faithandroid.util.performDelOperation
 import com.example.faithandroid.util.performGetOperation
 
 class GoalPostRepository(private val localDataSource: GoalPostLocalDataSource,private val remoteDataSource: GoalPostRemoteDataSource) {
@@ -21,7 +22,7 @@ class GoalPostRepository(private val localDataSource: GoalPostLocalDataSource,pr
          saveCallResult = { localDataSource.saveGoalBill(it) }
      )*/
 
-     suspend fun getBillboardGoals() = remoteDataSource.getBillboardGoals()
+    fun getBillboardGoals() = remoteDataSource.getBillboardGoals()
 
      suspend fun postGoalPost(goal : GoalPost) = remoteDataSource.postGoalPost(goal)
 
@@ -29,5 +30,9 @@ class GoalPostRepository(private val localDataSource: GoalPostLocalDataSource,pr
 
      fun shareGoal(id : Int) = remoteDataSource.shareGoal(id)
 
-     fun removeGoal(id: Int) = remoteDataSource.removeGoal(id)
+     fun removeGoal(id: Int) =
+         performDelOperation(
+             databaseQuery = {localDataSource.removeGoal(id)},
+             networkCall = { remoteDataSource.removeGoal(id) }
+         )
 }

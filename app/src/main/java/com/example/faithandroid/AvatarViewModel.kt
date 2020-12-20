@@ -1,6 +1,7 @@
 package com.example.faithandroid
 
 import android.graphics.Color
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -73,6 +74,7 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
 
     private var _currentAvatar = MutableLiveData<Avatar>()
 
+
     private val _hairProperties = MutableLiveData<List<Int>>()
     private val _eyeProperties = MutableLiveData<List<Int>>()
     private val _skinProperties = MutableLiveData<List<Int>>()
@@ -128,6 +130,7 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
                  var getAvatar = avatarRepository.getAvatar()
                  var result = getAvatar.await()
                  _currentAvatar.value = result
+
                  AppPreferences.currentPerson = currentAvatar.value?.person
                  AppPreferences.currentHair = currentAvatar.value?.hair
                  AppPreferences.currentEyes = currentAvatar.value?.eyes
@@ -138,14 +141,14 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
                  _status.value = "Kan geen verbinding maken met de server"
              }
          }
+         Log.d("hair",currentAvatar.value.toString())
     }
 
      fun postAvatar(character: Int, hair: Int, eyes: Int, skin: Int, body: Int){
         coroutineScope.launch{
             try{
                 val avatar: Avatar = Avatar(id = 0,person = character, hair = hair, eyes = eyes, skin = skin, upperBody = body)
-                avatarRepository.postAvatar(avatar).await()
-                _currentAvatar.value = avatar
+                avatarRepository.postAvatar(avatar)
                 AppPreferences.currentPerson = character
                 AppPreferences.currentHair = hair
                 AppPreferences.currentEyes = eyes

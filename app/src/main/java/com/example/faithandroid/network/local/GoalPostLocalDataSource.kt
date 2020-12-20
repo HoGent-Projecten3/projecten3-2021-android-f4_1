@@ -15,8 +15,9 @@ class GoalPostLocalDataSource(private val goalPostDao: GoalPostDao) {
 
     //fun shareGoal(id : Int) = goalPostDao.shareGoal(id)
 
-    //fun removeGoal(id: Int) = goalPostDao.removeGoal(id)
+    fun removeGoal(id: Int) = goalPostDao.removeGoal(id)
 
     fun saveGoalposts(list: List<GoalPost>) = goalPostDao.insertAll(list)
+
     fun saveGoalBill(list: List<GoalPost>) = goalPostDao.insertAllBill(list)
 }
