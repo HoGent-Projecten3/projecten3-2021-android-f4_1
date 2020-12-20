@@ -37,7 +37,7 @@ class LoginRepository(val dataSource: LoginDataSource) {
      */
     fun logout() {
         user = null
-        //dataSource.logout()
+        // dataSource.logout()
     }
 
     /**
@@ -46,21 +46,16 @@ class LoginRepository(val dataSource: LoginDataSource) {
      * @param username is the name by which the correct adolescent can be searched
      * @return the result of getting the adolescent
      */
-    suspend fun getAdolescent(username: String): Result<Adolescent>
-    {
+    suspend fun getAdolescent(username: String): Result<Adolescent> {
 
         val result2 = dataSource.getAdolescent(username)
 
         if (result2 is Result.Success) {
             setLoggedInUser(result2.data)
             return result2
-        }
-        else
-        {
+        } else {
            return Result.Error(result2.toString())
         }
-
-
     }
 
     /**
@@ -70,7 +65,7 @@ class LoginRepository(val dataSource: LoginDataSource) {
      * @param password is the password given by the user trying to log in
      * @return the result of logging in
      */
-      suspend fun  login(username: String, password: String): Result<String> {
+      suspend fun login(username: String, password: String): Result<String> {
           // handle login
 
               val result = dataSource.login(username, password)
@@ -78,13 +73,9 @@ class LoginRepository(val dataSource: LoginDataSource) {
               if (result is Result.Success) {
                   AppPreferences.token = result.data
                   return result
-
-              }
-              else
-              {
+              } else {
                   return Result.Error(result.toString())
               }
-
       }
 
     /**
@@ -98,6 +89,4 @@ class LoginRepository(val dataSource: LoginDataSource) {
         // If user credentials will be cached in local storage, it is recommended it be encrypted
         // @see https://developer.android.com/training/articles/keystore
     }
-
-
 }

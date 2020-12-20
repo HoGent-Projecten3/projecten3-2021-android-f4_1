@@ -2,9 +2,6 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import androidx.core.content.edit
-import com.example.faithandroid.network.FaithApiService
-import retrofit2.Retrofit
-
 
 object AppPreferences {
     private var sharedPreferences: SharedPreferences? = null
@@ -18,33 +15,33 @@ object AppPreferences {
     // TODO step 4: replace these example attributes with your stored values
     var name: String?
         get() = Key.NAME.getString()
-        set(value) = if(value.equals("")){
+        set(value) = if (value.equals("")) {
             Key.NAME.remove()
-        }else {
+        } else {
             Key.NAME.setString(value)
         }
 
     var firstname: String?
         get() = Key.FIRSTNAME.getString()
-        set(value) = if(value.equals("")){
+        set(value) = if (value.equals("")) {
             Key.FIRSTNAME.remove()
-        }else {
+        } else {
             Key.FIRSTNAME.setString(value)
         }
 
     var username: String?
         get() = Key.USERNAME.getString()
-        set(value) = if(value.equals("")){
+        set(value) = if (value.equals("")) {
             Key.USERNAME.remove()
-        }else {
+        } else {
             Key.USERNAME.setString(value)
         }
 
     var token: String?
         get() = Key.TOKEN.getString()
-        set(value) = if(value.equals("")){
-           Key.TOKEN.remove()
-        }else{
+        set(value) = if (value.equals("")) {
+            Key.TOKEN.remove()
+        } else {
             Key.TOKEN.setString(value)
         }
 
@@ -78,7 +75,7 @@ object AppPreferences {
 
     private enum class Key {
 
-        USERNAME, TOKEN, SPOTIFYTOKEN, DARKMODE,NAME,FIRSTNAME,
+        USERNAME, TOKEN, SPOTIFYTOKEN, DARKMODE, NAME, FIRSTNAME,
         CURRENTPERSON, CURRENTHAIR, CURRENTEYES, CURRENTSKIN, CURRENTBODY; // TODO step 3: replace these cases with your stored values keys
 
         fun getBoolean(): Boolean? = if (sharedPreferences!!.contains(name)) sharedPreferences!!.getBoolean(name, false) else null

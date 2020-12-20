@@ -3,7 +3,6 @@ package com.example.faithandroid.models
 import android.os.Parcelable
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
-import java.io.Serializable
 
 @Parcelize
 class PostFields(
@@ -25,4 +24,4 @@ class PostFields(
     val bulletinBoard: Boolean,
     @Json(name = "treasureChest")
     val treasureChest: Boolean
-): Parcelable
+) : Parcelable

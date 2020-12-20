@@ -1,13 +1,10 @@
 package com.example.faithandroid.models
 
-import android.accounts.AccountManager
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
-import org.threeten.bp.LocalDateTime
-
 import java.io.Serializable
         /**
          * Class that supports the avatar of an adolescent
@@ -21,12 +18,12 @@ import java.io.Serializable
 @Parcelize
 @Entity(tableName = "avatar")
 @JsonClass(generateAdapter = true)
-data class Avatar (
+data class Avatar(
     @PrimaryKey
     var id: Int,
-    var person : Int,
+    var person: Int,
     var hair: Int,
-    var eyes : Int,
+    var eyes: Int,
     var skin: Int,
-    var upperBody : Int
-): Serializable, Parcelable
+    var upperBody: Int
+) : Serializable, Parcelable

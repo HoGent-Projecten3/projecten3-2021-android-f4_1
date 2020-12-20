@@ -14,7 +14,6 @@ enum class PlaceType {
 enum class PostType {
 
     Text, Video, Audio, Image
-
 }
 
 /**

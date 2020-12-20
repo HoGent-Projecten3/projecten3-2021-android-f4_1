@@ -8,10 +8,8 @@ import java.io.Serializable
  * @property email is the email given by the user trying to log in
  * @property password is the password given by the user trying to log in
  */
-data class User (
+data class User(
 
-    val email : String,
-    val password : String
-): Serializable
-
-
+    val email: String,
+    val password: String
+) : Serializable

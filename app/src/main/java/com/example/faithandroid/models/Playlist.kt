@@ -6,7 +6,6 @@ import androidx.room.PrimaryKey
 import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
 
-
 /**
  * Class that supports the playlist in the music room
  *
@@ -26,4 +25,4 @@ data class Playlist(
     var name: String,
     var description: String,
     var url: String = ""
-): Parcelable
+) : Parcelable

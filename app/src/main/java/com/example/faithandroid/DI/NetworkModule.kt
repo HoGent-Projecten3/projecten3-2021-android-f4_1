@@ -29,15 +29,14 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 
-
 val networkModule = module {
     single { provideOkHttpClient() }
 
-    single { provideRetrofitFaith(get(),"https://apigrow.azurewebsites.net") }
+    single { provideRetrofitFaith(get(), "https://apigrow.azurewebsites.net") }
     single { provideApiService(get()) }
 
-    //single { provideRetrofitSpotify(get(),"https://api.spotify.com/v1/") }
-    single { provideSpotifyApiService(provideRetrofitSpotify(get(),"https://api.spotify.com/v1/")) }
+    // single { provideRetrofitSpotify(get(),"https://api.spotify.com/v1/") }
+    single { provideSpotifyApiService(provideRetrofitSpotify(get(), "https://api.spotify.com/v1/")) }
 
     single { AppDatabase.getDatabase(androidApplication()).postDao() }
     single { AppDatabase.getDatabase(androidApplication()).spotifyDao() }
@@ -52,25 +51,22 @@ val networkModule = module {
     single { GoalPostLocalDataSource(get()) }
     single { GoalPostRepository(get(), get()) }
 
-    single { SpotifyRemoteDataSource(get(),get()) }
+    single { SpotifyRemoteDataSource(get(), get()) }
     single { SpotifyLocalDataSource(get()) }
-    single { SpotifyRepository(get(),get()) }
+    single { SpotifyRepository(get(), get()) }
 
     single { AvatarRemoteDataSource(get()) }
     single { AvatarLocalDataSource(get()) }
-    single { AvatarRepository(get(),get()) }
-
+    single { AvatarRepository(get(), get()) }
 
     single { LoginDataSource(get()) }
     single { LoginRepository(get()) }
-
 }
 
-    val moshi = Moshi.Builder()
+val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
 
     .build()
-
 
 private fun provideOkHttpClient() =
     if (BuildConfig.DEBUG) {
@@ -83,42 +79,46 @@ private fun provideOkHttpClient() =
         .Builder()
         .build()
 
-    private fun provideRetrofitFaith(
-        okHttpClient: OkHttpClient,
-        BASE_URL: String
-    ): Retrofit =Retrofit.Builder()
-        .addConverterFactory(ScalarsConverterFactory.create())
-        .addConverterFactory(MoshiConverterFactory.create(moshi))
-        .addCallAdapterFactory(CoroutineCallAdapterFactory())
-        .client(OkHttpClient().newBuilder().addInterceptor { chain ->
+private fun provideRetrofitFaith(
+    okHttpClient: OkHttpClient,
+    BASE_URL: String
+): Retrofit = Retrofit.Builder()
+    .addConverterFactory(ScalarsConverterFactory.create())
+    .addConverterFactory(MoshiConverterFactory.create(moshi))
+    .addCallAdapterFactory(CoroutineCallAdapterFactory())
+    .client(
+        OkHttpClient().newBuilder().addInterceptor { chain ->
             val newRequest = chain.request().newBuilder()
                 .addHeader("Authorization", "Bearer " + AppPreferences.token)
                 .build()
             chain.proceed(newRequest)
         }
-            .build())
-        .baseUrl(BASE_URL)
-        .build()
+            .build()
+    )
+    .baseUrl(BASE_URL)
+    .build()
 
-    private fun provideRetrofitSpotify(
-        okHttpClient: OkHttpClient,
-        BASE_URL: String
-    ): Retrofit =Retrofit.Builder()
-        .addConverterFactory(ScalarsConverterFactory.create())
-        .addConverterFactory(MoshiConverterFactory.create(moshi))
-        .addCallAdapterFactory(CoroutineCallAdapterFactory())
-        .client(OkHttpClient().newBuilder().addInterceptor { chain ->
+private fun provideRetrofitSpotify(
+    okHttpClient: OkHttpClient,
+    BASE_URL: String
+): Retrofit = Retrofit.Builder()
+    .addConverterFactory(ScalarsConverterFactory.create())
+    .addConverterFactory(MoshiConverterFactory.create(moshi))
+    .addCallAdapterFactory(CoroutineCallAdapterFactory())
+    .client(
+        OkHttpClient().newBuilder().addInterceptor { chain ->
             val newRequest = chain.request().newBuilder()
                 .addHeader("Authorization", "Bearer " + AppPreferences.spotifyToken)
                 .build()
             chain.proceed(newRequest)
         }
-            .build())
-        .baseUrl(BASE_URL)
-        .build()
+            .build()
+    )
+    .baseUrl(BASE_URL)
+    .build()
 
-private fun provideApiService(retrofit: Retrofit) : FaithApiService =
+private fun provideApiService(retrofit: Retrofit): FaithApiService =
     retrofit.create(FaithApiService::class.java)
 
-private fun provideSpotifyApiService(retrofit : Retrofit) : SpotifyApiService =
+private fun provideSpotifyApiService(retrofit: Retrofit): SpotifyApiService =
     retrofit.create(SpotifyApiService::class.java)

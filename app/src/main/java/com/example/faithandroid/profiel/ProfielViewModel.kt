@@ -1,10 +1,7 @@
 package com.example.faithandroid.profiel
 
-
-
 import AppPreferences
 import android.util.Log
-
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,10 +11,8 @@ import com.example.faithandroid.login.data.Result
 import com.example.faithandroid.models.Adolescent
 import com.example.faithandroid.models.Avatar
 import com.example.faithandroid.post.PostRepository
-import retrofit2.*
 import kotlinx.coroutines.launch
-
-import org.koin.java.KoinJavaComponent.inject
+import retrofit2.*
 
 /**
  * This is the viewModel for the profile screen
@@ -25,7 +20,7 @@ import org.koin.java.KoinJavaComponent.inject
  * @property adol is the adolescent that is logged in and needs to be displayed on the profile screen
  * @property currentAvatar is the avatar that needs to be displayed on the profile screen
  */
-class ProfielViewModel(private val postRepository: PostRepository,private val loginRepository: LoginRepository): ViewModel() {
+class ProfielViewModel(private val postRepository: PostRepository, private val loginRepository: LoginRepository) : ViewModel() {
 
     private var _adol = MutableLiveData<Adolescent>()
     var adol: LiveData<Adolescent> = MutableLiveData<Adolescent>()
@@ -34,7 +29,6 @@ class ProfielViewModel(private val postRepository: PostRepository,private val lo
     private var _currentAvatar = MutableLiveData<Avatar>()
     var avatar: LiveData<Avatar> = MutableLiveData<Avatar>()
         get() = _currentAvatar
-
 
     /**
      * gets the logged in adolescent from the backend and puts it into the adol variable
@@ -59,7 +53,6 @@ class ProfielViewModel(private val postRepository: PostRepository,private val lo
             }
         }
         return _adol.value
-
     }
 
     /**
@@ -79,5 +72,4 @@ class ProfielViewModel(private val postRepository: PostRepository,private val lo
              }
          }
     }
-
 }

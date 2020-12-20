@@ -5,7 +5,7 @@ import com.example.faithandroid.network.BaseDataSource
 import com.example.faithandroid.network.FaithApiService
 import com.example.faithandroid.network.SpotifyApiService
 
-class SpotifyRemoteDataSource(private val apiService: FaithApiService, private  val spotifyApiService: SpotifyApiService): BaseDataSource() {
+class SpotifyRemoteDataSource(private val apiService: FaithApiService, private val spotifyApiService: SpotifyApiService) : BaseDataSource() {
 
     suspend fun getPlaylistsFaith() = getResult { apiService.getPlaylists() }
 

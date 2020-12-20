@@ -6,7 +6,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.faithandroid.models.Avatar
-import com.example.faithandroid.models.GoalPost
 
 @Dao
 interface AvatarDao {
@@ -16,5 +15,4 @@ interface AvatarDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(avatar: Avatar)
-
 }

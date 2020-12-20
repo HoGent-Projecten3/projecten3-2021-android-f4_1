@@ -10,5 +10,5 @@ data class FaithProperty(
     val name: String,
     val email: String,
     val wantsConsultation: Boolean,
-    //val dateOfBirth: LocalDateTime,
+    // val dateOfBirth: LocalDateTime,
 )

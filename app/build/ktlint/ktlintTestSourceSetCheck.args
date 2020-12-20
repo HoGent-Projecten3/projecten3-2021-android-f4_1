@@ -1,0 +1,8 @@
+--reporter=plain
+--color
+--reporter=plain,output=D:\git\projecten3-2021-android-f4_1\app\build\reports\ktlint\ktlintTestSourceSetCheck\ktlintTestSourceSetCheck.txt
+"src\\test\\java\\com\\example\\faithandroid\\BillboardViewModelTest.kt"
+"src\\test\\java\\com\\example\\faithandroid\\CoroutineTestRule.kt"
+"src\\test\\java\\com\\example\\faithandroid\\DispatcherProvider.kt"
+"src\\test\\java\\com\\example\\faithandroid\\PostViewModelTest.kt"
+"src\\test\\java\\com\\example\\faithandroid\\SkyscraperViewModelTest.kt"
