@@ -57,15 +57,13 @@ import kotlinx.android.synthetic.main.activity_main.view.*
 //import androidx.databinding.DataBindingUtil
 /**
  * the main activity where the app starts
+ *
+ * @property drawerLayout is the drawer layout
+ * @property viewModel is the viewmodel that has everything concerning the logging in
+ * @property username is the name of the user that needs to be displayed
+ * @property bind is to bind the appnavheadermain
  */
 class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavigationItemSelectedListener {
-
-    /**
-     * @property drawerLayout is the drawer layout
-     * @property viewModel is the viewmodel that has everything concerning the logging in
-     * @property username is the name of the user that needs to be displayed
-     * @property bind is to bind the appnavheadermain
-     */
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var viewModel: LoginViewModel

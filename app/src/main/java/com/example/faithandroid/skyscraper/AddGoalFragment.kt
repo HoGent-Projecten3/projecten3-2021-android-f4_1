@@ -32,12 +32,10 @@ import java.util.function.Consumer
 
 /**
  * This is a fragment for adding a goal
+ *
+ * @property viewModel is the viewModel for skyscraper
  */
 class addGoalFragment : Fragment() {
-
-    /**
-     * @property viewModel is the viewModel for skyscraper
-     */
     private lateinit var viewModel: SkyscraperViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {

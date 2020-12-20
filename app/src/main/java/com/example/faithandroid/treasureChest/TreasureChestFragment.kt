@@ -18,13 +18,11 @@ import com.google.android.material.snackbar.Snackbar
 
 /**
  * This is a fragment for the treasure chest
+ *
+ * @property postViewModel is the viewmodel that is used by posts
+ * @property adapter is the adapter that binds the posts in treasure chest to the recyclerview
  */
 class TreasureChestFragment: Fragment() {
-
-    /**
-     * @property postViewModel is the viewmodel that is used by posts
-     * @property adapter is the adapter that binds the posts in treasure chest to the recyclerview
-     */
     private val postViewModel: PostViewModel by lazy{
         ViewModelProvider(this, ViewModelFactory(PlaceType.Schatkist)).get(PostViewModel::class.java)
     }

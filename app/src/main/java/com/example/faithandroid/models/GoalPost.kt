@@ -11,14 +11,14 @@ import java.time.LocalDateTime
 /**
  * Class that supports the goals in the skyscraper and billboard
  *
- * @property id is the id of the goal
- * @property title is the title of the goal
- * @property description is a short description of what the goal is
- * @property completed keeps track of whether the goal has been completed
- * @property steps is a list of steps needed to complete the goal
- * @property date is the date the goal was created
- * @property shared keeps track of whether the goal is shared to the billboard
- * @property name is the name of the user
+ * @param id is the id of the goal
+ * @param title is the title of the goal
+ * @param description is a short description of what the goal is
+ * @param completed keeps track of whether the goal has been completed
+ * @param steps is a list of steps needed to complete the goal
+ * @param date is the date the goal was created
+ * @param shared keeps track of whether the goal is shared to the billboard
+ * @param name is the name of the user
  */
 data class GoalPost(var id: Int = 0,
                     var title: String = "",

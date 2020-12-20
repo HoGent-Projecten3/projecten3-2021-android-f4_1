@@ -20,13 +20,11 @@ import retrofit2.*
 import kotlinx.coroutines.launch
 /**
  * This is the viewModel for the profile screen
+ *
+ * @property adol is the adolescent that is logged in and needs to be displayed on the profile screen
+ * @property currentAvatar is the avatar that needs to be displayed on the profile screen
  */
 class ProfielViewModel: ViewModel() {
-
-    /**
-     * @property adol is the adolescent that is logged in and needs to be displayed on the profile screen
-     * @property currentAvatar is the avatar that needs to be displayed on the profile screen
-     */
     private var _adol = MutableLiveData<Adolescent>()
     var adol: LiveData<Adolescent> = MutableLiveData<Adolescent>()
         get() = _adol

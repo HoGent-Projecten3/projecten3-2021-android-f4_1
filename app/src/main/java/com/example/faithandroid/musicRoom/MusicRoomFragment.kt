@@ -27,13 +27,11 @@ import kotlinx.android.synthetic.main.app_bar_musicroom.view.*
 
 /**
  * Fragment for the Music Room
+ *
+ * @property spotifyAppRemoteLocal is used to open Spotify when clicking on a playlist
+ * @property musicRoomViewModel is the viewModel for the music room
  */
 class MusicRoomFragment: Fragment() {
-
-    /**
-     * @property spotifyAppRemoteLocal is used to open Spotify when clicking on a playlist
-     * @property musicRoomViewModel is the viewModel for the music room
-     */
     private val REQUEST_CODE = 1337
     private val REDIRECT_URI = "faithandroid://callback"
     private val CLIENT_ID = "95bc88d8f6084f1893dd648d88732210"

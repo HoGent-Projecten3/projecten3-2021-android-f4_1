@@ -14,21 +14,19 @@ import retrofit2.await
 
 /**
  * This is the viewmodel for the avatar
+ *
+ * @property status is the status of the data in the properties
+ * @property Hair is a list of haircolors in the shopping center
+ * @property Skin is a list of skintones in the shopping center
+ * @property UpperBody is a list of colors of the clothes in the shopping center
+ * @property Eye is a list of eyecolors in the shoppingcenter
+ * @property currentAvatar is the current avatar the adolescent is using
+ * @property hairProperties is a list of haircolors put into the recyclerview
+ * @property skinProperties is a list of skintones put into the recyclerview
+ * @property bodyProperties is a list of colors of the clothes put into the recyclerview
+ * @property eyeProperties is a list of eyecolors put into the recyclerview
  */
 class AvatarViewModel : ViewModel() {
-
-    /**
-     * @property status is the status of the data in the properties
-     * @property Hair is a list of haircolors in the shopping center
-     * @property Skin is a list of skintones in the shopping center
-     * @property UpperBody is a list of colors of the clothes in the shopping center
-     * @property Eye is a list of eyecolors in the shoppingcenter
-     * @property currentAvatar is the current avatar the adolescent is using
-     * @property hairProperties is a list of haircolors put into the recyclerview
-     * @property skinProperties is a list of skintones put into the recyclerview
-     * @property bodyProperties is a list of colors of the clothes put into the recyclerview
-     * @property eyeProperties is a list of eyecolors put into the recyclerview
-     */
      private val _status = MutableLiveData<String>()
      val status: LiveData<String>
           get() = _status

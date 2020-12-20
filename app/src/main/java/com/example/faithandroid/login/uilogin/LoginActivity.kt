@@ -30,12 +30,11 @@ import javax.xml.transform.TransformerFactory.newInstance
 
 /**
  * activity for the logging in of a user
+ *
+ * @property loginViewModel is the viewModel that is used for logging in
  */
 class LoginActivity : AppCompatActivity() {
 
-    /**
-     * @property loginViewModel is the viewModel that is used for logging in
-     */
     private lateinit var loginViewModel: LoginViewModel
 
 

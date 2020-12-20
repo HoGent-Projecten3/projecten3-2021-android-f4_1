@@ -36,7 +36,6 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
      *
      * @property binding is to bind a filtered_post.xml file
      * @property listener is to put extra functionality to a click
-     *
      */
     class PostViewHolder(private var binding: PostBinding, private var listener: CustomClick, private var parent: ViewGroup):
         RecyclerView.ViewHolder(binding.root){

@@ -3,11 +3,11 @@ package com.example.faithandroid.models
 /**
  * Class that supports the playlist in the music room
  *
- * @property primaryKey is the primary Key of the playlist on Spotify
- * @property id is the id of the playlist in the backend
- * @property name is the name of the playlist
- * @property description is a short description of what the playlist includes
- * @property url is a spotify link to the playlist
+ * @param primaryKey is the primary Key of the playlist on Spotify
+ * @param id is the id of the playlist in the backend
+ * @param name is the name of the playlist
+ * @param description is a short description of what the playlist includes
+ * @param url is a spotify link to the playlist
  */
 data class Playlist(
     var primaryKey: Int = 0,

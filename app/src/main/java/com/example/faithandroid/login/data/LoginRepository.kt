@@ -7,15 +7,14 @@ import kotlinx.coroutines.*
  * Class that requests authentication and user information from the remote data source and
  * maintains an in-memory cache of login status and user credentials information.
  *
- * @property dataSource handles authentication w/ login credentials and retrieves user information
+ * @param dataSource handles authentication w/ login credentials and retrieves user information
+ * @property user is the adolescent
  */
 
 class LoginRepository(val dataSource: LoginDataSource) {
 
     // in-memory cache of the loggedInUser object
-    /**
-     * @property user is the adolescent
-     */
+
     var user: Adolescent? = null // Adolescent
         private set
 
@@ -45,6 +44,7 @@ class LoginRepository(val dataSource: LoginDataSource) {
      * gets a specific adolescent
      *
      * @param username is the name by which the correct adolescent can be searched
+     * @return the result of getting the adolescent
      */
     suspend fun getAdolescent(username: String): Result<Adolescent>
     {
@@ -68,6 +68,7 @@ class LoginRepository(val dataSource: LoginDataSource) {
      *
      * @param username is the username given by the user trying to log in
      * @param password is the password given by the user trying to log in
+     * @return the result of logging in
      */
       suspend fun  login(username: String, password: String): Result<String> {
           // handle login

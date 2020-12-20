@@ -19,12 +19,10 @@ import kotlinx.android.synthetic.main.skyscraper_goalpostimage.view.*
 
 /**
  * This is a fragment for the skyscraper
+ *
+ * @property viewModel is the viewmodel for the skyscraper
  */
 class SkyscraperFragment: Fragment() {
-
-    /**
-     * @property viewModel is the viewmodel for the skyscraper
-     */
     private lateinit var viewModel: SkyscraperViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {

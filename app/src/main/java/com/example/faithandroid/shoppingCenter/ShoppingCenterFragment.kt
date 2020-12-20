@@ -23,19 +23,17 @@ import com.sdsmdg.harjot.vectormaster.VectorMasterView
 
 /**
  * This is a fragment for the shopping center
+ *
+ * @property viewModel is the viewModel for the avatar
+ * @property vectorMasterViewA is the vector that is used when the user chooses person A
+ * @property vectorMasterViewB is the vector that is used when the user chooses person B
+ * @property character is the person the user has chosen
+ * @property hair is the haircolor the user has chosen
+ * @property eyes is the eyecolor the user has chosen
+ * @property skin is the skintone the user has chosen
+ * @property body is the color of the clothes the user has chosen
  */
 class ShoppingCenterFragment: Fragment() {
-
-    /**
-     * @property viewModel is the viewModel for the avatar
-     * @property vectorMasterViewA is the vector that is used when the user chooses person A
-     * @property vectorMasterViewB is the vector that is used when the user chooses person B
-     * @property character is the person the user has chosen
-     * @property hair is the haircolor the user has chosen
-     * @property eyes is the eyecolor the user has chosen
-     * @property skin is the skintone the user has chosen
-     * @property body is the color of the clothes the user has chosen
-     */
     private lateinit var viewModel: AvatarViewModel
     private lateinit var vectorMasterViewA: VectorMasterView
     private lateinit var vectorMasterViewB: VectorMasterView

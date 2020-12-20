@@ -15,13 +15,12 @@ import retrofit2.await
 
 /**
  * This is a viewModel that gets and keeps a list of all posts in backpack
+ *
+ * @property status shows the status of the data in the postList
  */
 class BackpackViewModel : ViewModel() {
     //Error status
 
-    /**
-     * @property status shows the status of the data in the postList
-     */
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>
         get() = _status

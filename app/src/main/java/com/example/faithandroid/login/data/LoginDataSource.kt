@@ -16,12 +16,12 @@ import kotlin.Result.Companion.success
 
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.
+ *
+ * @property status shows whether the API call was successful
+ * @property loggedInUser is the logged in user
  */
 class LoginDataSource {
-    /**
-     * @property status shows whether the API call was successful
-     * @property loggedInUser is the logged in user
-     */
+
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>
         get() = _status
@@ -38,6 +38,8 @@ class LoginDataSource {
 
     /**
      * Logs the user in
+     *
+     * @return the result of logging in
      */
       suspend fun login(username: String, password: String): Result<String>{
 
@@ -52,6 +54,9 @@ class LoginDataSource {
     }
     /**
      * gets the information of the adolescent from the backend
+     *
+     * @param username is the username by which the adolescent is retrieved from the backend
+     * @return the result of getting the adolescent
      */
     suspend fun getAdolescent(username: String): Result<Adolescent> {
 

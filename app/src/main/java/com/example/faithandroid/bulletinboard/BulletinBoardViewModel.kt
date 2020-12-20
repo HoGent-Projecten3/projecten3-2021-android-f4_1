@@ -20,15 +20,14 @@ import retrofit2.Response
 import retrofit2.await
 /**
  * This is the viewModel for the bulletinboard
+ *
+ * @property status shows the status of the data in the postList
+ * @property requestConsultationStatus keeps track of whether the the request of a consultation was successful
+ * @property postLiist is the list of posts in the bulletinboard, provided by the backend
  */
 class BulletinBoardViewModel : ViewModel() {
 
     //ERROR STATUS
-    /**
-     * @property status shows the status of the data in the postList
-     * @property requestConsultationStatus keeps track of whether the the request of a consultation was successful
-     * @property postLiist is the list of posts in the bulletinboard, provided by the backend
-     */
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>
         get() = _status

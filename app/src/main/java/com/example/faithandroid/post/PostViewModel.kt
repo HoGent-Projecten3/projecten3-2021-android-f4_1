@@ -18,14 +18,12 @@ import retrofit2.Response
 /**
  * This is the viewModel for all posts
  *
- * @property placeType is the place where the post needs to be added
+ * @param placeType is the place where the post needs to be added
+ * @property postList is the list of posts from a specific place, provided by the backend
+ * @property status shows the status of the data in postList
  */
 class PostViewModel(private var placeType: PlaceType): ViewModel() {
 
-    /**
-     * @property postList is the list of posts from a specific place, provided by the backend
-     * @property status shows the status of the data in postList
-     */
     private var _posts = MutableLiveData<List<Post>>()
     var postList: LiveData<List<Post>> = MutableLiveData<List<Post>>()
         get() = _posts
@@ -111,6 +109,7 @@ class PostViewModel(private var placeType: PlaceType): ViewModel() {
      *
      * @param post is the post that is to be added
      * @param placeType is the place the post is to be added to
+     * @return whether the adding of the post was successful
      */
     fun addPostByEmail(post: Post, placeType: PlaceType): Boolean{
         var bool: Boolean = true

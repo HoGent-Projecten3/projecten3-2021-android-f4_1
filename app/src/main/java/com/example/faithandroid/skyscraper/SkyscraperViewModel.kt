@@ -30,6 +30,11 @@ import retrofit2.await
 
 /**
  * This is the viewmodel for the skyscraper
+ *
+ * @property shareStatus is the status of whether the goal could be shared
+ * @property completedStatus is the status of whether the goal was completed
+ * @property removeStatus is the status of whether the goal could be successfully removed
+ * @property getStatus is the status of whether the goal could be retrieved from the backend
  */
 class SkyscraperViewModel : ViewModel() {
     private val _shareStatus = MutableLiveData<String>()
@@ -37,12 +42,6 @@ class SkyscraperViewModel : ViewModel() {
     private val _removeStatus = MutableLiveData<String>()
     private val _getStatus = MutableLiveData<String>()
 
-    /**
-     * @property shareStatus is the status of whether the goal could be shared
-     * @property completedStatus is the status of whether the goal was completed
-     * @property removeStatus is the status of whether the goal could be successfully removed
-     * @property getStatus is the status of whether the goal could be retrieved from the backend
-     */
     val shareStatus: LiveData<String>
         get() = _shareStatus
 

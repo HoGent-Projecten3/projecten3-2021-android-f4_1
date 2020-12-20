@@ -20,14 +20,12 @@ import com.example.faithandroid.post.PostViewModel
 
 /**
  * This is a fragment for adding a textpost from one place to another
+ *
+ * @property args used to store the placetype
+ * @property post is the post to be added
+ * @property viewModel is the viewmodel for all posts
  */
 class addTextFragment: Fragment() {
-
-    /**
-     * @property args used to store the placetype
-     * @property post is the post to be added
-     * @property viewModel is the viewmodel for all posts
-     */
     val args: addTextFragmentArgs by navArgs()
 
     var post: Post? = null

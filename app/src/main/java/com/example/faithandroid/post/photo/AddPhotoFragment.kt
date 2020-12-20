@@ -33,15 +33,13 @@ import java.util.*
 
 /**
  * This is a fragment for adding a photo
+ *
+ * @property args used to store the placetype
+ * @property post is the post to be added
+ * @property nieuwePost keeps track of whether the post is newly added to the app or transferred from another place within the app
+ * @property viewModel is the viewmodel for all posts
  */
 class addPhotoFragment: Fragment() {
-
-    /**
-     * @property args used to store the placetype
-     * @property post is the post to be added
-     * @property nieuwePost keeps track of whether the post is newly added to the app or transferred from another place within the app
-     * @property viewModel is the viewmodel for all posts
-     */
     val args: addPhotoFragmentArgs by navArgs()
 
     var post: Post? = null
@@ -226,6 +224,7 @@ class addPhotoFragment: Fragment() {
      * Converts an uri to base 64
      *
      * @param uri is the uri to be converted
+     * @return the base64 representation
      */
     @RequiresApi(Build.VERSION_CODES.O)
     private fun uriToBase64(uri: Uri): String

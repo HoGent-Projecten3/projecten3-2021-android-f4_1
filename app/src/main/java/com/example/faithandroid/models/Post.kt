@@ -11,13 +11,13 @@ import java.io.Serializable
 /**
  * Class that supports the posts in the backpack, bulletinboard and treasure chest
  *
- * @property id is the id of the post
- * @property title is the title of the post
- * @property data is a description of the post
- * @property date is the date the post was created
- * @property postType is the type of the post (video, audio, text or image)
- * @property dataBytes is the data of the post itself when you want to store it for the first time
- * @property uri is the link to the post
+ * @param id is the id of the post
+ * @param title is the title of the post
+ * @param data is a description of the post
+ * @param date is the date the post was created
+ * @param postType is the type of the post (video, audio, text or image)
+ * @param dataBytes is the data of the post itself when you want to store it for the first time
+ * @param uri is the link to the post
  */
 data class Post(
     var id: Int = 0,

@@ -15,6 +15,13 @@ import com.example.faithandroid.network.FaithApi
 import kotlinx.coroutines.*
 import retrofit2.await
 
+/**
+ * viewModel for the logging in of a user
+ *
+ * @property adolescent is the adolescent after logging in
+ * @property loginFormState is the state when logging in
+ * @property loginResult is the result after logging in
+ */
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
    private var _adolescent = MutableLiveData<Adolescent>()
@@ -27,6 +34,12 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private val _loginResult = MutableLiveData<LoginResult>()
     val loginResult: LiveData<LoginResult> = _loginResult
 
+    /**
+     * activity for the logging in of a user
+     *
+     * @param username is the username the user gave in when logging in
+     * @param password is the password the user gave in when logging in
+     */
     fun login(username: String, password: String) {
         // can be launched in a separate asynchronous job
         MainScope().launch {
@@ -54,6 +67,12 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     }
 
+    /**
+     * is activated when the username or passwordfield is changed
+     *
+     * @param username is the username the user gave in when logging in
+     * @param password is the password the user gave in when logging in
+     */
     fun loginDataChanged(username: String, password: String) {
         if (!isUserNameValid(username)) {
             _loginForm.value =
@@ -72,6 +91,12 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     }
 
+    /**
+     * checks whether the given username is valid
+     *
+     * @param username is the username the user gave in when logging in
+     * @return whether the username is valid
+     */
     // A placeholder username validation check
     private fun isUserNameValid(username: String): Boolean {
         return if (username.contains('@')) {
@@ -81,11 +106,20 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         }
     }
 
+    /**
+     * checks whether the given password was valid
+     *
+     * @param password is the password the user gave in when logging in
+     * @return whether the password is valid
+     */
     // A placeholder password validation check
     private fun isPasswordValid(password: String): Boolean {
         return password.length > 5
     }
 
+    /**
+     * logs out the user
+     */
     fun logout(){
         loginRepository.logout()
         _loginResult.value = null
