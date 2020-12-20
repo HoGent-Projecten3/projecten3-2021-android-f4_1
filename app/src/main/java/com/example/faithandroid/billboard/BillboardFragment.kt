@@ -8,13 +8,29 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.example.faithandroid.BillboardGoalCustomClick
 import com.example.faithandroid.R
+import com.example.faithandroid.adapters.PostAdapter
 import com.example.faithandroid.databinding.BillboardBinding
+import com.example.faithandroid.skyscraper.SkyscraperViewModel
+import com.example.faithandroid.util.Status
 import com.google.android.material.snackbar.Snackbar
-import org.koin.android.ext.android.inject
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
 import java.util.*
+import org.koin.android.ext.android.inject
 
-class BillboardFragment : Fragment() {
+
+
+/**
+ * This is a fragment for the billboard
+ *
+ * @property viewModel This is the viewModel for the billboard
+ */
+
+class BillboardFragment: Fragment() {
+
 
     private lateinit var adapter: BillboardGridAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,38 +38,42 @@ class BillboardFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val viewModel: BillboardViewModel by inject()
+        val viewModel : BillboardViewModel by inject()
+        val skyViewModel : SkyscraperViewModel by inject()
         val binding = DataBindingUtil.inflate<BillboardBinding>(
-            inflater,
-            R.layout.billboard,
-            container,
-            false
-        )
+          inflater,
+          R.layout.billboard,
+          container,
+          false
+      );
+
 
         binding.lifecycleOwner = viewLifecycleOwner
 
-        // viewModel = ViewModelProvider(this).get(BillboardViewModel::class.java)
+        //viewModel = ViewModelProvider(this).get(BillboardViewModel::class.java)
         binding.viewmodelBillboard = viewModel
+        binding.billboardGridView.adapter = BillboardGridAdapter(object : BillboardGoalCustomClick {
 
-        binding.billboardGridView.adapter = BillboardGridAdapter()
-
-        viewModel.status.observe(
-            this.viewLifecycleOwner,
-            Observer {
-                val contextView = this.view
-                if (contextView != null) {
-                    Snackbar.make(contextView, "Kon niet verbinding maken met de server", Snackbar.LENGTH_SHORT).setAction(
-                        R.string.tryAgain
-                    ) {
-                        viewModel.getPosts()
-                    }.show()
-                }
+            override fun onClick(goalId: Int) {
+                skyViewModel.shareGoal(goalId)
             }
-        )
+
+        })
+
+        viewModel.status.observe(this.viewLifecycleOwner, Observer {
+            val contextView = this.view
+            if (contextView != null) {
+                Snackbar.make(contextView, "Kon niet verbinding maken met de server", Snackbar.LENGTH_SHORT).setAction(
+                    R.string.tryAgain
+                )
+                {
+                    viewModel.getPosts()
+                }.show()
+            }
+        })
 
         /*viewModel.properties.observe(this.viewLifecycleOwner, Observer
         {
@@ -90,13 +110,16 @@ class BillboardFragment : Fragment() {
                 }
             }
         })*/
+
 
         return binding.root
     }
 
+
     override fun onResume() {
         super.onResume()
 
-        // viewModel.getPosts()
+        //viewModel.getPosts()
     }
+
 }

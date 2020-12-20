@@ -7,17 +7,35 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.faithandroid.models.Avatar
 import com.example.faithandroid.shoppingCenter.AvatarRepository
+import com.example.faithandroid.skyscraper.GoalPostRepository
+import com.example.faithandroid.util.Resource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import okhttp3.internal.wait
 import retrofit2.await
+
+/**
+ * This is the viewmodel for the avatar
+ *
+ * @property status is the status of the data in the properties
+ * @property Hair is a list of haircolors in the shopping center
+ * @property Skin is a list of skintones in the shopping center
+ * @property UpperBody is a list of colors of the clothes in the shopping center
+ * @property Eye is a list of eyecolors in the shoppingcenter
+ * @property currentAvatar is the current avatar the adolescent is using
+ * @property hairProperties is a list of haircolors put into the recyclerview
+ * @property skinProperties is a list of skintones put into the recyclerview
+ * @property bodyProperties is a list of colors of the clothes put into the recyclerview
+ * @property eyeProperties is a list of eyecolors put into the recyclerview
+ */
 
 class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewModel() {
 
-    private val _status = MutableLiveData<String>()
-    val status: LiveData<String>
-        get() = _status
+     private val _status = MutableLiveData<String>()
+     val status: LiveData<String>
+          get() = _status
 
     val Hair = mutableListOf<Int>(
         Color.parseColor("#EEEE94"),
@@ -43,7 +61,7 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
         Color.parseColor("#F2C94C"),
         Color.parseColor("#9B51E0"),
         Color.parseColor("#EB5ACF")
-    )
+        )
     val UpperBody = mutableListOf<Int>(
         Color.parseColor("#111111"),
         Color.parseColor("#EEEEEE"),
@@ -67,9 +85,10 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
         Color.parseColor("#777777"),
         Color.parseColor("#FF0400"),
 
-    )
+        )
 
     private var _currentAvatar = MutableLiveData<Avatar>()
+
 
     private val _hairProperties = MutableLiveData<List<Int>>()
     private val _eyeProperties = MutableLiveData<List<Int>>()
@@ -88,60 +107,78 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
     val bodyProperties: MutableLiveData<List<Int>>
         get() = _bodyProperties
 
-    private var viewModelJob = Job()
-    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    init {
-        getProperties()
-        getAvatar()
+     private var viewModelJob = Job()
+     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+
+     init {
+         getProperties()
+         getAvatar()
+     }
+
+
+    /**
+     * gets all the colors for the recyclerviews in the shopping center
+     */
+      fun getProperties() {
+          coroutineScope.launch {
+
+               try {
+                    if(Hair.size > 0){
+                        _hairProperties.value = Hair
+                    }
+                   if(Eye.size > 0){
+                       _eyeProperties.value = Eye
+                   }
+                   if(Skin.size > 0){
+                       _skinProperties.value = Skin
+                   }
+                   if(UpperBody.size > 0){
+                       _bodyProperties.value = UpperBody
+                   }
+               } catch (e: Exception){
+                    _status.value = "Failure: ${e.message}"
+               }
+          }
+     }
+
+    /**
+     * gets the avatar for the logged in adolescent
+     */
+     private fun getAvatar(){
+         coroutineScope.launch {
+
+             try {
+                 var getAvatar = avatarRepository.getAvatar()
+                 var result = getAvatar.await()
+                 _currentAvatar.value = result
+
+                 AppPreferences.currentPerson = currentAvatar.value?.person
+                 AppPreferences.currentHair = currentAvatar.value?.hair
+                 AppPreferences.currentEyes = currentAvatar.value?.eyes
+                 AppPreferences.currentSkin = currentAvatar.value?.skin
+                 AppPreferences.currentBody = currentAvatar.value?.upperBody
+
+             } catch (e: Exception) {
+                 _status.value = "Kan geen verbinding maken met de server"
+             }
+         }
+         Log.d("hair",currentAvatar.value.toString())
     }
 
-    fun getProperties() {
-        coroutineScope.launch {
-
-            try {
-                if (Hair.size > 0) {
-                    _hairProperties.value = Hair
-                }
-                if (Eye.size > 0) {
-                    _eyeProperties.value = Eye
-                }
-                if (Skin.size > 0) {
-                    _skinProperties.value = Skin
-                }
-                if (UpperBody.size > 0) {
-                    _bodyProperties.value = UpperBody
-                }
-            } catch (e: Exception) {
-                _status.value = "Failure: ${e.message}"
-            }
-        }
-    }
-
-    private fun getAvatar() {
-        coroutineScope.launch {
-
-            try {
-                var getAvatar = avatarRepository.getAvatar()
-                var result = getAvatar.await()
-                _currentAvatar.value = result
-
-                AppPreferences.currentPerson = currentAvatar.value?.person
-                AppPreferences.currentHair = currentAvatar.value?.hair
-                AppPreferences.currentEyes = currentAvatar.value?.eyes
-                AppPreferences.currentSkin = currentAvatar.value?.skin
-                AppPreferences.currentBody = currentAvatar.value?.upperBody
-            } catch (e: Exception) {
-                _status.value = "Kan geen verbinding maken met de server"
-            }
-        }
-        Log.d("hair", currentAvatar.value.toString())
-    }
-
-    fun postAvatar(character: Int, hair: Int, eyes: Int, skin: Int, body: Int) {
-        coroutineScope.launch {
-            try {
-                val avatar: Avatar = Avatar(id = 0, person = character, hair = hair, eyes = eyes, skin = skin, upperBody = body)
+    /**
+     * posts a new avatar for the logged in user
+     *
+     * @param character is the person of the avatar
+     * @param hair is the haircolor of the avatar
+     * @param eyes is the eyecolor of the avatar
+     * @param skin is the skintone of the avatar
+     * @param body is the color of the clothes of the avatar
+     */
+    public fun postAvatar(character: Int, hair: Int, eyes: Int, skin: Int, body: Int){
+        coroutineScope.launch{
+            try{
+                val avatar: Avatar = Avatar(id = 0,person = character, hair = hair, eyes = eyes, skin = skin, upperBody = body)
                 avatarRepository.postAvatar(avatar)
                 AppPreferences.currentPerson = character
                 AppPreferences.currentHair = hair
@@ -149,9 +186,15 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
                 AppPreferences.currentSkin = skin
                 AppPreferences.currentBody = body
                 _status.value = "gelukt!"
-            } catch (e: Exception) {
+
+            }
+            catch (e: Exception)
+            {
                 _status.value = "niet gelukt!"
             }
         }
     }
+
+
+
 }

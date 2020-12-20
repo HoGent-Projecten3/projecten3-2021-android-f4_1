@@ -9,6 +9,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
+/**
+ * This is the viewmodel for the treasure chest that is unused apparently
+ */
 class TreasureChestViewModel : ViewModel() {
 
     // Error status

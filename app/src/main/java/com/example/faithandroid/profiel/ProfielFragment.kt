@@ -2,89 +2,103 @@ package com.example.faithandroid.profiel
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SwitchCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.ProfielBinding
 import com.example.faithandroid.models.Adolescent
+import org.koin.android.ext.android.inject
+
+import com.example.faithandroid.models.Avatar
 import com.sdsmdg.harjot.vectormaster.VectorMasterView
+import org.koin.android.ext.android.bind
 import org.koin.android.ext.android.inject
 import java.lang.Exception
 
-class ProfielFragment : Fragment() {
-
+/**
+ * This is a fragment for the profilescreen
+ *
+ * @property adolescent is the adolescent of whom the data needs to be displayed
+ * @property viewModel is the viewmodel for the profile
+ * @property niewww is the new password if you want to set a new password
+ * @property nieuwcon is a confirmation of the new password to check whether they are the same
+ * @property vectorMasterViewA is the profile picture when your avatar uses person A
+ * @property vectorMasterViewB is the profile picture when your avatar uses person B
+ */
+class ProfielFragment: Fragment() {
     private var adolescent: Adolescent? = null
     private var nieuwww = ""
     private var nieuwcon = ""
     private lateinit var vectorMasterViewA: VectorMasterView
     private lateinit var vectorMasterViewB: VectorMasterView
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // checkTheme()
+        //checkTheme()
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val viewModel: ProfielViewModel by inject()
+        val viewModel : ProfielViewModel by inject()
         val binding = DataBindingUtil.inflate<ProfielBinding>(
             inflater,
             R.layout.profiel,
             container,
             false
-        )
+        );
 
         this.vectorMasterViewA = binding.imgAvatarA as VectorMasterView
         this.vectorMasterViewB = binding.imgAvatarB as VectorMasterView
 
         try {
             viewModel.getAdolescent()
-        } catch (e: Exception) {
-            var contextView = this.view
+        }catch(e: Exception){
+            var contextView = this.view;
             com.google.android.material.snackbar.Snackbar.make(
                 contextView!!,
                 "Er liep iets mis bij het ophalen van de gebruiker",
-                com.google.android.material.snackbar.Snackbar.LENGTH_SHORT
+                com.google.android.material.snackbar.Snackbar.LENGTH_SHORT)
+            .setAction(
+                "Try again"
             )
-                .setAction(
-                    "Try again"
-                ) {
-                    viewModel.getAdolescent()
-                }.show()
+            {
+                viewModel.getAdolescent();
+            }.show()
         }
 
-        // viewModel.getAdolescent()
+        //viewModel.getAdolescent()
 
         binding.imgAvatarB.setVisibility(View.GONE)
-        viewModel.adol.observe(
-            viewLifecycleOwner,
-            Observer {
-                adolescent = it
-                binding.profielNaam.text =
-                    String.format(adolescent?.firstName + " " + adolescent?.name)
-                binding.profielEmail.text = adolescent?.email
-            }
-        )
+        viewModel.adol.observe(viewLifecycleOwner, Observer {
+            adolescent = it
+            binding.profielNaam.text =
+                String.format(adolescent?.firstName + " " + adolescent?.name)
+            binding.profielEmail.text = adolescent?.email
+        })
 
-        if (AppPreferences.currentPerson == 0) {
-            binding.imgAvatarA.setVisibility(View.VISIBLE)
-            binding.imgAvatarB.setVisibility(View.GONE)
-        } else {
-            binding.imgAvatarA.setVisibility(View.GONE)
-            binding.imgAvatarB.setVisibility(View.VISIBLE)
-        }
+            if (AppPreferences.currentPerson == 0){
+                binding.imgAvatarA.setVisibility(View.VISIBLE)
+                binding.imgAvatarB.setVisibility(View.GONE)
+            } else {
+                binding.imgAvatarA.setVisibility(View.GONE)
+                binding.imgAvatarB.setVisibility(View.VISIBLE)
+            }
 
         AppPreferences.currentHair?.let { ColorSvgs.setHair(it, vectorMasterViewA, vectorMasterViewB) }
         AppPreferences.currentEyes?.let { ColorSvgs.setEyes(it, vectorMasterViewA, vectorMasterViewB) }
@@ -105,8 +119,7 @@ class ProfielFragment : Fragment() {
                 viewInflated.findViewById<View>(R.id.nieuwwwfldconfirm) as EditText
 
             builder.setView(viewInflated)
-            builder.setPositiveButton(
-                android.R.string.ok,
+            builder.setPositiveButton(android.R.string.ok,
                 DialogInterface.OnClickListener { dialog, _ ->
 
                     nieuwww = inputNieuw.text.toString()
@@ -135,12 +148,9 @@ class ProfielFragment : Fragment() {
                             Toast.LENGTH_LONG
                         ).show()
                     }
-                }
-            )
-            builder.setNegativeButton(
-                android.R.string.cancel,
-                DialogInterface.OnClickListener { dialog, _ -> dialog.cancel() }
-            )
+                })
+            builder.setNegativeButton(android.R.string.cancel,
+                DialogInterface.OnClickListener { dialog, _ -> dialog.cancel() })
 
             builder.show()
         }
@@ -153,6 +163,7 @@ class ProfielFragment : Fragment() {
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 AppPreferences.darkMode = false
+
             }
         }
 
@@ -170,3 +181,4 @@ class ProfielFragment : Fragment() {
         }
     }
 }
+

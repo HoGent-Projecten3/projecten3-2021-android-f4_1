@@ -11,6 +11,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.faithandroid.databinding.AppHomeschermBinding
 
+/**
+ * The fragment for the homescreen where you can choose a place to visit
+ */
 class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

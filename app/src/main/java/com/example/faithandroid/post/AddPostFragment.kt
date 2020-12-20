@@ -11,16 +11,20 @@ import androidx.navigation.fragment.navArgs
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.AddPostBinding
 
-class AddPostFragment : Fragment() {
-
+/**
+ * This is a fragment for adding a post
+ *
+ * @property args is used to store the placetype
+ */
+class AddPostFragment: Fragment() {
     val args: AddPostFragmentArgs by navArgs()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
@@ -30,29 +34,29 @@ class AddPostFragment : Fragment() {
             R.layout.add_post,
             container,
             false
-        )
+        );
+
 
         /**
          * navigate to options for texts posts
          */
-        binding.TekstButton.setOnClickListener {
-            view: View ->
-            val action =
-                AddPostFragmentDirections.actionOptionsAddPostFragmentToAddTextFragment(
-                    args.placeType
-                )
+        binding.TekstButton.setOnClickListener{
+                view: View ->  val action =
+            AddPostFragmentDirections.actionOptionsAddPostFragmentToAddTextFragment(
+                args.placeType
+            )
             view.findNavController().navigate(action)
         }
+
 
         /**
          * navigate to options for audio posts
          */
         binding.AudioButton.setOnClickListener {
-            view: View ->
-            val action =
-                AddPostFragmentDirections.actionOptionsAddPostFragmentToAudioToevoegenFragment(
-                    args.placeType
-                )
+            view: View -> val action =
+            AddPostFragmentDirections.actionOptionsAddPostFragmentToAudioToevoegenFragment(
+                args.placeType
+            )
             view.findNavController().navigate(action)
         }
 
@@ -60,26 +64,28 @@ class AddPostFragment : Fragment() {
          * navigate to options for images posts
          */
         binding.FotoButton.setOnClickListener {
-            view: View ->
-            val action =
-                AddPostFragmentDirections.actionOptionsAddPostFragmentToAddPhotoFragment(
-                    args.placeType
-                )
+            view: View -> val action =
+            AddPostFragmentDirections.actionOptionsAddPostFragmentToAddPhotoFragment(
+                args.placeType
+            )
             view.findNavController().navigate(action)
+
         }
 
         /**
          * navigate to options for video posts
          */
         binding.VideoButton.setOnClickListener {
-            view: View ->
-            val action =
-                AddPostFragmentDirections.actionOptionsAddPostFragmentToVideoToevoegenFragment(
-                    args.placeType
-                )
+          view: View -> val action =
+            AddPostFragmentDirections.actionOptionsAddPostFragmentToVideoToevoegenFragment(
+                args.placeType
+            )
             view.findNavController().navigate(action)
+
         }
 
         return binding.root
+
     }
+
 }

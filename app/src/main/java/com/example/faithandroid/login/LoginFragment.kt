@@ -1,29 +1,38 @@
 package com.example.faithandroid.login
 
+
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.example.faithandroid.*
 import com.example.faithandroid.databinding.LoginBinding
+import com.example.faithandroid.login.uilogin.LoginActivity
 import com.example.faithandroid.login.uilogin.LoginViewModel
 import kotlinx.android.synthetic.main.login.*
 
+/**
+ * The fragment to log in
+ */
 class LoginFragment : Fragment() {
 
     private lateinit var drawer: DrawerLayout
-    private lateinit var drawerInterface: DrawerInterface
+    private lateinit var drawerInterface : DrawerInterface
     private lateinit var viewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // val intent =  Intent(LoginActivity.this)
+
+       //val intent =  Intent(LoginActivity.this)
     }
 
     override fun onAttach(activity: Activity) {
@@ -36,8 +45,7 @@ class LoginFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
@@ -48,14 +56,18 @@ class LoginFragment : Fragment() {
             R.layout.login,
             container,
             false
-        )
+        );
 
-        binding.loginButton.setOnClickListener { view: View ->
 
-            var intent: Intent = Intent(view.getContext(), MainActivity::class.java).apply {
-            }
-            view.getContext().startActivity(intent)
+       binding.loginButton.setOnClickListener { view: View ->
+
+           var intent: Intent = Intent(view.getContext(), MainActivity::class.java).apply{
+
+           }
+           view.getContext().startActivity(intent)
+
         }
+
 
         // drawer = requireView().findViewById(R.id.drawerLayout)
 
@@ -63,8 +75,10 @@ class LoginFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onDestroyView() {
         super.onDestroyView()
         drawerInterface.unlockDrawer()
     }
+
 }

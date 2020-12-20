@@ -37,7 +37,7 @@
 
                 <LinearLayout
                     android:id="@+id/linearLayout2"
-                    android:layout_width="397dp"
+                    android:layout_width="match_parent"
                     android:layout_height="42dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
@@ -77,15 +77,16 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
-                    android:layout_width="405dp"
-                    android:layout_height="406dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:paddingTop="10dp"
+                    app:filteredPostData="@{viewModel.postList.data}"
+
                     app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-                    app:filteredPostData="@{viewModel.filteredPostList}"
-                    app:spanCount="2">
+                    app:spanCount="3">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
@@ -93,11 +94,11 @@
                     android:id="@+id/textToevoegenButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
                     android:text="@string/nieuwe_post_toevoegen"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+                    app:layout_constraintStart_toStartOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
