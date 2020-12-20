@@ -53,7 +53,7 @@ class TreasureChestFragment: Fragment() {
             }
         })
 
-        binding.TreasureChestRecycler.adapter = this.adapter
+        binding.TreasureChestRecycler?.adapter = this.adapter
 
         binding.AddPostButton.setOnClickListener { view: View ->
             val action =
@@ -63,7 +63,7 @@ class TreasureChestFragment: Fragment() {
             view.findNavController().navigate(action)
         }
 
-        binding.TreasureChestRecycler.adapter =
+        binding.TreasureChestRecycler?.adapter =
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
                     postViewModel.deletePostByEmail(post.id,  PlaceType.Schatkist)

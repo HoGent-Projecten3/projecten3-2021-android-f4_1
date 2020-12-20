@@ -7,7 +7,7 @@
     <data>
         <import type="android.view.View"></import>
         <variable
-            name="videoGekozen"
+            name="audioGekozen"
             type="Boolean" />
         <variable
             name="viewModel"
@@ -31,9 +31,9 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingTop="20dp"
+                android:layout_marginTop="?attr/actionBarSize"
                 android:orientation="vertical"
-                android:layout_marginTop="?attr/actionBarSize">
+                android:paddingTop="20dp">
 
                 <LinearLayout
                     android:id="@+id/linearLayout2"
@@ -47,23 +47,13 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
-                        android:id="@+id/videocam"
+                        android:id="@+id/ic_voice"
                         android:layout_width="76dp"
-                        android:layout_height="63dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_vertical"
+                        android:clickable="true"
+                        app:srcCompat="@drawable/ic_voice" />
 
-                        android:contentDescription="@string/app_name"
-                        android:onClick="ClickBack"
-                        app:srcCompat="@drawable/ic_videocam" />
-
-                    <ImageView
-                        android:id="@+id/album"
-                        android:layout_width="76dp"
-                        android:layout_height="63dp"
-                        android:contentDescription="@string/app_name"
-                        android:onClick="ClickBack"
-                        app:srcCompat="@drawable/ic_video_library"
-
-                        />
 
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
@@ -92,6 +82,7 @@
                     android:layout_marginEnd="8dp"
                     android:hint="vul hier je titel in:"
                     android:visibility="gone"
+                    app:layout_constraintBottom_toTopOf="@id/pauze"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
@@ -107,33 +98,67 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
-                    android:layout_width="405dp"
-                    android:layout_height="455dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    app:filteredPostData="@{viewModel.filteredPostList}"
+                    app:filteredPostData="@{viewModel.postList}"
                     app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/titelVeld"
-                    app:spanCount="2">
+                    app:layout_constraintTop_toBottomOf="@id/pauze"
+                    app:spanCount="3">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
+                <ImageView
+                    android:id="@+id/start"
+                    android:layout_width="58dp"
+                    android:layout_height="51dp"
+                    android:clickable="true"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/pauze"
+                    app:layout_constraintEnd_toStartOf="@+id/pauze"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/pauze"
+                    app:srcCompat="@drawable/ic_start" />
+
+                <ImageView
+                    android:id="@+id/pauze"
+                    android:layout_width="58dp"
+                    android:layout_height="51dp"
+                    android:layout_marginTop="15dp"
+                    android:clickable="true"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toTopOf="@id/recyclerView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/titelVeld"
+                    app:srcCompat="@drawable/ic_pause" />
+
+                <ImageView
+                    android:id="@+id/stop"
+                    android:layout_width="58dp"
+                    android:layout_height="51dp"
+                    android:clickable="true"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/pauze"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/pauze"
+                    app:layout_constraintTop_toTopOf="@id/pauze"
+                    app:srcCompat="@drawable/ic_stop" />
+
                 <Button
-                    android:id="@+id/videoToevoegenButton"
+                    android:id="@+id/audioToevoegenButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
                     android:text="@string/nieuwe_post_toevoegen"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+                    app:layout_constraintStart_toStartOf="parent" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
-
-
-
-

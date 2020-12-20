@@ -91,8 +91,8 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linLayout"
-            app:postData="@{postViewModel.postList.data}"
-            app:spanCount="2">
+            app:postData="@{postViewModel.postList}"
+            app:spanCount="4">
 
         </androidx.recyclerview.widget.RecyclerView>
 

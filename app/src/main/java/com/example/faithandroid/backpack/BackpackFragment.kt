@@ -55,8 +55,6 @@ class BackpackFragment: Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         // staggeredGridLayoutManager with 3 columns and vertical orientation
-        val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
-        binding.BackpackRecycler.layoutManager = staggeredGridLayoutManager
 
         val postTypes =  PostType.values()
 
