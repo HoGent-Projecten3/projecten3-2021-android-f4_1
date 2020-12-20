@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.example.faithandroid.PlaceType
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.models.PostType
-import com.example.faithandroid.network.FaithApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -24,12 +23,12 @@ class TreasureChestViewModel : ViewModel() {
         get() = _status
 
     //Lijst van posts
-    var mockData = mutableListOf<Post>(
+    /*var mockData = mutableListOf<Post>(
         Post(7, "Image", "this is an image", "2012-03-19T07:22", PostType.Image.ordinal, "https://d16kd6gzalkogb.cloudfront.net/magazine_images/Salvador-Dali-The-Persistence-of-Memory-1931-c.jpg"),
         Post(8, "Video", "This is a video", "2012-03-19T07:22", PostType.Video.ordinal, "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"),
         Post(9, "Audio", "This is audio", "2012-03-19T07:22", PostType.Audio.ordinal)
 
-    )
+    )*/
 
     private val _postList = MutableLiveData<List<Post>>()
     val postList: LiveData<List<Post>>
@@ -49,7 +48,7 @@ class TreasureChestViewModel : ViewModel() {
     fun getPostsOfTreasureChest()
     {
         coroutineScope.launch{
-            try{
+            /*try{
                 var getPostList = FaithApi.retrofitService.getPostsOfPlaceByAdolescentEmail(PlaceType.Schatkist.ordinal)
                 var result = getPostList.await()
                 if(result.size > 0){
@@ -64,7 +63,7 @@ class TreasureChestViewModel : ViewModel() {
             catch (e: Exception)
             {
                 _status.value = "Kan geen verbinding maken met de server"
-            }
+            }*/
         }
     }
 }

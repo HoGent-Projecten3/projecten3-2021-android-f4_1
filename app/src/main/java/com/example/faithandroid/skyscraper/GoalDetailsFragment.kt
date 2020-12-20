@@ -23,6 +23,7 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.skyscraper_goalpostimage.view.*
+import org.koin.android.ext.android.inject
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -36,7 +37,6 @@ import java.time.format.FormatStyle
  */
 class GoalDetailsFragment: DialogFragment() {
     val args: GoalDetailsFragmentArgs by navArgs()
-    private lateinit var viewModel: SkyscraperViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,8 +49,8 @@ class GoalDetailsFragment: DialogFragment() {
     ): View? {
         //val application = requireNotNull(activity).application
 
-        viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
-
+        //viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
+        val viewModel : SkyscraperViewModel by inject()
         val binding = DataBindingUtil.inflate<SkyscraperGoaldetailsBinding>(
             inflater,
             R.layout.skyscraper_goaldetails,
@@ -73,12 +73,22 @@ class GoalDetailsFragment: DialogFragment() {
 
         binding.btnBehaald.setOnClickListener { view: View ->
             viewModel.goalBehaald(args.goal.id)
+            Toast.makeText(
+                context,
+                "Je doel is behaald",
+                Toast.LENGTH_LONG
+            ).show()
             view.findNavController().navigate(R.id.skyscraperFragment)
         }
 
         binding.btnDelen.setOnClickListener { view: View ->
             viewModel.shareGoal(args.goal.id)
            view.findNavController().navigate(R.id.billboardFragment)
+            Toast.makeText(
+                context,
+                "Je doel is gedeeld",
+                Toast.LENGTH_LONG
+            ).show()
         }
 
         binding.btnVerwijder.setOnClickListener { view: View ->
@@ -92,10 +102,18 @@ class GoalDetailsFragment: DialogFragment() {
                         viewModel.shareGoal(args.goal.id)
                         viewModel.deleteGoal(args.goal.id)
                         view.findNavController().navigate(R.id.skyscraperFragment)
+                        Toast.makeText(
+                            context,
+                            "Je doel is verwijderd",
+                            Toast.LENGTH_LONG
+                        ).show()
+
                     }
                     .setNegativeButton("Nee") { _, which ->
                         // nothing has to happen here
                     }.show()
+
+
             }else if(args.goal.completed){
               Snackbar.make(view, "Deze goal is behaald, u kan deze dus niet verwijderen.", Snackbar.LENGTH_SHORT).setAction(
                "" )
@@ -104,61 +122,26 @@ class GoalDetailsFragment: DialogFragment() {
         }
           else {
                 viewModel.deleteGoal(args.goal.id)
+              Toast.makeText(
+                  context,
+                  "Je doel is verwijderd",
+                  Toast.LENGTH_LONG
+              ).show()
                 view.findNavController().navigate(R.id.skyscraperFragment)
             }
         }
 
-        viewModel.shareStatus.observe(this.viewLifecycleOwner, Observer {
-            val contextView = this.view
-            if (contextView != null) {
-                Toast.makeText(
-                    context,
-                    "Je doel is gedeeld",
-                    Toast.LENGTH_LONG
-                ).show()
-             }
-            else {
-                Snackbar.make(contextView!!, viewModel.shareStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
-                    "Probeer opnieuw"
-                )
-                {
-                }.show()
-            }
-        })
 
-        viewModel.completedStatus.observe(this.viewLifecycleOwner, Observer {
-            val contextView = this.view
-            if (contextView != null) {
-                Toast.makeText(
-                    context,
-                    "Je doel is behaald",
-                    Toast.LENGTH_LONG
-                ).show()
-            } else {
-                Snackbar.make(contextView!!, viewModel.completedStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
-                    "Probeer opnieuw"
-                )
-                {
-                }.show()
-            }
-        })
 
-        viewModel.removeStatus.observe(this.viewLifecycleOwner, Observer {
+        viewModel.getStatus.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
-            if (contextView != null) {
-                Toast.makeText(
-                    context,
-                    "Je doel is verwijderd",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-            else {
-                Snackbar.make(contextView!!, viewModel.removeStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
-                    "Probeer opnieuw"
-                )
-                {
-                }.show()
-            }
+
+            Snackbar.make(contextView!!, viewModel.getStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                "Probeer opnieuw"
+            )
+            {
+            }.show()
+
 
         })
 

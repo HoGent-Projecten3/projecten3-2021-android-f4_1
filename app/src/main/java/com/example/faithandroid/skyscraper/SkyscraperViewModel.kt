@@ -13,9 +13,8 @@ import com.example.faithandroid.models.Step
 
 import com.example.faithandroid.models.Post
 
-import com.example.faithandroid.network.FaithApi
-import com.example.faithandroid.network.FaithApiService
 import com.example.faithandroid.network.FaithProperty
+import com.example.faithandroid.util.Resource
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
@@ -28,82 +27,38 @@ import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.await
 
+
 /**
  * This is the viewmodel for the skyscraper
  *
- * @property shareStatus is the status of whether the goal could be shared
- * @property completedStatus is the status of whether the goal was completed
- * @property removeStatus is the status of whether the goal could be successfully removed
  * @property getStatus is the status of whether the goal could be retrieved from the backend
  */
-class SkyscraperViewModel : ViewModel() {
-    private val _shareStatus = MutableLiveData<String>()
-    private val _completedStatus = MutableLiveData<String>()
-    private val _removeStatus = MutableLiveData<String>()
-    private val _getStatus = MutableLiveData<String>()
 
-    val shareStatus: LiveData<String>
-        get() = _shareStatus
+class SkyscraperViewModel(private val goalPostRepository: GoalPostRepository) : ViewModel() {
 
-    val completedStatus: LiveData<String>
-        get() = _completedStatus
 
-    val removeStatus: LiveData<String>
-        get() = _removeStatus
-
+    private val _status = MutableLiveData<String>()
     val getStatus: LiveData<String>
-        get() = _getStatus
+        get() = _status
   
 
     private var test = mutableListOf<GoalPost>();
 
-    private var testLiveData = MutableLiveData<List<GoalPost>>()
-    val testLive: LiveData<List<GoalPost>>
-        get() = testLiveData
+    var testLive : LiveData<Resource<List<GoalPost>>> = goalPostRepository.getPostsOfSkyScraper()
+
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    init {
 
-        getPostsOfSkyscraper()
-        testLiveData.value = test;
-    }
-
-    /**
-     * gets the posts stored in skyscraper
-     */
-    fun getPostsOfSkyscraper() {
-        coroutineScope.launch {
-            var getPropertiesDeferred = FaithApi.retrofitService.getPostsOfSkyScraper();
-
-            try {
-
-                var listResult = getPropertiesDeferred.await()
-                if(listResult.size > 0){
-
-                    testLiveData.value = listResult
-                }
-
-            } catch (e: Exception){
-
-                _getStatus.value = e.localizedMessage
-            }
-        }
-    }
-
-    /**
-     * posts a new goal
-     *
-     * @param goalPost is the goal that is to be added
-     */
     fun postNewGoalPost( goalPost: GoalPost) {
         viewModelScope.launch {
             try {
-                val response = FaithApi.retrofitService.postGoalPost(goalPost)
-                getPostsOfSkyscraper()
+                goalPostRepository.postGoalPost(goalPost)
+                val response = goalPostRepository.postGoalPost(goalPost)
             }catch (e: Exception){
                 // error handling als new goal niet werkt/ er iets mis loopt
+                _status.value = e.localizedMessage
             }
         }
     }
@@ -116,17 +71,13 @@ class SkyscraperViewModel : ViewModel() {
     fun goalBehaald(id:Int){
         viewModelScope.launch {
             try {
-                val response = FaithApi.retrofitService.checkGoal(id)
-                _completedStatus.value = "Doel behaald".toString();
-                getPostsOfSkyscraper()
-
+                val response = goalPostRepository.checkGoal(id)
+                _status.value = "Doel behaald"
             }catch (e: HttpException) {
-                _completedStatus.value = "Er liep iets mis. " + e.localizedMessage
-               // _completedStatus.value = e.localizedMessage
+                _status.value = "Er liep iets mis" + e.localizedMessage
             }
             catch (e: Exception) {
-                _completedStatus.value = "Er liep iets mis"
-               // _completedStatus.value = e.localizedMessage
+                _status.value = "Er liep iets mis"
             }
         }
     }
@@ -139,13 +90,11 @@ class SkyscraperViewModel : ViewModel() {
     fun shareGoal(id:Int){
         coroutineScope.launch{
             try {
-                 val response = FaithApi.retrofitService.shareGoal(id)
+                 val response = goalPostRepository.shareGoal(id)
                  response.await()
-                getPostsOfSkyscraper()
-                 _shareStatus.value = "Doel gedeeld"
+                _status.value = "Doel gedeeld"
             } catch (e: Exception){
-                _shareStatus.value = "Er liep iets mis"
-               // _shareStatus.value = e.localizedMessage
+                _status.value = "Er liep iets mis"
             }
         }
     }
@@ -158,17 +107,13 @@ class SkyscraperViewModel : ViewModel() {
     fun deleteGoal(id:Int){
         coroutineScope.launch{
             try {
-                val response = FaithApi.retrofitService.removeGoal(id)
-               val stringResponse= response.await()
-                getPostsOfSkyscraper()
-                _removeStatus.value = R.string.doel_verwijderd.toString()
+                goalPostRepository.removeGoal(id)
+                _status.value = "Doel verwijderd";
             } catch (e: Exception){
-                _removeStatus.value = "Er liep iets mis"
-               // _removeStatus.value = e.localizedMessage
+                _status.value = "Er liep iets mis"
             }
         }
     }
-
 
     override fun onCleared() {
         super.onCleared()

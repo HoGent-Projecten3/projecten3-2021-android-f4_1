@@ -9,10 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.faithandroid.R
@@ -20,11 +22,13 @@ import com.example.faithandroid.databinding.SkyscraperAddGoalBinding
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Step
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.app_bar_main.view.*
 import kotlinx.android.synthetic.main.skyscraper_add_goal.*
 import kotlinx.android.synthetic.main.skyscraper_add_goal.view.*
 import kotlinx.android.synthetic.main.skyscraper_add_goal.view.stepList
 import kotlinx.android.synthetic.main.skyscraper_goaldetails.view.*
+import org.koin.android.ext.android.inject
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -36,7 +40,7 @@ import java.util.function.Consumer
  * @property viewModel is the viewModel for skyscraper
  */
 class addGoalFragment : Fragment() {
-    private lateinit var viewModel: SkyscraperViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +51,7 @@ class addGoalFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val viewModel : SkyscraperViewModel by inject()
         val binding = DataBindingUtil.inflate<SkyscraperAddGoalBinding>(
             inflater,
             R.layout.skyscraper_add_goal,
@@ -54,7 +59,7 @@ class addGoalFragment : Fragment() {
             false
         );
 
-        viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
+        //viewModel = ViewModelProvider(this).get(SkyscraperViewModel::class.java)
 
 
         binding.annuleerButton.setOnClickListener { view: View ->
@@ -79,8 +84,13 @@ class addGoalFragment : Fragment() {
             var datum = LocalDateTime.now()
             var newGoal = GoalPost(0, titel, beschrijving, false, offsteps, datum.toString())
 
-            viewModel.postNewGoalPost(newGoal);
 
+            viewModel.postNewGoalPost(newGoal);
+            Toast.makeText(
+                context,
+                "Je doel is toegevoegd!",
+                Toast.LENGTH_LONG
+            ).show()
             view.findNavController().navigate(R.id.action_addGoalFragment_to_skyscraperFragment)
         }
 
@@ -98,6 +108,18 @@ class addGoalFragment : Fragment() {
                 binding.stepList.addView(newView, binding.stepList.childCount - 1)
             }
         }
+
+        viewModel.getStatus.observe(this.viewLifecycleOwner, Observer {
+            val contextView = this.view
+
+            Snackbar.make(contextView!!, viewModel.getStatus.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                ""
+            )
+            {
+            }.show()
+
+
+        })
 
 
         return binding.root

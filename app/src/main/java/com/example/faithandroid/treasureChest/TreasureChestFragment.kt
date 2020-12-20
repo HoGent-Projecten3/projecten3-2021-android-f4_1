@@ -13,8 +13,11 @@ import com.example.faithandroid.*
 import com.example.faithandroid.adapters.PostAdapter
 import com.example.faithandroid.databinding.TreasurechestBinding
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
+import com.example.faithandroid.util.Status
 import com.google.android.material.snackbar.Snackbar
+import org.koin.android.ext.android.inject
 
 /**
  * This is a fragment for the treasure chest
@@ -23,17 +26,18 @@ import com.google.android.material.snackbar.Snackbar
  * @property adapter is the adapter that binds the posts in treasure chest to the recyclerview
  */
 class TreasureChestFragment: Fragment() {
+    val postRepository : PostRepository by inject()
+
     private val postViewModel: PostViewModel by lazy{
-        ViewModelProvider(this, ViewModelFactory(PlaceType.Schatkist)).get(PostViewModel::class.java)
+        ViewModelProvider(this, ViewModelFactory(PlaceType.Schatkist,postRepository)).get(PostViewModel::class.java)
     }
 
     private lateinit var  adapter: PostAdapter
+    private val loadingDialogFragment by lazy { LoadingFragment() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,20 +49,16 @@ class TreasureChestFragment: Fragment() {
           container,
           false
       );
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
         binding.viewModel = postViewModel
 
         this.adapter = PostAdapter(object : CustomClick {
             override fun onClick(post: Post) {
-                true
             }
         })
 
-        binding.TreasureChestRecycler.adapter = this.adapter
-
-
-
+        binding.TreasureChestRecycler?.adapter = this.adapter
 
         binding.AddPostButton.setOnClickListener { view: View ->
             val action =
@@ -68,44 +68,16 @@ class TreasureChestFragment: Fragment() {
             view.findNavController().navigate(action)
         }
 
-        binding.TreasureChestRecycler.adapter =
+        binding.TreasureChestRecycler?.adapter =
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
-
                     postViewModel.deletePostByEmail(post.id,  PlaceType.Schatkist)
-                    postViewModel.getPostsOfPlace(PlaceType.Schatkist)
+                    postViewModel.postList
                     true
                 }
             })
 
-        postViewModel.status.observe(this.viewLifecycleOwner, Observer {
-            val contextView = this.view
-            if (contextView != null) {
-                Snackbar.make(contextView, postViewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
-                    R.string.tryAgain
-                )
-                {
-                    postViewModel.getPostsOfPlace(PlaceType.Schatkist)
-                }.show()
-            }
-        })
-
-        postViewModel.postList.observe(this.viewLifecycleOwner, Observer{
-
-            this.adapter.notifyDataSetChanged()
-        })
-
         return binding.root
-    }
-
-    override fun onStart() {
-        super.onStart()
-        postViewModel.getPostsOfPlace(PlaceType.Schatkist)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        postViewModel.getPostsOfPlace(PlaceType.Schatkist)
     }
 
 

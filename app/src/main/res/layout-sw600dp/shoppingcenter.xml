@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="ShoppingCenterViewModel"
+            type="com.example.faithandroid.AvatarViewModel" />
+    </data>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/include2"
+            layout="@layout/app_bar_back"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="?attr/actionBarSize">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:id="@+id/linLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/shoppingScroll"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:id="@+id/people"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toTopOf="@id/shoppingScroll"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <Button
+                            android:id="@+id/save_person"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:padding="5dp"
+                            android:text="Opslaan"
+                            android:textColor="#FFFFFF"
+                            app:backgroundTint="#F8A59E"></Button>
+
+                        <Button
+                            android:id="@+id/personA"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:padding="5dp"
+                            android:text="Persoon A"
+                            android:textColor="#FFFFFF"
+                            app:backgroundTint="#F8A59E"></Button>
+
+                        <Button
+                            android:id="@+id/personB"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:padding="5dp"
+                            android:text="Persoon B"
+                            android:textColor="#FFFFFF"
+                            app:backgroundTint="#F8A59E"></Button>
+                    </LinearLayout>
+
+                    <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                        android:id="@+id/imgAvatarA"
+                        android:layout_width="135dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="?attr/actionBarSize"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintBottom_toTopOf="@id/shoppingScroll"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:vector_src="@drawable/ic_avatar_female"
+                        tools:srcCompat="@tools:sample/avatars" />
+
+                    <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                        android:id="@+id/imgAvatarB"
+                        android:layout_width="135dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="?attr/actionBarSize"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintBottom_toTopOf="@id/shoppingScroll"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:vector_src="@drawable/ic_avatar_male"
+                        tools:srcCompat="@tools:sample/avatars" />
+
+                </LinearLayout>
+
+                <ScrollView
+                    android:id="@+id/shoppingScroll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/linLayout"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="450dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/lblHair"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Haarkleur:" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+
+                            android:id="@+id/hairGridView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:AvatarParts="@{ShoppingCenterViewModel.hairProperties}" />
+
+                        <TextView
+                            android:id="@+id/lblEye"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Oogkleur:" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+
+                            android:id="@+id/eyeGridView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:AvatarParts="@{ShoppingCenterViewModel.eyeProperties}" />
+
+                        <TextView
+                            android:id="@+id/lblSkin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Huidskleur:" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+
+                            android:id="@+id/skinGridView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:AvatarParts="@{ShoppingCenterViewModel.skinProperties}" />
+
+                        <TextView
+                            android:id="@+id/lblBody"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Kleren:" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+
+                            android:id="@+id/bodyGridView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:AvatarParts="@{ShoppingCenterViewModel.bodyProperties}" />
+                    </LinearLayout>
+                </ScrollView>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+    </FrameLayout>
+</layout>

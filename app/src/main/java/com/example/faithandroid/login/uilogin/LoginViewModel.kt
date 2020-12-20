@@ -11,7 +11,6 @@ import com.example.faithandroid.login.data.Result
 import com.example.faithandroid.R
 import com.example.faithandroid.login.data.User
 import com.example.faithandroid.models.Adolescent
-import com.example.faithandroid.network.FaithApi
 import kotlinx.coroutines.*
 import retrofit2.await
 

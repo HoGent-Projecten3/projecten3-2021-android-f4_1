@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,9 @@ import android.widget.ArrayAdapter
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
@@ -21,8 +25,11 @@ import com.example.faithandroid.*
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.adapters.FilteredPostAdapter
 import com.example.faithandroid.databinding.AddVideoBinding
+import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
+import org.koin.android.ext.android.inject
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
 import java.util.*
@@ -45,6 +52,7 @@ class AddVideoFragment: Fragment() {
     var post: Post? = null
 
     var nieuwePost: Boolean = false;
+    val postRepository : PostRepository by inject()
 
 
 
@@ -71,10 +79,18 @@ class AddVideoFragment: Fragment() {
             false
         );
 
-
         binding.lifecycleOwner = this
 
-        viewModel = ViewModelProvider(this, ViewModelFactory(args.placeType)).get(PostViewModel::class.java)
+        viewModel = ViewModelProvider(this, ViewModelFactory(args.placeType,postRepository)).get(PostViewModel::class.java)
+
+        viewModel.status.observe(this.viewLifecycleOwner, Observer {
+            val contextView = this.view
+            Snackbar.make(contextView!!, viewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                ""
+            )
+            {
+            }.show()
+        })
 
         binding.album.setOnClickListener{ view: View ->
             val getIntent = Intent(Intent.ACTION_GET_CONTENT)
@@ -99,9 +115,6 @@ class AddVideoFragment: Fragment() {
                 }
             }
 
-
-
-
         val placeTypes =  PlaceType.values()
 
         val adapter = this.context?.let {
@@ -115,14 +128,12 @@ class AddVideoFragment: Fragment() {
         //val editTextFilledExposedDropdown: AutoCompleteTextView? = this.view?.findViewById(R.id.filled_exposed_dropdown)
         binding.filledExposedDropdown.setAdapter(adapter)
         binding.filledExposedDropdown.setText(PlaceType.Rugzak.name, false)
-
         binding.filledExposedDropdown.setOnItemClickListener { parent, view, position, id ->
             viewModel.getFilteredPostFromPlace(
                 placeTypes[position],
                 PostType.Video
             )
         }
-
 
         viewModel.getFilteredPostFromPlace(
             PlaceType.Rugzak,
@@ -140,13 +151,11 @@ class AddVideoFragment: Fragment() {
 
 
 
-        binding.videoToevoegenButton.setOnClickListener{
-
+       binding.videoToevoegenButton.setOnClickListener{
             if(nieuwePost)
             {
                 post?.title = binding.titel.text.toString()
                 post?.data = binding.titel.text?.replace("\\s".toRegex(), "").toString()
-
                 post?.let { it1 -> viewModel.addPostByEmail(
                     it1,
                     args.placeType
@@ -156,12 +165,13 @@ class AddVideoFragment: Fragment() {
             {
                 if(post != null)
                 {
-
                     viewModel.addExistingPostToPlace(post!!.id, args.placeType)
+
+
+                }else{
+                    viewModel.status = MutableLiveData("Er liep iets mis met een bestaande post toevoegen")
                 }
             }
-
-
             when(args.placeType)
             {
                 PlaceType.Prikbord -> {
@@ -189,9 +199,7 @@ class AddVideoFragment: Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == PICK_IMAGE && resultCode == RESULT_OK) {
-
            val videoString = data?.data?.let { uriToBase64(it) }
-
             this.post = Post(
                 0,
                 "video",
@@ -199,8 +207,11 @@ class AddVideoFragment: Fragment() {
                 "2020-11-19T21:19:39.362Z",
                 PostType.Video.ordinal,
                 videoString,
-                "")
-
+                "",
+                backpack = false,
+                bulletinBoard = false,
+                treasureChest = false
+            )
             nieuwePost = true
         }
         if (data != null) {
@@ -217,13 +228,10 @@ class AddVideoFragment: Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun uriToBase64(uri: Uri): String
     {
-        val inputStream: InputStream? =
-            getActivity()?.getContentResolver()?.openInputStream(uri)
-
+        val inputStream: InputStream? = getActivity()?.getContentResolver()?.openInputStream(uri)
         val byteBuffer = ByteArrayOutputStream()
         val bufferSize = 1024
         val buffer = ByteArray(bufferSize)
-
         var len = 0
         while (inputStream?.read(buffer).also {
                 if (it != null) {
@@ -233,9 +241,7 @@ class AddVideoFragment: Fragment() {
             byteBuffer.write(buffer, 0, len)
         }
         val arr = byteBuffer.toByteArray()
-
         val image: String = Base64.getEncoder().encodeToString(arr)
-
         return image
     }
 

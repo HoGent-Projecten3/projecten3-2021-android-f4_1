@@ -9,11 +9,15 @@ import com.example.faithandroid.PlaceType
 import com.example.faithandroid.PostType
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
-import com.example.faithandroid.network.FaithApi
+import com.example.faithandroid.network.FaithApiService
+import com.example.faithandroid.network.FaithProperty
+import com.example.faithandroid.util.Resource
 import kotlinx.coroutines.*
+import okhttp3.internal.wait
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.await
 
 /**
  * This is the viewModel for all posts
@@ -22,85 +26,67 @@ import retrofit2.Response
  * @property postList is the list of posts from a specific place, provided by the backend
  * @property status shows the status of the data in postList
  */
-class PostViewModel(private var placeType: PlaceType): ViewModel() {
-
-    private var _posts = MutableLiveData<List<Post>>()
-    var postList: LiveData<List<Post>> = MutableLiveData<List<Post>>()
-        get() = _posts
-
-    private val _status = MutableLiveData<String>()
-    val status: LiveData<String>
-        get() = _status
-
-//    private var viewModelJob = Job()
-//    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
-
-    init   {
-        getPostsOfPlace(placeType)
-    }
-
-    /**
-     * gets the posts of a given type for a specific place
-     *
-     * @param placeType is the place the posts need to come from
-     * @param postType is the type the posts need to be
-     */
-    fun getFilteredPostFromPlace(placeType: PlaceType, postType: PostType) {
-
-        viewModelScope.launch {
-
-            val stringCall: Call<List<Post>> =
-                FaithApi.retrofitService.getFilteredFromPlace(placeType.ordinal, postType.ordinal)
-
-            stringCall.enqueue(object : Callback<List<Post>> {
-
-                 override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
-                    if (response.isSuccessful()) {
-                       if(response.body()!!.isEmpty())
-                        {
-                            _status.value = "Sorry er is niets om weer te geven"
-                            _posts.value = response.body()
-                        }else {
-                            _posts.value = response.body()
-                       }
-                    }
-                  else {
-                            _status.value = "Er kon geen verbinding gemaakt worden"
-                        }
-                    }
-
-                override fun onFailure(call: Call<List<Post>>?, t: Throwable?) {
-                    _status.value = "Er liep iets mis"
-                    }
-
-            })
-
-
-        }
-
-    }
+class PostViewModel(placeType: PlaceType,private val postRepository: PostRepository): ViewModel() {
 
     /**
      * gets the posts of a specific place, regardless of their posttype
      *
      * @param placeType is the place the posts need to come from
      */
-    fun getPostsOfPlace(placeType: PlaceType)    {
+    private var _postList : LiveData<Resource<List<Post>>> = postRepository.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
+    val postList: LiveData<Resource<List<Post>>>
+        get() = _postList
+
+    private var _filteredPostList : MutableLiveData<List<Post>> =  MutableLiveData()
+    val filteredPostList: LiveData<List<Post>>
+        get() = _filteredPostList
+
+
+
+    private val _requestConsultationStatus = MutableLiveData<String>("Er liep iets mis")
+    val requestConsultationStatus: LiveData<String>
+        get() = _requestConsultationStatus
+
+
+    private var _status = MutableLiveData<String>()
+    var status: LiveData<String>
+        get() = _status
+        set(text) {
+            _status.value = text.value
+        }
+
+
+        /**
+         * gets the posts of a given type for a specific place
+         *
+         * @param placeType is the place the posts need to come from
+         * @param postType is the type the posts need to be
+         */
+    fun getFilteredPostFromPlace(placeType: PlaceType, postType: PostType) {
         viewModelScope.launch {
             val stringCall: Call<List<Post>> =
-                FaithApi.retrofitService.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
+                postRepository.getFilteredFromPlace(placeType.ordinal, postType.ordinal)
+
             stringCall.enqueue(object : Callback<List<Post>> {
+
                 override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
                     if (response.isSuccessful()) {
-                        _posts.value = response.body()
+                        if (response.body()!!.isEmpty()) {
+                            _status.value = "Sorry er is niets om weer te geven"
+                            _filteredPostList.value = response.body()
+                        } else {
+                            _filteredPostList.value = response.body()
+                        }
+                    } else {
+                        _status.value = "Er kon geen verbinding gemaakt worden"
                     }
                 }
-                override fun onFailure(call: Call<List<Post>>?, t: Throwable?) {
-                    t?.localizedMessage?.let {
 
-                    }
+                override fun onFailure(call: Call<List<Post>>?, t: Throwable?) {
+                    _status.value = "Er liep iets mis"
+
                 }
-            })
+        })
         }
     }
 
@@ -115,26 +101,27 @@ class PostViewModel(private var placeType: PlaceType): ViewModel() {
         var bool: Boolean = true
         viewModelScope.launch {
             val stringCall: Call<Void> =
-
-                FaithApi.retrofitService.addPostByEmail(placeType.ordinal, post)
+                postRepository.addPostByEmail(post, placeType.ordinal)
 
             stringCall.enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful()) {
                         val responseString: String? = response.code().toString()
-                        getPostsOfPlace(this@PostViewModel.placeType)
                         if (responseString != null) {
 
                         }
                     }
                 }
+
                 override fun onFailure(call: Call<Void>?, t: Throwable?) {
                     bool = false
+                    _status.value = "Er liep iets mis bij het toevoegen."
                 }
             })
         }
         return bool
-        }
+    }
+
 
     /**
      * Adds a post that already exists within the app to another place
@@ -142,53 +129,12 @@ class PostViewModel(private var placeType: PlaceType): ViewModel() {
      * @param id is the id of the post
      * @param placeType is the place the post needs to be added to
      */
-    fun addExistingPostToPlace(id: Int, placeType: PlaceType)    {
-        viewModelScope.launch {
-            val stringCall: Call<Void> =
-                FaithApi.retrofitService.addExistingPostToPlace(id, placeType.ordinal)
-            stringCall.enqueue(object : Callback<Void> {
-                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    if (response.isSuccessful()) {
-                        val responseString: String? = response.code().toString()
-                        getPostsOfPlace(this@PostViewModel.placeType)
-                        if (responseString != null) {
+    fun addExistingPostToPlace(id: Int, placeType: PlaceType) {
+        postRepository.addExistingPostToPlace(id, placeType.ordinal)
 
-                        }
-                    }
-                }
-                override fun onFailure(call: Call<Void>?, t: Throwable?) {
-
-                }
-            })
-        }
     }
 
-    /**
-     * Deletes a post from a specific place
-     *
-     * @param id is the id of the post
-     * @param placeType is the place the post will be deleted from
-     */
-    fun deletePostByEmail(id: Int,  placeType: PlaceType)    {
-        viewModelScope.launch {
-            val stringCall: Call<Void> =
-                FaithApi.retrofitService.deletePostByEmail(placeType.ordinal,id)
-            stringCall.enqueue(object : Callback<Void> {
-                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    if (response.isSuccessful()) {
-                        val responseString: String? = response.code().toString()
-                        getPostsOfPlace(this@PostViewModel.placeType)
-                        if (responseString != null) {
 
-                        }
-                    }
-                }
-                override fun onFailure(call: Call<Void>?, t: Throwable?) {
-
-                }
-            })
-        }
-    }
 
     /**
      * Deletes a post from every place it exists and from the app altogether
@@ -196,24 +142,37 @@ class PostViewModel(private var placeType: PlaceType): ViewModel() {
      * @param postId is the id of the post to be deleted
      */
     fun pemanentlyDeletePost(postId: Int) {
+        postRepository.permanentlyDeletePost(postId) //ERRORHANDELING MET RESPONSE
+    }
+
+
+        /**
+         * Deletes a post from a specific place
+         *
+         * @param id is the id of the post
+         * @param placeType is the place the post will be deleted from
+         */
+    fun deletePostByEmail(id: Int, placeType: PlaceType) {
+                postRepository.deletePostByEmail(placeType.ordinal, id)
+    }
+
+
+    /**
+     * requests a consultation for the logged in adolescent
+     */
+    fun requestConsultation() {
         viewModelScope.launch {
-            val stringCall: Call<Void> = FaithApi.retrofitService.permanentlyDeletePost(postId)
-            stringCall.enqueue(object : Callback<Void> {
-                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    if (response.isSuccessful()) {
-                        val responseString: String? = response.code().toString()
-                        getPostsOfPlace(placeType)
-                        if (responseString != null) {
+            try {
+                postRepository.requestConsultation()
+                _requestConsultationStatus.value = "gelukt!"
 
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<Void>?, t: Throwable?) {
-
-                }
-            })
+            } catch (e: Exception) {
+                _requestConsultationStatus.value = "niet gelukt!"
+            }
         }
     }
 
+
+
 }
+

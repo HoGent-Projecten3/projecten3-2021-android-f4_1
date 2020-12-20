@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
@@ -16,7 +17,10 @@ import com.example.faithandroid.*
 import com.example.faithandroid.adapters.FilteredPostAdapter
 import com.example.faithandroid.databinding.AddTextBinding
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
+import org.koin.android.ext.android.inject
+import com.google.android.material.snackbar.Snackbar
 
 /**
  * This is a fragment for adding a textpost from one place to another
@@ -26,19 +30,11 @@ import com.example.faithandroid.post.PostViewModel
  * @property viewModel is the viewmodel for all posts
  */
 class addTextFragment: Fragment() {
-    val args: addTextFragmentArgs by navArgs()
-
+    val args: AddTextFragmentArgs by navArgs()
     var post: Post? = null
-
     private lateinit var  viewModel: PostViewModel
-
     private lateinit var  dropdown : Spinner
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
+    val postRepository : PostRepository by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,11 +45,19 @@ class addTextFragment: Fragment() {
             R.layout.add_text,
             container,
             false,
-
         )
         binding.lifecycleOwner = this
 
-        viewModel = ViewModelProvider(this, ViewModelFactory(args.placeType)).get(PostViewModel::class.java)
+        viewModel = ViewModelProvider(this, ViewModelFactory(args.placeType,postRepository)).get(PostViewModel::class.java)
+
+        viewModel.status.observe(this.viewLifecycleOwner, Observer {
+            val contextView = this.view
+            Snackbar.make(contextView!!, viewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                ""
+            )
+            {
+            }.show()
+        })
 
         binding.imageView4.setOnClickListener{
                 view: View ->  val action =
@@ -62,7 +66,6 @@ class addTextFragment: Fragment() {
             )
             view.findNavController().navigate(action)
         }
-
 
         val placeTypes =  PlaceType.values()
 
@@ -74,7 +77,6 @@ class addTextFragment: Fragment() {
             )
         }
 
-
         //val editTextFilledExposedDropdown: AutoCompleteTextView? = this.view?.findViewById(R.id.filled_exposed_dropdown)
         binding.filledExposedDropdown.setAdapter(adapter)
         binding.filledExposedDropdown.setText(PlaceType.Rugzak.name, false)
@@ -85,7 +87,6 @@ class addTextFragment: Fragment() {
                 PostType.Text
             )
         }
-
 
         viewModel.getFilteredPostFromPlace(
             PlaceType.Rugzak,
@@ -101,12 +102,9 @@ class addTextFragment: Fragment() {
             })
 
 
-
         binding.textToevoegenButton.setOnClickListener{
-
-
-            post?.let { it1 -> viewModel.addPostByEmail(
-                it1,
+            post?.let { it1 -> viewModel.addExistingPostToPlace(
+                it1.id,
                 args.placeType
             ) }
             when(args.placeType)

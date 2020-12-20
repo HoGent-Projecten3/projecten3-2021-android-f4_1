@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,8 +20,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.ProfielBinding
 import com.example.faithandroid.models.Adolescent
+import org.koin.android.ext.android.inject
+
 import com.example.faithandroid.models.Avatar
 import com.sdsmdg.harjot.vectormaster.VectorMasterView
+import org.koin.android.ext.android.inject
+import java.lang.Exception
 
 /**
  * This is a fragment for the profilescreen
@@ -34,7 +39,6 @@ import com.sdsmdg.harjot.vectormaster.VectorMasterView
  */
 class ProfielFragment: Fragment() {
     private var adolescent: Adolescent? = null
-    private lateinit var viewModel: ProfielViewModel
     private var nieuwww = ""
     private var nieuwcon = ""
     private lateinit var vectorMasterViewA: VectorMasterView
@@ -50,6 +54,7 @@ class ProfielFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val viewModel : ProfielViewModel by inject()
         val binding = DataBindingUtil.inflate<ProfielBinding>(
             inflater,
             R.layout.profiel,
@@ -60,11 +65,25 @@ class ProfielFragment: Fragment() {
         this.vectorMasterViewA = binding.imgAvatarA as VectorMasterView
         this.vectorMasterViewB = binding.imgAvatarB as VectorMasterView
 
-        viewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
-        viewModel.getAdolescent()
+        try {
+            viewModel.getAdolescent()
+        }catch(e: Exception){
+            var contextView = this.view;
+            com.google.android.material.snackbar.Snackbar.make(
+                contextView!!,
+                "Er liep iets mis bij het ophalen van de gebruiker",
+                com.google.android.material.snackbar.Snackbar.LENGTH_SHORT)
+            .setAction(
+                "Try again"
+            )
+            {
+                viewModel.getAdolescent();
+            }.show()
+        }
+
+        //viewModel.getAdolescent()
 
         binding.imgAvatarB.setVisibility(View.GONE)
-
         viewModel.adol.observe(viewLifecycleOwner, Observer {
             adolescent = it
             binding.profielNaam.text =

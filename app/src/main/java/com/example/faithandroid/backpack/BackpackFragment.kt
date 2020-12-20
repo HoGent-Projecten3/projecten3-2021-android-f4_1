@@ -12,14 +12,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.faithandroid.*
+import com.example.faithandroid.adapters.FilteredPostAdapter
 import com.example.faithandroid.adapters.PostAdapter
 import com.example.faithandroid.databinding.BackpackBinding
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
+import com.example.faithandroid.util.Status
 import com.google.android.material.snackbar.Snackbar
+import org.koin.android.ext.android.inject
 
 /**
  * This is a fragment for the backpack
@@ -30,10 +32,12 @@ import com.google.android.material.snackbar.Snackbar
  */
 class BackpackFragment: Fragment() {
 
-    private lateinit var viewModel: BackpackViewModel
+    private lateinit var postAdapter: PostAdapter
     private lateinit var dropdownList: AutoCompleteTextView
+    private val loadingDialogFragment by lazy { LoadingFragment() }
+    val postRepository : PostRepository by inject()
     private val postViewModel: PostViewModel by lazy{
-        ViewModelProvider(this, ViewModelFactory(PlaceType.Rugzak)).get(PostViewModel::class.java)
+        ViewModelProvider(this, ViewModelFactory(PlaceType.Rugzak,postRepository)).get(PostViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,8 +49,7 @@ class BackpackFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        val binding = DataBindingUtil.inflate<BackpackBinding>(
+      val binding = DataBindingUtil.inflate<BackpackBinding>(
           inflater,
           R.layout.backpack,
           container,
@@ -54,12 +57,9 @@ class BackpackFragment: Fragment() {
       );
 
 
-        binding.lifecycleOwner = this
-        viewModel = ViewModelProvider(this).get(BackpackViewModel::class.java)
+        binding.lifecycleOwner = viewLifecycleOwner
 
         // staggeredGridLayoutManager with 3 columns and vertical orientation
-        val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
-        binding.BackpackRecycler.layoutManager = staggeredGridLayoutManager
 
         val postTypes =  PostType.values()
 
@@ -79,12 +79,11 @@ class BackpackFragment: Fragment() {
                 PlaceType.Rugzak,
                 postTypes[position]
             )
-
         }
         binding.postViewModel = postViewModel
 
         binding.closeFilterBtn.setOnClickListener{
-            postViewModel.getPostsOfPlace(PlaceType.Rugzak)
+            postViewModel.postList
         }
 
         binding.AddPostButton.setOnClickListener { view: View ->
@@ -95,17 +94,62 @@ class BackpackFragment: Fragment() {
             view.findNavController().navigate(action)
         }
 
+        postAdapter = PostAdapter(object : CustomClick {
+            override fun onClick(post: Post) {
 
+                postViewModel.pemanentlyDeletePost(post.id)
+                true
+            }
+        })
+
+
+        //postAdapter = PostAdapter()
+
+
+
+
+        binding.BackpackRecycler.adapter =
+           postAdapter
+        postViewModel.postList.observe(this.viewLifecycleOwner, Observer
+        {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        showProgress(false)
+                        Log.d("repodata",postViewModel.postList.value?.data.toString())
+                        postAdapter.submitList(resource.data)
+                    }
+                }
+            }
+        })
+
+        postViewModel.postList.observe(this.viewLifecycleOwner, Observer
+        {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        showProgress(false)
+                        postAdapter.submitList(resource.data)
+                    }
+                    Status.LOADING -> {
+                        showProgress(true)
+                    }
+                    Status.ERROR -> {
+                        showProgress(false)
+                    }
+                }
+            }
+        })
         binding.BackpackRecycler.adapter =
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
                     postViewModel.pemanentlyDeletePost(post.id)
                     true
-                    postViewModel.getPostsOfPlace(PlaceType.Rugzak)
+                    postViewModel.postList
                 }
 
             }
-            )
+         )
 
         postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
@@ -117,16 +161,11 @@ class BackpackFragment: Fragment() {
                     )
                     {
 
-                    }.show()
+                }.show()
             }
         })
         return binding.root
-    }
 
-
-    override fun onStart() {
-        super.onStart()
-        postViewModel.getPostsOfPlace(PlaceType.Rugzak)
     }
 
     override fun onResume() {
@@ -139,8 +178,28 @@ class BackpackFragment: Fragment() {
         }
 
         dropdownList.setAdapter(adapter)
-        postViewModel.getPostsOfPlace(PlaceType.Rugzak)
+
+
         super.onResume()
     }
 
-}
+            private fun showProgress(b: Boolean) {
+                if (b) {
+                    if (!loadingDialogFragment.isAdded) {
+                        loadingDialogFragment.show(
+                            requireActivity().supportFragmentManager,
+                            "loader"
+                        )
+                    }
+                } else {
+                    if (loadingDialogFragment.isAdded) {
+                        loadingDialogFragment.dismissAllowingStateLoss()
+                    }
+                }
+            }
+
+            fun onClick(post: Post) {
+                TODO("Not yet implemented")
+            }
+        }
+

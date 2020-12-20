@@ -17,6 +17,7 @@ import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
@@ -24,7 +25,7 @@ import retrofit2.http.*
 import javax.security.auth.callback.Callback
 
 //TODO: give url
-private const val BASE_URL = "https://api.spotify.com/v1/"
+/*private const val BASE_URL = "https://api.spotify.com/v1/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -43,7 +44,7 @@ private val retrofit = Retrofit.Builder()
         .build())
     .baseUrl(BASE_URL)
     .build()
-
+*/
 
 interface SpotifyApiService {
 
@@ -53,7 +54,7 @@ interface SpotifyApiService {
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @GET("me/playlists")
-    fun getPlaylists(): Call<PlaylistWrapper>
+    suspend fun getPlaylists(): Response<PlaylistWrapper>
 
 
     @Headers("Content-Type: application/json", "accept: application/json")
@@ -62,9 +63,9 @@ interface SpotifyApiService {
 
 }
 
-object SpotifyApi {
+/*object SpotifyApi {
     val retrofitService : SpotifyApiService by lazy {
         retrofit.create(SpotifyApiService::class.java)
     }
-}
+}*/
 

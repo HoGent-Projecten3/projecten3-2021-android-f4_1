@@ -33,9 +33,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
-
 import androidx.navigation.ActivityNavigator
-
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -45,13 +43,13 @@ import com.example.faithandroid.databinding.AppNavHeaderMainBinding
 import com.example.faithandroid.login.LoginFragment
 import com.example.faithandroid.login.uilogin.LoginActivity
 import com.example.faithandroid.login.uilogin.LoginViewModel
-import com.example.faithandroid.login.uilogin.LoginViewModelFactory
 import com.example.faithandroid.profiel.ProfielViewModel
 import com.example.faithandroid.profiel.ProfielFragment
 import com.google.android.material.navigation.NavigationView
 
 
 import kotlinx.android.synthetic.main.activity_main.view.*
+import org.koin.android.ext.android.inject
 
 
 //import androidx.databinding.DataBindingUtil
@@ -66,8 +64,8 @@ import kotlinx.android.synthetic.main.activity_main.view.*
 class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavigationItemSelectedListener {
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var viewModel: LoginViewModel
     private  var username: String = ""
+    val viewModel : LoginViewModel by inject()
 
     private lateinit var bind: AppNavHeaderMainBinding
     private val LOGIN_REQUEST_CODE: Int = 1
@@ -84,19 +82,10 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
 
-
         if (AppPreferences.username == null) {
             val taskIntent =  Intent(this, LoginActivity::class.java)
             startActivityForResult(taskIntent, LOGIN_REQUEST_CODE)
         }
-
-        viewModel = ViewModelProvider(
-            this,
-            LoginViewModelFactory()
-        )
-            .get(LoginViewModel::class.java)
-
-        val shoppingCenterViewModel = ViewModelProvider(this).get(AvatarViewModel::class.java)
 
         drawerLayout = findViewById(R.id.drawerLayout)
         var navHeader = findViewById<NavigationView>(R.id.navView)
@@ -155,8 +144,8 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
      */
     fun ClickMenu(view: View){
         //open drawer
-        var pvm: ProfielViewModel = ViewModelProvider(this).get(ProfielViewModel::class.java)
-        pvm.getAdolescent()
+        val pvm: ProfielViewModel by inject()
+        //pvm.getAdolescent()
         pvm.adol.observe(this, {
             username = it.firstName + " " + it.name
             bind.nameText.text = username
@@ -254,16 +243,12 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
             var token = data?.getStringExtra("token").toString();
             AppPreferences.token = token
         }
-
     }
 
     override fun finish() {
         super.finish()
         ActivityNavigator.applyPopAnimationsToPendingTransition(this)
-
     }
-
-
 
 }
 

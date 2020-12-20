@@ -19,7 +19,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
             android:fadingEdgeLength="10dp"
             app:cardElevation="10dp">
@@ -38,7 +40,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="7dp"
-
                     android:layout_marginBottom="4dp"
                     android:text="@{property.name}"
                     app:layout_constraintBottom_toTopOf="@id/cardprofile"
@@ -49,7 +50,6 @@
                     android:id="@+id/datum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:layout_marginTop="12dp"
                     android:layout_marginRight="7dp"
                     android:text="@{property.date}"
@@ -62,20 +62,21 @@
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    app:srcCompat="@drawable/ic_baseline_cancel_24"
-                    app:tint="@color/colorPrimary"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginBottom="5dp"
                     android:clickable="true"
-                    app:maxImageSize="100dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:maxImageSize="100dp"
+                    app:srcCompat="@drawable/ic_baseline_cancel_24"
+                    app:tint="@color/colorPrimary" />
 
                 <TextView
                     android:id="@+id/titleGoal"
-                    android:layout_width="239dp"
-                    android:layout_height="27dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:layout_marginStart="10dp"
                     android:text="@{property.title}"
                     android:textSize="25dp"
@@ -83,22 +84,22 @@
                     app:flow_horizontalAlign="center"
                     app:layout_constraintBottom_toTopOf="@+id/description"
                     app:layout_constraintEnd_toStartOf="@+id/button"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/cardprofile"
                     app:layout_constraintTop_toBottomOf="@id/datum" />
+
                 <TextView
                     android:id="@+id/description"
-                    android:layout_width="279dp"
+                    android:layout_width="0dp"
                     android:layout_height="59dp"
                     android:layout_margin="10dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:text="@{property.description}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/cardprofile"
                     app:layout_constraintTop_toBottomOf="@+id/titleGoal" />
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardprofile"
                     android:layout_width="100dp"
@@ -109,7 +110,6 @@
                     android:outlineAmbientShadowColor="#FFFFFF"
                     app:cardCornerRadius="250dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/description"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
@@ -117,7 +117,6 @@
                         android:id="@+id/profilepicture"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-
                         android:contentDescription="@string/profiel"
                         android:src="@drawable/profielfoto"
                         app:layout_constraintBottom_toBottomOf="parent"

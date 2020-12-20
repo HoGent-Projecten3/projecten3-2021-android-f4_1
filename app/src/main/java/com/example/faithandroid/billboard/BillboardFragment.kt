@@ -10,11 +10,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.faithandroid.R
+import com.example.faithandroid.adapters.PostAdapter
 import com.example.faithandroid.databinding.BillboardBinding
+import com.example.faithandroid.util.Status
 import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.util.*
+import org.koin.android.ext.android.inject
+
+
 
 /**
  * This is a fragment for the billboard
@@ -24,8 +29,8 @@ import java.util.*
 
 class BillboardFragment: Fragment() {
 
-    private lateinit var viewModel: BillboardViewModel
 
+    private lateinit var adapter: BillboardGridAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -34,8 +39,8 @@ class BillboardFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-      val binding = DataBindingUtil.inflate<BillboardBinding>(
+        val viewModel : BillboardViewModel by inject()
+        val binding = DataBindingUtil.inflate<BillboardBinding>(
           inflater,
           R.layout.billboard,
           container,
@@ -43,14 +48,12 @@ class BillboardFragment: Fragment() {
       );
 
 
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
-        viewModel = ViewModelProvider(this).get(BillboardViewModel::class.java)
+        //viewModel = ViewModelProvider(this).get(BillboardViewModel::class.java)
         binding.viewmodelBillboard = viewModel
 
         binding.billboardGridView.adapter = BillboardGridAdapter()
-
-
 
         viewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
@@ -64,6 +67,42 @@ class BillboardFragment: Fragment() {
             }
         })
 
+        /*viewModel.properties.observe(this.viewLifecycleOwner, Observer
+        {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        //showProgress(false)
+                        adapter.submitList(resource.data)
+                    }
+                    Status.LOADING -> {
+                        //showProgress(true)
+                    }
+                    Status.ERROR -> {
+                        //showProgress(false)
+                    }
+                }
+            }
+        })*/
+
+        /*viewModel.properties.observe(this.viewLifecycleOwner, Observer
+        {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        //showProgress(false)
+                        adapter.submitList(resource.data)
+                    }
+                    Status.LOADING -> {
+                        //showProgress(true)
+                    }
+                    Status.ERROR -> {
+                        //showProgress(false)
+                    }
+                }
+            }
+        })*/
+
         return binding.root
     }
 
@@ -71,10 +110,7 @@ class BillboardFragment: Fragment() {
     override fun onResume() {
         super.onResume()
 
-        viewModel.getPosts()
+        //viewModel.getPosts()
     }
 
-    fun dateParsing(date: LocalDateTime){
-        SimpleDateFormat("dd/MM/yyyy").format(date)
-    }
 }
