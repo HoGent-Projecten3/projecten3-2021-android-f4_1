@@ -9,9 +9,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.faithandroid.BillboardGoalCustomClick
 import com.example.faithandroid.R
 import com.example.faithandroid.adapters.PostAdapter
 import com.example.faithandroid.databinding.BillboardBinding
+import com.example.faithandroid.skyscraper.SkyscraperViewModel
 import com.example.faithandroid.util.Status
 import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
@@ -35,6 +37,7 @@ class BillboardFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val viewModel : BillboardViewModel by inject()
+        val skyViewModel : SkyscraperViewModel by inject()
         val binding = DataBindingUtil.inflate<BillboardBinding>(
           inflater,
           R.layout.billboard,
@@ -47,8 +50,13 @@ class BillboardFragment: Fragment() {
 
         //viewModel = ViewModelProvider(this).get(BillboardViewModel::class.java)
         binding.viewmodelBillboard = viewModel
+        binding.billboardGridView.adapter = BillboardGridAdapter(object : BillboardGoalCustomClick {
 
-        binding.billboardGridView.adapter = BillboardGridAdapter()
+            override fun onClick(goalId: Int) {
+                skyViewModel.shareGoal(goalId)
+            }
+
+        })
 
         viewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
@@ -97,6 +105,7 @@ class BillboardFragment: Fragment() {
                 }
             }
         })*/
+
 
         return binding.root
     }

@@ -58,12 +58,12 @@
                     android:layout_marginTop="12dp"
                     android:layout_marginRight="7dp"
                     android:text="@{property.date}"
-                    app:layout_constraintEnd_toStartOf="@id/button"
+                    app:layout_constraintEnd_toStartOf="@id/sharedGoalDeleteButton"
                     app:layout_constraintTop_toTopOf="parent" />
 
 
                 <ImageView
-                    android:id="@+id/button"
+                    android:id="@+id/sharedGoalDeleteButton"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -88,7 +88,7 @@
                     android:textStyle="bold"
                     app:flow_horizontalAlign="center"
                     app:layout_constraintBottom_toTopOf="@+id/description"
-                    app:layout_constraintEnd_toStartOf="@+id/button"
+                    app:layout_constraintEnd_toStartOf="@+id/sharedGoalDeleteButton"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/cardprofile"
                     app:layout_constraintTop_toBottomOf="@id/datum" />

@@ -16,3 +16,6 @@ interface AvatarCustomClick{
     fun onClick(avatarpart: Int)
 
 }
+interface BillboardGoalCustomClick{
+    fun onClick(goalId: Int)
+}
