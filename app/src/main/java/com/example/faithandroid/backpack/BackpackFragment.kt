@@ -12,9 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.faithandroid.*
+import com.example.faithandroid.adapters.FilteredPostAdapter
 import com.example.faithandroid.adapters.PostAdapter
 import com.example.faithandroid.databinding.BackpackBinding
 import com.example.faithandroid.models.Post
@@ -55,8 +54,6 @@ class BackpackFragment: Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         // staggeredGridLayoutManager with 3 columns and vertical orientation
-        val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
-        binding.BackpackRecycler.layoutManager = staggeredGridLayoutManager
 
         val postTypes =  PostType.values()
 
@@ -107,7 +104,7 @@ class BackpackFragment: Fragment() {
 
         binding.BackpackRecycler.adapter =
            postAdapter
-        /*postViewModel.postList.observe(this.viewLifecycleOwner, Observer
+        postViewModel.postList.observe(this.viewLifecycleOwner, Observer
         {
             it?.let { resource ->
                 when (resource.status) {
@@ -116,7 +113,9 @@ class BackpackFragment: Fragment() {
                         Log.d("repodata",postViewModel.postList.value?.data.toString())
                         postAdapter.submitList(resource.data)
                     }
-                })*/
+                }
+            }
+        })
 
         postViewModel.postList.observe(this.viewLifecycleOwner, Observer
         {
@@ -135,9 +134,18 @@ class BackpackFragment: Fragment() {
                 }
             }
         })
+        binding.BackpackRecycler.adapter =
+            PostAdapter(object : CustomClick {
+                override fun onClick(post: Post) {
+                    postViewModel.pemanentlyDeletePost(post.id)
+                    true
+                    postViewModel.postList
+                }
 
+            }
+         )
 
-        /*postViewModel.status.observe(this.viewLifecycleOwner, Observer {
+        postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
 
@@ -147,11 +155,11 @@ class BackpackFragment: Fragment() {
                     )
                     {
 
-                    }.show()
+                }.show()
             }
-        })*/
-
+        })
         return binding.root
+
     }
 
     override fun onResume() {
@@ -162,9 +170,12 @@ class BackpackFragment: Fragment() {
                 PostType.values()
             )
         }
+
         dropdownList.setAdapter(adapter)
-                super.onResume()
-            }
+
+
+        super.onResume()
+    }
 
             private fun showProgress(b: Boolean) {
                 if (b) {
