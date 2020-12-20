@@ -4,7 +4,6 @@ import android.util.Log
 import com.example.faithandroid.util.Resource
 import retrofit2.Response
 
-
 abstract class BaseDataSource {
     protected suspend fun <T> getResult(call: suspend () -> Response<List<T>>): Resource<List<T>> {
         try {
@@ -31,7 +30,6 @@ abstract class BaseDataSource {
         }
     }
 
-
     protected suspend fun <T> getSpotifyResult(call: suspend () -> Response<T>): Resource<T> {
         try {
             val response = call()
@@ -49,5 +47,4 @@ abstract class BaseDataSource {
         Log.e("remoteDataSource", message)
         return Resource.error(data = null, message = "Network call has failed for a following reason: $message")
     }
-
 }

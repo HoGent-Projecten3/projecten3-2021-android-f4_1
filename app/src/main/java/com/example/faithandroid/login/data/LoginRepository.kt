@@ -1,12 +1,8 @@
 package com.example.faithandroid.login.data
 
 import android.util.Log
-import com.example.faithandroid.login.data.LoggedInUser
-import com.example.faithandroid.login.uilogin.LoginResult
 import com.example.faithandroid.models.Adolescent
 import kotlinx.coroutines.*
-import retrofit2.await
-import java.lang.NullPointerException
 
 /**
  * Class that requests authentication and user information from the remote data source and
@@ -35,11 +31,10 @@ class LoginRepository(val dataSource: LoginDataSource) {
 
     fun logout() {
         user = null
-        //dataSource.logout()
+        // dataSource.logout()
     }
 
-    suspend fun getAdolescent(username: String): Result<Adolescent>
-    {
+    suspend fun getAdolescent(username: String): Result<Adolescent> {
 
         Log.d("tag", username)
 
@@ -48,31 +43,23 @@ class LoginRepository(val dataSource: LoginDataSource) {
         if (result2 is Result.Success) {
             setLoggedInUser(result2.data)
             return result2
+        } else {
+            return Result.Error(result2.toString())
         }
-        else
-        {
-           return Result.Error(result2.toString())
-        }
-
-
     }
 
-      suspend fun  login(username: String, password: String): Result<String> {
-          // handle login
+    suspend fun login(username: String, password: String): Result<String> {
+        // handle login
 
-              val result = dataSource.login(username, password)
+        val result = dataSource.login(username, password)
 
-              if (result is Result.Success) {
-                  AppPreferences.token = result.data
-                  return result
-
-              }
-              else
-              {
-                  return Result.Error(result.toString())
-              }
-
-      }
+        if (result is Result.Success) {
+            AppPreferences.token = result.data
+            return result
+        } else {
+            return Result.Error(result.toString())
+        }
+    }
 
     private fun setLoggedInUser(loggedInUser: Adolescent) { // loggedInUser: Adolescent
         this.user = loggedInUser
@@ -80,6 +67,4 @@ class LoginRepository(val dataSource: LoginDataSource) {
         // If user credentials will be cached in local storage, it is recommended it be encrypted
         // @see https://developer.android.com/training/articles/keystore
     }
-
-
 }

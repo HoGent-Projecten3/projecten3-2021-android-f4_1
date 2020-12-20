@@ -16,4 +16,4 @@ data class PlaylistFields(
     val description: String,
     @Json(name = "url")
     val url: String = ""
-): Parcelable
+) : Parcelable

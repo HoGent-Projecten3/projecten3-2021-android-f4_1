@@ -5,17 +5,17 @@ import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-class AvatarFields (
+class AvatarFields(
     @Json(name = "avatarId")
-    val id : Int,
+    val id: Int,
     @Json(name = "person")
-    val person : Int,
+    val person: Int,
     @Json(name = "hair")
     val hair: Int,
     @Json(name = "eyes")
-    val eyes : Int,
+    val eyes: Int,
     @Json(name = "skin")
     val skin: Int,
     @Json(name = "upperbody")
-    val upperBody : Int
-    ):Parcelable
+    val upperBody: Int
+) : Parcelable

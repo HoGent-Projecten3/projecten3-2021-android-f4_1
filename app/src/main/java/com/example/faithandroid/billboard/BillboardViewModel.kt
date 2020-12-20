@@ -1,24 +1,19 @@
 package com.example.faithandroid.billboard
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.faithandroid.models.GoalPost
-import com.example.faithandroid.models.Step
 import com.example.faithandroid.skyscraper.GoalPostRepository
-import com.example.faithandroid.util.Resource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import retrofit2.await
-import java.time.LocalDateTime
 
 class BillboardViewModel(private val goalPostRepository: GoalPostRepository) : ViewModel() {
 
-    //ERROR STATUS
+    // ERROR STATUS
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>
         get() = _status
@@ -30,7 +25,7 @@ class BillboardViewModel(private val goalPostRepository: GoalPostRepository) : V
 // LocalDateTime.of(2020, 7, 3, 12, 0 ))
     )*/
 
-    //private val _properties = MutableLiveData<List<GoalPost>>()
+    // private val _properties = MutableLiveData<List<GoalPost>>()
 
     private val _properties = MutableLiveData<List<GoalPost>>()
 
@@ -44,21 +39,19 @@ class BillboardViewModel(private val goalPostRepository: GoalPostRepository) : V
         getPosts()
     }
 
-      fun getPosts() {
+    fun getPosts() {
         coroutineScope.launch {
             var getPropertiesDeferred = goalPostRepository.getBillboardGoals()
             try {
                 var listResult = getPropertiesDeferred.await()
-                if(listResult.size > 0){
+                if (listResult.size > 0) {
                     _properties.value = listResult
                 }
-            } catch (e: Exception){
+            } catch (e: Exception) {
                 _status.value = "Failure: ${e.message}"
             }
         }
     }
-
-
 
     override fun onCleared() {
         super.onCleared()

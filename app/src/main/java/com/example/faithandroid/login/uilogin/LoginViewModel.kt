@@ -1,24 +1,20 @@
 package com.example.faithandroid.login.uilogin
 
-import android.util.Log
+import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import android.util.Patterns
+import com.example.faithandroid.R
 import com.example.faithandroid.login.data.LoginRepository
 import com.example.faithandroid.login.data.Result
-
-import com.example.faithandroid.R
-import com.example.faithandroid.login.data.User
 import com.example.faithandroid.models.Adolescent
 import kotlinx.coroutines.*
-import retrofit2.await
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
-   private var _adolescent = MutableLiveData<Adolescent>()
-   val adolescent: LiveData<Adolescent>
-    get() = _adolescent
+    private var _adolescent = MutableLiveData<Adolescent>()
+    val adolescent: LiveData<Adolescent>
+        get() = _adolescent
 
     private val _loginForm = MutableLiveData<LoginFormState>()
     val loginFormState: LiveData<LoginFormState> = _loginForm
@@ -33,24 +29,20 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
             if (result is Result.Success) {
 
                 val result2 = loginRepository.getAdolescent(username)
-                if(result2 is Result.Success)
-                _loginResult.value =
-                    LoginResult(
-                        success = LoggedInUserView(
-                            token = result.data,
-                            displayName =  result2.data.firstName + " " + result2.data.name,
-                            email = result2.data.email
+                if (result2 is Result.Success)
+                    _loginResult.value =
+                        LoginResult(
+                            success = LoggedInUserView(
+                                token = result.data,
+                                displayName = result2.data.firstName + " " + result2.data.name,
+                                email = result2.data.email
+                            )
                         )
-                    )
-
             } else {
                 _loginResult.value =
                     LoginResult(error = R.string.login_failed)
             }
         }
-
-
-
     }
 
     fun loginDataChanged(username: String, password: String) {
@@ -68,7 +60,6 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
             _loginForm.value =
                 LoginFormState(isDataValid = true)
         }
-
     }
 
     // A placeholder username validation check
@@ -85,7 +76,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         return password.length > 5
     }
 
-    fun logout(){
+    fun logout() {
         loginRepository.logout()
         _loginResult.value = null
         _loginForm.value = null

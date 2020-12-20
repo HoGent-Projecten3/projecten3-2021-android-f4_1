@@ -1,14 +1,10 @@
 package com.example.faithandroid.models
 
-import android.media.Image
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.JsonClass
-import com.example.faithandroid.models.PostType.Text
-import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
-import java.net.URI
 import java.io.Serializable
 
 @Parcelize
@@ -26,5 +22,4 @@ data class Post(
     var backpack: Boolean,
     var bulletinBoard: Boolean,
     var treasureChest: Boolean
-): Serializable,Parcelable
-
+) : Serializable, Parcelable

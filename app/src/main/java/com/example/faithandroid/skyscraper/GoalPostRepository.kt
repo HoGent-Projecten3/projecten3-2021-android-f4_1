@@ -6,14 +6,14 @@ import com.example.faithandroid.network.remote.GoalPostRemoteDataSource
 import com.example.faithandroid.util.performDelOperation
 import com.example.faithandroid.util.performGetOperation
 
-class GoalPostRepository(private val localDataSource: GoalPostLocalDataSource,private val remoteDataSource: GoalPostRemoteDataSource) {
+class GoalPostRepository(private val localDataSource: GoalPostLocalDataSource, private val remoteDataSource: GoalPostRemoteDataSource) {
 
-     fun getPostsOfSkyScraper() = performGetOperation(
+    fun getPostsOfSkyScraper() = performGetOperation(
 
         databaseQuery = { localDataSource.getPostsOfSkyScraper() },
         networkCall = { remoteDataSource.getPostsOfSkyScraper() },
         saveCallResult = { localDataSource.saveGoalposts(it) }
-     )
+    )
 
      /*fun getBillboardGoals() = performGetOperation(
 
@@ -24,15 +24,15 @@ class GoalPostRepository(private val localDataSource: GoalPostLocalDataSource,pr
 
     fun getBillboardGoals() = remoteDataSource.getBillboardGoals()
 
-     suspend fun postGoalPost(goal : GoalPost) = remoteDataSource.postGoalPost(goal)
+    suspend fun postGoalPost(goal: GoalPost) = remoteDataSource.postGoalPost(goal)
 
-     suspend fun checkGoal(id: Int) = remoteDataSource.checkGoal(id)
+    suspend fun checkGoal(id: Int) = remoteDataSource.checkGoal(id)
 
-     fun shareGoal(id : Int) = remoteDataSource.shareGoal(id)
+    fun shareGoal(id: Int) = remoteDataSource.shareGoal(id)
 
-     fun removeGoal(id: Int) =
-         performDelOperation(
-             databaseQuery = {localDataSource.removeGoal(id)},
-             networkCall = { remoteDataSource.removeGoal(id) }
-         )
+    fun removeGoal(id: Int) =
+        performDelOperation(
+            databaseQuery = { localDataSource.removeGoal(id) },
+            networkCall = { remoteDataSource.removeGoal(id) }
+        )
 }

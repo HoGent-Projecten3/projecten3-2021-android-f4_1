@@ -1,10 +1,5 @@
 package com.example.faithandroid.login.uilogin
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.example.faithandroid.login.data.LoginDataSource
-import com.example.faithandroid.login.data.LoginRepository
-
 /**
  * ViewModel provider factory to instantiate LoginViewModel.
  * Required given LoginViewModel has a non-empty constructor

@@ -16,4 +16,4 @@ data class Playlist(
     var name: String,
     var description: String,
     var url: String = ""
-): Parcelable
+) : Parcelable

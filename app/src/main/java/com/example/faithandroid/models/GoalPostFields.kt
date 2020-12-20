@@ -1,9 +1,6 @@
 package com.example.faithandroid.models
 
 import android.os.Parcelable
-import androidx.room.Embedded
-import androidx.room.PrimaryKey
-import androidx.room.Relation
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
@@ -22,9 +19,7 @@ data class GoalPostFields(
     @Json(name = "date")
     val date: String = "",
     @Json(name = "shared")
-    val shared : Boolean = false,
+    val shared: Boolean = false,
     @Json(name = "name")
-    val name : String = ""
+    val name: String = ""
 ) : Parcelable
-
-

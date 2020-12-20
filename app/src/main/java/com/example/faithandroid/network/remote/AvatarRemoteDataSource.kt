@@ -8,5 +8,5 @@ class AvatarRemoteDataSource(private val apiService: FaithApiService) : BaseData
 
     fun getAvatar() = apiService.getAvatar()
 
-    fun postAvatar(avatar: Avatar) =  apiService.postAvatar(avatar)
+    fun postAvatar(avatar: Avatar) = apiService.postAvatar(avatar)
 }

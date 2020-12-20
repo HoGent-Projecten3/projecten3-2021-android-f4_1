@@ -1,33 +1,18 @@
 
 package com.example.faithandroid.skyscraper
 
-import android.graphics.Color
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.faithandroid.R
 import com.example.faithandroid.models.GoalPost
-import com.example.faithandroid.models.Step
-
-import com.example.faithandroid.models.Post
-
-import com.example.faithandroid.network.FaithProperty
 import com.example.faithandroid.util.Resource
-import com.google.android.material.card.MaterialCardView
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import org.threeten.bp.LocalDateTime
 import retrofit2.HttpException
-import retrofit2.Retrofit
 import retrofit2.await
-
-
 
 class SkyscraperViewModel(private val goalPostRepository: GoalPostRepository) : ViewModel() {
     private val _shareStatus = MutableLiveData<String>()
@@ -35,16 +20,13 @@ class SkyscraperViewModel(private val goalPostRepository: GoalPostRepository) : 
     private val _removeStatus = MutableLiveData<String>()
     private val _getStatus = MutableLiveData<String>()
 
-
     private val _status = MutableLiveData<String>()
     val getStatus: LiveData<String>
         get() = _status
-  
 
-    private var test = mutableListOf<GoalPost>();
+    private var test = mutableListOf<GoalPost>()
 
-    var testLive : LiveData<Resource<List<GoalPost>>> = goalPostRepository.getPostsOfSkyScraper()
-
+    var testLive: LiveData<Resource<List<GoalPost>>> = goalPostRepository.getPostsOfSkyScraper()
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -74,50 +56,49 @@ class SkyscraperViewModel(private val goalPostRepository: GoalPostRepository) : 
         }
     }*/
 
-    fun postNewGoalPost( goalPost: GoalPost) {
+    fun postNewGoalPost(goalPost: GoalPost) {
         viewModelScope.launch {
             try {
                 goalPostRepository.postGoalPost(goalPost)
                 val response = goalPostRepository.postGoalPost(goalPost)
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 // error handling als new goal niet werkt/ er iets mis loopt
                 _status.value = e.localizedMessage
             }
         }
     }
 
-    fun goalBehaald(id:Int){
+    fun goalBehaald(id: Int) {
         viewModelScope.launch {
             try {
                 val response = goalPostRepository.checkGoal(id)
                 _status.value = "Doel behaald"
-            }catch (e: HttpException) {
+            } catch (e: HttpException) {
                 _status.value = "Er liep iets mis" + e.localizedMessage
-            }
-            catch (e: Exception) {
+            } catch (e: Exception) {
                 _status.value = "Er liep iets mis"
             }
         }
     }
 
-    fun shareGoal(id:Int){
-        coroutineScope.launch{
+    fun shareGoal(id: Int) {
+        coroutineScope.launch {
             try {
-                 val response = goalPostRepository.shareGoal(id)
-                 response.await()
+                val response = goalPostRepository.shareGoal(id)
+                response.await()
                 _status.value = "Doel gedeeld"
-            } catch (e: Exception){
+            } catch (e: Exception) {
                 _status.value = "Er liep iets mis"
             }
         }
     }
 
-    fun deleteGoal(id:Int){
-        coroutineScope.launch{
+    fun deleteGoal(id: Int) {
+        coroutineScope.launch {
             try {
                 goalPostRepository.removeGoal(id)
-                _status.value = "Doel verwijderd";
-            } catch (e: Exception){
+                _status.value = "Doel verwijderd"
+            } catch (e: Exception) {
                 _status.value = "Er liep iets mis"
             }
         }
@@ -127,5 +108,4 @@ class SkyscraperViewModel(private val goalPostRepository: GoalPostRepository) : 
         super.onCleared()
         viewModelJob.cancel()
     }
-
 }

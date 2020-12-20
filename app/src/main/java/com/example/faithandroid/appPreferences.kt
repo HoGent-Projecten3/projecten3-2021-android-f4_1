@@ -2,9 +2,6 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import androidx.core.content.edit
-import com.example.faithandroid.network.FaithApiService
-import retrofit2.Retrofit
-
 
 object AppPreferences {
     private var sharedPreferences: SharedPreferences? = null
@@ -18,16 +15,16 @@ object AppPreferences {
     // TODO step 4: replace these example attributes with your stored values
     var username: String?
         get() = Key.USERNAME.getString()
-        set(value) = if(value.equals("")){
+        set(value) = if (value.equals("")) {
             Key.USERNAME.remove()
-        }else {
+        } else {
             Key.USERNAME.setString(value)
         }
     var token: String?
         get() = Key.TOKEN.getString()
-        set(value) = if(value.equals("")){
-           Key.TOKEN.remove()
-        }else{
+        set(value) = if (value.equals("")) {
+            Key.TOKEN.remove()
+        } else {
             Key.TOKEN.setString(value)
         }
 

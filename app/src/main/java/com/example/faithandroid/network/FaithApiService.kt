@@ -1,39 +1,21 @@
 package com.example.faithandroid.network
 
-
 import com.example.faithandroid.login.data.User
 import com.example.faithandroid.models.*
-
-
-import com.google.android.material.internal.ContextUtils.getActivity
-
-
-
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import kotlinx.coroutines.Deferred
-import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.*
-
-
 
 interface FaithApiService {
 
     @Headers("Content-Type: application/json")
     @POST("user/adolescent/login")
     fun loginAdolescent(@Body adolescent: User):
-            Call<String>
-
+        Call<String>
 
     @GET("user/adolescent/{email}")
     fun getAdolescent(@Path("email") email: String):
-           Call<Adolescent>
+        Call<Adolescent>
 
     @Headers("Content-Type: application/json")
     @POST("/city/skyscraper/goal")
@@ -41,14 +23,13 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json")
     @PUT("city/skyscraper/goal/{goalId}/mark-completed")
-    suspend fun checkGoal(@Path("goalId") goalId : Int)
+    suspend fun checkGoal(@Path("goalId") goalId: Int)
 
     @GET("city/skyscraper/goal")
     suspend fun getPostsOfSkyScraper(): Response<List<GoalPost>>
 
     @GET("city/billboard/group")
     fun getGoalsOfGroup(): Call<List<GoalPost>>
-
 
     @Headers("Content-Type: application/json")
     @PUT("user/counselor/delete-adolescent")
@@ -80,10 +61,9 @@ interface FaithApiService {
     @PUT("city/{placeType}/add-existing/{postId}")
     suspend fun addExistingPostToPlace(@Path("postId") postId: Int, @Path("placeType") placeType: Int): Response<Void>
 
-
     @Headers("Content-Type: application/json")
     @POST("user/change-password")
-    fun changePassword(@Query("ww") ww: String) : Call<String>
+    fun changePassword(@Query("ww") ww: String): Call<String>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @GET("city/musicroom/playlist")
@@ -97,10 +77,9 @@ interface FaithApiService {
     @DELETE("city/musicroom/playlist/{id}")
     fun deletePlaylist(@Path("id") primaryKey: Int): Call<Void>
 
-
     @Headers("Content-Type: application/json", "accept: application/octet-stream")
     @DELETE("city/post/{postId}")
-    suspend fun permanentlyDeletePost(@Path("postId") postId: Int):Response<Void>
+    suspend fun permanentlyDeletePost(@Path("postId") postId: Int): Response<Void>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @GET("/avatar")
@@ -110,6 +89,3 @@ interface FaithApiService {
     @PUT("/change-avatar")
     fun postAvatar(@Body avatar: Avatar): Call<Void>
 }
-
-
-

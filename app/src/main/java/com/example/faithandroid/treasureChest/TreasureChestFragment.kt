@@ -16,18 +16,16 @@ import com.example.faithandroid.models.Post
 import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
 import com.example.faithandroid.util.Status
-import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
 
+class TreasureChestFragment : Fragment() {
 
-class TreasureChestFragment: Fragment() {
-
-    val postRepository : PostRepository by inject()
-    private val postViewModel: PostViewModel by lazy{
-        ViewModelProvider(this, ViewModelFactory(PlaceType.Schatkist,postRepository)).get(PostViewModel::class.java)
+    val postRepository: PostRepository by inject()
+    private val postViewModel: PostViewModel by lazy {
+        ViewModelProvider(this, ViewModelFactory(PlaceType.Schatkist, postRepository)).get(PostViewModel::class.java)
     }
 
-    private lateinit var  adapter: PostAdapter
+    private lateinit var adapter: PostAdapter
     private val loadingDialogFragment by lazy { LoadingFragment() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,23 +33,26 @@ class TreasureChestFragment: Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-      val binding = DataBindingUtil.inflate<TreasurechestBinding>(
-          inflater,
-          R.layout.treasurechest,
-          container,
-          false
-      );
+        val binding = DataBindingUtil.inflate<TreasurechestBinding>(
+            inflater,
+            R.layout.treasurechest,
+            container,
+            false
+        )
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.viewModel = postViewModel
 
-        this.adapter = PostAdapter(object : CustomClick {
-            override fun onClick(post: Post) {
+        this.adapter = PostAdapter(
+            object : CustomClick {
+                override fun onClick(post: Post) {
+                }
             }
-        })
+        )
 
         binding.TreasureChestRecycler.adapter = this.adapter
 
@@ -64,12 +65,14 @@ class TreasureChestFragment: Fragment() {
         }
 
         binding.TreasureChestRecycler.adapter =
-            PostAdapter(object : CustomClick {
-                override fun onClick(post: Post) {
-                    postViewModel.deletePostByEmail(post.id,  PlaceType.Schatkist)
-                    postViewModel.postList
+            PostAdapter(
+                object : CustomClick {
+                    override fun onClick(post: Post) {
+                        postViewModel.deletePostByEmail(post.id, PlaceType.Schatkist)
+                        postViewModel.postList
+                    }
                 }
-            })
+            )
 
         /*postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
@@ -88,23 +91,26 @@ class TreasureChestFragment: Fragment() {
             this.adapter.notifyDataSetChanged()
         })*/
 
-        postViewModel.postList.observe(this.viewLifecycleOwner, Observer
-        {
-            it?.let { resource ->
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                        showProgress(false)
-                        adapter.submitList(resource.data)
-                    }
-                    Status.LOADING -> {
-                        showProgress(true)
-                    }
-                    Status.ERROR -> {
-                        showProgress(false)
+        postViewModel.postList.observe(
+            this.viewLifecycleOwner,
+            Observer
+            {
+                it?.let { resource ->
+                    when (resource.status) {
+                        Status.SUCCESS -> {
+                            showProgress(false)
+                            adapter.submitList(resource.data)
+                        }
+                        Status.LOADING -> {
+                            showProgress(true)
+                        }
+                        Status.ERROR -> {
+                            showProgress(false)
+                        }
                     }
                 }
             }
-        })
+        )
 
         return binding.root
     }

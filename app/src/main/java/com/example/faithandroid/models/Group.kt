@@ -1,6 +1,6 @@
 package com.example.faithandroid.models
 
-data class Group (
+data class Group(
     var id: Int = 0,
-    var adolescents : List<Adolescent> = listOf()
+    var adolescents: List<Adolescent> = listOf()
 )

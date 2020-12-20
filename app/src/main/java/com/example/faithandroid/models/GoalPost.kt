@@ -3,12 +3,9 @@ package com.example.faithandroid.models
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-
-
 import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
-import java.time.LocalDateTime
 
 @Parcelize
 @Entity(tableName = "goalPosts")
@@ -21,8 +18,6 @@ data class GoalPost(
     var completed: Boolean = false,
     var steps: List<Step>,
     var date: String,
-    var shared : Boolean = false,
-    var name : String = ""
-) : Serializable,Parcelable
-
-
+    var shared: Boolean = false,
+    var name: String = ""
+) : Serializable, Parcelable

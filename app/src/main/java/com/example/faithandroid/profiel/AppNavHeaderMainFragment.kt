@@ -2,7 +2,6 @@ package com.example.faithandroid.profiel
 
 import AppPreferences
 import ColorSvgs
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,14 +15,14 @@ import com.example.faithandroid.R
 import com.example.faithandroid.databinding.AppNavHeaderMainBinding
 import com.sdsmdg.harjot.vectormaster.VectorMasterView
 
-
-class AppNavHeaderMainFragment: Fragment() {
+class AppNavHeaderMainFragment : Fragment() {
     private lateinit var viewModel: AvatarViewModel
     private lateinit var vectorMasterViewA: VectorMasterView
     private lateinit var vectorMasterViewB: VectorMasterView
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         var binding = DataBindingUtil.inflate<AppNavHeaderMainBinding>(
@@ -31,7 +30,7 @@ class AppNavHeaderMainFragment: Fragment() {
             R.layout.app_nav_header_main,
             container,
             false
-        );
+        )
 
         viewModel = ViewModelProvider(this).get(AvatarViewModel::class.java)
 
@@ -43,26 +42,29 @@ class AppNavHeaderMainFragment: Fragment() {
         AppPreferences.currentSkin?.let { ColorSvgs.setSkin(it, vectorMasterViewA, vectorMasterViewB) }
         AppPreferences.currentBody?.let { ColorSvgs.setBody(it, vectorMasterViewA, vectorMasterViewB) }
 
-        if (AppPreferences.currentPerson == 0){
+        if (AppPreferences.currentPerson == 0) {
             binding.imgAvatarB.setVisibility(View.GONE)
         } else {
             binding.imgAvatarA.setVisibility(View.GONE)
         }
 
-        viewModel.currentAvatar.observe(this.viewLifecycleOwner, Observer{
-            if (AppPreferences.currentPerson == 0){
-                binding.imgAvatarA.setVisibility(View.VISIBLE)
-                binding.imgAvatarB.setVisibility(View.GONE)
-            } else {
-                binding.imgAvatarA.setVisibility(View.GONE)
-                binding.imgAvatarB.setVisibility(View.VISIBLE)
-            }
+        viewModel.currentAvatar.observe(
+            this.viewLifecycleOwner,
+            Observer {
+                if (AppPreferences.currentPerson == 0) {
+                    binding.imgAvatarA.setVisibility(View.VISIBLE)
+                    binding.imgAvatarB.setVisibility(View.GONE)
+                } else {
+                    binding.imgAvatarA.setVisibility(View.GONE)
+                    binding.imgAvatarB.setVisibility(View.VISIBLE)
+                }
 
-            it.let { it -> ColorSvgs.setHair(it.hair, vectorMasterViewA, vectorMasterViewB) }
-            it.let { it -> ColorSvgs.setEyes(it.eyes, vectorMasterViewA, vectorMasterViewB) }
-            it.let { it -> ColorSvgs.setSkin(it.skin, vectorMasterViewA, vectorMasterViewB) }
-            it.let { it -> ColorSvgs.setBody(it.upperBody, vectorMasterViewA, vectorMasterViewB) }
-        })
+                it.let { it -> ColorSvgs.setHair(it.hair, vectorMasterViewA, vectorMasterViewB) }
+                it.let { it -> ColorSvgs.setEyes(it.eyes, vectorMasterViewA, vectorMasterViewB) }
+                it.let { it -> ColorSvgs.setSkin(it.skin, vectorMasterViewA, vectorMasterViewB) }
+                it.let { it -> ColorSvgs.setBody(it.upperBody, vectorMasterViewA, vectorMasterViewB) }
+            }
+        )
 
         return binding.root
     }

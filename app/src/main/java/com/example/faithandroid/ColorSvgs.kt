@@ -2,7 +2,7 @@ import com.sdsmdg.harjot.vectormaster.VectorMasterView
 
 class ColorSvgs {
     companion object {
-        fun setHair(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView){
+        fun setHair(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView) {
             var path1 = vectorMasterViewA.getPathModelByName("Hair1")
             var path2 = vectorMasterViewA.getPathModelByName("Hair2")
             var path3 = vectorMasterViewB.getPathModelByName("Hair")
@@ -13,7 +13,7 @@ class ColorSvgs {
             vectorMasterViewB.update()
         }
 
-        fun setEyes(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView){
+        fun setEyes(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView) {
             var path1 = vectorMasterViewA.getPathModelByName("Eye1")
             var path2 = vectorMasterViewA.getPathModelByName("Eye2")
             var path3 = vectorMasterViewB.getPathModelByName("Eye1")
@@ -26,7 +26,7 @@ class ColorSvgs {
             vectorMasterViewB.update()
         }
 
-        fun setSkin(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView){
+        fun setSkin(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView) {
             var path1 = vectorMasterViewA.getPathModelByName("Skin1")
             var path2 = vectorMasterViewA.getPathModelByName("Skin2")
             var path3 = vectorMasterViewA.getPathModelByName("Skin3")
@@ -47,7 +47,7 @@ class ColorSvgs {
             vectorMasterViewB.update()
         }
 
-        fun setBody(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView){
+        fun setBody(avatarpart: Int, vectorMasterViewA: VectorMasterView, vectorMasterViewB: VectorMasterView) {
             var path1 = vectorMasterViewA.getPathModelByName("Body")
             var path2 = vectorMasterViewB.getPathModelByName("Body")
             path1.fillColor = avatarpart

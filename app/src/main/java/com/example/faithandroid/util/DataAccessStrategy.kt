@@ -1,13 +1,9 @@
 package com.example.faithandroid.util
 
-import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.map
 import kotlinx.coroutines.*
-import okhttp3.internal.wait
-import retrofit2.Call
 import retrofit2.Response
 
 fun <T, A> performGetOperation(
@@ -29,7 +25,7 @@ fun <T, A> performGetOperation(
         }
     }
 
-fun  performDelOperation(
+fun performDelOperation(
     databaseQuery: () -> Unit,
     networkCall: suspend () -> Response<Void>
 ) {
@@ -37,14 +33,8 @@ fun  performDelOperation(
     var viewModelJob = Job()
     val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.IO)
 
-   coroutineScope.launch {
+    coroutineScope.launch {
         databaseQuery.invoke()
         networkCall.invoke()
     }
-
 }
-
-
-
-
-

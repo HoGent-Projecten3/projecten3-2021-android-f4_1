@@ -3,8 +3,6 @@ package com.example.faithandroid.network.local
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.faithandroid.models.GoalPost
-import kotlinx.coroutines.selects.select
-
 
 @Dao
 interface GoalPostDao {
