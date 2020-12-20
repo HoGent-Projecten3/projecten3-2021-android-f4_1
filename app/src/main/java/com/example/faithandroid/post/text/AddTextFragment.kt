@@ -30,7 +30,7 @@ import com.google.android.material.snackbar.Snackbar
  * @property viewModel is the viewmodel for all posts
  */
 class addTextFragment: Fragment() {
-    val args: AddTextFragmentArgs by navArgs()
+    val args: addTextFragmentArgs by navArgs()
     var post: Post? = null
     private lateinit var  viewModel: PostViewModel
     private lateinit var  dropdown : Spinner
@@ -61,7 +61,7 @@ class addTextFragment: Fragment() {
 
         binding.imageView4.setOnClickListener{
                 view: View ->  val action =
-            AddTextFragmentDirections.actionAddTextFragmentToTextPostToevoegen(
+            addTextFragmentDirections.actionAddTextFragmentToTextPostToevoegen(
                 args.placeType
             )
             view.findNavController().navigate(action)

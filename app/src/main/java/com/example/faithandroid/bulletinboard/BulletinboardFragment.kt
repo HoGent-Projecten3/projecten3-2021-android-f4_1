@@ -20,7 +20,6 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.faithandroid.*
 import com.example.faithandroid.databinding.BulletinboardBinding
 import com.example.faithandroid.adapters.PostAdapter
-import com.example.faithandroid.login.data.LoggedInUser
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel

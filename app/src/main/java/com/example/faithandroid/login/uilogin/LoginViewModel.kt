@@ -9,7 +9,6 @@ import com.example.faithandroid.login.data.LoginRepository
 import com.example.faithandroid.login.data.Result
 
 import com.example.faithandroid.R
-import com.example.faithandroid.login.data.LoggedInUser
 import com.example.faithandroid.login.data.User
 import com.example.faithandroid.models.Adolescent
 import com.example.faithandroid.profiel.ProfielFragment
