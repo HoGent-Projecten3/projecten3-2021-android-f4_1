@@ -7,15 +7,13 @@ import com.example.faithandroid.network.SpotifyApiService
 
 class SpotifyRemoteDataSource(private val apiService: FaithApiService, private val spotifyApiService: SpotifyApiService) : BaseDataSource() {
 
-    suspend fun getPlaylistsFaith() = getResult { apiService.getPlaylists() }
+   fun getPlaylistsFaith() = apiService.getPlaylists()
 
     fun addPlaylist(playlist: Playlist) = apiService.addPlaylist(playlist)
 
     fun deletePlaylist(id: Int) = apiService.deletePlaylist(id)
 
-    fun getUser() = spotifyApiService.getUser()
-
-    suspend fun getPlaylistsSpotify() = getObjectResult { spotifyApiService.getPlaylists() }
+    suspend fun getPlaylistsSpotify() =  spotifyApiService.getPlaylists()
 
     fun getPlaylistCover(cover: String) = spotifyApiService.getPlaylistCover(cover)
 }

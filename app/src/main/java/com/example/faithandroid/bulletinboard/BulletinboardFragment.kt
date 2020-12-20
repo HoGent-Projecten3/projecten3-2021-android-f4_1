@@ -41,11 +41,9 @@ class BulletinboardFragment : Fragment() {
     private val loadingDialogFragment by lazy { LoadingFragment() }
     val postRepository: PostRepository by inject()
     private val postViewModel: PostViewModel by lazy {
-        ViewModelProvider(this, ViewModelFactory(PlaceType.Prikbord, postRepository)).get(PostViewModel::class.java)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        ViewModelProvider(this, ViewModelFactory(PlaceType.Prikbord, postRepository)).get(
+            PostViewModel::class.java
+        )
     }
 
     override fun onCreateView(
@@ -53,14 +51,14 @@ class BulletinboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-      val binding = DataBindingUtil.inflate<BulletinboardBinding>(
-          inflater,
-          R.layout.bulletinboard,
-          container,
-          false
-      )
+        val binding = DataBindingUtil.inflate<BulletinboardBinding>(
+            inflater,
+            R.layout.bulletinboard,
+            container,
+            false
+        )
         binding.lifecycleOwner = viewLifecycleOwner
-        // postViewModel.getPostsOfPlace(PlaceType.Prikbord)
+
 
         deleteBtn = binding.include.deletePostsBtn
 
@@ -83,8 +81,7 @@ class BulletinboardFragment : Fragment() {
                             }
                         }
                     }
-                    .setNegativeButton("Nee") {
-                        dialog, which ->
+                    .setNegativeButton("Nee") { dialog, which ->
                     }
                     .show()
             }
@@ -101,12 +98,12 @@ class BulletinboardFragment : Fragment() {
         binding.viewModel = postViewModel
         adapter = PostAdapter(
             object : CustomClick {
-override fun onClick(post: Post) {
+                override fun onClick(post: Post) {
 
-postViewModel.deletePostByEmail(post.id, PlaceType.Prikbord)
-true
-}
-}
+                    postViewModel.deletePostByEmail(post.id, PlaceType.Prikbord)
+                    true
+                }
+            }
         )
 
         binding.BulletinBoardRecycler?.adapter =
@@ -119,13 +116,17 @@ true
             this.viewLifecycleOwner,
             Observer {
                 val contextView = this.view
-                        if (contextView != null) {
-                            Snackbar.make(contextView, postViewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
-                                R.string.tryAgain
-                            ) {
+                if (contextView != null) {
+                    Snackbar.make(
+                        contextView,
+                        postViewModel.status.value.toString(),
+                        Snackbar.LENGTH_SHORT
+                    ).setAction(
+                        R.string.tryAgain
+                    ) {
                         postViewModel.postList
                     }.show()
-                        }
+                }
             }
         )
 
@@ -144,14 +145,13 @@ true
                                     .show()
                             }
                         }
-                        .setNegativeButton("Nee") {
-                                dialog, which ->
+                        .setNegativeButton("Nee") { dialog, which ->
                         }
                         .show()
                 }
             } catch (e: Exception) {
                 this.view?.let { view ->
-                        Snackbar.make(view, e.message.toString(), Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(view, e.message.toString(), Snackbar.LENGTH_SHORT).show()
                 }
             }
         }
@@ -159,20 +159,20 @@ true
         postViewModel.postList.observe(
             this.viewLifecycleOwner,
             Observer
-                    {
+            {
                 it?.let { resource ->
                     when (resource.status) {
-                                Status.SUCCESS -> {
-                                    showProgress(false)
-                                    adapter.submitList(resource.data)
-                                }
-                                Status.LOADING -> {
-                                    showProgress(true)
-                                }
-                                Status.ERROR -> {
-                                    showProgress(false)
-                                }
-                            }
+                        Status.SUCCESS -> {
+                            showProgress(false)
+                            adapter.submitList(resource.data)
+                        }
+                        Status.LOADING -> {
+                            showProgress(true)
+                        }
+                        Status.ERROR -> {
+                            showProgress(false)
+                        }
+                    }
                 }
             }
         )
@@ -181,14 +181,18 @@ true
             this.viewLifecycleOwner,
             Observer {
                 val contextView = this.view
-                        if (contextView != null) {
+                if (contextView != null) {
 
-                            Snackbar.make(contextView, "Er is niets om weer te geven", Snackbar.LENGTH_SHORT)
-                                .setAction(
-                                    ""
-                                ) {
+                    Snackbar.make(
+                        contextView,
+                        "Er is niets om weer te geven",
+                        Snackbar.LENGTH_SHORT
+                    )
+                        .setAction(
+                            ""
+                        ) {
                         }.show()
-                        }
+                }
             }
         )
 

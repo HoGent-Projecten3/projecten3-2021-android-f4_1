@@ -67,7 +67,7 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @GET("city/musicroom/playlist")
-    suspend fun getPlaylists(): Response<List<Playlist>>
+    fun getPlaylists(): Call<List<Playlist>>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @POST("city/musicroom/playlist")

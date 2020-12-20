@@ -4,6 +4,7 @@ import AppPreferences
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,6 +41,7 @@ class MusicRoomFragment : Fragment() {
     private val CLIENT_ID = "95bc88d8f6084f1893dd648d88732210"
     private var spotifyAppRemoteLocal: SpotifyAppRemote? = null
     private val loadingDialogFragment by lazy { LoadingFragment() }
+    private lateinit var adapter: PlaylistAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,51 +62,50 @@ class MusicRoomFragment : Fragment() {
 
         binding.lifecycleOwner = this
         binding.viewModel = musicRoomViewModel
+        musicRoomViewModel.getAllPlaylists()
         val contextView = this.view
-        binding.playlistRecycler.adapter = PlaylistAdapter(
+        this.adapter = PlaylistAdapter(
             object : CustomPlaylistClick {
-override fun onClick(playlist: Playlist): Boolean {
-if (spotifyAppRemoteLocal != null) {
-if (spotifyAppRemoteLocal!!.isConnected) {
-val intent = Intent(Intent.ACTION_VIEW)
-intent.data = Uri.parse("spotify:playlist:${playlist.id}")
-intent.putExtra(
-    Intent.EXTRA_REFERRER,
-    Uri.parse("android-app://" + this@MusicRoomFragment.context?.packageName)
-)
-startActivity(intent)
-return true
-} else {
-return false
-}
-} else {
-
-return false
-}
-}
-},
-            object : CustomPlaylistClick {
-                        override fun onClick(playlist: Playlist): Boolean {
-                            musicRoomViewModel.deletePlaylist(playlist.primaryKey)
+                override fun onClick(playlist: Playlist): Boolean {
+                    if (spotifyAppRemoteLocal != null) {
+                        if (spotifyAppRemoteLocal!!.isConnected) {
+                            val intent = Intent(Intent.ACTION_VIEW)
+                            intent.data = Uri.parse("spotify:playlist:${playlist.id}")
+                            intent.putExtra(
+                                Intent.EXTRA_REFERRER,
+                                Uri.parse("android-app://" + this@MusicRoomFragment.context?.packageName)
+                            )
+                            startActivity(intent)
                             return true
+                        } else {
+                            return false
                         }
-                    }
-        )
+                    } else {
 
-//        musicRoomViewModel.allPlaylists.observe(viewLifecycleOwner, Observer {
-//
-//        })
+                        return false
+                    }
+                }
+            },
+            object : CustomPlaylistClick {
+                override fun onClick(playlist: Playlist): Boolean {
+                    musicRoomViewModel.deletePlaylist(playlist.primaryKey)
+                    return true
+                }
+            }
+        )
+        binding.playlistRecycler.adapter = adapter
 
         binding.include4.newPlaylistButton.setOnClickListener {
+            Log.d("WTF", "WTF")
             val popup = PopupMenu(context, it)
 
-            musicRoomViewModel.allPlaylists.value?.data?.forEach {
+            musicRoomViewModel.allPlaylists.value?.forEach {
                 popup.menu.add(it.name)
             }
             popup.setOnMenuItemClickListener {
 
                 var playlist =
-                    musicRoomViewModel.allPlaylists.value?.data?.find { playlist: Playlist ->
+                    musicRoomViewModel.allPlaylists.value?.find { playlist: Playlist ->
                         playlist.name == it.title
                     }
 
@@ -120,7 +121,7 @@ return false
 
         this.lifecycle.addObserver(
             object : LifecycleObserver {
-}
+            }
         )
 
         return binding.root
@@ -141,12 +142,10 @@ return false
                 object : Connector.ConnectionListener {
                     override fun onConnected(spotifyAppRemote: SpotifyAppRemote) {
                         spotifyAppRemoteLocal = spotifyAppRemote
-                        // Now you can start interacting with App Remote
                     }
 
                     override fun onFailure(throwable: Throwable) {
 
-                        // Something went wrong when attempting to connect! Handle errors here
 
                         Snackbar.make(
                             contextView!!,
@@ -189,26 +188,27 @@ return false
             val response = AuthenticationClient.getResponse(resultCode, data)
             if (response.type == AuthenticationResponse.Type.TOKEN) {
                 AppPreferences.spotifyToken = response.accessToken
-                musicRoomViewModel.allPlaylists.observe(
-                    viewLifecycleOwner,
-                    Observer {
-                        it?.let { resource ->
-                            when (resource.status) {
-                                Status.SUCCESS -> {
-                                    showProgress(false)
-                                }
-                                Status.LOADING -> {
-                                    showProgress(true)
-                                }
-                                Status.ERROR -> {
-                                    showProgress(false)
-                                }
-                            }
-                        }
-                    }
-                )
+                musicRoomViewModel.getAllPlaylists()
+//                musicRoomViewModel.allPlaylists.observe(
+//                    viewLifecycleOwner,
+//                    Observer {
+//                        it?.let { resource ->
+//                            when (resource.status) {
+//                                Status.SUCCESS -> {
+//                                    showProgress(false)
+//                                    adapter.submitList(resource.data)
+//                                }
+//                                Status.LOADING -> {
+//                                    showProgress(true)
+//                                }
+//                                Status.ERROR -> {
+//                                    showProgress(false)
+//                                }
+//                            }
+//                        }
+//                    }
+//                )
             } else {
-                // errorhandling
                 val contextView = this.view
                 if (contextView != null) {
 

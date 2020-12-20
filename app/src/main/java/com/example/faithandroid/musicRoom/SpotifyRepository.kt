@@ -7,23 +7,13 @@ import com.example.faithandroid.util.performGetOperation
 
 class SpotifyRepository(val localDataSource: SpotifyLocalDataSource, private val remoteDataSource: SpotifyRemoteDataSource) {
 
-    fun getPlaylistsFaith() = performGetOperation(
-
-        databaseQuery = { localDataSource.getPlaylists() },
-        networkCall = { remoteDataSource.getPlaylistsFaith() },
-        saveCallResult = { localDataSource.savePlayList(it) }
-    )
+    suspend fun getPlaylistsFaith() = remoteDataSource.getPlaylistsFaith()
 
     fun addPlaylist(playlist: Playlist) = remoteDataSource.addPlaylist(playlist)
 
     fun deletePlaylist(id: Int) = remoteDataSource.deletePlaylist(id)
 
-    fun getPlaylistsSpotify() = performGetOperation(
-
-        databaseQuery = { localDataSource.getPlaylists() },
-        networkCall = { remoteDataSource.getPlaylistsSpotify() },
-        saveCallResult = { localDataSource.savePlayList(it.items) }
-    )
+    suspend fun getPlaylistsSpotify() = remoteDataSource.getPlaylistsSpotify()
 
     fun getPlaylistCover(cover: String) = remoteDataSource.getPlaylistCover(cover)
 }

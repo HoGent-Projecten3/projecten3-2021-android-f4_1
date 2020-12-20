@@ -13,7 +13,7 @@ interface SpotifyApiService {
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @GET("me/playlists")
-    suspend fun getPlaylists(): Response<PlaylistWrapper>
+    fun getPlaylists(): Call<PlaylistWrapper>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @GET("playlists/{spotify_cover}/images")
