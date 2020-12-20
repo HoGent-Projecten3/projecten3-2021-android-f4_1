@@ -52,6 +52,8 @@ class LoginRepository(val dataSource: LoginDataSource) {
 
         if (result2 is Result.Success) {
             setLoggedInUser(result2.data)
+            AppPreferences.name = result2.data.name
+            AppPreferences.firstname = result2.data.firstName
             return result2
         } else {
            return Result.Error(result2.toString())

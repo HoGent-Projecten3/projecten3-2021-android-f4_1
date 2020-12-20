@@ -23,9 +23,6 @@ class ShoppingCenterGridAdapter(private var bodyType: BodyType, private var list
             binding.executePendingBindings()
             binding.cardView.setOnClickListener {
                     view: View ->
-                /*MaterialAlertDialogBuilder(view.getContext())
-                    .setMessage("Dit is " + bodyType.name + " met code " + binding.colourView.background)
-                    .show()*/
                 listener.onClick(avatarpart)
             }
         }

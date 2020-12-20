@@ -115,17 +115,19 @@ true
         binding.BulletinBoardRecyclerPad?.adapter =
             adapter
 
-        /*postViewModel.status.observe(this.viewLifecycleOwner, Observer {
-            val contextView = this.view
-            if (contextView != null) {
-                Snackbar.make(contextView, postViewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
-                    R.string.tryAgain
-                )
-                {
-                    postViewModel.getPostsOfPlace(PlaceType.Prikbord)
-                }.show()
+        postViewModel.status.observe(
+            this.viewLifecycleOwner,
+            Observer {
+                val contextView = this.view
+                        if (contextView != null) {
+                            Snackbar.make(contextView, postViewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
+                                R.string.tryAgain
+                            ) {
+                        postViewModel.postList
+                    }.show()
+                        }
             }
-        })*/
+        )
 
         binding.include.deletePostsBtn.setOnClickListener {
             try {

@@ -28,14 +28,11 @@ import java.time.LocalDateTime
  * @property args is used to store the placetype of the post
  */
 class TextPostToevoegenFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     val args: TextPostToevoegenFragmentArgs by navArgs()
     val postRepository: PostRepository by inject()
     private val postViewModel: PostViewModel by lazy {
         ViewModelProvider(this, ViewModelFactory(args.placeType, postRepository)).get(PostViewModel::class.java)
     }
-
-    // private lateinit var bulletinBoardViewModel: BulletinBoardViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +46,6 @@ class TextPostToevoegenFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         var binding = DataBindingUtil.inflate<AddNewTextBinding>(
             inflater,
             R.layout.add_new_text,
@@ -94,7 +90,7 @@ class TextPostToevoegenFragment : Fragment() {
                         PlaceType.Prikbord -> view.findNavController().navigate(R.id.action_text_post_toevoegen_to_bulletinBoardFragment)
                         PlaceType.Schatkist -> view.findNavController().navigate(R.id.action_text_post_toevoegen_to_treasureChestFragment)
                         PlaceType.Rugzak -> view.findNavController().navigate(R.id.action_text_post_toevoegen_to_backpackFragment)
-                        else -> { // Note the block
+                        else -> {
                         }
                     }
                 }

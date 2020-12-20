@@ -112,15 +112,10 @@ class LoginActivity : AppCompatActivity() {
                 Log.i("aaaaaa", username.text.toString() + " " + password.text.toString())
                 loginViewModel.login(username.text.toString(), password.text.toString())
                 AppPreferences.username = username.text.toString()
-               //  supportFragmentManager.findFragmentById(R.id.action_loginFragment_to_homeFragment) as LoginFragment
-             //  this.findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
             } catch (e: Exception) {
             }
           }
         }
-
-      /*  val taskIntent =  Intent(this, HomeFragment::class.java)
-        startActivity(taskIntent)*/
     }
 
    override fun onBackPressed() {

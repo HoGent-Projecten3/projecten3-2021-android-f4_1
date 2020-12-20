@@ -70,42 +70,6 @@ skyViewModel.shareGoal(goalId)
             }
         )
 
-        /*viewModel.properties.observe(this.viewLifecycleOwner, Observer
-        {
-            it?.let { resource ->
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                        //showProgress(false)
-                        adapter.submitList(resource.data)
-                    }
-                    Status.LOADING -> {
-                        //showProgress(true)
-                    }
-                    Status.ERROR -> {
-                        //showProgress(false)
-                    }
-                }
-            }
-        })*/
-
-        /*viewModel.properties.observe(this.viewLifecycleOwner, Observer
-        {
-            it?.let { resource ->
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                        //showProgress(false)
-                        adapter.submitList(resource.data)
-                    }
-                    Status.LOADING -> {
-                        //showProgress(true)
-                    }
-                    Status.ERROR -> {
-                        //showProgress(false)
-                    }
-                }
-            }
-        })*/
-
         return binding.root
     }
 

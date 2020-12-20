@@ -79,7 +79,6 @@ class AddTextFragment : Fragment() {
             )
         }
 
-        // val editTextFilledExposedDropdown: AutoCompleteTextView? = this.view?.findViewById(R.id.filled_exposed_dropdown)
         binding.filledExposedDropdown.setAdapter(adapter)
         binding.filledExposedDropdown.setText(PlaceType.Rugzak.name, false)
 

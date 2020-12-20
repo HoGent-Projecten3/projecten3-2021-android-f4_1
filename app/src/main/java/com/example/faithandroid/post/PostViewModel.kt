@@ -130,7 +130,7 @@ class PostViewModel(placeType: PlaceType, private val postRepository: PostReposi
      * @param postId is the id of the post to be deleted
      */
     fun pemanentlyDeletePost(postId: Int) {
-        postRepository.permanentlyDeletePost(postId) // ERRORHANDELING MET RESPONSE
+        postRepository.permanentlyDeletePost(postId)
     }
 
         /**

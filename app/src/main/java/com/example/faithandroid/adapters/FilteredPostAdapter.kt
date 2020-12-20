@@ -45,10 +45,9 @@ class FilteredPostAdapter(private var listener: CustomClick) : ListAdapter<Post,
         fun bind(post: Post) {
 
             binding.post = post
-            // inding.TreasurechestVideo.setVideoURI(Uri.parse(post.uri))
+
             if (post.postType == PostType.Image.ordinal) {
                 Picasso.get().load(post.uri).into(binding.TreasurechestImage)
-                // binding.TreasurechestImage.scaleType = ImageView.ScaleType.CENTER_CROP
             } else if (post.postType == PostType.Audio.ordinal) {
                 binding.TreasurechestImage.visibility = GONE
             } else if (post.postType == PostType.Video.ordinal) {
@@ -56,12 +55,6 @@ class FilteredPostAdapter(private var listener: CustomClick) : ListAdapter<Post,
             } else {
                 binding.TreasurechestImage.visibility = INVISIBLE
             }
-
-            /*val dialogClickListener = DialogInterface.OnClickListener{ _, which ->
-                when(which){
-                    DialogInterface.BUTTON_POSITIVE -> retrofitService.deletePostByEmail(PlaceType.Schatkist.ordinal, post.id )
-                }
-            }*/
 
             binding.date = LocalDate.parse(post.date, DateTimeFormatter.ISO_LOCAL_DATE_TIME).format(
                 DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)

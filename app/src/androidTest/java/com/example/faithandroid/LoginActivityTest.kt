@@ -1,6 +1,5 @@
 package com.example.faithandroid
 
-import android.util.Log
 import androidx.test.espresso.*
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -76,10 +75,7 @@ class LoginActivityTest {
         }
 
         override fun isIdleNow(): Boolean {
-
-            Log.d("activityTest", AppPreferences.token.toString())
             if (AppPreferences.token == null) {
-                Log.d("activityTest", "pls work")
                 return false
             }
             return true

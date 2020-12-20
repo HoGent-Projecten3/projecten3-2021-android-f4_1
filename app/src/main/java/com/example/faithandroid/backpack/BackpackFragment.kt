@@ -1,7 +1,6 @@
 package com.example.faithandroid.backpack
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -114,7 +113,7 @@ true
                     when (resource.status) {
                                 Status.SUCCESS -> {
                                     showProgress(false)
-                                    Log.d("repodata", postViewModel.postList.value?.data.toString())
+
                                     postAdapter.submitList(resource.data)
                                 }
                             }

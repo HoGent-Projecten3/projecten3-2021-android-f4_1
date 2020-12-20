@@ -2,7 +2,6 @@ package com.example.faithandroid.skyscraper
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,14 +64,12 @@ class GoalDetailsFragment : DialogFragment() {
         binding.datumText.text = date
 
         binding.btnBehaald.setOnClickListener { view: View ->
-            Log.d("goal: ", args.goal.toString())
             viewModel.goalBehaald(args.goal.id)
             Toast.makeText(
                 context,
                 "Je doel is behaald",
                 Toast.LENGTH_LONG
             ).show()
-            Log.d("goalBehaald: ", args.goal.shared.toString())
             view.findNavController().navigate(R.id.skyscraperFragment)
         }
 
@@ -142,14 +139,4 @@ class GoalDetailsFragment : DialogFragment() {
 
         return binding.root
     }
-    /*
-    * val application = requireNotNull(activity).application
-        val binding = FragmentDetailBinding.inflate(inflater)
-        binding.lifecycleOwner = this
-        val marsProperty = DetailFragmentArgs.fromBundle(arguments!!).selectedProperty
-        val viewModelFactory = DetailViewModelFactory(marsProperty, application)
-        binding.viewModel = ViewModelProvider(
-                this, viewModelFactory).get(DetailViewModel::class.java)
-        return binding.root
-        * */
 }

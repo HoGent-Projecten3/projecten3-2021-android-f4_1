@@ -1,6 +1,5 @@
 package com.example.faithandroid.login.uilogin
 
-import android.util.Log
 import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -52,9 +51,6 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
                                 email = result2.data.email
                             )
                         )
-
-                    Log.d("zz", loginResult.value!!.success!!.displayName)
-                    Log.d("rrr", result2.toString())
                 }
             } else {
                 _loginResult.value =

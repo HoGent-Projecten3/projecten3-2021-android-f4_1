@@ -15,13 +15,6 @@ class GoalPostRepository(private val localDataSource: GoalPostLocalDataSource, p
         saveCallResult = { localDataSource.saveGoalposts(it) }
     )
 
-     /*fun getBillboardGoals() = performGetOperation(
-
-         databaseQuery = { localDataSource.getBillboardGoals() },
-         networkCall = { remoteDataSource.getBillboardGoals() },
-         saveCallResult = { localDataSource.saveGoalBill(it) }
-     )*/
-
     fun getBillboardGoals() = remoteDataSource.getBillboardGoals()
 
     suspend fun postGoalPost(goal: GoalPost) = remoteDataSource.postGoalPost(goal)

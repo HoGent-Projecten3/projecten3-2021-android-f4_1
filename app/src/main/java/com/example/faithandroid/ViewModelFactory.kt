@@ -10,15 +10,11 @@ import com.example.faithandroid.post.PostViewModel
  *
  *  @param param is the placeType where you have just been
  */
-public class ViewModelFactory( // private lateinit var application: Application
+class ViewModelFactory(
     private var param: PlaceType,
 
     private var repo: PostRepository
 ) : ViewModelProvider.Factory {
-
-    public fun ViewModelFactory(param: PlaceType) {
-        // this.application = application;
-    }
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return PostViewModel(param, repo) as T

@@ -66,7 +66,6 @@ class AddVideoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
 
         var binding = DataBindingUtil.inflate<AddVideoBinding>(
             inflater,
@@ -109,7 +108,6 @@ class AddVideoFragment : Fragment() {
                 try {
                     startActivityForResult(takePictureIntent, REQUEST_VIDEO_CAPTURE)
                 } catch (e: ActivityNotFoundException) {
-                    // display error state to the user
                 }
             }
 
@@ -123,7 +121,6 @@ class AddVideoFragment : Fragment() {
             )
         }
 
-        // val editTextFilledExposedDropdown: AutoCompleteTextView? = this.view?.findViewById(R.id.filled_exposed_dropdown)
         binding.filledExposedDropdown.setAdapter(adapter)
         binding.filledExposedDropdown.setText(PlaceType.Rugzak.name, false)
         binding.filledExposedDropdown.setOnItemClickListener { parent, view, position, id ->

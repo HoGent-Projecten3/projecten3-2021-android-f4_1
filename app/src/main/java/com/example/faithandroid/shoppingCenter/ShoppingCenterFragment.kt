@@ -152,76 +152,7 @@ class ShoppingCenterFragment : Fragment() {
             viewModel.postAvatar(character, hair, eyes, skin, body)
         }
 
-        /*binding.ClothesTab.setOnClickListener{
-            this.context?.let { context ->
-                viewModel.getUpperBody()
-            }
-        }*/
-
         var drawing: VectorDrawable = this.context?.let { AppCompatResources.getDrawable(it, R.drawable.ic_avatar_female) } as VectorDrawable
-
-        /*viewModel.currentAvatar.observe(this.viewLifecycleOwner, Observer{
-            character = viewModel.currentAvatar.value?.person!!
-            if (character == 0){
-                binding.imgAvatarA.setVisibility(View.VISIBLE)
-                binding.imgAvatarB.setVisibility(View.GONE)
-            } else {
-                binding.imgAvatarA.setVisibility(View.GONE)
-                binding.imgAvatarB.setVisibility(View.VISIBLE)
-            }
-
-            hair = viewModel.currentAvatar.value?.hair!!
-            hair.let { ColorSvgs.setHair(it, vectorMasterViewA, vectorMasterViewB) }
-
-            eyes = viewModel.currentAvatar.value?.eyes!!
-            eyes.let { ColorSvgs.setEyes(it, vectorMasterViewA, vectorMasterViewB) }
-
-            skin = viewModel.currentAvatar.value?.skin!!
-            skin.let { ColorSvgs.setSkin(it, vectorMasterViewA, vectorMasterViewB) }
-
-            body = viewModel.currentAvatar.value?.upperBody!!
-            body.let { ColorSvgs.setBody(it, vectorMasterViewA, vectorMasterViewB) }
-        })*/
-
-        /*viewModel.currentAvatar.observe(this.viewLifecycleOwner, Observer
-        {
-            it?.let { resource ->
-                when (resource.status) {
-                    Status.SUCCESS -> {
-
-                        character = viewModel.currentAvatar.value?.data?.person!!
-                        if (character == 0){
-                            binding.imgAvatarA.setVisibility(View.VISIBLE)
-                            binding.imgAvatarB.setVisibility(View.GONE)
-                        } else {
-                            binding.imgAvatarA.setVisibility(View.GONE)
-                            binding.imgAvatarB.setVisibility(View.VISIBLE)
-                        }
-
-                        hair = viewModel.currentAvatar.value?.data?.hair!!
-                        hair.let { ColorSvgs.setHair(it, vectorMasterViewA, vectorMasterViewB) }
-
-                        eyes = viewModel.currentAvatar.value?.data?.eyes!!
-                        eyes.let { ColorSvgs.setEyes(it, vectorMasterViewA, vectorMasterViewB) }
-
-                        skin = viewModel.currentAvatar.value?.data?.skin!!
-                        skin.let { ColorSvgs.setSkin(it, vectorMasterViewA, vectorMasterViewB) }
-
-                        body = viewModel.currentAvatar.value?.data?.upperBody!!
-                        body.let { ColorSvgs.setBody(it, vectorMasterViewA, vectorMasterViewB) }
-
-                        showProgress(false)
-                        //adapter.submitList(resource)
-                    }
-                    Status.LOADING -> {
-                        showProgress(true)
-                    }
-                    Status.ERROR -> {
-                        showProgress(false)
-                    }
-                }
-            }
-        })*/
 
         viewModel.currentAvatar.observe(
             this.viewLifecycleOwner,
@@ -266,15 +197,6 @@ class ShoppingCenterFragment : Fragment() {
                         }
             }
         )
-
-        /*viewPager = findViewById(R.id.viewPager)
-        binding.tablayout.addOnTabSelectedListener(object : OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                viewPager.currentItem = tab.position
-            }
-            override fun onTabUnselected(tab: TabLayout.Tab) {}
-            override fun onTabReselected(tab: TabLayout.Tab) {}
-        })*/
 
         return binding.root
     }

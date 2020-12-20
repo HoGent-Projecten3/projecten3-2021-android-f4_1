@@ -61,8 +61,4 @@ class LoginDataSource(private val apiService: FaithApiService) {
                 return Result.Error(e.message())
             }
     }
-
-   /* fun logout() {
-        // TODO: revoke authentication
-    }*/
 }

@@ -117,15 +117,4 @@ class SkyscraperFragment : Fragment() {
             }
         }
     }
-
-   /* override fun onStart(){
-
-        super.onStart()
-        viewModel.getPostsOfSkyscraper()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.getPostsOfSkyscraper()
-    }*/
 }

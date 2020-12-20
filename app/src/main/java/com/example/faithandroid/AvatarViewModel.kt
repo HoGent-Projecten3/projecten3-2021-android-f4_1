@@ -1,7 +1,6 @@
 package com.example.faithandroid
 
 import android.graphics.Color
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -156,7 +155,6 @@ class AvatarViewModel(private val avatarRepository: AvatarRepository) : ViewMode
                  _status.value = "Kan geen verbinding maken met de server"
              }
          }
-         Log.d("hair", currentAvatar.value.toString())
     }
 
     /**

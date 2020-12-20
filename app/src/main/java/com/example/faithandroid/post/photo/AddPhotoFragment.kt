@@ -93,7 +93,6 @@ class AddPhotoFragment : Fragment() {
             try {
                 startActivityForResult(takePictureIntent, REQUEST_PICTURE_CAPTURE)
             } catch (e: ActivityNotFoundException) {
-                // display error state to the user
             }
         }
 
@@ -110,7 +109,6 @@ class AddPhotoFragment : Fragment() {
             )
         }
 
-        // val editTextFilledExposedDropdown: AutoCompleteTextView? = this.view?.findViewById(R.id.filled_exposed_dropdown)
         binding.dropdownPlaatsen.setAdapter(adapter)
         binding.dropdownPlaatsen.setText(PlaceType.Rugzak.name, false)
 

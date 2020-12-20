@@ -28,7 +28,6 @@ class AddPostFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<AddPostBinding>(
             inflater,
             R.layout.add_post,

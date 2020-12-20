@@ -59,12 +59,6 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
             }
             Glide.with(itemView.context).load(post.uri).into(binding.TreasurechestImage)
 
-            /*val dialogClickListener = DialogInterface.OnClickListener{ _, which ->
-                when(which){
-                    DialogInterface.BUTTON_POSITIVE -> FaithApi.retrofitService.deletePostByEmail(PlaceType.Schatkist.ordinal, post.id)
-                }
-            }*/
-
             binding.DeletePostButton.setOnClickListener {
                 view: View ->
 
@@ -84,7 +78,6 @@ class PostAdapter(private var listener: CustomClick) : ListAdapter<Post, PostAda
 
             var card = binding.card
 
-            // Glide.with(itemView.context).load(post.uri).into(binding.TreasurechestImage)
             card.setOnClickListener { view: View ->
                 when (post.postType) {
                     PostType.Image.ordinal -> {
