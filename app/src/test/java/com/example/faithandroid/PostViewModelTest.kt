@@ -3,6 +3,7 @@ package com.example.faithandroid
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 
 import com.example.faithandroid.models.Post
+import com.example.faithandroid.post.PostRepository
 import com.example.faithandroid.post.PostViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.After
@@ -18,6 +19,8 @@ import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.dsl.module
 import org.koin.test.KoinTest
+import org.mockito.Mockito
+import org.mockito.Mockito.mock
 
 
 @ExperimentalCoroutinesApi
@@ -32,6 +35,8 @@ class PostViewModelTest: KoinTest {
     val rule = InstantTaskExecutorRule()
 
 
+    private lateinit var postRepo: PostRepository
+
     @Before
     fun before()
     {
@@ -41,6 +46,7 @@ class PostViewModelTest: KoinTest {
             })
         }
 
+        postRepo = mock(PostRepository::class.java)
 
     }
 
@@ -54,8 +60,8 @@ class PostViewModelTest: KoinTest {
     @Test
     fun `getPostsOfPlace gets posts`()
     {
-
-        val viewModel = PostViewModel(placeType = PlaceType.Rugzak)
+        Mockito.`when`(postRepo.getPostsOfPlaceByAdolescentEmail(PlaceType.Rugzak.ordinal)).thenReturn()
+        val viewModel = PostViewModel(placeType = PlaceType.Rugzak, postRepo)
         viewModel.postList.observeForever{}
         assert(viewModel.postList.value!!.size == 1)
     }
