@@ -30,12 +30,12 @@ jobs:
         run: sudo apt-get install dos2unix
       - name: convert gradlew
         run: dos2unix ./gradlew
-      - name: build release 
-        run: ./gradlew assembleRelease
       - name: ktlint check
         run: ./gradlew app:ktlintCheck
       - name: unit tests
         run: ./gradlew test
       - name: e2e testing
         run: ./gradlew app:connectedAndroidTest
+      - name: build release 
+        run: ./gradlew assembleRelease
       
