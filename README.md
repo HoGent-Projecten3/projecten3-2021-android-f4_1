@@ -21,11 +21,24 @@ We hebben de opdracht gekregen van HOGENT om voor het vak Projecten-Workshops II
 - Gedeelde backend
 
  Alle drie functioneel, robuust, onderhoudbaar en gebruiksvriendelijk
+ (we hebben ook een tabletversie voorzien) 
 
 ## Technologieën
-- Kotlin 
+- Kotlin
 
 ## Screenshots
+
+|   |  |
+| ------------- | ------------- |
+| ![login](mockups/login.png)  | ![home](mockups/home.png)   |
+| ![sideBar](mockups/sideBar.png)  | ![profiel](mockups/profiel.png)  |
+| ![doelToevoegen](mockups/doelToevoegen.png)  | ![detailsDoel](mockups/detailsDoel.png)  |
+| ![rugzak](mockups/rugzak.png)  | ![schatkist](mockups/schatkist.png)  |
+| ![prikbord](mockups/prikbord.png)  | ![wolkenkrabber](mockups/wolkenkrabber.png)  |
+| ![postToevoegen](mockups/postToevoegen.png)  | ![VideoPost](mockups/VideoPost.png)  |
+| ![audioPost](mockups/audioPost.png)  | ![fotoPostNieuw](mockups/tekstPostNieuw.png)  |
+| ![spotifyLinken](mockups/spotifyLinken.png)  | ![winkelcentrum](mockups/winkelcentrum.png)  |
+
 
 ## Login gegevens
 - Jongere
@@ -95,6 +108,14 @@ We hebben de opdracht gekregen van HOGENT om voor het vak Projecten-Workshops II
 - Lifecycle
 - Refactoring
 - Repository pattern toepassen
+- Lay-out responsive maken 
+- Dark modus
+- Repository pattern toepassen
+- Delen Billboard (naar de groepen)
+- Errorhandling
+- Testen geschreven
+- Documentatie
+- Winkelcentrum (kleine aanpassingen)
 
 Project moet tegen week 15 beschikbaar zijn voor de klant om het te testen
 
