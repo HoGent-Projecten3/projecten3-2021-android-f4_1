@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.faithandroid.databinding.BillboardBinding
 import com.example.faithandroid.databinding.BillboardGoalBinding
+import com.example.faithandroid.login.uilogin.LoginActivity
+import com.example.faithandroid.login.uilogin.LoginResult
+import com.example.faithandroid.models.Adolescent
 import com.example.faithandroid.models.GoalPost
 
 class BillboardGridAdapter : ListAdapter<GoalPost, BillboardGridAdapter.BillboardPropertyViewHolder>(
@@ -17,6 +20,7 @@ class BillboardGridAdapter : ListAdapter<GoalPost, BillboardGridAdapter.Billboar
         fun bind(goalPost: GoalPost){
             binding.property = goalPost
             binding.executePendingBindings()
+            binding.user = AppPreferences.username;
         }
 
     }

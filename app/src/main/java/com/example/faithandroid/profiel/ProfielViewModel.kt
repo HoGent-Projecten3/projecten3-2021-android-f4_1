@@ -19,7 +19,6 @@ import org.koin.java.KoinJavaComponent.inject
 
 class ProfielViewModel(private val postRepository: PostRepository,private val loginRepository: LoginRepository): ViewModel() {
 
-
     private var _adol = MutableLiveData<Adolescent>()
     var adol: LiveData<Adolescent> = MutableLiveData<Adolescent>()
         get() = _adol
@@ -47,7 +46,6 @@ class ProfielViewModel(private val postRepository: PostRepository,private val lo
         return _adol.value
 
     }
-
      fun changePassword(ww: String) {
 
          viewModelScope.launch {

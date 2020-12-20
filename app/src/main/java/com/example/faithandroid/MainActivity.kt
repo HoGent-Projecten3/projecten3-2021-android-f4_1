@@ -136,7 +136,7 @@ class MainActivity : AppCompatActivity(), DrawerInterface,NavigationView.OnNavig
     fun ClickMenu(view: View){
         //open drawer
         val pvm: ProfielViewModel by inject()
-        //pvm.getAdolescent()
+        pvm.getAdolescent()
         pvm.adol.observe(this, {
             username = it.firstName + " " + it.name
             bind.nameText.text = username
