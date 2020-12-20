@@ -109,7 +109,7 @@
                         android:id="@+id/addImageRecyclerView"
                         android:layout_width="405dp"
                         android:layout_height="455dp"
-                        app:filteredPostData="@{viewModel.postList.data}"
+                        app:filteredPostData="@{viewModel.filteredPostList}"
                         app:spanCount="2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

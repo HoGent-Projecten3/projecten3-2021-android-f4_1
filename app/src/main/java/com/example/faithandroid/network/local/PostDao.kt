@@ -38,6 +38,13 @@ interface PostDao {
     @Query("delete from posts where id==:id")
     fun deletePostFromBackpack(id: Int)
 
+    @Query("update posts set bulletinBoard = 1 where id == :postId")
+    fun addExistingPostToBulletingBoard(postId: Int)
+
+    @Query("update posts set treasureChest = 1 where id == :postId")
+    fun addExistingPostToTreasureChest(postId: Int)
+
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(list: List<Post>)
 }

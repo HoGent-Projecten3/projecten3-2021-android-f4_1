@@ -22,13 +22,11 @@ import retrofit2.await
 
 class PostViewModel(placeType: PlaceType,private val postRepository: PostRepository): ViewModel() {
 
-    //lateinit var postList: LiveData<Resource<List<Post>>>
-
     private var _postList : LiveData<Resource<List<Post>>> = postRepository.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
     val postList: LiveData<Resource<List<Post>>>
         get() = _postList
 
-    private var _filteredPostList : LiveData<List<Post>> = MutableLiveData<List<Post>>()
+    private var _filteredPostList : MutableLiveData<List<Post>> =  MutableLiveData()
     val filteredPostList: LiveData<List<Post>>
         get() = _filteredPostList
 
@@ -44,23 +42,8 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
             _status.value = text.value
         }
 
-//    private var viewModelJob = Job()
-//    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
-
-    /*init {
-        getPostsOfPlace(placeType)
-    }*/
-
-    /*fun getPostsOfPlace(placeType: PlaceType)    {
-        var test = postRepository.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
-        _postList = test as MutableLiveData<Resource<List<Post>>>
-        }*/
-
     fun getFilteredPostFromPlace(placeType: PlaceType, postType: PostType) {
-        Log.d("filteren", "get")
-        _postList = postRepository.getFilteredFromPlace(placeType.ordinal, postType.ordinal);
-        /*viewModelScope.launch {
-
+        viewModelScope.launch {
             val stringCall: Call<List<Post>> =
                 postRepository.getFilteredFromPlace(placeType.ordinal, postType.ordinal)
 
@@ -70,9 +53,9 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
                     if (response.isSuccessful()) {
                         if (response.body()!!.isEmpty()) {
                             _status.value = "Sorry er is niets om weer te geven"
-                            _postList.value = response.body()
+                            _filteredPostList.value = response.body()
                         } else {
-                            _postList.value = response.body()
+                            _filteredPostList.value = response.body()
                         }
                     } else {
                         _status.value = "Er kon geen verbinding gemaakt worden"
@@ -82,33 +65,9 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
                 override fun onFailure(call: Call<List<Post>>?, t: Throwable?) {
                     _status.value = "Er liep iets mis"
                 }
-
-            })
-
-
-        }*/
-    }
-
-    /*fun getPostsOfPlace(placeType: PlaceType) {
-        viewModelScope.launch {
-            val stringCall: Call<List<Post>> =
-                postRepository.getPostsOfPlaceByAdolescentEmail(placeType.ordinal)
-            stringCall.enqueue(object : Callback<List<Post>> {
-                override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
-                    if (response.isSuccessful()) {
-                        _postList.value = response.body()
-                    }
-                }
-
-                override fun onFailure(call: Call<List<Post>>?, t: Throwable?) {
-                    t?.localizedMessage?.let {
-
-                    }
-                    _status.value = "Er kon geen posts worden opgehaald."
-                }
-            })
+        })
         }
-    }*/
+    }
 
     fun addPostByEmail(post: Post, placeType: PlaceType): Boolean {
         var bool: Boolean = true
@@ -137,44 +96,12 @@ class PostViewModel(placeType: PlaceType,private val postRepository: PostReposit
 
     fun addExistingPostToPlace(id: Int, placeType: PlaceType) {
 
-        viewModelScope.launch {
-            Log.d("testVideo", id.toString() + placeType.name)
-            val stringCall: Call<Void> =
-                postRepository.addExistingPostToPlace(id, placeType.ordinal)
-            stringCall.enqueue(object : Callback<Void> {
-                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    if (response.isSuccessful()) {
-                        val responseString: String? = response.code().toString()
-                        if (responseString != null) {
-                        }
-                        _status.value = "Post toegevoegd!"
-                    }
-                }
+        postRepository.addExistingPostToPlace(id, placeType.ordinal)
 
-                override fun onFailure(call: Call<Void>?, t: Throwable?) {
-                    _status.value = "Er liep iets mis bij het toevoegen.";
-                }
-            })
-        }
-        Log.d("testVideo", "Heeft methode doorlopen")
     }
 
     fun deletePostByEmail(id: Int, placeType: PlaceType) {
                 postRepository.deletePostByEmail(placeType.ordinal, id)
-                /*stringCall.enqueue(object : Callback<Void> {
-                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    if (response.isSuccessful()) {
-                        val responseString: String? = response.code().toString()
-                        if (responseString != null) {
-
-                        }
-                    }
-                }
-                override fun onFailure(call: Call<Void>?, t: Throwable?) {
-                    _status.value = "Er liep iets mis bij het verwijderen."
-                }
-            })*/
-
     }
 
     fun requestConsultation() {

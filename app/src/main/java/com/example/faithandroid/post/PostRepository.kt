@@ -2,12 +2,13 @@ package com.example.faithandroid.post
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.faithandroid.data.local.PostLocalDataSource
 import com.example.faithandroid.models.GoalPost
 import com.example.faithandroid.models.Post
 import com.example.faithandroid.network.remote.PostRemoteDataSource
+import com.example.faithandroid.util.Resource
 import com.example.faithandroid.util.performDelOperation
-import com.example.faithandroid.util.performFilterOperation
 import com.example.faithandroid.util.performGetOperation
 import retrofit2.Call
 import retrofit2.Response
@@ -37,44 +38,8 @@ class PostRepository(private val localDataSource: PostLocalDataSource, private v
             saveCallResult = { localDataSource.savePosts(it) }
         )
 
-    //fun getPostsOfPlaceByAdolescentEmail(placeType: Int) = remoteDataSource.getPostsOfPlaceByAdolescentEmail(placeType)
 
-     /*fun getFilteredFromPlace(placeType: Int,postType: Int) =
-
-        performGetOperation(
-            databaseQuery = {
-                when (placeType) {
-                    0 -> {
-                        localDataSource.getFilteredFromBulletinboard(postType)
-                    }
-                    1 -> {
-                        localDataSource.getFilteredFromTreasureChest(postType)
-                    }
-                    else -> {
-                        localDataSource.getFilteredFromBackPack(postType)
-                    }
-                }
-            },
-            networkCall = { remoteDataSource.getFilteredFromPlace(placeType, postType) },
-            saveCallResult = { localDataSource.savePosts(it) }
-        )*/
-
-    fun getFilteredFromPlace(placeType: Int,postType: Int) = performFilterOperation {  when(placeType)
-    {
-        0 -> {
-            Log.d("filteren", "posttype: $postType placetype: $placeType")
-            localDataSource.getFilteredFromBulletinboard(postType)
-        }
-        1 -> {
-            Log.d("filteren", "posttype: $postType placetype: $placeType")
-            localDataSource.getFilteredFromTreasureChest(postType)
-        }
-        else -> {
-            Log.d("filteren", "posttype: $postType placetype: $placeType")
-            localDataSource.getFilteredFromBackPack(postType)
-
-        }        }
-    }
+    fun getFilteredFromPlace(placeType: Int,postType: Int) = remoteDataSource.getFilteredFromPlace(placeType, postType)
 
     fun addPostByEmail(post: Post, placeType: Int) = remoteDataSource.addPostByEmail(post,placeType)
 
@@ -97,10 +62,19 @@ class PostRepository(private val localDataSource: PostLocalDataSource, private v
             networkCall = {remoteDataSource.deletePostByEmail(placeType,postId)}
         )
 
-    //fun deletePostByEmail(placeType: Int,postId: Int) = remoteDataSource.deletePostByEmail(placeType,postId)
-
-
-    fun addExistingPostToPlace(postId: Int,placeType: Int) = remoteDataSource.addExistingPostToPlace(postId,placeType)
+    fun addExistingPostToPlace(postId: Int,placeType: Int) = performDelOperation(
+        databaseQuery = { when(placeType) {
+            0 -> {
+                localDataSource.addExistingPostToBulletinBoard(postId)
+            }
+            1 -> {
+                localDataSource.addExistingPostToTreasureChest(postId)
+            }
+            else -> {
+            }
+        }} ,
+        networkCall = {remoteDataSource.addExistingPostToPlace(postId,placeType)}
+    )
 
     fun requestConsultation() = remoteDataSource.requestConsultation()
 

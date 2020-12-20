@@ -2,6 +2,7 @@ package com.example.faithandroid.util
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.map
 import kotlinx.coroutines.*
@@ -43,14 +44,7 @@ fun  performDelOperation(
 
 }
 
-fun <T> performFilterOperation(
-    databaseQuery: () -> LiveData<T>
-): LiveData<Resource<T>> =
-    liveData(Dispatchers.IO) {
-        emit(Resource.loading())
-        val source = databaseQuery.invoke().map { Resource.success(it) }
-        emitSource(source)
-    }
+
 
 
 

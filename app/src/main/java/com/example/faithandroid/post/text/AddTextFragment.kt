@@ -95,9 +95,10 @@ class addTextFragment: Fragment() {
                 }
             })
 
+
         binding.textToevoegenButton.setOnClickListener{
-            post?.let { it1 -> viewModel.addPostByEmail(
-                it1,
+            post?.let { it1 -> viewModel.addExistingPostToPlace(
+                it1.id,
                 args.placeType
             ) }
             when(args.placeType)
