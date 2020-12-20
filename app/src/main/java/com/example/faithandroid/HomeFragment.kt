@@ -27,7 +27,6 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<AppHomeschermBinding>(inflater, R.layout.app_homescherm, container, false)
 
         binding.imgBulletinboard.setOnClickListener { view: View ->

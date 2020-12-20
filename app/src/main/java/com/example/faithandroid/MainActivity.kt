@@ -33,7 +33,7 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.view.*
 import org.koin.android.ext.android.inject
 
-// import androidx.databinding.DataBindingUtil
+
 /**
  * the main activity where the app starts
  *
@@ -78,10 +78,6 @@ class MainActivity : AppCompatActivity(), DrawerInterface, NavigationView.OnNavi
 
         navHeader.navView.addHeaderView(bind.root)
 
-      // var navHeader2 = findViewById<AppNavHeaderMainBinding>(R.id.) as AppNavHeaderMainBinding
-//        navHeader2.adolescent = viewModel
-
-        // setSupportActionBar(R.id.)
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.NavHostFragment) as NavHostFragment
         val navController = navHostFragment.navController
@@ -95,7 +91,7 @@ class MainActivity : AppCompatActivity(), DrawerInterface, NavigationView.OnNavi
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setHomeButtonEnabled(true)
 
-        // eerst controleren of de gebruiker daadwerkelijk permissie heeft gegeven om audio op te nemen
+
         if (ContextCompat.checkSelfPermission(
             this,
             Manifest.permission.RECORD_AUDIO
@@ -124,7 +120,6 @@ class MainActivity : AppCompatActivity(), DrawerInterface, NavigationView.OnNavi
      * what happens when you click the menu button
      */
     fun ClickMenu(view: View) {
-        // open drawer
         val pvm: ProfielViewModel by inject()
         pvm.getAdolescent()
         pvm.adol.observe(this, {
@@ -139,7 +134,7 @@ class MainActivity : AppCompatActivity(), DrawerInterface, NavigationView.OnNavi
      * opens the drawer
      */
     private fun openDrawer(drawerLayout: DrawerLayout) {
-    // open drawer layout
+
         drawerLayout.openDrawer(GravityCompat.START)
     }
 
@@ -188,11 +183,6 @@ class MainActivity : AppCompatActivity(), DrawerInterface, NavigationView.OnNavi
                 AppPreferences.username = ""
                 AppPreferences.name = ""
                 AppPreferences.firstname = ""
-//                supportFragmentManager.beginTransaction()
-//                    .replace(R.id.layoutToolBar, LoginFragment())
-//                    .commit()
-
-                 // finishAffinity()
                 Toast.makeText(this, "Uitgelogd!", Toast.LENGTH_LONG).show()
 
                 val taskIntent = Intent(this, LoginActivity::class.java)
@@ -200,10 +190,6 @@ class MainActivity : AppCompatActivity(), DrawerInterface, NavigationView.OnNavi
             }
 
             R.id.homeFragment -> {
-//                supportFragmentManager.beginTransaction()
-//                    .replace(R.id.layoutToolBar, LoginFragment())
-//                    .commit()
-
                 menuItem.onNavDestinationSelected(findNavController(R.id.NavHostFragment))
             }
         }
@@ -214,7 +200,6 @@ class MainActivity : AppCompatActivity(), DrawerInterface, NavigationView.OnNavi
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        // this.username = data?.getStringExtra("loggedInUser").toString()
 
         if (requestCode == LOGIN_REQUEST_CODE) {
             var token = data?.getStringExtra("token").toString()

@@ -45,7 +45,6 @@ class BillboardFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
 
-        // viewModel = ViewModelProvider(this).get(BillboardViewModel::class.java)
         binding.viewmodelBillboard = viewModel
         binding.billboardGridView.adapter = BillboardGridAdapter(
             object : BillboardGoalCustomClick {

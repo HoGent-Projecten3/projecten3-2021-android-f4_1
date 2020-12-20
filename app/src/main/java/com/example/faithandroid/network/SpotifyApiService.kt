@@ -2,7 +2,6 @@ package com.example.faithandroid.network
 
 import com.example.faithandroid.models.*
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.*
 
 interface SpotifyApiService {

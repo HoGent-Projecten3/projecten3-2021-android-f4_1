@@ -12,13 +12,11 @@ import android.widget.PopupMenu
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.Observer
 import com.example.faithandroid.CustomPlaylistClick
 import com.example.faithandroid.LoadingFragment
 import com.example.faithandroid.R
 import com.example.faithandroid.databinding.MusicroomBinding
 import com.example.faithandroid.models.Playlist
-import com.example.faithandroid.util.Status
 import com.google.android.material.snackbar.Snackbar
 import com.spotify.android.appremote.api.ConnectionParams
 import com.spotify.android.appremote.api.Connector
@@ -145,7 +143,6 @@ class MusicRoomFragment : Fragment() {
                     }
 
                     override fun onFailure(throwable: Throwable) {
-
 
                         Snackbar.make(
                             contextView!!,
