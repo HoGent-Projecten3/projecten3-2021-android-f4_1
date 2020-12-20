@@ -11,7 +11,7 @@ import com.example.faithandroid.models.GoalPost
 @Dao
 interface AvatarDao {
 
-    @Query("select * from avatar limit 1")
+    @Query("select * from avatar")
     fun getAvatar(): LiveData<Avatar>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

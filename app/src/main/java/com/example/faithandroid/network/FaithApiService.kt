@@ -60,13 +60,13 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json")
     @DELETE("city/skyscraper/goal/{id}")
-    fun removeGoal(@Path("id") id: Int): Call<String>
+    suspend fun removeGoal(@Path("id") id: Int): Response<Void>
 
     @GET("city/{placeType}/filtered-post")
     fun getFilteredFromPlace(@Path("placeType") placeType: Int, @Query("postType") postType: Int): Call<List<Post>>
 
     @GET("city/{placeType}/post")
-    fun getPostsOfPlaceByAdolescentEmail(@Path("placeType") placeType: Int): Call<List<Post>>
+    suspend fun getPostsOfPlaceByAdolescentEmail(@Path("placeType") placeType: Int): Response<List<Post>>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @POST("city/{placeType}/post")
@@ -74,11 +74,11 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @PUT("city/{placeType}/post/remove/{postId}")
-    fun deletePostByEmail(@Path("placeType") placeType: Int, @Path("postId") postId: Int): Response<Void>
+    suspend fun deletePostByEmail(@Path("placeType") placeType: Int, @Path("postId") postId: Int): Response<Void>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @PUT("city/{placeType}/add-existing/{postId}")
-    fun addExistingPostToPlace(@Path("placeType") placeType: Int, @Path("postId") postId: Int): Call<Void>
+    suspend fun addExistingPostToPlace(@Path("postId") postId: Int, @Path("placeType") placeType: Int): Response<Void>
 
 
     @Headers("Content-Type: application/json")
@@ -100,11 +100,11 @@ interface FaithApiService {
 
     @Headers("Content-Type: application/json", "accept: application/octet-stream")
     @DELETE("city/post/{postId}")
-    fun permanentlyDeletePost(@Path("postId") postId: Int):Call<Void>
+    suspend fun permanentlyDeletePost(@Path("postId") postId: Int):Response<Void>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @GET("/avatar")
-     fun getAvatar(): Call<Avatar>
+    fun getAvatar(): Call<Avatar>
 
     @Headers("Content-Type: application/json", "accept: application/json")
     @PUT("/change-avatar")

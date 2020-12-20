@@ -12,13 +12,15 @@ class PostLocalDataSource(val postDao: PostDao) {
 
      fun getPostsOfTreasureChest() = postDao.getPostsOfTreasureChest()
 
-     fun getFilteredFromBulletinboard(postType: Int) = postDao.getFilteredFromBulletinboard(postType)
+     fun deletePostFromBulletinBoard(postId: Int) = postDao.deletePostFromBulletinBoard(postId)
 
-     fun getFilteredFromBackPack(postType: Int) = postDao.getFilteredFromBackPack(postType)
+     fun deletePostFromTreasureChest(postId: Int) = postDao.deletePostFromTreasureChest(postId)
 
-     fun getFilteredFromTreasureChest(postType: Int) = postDao.getFilteredFromTreasureChest(postType)
+     fun deletePostFromBackpack(id: Int) = postDao.deletePostFromBackpack(id)
 
-     fun deletePostFromPlace(postId: Int) = postDao.deletePostFromPlace(postId)
+     fun addExistingPostToBulletinBoard(postId: Int) = postDao.addExistingPostToBulletingBoard(postId)
+
+     fun addExistingPostToTreasureChest(postId: Int) = postDao.addExistingPostToTreasureChest(postId)
 
      fun savePosts(list: List<Post>)  = postDao.insertAll(list)
 

@@ -53,7 +53,7 @@ class TreasureChestFragment: Fragment() {
             }
         })
 
-        binding.TreasureChestRecycler.adapter = this.adapter
+        binding.TreasureChestRecycler?.adapter = this.adapter
 
         binding.AddPostButton.setOnClickListener { view: View ->
             val action =
@@ -63,15 +63,16 @@ class TreasureChestFragment: Fragment() {
             view.findNavController().navigate(action)
         }
 
-        binding.TreasureChestRecycler.adapter =
+        binding.TreasureChestRecycler?.adapter =
             PostAdapter(object : CustomClick {
                 override fun onClick(post: Post) {
                     postViewModel.deletePostByEmail(post.id,  PlaceType.Schatkist)
                     postViewModel.postList
+                    true
                 }
             })
 
-        postViewModel.status.observe(this.viewLifecycleOwner, Observer {
+        /*postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
                 Snackbar.make(contextView, postViewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
@@ -86,9 +87,9 @@ class TreasureChestFragment: Fragment() {
         postViewModel.postList.observe(this.viewLifecycleOwner, Observer{
 
             this.adapter.notifyDataSetChanged()
-        })
-
-       /* postViewModel.postList.observe(this.viewLifecycleOwner, Observer
+        })*/
+    /*
+        postViewModel.postList.observe(this.viewLifecycleOwner, Observer
         {
             it?.let { resource ->
                 when (resource.status) {
@@ -104,19 +105,12 @@ class TreasureChestFragment: Fragment() {
                     }
                 }
             }
-        })*/
-
+        })
+*/
         return binding.root
     }
-    private fun showProgress(b: Boolean) {
-        if (b) {
-            if (!loadingDialogFragment.isAdded) {
-                loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
-            }
-        } else {
-            if (loadingDialogFragment.isAdded) {
-                loadingDialogFragment.dismissAllowingStateLoss()
-            }
-        }
-    }
+
+
+
+
 }

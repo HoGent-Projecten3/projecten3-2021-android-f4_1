@@ -58,7 +58,7 @@ class BulletinboardFragment: Fragment() {
           false
       );
         binding.lifecycleOwner = viewLifecycleOwner
-        postViewModel.getPostsOfPlace(PlaceType.Prikbord)
+        //postViewModel.getPostsOfPlace(PlaceType.Prikbord)
 
         deleteBtn = binding.include.deletePostsBtn
 
@@ -112,24 +112,12 @@ class BulletinboardFragment: Fragment() {
         })
 
         binding.BulletinBoardRecycler?.adapter =
-            PostAdapter(object : CustomClick {
-                override fun onClick(post: Post) {
-
-                    postViewModel.deletePostByEmail(post.id,  PlaceType.Prikbord)
-                    true
-                }
-            })
+            adapter
 
         binding.BulletinBoardRecyclerPad?.adapter =
-            PostAdapter(object : CustomClick {
-                override fun onClick(post: Post) {
+            adapter
 
-                    postViewModel.deletePostByEmail(post.id,  PlaceType.Prikbord)
-                    true
-                }
-            })
-
-        postViewModel.status.observe(this.viewLifecycleOwner, Observer {
+        /*postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view
             if (contextView != null) {
                 Snackbar.make(contextView, postViewModel.status.value.toString(), Snackbar.LENGTH_SHORT).setAction(
@@ -139,7 +127,7 @@ class BulletinboardFragment: Fragment() {
                     postViewModel.getPostsOfPlace(PlaceType.Prikbord)
                 }.show()
             }
-        })
+        })*/
 
         binding.include.deletePostsBtn.setOnClickListener{
             try{
@@ -171,7 +159,7 @@ class BulletinboardFragment: Fragment() {
 
         }
 
-       /* postViewModel.postList.observe(this.viewLifecycleOwner, Observer
+        postViewModel.postList.observe(this.viewLifecycleOwner, Observer
         {
             it?.let { resource ->
                 when (resource.status) {
@@ -187,7 +175,7 @@ class BulletinboardFragment: Fragment() {
                     }
                 }
             }
-        })*/
+        })
 
         postViewModel.status.observe(this.viewLifecycleOwner, Observer {
             val contextView = this.view

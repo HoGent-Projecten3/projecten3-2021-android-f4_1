@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="viewModel"
+            name="postViewModel"
             type="com.example.faithandroid.post.PostViewModel" />
     </data>
 
@@ -19,7 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/AddPostButton"
             style="@style/pinkButtonStyle"
@@ -43,28 +42,57 @@
         android:layout_marginTop="?attr/actionBarSize"
         >
 
-
-
-        <!--<TextView
-            android:id="@+id/textView2"
+        <LinearLayout
+            android:id="@+id/linLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/under_construction"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />-->
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutFilter"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:hint="@string/soort_post_filter"
+                app:boxBackgroundColor="#FFFFFF"
+                app:boxStrokeColor="#FFFFFF">
+
+                <AutoCompleteTextView
+                    android:id="@+id/dropdown_filter"
+                    android:layout_width="362dp"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/closeFilterBtn"
+                android:layout_width="49dp"
+                android:layout_height="62dp"
+                android:layout_weight="1"
+                app:tint="@color/colorPrimary"
+                app:srcCompat="@drawable/ic_baseline_cancel_24" />
+
+        </LinearLayout>
+
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/TreasureChestRecycler"
+
+            android:id="@+id/BackpackRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
-            app:spanCount="1"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:postData="@{viewModel.postList.data}">
+            app:layout_constraintTop_toBottomOf="@+id/linLayout"
+            app:postData="@{postViewModel.postList.data}"
+            app:spanCount="4">
 
         </androidx.recyclerview.widget.RecyclerView>
 

@@ -22,6 +22,8 @@ interface GoalPostDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllBill(list: List<GoalPost>)
 
+    @Query("delete from goalPosts where id == :goalPostId")
+    fun removeGoal(goalPostId: Int)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(list: List<GoalPost>)

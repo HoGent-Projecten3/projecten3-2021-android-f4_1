@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.View.INVISIBLE
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -40,7 +41,7 @@ class FilteredPostAdapter(private var listener: CustomClick) : ListAdapter<Post,
                 Picasso.get().load(post.uri).into(binding.TreasurechestImage)
                 //binding.TreasurechestImage.scaleType = ImageView.ScaleType.CENTER_CROP
             }else if(post.postType == PostType.Audio.ordinal){
-                binding.TreasurechestImage.setImageResource(R.drawable.sound)
+                binding.TreasurechestImage.visibility = GONE
             }
             else if(post.postType == PostType.Video.ordinal){
                 Glide.with(itemView.context).load(post.uri).into(binding.TreasurechestImage)
