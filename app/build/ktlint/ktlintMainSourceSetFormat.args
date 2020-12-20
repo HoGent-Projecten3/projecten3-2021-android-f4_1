@@ -4,7 +4,7 @@
 -F
 "src\\main\\java\\com\\example\\faithandroid\\adapters\\FilteredPostAdapter.kt"
 "src\\main\\java\\com\\example\\faithandroid\\adapters\\PostAdapter.kt"
-"src\\main\\java\\com\\example\\faithandroid\\appPreferences.kt"
+"src\\main\\java\\com\\example\\faithandroid\\AppPreferences.kt"
 "src\\main\\java\\com\\example\\faithandroid\\AvatarViewModel.kt"
 "src\\main\\java\\com\\example\\faithandroid\\backpack\\BackpackFragment.kt"
 "src\\main\\java\\com\\example\\faithandroid\\backpack\\BackpackViewModel.kt"

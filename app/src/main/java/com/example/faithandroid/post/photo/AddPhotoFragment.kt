@@ -31,9 +31,9 @@ import java.io.ByteArrayOutputStream
 import java.io.InputStream
 import java.util.*
 
-class addPhotoFragment : Fragment() {
+class AddPhotoFragment : Fragment() {
 
-    val args: addPhotoFragmentArgs by navArgs()
+    val args: AddPhotoFragmentArgs by navArgs()
 
     var post: Post? = null
 
@@ -122,7 +122,7 @@ class addPhotoFragment : Fragment() {
         binding.addImageRecyclerView.adapter = FilteredPostAdapter(
             object : CustomClick {
                 override fun onClick(post: Post) {
-                    this@addPhotoFragment.post = post
+                    this@AddPhotoFragment.post = post
                     true
                 }
             }

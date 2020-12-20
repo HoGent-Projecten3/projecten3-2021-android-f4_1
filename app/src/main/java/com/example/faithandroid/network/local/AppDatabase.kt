@@ -5,7 +5,13 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.faithandroid.models.*
+import com.example.faithandroid.models.Avatar
+import com.example.faithandroid.models.GoalPost
+import com.example.faithandroid.models.Playlist
+import com.example.faithandroid.models.Post
+import com.example.faithandroid.models.Step
+
+// import com.example.faithandroid.models
 
 @Database(entities = [GoalPost::class, Step::class, Playlist::class, Post::class, Avatar::class], version = 5, exportSchema = false)
 @TypeConverters(Converters::class)

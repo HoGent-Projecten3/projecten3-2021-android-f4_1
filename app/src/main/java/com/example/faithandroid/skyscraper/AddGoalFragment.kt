@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.skyscraper_goaldetails.view.*
 import org.koin.android.ext.android.inject
 import java.time.LocalDateTime
 
-class addGoalFragment : Fragment() {
+class AddGoalFragment : Fragment() {
 
     // private lateinit var viewModel: SkyscraperViewModel
 

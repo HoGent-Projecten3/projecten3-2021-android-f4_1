@@ -293,7 +293,7 @@
     </fragment>
     <fragment
         android:id="@+id/addGoalFragment"
-        android:name="com.example.faithandroid.skyscraper.addGoalFragment"
+        android:name="com.example.faithandroid.skyscraper.AddGoalFragment"
         android:label="addGoalFragment" >
         <action
             android:id="@+id/action_addGoalFragment_to_skyscraperFragment"
@@ -370,7 +370,7 @@
     </fragment>
     <fragment
         android:id="@+id/addPhotoFragment"
-        android:name="com.example.faithandroid.post.photo.addPhotoFragment"
+        android:name="com.example.faithandroid.post.photo.AddPhotoFragment"
         android:label="addPhotoFragment" >
         <argument
             android:name="placeType"
@@ -405,7 +405,7 @@
     </fragment>
     <fragment
         android:id="@+id/addTextFragment"
-        android:name="com.example.faithandroid.post.text.addTextFragment"
+        android:name="com.example.faithandroid.post.text.AddTextFragment"
         android:label="addTextFragment" >
         <action
             android:id="@+id/action_addTextFragment_to_text_post_toevoegen"

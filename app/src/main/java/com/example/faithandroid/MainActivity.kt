@@ -1,5 +1,3 @@
-
-
 package com.example.faithandroid
 
 import AppPreferences
@@ -35,7 +33,10 @@ import org.koin.android.ext.android.inject
 
 // import androidx.databinding.DataBindingUtil
 
-class MainActivity : AppCompatActivity(), DrawerInterface, NavigationView.OnNavigationItemSelectedListener {
+class MainActivity :
+    AppCompatActivity(),
+    DrawerInterface,
+    NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
@@ -91,14 +92,18 @@ class MainActivity : AppCompatActivity(), DrawerInterface, NavigationView.OnNavi
 
         // eerst controleren of de gebruiker daadwerkelijk permissie heeft gegeven om audio op te nemen
         if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.RECORD_AUDIO
-            ) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE
-                ) != PackageManager.PERMISSION_GRANTED
+            this,
+            Manifest.permission.RECORD_AUDIO
+        ) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ) != PackageManager.PERMISSION_GRANTED
         ) {
-            val permissions = arrayOf(android.Manifest.permission.RECORD_AUDIO, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE)
+            val permissions = arrayOf(
+                android.Manifest.permission.RECORD_AUDIO,
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                android.Manifest.permission.READ_EXTERNAL_STORAGE
+            )
             ActivityCompat.requestPermissions(this, permissions, 0)
         }
 

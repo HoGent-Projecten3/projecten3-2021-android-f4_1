@@ -21,9 +21,9 @@ import com.example.faithandroid.post.PostViewModel
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
 
-class addTextFragment : Fragment() {
+class AddTextFragment : Fragment() {
 
-    val args: addTextFragmentArgs by navArgs()
+    val args: AddTextFragmentArgs by navArgs()
     var post: Post? = null
     private lateinit var viewModel: PostViewModel
     private lateinit var dropdown: Spinner
@@ -58,7 +58,7 @@ class addTextFragment : Fragment() {
         binding.imageView4.setOnClickListener {
             view: View ->
             val action =
-                addTextFragmentDirections.actionAddTextFragmentToTextPostToevoegen(
+                AddTextFragmentDirections.actionAddTextFragmentToTextPostToevoegen(
                     args.placeType
                 )
             view.findNavController().navigate(action)
@@ -94,7 +94,7 @@ class addTextFragment : Fragment() {
             FilteredPostAdapter(
                 object : CustomClick {
                     override fun onClick(post: Post) {
-                        this@addTextFragment.post = post
+                        this@AddTextFragment.post = post
                         true
                     }
                 }

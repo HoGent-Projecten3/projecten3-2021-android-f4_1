@@ -1,6 +1,5 @@
 package com.example.faithandroid
 
-<<<<<<< HEAD
 import android.util.Log
 import androidx.test.espresso.*
 import androidx.test.espresso.Espresso.onView
@@ -125,7 +124,3 @@ class LoginActivityTest {
         }
     }
 }
-=======
-class LoginActivityTest {
-}
->>>>>>> c6afd76110f5c37a45a5483459d72529cf0e04d3

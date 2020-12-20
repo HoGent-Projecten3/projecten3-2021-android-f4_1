@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.faithandroid.SkyscraperViewModelTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-12-20T17:26:49" hostname="DESKTOP-NQ332T3" time="0.001">
-  <properties/>
-  <testcase name="complete goal completes the goal" classname="com.example.faithandroid.SkyscraperViewModelTest" time="0.001"/>
-  <testcase name="getGoals gets errorMessage, errorMessage gets shown" classname="com.example.faithandroid.SkyscraperViewModelTest" time="0.0"/>
-  <testcase name="getGoals gets goals" classname="com.example.faithandroid.SkyscraperViewModelTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

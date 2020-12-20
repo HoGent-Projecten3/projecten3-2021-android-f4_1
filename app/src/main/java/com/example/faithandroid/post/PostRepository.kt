@@ -62,7 +62,7 @@ class PostRepository(private val localDataSource: PostLocalDataSource, private v
                 }
                 else -> {
                 }
-            } 
+            }
         },
         networkCall = { remoteDataSource.addExistingPostToPlace(postId, placeType) }
     )
