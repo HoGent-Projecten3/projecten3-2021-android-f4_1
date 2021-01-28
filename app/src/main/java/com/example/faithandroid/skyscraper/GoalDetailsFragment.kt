@@ -75,7 +75,8 @@ class GoalDetailsFragment : DialogFragment() {
 
         binding.btnDelen.setOnClickListener { view: View ->
             viewModel.shareGoal(args.goal.id)
-           view.findNavController().navigate(R.id.billboardFragment)
+            var action = GoalDetailsFragmentDirections.actionGoalDetailsFragmentToSkyscraperFragment()
+           view.findNavController().navigate(action)
             Toast.makeText(
                 context,
                 "Je doel is gedeeld",

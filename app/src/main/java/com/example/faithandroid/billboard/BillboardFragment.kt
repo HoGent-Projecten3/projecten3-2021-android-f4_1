@@ -51,6 +51,7 @@ class BillboardFragment : Fragment() {
 
 override fun onClick(goalId: Int) {
 skyViewModel.shareGoal(goalId)
+    viewModel.getPosts()
 }
 }
         )
